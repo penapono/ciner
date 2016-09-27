@@ -1,0 +1,33 @@
+!!!
+%html{lang: 'pt-br'}
+
+  %head
+    %meta{charset: 'UTF-8'}/
+    %title
+      / = yield(:title)
+      / = '-'
+      = 'Ciner'
+    %meta{content: 'noindex,nofollow', name: 'robots'}/
+
+    %link{href: '/favicon.ico', rel: 'shortcut icon'}/
+
+    %link{href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', rel: 'stylesheet', type: 'text/css'}/
+
+    = stylesheet_link_tag :jquery_all, media: :all
+
+    = stylesheet_link_tag :platform, media: :all
+
+    = yield(:stylesheet)
+
+    = csrf_meta_tags
+
+  %body
+    = render 'shared/header'
+
+    = yield
+
+    = render 'shared/footer'
+
+    = javascript_include_tag :platform
+
+    = yield(:javascript)

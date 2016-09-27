@@ -1,0 +1,137 @@
+- title = t('.title')
+- content_for :title, title
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no", :name => "viewport"}/
+    %title CINER
+    / Latest compiled and minified CSS
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", :integrity => "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", :rel => "stylesheet"}/
+    / Optional theme
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css", :integrity => "sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r", :rel => "stylesheet"}/
+    %link{:href => "assets/css/main.css", :rel => "stylesheet"}/
+    %link{:href => "assets/css/header.css", :rel => "stylesheet"}/
+    %script{:src => "assets/js/jquery-1.12.3.min.js"}
+    / Latest compiled and minified JavaScript
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"}
+  %body
+    .banner
+      / ACTIONBAR
+      .actionbar
+        .container
+          .row
+            .col-xs-12.col-sm-8.col-md-7
+              %span.hidden-xs> Faça do Ciner a sua página Inicial -
+              Anuncie aqui - Sobre ser Ciner
+            .col-xs-12.col-sm-3.col-md-3
+              Entre em contato
+            .col-xs-12.col-sm-1.col-md-2.social
+              %a{:href => "#", :target => "_blank"}
+                %img.img-responsive{:src => "assets/imgs/icons/ico_facebook_branco.png"}/
+              %a{:href => "#", :target => "_blank"}
+                %img.img-responsive{:src => "assets/imgs/icons/ico_twitter_branco.png"}/
+      / BANNER
+      .banner-front
+        .container
+          / SECTION LOGIN
+          .row.section-login
+            .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
+              %figure
+                %img.img-responsive{:alt => "CINER", :src => "assets/imgs/logo_home.png"}/
+            .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3
+              %form.form-horizontal.login-home{"accept-charset" => "utf-8", :action => "index_submit", :method => "POST"}
+                .form-group
+                  %input#login.form-control{:name => "login", :placeholder => "login", :required => "required", :type => "text"}/
+                .form-group
+                  %input#password.form-control{:name => "password", :placeholder => "senha", :required => "required", :type => "password"}/
+                .form-group
+                  %button.btn.btn-login{:type => "submit"}
+                    entrar
+                    %span.icon.icon-button
+                  %span.register
+                    ou
+                    %a{:href => "#"}
+                      %strong seja ciner
+          / SECTION LOGIN
+          / MENU
+          .row{:style => "margin: 40px 0;"}
+            %nav
+              .navbar-header
+                %button.navbar-toggle{"data-target" => "#mainmenu", "data-toggle" => "collapse", :type => "button"}
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+              #mainmenu.collapse.navbar-collapse
+                %ul.menu
+                  %li.col-xs-12.col-sm-2.active
+                    %a{:href => "#"} HOME
+                  %li.col-xs-12.col-sm-2
+                    %a{:href => "#"} FILMES E SÉRIES
+                  %li.col-xs-12.col-sm-2
+                    %a{:href => "#"} CINER VÍDEOS
+                  %li.col-xs-12.col-sm-2
+                    %a{:href => "#"} CRÍTICAS
+                  %li.col-xs-12.col-sm-2
+                    %a{:href => "#"} NOTÍCIAS
+                  %li.col-xs-12.col-sm-2
+                    %a{:href => "#"} DEBATE CINER
+          / MENU
+        .search-field
+          .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8
+            %form.form-horizontal.form-search{"accept-charset" => "utf-8", :action => "#", :method => "GET"}
+              .form-group
+                .col-xs-8.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-7.col-lg-offset-3.col-lg-6
+                  %input#search.form-control{:name => "search", :placeholder => "digite sua busca aqui...", :type => "text"}/
+                .col-xs-12.col-sm-2.col-md-3.col-lg-3
+                  %button.btn.btn-login{:type => "submit"}
+                    buscar
+                    %span.icon.icon-button
+
+%link{:href => "assets/css/footer.css", :rel => "stylesheet"}/
+%footer
+  .container
+    .col-xs-12.col-md-4
+      %figure
+        %img.img-responsive{:src => "assets/imgs/logo_rodape.png"}/
+    .col-xs-12.col-md-4
+      .sitemap
+        %ul
+          %li
+            %a{:href => "#"} Home
+          %li
+            %a{:href => "#"} Filmes e séries
+          %li
+            %a{:href => "#"} Ciner vídeos
+          %li
+            %a{:href => "#"} Críticas
+          %li
+            %a{:href => "#"} Notícias
+          %li
+            %a{:href => "#"} Debate Ciner
+          %li
+            %a{:href => "#"} Contato
+    .col-xs-12.col-md-4
+      .titulo-newsletter
+        %img.img-responsive{:src => "assets/imgs/icons/ico_news.png"}>/
+        Newsletter
+      %form{:action => "#", :method => "POST"}
+        .form-group
+          %input.form-control{:placeholder => "nome", :type => "text"}/
+        .form-group
+          %input.form-control{:placeholder => "email ...", :type => "email"}/
+        .form-group
+          %button.btn.btn-login{:type => "submit"}
+            enviar
+            %span.icon.icon-button
+.copyright
+  .container
+    .row
+      .col-xs-12.text-center
+        © 2016 Ciner. Todos os direitos reservados. Criado por
+        %a{:href => "http://agenciacarbon.com.br", :target => "_blank"} Agência Carbon
+

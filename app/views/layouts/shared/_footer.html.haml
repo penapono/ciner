@@ -1,0 +1,42 @@
+%link{:href => "assets/css/footer.css", :rel => "stylesheet"}/
+%footer
+  .container
+    .col-xs-12.col-md-4
+      %figure
+        %img.img-responsive{:src => "assets/imgs/logo_rodape.png"}/
+    .col-xs-12.col-md-4
+      .sitemap
+        %ul
+          %li
+            %a{:href => "#"} Home
+          %li
+            %a{:href => "#"} Filmes e séries
+          %li
+            %a{:href => "#"} Ciner vídeos
+          %li
+            %a{:href => "#"} Críticas
+          %li
+            %a{:href => "#"} Notícias
+          %li
+            %a{:href => "#"} Debate Ciner
+          %li
+            %a{:href => "#"} Contato
+    .col-xs-12.col-md-4
+      .titulo-newsletter
+        %img.img-responsive{:src => "assets/imgs/icons/ico_news.png"}>/
+        Newsletter
+      %form{:action => "#", :method => "POST"}
+        .form-group
+          %input.form-control{:placeholder => "nome", :type => "text"}/
+        .form-group
+          %input.form-control{:placeholder => "email ...", :type => "email"}/
+        .form-group
+          %button.btn.btn-login{:type => "submit"}
+            enviar
+            %span.icon.icon-button
+.copyright
+  .container
+    .row
+      .col-xs-12.text-center
+        © 2016 Ciner. Todos os direitos reservados. Criado por
+        %a{:href => "http://agenciacarbon.com.br", :target => "_blank"} Agência Carbon
