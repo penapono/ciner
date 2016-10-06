@@ -1,0 +1,90 @@
+<div class="banner">
+  <!-- ACTIONBAR -->
+  <div class="actionbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-7">
+          <span class="hidden-xs">Faça do Ciner a sua página Inicial - </span>Anuncie aqui - Sobre ser Ciner
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          Entre em contato
+        </div>
+        <div class="col-xs-12 col-sm-1 col-md-2 social">
+          <%= link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#' %>
+          <%= link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner-front">
+    <div class="container">
+      <!-- SECTION LOGIN -->
+      <div class="row section-login">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-6 col-md-offset-1 col-md-6 logo">
+          <figure><%= image_tag("logo_home.png", alt: "CINER", class: "img-responsive") %></figure>
+        </div>
+        <div class="col-xs-offset-2 col-xs-8 col-sm-offset-1 col-sm-4 col-md-offset-1 col-md-3">
+          <form action="index_submit" method="POST" accept-charset="utf-8" class="form-horizontal login-home">
+            <div class="form-group">
+              <input name="login" id="login" type="text" placeholder="login" required="required" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <input name="password" id="password" type="password" placeholder="senha" required="required" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-login"> entrar <span class="icon icon-button"></span></button>
+              <span class="register">ou <a href="#"><strong>seja ciner</strong></a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- SECTION LOGIN -->
+
+      <!-- MENU -->
+      <div class="row" style="margin: 40px 0;">
+        <nav>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainmenu">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="mainmenu">
+            <ul class="menu">
+              <li class="col-xs-12 col-sm-2 active"><%= link_to "HOME",   root_path %></li>
+              <li class="col-xs-12 col-sm-2"><%= link_to "FILMES E SÉRIES",   '#' %></li>
+              <li class="col-xs-12 col-sm-2"><%= link_to "CINER VÍDEOS",   '#' %></li>
+              <li class="col-xs-12 col-sm-2"><%= link_to "CRÍTICAS",   '#' %></li>
+              <li class="col-xs-12 col-sm-2"><%= link_to "NOTÍCIAS",   '#' %></li>
+              <li class="col-xs-12 col-sm-2"><%= link_to "DEBATE CINER",   '#' %></li>
+            </ul>
+          </div>
+        </nav>
+
+      </div>
+      <!-- MENU -->
+
+    </div>
+
+    <div class="search-field">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
+        <form action="#" method="GET" accept-charset="utf-8" class="form-horizontal form-search">
+          <div class="form-group">
+            <div class="col-xs-8 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-7 col-lg-offset-3 col-lg-6">
+              <input type="text" id="search" name="search" placeholder="digite sua busca aqui..." class="form-control">
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3">
+              <button type="submit" class="btn btn-login">buscar <span class="icon icon-button"></span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

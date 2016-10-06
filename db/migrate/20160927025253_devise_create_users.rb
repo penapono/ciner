@@ -30,6 +30,23 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      # User Attributes
+      t.string :name
+      t.string :nickname
+      t.integer :age
+      t.date :birthday
+      t.integer :gender
+      t.string :avatar
+      t.integer :role
+      t.string :cpf
+      t.string :rg
+      t.string :cnpj
+      t.text :biography
+
+      t.boolean :accepted_term_of_use
+      t.datetime :registered_at
+
+      t.references :city, index: true, foreign_key: true
 
       t.timestamps null: false
     end

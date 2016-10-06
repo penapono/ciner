@@ -1,0 +1,45 @@
+<footer>
+  <div class="container">
+    <div class="col-xs-12 col-md-4">
+      <figure><%= image_tag("logo_rodape.png", class: "img-responsive") %></figure>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="sitemap">
+        <ul>
+          <li><%= link_to "Home",   root_path %></li>
+          <li><%= link_to "Filmes e séries",   '#' %></li>
+          <li><%= link_to "Ciner vídeos",   '#' %></li>
+          <li><%= link_to "Críticas",   '#' %></li>
+          <li><%= link_to "Notícias",   '#' %></li>
+          <li><%= link_to "Debate Ciner",   '#' %></li>
+          <li><%= link_to "Contato",   '#' %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="titulo-newsletter">
+        <%= image_tag("icons/ico_news.png", class: "img-responsive") %>Newsletter
+      </div>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="nome">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="email ...">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-login">enviar <span class="icon icon-button"></span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</footer>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        © 2016 Ciner. Todos os direitos reservados. Criado por <a href="http://agenciacarbon.com.br" target="_blank">Agência Carbon</a>
+      </div>
+    </div>
+  </div>
+</div>
