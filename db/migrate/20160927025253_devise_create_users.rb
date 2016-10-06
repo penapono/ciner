@@ -46,7 +46,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.boolean :accepted_term_of_use
       t.datetime :registered_at
 
-      t.references :city, index: true, foreign_key: true
+      t.references :city, index: true
 
       t.timestamps null: false
     end

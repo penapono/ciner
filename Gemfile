@@ -63,7 +63,6 @@ group :development do
   gem 'letter_opener'
   gem 'rubocop'
   gem 'quiet_assets'
-  gem 'spring'
 end
 
 group :test do
