@@ -1,0 +1,63 @@
+.banner
+  / ACTIONBAR
+  .actionbar
+    .container
+      .row
+        .col-xs-12.col-sm-8.col-md-7
+          %span.hidden-xs> Faça do Ciner a sua página Inicial -
+          Anuncie aqui - Sobre ser Ciner
+        .col-xs-12.col-sm-3.col-md-3
+          Entre em contato
+        .col-xs-12.col-sm-1.col-md-2.social
+          = link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#'
+          = link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#'
+  / BANNER
+  .banner-front
+    .container
+      / SECTION LOGIN
+      .row.section-login
+        .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
+          %figure= image_tag("logo_home.png", alt: "CINER", class: "img-responsive")
+        .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3
+          %form.form-horizontal.login-home{"accept-charset" => "utf-8", :action => "index_submit", :method => "POST"}
+            .form-group
+              %input#login.form-control{:name => "login", :placeholder => "login", :required => "required", :type => "text"}/
+            .form-group
+              %input#password.form-control{:name => "password", :placeholder => "senha", :required => "required", :type => "password"}/
+            .form-group
+              %button.btn.btn-login{:type => "submit"}
+                entrar
+                %span.icon.icon-button
+              %span.register
+                ou
+                = link_to new_user_registration_path do
+                  %strong seja ciner
+
+      / SECTION LOGIN
+      / MENU
+      .row{:style => "margin: 40px 0;"}
+        %nav
+          .navbar-header
+            %button.navbar-toggle{"data-target" => "#mainmenu", "data-toggle" => "collapse", :type => "button"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+          #mainmenu.collapse.navbar-collapse
+            %ul.menu
+              %li.col-xs-12.col-sm-2.active= link_to "HOME",   root_path
+              %li.col-xs-12.col-sm-2= link_to "FILMES E SÉRIES",   '#'
+              %li.col-xs-12.col-sm-2= link_to "CINER VÍDEOS",   '#'
+              %li.col-xs-12.col-sm-2= link_to "CRÍTICAS",   '#'
+              %li.col-xs-12.col-sm-2= link_to "NOTÍCIAS",   '#'
+              %li.col-xs-12.col-sm-2= link_to "DEBATE CINER",   '#'
+      / MENU
+    .search-field
+      .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8
+        %form.form-horizontal.form-search{"accept-charset" => "utf-8", :action => "#", :method => "GET"}
+          .form-group
+            .col-xs-8.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-7.col-lg-offset-3.col-lg-6
+              %input#search.form-control{:name => "search", :placeholder => "digite sua busca aqui...", :type => "text"}/
+            .col-xs-12.col-sm-2.col-md-3.col-lg-3
+              %button.btn.btn-login{:type => "submit"}
+                buscar
+                %span.icon.icon-button

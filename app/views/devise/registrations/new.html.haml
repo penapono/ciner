@@ -1,0 +1,37 @@
+%h2 Seja Ciner!
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .row
+    .col-xs-12
+      = f.error_notification
+  .row
+    .col-xs-12.col-sm-6
+      = f.input :name, required: true, autofocus: true
+    .col-xs-12.col-sm-6
+      = f.input :email, required: true
+
+    .col-xs-6.col-sm-3
+      = f.input :birthday
+    .col-xs-6.col-sm-3
+      = f.input :age
+
+  .row
+    .col-xs-12.col-sm-4
+      = label_tag :country
+      = select_tag :country, options_from_collection_for_select(Country.all, 'id', 'name')
+    .col-xs-12.col-sm-4
+      = label_tag :state
+      = select_tag :state, options_from_collection_for_select(State.all, 'id', 'name')
+    .col-xs-12.col-sm-4
+      = f.input :city, collection: City.all
+
+  .row
+    .col-xs-12.col-sm-6
+      = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+    .col-xs-12.col-sm-6
+      = f.input :password_confirmation, required: true
+
+  .row
+    .col-xs-12.col-sm-4
+      = submit_tag "Cancelar"
+    .col-xs-12.col-sm-4
+      = f.button :submit, "Confirmar"
