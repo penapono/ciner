@@ -4,7 +4,7 @@ class CreateStates < ActiveRecord::Migration
       t.string :acronym
       t.string :name
 
-      t.references :country, index: true, foreign_key: true
+      t.references :country, index: true
 
       t.timestamps null: false
     end
