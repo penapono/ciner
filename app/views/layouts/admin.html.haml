@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title
+      = full_title(yield(:title))
+      ADMINISTRAÇÃO
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag 'favicon.ico'
+  %body
+    = render 'layouts/header'
+    .container
+      = yield
+    = render 'layouts/footer'

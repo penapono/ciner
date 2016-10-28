@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
             :city,
             presence: true
 
+  # role
+  # 0: Admin
+  # 1: Ciner Free / 2: Ciner Pro / 3: Ciner Clássico / 4: Ciner Cult
+
+  # Enums
+  enum role: { admin: 0, free: 1, pro: 2, classic: 3, cult: 4 }
+
   validates_uniqueness_of :email
 
   # Delegations

@@ -16,22 +16,10 @@
     .container
       / SECTION LOGIN
       .row.section-login
-        .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
-          %figure= image_tag("logo_home.png", alt: "CINER", class: "img-responsive")
-        .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3
-          %form.form-horizontal.login-home{"accept-charset" => "utf-8", :action => "index_submit", :method => "POST"}
-            .form-group
-              %input#login.form-control{:name => "login", :placeholder => "login", :required => "required", :type => "text"}/
-            .form-group
-              %input#password.form-control{:name => "password", :placeholder => "senha", :required => "required", :type => "password"}/
-            .form-group
-              %button.btn.btn-login{:type => "submit"}
-                entrar
-                %span.icon.icon-button
-              %span.register
-                ou
-                = link_to new_user_registration_path do
-                  %strong seja ciner
+        = link_to root_path do
+          .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
+            %figure= image_tag("logo_home.png", alt: "CINER", class: "img-responsive")
+        = render 'layouts/login'
 
       / SECTION LOGIN
       / MENU

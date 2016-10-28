@@ -1,0 +1,64 @@
+module Admin
+  class UsersController < AdminController
+    before_action :clean_password, only: :update
+
+    # exposes
+    expose(:users) { User.order(:name) }
+    expose(:user, attributes: :user_attributes)
+
+    def new
+    end
+
+    def create
+      if user.save
+        flash.notice = t('.success')
+        redirect_to action: :index
+      else
+        flash.alert = t('.failure')
+        render :new
+      end
+    end
+
+    def index
+      self.users = users.page(params[:page]).per(15)
+    end
+
+    def edit
+    end
+
+    def update
+      if user.save
+        flash.notice = t('.success')
+        redirect_to action: :show
+      else
+        flash.alert = t('.failure')
+        render :edit
+      end
+    end
+
+    def show
+    end
+
+    def destroy
+      if user.destroy
+        flash.notice = t('.success')
+      else
+        flash.alert = t('.failure')
+      end
+      redirect_to action: :index
+    end
+
+    private
+
+    def clean_password
+      return unless params[:user].present? && params[:user][:password].blank?
+      params[:user].delete(:password)
+    end
+
+    def user_attributes
+      params.require(:user).permit(
+        :id, :name, :email, :role, :password, :birthday, :avatar,
+        )
+    end
+  end
+end
