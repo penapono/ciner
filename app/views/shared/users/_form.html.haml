@@ -1,0 +1,31 @@
+%h3
+  = t('.general')
+.row
+  .col-xs-12
+    = f.error_notification
+.row
+  .col-xs-12.col-sm-6
+    = f.input :name, required: true, autofocus: true
+  .col-xs-12.col-sm-6
+    = f.input :email, required: true
+
+  .col-xs-6.col-sm-3
+    = f.input :birthday, as: :string, input_html: { value: localize(f.object.birthday || Date.today), class: 'datepicker' }
+  .col-xs-6.col-sm-3
+    = f.input :age
+
+.row
+  .col-xs-12.col-sm-4
+    = f.input :city, collection: City.all
+
+.row
+  .col-xs-12.col-sm-6
+    = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+  .col-xs-12.col-sm-6
+    = f.input :password_confirmation, required: true
+
+.row
+  .col-xs-12.col-sm-4
+    = submit_tag "Cancelar"
+  .col-xs-12.col-sm-4
+    = f.button :submit, "Confirmar"

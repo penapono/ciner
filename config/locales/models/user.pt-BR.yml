@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuários
+    attributes:
+      user:
+        name: Nome
+        age: Idade
+        country: País
+        state: Estado
+        city: Cidade
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        email: E-mail
+        birthday: Data de Nascimento
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"
+            age:
+              blank: "%{attribute} deve ser preenchido"
