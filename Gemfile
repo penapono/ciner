@@ -1,7 +1,10 @@
 source 'http://rubygems.org'
 
+ruby '2.3.1'
+
 # core
 gem 'uglifier', '>= 1.3.0'
+
 gem 'rake'
 gem 'rails'
 gem 'mini_magick'
@@ -12,6 +15,7 @@ gem 'cancancan'
 gem 'simple_form'
 gem 'decent_exposure'
 gem 'rails_autolink'
+gem 'rmagick'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -29,10 +33,16 @@ gem 'mysql2', '= 0.3.20'
 
 # frontend
 gem 'cocoon'
+gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'haml'
+gem 'handlebars_assets', '0.20.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'select2-rails'
+gem 'sprockets-es6'
+gem 'sprockets-rails', '2.3.3'
+gem 'ckeditor'
 
 gem 'bootstrap-sass'
 gem 'bootstrap3-datetimepicker-rails'
