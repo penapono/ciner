@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   # admin: rotas de administração - ciner
   # platform: rotas da plataforma - público
+
+  get "/seja_ciner", to: "plans#index", as: "plans"
+
 end
