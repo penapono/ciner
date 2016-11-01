@@ -9,7 +9,7 @@
       = user.email
     .col-xs-2
       = link_to edit_admin_user_path(user) do
-        Editar
+        = t('edit')
     .col-xs-2
       = link_to admin_user_path(user), method: 'delete' do
-        Excluir
+        = t('remove')

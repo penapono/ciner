@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ::BaseController
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -11,7 +13,7 @@ class ApplicationController < ActionController::Base
               keys: [
                 :name, :nickname, :role, :email, :password, :password_confirmation,
                 :gender, :birthday, :cep, :address, :neighbourhood, :city_id,
-                :cpf, :phone
+                :avatar, :cpf, :phone, :biography
               ])
   end
 end

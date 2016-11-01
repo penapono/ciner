@@ -1,4 +1,5 @@
 - content_for :javascript, javascript_include_tag('views/shared/users/form')
+- content_for :stylesheet, stylesheet_link_tag('views/shared/users/form')
 
 .row
   .col-xs-12
@@ -52,6 +53,13 @@
     = f.input :avatar, label: false
 
 %h3
+  = t('.about')
+
+.row
+  .col-xs-12
+    = f.input :biography, label: false, input_html: { rows: 4 }
+
+%h3
   = t('.password')
 
 .row
@@ -60,7 +68,7 @@
   .col-xs-12.col-sm-6
     = f.input :password_confirmation, required: true
 
-.row
+.row.actions
   .col-xs-12.col-sm-4
     = submit_tag t('cancel')
   .col-xs-12.col-sm-4
