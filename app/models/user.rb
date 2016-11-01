@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
   validates :email,
             :name,
             :birthday,
-            :role,
-            :city,
             presence: true
 
   # Enums
@@ -28,8 +26,6 @@ class User < ActiveRecord::Base
   # gender
   # 0: Men, 1: Women, 2: Other
   enum gender: { men: 0, women: 1, other: 2 }
-
-  validates_uniqueness_of :email
 
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true

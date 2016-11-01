@@ -26,3 +26,5 @@ dump.rdb
 spec/reports
 
 db/*.BACKUP
+
+.byebug_history

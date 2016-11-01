@@ -13,7 +13,15 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     super
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :name, :gender, :nickname, :birthday, :email, :cep, :address, :neighbourhood, :city_id, :cpf, :phone, :password, :password_confirmation, :role
+      )
   end
 end
