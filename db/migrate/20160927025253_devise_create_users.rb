@@ -32,15 +32,16 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       # User Attributes
       t.string :name
-      t.string :nickname
-      t.integer :age
-      t.date :birthday
       t.integer :gender
-      t.string :avatar
+      t.string :nickname
+      t.date :birthday
+      t.string :cep
+      t.string :address
+      t.string :neighbourhood
       t.integer :role
       t.string :cpf
-      t.string :rg
-      t.string :cnpj
+      t.string :phone
+      t.string :avatar
       t.text :biography
 
       t.boolean :accepted_term_of_use

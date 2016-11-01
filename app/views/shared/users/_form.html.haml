@@ -1,33 +1,67 @@
 - content_for :javascript, javascript_include_tag('views/shared/users/form')
 
-%h3
-  = t('.general')
 .row
   .col-xs-12
     = f.error_notification
+
+%h3
+  = t('.general')
+
 .row
-  .col-xs-12.col-sm-6
+  .col-xs-9
     = f.input :name, required: true, autofocus: true
-  .col-xs-12.col-sm-6
-    = f.input :email, required: true
-
-  .col-xs-6.col-sm-3
-    = f.input :birthday, as: :string, input_html: { value: localize(f.object.birthday || Date.today), class: 'datepicker' }
-  .col-xs-6.col-sm-3
-    = f.input :age
+  .col-xs-3
+    = f.input :gender
 
 .row
-  .col-xs-12.col-sm-4
+  .col-xs-9
+    = f.input :nickname, required: true
+  .col-xs-3
+    = f.input :birthday, as: :string, input_html: { value: localize(f.object.birthday || Date.today), class: 'datepicker' }
+
+.row
+  .col-xs-9
+    = f.input :email
+
+%h3
+  = t('.address')
+
+.row
+  .col-xs-3
+    = f.input :cep
+  .col-xs-9
+    = f.input :address
+
+.row
+  .col-xs-6
+    = f.input :neighbourhood
+  .col-xs-6
     = f.input :city, collection: City.all
 
 .row
+  .col-xs-6
+    = f.input :cpf
+  .col-xs-6
+    = f.input :phone
+
+%h3
+  = t('.avatar')
+
+.row
+  .col-xs-6
+    = f.input :avatar, label: false
+
+%h3
+  = t('.password')
+
+.row
   .col-xs-12.col-sm-6
-    = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+    = f.input :password, required: true
   .col-xs-12.col-sm-6
     = f.input :password_confirmation, required: true
 
 .row
   .col-xs-12.col-sm-4
-    = submit_tag "Cancelar"
+    = submit_tag t('cancel')
   .col-xs-12.col-sm-4
-    = f.button :submit, "Confirmar"
+    = f.button :submit, t('confirm')

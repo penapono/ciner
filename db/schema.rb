@@ -51,15 +51,16 @@ ActiveRecord::Schema.define(version: 20161006194544) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "name",                   limit: 255
-    t.string   "nickname",               limit: 255
-    t.integer  "age",                    limit: 4
-    t.date     "birthday"
     t.integer  "gender",                 limit: 4
-    t.string   "avatar",                 limit: 255
+    t.string   "nickname",               limit: 255
+    t.date     "birthday"
+    t.string   "cep",                    limit: 255
+    t.string   "address",                limit: 255
+    t.string   "neighbourhood",          limit: 255
     t.integer  "role",                   limit: 4
     t.string   "cpf",                    limit: 255
-    t.string   "rg",                     limit: 255
-    t.string   "cnpj",                   limit: 255
+    t.string   "phone",                  limit: 255
+    t.string   "avatar",                 limit: 255
     t.text     "biography",              limit: 65535
     t.boolean  "accepted_term_of_use"
     t.datetime "registered_at"

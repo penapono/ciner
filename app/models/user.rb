@@ -4,24 +4,30 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Avatar Uploader
+  mount_uploader :avatar, UserAvatarUploader
+
   # Associations
   belongs_to :city
 
   # Validations
   validates :email,
             :name,
-            :age,
             :birthday,
             :role,
             :city,
             presence: true
 
+  # Enums
+
   # role
   # 0: Admin
   # 1: Ciner Free / 2: Ciner Pro / 3: Ciner Clássico / 4: Ciner Cult
-
-  # Enums
   enum role: { admin: 0, free: 1, pro: 2, classic: 3, cult: 4 }
+
+  # gender
+  # 0: Men, 1: Women, 2: Other
+  enum gender: { men: 0, women: 1, other: 2 }
 
   validates_uniqueness_of :email
 

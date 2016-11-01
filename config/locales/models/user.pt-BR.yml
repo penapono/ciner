@@ -5,19 +5,25 @@ pt-BR:
     attributes:
       user:
         name: Nome
-        age: Idade
-        country: País
-        state: Estado
+        gender: Sexo
+        nickname: Apelido
+        cep: CEP
+        cpf: CPF
+        address: Endereço
+        neighbourhood: Bairro
+        phone: Telefone
+        biography: Biografia
         city: Cidade
         password: Senha
         password_confirmation: Confirmação de Senha
         email: E-mail
         birthday: Data de Nascimento
+        avatar: Foto de Perfil
     errors:
       models:
         user:
           attributes:
             name:
               blank: "%{attribute} deve ser preenchido"
-            age:
-              blank: "%{attribute} deve ser preenchido"
+            password:
+

@@ -3,7 +3,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "User Name #{n}" }
     sequence(:email) { |n| "test#{n}@example.com" }
     password "senha123"
-    age 18
     birthday Date.today - 18.years
     role 1
     city
@@ -11,7 +10,6 @@ FactoryGirl.define do
     trait :invalid do
       name nil
       email nil
-      age nil
       birthday nil
       role nil
       city nil
