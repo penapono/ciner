@@ -46,7 +46,7 @@ gem 'ckeditor'
 
 gem 'bootstrap-sass'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'remotipart', '~> 1.2', '>= 1.2.1'
 
 group :production do
