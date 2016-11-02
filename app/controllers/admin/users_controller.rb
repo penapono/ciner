@@ -55,10 +55,12 @@ module Admin
       params[:user].delete(:password)
     end
 
-    def user_attributes
+    def user_params
       params.require(:user).permit(
-        :id, :name, :email, :role, :password, :birthday, :avatar,
-        )
+        :name, :gender, :nickname, :birthday, :email, :cep, :address,
+        :neighbourhood, :city_id, :cpf, :phone, :password,
+        :password_confirmation, :role, :avatar, :biography
+      )
     end
   end
 end

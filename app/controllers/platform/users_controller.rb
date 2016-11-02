@@ -20,6 +20,10 @@ class Platform::UsersController < PlatformController
   private
 
   def user_params
-    params.require(:user).permit(:password)
+    params.require(:user).permit(
+      :name, :gender, :nickname, :birthday, :email, :cep, :address,
+      :neighbourhood, :city_id, :cpf, :phone, :password,
+      :password_confirmation, :role, :avatar, :biography
+    )
   end
 end

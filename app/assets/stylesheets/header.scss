@@ -1,3 +1,20 @@
+.welcome {
+  margin-top: 45px;
+  font-size: 20px;
+  color: white;
+}
+
+.logout {
+  color: white;
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: #808080;
+  }
+}
+
 .actionbar {
   position: relative;
   z-index: 10;
