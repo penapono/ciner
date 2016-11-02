@@ -243,3 +243,17 @@
 
 /*extra*/
 
+div.welcome {
+  font-weight: bold;
+  color: white;
+  font-size: 14pt;
+  margin-top: 20px;
+}
+
+div.logout a {
+    color: white;
+}
+
+div.logout a:hover {
+  color: whitesmoke;
+};

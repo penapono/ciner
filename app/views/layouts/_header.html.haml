@@ -4,8 +4,10 @@
     .container
       .row
         .col-xs-12.col-sm-8.col-md-7
-          %span.hidden-xs> Faça do Ciner a sua página Inicial -
-          Anuncie aqui - Sobre ser Ciner
+          %span.hidden-xs>
+          = link_to 'Faça do Ciner a sua página Inicial', '#' #TODO: adicionar espaco e traco
+          = link_to 'Anuncie aqui', '#' 
+          = link_to ' Sobre ser Ciner', plans_path
         .col-xs-12.col-sm-3.col-md-3
           Entre em contato
         .col-xs-12.col-sm-1.col-md-2.social
