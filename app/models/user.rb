@@ -29,4 +29,17 @@ class User < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true
+
+  def age
+    now = Time.now.utc.to_date
+    now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
+  end
+
+  def self.localized_roles
+    roles.map { |k, w| [human_attribute_name("role.#{k}"), k]}
+  end
+
+  def self.localized_genders
+    genders.map { |k, w| [human_attribute_name("gender.#{k}"), k]}
+  end
 end

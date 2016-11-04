@@ -1,5 +1,22 @@
+@import 'base/colors';
+
 .avatar,
 .avatar img {
   margin: auto;
   height: 150px;
+}
+
+h3 {
+  color: $pink;
+}
+
+.field-label {
+  float: left;
+  color: $gray;
+  margin-right: 15px;
+}
+
+.field-value {
+  color: $pink;
+  font-weight: bold;
 }

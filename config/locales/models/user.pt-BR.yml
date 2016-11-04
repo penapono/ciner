@@ -8,6 +8,7 @@ pt-BR:
         gender: Sexo
         nickname: Apelido
         cep: CEP
+        age: Idade
         cpf: CPF
         address: Endereço
         neighbourhood: Bairro
@@ -19,11 +20,20 @@ pt-BR:
         email: E-mail
         birthday: Data de Nascimento
         avatar: Foto de Perfil
+        registered_at: Ciner desde
+      user/role:
+        admin: Administrador
+        free: Ciner
+        pro: Ciner Pro
+        classic: Ciner Clássico
+        cult: Ciner Cult
+      user/gender:
+        men: Masculino
+        women: Feminino
+        other: Outro
     errors:
       models:
         user:
           attributes:
             name:
               blank: "%{attribute} deve ser preenchido"
-            password:
-

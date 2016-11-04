@@ -25,3 +25,9 @@ a { color: #a61e57; }
 a:hover { color: #E2347D; }
 
 .section-pessoal, .section-sinopse, .section-collection, .user-profile, .user-movies-series, .user-videos { overflow: hidden; }
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-top: 2px solid #ccc;
+}
