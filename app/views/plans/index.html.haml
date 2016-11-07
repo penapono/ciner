@@ -42,216 +42,291 @@
       #mensal.tab-pane.active
         .row
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER
-            .promo-bottom.col-table-gratis{"data-mh" => "promo"}
-              .col-table-cell
-                .gratis GRÁTIS
+            .promo
+              .promo-top
+                %h5.tipo CINER
+                %hr/
+              .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+                .col-table-cell
+                  .gratis GRÁTIS
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %button.btn.btn-assine
+                %a.btn.btn-assine{:href => new_user_registration_path+'#free'} ASSINE JÁ
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER PRO
-            .promo-bottom{"data-mh" => "promo"}
-              .contrato Contrato anual
-              .valor
-                %span.col-table-cell.val1 R$
-                %span.col-table-cell.val2 2,
-                %span.col-table-cell.val3
-                  90
-                  %span.val4 /mês
-              .avulso
-                %span.val1
-                  ou R$
-                  %span.bold.val2> 3,90
-                  \/avulso
+            .promo
+              .promo-top
+                %h5.tipo CINER PRO
+                %hr/
+              .promo-bottom{"data-mh" => "promo"}
+                .contrato Contrato anual
+                .valor
+                  %span.col-table-cell.val1 R$
+                  %span.col-table-cell.val2 2,
+                  %span.col-table-cell.val3
+                    90
+                    %span.val4 /mês
+                .avulso
+                  %span.val1
+                    ou R$
+                    %span.bold.val2> 3,90
+                    \/avulso
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .vantagens-extra
               %span . Cadastro de currículo profissional
+              %hr/
               %span . Publicar críticas
+              %hr/
               %span . Participar de promoções do site
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#monthlypro'} ASSINE JÁ
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER PRO
-            .promo-bottom{"data-mh" => "promo"}
-              .contrato Contrato anual
-              .valor
-                %span.col-table-cell.val1 R$
-                %span.col-table-cell.val2 4,
-                %span.col-table-cell.val3
-                  90
-                  %span.val4 /mês
-              .avulso
-                %span.val1
-                  ou R$
-                  %span.bold.val2> 6,90
-                  \/avulso
+            .promo
+              .promo-top
+                %h5.tipo CINER CLASSICO
+                %hr/
+              .promo-bottom{"data-mh" => "promo"}
+                .contrato Contrato anual
+                .valor
+                  %span.col-table-cell.val1 R$
+                  %span.col-table-cell.val2 4,
+                  %span.col-table-cell.val3
+                    90
+                    %span.val4 /mês
+                .avulso
+                  %span.val1
+                    ou R$
+                    %span.bold.val2> 6,90
+                    \/avulso
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .vantagens-extra
               %span . Cadastro de currículo profissional
+              %hr/
               %span . Publicar críticas
+              %hr/
               %span . Participar de promoções do site
+              %hr/
               %span . Catálogo virtual de Coleção DVD/Blu-ray
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#monthlyclass'} ASSINE JÁ
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER PRO
-            .promo-bottom{"data-mh" => "promo"}
-              .contrato Contrato anual
-              .valor
-                %span.col-table-cell.val1 R$
-                %span.col-table-cell.val2 9,
-                %span.col-table-cell.val3
-                  90
-                  %span.val4 /mês
-              .avulso
-                %span.val1
-                  ou R$
-                  %span.bold.val2> 13,90
-                  \/avulso
+            .promo
+              .promo-top
+                %h5.tipo CINER CULT
+                %hr/
+              .promo-bottom{"data-mh" => "promo"}
+                .contrato Contrato anual
+                .valor
+                  %span.col-table-cell.val1 R$
+                  %span.col-table-cell.val2 9,
+                  %span.col-table-cell.val3
+                    90
+                    %span.val4 /mês
+                .avulso
+                  %span.val1
+                    ou R$
+                    %span.bold.val2> 13,90
+                    \/avulso
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .vantagens-extra
               %span . Cadastro de currículo profissional
+              %hr/
               %span . Publicar críticas
+              %hr/
               %span . Participar de promoções do site
+              %hr/
               %span . Catálogo virtual de Coleção DVD/Blu-ray
+              %hr/
               %span . Upload de vídeos ilimitado
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#monthlycult'} ASSINE JÁ
       #anual.tab-pane
         .row
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER
-            .promo-bottom.col-table-gratis{"data-mh" => "promo"}
-              .col-table-cell
-                .gratis GRÁTIS
+            .promo
+              .promo-top
+                %h5.tipo CINER
+                %hr/
+              .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+                .col-table-cell
+                  .gratis GRÁTIS
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#free'} ASSINE JÁ
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER PRO
-            .promo-bottom{"data-mh" => "promo"}
-              .contrato Contrato anual
-              .valor
-                %span.col-table-cell.val1 R$
-                %span.col-table-cell.val2 29,
-                %span.col-table-cell.val3 90
-              .economize
-                %span.val1
-                  Economize até R$
-                  %span.bold.val2 16,90*
-                %span.obs * Comparado ao plano Ciner Pro avulso.
+            .promo
+              .promo-top
+                %h5.tipo CINER PRO
+                %hr/
+              .promo-bottom{"data-mh" => "promo"}
+                .contrato Contrato anual
+                .valor
+                  %span.col-table-cell.val1 R$
+                  %span.col-table-cell.val2 29,
+                  %span.col-table-cell.val3 90
+                .economize
+                  %span.val1
+                    Economize até R$
+                    %span.bold.val2 16,90*
+                  %span.obs * Comparado ao plano Ciner Pro avulso.
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .vantagens-extra
               %span . Cadastro de currículo profissional
+              %hr/
               %span . Publicar críticas
+              %hr/
               %span . Participar de promoções do site
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#annuallypro'} ASSINE JÁ
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER PRO
-            .promo-bottom{"data-mh" => "promo"}
-              .contrato Contrato anual
-              .valor
-                %span.col-table-cell.val1 R$
-                %span.col-table-cell.val2 49,
-                %span.col-table-cell.val3 90
-              .economize
-                %span.val1
-                  Economize até R$
-                  %span.bold.val2 32,90*
-                %span.obs * Comparado ao plano Ciner Clássico avulso.
+            .promo
+              .promo-top
+                %h5.tipo CINER CLASSICO
+                %hr/
+              .promo-bottom{"data-mh" => "promo"}
+                .contrato Contrato anual
+                .valor
+                  %span.col-table-cell.val1 R$
+                  %span.col-table-cell.val2 49,
+                  %span.col-table-cell.val3 90
+                .economize
+                  %span.val1
+                    Economize até R$
+                    %span.bold.val2 32,90*
+                  %span.obs * Comparado ao plano Ciner Clássico avulso.
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .vantagens-extra
               %span . Cadastro de currículo profissional
+              %hr/
               %span . Publicar críticas
+              %hr/
               %span . Participar de promoções do site
+              %hr/
               %span . Catálogo virtual de Coleção DVD/Blu-ray
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#annuallyclass'} ASSINE JÁ
           .col-xs-12.col-sm-6.col-md-3.promo-item
-            .promo-top
-              %h5.tipo CINER PRO
-            .promo-bottom{"data-mh" => "promo"}
-              .contrato Contrato anual
-              .valor
-                %span.col-table-cell.val1 R$
-                %span.col-table-cell.val2 99,
-                %span.col-table-cell.val3 90
-              .economize
-                %span.val1
-                  Economize até R$
-                  %span.bold.val2 66,90*
-                %span.obs * Comparado ao plano Ciner Cult avulso.
+            .promo
+              .promo-top
+                %h5.tipo CINER CULT
+                %hr/
+              .promo-bottom{"data-mh" => "promo"}
+                .contrato Contrato anual
+                .valor
+                  %span.col-table-cell.val1 R$
+                  %span.col-table-cell.val2 99,
+                  %span.col-table-cell.val3 90
+                .economize
+                  %span.val1
+                    Economize até R$
+                    %span.bold.val2 66,90*
+                  %span.obs * Comparado ao plano Ciner Cult avulso.
             .vantagem.vinho.text-center.bold VANTAGENS
             .vantagens
               %span . Criar perfil com foto
+              %hr/
               %span . Avaliar filmes e séries
+              %hr/
               %span . Criar lista de filmes assistidos
+              %hr/
               %span . Participação no Fórum Debate Ciner
+              %hr/
               %span . Acesso as críticas da Equipe Ciner e críticas dos usuários
+              %hr/
               %span . Assistir aos Ciner Vídeos
             .vantagens-extra
               %span . Cadastro de currículo profissional
+              %hr/
               %span . Publicar críticas
+              %hr/
               %span . Participar de promoções do site
+              %hr/
               %span . Catálogo virtual de Coleção DVD/Blu-ray
+              %hr/
               %span . Upload de vídeos ilimitado
             .assine
-              %a.btn.btn-assine{:href => "#"} ASSINE JÁ
+              %a.btn.btn-assine{:href => new_user_registration_path+'#annuallycult'} ASSINE JÁ
