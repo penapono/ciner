@@ -19,27 +19,31 @@
 }
 
 .vantagem {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	text-decoration: underline;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: underline;
 }
+
 .vantagens {
   background-color: #ebebeb;
   border-radius: 10px;
   padding: 10px;
 }
+
 .promo {
   text-align: center;
   background-color: #a51e58;
   border-radius: 10px;
   height: 215px;
 }
+
 h5.tipo {
   color: #ffffff;
   padding-top: 20px;
   font-weight: lighter;
   font-size: 16pt;
 }
+
 .promo-bottom .gratis {
   color: white;
   font-weight: bold;
@@ -47,12 +51,15 @@ h5.tipo {
   vertical-align: middle;
   padding-top: 40px;
 }
+
 .promo-item {
-  opacity: 0.5;
+  opacity: 0.9;
 }
+
 .promo-item:hover {
   opacity: 1.0;
 }
+
 .promo-top hr {
   color: #ffffff;
   border-color: #ffffff;

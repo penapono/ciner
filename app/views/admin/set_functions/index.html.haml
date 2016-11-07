@@ -1,0 +1,20 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+%h3
+  = SetFunction.model_name.human(count: 2)
+
+- set_functions.each do |set_function|
+  .row
+    .col-xs-4
+      = set_function.name
+    .col-xs-4
+      = set_function.description
+    .col-xs-2
+      = link_to edit_admin_set_function_path(set_function) do
+        = t('edit')
+    .col-xs-2
+      = link_to admin_set_function_path(set_function), method: 'delete' do
+        = t('remove')
+
+= paginate set_functions

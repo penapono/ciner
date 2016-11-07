@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006194544) do
+ActiveRecord::Schema.define(version: 20161107215900) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20161006194544) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "set_functions", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "set_functions", ["user_id"], name: "index_set_functions_on_user_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "acronym",    limit: 255
@@ -73,4 +83,5 @@ ActiveRecord::Schema.define(version: 20161006194544) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "set_functions", "users"
 end

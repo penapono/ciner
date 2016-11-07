@@ -1,0 +1,5 @@
+pt-BR:
+  admin:
+    set_functions:
+      form:
+        general: Dados Gerais

@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     root 'users#index'
 
     resources :users
+    resources :set_functions
   end
 end
