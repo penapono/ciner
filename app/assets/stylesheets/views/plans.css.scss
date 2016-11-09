@@ -1,14 +1,4 @@
-.vinho {
-  color: #a61e57;
-}
-
-.cinza {
-  color: #524b4b;
-}
-
-.preto {
-  color: #000000;
-}
+@import 'base/colors';
 
 .bold {
   font-weight: bold;
@@ -18,49 +8,195 @@
   font-weight: lighter;
 }
 
-.vantagem {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-decoration: underline;
+.titulo-seja-ciner {
+  margin: 0;
+  font-family: 'Montserrat Black';
+  font-size: 46px;
+  line-height: 38px;
+  text-align: left;
+  display: inline-block;
+  padding: 40px 0;
 }
 
-.vantagens {
-  background-color: #ebebeb;
-  border-radius: 10px;
-  padding: 10px;
+.plano-ciner {
+  border-top: 1px solid #CCCCCC;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  padding-top: 30px;
 }
 
-.promo {
+.promo-top,
+.promo-bottom {
   text-align: center;
-  background-color: #a51e58;
-  border-radius: 10px;
-  height: 215px;
+  color: #FFFFFF;
+  background: #a61e57;
 }
 
-h5.tipo {
-  color: #ffffff;
-  padding-top: 20px;
+.promo-top {
+  padding: 10px 0;
+  margin-top: 15px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.promo-bottom {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.promo-top .tipo {
+  margin-bottom: 0;
+  margin-top: 15px;
+  font-size: 20px;
   font-weight: lighter;
-  font-size: 16pt;
 }
 
 .promo-bottom .gratis {
-  color: white;
+  padding: 40px 0;
+  font-size: 40px;
   font-weight: bold;
-  font-size: 30pt;
-  vertical-align: middle;
-  padding-top: 40px;
+}
+
+.promo-bottom .contrato {
+  padding-top: 15px;
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+.promo-bottom .valor {
+  display: inline-block;
+}
+
+.promo-bottom .valor .val1 {
+  font-size: 20px;
+  vertical-align: bottom;
+  padding-right: 5px;
+}
+
+.promo-bottom .valor .val2 {
+  vertical-align: bottom;
+  font-size: 80px;
+  line-height: 80px;
+  font-weight: bold;
+}
+
+#mensal .promo-bottom .valor .val3 {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+#mensal .promo-bottom .valor .val4 {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+#anual .promo-bottom .valor .val3 {
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.promo-bottom .avulso {
+  display: block;
+  padding: 10px 0;
+}
+
+.promo-bottom .avulso .val1 {
+  font-size: 12px;
+}
+
+.promo-bottom .avulso .val2 {
+  font-size: 16px;
+}
+
+.promo-bottom .economize {
+  border-top: 1px solid #CCCCCC;
+  display: block;
+  padding: 10px 0;
+  margin-top: 15px;
+}
+
+.promo-bottom .economize .val1 {
+  font-size: 12px;
+}
+
+.promo-bottom .economize .val2 {
+  font-size: 16px;
+}
+
+.promo-bottom .economize .obs {
+  display: block;
+  font-size: 11px;
+  color: #ee4573;
+  padding: 0 20px;
 }
 
 .promo-item {
-  opacity: 0.9;
+  margin-top: 20px;
 }
 
-.promo-item:hover {
-  opacity: 1.0;
+.promo-item .vantagem {
+  margin-top: 20px;
+  text-decoration: underline;
+  font-size: 19px;
 }
 
-.promo-top hr {
-  color: #ffffff;
-  border-color: #ffffff;
+.promo-item .vantagens {
+  margin-top: 20px;
+  padding: 10px 15px;
+}
+
+.promo-item .vantagens span {
+  color: #464646;
+  font-size: 15px;
+  line-height: 18px;
+  display: block;
+  padding: 5px 0;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.promo-item .vantagens span:last-child,
+.promo-item .vantagens-extra span:last-child {
+  border-bottom: 0;
+}
+
+.promo-item .vantagens-extra {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: #ebebeb;
+}
+
+.promo-item .vantagens-extra span {
+  border-bottom: 1px solid #CCCCCC;
+  font-size: 15px;
+  line-height: 18px;
+  display: block;
+  padding: 5px 0;
+}
+
+.promo-item .assine {
+  text-align: center;
+  margin: 20px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid #CCCCCC;
+}
+
+.promo-item .assine .btn-assine {
+  display: inline-block;
+  padding: 10px 30px;
+}
+
+.tab-promo li.active a,
+.tab-promo li.active a:hover {
+  background-color: #ee4573 !important;
+}
+
+.btn-assine {
+  background: #ee4573;
+  color: #FFFFFF;
+}
+
+.wine {
+  color: $wine;
 }
