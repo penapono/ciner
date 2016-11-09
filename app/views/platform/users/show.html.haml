@@ -13,8 +13,8 @@
               .media-heading.title-section
                 = t('.general')
             .media-body.text-right.media-middle
-              = link_to t('edit'), platform_profile_edit_path(user.id)
-              = link_to t('exit'), destroy_user_session_path, method: :delete
+              = link_to platform_profile_edit_path(user) do
+                %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
         .user-profile
           .col-xs-12.col-sm-3.user-avatar
             %img.img-responsive{:src => user.avatar}/
