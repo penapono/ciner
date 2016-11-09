@@ -15,13 +15,14 @@ pt-BR:
         neighbourhood: Bairro
         phone: Telefone
         biography: Biografia
-        city: Cidade
+        city_id: Cidade
         password: Senha
         password_confirmation: Confirmação de Senha
         email: E-mail
         birthday: Data de Nascimento
         avatar: Foto de Perfil
         registered_at: Ciner desde
+        required: Obrigatório
       user/role:
         admin: Administrador
         free: Ciner

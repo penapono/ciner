@@ -48,6 +48,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'remotipart', '~> 1.2', '>= 1.2.1'
+gem 'font-awesome-sass'
 
 group :production do
   gem 'passenger'

@@ -18,6 +18,8 @@
 @import 'base/base';
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 [class*='col-'] { font-family: 'Montserrat'; font-weight: 200; }
 

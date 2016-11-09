@@ -4,6 +4,7 @@ pt-BR:
   edit: Editar
   remove: Remover
   exit: Sair
+  required: Obrigatório
 
   views:
     pagination:

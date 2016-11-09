@@ -1,1 +1,12 @@
 @import 'components/form';
+
+input.btn:hover {
+  background-color: $pink;
+  color: white;
+}
+
+select,
+input {
+  height: 34px;
+}
+
