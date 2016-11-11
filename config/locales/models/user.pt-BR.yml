@@ -13,12 +13,16 @@ pt-BR:
         cpf: CPF
         address: Endereço
         neighbourhood: Bairro
+        number: Número
         phone: Telefone
         biography: Biografia
         city_id: Cidade
+        complement: Complemento
+        state_id: Estado
         password: Senha
         password_confirmation: Confirmação de Senha
         email: E-mail
+        mobile: Celular
         birthday: Data de Nascimento
         avatar: Foto de Perfil
         registered_at: Ciner desde

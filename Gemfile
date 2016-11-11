@@ -50,6 +50,10 @@ gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'remotipart', '~> 1.2', '>= 1.2.1'
 gem 'font-awesome-sass'
 
+# Gem para buscar CEP
+gem 'brcep'
+# BuscaEndereco.cep(22640100)     ==> ['Avenida', 'das Americas', 'Barra da Tijuca', 'RJ', 'Rio de Janeiro', 22640100]
+
 group :production do
   gem 'passenger'
 end

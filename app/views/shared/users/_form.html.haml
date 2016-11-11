@@ -20,28 +20,36 @@
 
 .row
   .col-xs-6
+    = f.input :cpf
+  .col-xs-6
     = f.input :email
 
 %h3
   = t('.address')
 
 .row
-  .col-xs-3
+  .col-xs-2{ data: { cep: '', path: api_v1_ceps_path } }
     = f.input :cep
-  .col-xs-9
+  .col-xs-8
     = f.input :address
+  .col-xs-2
+    = f.input :number
 
 .row
-  .col-xs-6
+  .col-xs-2
+    = f.input :complement
+  .col-xs-4
     = f.input :neighbourhood
-  .col-xs-6
-    = f.input :city_id, collection: City.all
+  .col-xs-2
+    = f.input :state_id, collection: states
+  .col-xs-4
+    = f.input :city_id, collection: cities
 
 .row
-  .col-xs-6
-    = f.input :cpf
   .col-xs-6
     = f.input :phone
+  .col-xs-6
+    = f.input :mobile
 
 %h3
   = t('.avatar')

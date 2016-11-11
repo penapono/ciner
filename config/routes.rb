@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   get "/seja_ciner", to: "plans#index", as: "plans"
 
+  namespace :api do
+    namespace :v1 do
+      resources :ceps, only: :index
+      resources :cities, only: :index
+    end
+  end
 end
