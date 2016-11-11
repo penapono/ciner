@@ -1,5 +1,9 @@
 class Platform::UsersController < PlatformController
+  # exposes
   expose(:user) { current_user }
+  expose(:users) { User.order(:name) }
+  expose(:states) { State.order(:acronym).map(&:acronym) }
+  expose(:cities) { City.where(state: states.first) if states.any? }
 
   def show
   end

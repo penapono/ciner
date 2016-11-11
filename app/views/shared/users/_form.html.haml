@@ -74,8 +74,4 @@
   .col-xs-12.col-sm-6
     = f.input :password_confirmation, required: true
 
-.row.actions
-  .col-xs-12.col-sm-4
-    = submit_tag t('cancel'), :class => "btn"
-  .col-xs-12.col-sm-4
-    = f.button :submit, t('confirm')
+= render 'shared/users/form_actions', f: f

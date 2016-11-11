@@ -4,6 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   skip_before_filter :require_no_authentication
   before_filter :resource_name
 
+  # exposes
   expose(:user, attributes: :user_params)
   expose(:states) { State.order(:acronym).map(&:acronym) }
   expose(:cities) { City.where(state: states.first) if states.any? }

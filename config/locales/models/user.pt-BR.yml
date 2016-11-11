@@ -37,9 +37,9 @@ pt-BR:
         men: Masculino
         women: Feminino
         other: Outro
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "%{attribute} deve ser preenchido"
+    # errors:
+    #   models:
+    #     user:
+    #       attributes:
+    #         name:
+    #           blank: "%{attribute} deve ser preenchido"
