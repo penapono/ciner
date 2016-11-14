@@ -8,15 +8,17 @@
   %thead
     %tr
       %th
-        Nome
+        = User.human_attribute_name(:name)
       %th
-        Idade
+        = User.human_attribute_name(:age)
       %th
-        Cidade
+        = User.human_attribute_name(:city)
       %th
-        Estado
+        = User.human_attribute_name(:state)
       %th
-        Gênero
+        = User.human_attribute_name(:registered_at)
+      %th
+        = User.human_attribute_name(:gender)
       %th{ colspan: 2 }
   %tbody
     - users.each do |user|
@@ -29,9 +31,11 @@
         %td
           = user.city_name
         %td
-          = user.state_name
+          = user.city.state_name if user.city
         %td
-          = user.gender
+          = user.gender_str
+        %td
+          = user.registered_at_str
 
         %td
           = link_to edit_admin_user_path(user) do

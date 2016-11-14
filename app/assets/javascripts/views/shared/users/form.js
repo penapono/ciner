@@ -28,8 +28,6 @@ $(function() {
       data: attrs,
       success: function(data) {
         if(data.status == "ok") {
-          // alert(data.data.cidade + "/" + data.data.uf);
-
           $("#user_address").val(data.data.tipo_logradouro + " " + data.data.logradouro);
           $("#user_number").val("");
           $("#user_neighbourhood").val(data.data.bairro);

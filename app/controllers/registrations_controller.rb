@@ -19,7 +19,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
-    @user.registered_at = DateTime.now
     super
   end
 
@@ -28,8 +27,9 @@ class RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(
       :name, :gender, :nickname, :birthday, :email, :cep, :address,
-      :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
-      :password_confirmation, :role, :avatar, :biography
+        :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
+        :password_confirmation, :role, :avatar, :biography, :mobile,
+        :complement, :registered_at
     )
   end
 end

@@ -5,7 +5,7 @@ pt-BR:
     attributes:
       user:
         name: Nome
-        gender: Sexo
+        gender: Gênero
         nickname: Apelido
         cep: CEP
         age: Idade
@@ -17,8 +17,10 @@ pt-BR:
         phone: Telefone
         biography: Biografia
         city_id: Cidade
+        city: Cidade
         complement: Complemento
         state_id: Estado
+        state: Estado
         password: Senha
         password_confirmation: Confirmação de Senha
         email: E-mail

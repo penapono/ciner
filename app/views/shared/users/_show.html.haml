@@ -30,7 +30,8 @@
               = user.city_name
             %br/
             Ciner desde:
-            %span.user-birth-ciner 05/04/2016
+            %span.user-birth-ciner
+              = I18n.localize(user.registered_at)
             %hr/
             .user-bio
               %span.user-bio Biografia:

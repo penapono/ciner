@@ -5,8 +5,8 @@ module Admin
     # exposes
     expose(:user, attributes: :user_params)
     expose(:users) { User.order(:name) }
-    expose(:states) { State.order(:acronym).map(&:acronym) }
-    expose(:cities) { City.where(state: states.first) if states.any? }
+    expose(:states) { State.order("acronym ASC").collect{ |s| [s.acronym, s.id] } }
+    expose(:cities) { }
 
     def new
     end

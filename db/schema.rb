@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20161107215900) do
     t.string   "avatar",                 limit: 255
     t.text     "biography",              limit: 65535
     t.boolean  "accepted_term_of_use"
-    t.datetime "registered_at"
+    t.date     "registered_at"
     t.integer  "city_id",                limit: 4
     t.integer  "state_id",               limit: 4
     t.datetime "created_at",                                        null: false

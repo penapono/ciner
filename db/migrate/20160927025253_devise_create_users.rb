@@ -48,7 +48,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text :biography
 
       t.boolean :accepted_term_of_use
-      t.datetime :registered_at
+      t.date :registered_at
 
       t.references :city, index: true
       t.references :state, index: true

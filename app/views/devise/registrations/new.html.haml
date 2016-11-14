@@ -20,6 +20,8 @@
       = f.input :nickname, required: true
     .col-xs-3
       = f.input :birthday, as: :string, input_html: { value: localize(f.object.birthday || Date.today), class: 'datepicker' }
+      .hidden
+        = f.input :registered_at, as: :string, input_html: { value: localize(Date.today) }
 
   .row
     .col-xs-6
@@ -77,5 +79,43 @@
     .col-xs-12.col-sm-6
       = f.input :password_confirmation, required: true
 
+  %h3
+    = t('.terms')
+  .row
+    .col-xs-12
+      %input.terms{:name => "terms", :type => "checkbox", :value => "terms"}/
+      Eu li e concordo com os
+      =link_to 'termos de uso', '#', :id => 'terms-link'
+      \.
+
   = render 'shared/users/form_actions', f: f
+
+.overlay-bg
+.terms-container
+  %h3 Termos de uso
+  .terms-text
+    %p
+      Lorem ipsum dolor sit amet, etiam tellus, suscipit sapien, auctor eleifend neque vestibulum platea morbi, sociosqu in ut cras, porttitor quis cursus egestas eget massa velit. Metus dolor lectus commodo enim auctor pellentesque, in nulla nunc arcu vel lorem justo, lacus sapien iaculis dictum non in tellus, odio tortor auctor posuere metus luctus. Quisque sodales felis fermentum risus. Luctus wisi, pede enim porta donec posuere, phasellus erat diam vel auctor, venenatis nec. Urna massa nulla penatibus, convallis lacus turpis risus est sed vivamus, lorem feugiat magna lacus hendrerit, nulla augue vestibulum a velit, dui sagittis vestibulum est tristique pellentesque nec. Nibh non aliquam suspendisse, molestie lorem cras morbi mauris libero eu, risus fermentum, tellus dapibus varius est aenean odio, vitae massa curabitur egestas turpis nibh. Lectus metus metus, sociis pede nullam metus arcu proin, ultricies nec nulla dui. Tellus pede placerat duis, velit maecenas eget, dui mattis dapibus dui neque, tortor mattis nascetur nec dolor venenatis risus.
+
+    %p
+      Maecenas mattis neque eros risus, vitae at maecenas lectus magna, tempor rutrum proin aptent habitasse id, posuere nunc justo neque nibh non phasellus, ut non dapibus quam. Sodales sapien platea a adipiscing tortor a, commodo porta nostra at lorem nam, ac sit, vitae mollis donec amet lectus ac sociis. Aliquam sagittis augue. Porta justo habitasse, eget a dis vulputate, vehicula ultricies quisque ornare ut, a ante pede eget nisl non laoreet. Ligula sed tempus.
+
+    %p
+      Elit dignissim nostra proin ut, curabitur ut inceptos, vulputate a pulvinar ornare. Ornare eros quisque vel dignissim bibendum, at placerat. Risus sit velit mauris. Dui iaculis taciti eu aenean dolor, pretium pellentesque integer quam modi, faucibus at facilis a gravida. Interdum nullam feugiat velit, velit commodo rutrum, mauris porta ultricies mauris nonummy aenean dolor. Congue pellentesque nulla sed mattis vitae, tincidunt eu justo risus augue nisl leo, in aenean lacinia litora quam praesent, odio litora.
+
+    %p
+      Amet felis ut suscipit nullam eget ridiculus, in a erat vitae in ut, suspendisse tempor. Rhoncus eu. At ac lorem, ante platea enim, at mauris sollicitudin nulla, quis nunc adipiscing gravida eget orci, urna est mi accumsan. Quis varius neque convallis id leo, nunc tellus varius quisque, arcu nunc magnis. Facere curabitur.
+
+    %p
+      Dui erat fringilla lobortis, leo pede magna a enim magna lacus, praesent sapien, vivamus sed. Inceptos vestibulum nisl. Wisi ullamcorper vitae vivamus consequat, a interdum sociosqu, ultricies felis ante dapibus, eros dictum ridiculus pede ultricies duis condimentum, sit pretium dignissim lacus eget neque nunc. Class in vitae. Pulvinar per sed erat elit rutrum, vestibulum interdum urna, tempus cum porttitor at, a sapien mauris nec natoque tristique, pede natoque congue elit taciti. Feugiat feugiat ut quis. Pellentesque nunc eget et dolor duis nec, luctus cum consequat sit amet. Phasellus elit commodo non, quisque venenatis vestibulum egestas.
+
+    %p
+      Ac ipsum donec, scelerisque luctus dictumst fringilla commodo eum vulputate. Qui et, purus aliquam duis. Duis ut, pellentesque vestibulum posuere felis vel suscipit. Vel nam posuere mauris lobortis sagittis mauris, amet ipsum, urna leo in sodales amet, sodales volutpat risus dui torquent non. Ante metus auctor ac aliquam turpis, pharetra nibh praesent pede luctus, semper nunc faucibus nulla nibh integer. Lacus laoreet torquent dapibus, dictum rhoncus eleifend integer ligula velit sed, in tincidunt velit nibh nec, egestas erat nulla ut. Pellentesque pulvinar feugiat sed dolor placerat, a aliquam vivamus, vel dolor, quis elementum dignissim.
+
+    %p
+      At placerat, maecenas donec vestibulum risus et, elementum a, nec iste lorem nibh porta vitae, amet augue turpis congue ante purus. Habitant sed. Arcu diam purus, neque neque at ultrices laoreet per in, massa porta felis viverra donec id et. Quis magna aliquam commodo elit ut. Lectus leo nibh sodales enim non, integer condimentum et dolor justo, lorem ipsum in conubia, dignissim id, culpa augue neque. Suspendisse ante facilisis eu erat turpis metus, ullamcorper eros sed imperdiet ante est velit, felis luctus lacus erat, hendrerit sed blandit nunc aliquam.
+
+    %p
+      Pulvinar bibendum quam diam montes varius turpis, mauris lorem pellentesque id risus, sem quis condimentum nisl purus elit ullamcorper. Eu semper ultrices, laoreet elit platea vel nec dictum sed, auctor porta at gravida egestas, nec ipsum dapibus ipsum quisque, mi etiam lorem lorem tristique aenean. Penatibus neque ipsum facilisis neque nibh cras, amet sollicitudin in wisi luctus odio, orci class. Bibendum sit volutpat justo facilisis aliquam, consectetur lobortis ornare arcu dui ut, vestibulum amet id. Rutrum eros fermentum massa amet, amet diam orci, quis vitae mollis justo. Nibh sapien, feugiat semper blandit neque pellentesque accusamus non, est lectus velit vitae blandit, nunc aptent erat tellus cras. Eget sed est velit nunc, neque dignissim, mi nec justo turpis, vestibulum sodales aliquam nibh, fusce vehicula porta congue.
+  =link_to 'X', '#', :id => 'close-terms'
 

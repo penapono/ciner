@@ -55,4 +55,14 @@ class User < ActiveRecord::Base
   def self.localized_genders
     genders.map { |k, w| [human_attribute_name("gender.#{k}"), k]}
   end
+
+  def registered_at_str
+    return "Não informado" unless registered_at
+    I18n.localize(registered_at)
+  end
+
+  def gender_str
+    return "Não informado" unless gender
+    User.human_attribute_name("gender.#{gender}")
+  end
 end
