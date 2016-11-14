@@ -1,1 +1,4 @@
-= user.name
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/users/show', path: edit_admin_user_path(user)

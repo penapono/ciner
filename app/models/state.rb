@@ -2,6 +2,7 @@ class State < ActiveRecord::Base
   # Associations
   belongs_to :country
   has_many :cities
+  has_many :users
 
   # Validations
   validates :acronym,
