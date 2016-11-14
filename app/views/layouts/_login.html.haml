@@ -1,10 +1,11 @@
 - if current_user
   .welcome
-    Bem-vindo,
+    Olá,
     = current_user.name.split(' ').first
-    !
+    = link_to '#' do
+      %i.fa.fa-chevron-down.white
   .logout
-    = link_to t('exit'), destroy_user_session_path, method: :delete
+    = link_to 'Não é você?', destroy_user_session_path, method: :delete
 
 - else
   .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3

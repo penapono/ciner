@@ -1,4 +1,4 @@
-%h2 Seja Ciner!
+%h2 Seja Ciner! ola
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   .row
     .col-xs-12
@@ -24,6 +24,11 @@
       = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
     .col-xs-12.col-sm-6
       = f.input :password_confirmation, required: true
+
+ / .row
+ /   .col-xs-12
+ /     %input{:name => "terms", :type => "checkbox", :value => "terms"}/ 
+ /     Eu li e concordo com os termos de uso
 
   .row
     .col-xs-12
