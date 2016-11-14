@@ -6,22 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-admin_user = User.find_or_initialize_by(name: 'Pedro Naponoceno',
-                      email: 'pnaponoceno@caiena.net',
-                      role: 0)
-admin_user.password = 'ciner123'
-
-admin_user.save(validate: false)
-
-free_user = User.find_or_initialize_by(name: 'Rubens Junior',
-                     email: 'rubens.arjr@gmail.com',
-                     role: 1)
-
-free_user.password = 'ciner123'
-
-free_user.save(validate: false)
-
 country = Country.find_or_create_by(name: 'Brasil', acronym: 'BR')
 
 State.find_or_create_by(name: 'Acre', acronym: 'AC', country: country)
@@ -49,10 +33,9 @@ State.find_or_create_by(name: 'Rondônia', acronym: 'RO', country: country)
 State.find_or_create_by(name: 'Roraima', acronym: 'RR', country: country)
 State.find_or_create_by(name: 'Santa Catarina', acronym: 'SC', country: country)
 State.find_or_create_by(name: 'Sergipe', acronym: 'SE', country: country)
-state = State.find_or_create_by(name: 'São Paulo', acronym: 'SP', country: country)
 State.find_or_create_by(name: 'Tocantins', acronym: 'TO', country: country)
+state = State.find_or_create_by(name: 'São Paulo', acronym: 'SP', country: country)
 
-City.find_or_create_by(name: "Campinas", state: state)
 City.find_or_create_by(name: "Monte Mor", state: state)
 City.find_or_create_by(name: "Nova Odessa", state: state)
 City.find_or_create_by(name: "Rio Claro", state: state)
@@ -60,3 +43,38 @@ City.find_or_create_by(name: "Valinhos", state: state)
 City.find_or_create_by(name: "Piracicaba", state: state)
 City.find_or_create_by(name: "Sorocaba", state: state)
 City.find_or_create_by(name: "Santa Gertrudes", state: state)
+city = City.find_or_create_by(name: "Campinas", state: state)
+
+admin_user = User.find_or_initialize_by(
+  name: 'Pedro Naponoceno',
+  email: 'pnaponoceno@caiena.net',
+  role: 0,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("21/09/1994"),
+  gender: :men,
+  biography: 'Sou administrador'
+)
+
+admin_user.password = 'ciner123'
+admin_user.password_confirmation = 'ciner123'
+
+admin_user.save(validate: false)
+
+free_user = User.find_or_initialize_by(
+  name: 'Rubens Junior',
+  email: 'rubens.arjr@gmail.com',
+  role: 1,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("28/02/1992"),
+  gender: :men,
+  biography: 'Sou o Rubão, seu amigão, vamos no cinema?'
+)
+
+free_user.password = 'ciner123'
+free_user.password_confirmation = 'ciner123'
+
+free_user.save(validate: false)
