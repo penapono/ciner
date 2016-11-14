@@ -18,9 +18,10 @@ function showTerms(){
   $('.terms-container').show();
 }
 
-function hideTerms(){
+$('#close-terms').click(function (event) {
   $('.overlay-bg').hide();
   $('.terms-container').hide();
   t1 = Date.now();
   timer = timer + (t1-t0);
-}
+  event.preventDefault();
+});
