@@ -14,6 +14,16 @@ class User < ActiveRecord::Base
   validates :email,
             :name,
             :birthday,
+            :cpf,
+            :cep,
+            :address,
+            :number,
+            :neighbourhood,
+            :state_id,
+            :city_id,
+            :gender,
+            :role,
+            :password_confirmation,
             presence: true
 
   # Enums
@@ -31,8 +41,8 @@ class User < ActiveRecord::Base
   delegate :name, to: :city, allow_nil: true, prefix: true
 
   def age
-    now = Time.now.utc.to_date
     return 0 unless birthday
+    now = Time.now.utc.to_date
     now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
   end
 

@@ -66,15 +66,19 @@ ActiveRecord::Schema.define(version: 20161107215900) do
     t.date     "birthday"
     t.string   "cep",                    limit: 255
     t.string   "address",                limit: 255
+    t.string   "number",                 limit: 255
     t.string   "neighbourhood",          limit: 255
+    t.string   "complement",             limit: 255
     t.integer  "role",                   limit: 4
     t.string   "cpf",                    limit: 255
     t.string   "phone",                  limit: 255
+    t.string   "mobile",                 limit: 255
     t.string   "avatar",                 limit: 255
     t.text     "biography",              limit: 65535
     t.boolean  "accepted_term_of_use"
     t.datetime "registered_at"
     t.integer  "city_id",                limit: 4
+    t.integer  "state_id",               limit: 4
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
   end
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 20161107215900) do
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
 
   add_foreign_key "set_functions", "users"
 end

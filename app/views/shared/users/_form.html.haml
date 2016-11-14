@@ -20,28 +20,36 @@
 
 .row
   .col-xs-6
+    = f.input :cpf
+  .col-xs-6
     = f.input :email
 
 %h3
   = t('.address')
 
 .row
-  .col-xs-3
+  .col-xs-2{ data: { cep: '', path: api_v1_ceps_path } }
     = f.input :cep
-  .col-xs-9
+  .col-xs-8
     = f.input :address
+  .col-xs-2
+    = f.input :number
 
 .row
-  .col-xs-6
+  .col-xs-2
+    = f.input :complement
+  .col-xs-4
     = f.input :neighbourhood
-  .col-xs-6
-    = f.input :city_id, collection: City.all
+  .col-xs-2
+    = f.input :state_id, collection: states
+  .col-xs-4
+    = f.input :city_id, collection: cities
 
 .row
-  .col-xs-6
-    = f.input :cpf
   .col-xs-6
     = f.input :phone
+  .col-xs-6
+    = f.input :mobile
 
 %h3
   = t('.avatar')
@@ -109,3 +117,5 @@
     %p
       Pulvinar bibendum quam diam montes varius turpis, mauris lorem pellentesque id risus, sem quis condimentum nisl purus elit ullamcorper. Eu semper ultrices, laoreet elit platea vel nec dictum sed, auctor porta at gravida egestas, nec ipsum dapibus ipsum quisque, mi etiam lorem lorem tristique aenean. Penatibus neque ipsum facilisis neque nibh cras, amet sollicitudin in wisi luctus odio, orci class. Bibendum sit volutpat justo facilisis aliquam, consectetur lobortis ornare arcu dui ut, vestibulum amet id. Rutrum eros fermentum massa amet, amet diam orci, quis vitae mollis justo. Nibh sapien, feugiat semper blandit neque pellentesque accusamus non, est lectus velit vitae blandit, nunc aptent erat tellus cras. Eget sed est velit nunc, neque dignissim, mi nec justo turpis, vestibulum sodales aliquam nibh, fusce vehicula porta congue.
   =link_to 'X', '#', :id => 'close-terms'
+= render 'shared/users/form_actions', f: f
+

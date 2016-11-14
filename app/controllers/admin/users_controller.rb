@@ -3,8 +3,10 @@ module Admin
     before_action :clean_password, only: :update
 
     # exposes
+    expose(:user, attributes: :user_params)
     expose(:users) { User.order(:name) }
-    expose(:user, attributes: :user_attributes)
+    expose(:states) { State.order(:acronym).map(&:acronym) }
+    expose(:cities) { City.where(state: states.first) if states.any? }
 
     def new
     end

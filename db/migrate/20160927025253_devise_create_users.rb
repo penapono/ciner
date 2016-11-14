@@ -37,10 +37,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.date :birthday
       t.string :cep
       t.string :address
+      t.string :number
       t.string :neighbourhood
+      t.string :complement
       t.integer :role
       t.string :cpf
       t.string :phone
+      t.string :mobile
       t.string :avatar
       t.text :biography
 
@@ -48,6 +51,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :registered_at
 
       t.references :city, index: true
+      t.references :state, index: true
 
       t.timestamps null: false
     end

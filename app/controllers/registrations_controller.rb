@@ -4,6 +4,11 @@ class RegistrationsController < Devise::RegistrationsController
   skip_before_filter :require_no_authentication
   before_filter :resource_name
 
+  # exposes
+  expose(:user, attributes: :user_params)
+  expose(:states) { State.order(:acronym).map(&:acronym) }
+  expose(:cities) { City.where(state: states.first) if states.any? }
+
   def resource_name
     :user
   end
@@ -23,7 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(
       :name, :gender, :nickname, :birthday, :email, :cep, :address,
-      :neighbourhood, :city_id, :cpf, :phone, :password,
+      :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
       :password_confirmation, :role, :avatar, :biography
     )
   end

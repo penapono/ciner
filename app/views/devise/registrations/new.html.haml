@@ -1,3 +1,81 @@
+- content_for :javascript, javascript_include_tag('views/shared/users/form')
+- content_for :stylesheet, stylesheet_link_tag('views/shared/users/form')
+
 %h2 Seja Ciner!
+
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render 'shared/users/form', f: f
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-6
+      = f.input :name, required: true, autofocus: true
+    .col-xs-3
+      = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
+    .col-xs-3
+      = f.input :role, collection: User.localized_roles, input_html: { class: 'form-field' }
+
+  .row
+    .col-xs-6
+      = f.input :nickname, required: true
+    .col-xs-3
+      = f.input :birthday, as: :string, input_html: { value: localize(f.object.birthday || Date.today), class: 'datepicker' }
+
+  .row
+    .col-xs-6
+      = f.input :cpf
+    .col-xs-6
+      = f.input :email
+
+  %h3
+    = t('.address')
+
+  .row
+    .col-xs-2{ data: { cep: '', path: api_v1_ceps_path } }
+      = f.input :cep
+    .col-xs-8
+      = f.input :address
+    .col-xs-2
+      = f.input :number
+
+  .row
+    .col-xs-2
+      = f.input :complement
+    .col-xs-4
+      = f.input :neighbourhood
+    .col-xs-2
+      = f.input :state_id, collection: states
+    .col-xs-4
+      = f.input :city_id, collection: cities
+
+  .row
+    .col-xs-6
+      = f.input :phone
+    .col-xs-6
+      = f.input :mobile
+
+  %h3
+    = t('.avatar')
+
+  .row
+    .col-xs-6
+      = f.input :avatar, label: false
+
+  %h3
+    = t('.about')
+
+  .row
+    .col-xs-12
+      = f.input :biography, label: false, input_html: { rows: 4 }
+
+  %h3
+    = t('.password')
+
+  .row
+    .col-xs-12.col-sm-6
+      = f.input :password, required: true
+    .col-xs-12.col-sm-6
+      = f.input :password_confirmation, required: true
+
+  = render 'shared/users/form_actions', f: f
+
