@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   # Associations
   belongs_to :city
+  belongs_to :state
 
   # Validations
   validates :email,
@@ -39,6 +40,7 @@ class User < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true
+  delegate :name, to: :state, allow_nil: true, prefix: true
 
   def age
     return 0 unless birthday

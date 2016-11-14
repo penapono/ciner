@@ -1,0 +1,8 @@
+pt-BR:
+  admin:
+    users:
+      show:
+        general: Dados pessoais
+
+      edit:
+        terms: Termos de Uso
