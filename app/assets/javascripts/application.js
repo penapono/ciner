@@ -25,3 +25,11 @@ $('#close-terms').click(function (event) {
   timer = timer + (t1-t0);
   event.preventDefault();
 });
+
+$('.overlay-bg').click(function (event) {
+  $('.overlay-bg').hide();
+  $('.terms-container').hide();
+  t1 = Date.now();
+  timer = timer + (t1-t0);
+  event.preventDefault();
+});
