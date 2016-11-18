@@ -8,6 +8,11 @@ input.btn:hover {
 select,
 input {
   height: 34px;
+  line-height: 34px;
+}
+
+select {
+  -webkit-appearance: none;
 }
 
 input.terms {
