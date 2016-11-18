@@ -7,7 +7,10 @@ $(function() {
     dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
     dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
     dayNamesMin: ['Do','Se','Te','Qu','Qu','Se','Sá'],
-    dateFormat: 'dd/mm/yy'
+    dateFormat: 'dd/mm/yy',
+    yearRange: "-100:+0",
+    changeMonth: true,
+    changeYear: true,
   };
 
   $.datepicker.setDefaults($.datepicker.regional['br']);
