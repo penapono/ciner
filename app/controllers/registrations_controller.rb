@@ -19,7 +19,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
-    super
+    if verify_recaptcha(model: @user)
+      super
+    else
+      render :new
+    end
   end
 
   private

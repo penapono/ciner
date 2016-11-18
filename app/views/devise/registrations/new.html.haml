@@ -81,12 +81,16 @@
 
   %h3
     = t('.terms')
+
   .row
-    .col-xs-12
+    .col-xs-6
       %input.terms{:name => "terms", :type => "checkbox", :value => "terms"}/
       Eu li e concordo com os
       =link_to 'termos de uso', '#', :id => 'terms-link'
       \.
+
+    .col-xs-6
+      = recaptcha_tags
 
   = render 'shared/users/form_actions', f: f
 

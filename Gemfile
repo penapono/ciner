@@ -17,6 +17,8 @@ gem 'decent_exposure'
 gem 'rails_autolink'
 gem 'rmagick'
 
+gem "recaptcha", require: "recaptcha/rails"
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
