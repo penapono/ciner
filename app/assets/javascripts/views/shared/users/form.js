@@ -82,3 +82,42 @@ $(function() {
   });
 
 });
+
+var timer = 0;
+var t0 = 0;
+var t1 = 0;
+
+
+$('#terms-link').click(function (event) {
+  t0 = Date.now();
+  showTerms();
+  event.preventDefault(); // Prevent link from following its href
+});
+
+function showTerms(){
+  $('.overlay-bg').show();
+  $('.terms-container').show();
+}
+
+$('#close-terms').click(function (event) {
+  $('.overlay-bg').hide();
+  $('.terms-container').hide();
+  t1 = Date.now();
+  timer = timer + (t1-t0);
+  event.preventDefault();
+});
+
+$('.overlay-bg').click(function (event) {
+  $('.overlay-bg').hide();
+  $('.terms-container').hide();
+  t1 = Date.now();
+  timer = timer + (t1-t0);
+  event.preventDefault();
+});
+
+$(document).ready(function(){
+  $('#user_birthday').mask('00/00/0000');
+  $('#user_cpf').mask('000.000.000-00', {reverse: true});
+  $('#user_phone').mask('(00) 0000-00000');
+  $('#user_cep').mask('00000-000');
+});
