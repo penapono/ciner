@@ -69,7 +69,9 @@
 
   .row
     .col-xs-12
-      = f.input :biography, label: false, input_html: { rows: 4 }
+      = f.input :biography, label: false, input_html: { rows: 4 }, maxlength: 300
+      %span.char-counter
+        Você ainda pode digitar 300 caracteres.
 
   %h3
     = t('.password')

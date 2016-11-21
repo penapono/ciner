@@ -11,15 +11,6 @@ $(function() {
     insertedItem.find('input.datepicker').datepicker();
   });
 
-  $('form').on('change', "[data-terms] input", function (event) {
-    var self = $(this),
-        checked = self.prop('checked'),
-        dataTerms = self.closest('[data-terms]'),
-        comboTerms = dataTerms.find('#user_terms_of_use');
-
-    comboTerms.prop('checked', checked);
-  });
-
   $('form').on('change', "[data-cep] input", function (event){
     var self = $(this),
         cepValue = self.val(),
@@ -108,6 +99,22 @@ function showTerms(){
   $('.terms-container').show();
 }
 
+$(document).ready(function(){
+  var limit = 300;
+  var typed = $("#user_biography").val().length;
+  var rest = limit - typed;
+
+  $("span.char-counter").text('Você ainda pode digitar '+rest+' caracteres.');
+});
+
+$(document).on("input", "#user_biography", function () {
+  var limit = 300;
+  var typed = $(this).val().length;
+  var rest = limit - typed;
+
+  $("span.char-counter").text('Você ainda pode digitar '+rest+' caracteres.');
+});
+
 $('#close-terms').click(function (event) {
   $('.overlay-bg').hide();
   $('.terms-container').hide();
@@ -164,6 +171,6 @@ function validateCPF() {
 }
 
 $('div.col-xs-12.col-sm-3.pull-right input.btn').click(function (event) {
-  alert('ai');
+  if($('input.terms'))
   event.preventDefault();
 });
