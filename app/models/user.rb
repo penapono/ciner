@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
             :role,
             :nickname,
             :password_confirmation,
+            :terms_of_use,
             presence: true
 
   # Enums

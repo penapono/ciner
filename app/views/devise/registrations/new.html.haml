@@ -83,11 +83,16 @@
     = t('.terms')
 
   .row
-    .col-xs-6
+    .col-xs-6{ data: { terms: '' } }
+      .hidden
+        = f.input :terms_of_use, label: false
       %input.terms{:name => "terms", :type => "checkbox", :value => "terms"}/
       Eu li e concordo com os
       =link_to 'termos de uso', '#', :id => 'terms-link'
       \.
+      - unless @accepted
+        .div
+          É obrigatório aceitar os termos de uso
 
     .col-xs-6
       = recaptcha_tags
