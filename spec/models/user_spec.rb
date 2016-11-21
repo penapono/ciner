@@ -15,8 +15,17 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :birthday }
+    it { is_expected.to validate_presence_of :cpf }
+    it { is_expected.to validate_presence_of :cep }
+    it { is_expected.to validate_presence_of :address }
+    it { is_expected.to validate_presence_of :number }
+    it { is_expected.to validate_presence_of :neighbourhood }
+    it { is_expected.to validate_presence_of :state_id }
+    it { is_expected.to validate_presence_of :city_id }
+    it { is_expected.to validate_presence_of :gender }
     it { is_expected.to validate_presence_of :role }
-    it { is_expected.to validate_presence_of :city }
+    it { is_expected.to validate_presence_of :nickname }
+    it { is_expected.to validate_presence_of :password_confirmation }
 
     context 'uniqueness' do
       it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }

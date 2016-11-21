@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
             :city_id,
             :gender,
             :role,
+            :nickname,
             :password_confirmation,
             presence: true
 
@@ -45,7 +46,7 @@ class User < ActiveRecord::Base
   def age
     return 0 unless birthday
     now = Time.now.utc.to_date
-    now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
+    now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
   end
 
   def self.localized_roles
