@@ -23,8 +23,8 @@ select {
 }
 
 input.terms {
-	width: auto;
-	height: auto;
+  width: auto;
+  height: auto;
 }
 
 .overlay-bg {
@@ -34,12 +34,13 @@ input.terms {
   background-color: black;
   opacity: 0.5;
   z-index: 10;
-  top: 0; 
+  top: 0;
   left: 0;
   right: 0;
   position: fixed;
   text-align: center;
 }
+
 .terms-container {
   display: none;
   position: fixed;
@@ -58,6 +59,7 @@ input.terms {
   left: 0;
   right: 0;
 }
+
 .terms-text {
   overflow-y: scroll;
   display: block;
@@ -74,43 +76,53 @@ input.terms {
   border-style: solid;
   border-width: 2px;
 }
+
 .ui-datepicker a {
   text-decoration: none;
 }
+
 .ui-datepicker table {
   width: 100%;
 }
+
 .ui-datepicker-header {
   background: #c3c3c3;
   color: #333333;
   font-weight: bold;
 }
+
 .ui-datepicker-title {
   text-align: center;
 }
-.ui-datepicker-prev, .ui-datepicker-next {
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
   display: inline-block;
-   text-align: center;
+  text-align: center;
   cursor: pointer;
   overflow: hidden;
 }
+
 .ui-datepicker-prev {
   float: left;
 }
+
 .ui-datepicker-next {
   float: right;
 }
+
 .ui-datepicker thead {
   background-color: #f7f7f7;
-  background-image: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
-  background-image: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
-  background-image: -o-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
-  background-image: -ms-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
-  background-image: linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f1f1f1',GradientType=0 );
+  background-image: -moz-linear-gradient(top, #f7f7f7 0%, #f1f1f1 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f7f7f7), color-stop(100%, #f1f1f1));
+  background-image: -webkit-linear-gradient(top, #f7f7f7 0%, #f1f1f1 100%);
+  background-image: -o-linear-gradient(top, #f7f7f7 0%, #f1f1f1 100%);
+  background-image: -ms-linear-gradient(top, #f7f7f7 0%, #f1f1f1 100%);
+  background-image: linear-gradient(top, #f7f7f7 0%, #f1f1f1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#f1f1f1', GradientType=0);
   border-bottom: 1px solid #bbb;
 }
+
 .ui-datepicker th {
   text-transform: uppercase;
   font-size: 6pt;
@@ -118,21 +130,27 @@ input.terms {
   color: #666666;
   text-shadow: 1px 0px 0px #fff;
   filter: dropshadow(color=#fff, offx=1, offy=0);
-} 
+}
+
 ui-datepicker tbody td {
   padding: 0;
   border-right: 1px solid #bbb;
 }
+
 .ui-datepicker tbody td:last-child {
   border-right: 0px;
 }
+
 .ui-datepicker tbody tr {
   border-bottom: 1px solid #bbb;
 }
+
 .ui-datepicker tbody tr:last-child {
   border-bottom: 0px;
-} 
-.ui-datepicker td span, .ui-datepicker td a {
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
   display: inline-block;
   font-weight: bold;
   text-align: center;
@@ -143,26 +161,30 @@ ui-datepicker tbody td {
   text-shadow: 1px 1px 0px #fff;
   filter: dropshadow(color=#fff, offx=1, offy=1);
 }
+
 .ui-datepicker-calendar .ui-state-default {
   background: #ededed;
-  background: -moz-linear-gradient(top,  #ededed 0%, #dedede 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dedede));
-  background: -webkit-linear-gradient(top,  #ededed 0%,#dedede 100%);
-  background: -o-linear-gradient(top,  #ededed 0%,#dedede 100%);
-  background: -ms-linear-gradient(top,  #ededed 0%,#dedede 100%);
-  background: linear-gradient(top,  #ededed 0%,#dedede 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dedede',GradientType=0 );
+  background: -moz-linear-gradient(top, #ededed 0%, #dedede 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ededed), color-stop(100%, #dedede));
+  background: -webkit-linear-gradient(top, #ededed 0%, #dedede 100%);
+  background: -o-linear-gradient(top, #ededed 0%, #dedede 100%);
+  background: -ms-linear-gradient(top, #ededed 0%, #dedede 100%);
+  background: linear-gradient(top, #ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
   -webkit-box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
   -moz-box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
   box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
 }
+
 .ui-datepicker-unselectable .ui-state-default {
   background: #f4f4f4;
   color: #b4b3b3;
 }
+
 .ui-datepicker-calendar .ui-state-hover {
   background: #f7f7f7;
 }
+
 .ui-datepicker-calendar .ui-state-active {
   background: $pink;
   -webkit-box-shadow: inset 0px 0px 10px 0px rgba(238, 69, 115, 0.9);
@@ -175,14 +197,17 @@ ui-datepicker tbody td {
   position: relative;
   margin: -1px;
 }
+
 .ui-datepicker-calendar td:first-child .ui-state-active {
   width: 29px;
   margin-left: 0;
 }
+
 .ui-datepicker-calendar td:last-child .ui-state-active {
   width: 29px;
   margin-right: 0;
 }
+
 .ui-datepicker-calendar tr:last-child .ui-state-active {
   height: 29px;
   margin-bottom: 0;

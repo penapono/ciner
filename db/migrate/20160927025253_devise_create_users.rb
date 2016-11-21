@@ -47,6 +47,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :avatar
       t.text :biography
 
+      t.boolean :terms_of_use, default: false
+
       t.boolean :accepted_term_of_use
       t.date :registered_at
 

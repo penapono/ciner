@@ -11,6 +11,15 @@ $(function() {
     insertedItem.find('input.datepicker').datepicker();
   });
 
+  $('form').on('change', "[data-terms] input", function (event) {
+    var self = $(this),
+        checked = self.prop('checked'),
+        dataTerms = self.closest('[data-terms]'),
+        comboTerms = dataTerms.find('#user_terms_of_use');
+
+    comboTerms.prop('checked', checked);
+  });
+
   $('form').on('change', "[data-cep] input", function (event){
     var self = $(this),
         cepValue = self.val(),

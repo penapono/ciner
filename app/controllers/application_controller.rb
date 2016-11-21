@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
         :name, :gender, :nickname, :birthday, :email, :cep, :address,
         :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
         :password_confirmation, :role, :avatar, :biography, :mobile,
-        :complement, :registered_at
+        :complement, :registered_at, :terms_of_use
       ])
   end
 end
