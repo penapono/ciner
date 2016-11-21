@@ -14,12 +14,12 @@
  *= require_self
  */
 
-@import "fonts";
 @import 'base/base';
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "fonts";
 
 [class*='col-'] { font-family: 'Montserrat'; font-weight: 200; }
 
