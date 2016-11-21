@@ -7,7 +7,7 @@
       = f.input :name, required: true, autofocus: true
     .col-xs-3
       = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
-    .col-xs-3{ data: { role: '' } }
+    .col-xs-3.hidden{ data: { role: '' } }
       = f.input :role, collection: User.localized_roles, input_html: { class: 'form-field' }
 
   .row
