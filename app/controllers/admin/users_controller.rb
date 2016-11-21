@@ -8,6 +8,8 @@ module Admin
     expose(:states) { State.order("acronym ASC").collect{ |s| [s.acronym, s.id] } }
     expose(:cities) { }
 
+    PER_PAGE = 15
+
     def new
     end
 
@@ -22,7 +24,7 @@ module Admin
     end
 
     def index
-      self.users = users.page(params[:page]).per(15)
+      self.users = paginated_users
     end
 
     def edit
@@ -51,6 +53,14 @@ module Admin
     end
 
     private
+
+    def paginated_users
+      searched_users.page(params[:page]).per(PER_PAGE)
+    end
+
+    def searched_users
+      self.users.search(current_user, params.fetch(:search, ''))
+    end
 
     def clean_password
       return unless params[:user].present? && params[:user][:password].blank?

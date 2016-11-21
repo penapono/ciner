@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Searchables::User
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -66,5 +68,10 @@ class User < ActiveRecord::Base
   def gender_str
     return "Não informado" unless gender
     User.human_attribute_name("gender.#{gender}")
+  end
+
+  def role_str
+    return "Não informado" unless role
+    User.human_attribute_name("role.#{role}")
   end
 end
