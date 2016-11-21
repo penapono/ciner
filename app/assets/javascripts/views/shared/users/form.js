@@ -187,7 +187,4 @@ function validateCPF() {
     return true;
 }
 
-$('div.col-xs-12.col-sm-3.pull-right input.btn').click(function (event) {
-  if($('input.terms'))
-  event.preventDefault();
-});
+
