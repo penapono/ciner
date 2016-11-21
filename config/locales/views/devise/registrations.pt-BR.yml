@@ -1,7 +1,7 @@
 pt-BR:
   devise:
     registrations:
-      new:
+      form:
         general: Dados Gerais
         address: Endereço
         avatar: Foto de Perfil
