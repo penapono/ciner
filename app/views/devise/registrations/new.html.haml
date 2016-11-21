@@ -81,6 +81,9 @@
       = f.input :password, required: true
     .col-xs-12.col-sm-6
       = f.input :password_confirmation, required: true
+    .col-xs-12.col-sm-12
+      %span.password-hint
+        Sua senha deve ter no mínimo 8 caracteres entre números, letras maiúsculas, letras minúsculas e símbolos.
 
   %h3
     = t('.terms')
