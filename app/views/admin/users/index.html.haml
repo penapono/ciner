@@ -18,6 +18,8 @@
       %th
         = User.human_attribute_name(:gender)
       %th
+        = User.human_attribute_name(:role)
+      %th
         = User.human_attribute_name(:registered_at)
 
       / Actions
@@ -36,6 +38,8 @@
           = user.city.state_name if user.city
         %td
           = user.gender_str
+        %td
+          = user.role_str
         %td
           = user.registered_at_str
 
