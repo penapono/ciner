@@ -54,7 +54,8 @@ admin_user = User.find_or_initialize_by(
   state: state,
   birthday: Date.parse("21/09/1994"),
   gender: :men,
-  biography: 'Sou administrador'
+  biography: 'Sou administrador',
+  terms_of_use: true
 )
 
 admin_user.password = 'ciner123'
@@ -71,7 +72,8 @@ free_user = User.find_or_initialize_by(
   state: state,
   birthday: Date.parse("28/02/1992"),
   gender: :men,
-  biography: 'Sou o Rubão, seu amigão, vamos no cinema?'
+  biography: 'Sou o Rubão, seu amigão, vamos no cinema?',
+  terms_of_use: true
 )
 
 free_user.password = 'ciner123'

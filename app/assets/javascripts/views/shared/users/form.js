@@ -19,9 +19,14 @@ $(function() {
         dataPlans = $('[data-plans]'),
         documentToScroll = $('html,body');
 
+    $('.assine .btn').html("ASSINE JÁ");
     dataForm.removeClass('hidden');
-    dataPlans.addClass('hidden');
-    documentToScroll.animate({scrollTop: 0});
+    self.html("Escolhido");
+
+    // dataPlans.addClass('hidden');
+    // documentToScroll.animate({anchor: "begin"});
+
+    $('#user_name').focus();
 
     $('#user_role option').
       filter(function() { return $.trim( $(this).text() ) == choosenPlan; }).

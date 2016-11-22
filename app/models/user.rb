@@ -27,7 +27,6 @@ class User < ActiveRecord::Base
             :gender,
             :role,
             :nickname,
-            :password_confirmation,
             :terms_of_use,
             presence: true
 
