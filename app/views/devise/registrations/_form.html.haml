@@ -16,7 +16,7 @@
     .col-xs-6
       = f.input :nickname, required: true
     .col-xs-3
-      = f.input :birthday, as: :string, input_html: { value: localize(f.object.birthday || Date.today), class: 'datepicker' }
+      = f.input :birthday, as: :string, input_html: { class: 'datepicker' }
       .hidden
         = f.input :registered_at, as: :string, input_html: { value: localize(Date.today) }
 
@@ -43,7 +43,7 @@
     .col-xs-4
       = f.input :neighbourhood
     .col-xs-2
-      = f.input :state_id, collection: states, selected: user.city.state.acronym
+      = f.input :state_id, collection: states, selected: user.city.state.acronym if user.city
     .col-xs-4
       = f.input :city_id, collection: cities
 
