@@ -43,7 +43,7 @@
     .col-xs-4
       = f.input :neighbourhood
     .col-xs-2
-      = f.input :state_id, collection: states
+      = f.input :state_id, collection: states, selected: user.city.state.acronym
     .col-xs-4
       = f.input :city_id, collection: cities
 

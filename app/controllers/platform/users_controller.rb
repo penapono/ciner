@@ -2,8 +2,8 @@ class Platform::UsersController < PlatformController
   # exposes
   expose(:user) { current_user }
   expose(:users) { User.order(:name) }
-  expose(:states) { State.order(:acronym).map(&:acronym) }
-  expose(:cities) { City.where(state: states.first) if states.any? }
+  expose(:states) { State.order(:acronym).collect(&:acronym) }
+  expose(:cities) { user.city.state.cities if user.city }
 
   def show
   end
@@ -16,7 +16,6 @@ class Platform::UsersController < PlatformController
       flash.notice = t('.success')
       redirect_to action: :show
     else
-      byebug
       flash.alert = t('.failure')
       render :edit
     end
