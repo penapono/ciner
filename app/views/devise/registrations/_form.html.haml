@@ -16,7 +16,7 @@
     .col-xs-6
       = f.input :nickname, required: true
     .col-xs-3
-      = f.input :birthday, as: :string, input_html: { class: 'datepicker' }
+      = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
       .hidden
         = f.input :registered_at, as: :string, input_html: { value: localize(Date.today) }
 
