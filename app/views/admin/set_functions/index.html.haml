@@ -4,17 +4,31 @@
 %h3
   = SetFunction.model_name.human(count: 2)
 
-- set_functions.each do |set_function|
-  .row
-    .col-xs-4
-      = set_function.name
-    .col-xs-4
-      = set_function.description
-    .col-xs-2
-      = link_to edit_admin_set_function_path(set_function) do
-        = t('edit')
-    .col-xs-2
-      = link_to admin_set_function_path(set_function), method: 'delete' do
-        = t('remove')
+%table
+  %thead
+    %tr
+      %th
+        = SetFunction.human_attribute_name(:name)
+      %th
+        = SetFunction.human_attribute_name(:description)
+
+      / Actions
+      %th{ colspan: 2 }
+
+  %tbody
+    - set_functions.each do |set_function|
+      %tr
+        %td
+          = set_function.name
+
+        %td
+          = set_function.description
+
+        %td
+          = link_to edit_admin_set_function_path(set_function) do
+            %i.fa.fa-pencil
+        %td
+          = link_to admin_set_function_path(set_function), method: 'delete' do
+            %i.fa.fa-trash
 
 = paginate set_functions

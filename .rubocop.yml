@@ -1,0 +1,39 @@
+# generates a rubocop todo file
+# $ rubocop --auto-gen-config
+
+# inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'Guardfile'
+    - 'lib/tasks/**/*'
+
+Style/StringLiterals:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+# https://github.com/bbatsov/rubocop/issues/1238
+Style/GuardClause:
+  Enabled: false
+
+# https://github.com/bbatsov/rubocop/issues/1238
+Style/Next:
+  Enabled: false
+
+Style/NestedParenthesizedCalls:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 500

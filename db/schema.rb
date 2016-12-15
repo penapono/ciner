@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.datetime "brazilian_release"
     t.integer  "country_id",                  limit: 4
     t.integer  "age_range_id",                limit: 4
+    t.string   "cover",                       limit: 255
     t.integer  "type",                        limit: 4
     t.integer  "studio_id",                   limit: 4
     t.date     "approval"

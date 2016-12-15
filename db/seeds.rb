@@ -80,3 +80,23 @@ free_user.password = 'ciner123'
 free_user.password_confirmation = 'ciner123'
 
 free_user.save(validate: false)
+
+# Criando Set Functions
+
+names = [
+  "Produção", "Produção de Set", "Produção Executiva",
+  "Direção", "Roteiro", "Direção de Fotografia", "Sound Designer",
+  "Elenco", "Direção de Arte", "Edição", "Efeitos Visuais",
+  "Assistente de Direção", "Câmera", "Casting", "Trilha Sonora",
+  "Trilha Sonora Original", "História", "Figurino", "Continuidade",
+  "Assistente de Fotografia", "Assistente de Som", "Captação de Som",
+  "Edição de Som", "Colorização/Finalização", "Maquiagem", "Still",
+  "Making Of", "Dublê", "Foley", "Figuração", "Contrarregra",
+  "Narração", "Dublagem", "Agradecimentos"
+]
+
+names.each do |name|
+  set_function =
+    SetFunction.find_or_initialize_by(name: name, description: name)
+  set_function.save
+end

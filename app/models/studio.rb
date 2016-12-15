@@ -5,4 +5,7 @@ class Studio < ActiveRecord::Base
   # Validations
   validates :name,
             presence: true
+
+  # Delegations
+  delegate :name, to: :country, allow_nil: true, prefix: true
 end

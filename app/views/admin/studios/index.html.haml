@@ -1,0 +1,34 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+%h3
+  = Studio.model_name.human(count: 2)
+
+%table
+  %thead
+    %tr
+      %th
+        = Studio.human_attribute_name(:name)
+      %th
+        = Studio.human_attribute_name(:country)
+
+      / Actions
+      %th{ colspan: 2 }
+
+  %tbody
+    - studios.each do |studio|
+      %tr
+        %td
+          = studio.name
+
+        %td
+          = studio.country_name
+
+        %td
+          = link_to edit_admin_studio_path(studio) do
+            %i.fa.fa-pencil
+        %td
+          = link_to admin_studio_path(studio), method: 'delete' do
+            %i.fa.fa-trash
+
+= paginate studios

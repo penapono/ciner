@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
     resources :users
     resources :set_functions
+    resources :studios
   end
 end

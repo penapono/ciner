@@ -14,4 +14,8 @@ RSpec.describe Studio, type: :model do
   describe '#validations' do
     it { is_expected.to validate_presence_of :name }
   end
+
+  describe 'delegations' do
+    it { is_expected.to delegate_method(:name).to(:country).with_prefix(true) }
+  end
 end

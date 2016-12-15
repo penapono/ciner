@@ -4,8 +4,7 @@
 .row
   .col-xs-6
     = f.input :name, required: true, autofocus: true
-.row
-  .col-xs-6
-    = f.input :description
+  .col-xs-3
+    = f.input :country, collection: countries
 
 = render 'shared/form_actions', f: f
