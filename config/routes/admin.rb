@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :set_functions
     resources :studios
     resources :professionals
+    resources :age_ranges
   end
 end
