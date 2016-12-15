@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
             :terms_of_use,
             presence: true
 
+  validates_presence_of :password_confirmation, on: :create
+
   # Enums
 
   # role

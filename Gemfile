@@ -56,6 +56,8 @@ gem 'font-awesome-sass'
 gem 'brcep'
 # BuscaEndereco.cep(22640100)     ==> ['Avenida', 'das Americas', 'Barra da Tijuca', 'RJ', 'Rio de Janeiro', 22640100]
 
+gem 'cpf_faker'
+
 group :production do
   gem 'passenger'
 end

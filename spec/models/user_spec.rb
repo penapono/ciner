@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
   end
 
   describe '#validations' do
-    it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_presence_of :birthday }
     it { is_expected.to validate_presence_of :cpf }
     it { is_expected.to validate_presence_of :cep }
