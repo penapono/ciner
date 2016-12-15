@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :users
     resources :set_functions
     resources :studios
+    resources :professionals
   end
 end

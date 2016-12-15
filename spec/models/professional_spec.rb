@@ -17,4 +17,9 @@ RSpec.describe Professional, type: :model do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :set_function }
   end
+
+  describe 'delegations' do
+    it { is_expected.to delegate_method(:name).to(:country).with_prefix(true) }
+    it { is_expected.to delegate_method(:name).to(:set_function).with_prefix(true) }
+  end
 end

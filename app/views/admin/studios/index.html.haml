@@ -19,7 +19,8 @@
     - studios.each do |studio|
       %tr
         %td
-          = studio.name
+          = link_to admin_studio_path(studio) do
+            = studio.name
 
         %td
           = studio.country_name

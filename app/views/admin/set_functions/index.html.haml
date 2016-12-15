@@ -19,7 +19,8 @@
     - set_functions.each do |set_function|
       %tr
         %td
-          = set_function.name
+          = link_to admin_set_function_path(set_function) do
+            = set_function.name
 
         %td
           = set_function.description
