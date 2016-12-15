@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 20161215025148) do
   end
 
   create_table "film_production_categories", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "film_productions", force: :cascade do |t|

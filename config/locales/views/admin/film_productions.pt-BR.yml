@@ -1,0 +1,5 @@
+pt-BR:
+  admin:
+    film_productions:
+      form:
+        general: Dados Gerais

@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      film_production_category: Categorias de Produção Cinematográfica
+    attributes:
+      film_production_category:
+        name: Nome
+        description: Descrição
+    errors:
+      models:
+        film_production_category:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"

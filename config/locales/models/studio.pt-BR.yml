@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      studio: Estúdios
+    attributes:
+      studio:
+        name: Nome
+        creation: Data de Inauguração
+        country: País
+        country_id: País
+    errors:
+      models:
+        studio:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"

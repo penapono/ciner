@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      age_range: Classificações Indicativas
+    attributes:
+      age_range:
+        name: Nome
+        age: Idade
+    errors:
+      models:
+        age_range:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"
+            age:
+              blank: "%{attribute} deve ser preenchido"

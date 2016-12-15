@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :studios
     resources :professionals
     resources :age_ranges
+    resources :film_production_categories
   end
 end
