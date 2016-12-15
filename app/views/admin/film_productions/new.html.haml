@@ -1,5 +1,5 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
 
-= simple_form_for [:admin, set_function] do |f|
+= simple_form_for [:admin, film_production] do |f|
   = render 'form', f: f

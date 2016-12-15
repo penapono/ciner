@@ -2,39 +2,44 @@
 - content_for :javascript, javascript_include_tag(javascript)
 
 %h3
-  = SetFunction.model_name.human(count: 2)
+  = FilmProduction.model_name.human(count: 2)
 
 .row.pull-right
   .col-xs-6
-    = link_to new_admin_set_function_path do
+    = link_to new_admin_film_production_path do
       %i.fa.fa-plus= "Novo"
 
 %table
   %thead
     %tr
       %th
-        = SetFunction.human_attribute_name(:name)
+        = FilmProduction.human_attribute_name(:original_title)
       %th
-        = SetFunction.human_attribute_name(:description)
+        = FilmProduction.human_attribute_name(:title)
+      %th
+        = FilmProduction.human_attribute_name(:year)
 
       / Actions
       %th{ colspan: 2 }
 
   %tbody
-    - set_functions.each do |set_function|
+    - film_productions.each do |film_production|
       %tr
         %td
-          = link_to admin_set_function_path(set_function) do
-            = set_function.name
+          = link_to admin_film_production_path(film_production) do
+            = film_production.original_title
 
         %td
-          = set_function.description
+          = film_production.title
 
         %td
-          = link_to edit_admin_set_function_path(set_function) do
+          = film_production.year
+
+        %td
+          = link_to edit_admin_film_production_path(film_production) do
             %i.fa.fa-pencil
         %td
-          = link_to admin_set_function_path(set_function), method: 'delete' do
+          = link_to admin_film_production_path(film_production), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate set_functions
+= paginate film_productions

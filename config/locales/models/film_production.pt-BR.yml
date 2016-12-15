@@ -6,6 +6,36 @@ pt-BR:
       film_production:
         original_title: Título Original
         title: Título
+        year: Ano
+        length: Duração
+        film_production_category_id: Categoria
+        synopsis: Sinopse
+        release: Lançamento Mundial
+        brazilian_release: Lançamento Nacional
+        country_id: País
+        age_range_id: Classificação Indicativa
+
+        cover: Capa
+
+        # Movie / Serie / CinerMovie
+
+        type: Tipo
+
+        # Movie
+
+        studio: Estúdio
+
+        # Ciner Movie
+
+        approval: Data de Aprovação
+        approver: Usuário da Aprovação
+        owner: Proprietário
+
+        # Serie
+
+        season: Temporada
+        number_episodes: Número de Episódios
+        aired_episodes: Número de Episódios Exibidos
     errors:
       models:
         film_production:

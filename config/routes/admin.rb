@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :professionals
     resources :age_ranges
     resources :film_production_categories
+    resources :film_productions
   end
 end

@@ -3,9 +3,31 @@
 
 .row
   .col-xs-6
-    = f.input :name, required: true, autofocus: true
-.row
+    = f.input :original_title, required: true, autofocus: true
   .col-xs-6
-    = f.input :description
+    = f.input :title, required: true, autofocus: true
+
+.row
+  .col-xs-3
+    = f.input :year
+  .col-xs-3
+    = f.input :length
+  .col-xs-3
+    = f.input :film_production_category_id, collection: film_production_categories
+
+.row
+  .col-xs-12
+    = f.input :synopsis
+
+.row
+  .col-xs-3
+    = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
+  .col-xs-3
+    = f.input :brazilian_release, as: :string, input_html: { value: (localize(f.object.brazilian_release) if f.object.brazilian_release), class: 'datepicker' }
+  .col-xs-3
+    = f.input :country_id, collection: countries
+  .col-xs-3
+    = f.input :age_range_id, collection: age_ranges
+
 
 = render 'shared/form_actions', f: f
