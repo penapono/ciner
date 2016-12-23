@@ -5,11 +5,8 @@ pt-BR:
   remove: Remover
   exit: Sair
   required: Obrigatório
-  Log in: Entrar
-  Sign up: Cadastre-se
-  Remember me: Lembrar de mim?
-  Forgot your password?: Esqueceu sua senha?
-  Send me reset password instructions: Enviar instruções para recuperar senha
+  remaining_chars: >
+    %{chars} caracteres restantes.
 
   views:
     pagination:

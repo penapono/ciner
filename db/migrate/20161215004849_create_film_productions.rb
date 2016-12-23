@@ -5,7 +5,6 @@ class CreateFilmProductions < ActiveRecord::Migration
       t.string :title
       t.integer :year
       t.integer :length
-      t.references :film_production_category
       t.text :synopsis
       t.datetime :release
       t.datetime :brazilian_release

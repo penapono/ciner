@@ -32,7 +32,7 @@ module Admin
 
     def studio_params
       params.require(:studio).permit(
-        :name, :creation, :country_id
+        :name, :country_id, :state_id, :city_id
       )
     end
   end

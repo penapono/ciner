@@ -4,11 +4,10 @@ pt-BR:
       film_production: Produções Cinematográficas
     attributes:
       film_production:
-        original_title: Título Original
-        title: Título
+        original_title: Título
+        title: Título em outro idioma
         year: Ano
-        length: Duração
-        film_production_category_id: Categoria
+        length: Duração em minutos
         synopsis: Sinopse
         release: Lançamento Mundial
         brazilian_release: Lançamento Nacional

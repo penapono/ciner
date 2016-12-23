@@ -12,12 +12,12 @@
     = f.input :year
   .col-xs-3
     = f.input :length
-  .col-xs-3
-    = f.input :film_production_category_id, collection: film_production_categories
 
 .row
-  .col-xs-12
-    = f.input :synopsis
+  .col-xs-12{ data: { limited: '', limit: 350 } }
+    = f.input :synopsis, input_html: { rows: 3 }, maxlength: 350
+    %span.char-counter
+      = t('remaining_chars', chars: 350)
 
 .row
   .col-xs-3

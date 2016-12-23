@@ -1,13 +1,16 @@
 pt-BR:
   activerecord:
     models:
-      studio: Estúdios
+      studio: Estúdios / Produtoras
     attributes:
       studio:
         name: Nome
-        creation: Data de Inauguração
         country: País
         country_id: País
+        state: Estado
+        state_id: Estado
+        city: Cidade
+        city_id: Cidade
     errors:
       models:
         studio:

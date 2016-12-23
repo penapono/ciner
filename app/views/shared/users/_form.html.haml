@@ -64,9 +64,9 @@
   = t('.about')
 
 .row
-  .col-xs-12
-    = f.input :biography, label: false, input_html: { rows: 4 }, maxlength: 300
+  .col-xs-12{ data: { limited: '', limit: 350 } }
+    = f.input :biography, label: false, input_html: { rows: 3 }, maxlength: 350
     %span.char-counter
-      Você ainda pode digitar 300 caracteres.
+      = t('remaining_chars', chars: 350)
 
 = render 'shared/users/form_actions', f: f

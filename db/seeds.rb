@@ -45,6 +45,88 @@ City.find_or_create_by(name: "Sorocaba", state: state)
 City.find_or_create_by(name: "Santa Gertrudes", state: state)
 city = City.find_or_create_by(name: "Campinas", state: state)
 
+# ------------------------------ Guilherme ------------------------------
+
+admin_user = User.find_or_initialize_by(
+  name: 'Administrador Ciner',
+  email: 'admin@ciner.com',
+  role: 0,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("21/09/1994"),
+  gender: :men,
+  biography: 'Sou administrador',
+  terms_of_use: true
+)
+
+admin_user.password = 'ciner123'
+admin_user.password_confirmation = 'ciner123'
+
+admin_user.save(validate: false)
+
+# ------------------------------ Marquinhos ------------------------------
+
+admin_user = User.find_or_initialize_by(
+  name: 'Administrador Ciner',
+  email: 'admin@ciner.com',
+  role: 0,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("21/09/1994"),
+  gender: :men,
+  biography: 'Sou administrador',
+  terms_of_use: true
+)
+
+admin_user.password = 'ciner123'
+admin_user.password_confirmation = 'ciner123'
+
+admin_user.save(validate: false)
+
+# ------------------------------ Thiago ------------------------------
+
+admin_user = User.find_or_initialize_by(
+  name: 'Administrador Ciner',
+  email: 'admin@ciner.com',
+  role: 0,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("21/09/1994"),
+  gender: :men,
+  biography: 'Sou administrador',
+  terms_of_use: true
+)
+
+admin_user.password = 'ciner123'
+admin_user.password_confirmation = 'ciner123'
+
+admin_user.save(validate: false)
+
+# ------------------------------ Admin ------------------------------
+
+admin_user = User.find_or_initialize_by(
+  name: 'Administrador Ciner',
+  email: 'admin@ciner.com',
+  role: 0,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("21/09/1994"),
+  gender: :men,
+  biography: 'Sou administrador',
+  terms_of_use: true
+)
+
+admin_user.password = 'ciner123'
+admin_user.password_confirmation = 'ciner123'
+
+admin_user.save(validate: false)
+
+# ------------------------------ Pedro ------------------------------
+
 admin_user = User.find_or_initialize_by(
   name: 'Pedro Naponoceno',
   email: 'pnaponoceno@caiena.net',
@@ -62,6 +144,28 @@ admin_user.password = 'ciner123'
 admin_user.password_confirmation = 'ciner123'
 
 admin_user.save(validate: false)
+
+# ------------------------------ Comum ------------------------------
+
+free_user = User.find_or_initialize_by(
+  name: 'Usuário Ciner',
+  email: 'free@ciner.com',
+  role: 1,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("28/02/1992"),
+  gender: :men,
+  biography: 'Sou o Usuário comum, vamos ao cinema?',
+  terms_of_use: true
+)
+
+free_user.password = 'ciner123'
+free_user.password_confirmation = 'ciner123'
+
+free_user.save(validate: false)
+
+# ------------------------------ Rubens ------------------------------
 
 free_user = User.find_or_initialize_by(
   name: 'Rubens Junior',
@@ -81,7 +185,7 @@ free_user.password_confirmation = 'ciner123'
 
 free_user.save(validate: false)
 
-# Criando Set Functions
+# ------------------------------ Funções no Set ------------------------------
 
 names = [
   "Produção", "Produção de Set", "Produção Executiva",
@@ -97,6 +201,41 @@ names = [
 
 names.each do |name|
   set_function =
-    SetFunction.find_or_initialize_by(name: name, description: name)
-  set_function.save
+    SetFunction.find_or_create_by(name: name, description: name)
 end
+
+# ------------------------- Classificação Indicativa -------------------------
+
+AgeRange.find_or_create_by(name: 'Livre', age: 0)
+AgeRange.find_or_create_by(name: '10 anos', age: 10)
+AgeRange.find_or_create_by(name: '12 anos', age: 12)
+AgeRange.find_or_create_by(name: '14 anos', age: 14)
+AgeRange.find_or_create_by(name: '16 anos', age: 16)
+AgeRange.find_or_create_by(name: '18 anos', age: 18)
+
+# ---------------------------------- Gêneros ----------------------------------
+
+FilmProductionCategory.find_or_create_by(name: 'Ação', description: 'Action')
+FilmProductionCategory.find_or_create_by(name: 'Animação', description: 'Animation')
+FilmProductionCategory.find_or_create_by(name: 'Comédia', description: 'Comedy')
+FilmProductionCategory.find_or_create_by(name: 'Documentário', description: 'Documentary')
+FilmProductionCategory.find_or_create_by(name: 'Família', description: 'Family')
+FilmProductionCategory.find_or_create_by(name: 'Film-Noir', description: 'Film-Noir')
+FilmProductionCategory.find_or_create_by(name: 'Terror', description: 'Horror')
+FilmProductionCategory.find_or_create_by(name: 'Musical', description: 'Musical')
+FilmProductionCategory.find_or_create_by(name: 'Romance', description: 'Romance')
+FilmProductionCategory.find_or_create_by(name: 'Esporte', description: 'Sport')
+FilmProductionCategory.find_or_create_by(name: 'Guerra', description: 'War')
+FilmProductionCategory.find_or_create_by(name: 'Aventura', description: 'Adventure')
+FilmProductionCategory.find_or_create_by(name: 'Biografia', description: 'Biography')
+FilmProductionCategory.find_or_create_by(name: 'Crime', description: 'Crime')
+FilmProductionCategory.find_or_create_by(name: 'Drama', description: 'Drama')
+FilmProductionCategory.find_or_create_by(name: 'Fantasia', description: 'Fantasy')
+FilmProductionCategory.find_or_create_by(name: 'História', description: 'History')
+FilmProductionCategory.find_or_create_by(name: 'Show', description: 'Music')
+FilmProductionCategory.find_or_create_by(name: 'Mistério', description: 'Mystery')
+FilmProductionCategory.find_or_create_by(name: 'Ficção Científica', description: 'Sci-Fi')
+FilmProductionCategory.find_or_create_by(name: 'Faroeste', description: 'Western')
+FilmProductionCategory.find_or_create_by(name: 'Suspense', description: 'Thriller')
+
+
