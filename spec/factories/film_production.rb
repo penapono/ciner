@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 FactoryGirl.define do
   factory :film_production do
     sequence(:original_title) { |n| "Film Production #{n}" }

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SetFunction < ActiveRecord::Base
   # Associations
   belongs_to :user

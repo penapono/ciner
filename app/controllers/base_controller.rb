@@ -37,7 +37,7 @@ module ::BaseController
     end
 
     def create
-      if resource.save #created?
+      if created?
         redirect_to_index_with_success
       else
         render_new_with_error
@@ -70,8 +70,12 @@ module ::BaseController
 
     # custom actions
 
-    def updated?
+    def created?
       resource.save
+    end
+
+    def updated?
+      resource.update(resource_params)
     end
 
     def destroyed?

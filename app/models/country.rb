@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Country < ActiveRecord::Base
   # Associations
   has_many :states

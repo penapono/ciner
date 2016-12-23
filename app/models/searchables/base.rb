@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # Módulo usado por todos os models que fazem parte da busca geral.
 #
@@ -10,18 +11,18 @@ module Searchables::Base
 
   included do
     def self.search_associations
-      self::SEARCH_ASSOCIATIONS ||= []
+      self::SEARCH_ASSOCIATIONS ||= [].freeze
     end
 
-    def self.search(user, search_term, limit=nil)
-      search_for_model(self, user, search_term, limit=nil)
+    def self.search(user, search_term, _limit = nil)
+      search_for_model(self, user, search_term, limit = nil)
     end
 
     def self.search_expression
       self::SEARCH_EXPRESSION
     end
 
-    def self.search_scope(user)
+    def self.search_scope(_user)
       all.search_joins
     end
 
@@ -35,20 +36,19 @@ module Searchables::Base
       includes(search_associations).references(search_associations)
     end
 
-
-    def self.search_for_model(model, user, search_term, limit=nil)
+    def self.search_for_model(model, user, search_term, limit = nil)
       return model.search_scope(user) unless search_term
 
       search = prepare_search_term(search_term)
       results = model.search_scope(user).where(search_expression, search: search)
 
-      return results.limit(limit) if (limit)
-      return results
+      return results.limit(limit) if limit
+      results
     end
 
     def self.prepare_search_term(search_term)
       search_term = check_for_date_param(search_term)
-      '%' + search_term.gsub(' ', '%') + '%'
+      '%' + search_term.tr(' ', '%') + '%'
     end
 
     def self.check_for_date_param(search_term)

@@ -34,5 +34,9 @@ module Admin
         :name, :description
       )
     end
+
+    def resource_params
+      set_function_params
+    end
   end
 end

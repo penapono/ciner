@@ -4,6 +4,8 @@ module Admin
     # exposes
     expose(:studios) { Studio.all }
     expose(:countries) { Country.all }
+    expose(:states) { Country.all }
+    expose(:cities) { Country.all }
     expose(:studio, attributes: :studio_attributes)
 
     PER_PAGE = 10
@@ -28,6 +30,10 @@ module Admin
 
     def show_path
       admin_studio_path(resource)
+    end
+
+    def resource_params
+      studio_params
     end
 
     def studio_params

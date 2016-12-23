@@ -48,8 +48,8 @@ city = City.find_or_create_by(name: "Campinas", state: state)
 # ------------------------------ Guilherme ------------------------------
 
 admin_user = User.find_or_initialize_by(
-  name: 'Administrador Ciner',
-  email: 'admin@ciner.com',
+  name: 'Guilherme',
+  email: 'guilherme_guima@yahoo.com.br',
   role: 0,
   registered_at: Date.parse("01/09/2016"),
   city: city,
@@ -68,8 +68,8 @@ admin_user.save(validate: false)
 # ------------------------------ Marquinhos ------------------------------
 
 admin_user = User.find_or_initialize_by(
-  name: 'Administrador Ciner',
-  email: 'admin@ciner.com',
+  name: 'Marquinhos',
+  email: 'abdalla_marcos@yahoo.com.br',
   role: 0,
   registered_at: Date.parse("01/09/2016"),
   city: city,
@@ -89,7 +89,7 @@ admin_user.save(validate: false)
 
 admin_user = User.find_or_initialize_by(
   name: 'Administrador Ciner',
-  email: 'admin@ciner.com',
+  email: 'tlcgarcia@me.com',
   role: 0,
   registered_at: Date.parse("01/09/2016"),
   city: city,

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 FactoryGirl.define do
   factory :set_function do
     sequence(:name) { |n| "Set Function #{n}" }

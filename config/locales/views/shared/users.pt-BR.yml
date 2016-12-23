@@ -8,3 +8,6 @@ pt-BR:
         password: Senha de Acesso
         about: Conte-nos um pouco sobre você!
         terms: Termos de Uso
+
+      show:
+        general: Dados Gerais

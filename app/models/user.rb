@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class User < ActiveRecord::Base
   include Searchables::User
 
@@ -54,11 +55,11 @@ class User < ActiveRecord::Base
   end
 
   def self.localized_roles
-    roles.map { |k, w| [human_attribute_name("role.#{k}"), k]}
+    roles.map { |k, _w| [human_attribute_name("role.#{k}"), k] }
   end
 
   def self.localized_genders
-    genders.map { |k, w| [human_attribute_name("gender.#{k}"), k]}
+    genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end
 
   def registered_at_str

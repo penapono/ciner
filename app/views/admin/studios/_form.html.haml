@@ -6,7 +6,9 @@
     = f.input :name, required: true, autofocus: true
 .row
   .col-xs-3
-    = f.input :creation, as: :string, input_html: { value: (localize(f.object.creation) if f.object.creation), class: 'datepicker' }
+    = f.input :city_id, collection: cities
+  .col-xs-3
+    = f.input :state_id, collection: states
   .col-xs-3
     = f.input :country_id, collection: countries
 

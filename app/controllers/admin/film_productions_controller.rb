@@ -70,5 +70,9 @@ module Admin
         :aired_episodes,
       )
     end
+
+    def resource_params
+      film_production_params
+    end
   end
 end

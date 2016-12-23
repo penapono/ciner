@@ -35,5 +35,9 @@ module Admin
         :name, :description
       )
     end
+
+    def resource_params
+      film_production_category_params
+    end
   end
 end

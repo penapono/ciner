@@ -1,7 +1,7 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 class UserAvatarUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -27,17 +27,17 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
-  def scale(width, height)
-    process :scale => [200, 300]
+  def scale(_width, _height)
+    process scale: [200, 300]
   end
 
   version :avatar do
-    process :resize_to_fill => [150, 150]
+    process resize_to_fill: [150, 150]
   end
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fit => [50, 50]
+    process resize_to_fit: [50, 50]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

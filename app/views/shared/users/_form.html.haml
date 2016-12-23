@@ -6,6 +6,10 @@
 %span
   Os campos sinalizados com * são se preenchimento obrigatório
 
+- user.errors.each do |e|
+  %p
+    = e.to_s
+
 .row
   .col-xs-6
     = f.input :name, required: true, autofocus: true

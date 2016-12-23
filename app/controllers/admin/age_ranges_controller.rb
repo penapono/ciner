@@ -34,5 +34,9 @@ module Admin
         :name, :age
       )
     end
+
+    def resource_params
+      age_range_params
+    end
   end
 end

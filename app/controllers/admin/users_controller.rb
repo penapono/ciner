@@ -75,5 +75,9 @@ module Admin
         :complement, :registered_at, :terms_of_use
       )
     end
+
+    def resource_params
+      user_params
+    end
   end
 end

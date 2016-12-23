@@ -37,5 +37,9 @@ module Admin
         :name, :birth, :country_id, :user, :set_function_id
       )
     end
+
+    def resource_params
+      professional_params
+    end
   end
 end
