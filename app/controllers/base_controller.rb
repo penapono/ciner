@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ::BaseController
   extend ActiveSupport::Concern
 
@@ -13,9 +14,9 @@ module ::BaseController
   # def show_path
   # end
 
-  FIND_ACTIONS = [:show, :edit, :update, :destroy]
+  FIND_ACTIONS = [:show, :edit, :update, :destroy].freeze
 
-  BASE_HELPER_METHODS = [:breadcrumbs, :javascript, :stylesheet]
+  BASE_HELPER_METHODS = [:breadcrumbs, :javascript, :stylesheet].freeze
 
   included do
     helper_method BASE_HELPER_METHODS

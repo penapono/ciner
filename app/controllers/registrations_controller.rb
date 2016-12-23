@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # customize registration controller
 class RegistrationsController < Devise::RegistrationsController
   layout 'application'
@@ -22,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
     @accepted = (params[:user][:terms_of_use] == "1")
     # byebug
     # if verify_recaptcha(model: @user)
-      super
+    super
     # else
     #   render :new
     # end

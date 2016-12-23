@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Admin
   class UsersController < AdminController
     before_action :clean_password, only: :update
@@ -59,7 +60,7 @@ module Admin
     end
 
     def searched_users
-      self.users.search(current_user, params.fetch(:search, ''))
+      users.search(current_user, params.fetch(:search, ''))
     end
 
     def clean_password

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ApplicationController < ActionController::Base
   include ::BaseController
 
@@ -15,6 +16,7 @@ class ApplicationController < ActionController::Base
         :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
         :password_confirmation, :role, :avatar, :biography, :mobile,
         :complement, :registered_at, :terms_of_use
-      ])
+      ]
+    )
   end
 end

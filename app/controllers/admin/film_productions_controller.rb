@@ -67,7 +67,7 @@ module Admin
 
         :season,
         :number_episodes,
-        :aired_episodes,
+        :aired_episodes
       )
     end
 

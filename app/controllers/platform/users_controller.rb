@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Platform::UsersController < PlatformController
   # exposes
   expose(:user) { current_user }

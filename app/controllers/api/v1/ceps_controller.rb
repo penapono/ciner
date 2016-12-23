@@ -1,6 +1,11 @@
+# frozen_string_literal: true
 class Api::V1::CepsController < ApplicationController
   def index
-    cep = BuscaEndereco.cep((params[:cep].to_s).gsub(/[\.-]/, "")) rescue nil
+    cep = begin
+            BuscaEndereco.cep(params[:cep].to_s.gsub(/[\.-]/, ""))
+          rescue
+            nil
+          end
 
     respond_to do |format|
       format.json do
