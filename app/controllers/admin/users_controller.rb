@@ -13,8 +13,7 @@ module Admin
 
     PER_PAGE = 15
 
-    def new
-    end
+    def new; end
 
     def create
       if user.save
@@ -30,8 +29,7 @@ module Admin
       self.users = paginated_users
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       if user.save
@@ -43,8 +41,7 @@ module Admin
       end
     end
 
-    def show
-    end
+    def show; end
 
     def destroy
       if user.destroy

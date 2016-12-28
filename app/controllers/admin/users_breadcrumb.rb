@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Admin::UsersBreadcrumb
   include ::BreadcrumbController
 
@@ -8,7 +9,7 @@ module Admin::UsersBreadcrumb
       'create': new_create_breadcrumbs,
       'show': show_edit_update_breadcrumbs,
       'edit': show_edit_update_breadcrumbs,
-      'update': show_edit_update_breadcrumbs,
+      'update': show_edit_update_breadcrumbs
     }
   end
 
@@ -45,4 +46,3 @@ module Admin::UsersBreadcrumb
     [User.model_name.human(count: 2), admin_users_path]
   end
 end
-

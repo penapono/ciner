@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # Módulo para organizar e testar os breadcrumbs dos controllers
 # Cada controller deve implementar seu breadcrumb por action em app/breadcrumbs.
@@ -25,11 +26,11 @@ module BreadcrumbController
   end
 
   def breadcrumb_item(title, url)
-    { title: title, url: url}
+    { title: title, url: url }
   end
 
   def has_breadcrumbs?(action_name)
-    ! actions_breadcrumbs[action_name.to_sym].nil?
+    !actions_breadcrumbs[action_name.to_sym].nil?
   end
 
   #

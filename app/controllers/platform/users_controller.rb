@@ -6,11 +6,9 @@ class Platform::UsersController < PlatformController
   expose(:states) { State.order(:acronym).collect(&:acronym) }
   expose(:cities) { user.city.state.cities if user.city }
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if user.update(user_params)
