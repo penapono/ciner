@@ -1,0 +1,16 @@
+= simple_form_for [:platform, studio] do |f|
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-12
+      = f.input :name, required: true, autofocus: true
+  .row
+    .col-xs-3
+      = f.input :city_id, collection: cities
+    .col-xs-3
+      = f.input :state_id, collection: states
+    .col-xs-3
+      = f.input :country_id, collection: countries
+
+  = render 'shared/form_actions', f: f

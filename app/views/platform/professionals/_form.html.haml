@@ -1,0 +1,16 @@
+= simple_form_for [:platform, professional] do |f|
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-6
+      = f.input :name, required: true, autofocus: true
+    .col-xs-6
+      = f.input :set_function_id, collection: set_functions
+  .row
+    .col-xs-3
+      = f.input :birth, as: :string, input_html: { value: (localize(f.object.birth) if f.object.birth), class: 'datepicker' }
+    .col-xs-3
+      = f.input :country_id, collection: countries
+
+  = render 'shared/form_actions', f: f

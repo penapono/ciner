@@ -10,6 +10,11 @@ AllCops:
     - 'script/**/*'
     - 'Guardfile'
     - 'lib/tasks/**/*'
+    - 'Gemfile'
+    - 'bin/**/*'
+    - 'spec/spec_helper.rb'
+    - 'test/test_helper.rb'
+    - 'Rakefile'
 
 Style/StringLiterals:
   Enabled: false

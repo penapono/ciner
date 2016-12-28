@@ -69,13 +69,32 @@ ActiveRecord::Schema.define(version: 20161215025148) do
 
   create_table "professionals", force: :cascade do |t|
     t.string   "name",            limit: 255
-    t.date     "birth"
+    t.integer  "gender",          limit: 4
+    t.string   "nickname",        limit: 255
+    t.date     "birthday"
+    t.string   "cep",             limit: 255
+    t.string   "address",         limit: 255
+    t.string   "number",          limit: 255
+    t.string   "neighbourhood",   limit: 255
+    t.string   "complement",      limit: 255
+    t.integer  "role",            limit: 4
+    t.string   "cpf",             limit: 255
+    t.string   "phone",           limit: 255
+    t.string   "mobile",          limit: 255
+    t.string   "avatar",          limit: 255
+    t.text     "biography",       limit: 65535
+    t.integer  "city_id",         limit: 4
+    t.integer  "state_id",        limit: 4
     t.integer  "country_id",      limit: 4
-    t.integer  "user_id",         limit: 4
     t.integer  "set_function_id", limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "user_id",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
+
+  add_index "professionals", ["city_id"], name: "index_professionals_on_city_id", using: :btree
+  add_index "professionals", ["country_id"], name: "index_professionals_on_country_id", using: :btree
+  add_index "professionals", ["state_id"], name: "index_professionals_on_state_id", using: :btree
 
   create_table "set_functions", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -137,11 +156,13 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.date     "registered_at"
     t.integer  "city_id",                limit: 4
     t.integer  "state_id",               limit: 4
+    t.integer  "country_id",             limit: 4
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
+  add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree

@@ -54,6 +54,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.references :city, index: true
       t.references :state, index: true
+      t.references :country, index: true
 
       t.timestamps null: false
     end

@@ -1,12 +1,32 @@
 class CreateProfessionals < ActiveRecord::Migration
   def change
     create_table :professionals do |t|
+      # User Attributes
       t.string :name
-      t.date :birth
-      t.references :country
-      t.references :user
+      t.integer :gender
+      t.string :nickname
+      t.date :birthday
+      t.string :cep
+      t.string :address
+      t.string :number
+      t.string :neighbourhood
+      t.string :complement
+      t.integer :role
+      t.string :cpf
+      t.string :phone
+      t.string :mobile
+      t.string :avatar
+      t.text :biography
 
+      t.references :city, index: true
+      t.references :state, index: true
+      t.references :country, index: true
+
+      # Professional Attributes
       t.references :set_function
+
+      # If Professional is an User
+      t.references :user
 
       t.timestamps null: false
     end

@@ -1,0 +1,11 @@
+pt-BR:
+  platform:
+    film_production_categories:
+      create:
+        title: Novo Gênero
+      form:
+        general: Dados Gerais
+      index:
+        title: Gênero
+      new:
+        title: Novo Gênero
