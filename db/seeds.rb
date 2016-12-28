@@ -88,7 +88,7 @@ admin_user.save(validate: false)
 # ------------------------------ Thiago ------------------------------
 
 admin_user = User.find_or_initialize_by(
-  name: 'Administrador Ciner',
+  name: 'Thiago Garcia',
   email: 'tlcgarcia@me.com',
   role: 0,
   registered_at: Date.parse("01/09/2016"),

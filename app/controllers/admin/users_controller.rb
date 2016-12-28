@@ -10,49 +10,31 @@ module Admin
     expose(:users) { User.all }
     expose(:states) { State.order(:acronym).map(&:acronym) }
     expose(:cities) { user.city.state.cities if user.city }
+    expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 15
-
-    def new; end
-
-    def create
-      if user.save
-        flash.notice = t('.success')
-        redirect_to action: :index
-      else
-        flash.alert = t('.failure')
-        render :new
-      end
-    end
 
     def index
       self.users = paginated_users
     end
 
-    def edit; end
-
-    def update
-      if user.save
-        flash.notice = t('.success')
-        redirect_to action: :show
-      else
-        flash.alert = t('.failure')
-        render :edit
-      end
-    end
-
-    def show; end
-
-    def destroy
-      if user.destroy
-        flash.notice = t('.success')
-      else
-        flash.alert = t('.failure')
-      end
-      redirect_to action: :index
-    end
-
     private
+
+    def resource
+      user
+    end
+
+    def resource_title
+      user.name
+    end
+
+    def index_path
+      admin_users_path
+    end
+
+    def show_path
+      admin_user_path(resource)
+    end
 
     def paginated_users
       filtered_user.page(params[:page]).per(PER_PAGE)
@@ -74,14 +56,19 @@ module Admin
     def user_params
       params.require(:user).permit(
         :name, :gender, :nickname, :birthday, :email, :cep, :address,
-        :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
-        :password_confirmation, :role, :avatar, :biography, :mobile,
-        :complement, :registered_at, :terms_of_use
+        :number, :neighbourhood, :city_id, :state_id, :country_id,
+        :cpf, :phone, :password, :password_confirmation, :role, :avatar,
+        :biography, :mobile, :complement, :registered_at, :terms_of_use, :age
       )
     end
 
     def resource_params
       user_params
+    end
+
+    def filtered_cities
+      return unless params[:filter] && params[:filter][:state]
+      State.find(params[:filter][:state]).cities
     end
   end
 end

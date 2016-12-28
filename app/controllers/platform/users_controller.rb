@@ -26,9 +26,9 @@ module Platform
     def user_params
       params.require(:user).permit(
         :name, :gender, :nickname, :birthday, :email, :cep, :address,
-        :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
-        :password_confirmation, :role, :avatar, :biography, :mobile,
-        :complement, :registered_at, :terms_of_use
+        :number, :neighbourhood, :city_id, :state_id, :country_id,
+        :cpf, :phone, :password, :password_confirmation, :role, :avatar,
+        :biography, :mobile, :complement, :registered_at, :terms_of_use, :age
       )
     end
   end

@@ -6,6 +6,7 @@ class CreateProfessionals < ActiveRecord::Migration
       t.integer :gender
       t.string :nickname
       t.date :birthday
+      t.integer :age
       t.string :cep
       t.string :address
       t.string :number

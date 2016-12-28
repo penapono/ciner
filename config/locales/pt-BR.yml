@@ -2,11 +2,12 @@ pt-BR:
   cancel: Cancelar
   confirm: Confirmar
   edit: Editar
-  remove: Remover
   exit: Sair
+  remove: Remover
   required: Obrigatório
   remaining_chars: >
     %{chars} caracteres restantes.
+  search: Digite sua busca aqui...
 
   views:
     pagination:

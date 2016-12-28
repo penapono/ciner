@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.integer  "gender",          limit: 4
     t.string   "nickname",        limit: 255
     t.date     "birthday"
+    t.integer  "age",             limit: 4
     t.string   "cep",             limit: 255
     t.string   "address",         limit: 255
     t.string   "number",          limit: 255
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.integer  "gender",                 limit: 4
     t.string   "nickname",               limit: 255
     t.date     "birthday"
+    t.integer  "age",                    limit: 4
     t.string   "cep",                    limit: 255
     t.string   "address",                limit: 255
     t.string   "number",                 limit: 255

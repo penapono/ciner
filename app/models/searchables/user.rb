@@ -6,13 +6,14 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       users.name LIKE :search OR
-      users.nickname LIKE :search OR
-      users.email LIKE :search OR
-      cities.name LIKE :search
+      users.number LIKE :search OR
+      cities.name LIKE :search OR
+      states.name LIKE :search OR
+      countries.name LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = [
-      :city, :state
+      :city, :state, :country
     ].freeze
 
     class_methods do
@@ -21,16 +22,8 @@ module Searchables
       end
     end
 
-    included do
-      private
-
-      def self.search_scope(_user)
-        User.search_joins
-      end
-    end
-
     def search_link
-      url_helper.platform_users_path(user: id)
+      url_helper.admin_users_path(user: id)
     end
 
     def search_title
@@ -38,7 +31,7 @@ module Searchables
     end
 
     def search_description
-      name
+      biography
     end
   end
 end
