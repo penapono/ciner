@@ -7,7 +7,7 @@ module Admin
 
     # exposes
     expose(:user, attributes: :user_params)
-    expose(:users) { User.order(:name) }
+    expose(:users) { User.all }
     expose(:states) { State.order(:acronym).map(&:acronym) }
     expose(:cities) { user.city.state.cities if user.city }
 
@@ -58,7 +58,11 @@ module Admin
     private
 
     def paginated_users
-      searched_users.page(params[:page]).per(PER_PAGE)
+      filtered_user.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_user
+      users.filter_by(searched_users, params.fetch(:filter, ''))
     end
 
     def searched_users

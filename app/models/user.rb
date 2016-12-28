@@ -76,4 +76,22 @@ class User < ActiveRecord::Base
     return "Não informado" unless role
     User.human_attribute_name("role.#{role}")
   end
+
+  def self.by_gender(gender)
+    where(gender: gender)
+  end
+
+  def self.by_role(role)
+    where(role: role)
+  end
+
+  def self.filter_by(collection, params)
+    return collection unless params.present?
+
+    result = collection
+    result = result.by_gender(genders[params[:gender]]) if params[:gender].present?
+    result = result.by_role(roles[params[:role]]) if params[:role].present?
+
+    result
+  end
 end

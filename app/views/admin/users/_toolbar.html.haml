@@ -1,0 +1,7 @@
+.row.filters{ data: { dynamic_filter: '' } }
+  = simple_form_for :filter, url: admin_users_path, method: :get, data: { filter_form: '' } do |f|
+    = hidden_field_tag :search, params[:search]
+    .col-xs-4
+      = f.input :gender, collection: User.localized_genders, label: false, include_blank: t('.filters.gender'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:gender, '')
+    .col-xs-4
+      = f.input :role, collection: User.localized_roles, label: false, include_blank: t('.filters.role'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:role, '')
