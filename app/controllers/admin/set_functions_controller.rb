@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Admin
   class SetFunctionsController < AdminController
+    include Admin::SetFunctionsBreadcrumb
+
     # exposes
     expose(:set_functions) { SetFunction.all }
     expose(:set_function, attributes: :set_function_attributes)

@@ -1,5 +1,12 @@
 pt-BR:
   admin:
     set_functions:
+      create:
+        title: Nova Função no Set
       form:
         general: Dados Gerais
+      index:
+        title: Função no Set
+      new:
+        title: Nova Função no Set
+

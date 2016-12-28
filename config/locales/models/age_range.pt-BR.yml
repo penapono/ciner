@@ -1,7 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      age_range: Classificações Indicativas
+      age_range:
+        one: Classificação Indicativa
+        other: Classificações Indicativas
+
     attributes:
       age_range:
         name: Nome

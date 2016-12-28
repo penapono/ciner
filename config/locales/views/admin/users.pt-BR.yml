@@ -1,8 +1,20 @@
 pt-BR:
   admin:
     users:
+      create:
+        terms: Termos de Uso
+        title: Novo Gênero
+      edit:
+        terms: Termos de Uso
+      form:
+        general: Dados Gerais
+      index:
+        title: Gênero
+      new:
+        title: Novo Gênero
+      update:
+        terms: Termos de Uso
       show:
         general: Dados pessoais
 
-      edit:
-        terms: Termos de Uso
+

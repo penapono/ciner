@@ -1,7 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      film_production_category: Categorias de Produção Cinematográfica
+      film_production_category:
+        one: Gênero
+        other: Gêneros
+
     attributes:
       film_production_category:
         name: Nome

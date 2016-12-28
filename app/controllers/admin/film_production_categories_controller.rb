@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Admin
   class FilmProductionCategoriesController < AdminController
+    include Admin::FilmProductionCategoriesBreadcrumb
+
     # exposes
     expose(:film_production_categories) { FilmProductionCategory.all }
     expose(:film_production_category, attributes: :film_production_category_attributes)

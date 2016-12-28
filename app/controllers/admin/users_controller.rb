@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Admin
   class UsersController < AdminController
+    include Admin::UsersBreadcrumb
+
     before_action :clean_password, only: :update
 
     # exposes

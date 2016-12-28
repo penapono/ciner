@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Admin
   class StudiosController < AdminController
+    include Admin::StudiosBreadcrumb
+
     # exposes
     expose(:studios) { Studio.all }
     expose(:countries) { Country.all }

@@ -1,7 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      film_production: Produções Cinematográficas
+      film_production:
+        one: Filme
+        other: Filmes
+
     attributes:
       film_production:
         original_title: Título

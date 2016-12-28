@@ -1,5 +1,11 @@
 pt-BR:
   admin:
     film_productions:
+      create:
+        title: Nova Produção Cinematográfica
       form:
         general: Dados Gerais
+      index:
+        title: Produção Cinematográfica
+      new:
+        title: Nova Produção Cinematográfica

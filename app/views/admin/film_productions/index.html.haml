@@ -1,6 +1,8 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
 
+= render 'shared/breadcrumbs'
+
 %h3
   = FilmProduction.model_name.human(count: 2)
 

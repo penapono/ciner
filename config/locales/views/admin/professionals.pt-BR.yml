@@ -1,5 +1,12 @@
 pt-BR:
   admin:
     professionals:
+      create:
+        title: Novo Profissional
       form:
         general: Dados Gerais
+      index:
+        title: Profissional
+      new:
+        title: Novo Profissional
+

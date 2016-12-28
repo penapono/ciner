@@ -1,5 +1,11 @@
 pt-BR:
   admin:
     studios:
+      create:
+        title: Novo Estúdio / Produtora
       form:
         general: Dados Gerais
+      index:
+        title: Estúdio / Produtora
+      new:
+        title: Novo Estúdio / Produtora

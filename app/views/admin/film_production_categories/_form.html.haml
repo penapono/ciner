@@ -1,11 +1,12 @@
-%h3
-  = t('.general')
+= simple_form_for [:admin, film_production_category] do |f|
+  %h3
+    = t('.general')
 
-.row
-  .col-xs-6
-    = f.input :name, required: true, autofocus: true
-.row
-  .col-xs-6
-    = f.input :description
+  .row
+    .col-xs-6
+      = f.input :name, required: true, autofocus: true
+  .row
+    .col-xs-6
+      = f.input :description
 
-= render 'shared/form_actions', f: f
+  = render 'shared/form_actions', f: f

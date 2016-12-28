@@ -1,7 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      professional: Profissionais
+      professional:
+        one: Profissional
+        other: Profissionais
+
     attributes:
       professional:
         name: Nome

@@ -1,7 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      set_function: Funções no Set
+      set_function:
+        one: Função no Set
+        other: Funções no Set
     attributes:
       set_function:
         name: Nome

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Admin
   class ProfessionalsController < AdminController
+    include Admin::ProfessionalsBreadcrumb
+
     # exposes
     expose(:professionals) { Professional.all }
     expose(:professional, attributes: :professional_attributes)
