@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"
+    t.integer  "city_id",           limit: 4
+    t.integer  "state_id",          limit: 4
     t.integer  "country_id",        limit: 4
     t.integer  "age_range_id",      limit: 4
     t.string   "cover",             limit: 255

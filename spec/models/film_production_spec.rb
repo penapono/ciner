@@ -15,6 +15,8 @@ RSpec.describe FilmProduction, type: :model do
   end
 
   describe '#associations' do
+    it { is_expected.to belong_to :city }
+    it { is_expected.to belong_to :state }
     it { is_expected.to belong_to :country }
     it { is_expected.to belong_to :age_range }
 
@@ -24,5 +26,11 @@ RSpec.describe FilmProduction, type: :model do
     # Ciner Movie
     it { is_expected.to belong_to :approver }
     it { is_expected.to belong_to :owner }
+  end
+
+  describe '#delegations' do
+    it { is_expected.to delegate_method(:name).to(:city).with_prefix(true) }
+    it { is_expected.to delegate_method(:name).to(:state).with_prefix(true) }
+    it { is_expected.to delegate_method(:name).to(:country).with_prefix(true) }
   end
 end

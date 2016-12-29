@@ -5,9 +5,9 @@ module Searchables
     include Searchables::Base
 
     SEARCH_EXPRESSION = '
-      film_production.original_title LIKE :search OR
-      film_production.title LIKE :search OR
-      film_production.synopsis LIKE :search OR
+      film_productions.original_title LIKE :search OR
+      film_productions.title LIKE :search OR
+      film_productions.synopsis LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
