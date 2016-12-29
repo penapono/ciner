@@ -7,7 +7,7 @@ class AgeRange < ActiveRecord::Base
             :age,
             presence: true
 
-  def self.filter_by(collection, params)
+  def self.filter_by(collection, _params)
     collection
   end
 end

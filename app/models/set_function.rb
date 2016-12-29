@@ -14,7 +14,7 @@ class SetFunction < ActiveRecord::Base
 
   # Filter
 
-  def self.filter_by(collection, params)
+  def self.filter_by(collection, _params)
     collection
   end
 end
