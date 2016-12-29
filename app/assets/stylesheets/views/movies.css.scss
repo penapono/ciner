@@ -1,0 +1,333 @@
+/* Internal Detail Movie */
+
+@import 'base/colors';
+
+
+
+.internal-section-detail-movie {
+  background: #e7eef1;
+  padding: 30px 0;
+}
+.internal-section-detail-movie hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.internal-section-detail-movie .title h3,
+.title h4 {
+  margin: 0;
+}
+
+.internal-section-detail-movie .nota {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: #a2275c;
+  text-align: center;
+  font-size: 11px;
+  line-height: 11px;
+  color: #FFFFFF;
+}
+
+.internal-section-detail-movie .nota .valor {
+  font-size: 40px;
+  line-height: 38px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  display: block;
+}
+
+.tags {
+  padding: 10px 15px;
+}
+
+.tags .button {
+  float: left;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.tags .button a {
+  border: 1px solid #A51E57;
+  border-radius: 8px;
+  padding: 4px 10px;
+  text-decoration: none;
+  background: transparent;
+  transition: all linear 0.3s;
+}
+
+.tags .button a.active,
+.tags .button a:hover {
+  border-color: #27A12C !important;
+  color: #FFFFFF !important;
+  background: #27A12C !important;
+}
+
+.tags .button a.active svg,
+.tags .button a:hover svg {
+  fill: #FFF;
+  transition: all linear 0.3s;
+}
+
+.ficha-tecnica .ficha .info:nth-child(odd) {
+  background-color: #eef3f6;
+}
+
+.ficha-tecnica .ficha .info {
+  padding-left: 10px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.atores-principais .ator .name {
+  font-size: 15px;
+  line-height: 15px;
+  color: #a61e57;
+  font-weight: lighter;
+  margin: 5px 0;
+}
+
+.atores-principais .ator p {
+  font-weight: lighter;
+  font-size: 12px;
+  line-height: 12px;
+  color: #524b4b;
+}
+
+.atores {
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.atores .row {
+  border-bottom: 1px solid #CCC;
+}
+
+.atores .row:nth-child(1) {
+  border-top: 1px solid #CCC;
+}
+
+.atores .ator,
+.atores .personagem {
+  font-size: 15px;
+  line-height: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.atores .ator {
+  color: #a61e57;
+}
+
+.comentarios textarea {
+  box-shadow: none;
+}
+
+.compartilha-comentario {
+  color: #a61e57;
+  margin-right: 30px;
+  margin-left: 15px;
+}
+
+.compartilha-comentario img:nth-child(1) {
+  margin-left: 10px;
+}
+
+.comentario-item {
+  padding: 20px 0;
+}
+
+.comentario-item .status {
+  padding-bottom: 10px;
+}
+
+.comentario-item .usuario-comentario {
+  border: 1px solid #CCC;
+}
+
+.avaliacao-comentario {
+  margin-top: 15px;
+}
+
+.noticias-interna .noticia-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.noticia-item .titulo {
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 18px;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #a61e57;
+}
+
+.form-control:-moz-placeholder {
+  color: #a61e57;
+}
+
+.form-control::-moz-placeholder {
+  color: #a61e57;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #a61e57;
+}
+
+textarea:focus,
+select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border: 1px solid #a61e57 !important;
+  box-shadow: none !important;
+  outline: 0 none !important;
+}
+
+select.form-control {
+  color: #a61e57;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid #CCCCCC;
+}
+
+.roteiristas .roteirista {
+  margin-bottom: 15px;
+}
+
+.roteiristas .roteirista h5 {
+  margin-bottom: 0;
+}
+
+.diretores .diretor {
+  margin-bottom: 15px;
+}
+
+.diretores .diretor h5 {
+  margin-bottom: 0;
+}
+
+.atores-principais .ator {
+  margin-bottom: 15px;
+}
+
+.atores-principais .ator h5 {
+  margin-bottom: 0px;
+}
+
+.estatistica {
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.estatistica .interesses {
+  margin-top: 5px;
+}
+
+.estatistica .interesses a {
+  color: #524b4b;
+}
+
+.estatistica .interesses svg {
+  margin-right: 10px;
+}
+
+.noticias {
+  margin-top: 20px;
+}
+
+.noticias-destaques .autor,
+.noticia-item .autor {
+  margin-top: 15px;
+}
+
+.noticias .noticia-item {
+  border-top: 1px solid #CCC;
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+.noticias .noticia-item h3 {
+  margin-top: 0;
+}
+
+div#comentarios .btn-submit {
+  background: #ee4573;
+  color: #FFFFFF;
+}
+
+div#comentarios .btn-submit:hover{
+  color: #333;
+}
+
+.btn-submit,
+.btn-spoiler {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-spoiler {
+  background: #FFFFFF;
+  color: #524b4b;
+  border-color: #524b4b !important;
+}
+
+.btn-ancora {
+  background: #ebebeb;
+  padding: 12px 0;
+  margin: 15px 0;
+  border: 5px;
+  color: #524b4b;
+  transition: all linear 0.2s;
+}
+
+.btn-ancora:hover {
+  background: #ee4573;
+  color: #FFFFFF;
+}
+
+
+.button-default {
+  border: 1px solid #be2a52;
+  color: #a61e57;
+  background: transparent;
+  padding: 5px 10px;
+  ;
+  border-radius: 5px;
+  transition: all linear 0.5s;
+}
+
+.button-default:hover {
+  border-color: #E2347D;
+  text-decoration: none;
+}
+
+.lista-comentarios select {
+  display: block;
+  color: #a61e57;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid #CCCCCC;
+  width: auto;
+}

@@ -60,7 +60,10 @@ span.register, span.register a { color: #FFFFFF; }
 
 .actionbar .container .row [class*='col-'] { padding: 12px 0; }
 
-.banner { background: asset-url('banner_home.jpg') no-repeat top center; }
+.banner {
+  background: asset-url('banner_home.jpg') no-repeat top center;
+  margin-bottom: 30px;
+}
 
 .banner-front{
   background-color: rgba(166, 30, 87,0.9);

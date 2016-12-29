@@ -1,0 +1,507 @@
+.internal-section-detail-movie
+  .container.movie
+    .row
+      .col-xs-12.col-sm-12.col-md-5.col-lg-4
+        %img.img-responsive{:src => "http://placehold.it/550x700"}/
+      .col-xs-12.col-sm-12.col-md-7.col-lg-8
+        .row
+          .col-xs-12.col-sm-9.col-md-9.col-lg-10
+            Categoria:
+            = succeed "," do
+              %a.vinho.bold{:href => "#"} Ação
+            %a.vinho.bold{:href => "#"} Aventura
+            %br/
+            Classificação indicativa:
+            %span.vinho.bold 14 anos
+            | Duração:
+            %span.vinho.bold 147 minutos
+            %br/
+            .title
+              %h3.bold.vinho Capitão América (2016)
+              %h4.light.cinza Guerra Civil
+              %h4.light.cinza (Captain America: Civil War)
+              Direção:
+              = succeed "," do
+                %a.bold.vinho{:href => "#"} Anthony Russo
+              = succeed "." do
+                %a.bold.vinho{:href => "#"} Joe Russo
+              %br/
+              %br/
+              Elenco:
+              = succeed "," do
+                %a.bold.vinho{:href => "#"} Chris Evans
+              = succeed "," do
+                %a.bold.vinho{:href => "#"} Robert Downey Jr.
+              = succeed "," do
+                %a.bold.vinho{:href => "#"} Scarlett Johansson
+              %a.bold.preto{:href => "#"} mais
+              %br/
+              %br/
+              Quando o governo cria um órgão para supervisionar os Vingadores, o super time de heróis se divide em dois. Um liderado por Steve Rogers e seu desejo em manter os Vingadores livres para defender a humanidade sem interferência do governo, e o outro que segue a surpreendente decisão de Tony Stark em apoiar o governo na fiscalização de seus atos.
+              %br/
+              %br/
+              Estreia nacional:
+              %br/
+              %span.vinho.bold 28 de Abril de 2016
+              %br/
+              %br/
+          .col-xs-12.col-sm-3.col-md-3.col-lg-2
+            .nota
+              Média geral
+              %span.valor 4.5
+              5854 votos
+          .col-xs-12
+            .row
+              .tags
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#ja-assisti"}
+                    já assisti
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#quero-ver"}
+                    quero ver
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#adicionar"}
+                    adicionar
+                .button
+                  %a.active
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#favorito"}
+                    favorito
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#like"}
+                    indique
+          .col-xs-12
+            %hr{:style => "border-color: #000;"}/
+            %label.control-label{:for => "input-1"} Avalie esse filme
+            %input#input-2.rating.rating-loading{"data-max" => "5", "data-min" => "0", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xs", "data-step" => "0.5", :name => "input-2", :type => "number"}/
+.container
+  .row
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#ficha-tecnica"} Ficha Técnica
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#criticas"} Críticas
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#comentarios"} Comentários
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#noticias"} Notícias
+    .col-xs-12.col-sm-8
+      #ficha-tecnica.ficha-tecnica
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+                %use{"xlink:href" => "#ficha"}
+            .media-body.media-bottom
+              .media-heading.title-section Ficha técnica
+        .ficha
+          .info
+            Título:
+            %strong
+              %span.vinho Captain America: Civil War (Original)
+          .info
+            Ano de produção:
+            %strong
+              %span.vinho 2016
+          .info
+            Dirigido por:
+            %strong
+              %a.vinho{:href => "#"}> Anthony Russo
+              ,
+              %a.vinho{:href => "#"} Joe Russo
+          .info
+            Estreia nacional:
+            %strong
+              %span.vinho 28.05.2016
+          .info
+            Estreia mundial:
+            %strong
+              %span.vinho 12.05.2016
+          .info
+            Duração:
+            %strong
+              %span.vinho 147 minutos
+          .info
+            Classificação:
+            %strong
+              %span.vinho 12 anos
+          .info
+            Gênero:
+            %strong
+              %span.vinho Ação, Aventura
+          .info
+            Origem:
+            %strong
+              %span.vinho Estados Unidos
+      #roteiro.roteiro
+        .title-separator
+          .media
+            .media-body.media-bottom
+              .media-heading.title-section Roteiro
+        .roteiristas
+          .row
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+      #direcao.direcao
+        .title-separator
+          .media
+            .media-body.media-bottom
+              .media-heading.title-section Diretores
+        .diretores
+          .row
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Christopher Markus
+      #elenco.elenco
+        .title-separator
+          .media
+            .media-body.media-bottom
+              .media-heading.title-section Elenco
+        .atores-principais
+          .row
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Chris Evans
+              %p Steve Rogers / Captain America
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Robert Downey Jr.
+              %p Tony Stark / Iron Man
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Chris Evans
+              %p Steve Rogers / Captain America
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Chris Evans
+              %p Steve Rogers / Captain America
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Chris Evans
+              %p Steve Rogers / Captain America
+            .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
+              %img.img-responsive{:src => "http://placehold.it/155x170"}/
+              %h5
+                %a{:href => "#"} Chris Evans
+              %p Steve Rogers / Captain America
+        .atores
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Vision
+            .col-xs-6.ator{"data-mh" => "group"} Paul Bettany
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Wanda Maximoff / Scarlet Witch
+            .col-xs-6.ator{"data-mh" => "group"} Elizabeth Olsen
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Scott Lang / Ant-Man
+            .col-xs-6.ator{"data-mh" => "group"} Paul Rudd
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Sharon Carter
+            .col-xs-6.ator{"data-mh" => "group"} Emily VanCamp
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} May Parker
+            .col-xs-6.ator{"data-mh" => "group"} Marisa Tomei
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Brock Rumlow / Crossbones
+            .col-xs-6.ator{"data-mh" => "group"} Frank Grillo
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Peter Parker / Spider-Man
+            .col-xs-6.ator{"data-mh" => "group"} Tom Holland (II)
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Everett K. Ross
+            .col-xs-6.ator{"data-mh" => "group"} Martin Freeman
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Secretary of State Thaddeus Ross
+            .col-xs-6.ator{"data-mh" => "group"} William Hurt
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Zemo
+            .col-xs-6.ator{"data-mh" => "group"} Daniel Brühl
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} King T'Chaka
+            .col-xs-6.ator{"data-mh" => "group"} John Kani
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Howard Stark
+            .col-xs-6.ator{"data-mh" => "group"} John Slattery
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Miriam
+            .col-xs-6.ator{"data-mh" => "group"} Alfre Woodard
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} Security Chief
+            .col-xs-6.ator{"data-mh" => "group"} Florence Kasumba
+          .row
+            .col-xs-6.personagem{"data-mh" => "group"} GSG9 Task Force Gunner
+            .col-xs-6.ator{"data-mh" => "group"} Josh Peck
+      #criticas.criticas
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.icon-title
+                %use{"xlink:href" => "#critica"}
+            .media-body.media-bottom
+              .media-heading.title-section Críticas
+            .media-body.text-right.media-middle
+              %a{:href => "#"} ver mais
+        .reviews
+          .row
+            .review-item
+              .col-xs-12.col-sm-3.thumb
+                %img.img-responsive{:src => "http://placehold.it/400x500"}/
+              .col-xs-12.col-sm-9.resume
+                %h4.title Batman vs Superman
+                %span.subtitle A origem da justiça
+                %span.original-title (Batman Vs Superman: Dawn of Justice)
+                %p
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                %a.button-default{:href => "#"} Saiba mais
+            .review-item
+              .col-xs-12.col-sm-3.thumb
+                %img.img-responsive{:src => "http://placehold.it/400x500"}/
+              .col-xs-12.col-sm-9.resume
+                %h4.title Batman vs Superman
+                %p
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                %a.button-default{:href => "#"} Saiba mais
+    .col-xs-12.col-sm-4
+      .title-separator{:style => "min-height: 41px;"}
+      .estatistica
+        .meta-ja-assistiram
+          %span.vinho Já viram
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#ja-assisti"}
+          5000
+        .interesses
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#usuario"}
+          %a{:href => "#"} Amigos
+          |
+          %a{:href => "#"} Todos
+      .estatistica
+        .meta-querem-ver
+          %span.vinho Querem ver
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#quero-ver"}
+          5000
+        .interesses
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#usuario"}
+          %a{:href => "#"} Amigos
+          |
+          %a{:href => "#"} Todos
+      .estatistica
+        .meta-nao-querem-ver
+          %span.vinho Não querem
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#nao-quer-ver"}
+          5000
+        .interesses
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#usuario"}
+          %a{:href => "#"} Amigos
+          |
+          %a{:href => "#"} Todos
+      .estatistica
+        .meta-comentarios
+          %span.vinho Comentários
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#comentario-usuario"}
+          5000
+        .interesses
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#usuario"}
+          %a{:href => "#"} Amigos
+          |
+          %a{:href => "#"} Todos
+      .estatistica
+        .meta-favoritos
+          %span.vinho Favoritos
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#favorito"}
+          5000
+        .interesses
+          %svg.icon-estatisticas
+            %use{"xlink:href" => "#usuario"}
+          %a{:href => "#"} Amigos
+          |
+          %a{:href => "#"} Todos
+  .row
+    #comentarios.col-xs-12.comentarios
+      .input-comentario
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.icon-title
+                %use{"xlink:href" => "#comentario"}
+            .media-body.media-bottom
+              .media-heading.title-section Comentários
+        %form{:action => "#", :method => "POST"}
+          %textarea.form-control{:placeholder => "Deixe um comentário", :rows => "5"}
+          .text-right{:style => "margin-top: 20px;"}
+            %span.compartilha-comentario
+              Compartilhe:
+              %svg.icon-social
+                %use{"xlink:href" => "#twitter"}
+              %svg.icon-social
+                %use{"xlink:href" => "#facebook"}
+            %button.btn.btn-spoiler{:type => "submit"} spoiler
+            %button.btn.btn-submit{:type => "submit"}
+              enviar
+              %svg.icon-botao
+                %use{"xlink:href" => "#ico-botao", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+      .lista-comentarios
+        .title-separator
+          .media
+            .media-body.media-bottom
+              .media-heading.title-section 250 Comentários
+        .filtro
+          Organizado por
+          %select
+            %option{:value => "Críticas mais úteis"} Críticas mais úteis
+            %option{:value => "Críticas mais recentes"} Críticas mais recentes
+            %option{:value => "Críticas com melhor avalição"} Críticas com melhor avaliação
+        .comentario-item
+          .row
+            .col-xs-12.col-sm-2
+              %img.img-responsive.usuario-comentario{:src => "http://placehold.it/120x170"}/
+              Chris Evans
+              %br/
+              Seguir
+              %br/
+              10 seguidores
+              %br/
+              Ler suas críticas
+              %br/
+            .col-xs-12.col-sm-10
+              .status
+                %span{:style => "display: inline-block; margin-right: 10px;"}
+                  = image_tag("rating.jpg", class: "img-responsive")
+                %span{:style => "display: inline-block; margin-right: 5px;"}
+                  %svg.icon-comentario
+                    %use{"xlink:href" => "#clock"}
+                sábado, 16 de janeiro de 2016
+              .texto
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+              .avaliacao-comentario.text-right
+                .avaliacao-comentario.text-right
+                  %span.quantidade 15
+                  %svg.icon-comentario
+                    %use{"xlink:href" => "#dislike"}
+                  %span.quantidade 15
+                  %svg.icon-comentario
+                    %use{"xlink:href" => "#dislike"}
+                  %span.compartilha-comentario
+                    Compartilhe:
+                    %svg.icon-social
+                      %use{"xlink:href" => "#twitter"}
+                    %svg.icon-social
+                      %use{"xlink:href" => "#facebook"}
+        .comentario-item
+          .row
+            .col-xs-12.col-sm-2
+              %img.img-responsive.usuario-comentario{:src => "http://placehold.it/120x170"}/
+              Chris Evans
+              %br/
+              Seguir
+              %br/
+              10 seguidores
+              %br/
+              Ler suas críticas
+              %br/
+            .col-xs-12.col-sm-10
+              .status
+                %span{:style => "display: inline-block; margin-right: 10px;"}
+                  = image_tag("rating.jpg", class: "img-responsive")
+                %span{:style => "display: inline-block; margin-right: 5px;"}
+                  %svg.icon-comentario
+                    %use{"xlink:href" => "#clock"}
+                sábado, 16 de janeiro de 2016
+              .texto
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+              .avaliacao-comentario.text-right
+                %span.quantidade 15
+                %svg.icon-comentario
+                  %use{"xlink:href" => "#dislike"}
+                %span.quantidade 15
+                %svg.icon-comentario
+                  %use{"xlink:href" => "#dislike"}
+                %span.compartilha-comentario
+                  Compartilhe:
+                  %svg.icon-social
+                    %use{"xlink:href" => "#twitter"}
+                  %svg.icon-social
+                    %use{"xlink:href" => "#facebook"}
+    #noticias.col-xs-12.noticias-interna
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#noticia"}
+          .media-body.media-bottom
+            .media-heading.title-section Notícias
+          .media-body.text-right.media-middle
+            %a{:href => "#"} ver mais
+      .noticia-item
+        .row
+          .col-xs-12.col-sm-3
+            %img.img-responsive{:src => "http://placehold.it/250x260"}/
+          .col-xs-12.col-sm-9
+            .data 07/04/2016
+            .titulo The Year of Responsive Design
+            .resumo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
+            .text-right
+              %a.button-default{:href => "#"} saiba mais
+      .noticia-item
+        .row
+          .col-xs-12.col-sm-3
+            %img.img-responsive{:src => "http://placehold.it/250x260"}/
+          .col-xs-12.col-sm-9
+            .data 07/04/2016
+            .titulo The Year of Responsive Design
+            .resumo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
+            .text-right
+              %a.button-default{:href => "#"} saiba mais
