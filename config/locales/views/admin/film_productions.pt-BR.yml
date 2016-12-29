@@ -9,3 +9,8 @@ pt-BR:
         title: Produção Cinematográfica
       new:
         title: Nova Produção Cinematográfica
+      toolbar:
+        filters:
+          city: Selecione uma Cidade
+          country: Selecione um País
+          state: Selecione um Estado
