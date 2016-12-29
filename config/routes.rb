@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # platform: rotas da plataforma - público
 
   get "/seja_ciner", to: "plans#index", as: "plans"
+  get "/movies", to: "movies#index", as: "movies"
 
   namespace :api do
     namespace :v1 do
