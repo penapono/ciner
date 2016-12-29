@@ -1,0 +1,28 @@
+/* News */
+
+@import 'base/colors';
+
+.noticias-interna .noticia-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.noticia-item .titulo {
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 18px;
+}
+
+form.form-news select {
+  -webkit-appearance: menulist;
+}
+
+form.form-news .btn-filter {
+  background: #ee4573;
+  color: #FFFFFF;
+}
+
+form.form-news .btn-filter:hover {
+  color: #333;
+}

@@ -1,0 +1,130 @@
+.container
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#noticia"}
+          .media-body.media-bottom
+            .media-heading.title-section Notícias
+      %form{:class => "form-news", :action => "#", :method => "POST"}
+        .form-group.col-xs-12.col-sm-3
+          Palavra-Chave
+          %input.form-control{:name => "palavra-chave", :placeholder => "Ex. Os Vingadores", :type => "text"}/
+        .form-group.col-xs-12.col-sm-2
+          Buscar por
+          %select#ordenar-por.form-control{:name => "ordenar-por"}
+            %option{:selected => "selected"} Filmes
+            %option{:value => ""} option
+            %option{:value => ""} option
+            %option{:value => ""} option
+        .form-group.col-xs-12.col-sm-2
+          Ano
+          %select#ordenar-por.form-control{:name => "ordenar-por"}
+            %option{:selected => "selected"} 2016
+            %option{:value => ""} option
+            %option{:value => ""} option
+            %option{:value => ""} option
+        .form-group.col-xs-12.col-sm-2
+           
+          %button.form-control.btn.btn-filter{:type => "submit"}
+            filtrar
+            %svg.icon-botao
+              %use{"xlink:href" => "#ico-botao", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+.container.noticias-destaques
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section Notícias em destaque
+      .row
+        .col-xs-3
+          %img.img-responsive{:src => "http://placehold.it/262x351"}/
+        .col-xs-3
+          %h3.bold Melhor filme da história!
+          .desc
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. or incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+          .autor
+            Por:
+            %span.bold.wine Ciner ADM
+            %br/
+            Quarta-Feira
+            %span.bold.wine 13/05/2015
+        .col-xs-3
+          %img.img-responsive{:src => "http://placehold.it/262x351"}/
+        .col-xs-3
+          %h3.bold Você precisa assistir Caça aos Gangsters.
+          .desc
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. or incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+          .autor
+            Por:
+            %span.bold.wine Ciner ADM
+            %br/
+            Quarta-Feira
+            %span.bold.wine 14/05/2015
+.container.noticias
+  .row
+    .col-xs-12
+      .noticia-item
+        .row
+          .col-xs-3
+            %img.img-responsive{:src => "http://placehold.it/261x171"}/
+          .col-xs-9
+            %h3.bold Guerra Civil é o melhor filme do ano!
+            .desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. or incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna.
+            .autor
+              Por:
+              %span.bold.wine.margin-right-20 Colaborador A
+              Quarta-Feira
+              %span.bold.wine 13/05/2015
+      .noticia-item
+        .row
+          .col-xs-3
+            %img.img-responsive{:src => "http://placehold.it/261x171"}/
+          .col-xs-9
+            %h3.bold Guerra Civil é o melhor filme do ano!
+            .desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. or incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna.
+            .autor
+              Por:
+              %span.bold.wine.margin-right-20 Colaborador A
+              Quarta-Feira
+              %span.bold.wine 13/05/2015
+      .noticia-item
+        .row
+          .col-xs-3
+            %img.img-responsive{:src => "http://placehold.it/261x171"}/
+          .col-xs-9
+            %h3.bold Guerra Civil é o melhor filme do ano!
+            .desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. or incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna.
+            .autor
+              Por:
+              %span.bold.wine.margin-right-20 Colaborador A
+              Quarta-Feira
+              %span.bold.wine 13/05/2015
+      .noticia-item
+        .row
+          .col-xs-3
+            %img.img-responsive{:src => "http://placehold.it/261x171"}/
+          .col-xs-9
+            %h3.bold Guerra Civil é o melhor filme do ano!
+            .desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. or incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud, sed do eiusmod tempor incididunt ut labore et dolore magna.
+            .autor
+              Por:
+              %span.bold.wine.margin-right-20 Colaborador A
+              Quarta-Feira
+              %span.bold.wine 13/05/2015
+    .col-xs-offset-4.col-xs-4.margin-top-20
+      .text-center
+        %ul.pagination
+          %li.active
+            %a{:href => "#"} 1
+          %li
+            %a{:href => "#"} 2
+          %li
+            %a{:href => "#"} 3
+          %li
+            %a{:href => "#"} 4
+          %li
+            %a{:href => "#"} 5
