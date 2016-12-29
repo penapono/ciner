@@ -3,7 +3,6 @@ class FilmProduction < ActiveRecord::Base
   # Associations
   belongs_to :country
   belongs_to :age_range
-  belongs_to :film_production_category
 
   # Movie
   belongs_to :studio

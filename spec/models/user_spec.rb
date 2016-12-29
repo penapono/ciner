@@ -10,6 +10,8 @@ RSpec.describe User, type: :model do
 
   describe '#associations' do
     it { is_expected.to belong_to :city }
+    it { is_expected.to belong_to :state }
+    it { is_expected.to belong_to :country }
   end
 
   describe '#validations' do

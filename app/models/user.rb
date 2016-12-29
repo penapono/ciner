@@ -108,8 +108,9 @@ class User < ActiveRecord::Base
   private
 
   def update_address
+    return unless city
     self.state_id = city.state.id
-    self.country_id = self.state.country.id
+    self.country_id = state.country.id
   end
 
   def update_age

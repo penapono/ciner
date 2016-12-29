@@ -5,7 +5,6 @@ FactoryGirl.define do
     sequence(:title) { |n| "Production #{n}" }
     year 2016
     length 90
-    film_production_category
     synopsis "Synopsis"
     release DateTime.now
     brazilian_release DateTime.now

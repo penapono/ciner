@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :professional do
     sequence(:name) { |n| "Film Production Category #{n}" }
     set_function
-    birth DateTime.now
+    birthday DateTime.now
     country
     user
 

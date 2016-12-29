@@ -1,4 +1,5 @@
-require 'spec_helper';
+# frozen_string_literal: true
+require 'spec_helper'
 
 describe Searchables::User do
   subject(:searchable) { user }
@@ -6,13 +7,13 @@ describe Searchables::User do
   let(:user) { create(:user) }
 
   let(:expected_search_expression) do
-    %q{
+    '
       users.name LIKE :search OR
       users.number LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
-    }
+    '
   end
 
   let(:expected_search_associations) { [:city, :state, :country] }
@@ -27,7 +28,7 @@ describe Searchables::User do
     describe '#search_expression' do
       let(:search_expression) { searchable.class.search_expression }
 
-      it { expect(search_expression.squeeze).to eq (expected_search_expression.squeeze) }
+      it { expect(search_expression.squeeze).to eq expected_search_expression.squeeze }
     end
 
     describe '#search_link' do

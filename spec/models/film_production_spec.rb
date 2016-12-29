@@ -17,7 +17,6 @@ RSpec.describe FilmProduction, type: :model do
   describe '#associations' do
     it { is_expected.to belong_to :country }
     it { is_expected.to belong_to :age_range }
-    it { is_expected.to belong_to :film_production_category }
 
     # Movie
     it { is_expected.to belong_to :studio }

@@ -2,8 +2,9 @@
 FactoryGirl.define do
   factory :studio do
     sequence(:name) { |n| "Studio #{n}" }
-    creation DateTime.now
-    country
+    city
+    state { city.state }
+    country { city.state.country }
 
     trait :invalid do
       name nil
