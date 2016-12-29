@@ -320,3 +320,27 @@ div.logout a:hover {
   margin-left: 8px;
   vertical-align: middle;
 }
+
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+  color: #FFFFFF !important;
+  background-color: #a1275c !important;
+  border-color: #a1275c !important;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  color: #524b4b !important;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+  color: #E2347D !important;
+}

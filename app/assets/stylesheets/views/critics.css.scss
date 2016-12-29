@@ -1,0 +1,73 @@
+/* Critics */
+
+@import 'base/colors';
+
+form.form-criticas .rating-container {
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 5px;
+  display: inline-block;
+}
+
+form.form-criticas select {
+  -webkit-appearance: menulist;
+}
+
+form.form-criticas .btn-filter {
+  background: #ee4573;
+  color: #FFFFFF;
+}
+
+form.form-criticas .btn-filter:hover {
+  color: #333;
+}
+
+.critica-mais-recente {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.critica-recente h4.title {
+  margin-bottom: 0;
+}
+
+.critica-recente span.subtitle,
+.critica-recente span.original-title {
+  display: block;
+}
+
+.critica-recente span.original-title {
+  margin-bottom: 10px;
+}
+
+.critica-recente .diretor-elenco {
+  margin-bottom: 10px;
+}
+
+.critica-item {
+  margin-bottom: 20px;
+}
+
+.critica-item .info {
+  margin-top: 10px;
+}
+
+.critica-item h4 {
+  margin: 0;
+}
+
+.critica-item span.subtitle,
+.critica-item span.original-title {
+  display: block;
+  font-weight: lighter;
+}
+
+.critica-item span.subtitle {
+  font-size: 13px;
+}
+
+.critica-item span.original-title {
+  font-size: 11px;
+  color: #777777;
+}
