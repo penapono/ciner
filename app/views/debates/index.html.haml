@@ -1,0 +1,113 @@
+.container
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#debate"}
+          .media-body.media-bottom
+            .media-heading.title-section Debate Ciner
+    .col-xs-12
+      %form{:class => "form-debate",:action => "#", :method => "POST"}
+        .form-group.col-xs-12.col-sm-3
+          Escolher Área
+          %select#escolher-area.form-control{:name => "escolher-area"}
+            %option{:selected => "selected"} Mais comentados
+            %option{:value => ""} option
+            %option{:value => ""} option
+            %option{:value => ""} option
+        .form-group.col-xs-12.col-sm-3
+          Filtrar por
+          %select#filtrar-por.form-control{:name => "filtrar-por"}
+            %option{:selected => "selected"} Mais comentados
+            %option{:value => ""} option
+            %option{:value => ""} option
+            %option{:value => ""} option
+        .form-group.col-xs-12.col-sm-3
+          Classificar por
+          %select#classificar-por.form-control{:name => "classificar-por"}
+            %option{:selected => "selected"} Mais recente
+            %option{:value => ""} option
+            %option{:value => ""} option
+            %option{:value => ""} option
+        .form-group.col-xs-12.col-sm-2
+           
+          %button.form-control.btn.btn-filter{:type => "submit"}
+            filtrar
+            %svg.icon-botao
+              %use{"xlink:href" => "#ico-botao", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+.container.debates
+  .row.cabecalho
+    .col-xs-2.col-sm-1
+      %h4.vinho Área
+    .col-xs-8.col-sm-4
+      %h4.vinho Tópico
+    .col-sm-3.hidden-xs
+      %h4.vinho Comentários
+    .col-sm-4.hidden-xs
+      %h4.vinho Atividades
+  .row.topico.filme
+    .col-xs-2.col-sm-1.icone
+      %svg.icon-debate
+        %use{"xlink:href" => "#filme-debate"}
+    .col-xs-8.col-sm-4.titulo
+      %h4 Quem assistiu Batman vs Superman?
+      Criado por Lorena. 13/04/2016
+    .col-xs-3.hidden-xs.comentario
+      %span 1.142
+      comentários
+      %br/
+      %span 6.584
+      visualizações
+    .col-xs-4.hidden-xs.atividade
+      %span último comentário
+      %br/
+      João. 1 hora atrás
+  .row.topico.serie
+    .col-xs-2.col-sm-1.icone
+      %svg.icon-debate
+        %use{"xlink:href" => "#serie"}
+    .col-xs-8.col-sm-4.titulo
+      %h4 HOLD THE DOOOR
+      Criado por Lorena. 13/04/2016
+    .col-xs-3.hidden-xs.comentario
+      %span 1.142
+      comentários
+      %br/
+      %span 6.584
+      visualizações
+    .col-xs-4.hidden-xs.atividade
+      %span último comentário
+      %br/
+      João. 1 hora atrás
+  .row.topico.offtopic
+    .col-xs-2.col-sm-1.icone
+      %svg.icon-debate
+        %use{"xlink:href" => "#offtopic"}
+    .col-xs-8.col-sm-4.titulo
+      %h4 Alguém lembra daquela piada..?
+      Criado por Lorena. 13/04/2016
+    .col-sm-3.hidden-xs.comentario
+      %span 1.142
+      comentários
+      %br/
+      %span 6.584
+      visualizações
+    .col-sm-4.hidden-xs.atividade
+      %span último comentário
+      %br/
+      João. 1 hora atrás
+  .col-xs-offset-4.col-xs-4.margin-top-20
+    .text-center
+      %ul.pagination
+        %li.active
+          %a{:href => "#"} 1
+        %li
+          %a{:href => "#"} 2
+        %li
+          %a{:href => "#"} 3
+        %li
+          %a{:href => "#"} 4
+        %li
+          %a{:href => "#"} 5

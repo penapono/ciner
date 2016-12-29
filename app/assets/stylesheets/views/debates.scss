@@ -1,0 +1,47 @@
+/* Debates */
+
+@import 'base/colors';
+
+.debates .cabecalho {
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.debates .topico {
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 15px;
+  margin-top: 15px;
+}
+
+.debates .topico h4 {
+  font-size: 17px;
+  line-height: 17px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.debates .topico .titulo,
+.debates .topico .comentario,
+.debates .topico .atividade {
+  font-size: 13px;
+}
+
+.debates .topico.filme h4,
+.debates .topico.filme span,
+.debates .topico.filme .icone svg {
+  color: #f36e24;
+  fill: #f36e24;
+}
+
+.debates .topico.serie h4,
+.debates .topico.serie span,
+.debates .topico.serie .icone svg {
+  color: #ee4573;
+  fill: #ee4573;
+}
+
+.debates .topico.offtopic h4,
+.debates .topico.offtopic span,
+.debates .topico.offtopic .icone svg {
+  color: #a61e57;
+  fill: #a61e57;
+}

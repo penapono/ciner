@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/seja_ciner", to: "plans#index", as: "plans"
   get "/movies", to: "movies#index", as: "movies"
   get "/critics", to: "critics#index", as: "critics"
+  get "/debates", to: "debates#index", as: "debates"
 
   namespace :api do
     namespace :v1 do
