@@ -16,6 +16,8 @@ class Studio < ActiveRecord::Base
   delegate :name, to: :state, allow_nil: true, prefix: true
   delegate :name, to: :country, allow_nil: true, prefix: true
 
+  # Scopes
+
   def self.by_city(city)
     where(city: city)
   end
@@ -27,6 +29,8 @@ class Studio < ActiveRecord::Base
   def self.by_country(id)
     where(country_id: id)
   end
+
+  # Filter
 
   def self.filter_by(collection, params)
     return collection unless params.present?

@@ -5,12 +5,15 @@ module Admin
 
     # exposes
     expose(:studios) { Studio.all }
+    expose(:studio, attributes: :studio_attributes)
     expose(:countries) { Country.all }
     expose(:states) { State.all }
     expose(:cities) { City.all }
+
+    # Filters
+
     expose(:filtered_states) { filtered_states }
     expose(:filtered_cities) { filtered_cities }
-    expose(:studio, attributes: :studio_attributes)
 
     PER_PAGE = 10
 

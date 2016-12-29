@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 module Searchables
-  module User
+  module FilmProduction
     extend ActiveSupport::Concern
     include Searchables::Base
 
     SEARCH_EXPRESSION = '
-      users.name LIKE :search OR
-      users.nickname LIKE :search OR
-      users.cep LIKE :search OR
-      users.neighbourhood LIKE :search OR
-      users.complement LIKE :search OR
-      users.cpf LIKE :search OR
-      users.phone LIKE :search OR
-      users.mobile LIKE :search OR
-      users.biography LIKE :search OR
+      film_production.original_title LIKE :search OR
+      film_production.title LIKE :search OR
+      film_production.synopsis LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
@@ -30,15 +24,15 @@ module Searchables
     end
 
     def search_link
-      url_helper.admin_users_path(user: id)
+      url_helper.admin_film_productions_path(film_production: id)
     end
 
     def search_title
-      name
+      title
     end
 
     def search_description
-      biography
+      synopsis
     end
   end
 end

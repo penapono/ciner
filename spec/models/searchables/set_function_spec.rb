@@ -1,29 +1,19 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe Searchables::User do
-  subject(:searchable) { user }
+describe Searchables::SetFunction do
+  subject(:searchable) { set_function }
 
-  let(:user) { create(:user) }
+  let(:set_function) { create(:set_function) }
 
   let(:expected_search_expression) do
     '
-      users.name LIKE :search OR
-      users.nickname LIKE :search OR
-      users.cep LIKE :search OR
-      users.neighbourhood LIKE :search OR
-      users.complement LIKE :search OR
-      users.cpf LIKE :search OR
-      users.phone LIKE :search OR
-      users.mobile LIKE :search OR
-      users.biography LIKE :search OR
-      cities.name LIKE :search OR
-      states.name LIKE :search OR
-      countries.name LIKE :search
+      set_functions.name LIKE :search OR
+      set_functions.description LIKE :search
     '
   end
 
-  let(:expected_search_associations) { [:city, :state, :country] }
+  let(:expected_search_associations) { [] }
 
   describe 'search methods' do
     describe '#search_associations' do
@@ -40,20 +30,20 @@ describe Searchables::User do
 
     describe '#search_link' do
       let(:expected_search_link) do
-        searchable.url_helper.admin_users_path(user: searchable.id)
+        searchable.url_helper.admin_set_functions_path(set_function: searchable.id)
       end
 
       it { expect(searchable.search_link).to eq expected_search_link }
     end
 
     describe '#search_title' do
-      let(:expected_search_title) { user.name }
+      let(:expected_search_title) { set_function.name }
 
       it { expect(searchable.search_title).to eq expected_search_title }
     end
 
     describe '#search_description' do
-      let(:expected_search_description) { user.biography }
+      let(:expected_search_description) { set_function.description }
 
       it { expect(searchable.search_description).to eq expected_search_description }
     end

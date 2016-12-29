@@ -1,22 +1,16 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe Searchables::User do
-  subject(:searchable) { user }
+describe Searchables::FilmProduction do
+  subject(:searchable) { film_production }
 
-  let(:user) { create(:user) }
+  let(:film_production) { create(:film_production) }
 
   let(:expected_search_expression) do
     '
-      users.name LIKE :search OR
-      users.nickname LIKE :search OR
-      users.cep LIKE :search OR
-      users.neighbourhood LIKE :search OR
-      users.complement LIKE :search OR
-      users.cpf LIKE :search OR
-      users.phone LIKE :search OR
-      users.mobile LIKE :search OR
-      users.biography LIKE :search OR
+      film_production.original_title LIKE :search OR
+      film_production.title LIKE :search OR
+      film_production.synopsis LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
@@ -40,20 +34,20 @@ describe Searchables::User do
 
     describe '#search_link' do
       let(:expected_search_link) do
-        searchable.url_helper.admin_users_path(user: searchable.id)
+        searchable.url_helper.admin_film_productions_path(film_production: searchable.id)
       end
 
       it { expect(searchable.search_link).to eq expected_search_link }
     end
 
     describe '#search_title' do
-      let(:expected_search_title) { user.name }
+      let(:expected_search_title) { film_production.title }
 
       it { expect(searchable.search_title).to eq expected_search_title }
     end
 
     describe '#search_description' do
-      let(:expected_search_description) { user.biography }
+      let(:expected_search_description) { film_production.synopsis }
 
       it { expect(searchable.search_description).to eq expected_search_description }
     end

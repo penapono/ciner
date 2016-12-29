@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.string   "number",          limit: 255
     t.string   "neighbourhood",   limit: 255
     t.string   "complement",      limit: 255
-    t.integer  "role",            limit: 4
     t.string   "cpf",             limit: 255
     t.string   "phone",           limit: 255
     t.string   "mobile",          limit: 255

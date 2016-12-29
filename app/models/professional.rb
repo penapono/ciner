@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class Professional < ActiveRecord::Base
+  include Searchables::Professional
+
   # Associations
   belongs_to :user
   belongs_to :city
@@ -35,6 +37,8 @@ class Professional < ActiveRecord::Base
     User.human_attribute_name("gender.#{gender}")
   end
 
+  # Scopes
+
   def self.by_gender(gender)
     where(gender: gender)
   end
@@ -47,12 +51,18 @@ class Professional < ActiveRecord::Base
     where(state_id: id)
   end
 
+  def self.by_country(id)
+    where(country_id: id)
+  end
+
+  # Filter
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
     result = result.by_gender(genders[params[:gender]]) if params[:gender].present?
-    result = result.by_role(roles[params[:role]]) if params[:role].present?
+    result = result.by_country(params[:country]) if params[:country].present?
     result = result.by_state(params[:state]) if params[:state].present?
     result = result.by_city(params[:city]) if params[:city].present?
 

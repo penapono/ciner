@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 module Searchables
-  module User
+  module Professional
     extend ActiveSupport::Concern
     include Searchables::Base
 
     SEARCH_EXPRESSION = '
-      users.name LIKE :search OR
-      users.nickname LIKE :search OR
-      users.cep LIKE :search OR
-      users.neighbourhood LIKE :search OR
-      users.complement LIKE :search OR
-      users.cpf LIKE :search OR
-      users.phone LIKE :search OR
-      users.mobile LIKE :search OR
-      users.biography LIKE :search OR
+      professionals.name LIKE :search OR
+      professionals.nickname LIKE :search OR
+      professionals.cep LIKE :search OR
+      professionals.neighbourhood LIKE :search OR
+      professionals.complement LIKE :search OR
+      professionals.cpf LIKE :search OR
+      professionals.phone LIKE :search OR
+      professionals.mobile LIKE :search OR
+      professionals.biography LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
@@ -30,7 +30,7 @@ module Searchables
     end
 
     def search_link
-      url_helper.admin_users_path(user: id)
+      url_helper.admin_professionals_path(professional: id)
     end
 
     def search_title

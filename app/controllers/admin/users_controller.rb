@@ -10,6 +10,9 @@ module Admin
     expose(:users) { User.all }
     expose(:states) { State.order(:acronym).map(&:acronym) }
     expose(:cities) { user.city.state.cities if user.city }
+
+    # Filters
+
     expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 10

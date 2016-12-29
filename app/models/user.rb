@@ -77,6 +77,8 @@ class User < ActiveRecord::Base
     User.human_attribute_name("role.#{role}")
   end
 
+  # Scopes
+
   def self.by_gender(gender)
     where(gender: gender)
   end

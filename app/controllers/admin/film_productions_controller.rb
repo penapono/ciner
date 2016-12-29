@@ -11,11 +11,15 @@ module Admin
     expose(:countries) { Country.all }
     expose(:age_ranges) { AgeRange.all }
 
+    # Filters
+
+    expose(:filtered_states) { filtered_states }
+    expose(:filtered_cities) { filtered_cities }
+
     PER_PAGE = 10
 
     def index
-      self.film_productions =
-        film_productions.page(params[:page]).per(PER_PAGE)
+      self.film_productions = paginated_film_productions
     end
 
     private
@@ -42,7 +46,6 @@ module Admin
         :title,
         :year,
         :length,
-        :film_production_category_id,
         :synopsis,
         :release,
         :brazilian_release,
@@ -75,6 +78,32 @@ module Admin
 
     def resource_params
       film_production_params
+    end
+
+    # Filtering
+
+    def paginated_film_productions
+      filtered_film_production.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_film_production
+      film_productions.filter_by(searched_film_productions, params.fetch(:filter, ''))
+    end
+
+    def searched_film_productions
+      film_productions.search(current_user, params.fetch(:search, ''))
+    end
+
+    # Filters
+
+    def filtered_states
+      return unless params[:filter] && params[:filter][:country].present?
+      Country.find(params[:filter][:country]).states
+    end
+
+    def filtered_cities
+      return unless params[:filter] && params[:filter][:state].present?
+      State.find(params[:filter][:state]).cities
     end
   end
 end

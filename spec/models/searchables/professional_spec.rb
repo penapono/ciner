@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe Searchables::User do
-  subject(:searchable) { user }
+describe Searchables::Professional do
+  subject(:searchable) { professional }
 
-  let(:user) { create(:user) }
+  let(:professional) { create(:professional) }
 
   let(:expected_search_expression) do
     '
-      users.name LIKE :search OR
-      users.nickname LIKE :search OR
-      users.cep LIKE :search OR
-      users.neighbourhood LIKE :search OR
-      users.complement LIKE :search OR
-      users.cpf LIKE :search OR
-      users.phone LIKE :search OR
-      users.mobile LIKE :search OR
-      users.biography LIKE :search OR
+      professionals.name LIKE :search OR
+      professionals.nickname LIKE :search OR
+      professionals.cep LIKE :search OR
+      professionals.neighbourhood LIKE :search OR
+      professionals.complement LIKE :search OR
+      professionals.cpf LIKE :search OR
+      professionals.phone LIKE :search OR
+      professionals.mobile LIKE :search OR
+      professionals.biography LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
@@ -40,20 +40,20 @@ describe Searchables::User do
 
     describe '#search_link' do
       let(:expected_search_link) do
-        searchable.url_helper.admin_users_path(user: searchable.id)
+        searchable.url_helper.admin_professionals_path(professional: searchable.id)
       end
 
       it { expect(searchable.search_link).to eq expected_search_link }
     end
 
     describe '#search_title' do
-      let(:expected_search_title) { user.name }
+      let(:expected_search_title) { professional.name }
 
       it { expect(searchable.search_title).to eq expected_search_title }
     end
 
     describe '#search_description' do
-      let(:expected_search_description) { user.biography }
+      let(:expected_search_description) { professional.biography }
 
       it { expect(searchable.search_description).to eq expected_search_description }
     end
