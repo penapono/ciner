@@ -6,14 +6,16 @@ module Admin
     # exposes
     expose(:studios) { Studio.all }
     expose(:countries) { Country.all }
-    expose(:states) { Country.all }
-    expose(:cities) { Country.all }
+    expose(:states) { State.all }
+    expose(:cities) { City.all }
+    expose(:filtered_states) { filtered_states }
+    expose(:filtered_cities) { filtered_cities }
     expose(:studio, attributes: :studio_attributes)
 
     PER_PAGE = 10
 
     def index
-      self.studios = studios.page(params[:page]).per(PER_PAGE)
+      self.studios = paginated_studios
     end
 
     private
@@ -42,6 +44,32 @@ module Admin
       params.require(:studio).permit(
         :name, :country_id, :state_id, :city_id
       )
+    end
+
+    # Filtering
+
+    def paginated_studios
+      filtered_studio.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_studio
+      studios.filter_by(searched_studios, params.fetch(:filter, ''))
+    end
+
+    def searched_studios
+      studios.search(current_user, params.fetch(:search, ''))
+    end
+
+    # Filters
+
+    def filtered_states
+      return unless params[:filter] && params[:filter][:country].present?
+      Country.find(params[:filter][:country]).states
+    end
+
+    def filtered_cities
+      return unless params[:filter] && params[:filter][:state].present?
+      State.find(params[:filter][:state]).cities
     end
   end
 end

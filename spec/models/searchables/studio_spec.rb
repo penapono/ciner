@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe Searchables::User do
-  subject(:searchable) { user }
+describe Searchables::Studio do
+  subject(:searchable) { studio }
 
-  let(:user) { create(:user) }
+  let(:studio) { create(:studio) }
 
   let(:expected_search_expression) do
     '
-      users.name LIKE :search OR
+      studios.name LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
@@ -32,20 +32,20 @@ describe Searchables::User do
 
     describe '#search_link' do
       let(:expected_search_link) do
-        searchable.url_helper.admin_users_path(user: searchable.id)
+        searchable.url_helper.admin_studios_path(studio: searchable.id)
       end
 
       it { expect(searchable.search_link).to eq expected_search_link }
     end
 
     describe '#search_title' do
-      let(:expected_search_title) { user.name }
+      let(:expected_search_title) { studio.name }
 
       it { expect(searchable.search_title).to eq expected_search_title }
     end
 
     describe '#search_description' do
-      let(:expected_search_description) { user.biography }
+      let(:expected_search_description) { studio.name }
 
       it { expect(searchable.search_description).to eq expected_search_description }
     end

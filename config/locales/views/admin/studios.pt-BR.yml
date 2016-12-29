@@ -9,3 +9,8 @@ pt-BR:
         title: Estúdio / Produtora
       new:
         title: Novo Estúdio / Produtora
+      toolbar:
+        filters:
+          city: Selecione uma Cidade
+          country: Selecione um País
+          state: Selecione um Estado

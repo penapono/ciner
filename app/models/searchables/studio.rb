@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 module Searchables
-  module User
+  module Studio
     extend ActiveSupport::Concern
     include Searchables::Base
 
     SEARCH_EXPRESSION = '
-      users.name LIKE :search OR
+      studios.name LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
@@ -22,7 +22,7 @@ module Searchables
     end
 
     def search_link
-      url_helper.admin_users_path(user: id)
+      url_helper.admin_studios_path(studio: id)
     end
 
     def search_title
@@ -30,7 +30,7 @@ module Searchables
     end
 
     def search_description
-      biography
+      name
     end
   end
 end

@@ -1,6 +1,10 @@
 - content_for :stylesheet, stylesheet_link_tag('views/shared/pagination')
 
-.pagination
-  = paginate resources
+.pagination-section
+  .row
+    .col-xs-12
+      = page_entries_info resources
 
-  = page_entries_info resources
+  .row
+    .col-xs-12.text-center
+      = paginate resources

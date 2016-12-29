@@ -12,7 +12,7 @@ module Admin
     expose(:cities) { user.city.state.cities if user.city }
     expose(:filtered_cities) { filtered_cities }
 
-    PER_PAGE = 15
+    PER_PAGE = 10
 
     def index
       self.users = paginated_users
@@ -36,18 +36,6 @@ module Admin
       admin_user_path(resource)
     end
 
-    def paginated_users
-      filtered_user.page(params[:page]).per(PER_PAGE)
-    end
-
-    def filtered_user
-      users.filter_by(searched_users, params.fetch(:filter, ''))
-    end
-
-    def searched_users
-      users.search(current_user, params.fetch(:search, ''))
-    end
-
     def clean_password
       return unless params[:user].present? && params[:user][:password].blank?
       params[:user].delete(:password)
@@ -66,8 +54,24 @@ module Admin
       user_params
     end
 
+    # Filtering
+
+    def paginated_users
+      filtered_user.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_user
+      users.filter_by(searched_users, params.fetch(:filter, ''))
+    end
+
+    def searched_users
+      users.search(current_user, params.fetch(:search, ''))
+    end
+
+    # Filters
+
     def filtered_cities
-      return unless params[:filter] && params[:filter][:state]
+      return unless params[:filter] && params[:filter][:state].present?
       State.find(params[:filter][:state]).cities
     end
   end

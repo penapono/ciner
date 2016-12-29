@@ -7,6 +7,6 @@
       = title
 
   - if path
-    .col-xs-3.pull-right
-      = link_to path do
-        %i.fa.fa-plus= "Novo"
+    .col-xs-3
+      = link_to path, class: 'pull-right' do
+        %i.fa.fa-plus= t('new')
