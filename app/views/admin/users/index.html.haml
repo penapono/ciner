@@ -3,10 +3,10 @@
 
 = render 'shared/breadcrumbs'
 
-= render 'toolbar'
-
 %h3
   = User.model_name.human(count: 2)
+
+= render 'toolbar'
 
 %table
   %thead
@@ -54,3 +54,5 @@
         %td
           = link_to admin_user_path(user), method: 'delete' do
             %i.fa.fa-trash
+
+= render 'shared/pagination', resources: users

@@ -39,4 +39,4 @@
           = link_to admin_studio_path(studio), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate studios
+= render 'shared/pagination', resources: studios
