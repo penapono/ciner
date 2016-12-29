@@ -3,8 +3,7 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = User.model_name.human(count: 2)
+= render 'shared/index_title', title: User.model_name.human(count: 2)
 
 = render 'toolbar'
 

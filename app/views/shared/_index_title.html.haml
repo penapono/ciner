@@ -1,0 +1,12 @@
+- title ||= t('admin.home.index.title')
+- path ||= nil
+
+.row
+  .col-xs-9
+    %h3
+      = title
+
+  - if path
+    .col-xs-3.pull-right
+      = link_to path do
+        %i.fa.fa-plus= "Novo"

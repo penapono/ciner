@@ -3,13 +3,7 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = FilmProduction.model_name.human(count: 2)
-
-.row.pull-right
-  .col-xs-6
-    = link_to new_admin_film_production_path do
-      %i.fa.fa-plus= "Novo"
+= render 'shared/index_title', title: FilmProduction.model_name.human(count: 2), path: new_admin_film_production_path
 
 %table
   %thead
@@ -44,4 +38,4 @@
           = link_to admin_film_production_path(film_production), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate film_productions
+= render 'shared/pagination', resources: film_productions

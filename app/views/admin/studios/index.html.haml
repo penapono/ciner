@@ -3,13 +3,7 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = Studio.model_name.human(count: 2)
-
-.row.pull-right
-  .col-xs-6
-    = link_to new_admin_studio_path do
-      %i.fa.fa-plus= "Novo"
+= render 'shared/index_title', title: Studio.model_name.human(count: 2), path: new_admin_studio_path
 
 %table
   %thead
