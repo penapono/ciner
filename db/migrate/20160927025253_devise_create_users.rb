@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :gender
       t.string :nickname
       t.date :birthday
+      t.integer :age
       t.string :cep
       t.string :address
       t.string :number
@@ -54,6 +55,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.references :city, index: true
       t.references :state, index: true
+      t.references :country, index: true
 
       t.timestamps null: false
     end

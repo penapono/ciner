@@ -1,0 +1,12 @@
+- title ||= t('admin.home.index.title')
+- path ||= nil
+
+.row
+  .col-xs-9
+    %h3
+      = title
+
+  - if path
+    .col-xs-3
+      = link_to path, class: 'pull-right' do
+        %i.fa.fa-plus= t('new')

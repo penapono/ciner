@@ -8,6 +8,8 @@ class CreateFilmProductions < ActiveRecord::Migration
       t.text :synopsis
       t.datetime :release
       t.datetime :brazilian_release
+      t.references :city
+      t.references :state
       t.references :country
       t.references :age_range
 

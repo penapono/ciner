@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 FactoryGirl.define do
   factory :professional do
-    sequence(:name) { |n| "Film Production Category #{n}" }
+    sequence(:name) { |n| "Professional Name #{n}" }
+    birthday Date.today - 18.years
+    cpf { Faker::CPF.pretty }
+    cep "13060744"
+    address "Rua Rubens Roberto Ciolfi"
+    number 154
+    neighbourhood "Vila União"
+    state
+    city
+    gender :men
+    nickname "penapono"
+
     set_function
-    birth DateTime.now
-    country
     user
 
     trait :invalid do

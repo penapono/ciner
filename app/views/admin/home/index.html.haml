@@ -4,22 +4,22 @@
   \!
 
 %p
-  = link_to "Usuários", admin_users_path
+  = link_to User.model_name.human(count: 2), admin_users_path
 
 %p
-  = link_to "Funções no Set", admin_set_functions_path
+  = link_to SetFunction.model_name.human(count: 2), admin_set_functions_path
 
 %p
-  = link_to "Estúdios", admin_studios_path
+  = link_to Studio.model_name.human(count: 2), admin_studios_path
 
 %p
-  = link_to "Profissionais", admin_professionals_path
+  = link_to Professional.model_name.human(count: 2), admin_professionals_path
 
 %p
-  = link_to "Classificações Indicativas", admin_age_ranges_path
+  = link_to AgeRange.model_name.human(count: 2), admin_age_ranges_path
 
 %p
-  = link_to "Categorias de Produções Cinematográficas", admin_film_production_categories_path
+  = link_to FilmProductionCategory.model_name.human(count: 2), admin_film_production_categories_path
 
 %p
-  = link_to "Produções Cinematográficas", admin_film_productions_path
+  = link_to FilmProduction.model_name.human(count: 2), admin_film_productions_path

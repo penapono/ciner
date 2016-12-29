@@ -18,7 +18,7 @@ module BreadcrumbController
   private
 
   def breadcrumbs_for(action_name)
-    return [] unless has_breadcrumbs?(action_name)
+    return [] unless breadcrumbs?(action_name)
 
     actions_breadcrumbs[action_name.to_sym].map do |breadcrumb|
       breadcrumb_item(breadcrumb[0], breadcrumb[1])
@@ -29,7 +29,7 @@ module BreadcrumbController
     { title: title, url: url }
   end
 
-  def has_breadcrumbs?(action_name)
+  def breadcrumbs?(action_name)
     !actions_breadcrumbs[action_name.to_sym].nil?
   end
 
@@ -41,7 +41,7 @@ module BreadcrumbController
   # na action index precisamos garantir que o breadcrumb que usa o recurso não
   # seja carregado, pois a action não trata de recurso específico
   #
-  def has_resource?
+  def resource?
     (action_name == 'show' || action_name == 'edit' || action_name == 'update')
   end
 end

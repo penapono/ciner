@@ -1,0 +1,11 @@
+pt-BR:
+  platform:
+    studios:
+      create:
+        title: Novo Estúdio / Produtora
+      form:
+        general: Dados Gerais
+      index:
+        title: Estúdio / Produtora
+      new:
+        title: Novo Estúdio / Produtora

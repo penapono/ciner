@@ -3,13 +3,9 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = AgeRange.model_name.human(count: 2)
+= render 'shared/index_title', title: AgeRange.model_name.human(count: 2), path: new_admin_age_range_path
 
-.row.pull-right
-  .col-xs-6
-    = link_to new_admin_age_range_path do
-      %i.fa.fa-plus= "Novo"
+= render 'toolbar'
 
 %table
   %thead
@@ -39,4 +35,4 @@
           = link_to admin_age_range_path(age_range), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate age_ranges
+= render 'shared/pagination', resources: age_ranges

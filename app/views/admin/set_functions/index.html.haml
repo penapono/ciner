@@ -3,13 +3,9 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = SetFunction.model_name.human(count: 2)
+= render 'shared/index_title', title: SetFunction.model_name.human(count: 2), path: new_admin_set_function_path
 
-.row.pull-right
-  .col-xs-6
-    = link_to new_admin_set_function_path do
-      %i.fa.fa-plus= "Novo"
+= render 'toolbar'
 
 %table
   %thead
@@ -39,4 +35,4 @@
           = link_to admin_set_function_path(set_function), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate set_functions
+= render 'shared/pagination', resources: set_functions

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   # Associations
   belongs_to :city
   belongs_to :state
+  belongs_to :country
 
   # Validations
   validates :email,
@@ -47,12 +48,11 @@ class User < ActiveRecord::Base
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true
   delegate :name, to: :state, allow_nil: true, prefix: true
+  delegate :name, to: :country, allow_nil: true, prefix: true
 
-  def age
-    return 0 unless birthday
-    now = Time.now.utc.to_date
-    now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
-  end
+  # Callbacks
+  before_save :update_address
+  before_save :update_age
 
   def self.localized_roles
     roles.map { |k, _w| [human_attribute_name("role.#{k}"), k] }
@@ -77,6 +77,8 @@ class User < ActiveRecord::Base
     User.human_attribute_name("role.#{role}")
   end
 
+  # Scopes
+
   def self.by_gender(gender)
     where(gender: gender)
   end
@@ -85,13 +87,37 @@ class User < ActiveRecord::Base
     where(role: role)
   end
 
+  def self.by_city(city)
+    where(city: city)
+  end
+
+  def self.by_state(id)
+    where(state_id: id)
+  end
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
     result = result.by_gender(genders[params[:gender]]) if params[:gender].present?
     result = result.by_role(roles[params[:role]]) if params[:role].present?
+    result = result.by_state(params[:state]) if params[:state].present?
+    result = result.by_city(params[:city]) if params[:city].present?
 
     result
+  end
+
+  private
+
+  def update_address
+    return unless city
+    self.state_id = city.state.id
+    self.country_id = state.country.id
+  end
+
+  def update_age
+    self.age = 0 unless birthday
+    now = Time.now.utc.to_date
+    self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
   end
 end

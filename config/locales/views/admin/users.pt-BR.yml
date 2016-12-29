@@ -16,6 +16,8 @@ pt-BR:
         filters:
           gender: Selecione um Gênero
           role: Selecione uma Atribuição
+          state: Selecione um Estado
+          city: Selecione uma Cidade
       update:
         terms: Termos de Uso
       show:

@@ -3,13 +3,9 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = Professional.model_name.human(count: 2)
+= render 'shared/index_title', title: Professional.model_name.human(count: 2), path: new_admin_professional_path
 
-.row.pull-right
-  .col-xs-6
-    = link_to new_admin_professional_path do
-      %i.fa.fa-plus= "Novo"
+= render 'toolbar'
 
 %table
   %thead
@@ -44,4 +40,4 @@
           = link_to admin_professional_path(professional), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate professionals
+= render 'shared/pagination', resources: professionals

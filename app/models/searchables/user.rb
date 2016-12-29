@@ -1,42 +1,44 @@
 # frozen_string_literal: true
-module Searchables::User
-  extend ActiveSupport::Concern
-  include Searchables::Base
+module Searchables
+  module User
+    extend ActiveSupport::Concern
+    include Searchables::Base
 
-  SEARCH_EXPRESSION = '
-    users.name LIKE :search OR
-    users.nickname LIKE :search OR
-    users.email LIKE :search OR
-    cities.name LIKE :search
-  '
+    SEARCH_EXPRESSION = '
+      users.name LIKE :search OR
+      users.nickname LIKE :search OR
+      users.cep LIKE :search OR
+      users.neighbourhood LIKE :search OR
+      users.complement LIKE :search OR
+      users.cpf LIKE :search OR
+      users.phone LIKE :search OR
+      users.mobile LIKE :search OR
+      users.biography LIKE :search OR
+      cities.name LIKE :search OR
+      states.name LIKE :search OR
+      countries.name LIKE :search
+    '
 
-  SEARCH_ASSOCIATIONS = [
-    :city, :state
-  ].freeze
+    SEARCH_ASSOCIATIONS = [
+      :city, :state, :country
+    ].freeze
 
-  class_methods do
-    def search_associations
-      self::SEARCH_ASSOCIATIONS
+    class_methods do
+      def search_associations
+        self::SEARCH_ASSOCIATIONS
+      end
     end
-  end
 
-  included do
-    private
-
-    def self.search_scope(_user)
-      User.search_joins
+    def search_link
+      url_helper.admin_users_path(user: id)
     end
-  end
 
-  def search_link
-    url_helper.platform_users_path(user: id)
-  end
+    def search_title
+      name
+    end
 
-  def search_title
-    name
-  end
-
-  def search_description
-    name
+    def search_description
+      biography
+    end
   end
 end

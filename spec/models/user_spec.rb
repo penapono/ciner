@@ -10,6 +10,8 @@ RSpec.describe User, type: :model do
 
   describe '#associations' do
     it { is_expected.to belong_to :city }
+    it { is_expected.to belong_to :state }
+    it { is_expected.to belong_to :country }
   end
 
   describe '#validations' do
@@ -30,11 +32,15 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :terms_of_use }
 
     context 'uniqueness' do
-      it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
+      it do
+        is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity
+      end
     end
   end
 
   describe '#delegations' do
     it { is_expected.to delegate_method(:name).to(:city).with_prefix(true) }
+    it { is_expected.to delegate_method(:name).to(:state).with_prefix(true) }
+    it { is_expected.to delegate_method(:name).to(:country).with_prefix(true) }
   end
 end

@@ -1,0 +1,14 @@
+- content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
+
+- form_url ||= root_path
+- filter_params ||= []
+- placeholder ||= t('search')
+
+= simple_form_for :searches, url: form_url, method: :get, class: 'navbar-form', role: :search do |f|
+  = text_field_tag :search, params[:search], placeholder: placeholder
+  .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
+  = hidden_field_tag :tool, params[:tool] if params[:tool].present?
+
+  = fields_for :filter do |ff|
+    - filter_params.each do |param|
+      = ff.hidden_field param[0], value: param[1] if param[1].present?

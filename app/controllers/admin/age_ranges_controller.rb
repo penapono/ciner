@@ -10,7 +10,7 @@ module Admin
     PER_PAGE = 10
 
     def index
-      self.age_ranges = age_ranges.page(params[:page]).per(PER_PAGE)
+      self.age_ranges = paginated_age_ranges
     end
 
     private
@@ -39,6 +39,20 @@ module Admin
 
     def resource_params
       age_range_params
+    end
+
+    # Filtering
+
+    def paginated_age_ranges
+      filtered_age_range.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_age_range
+      age_ranges.filter_by(searched_age_ranges, params.fetch(:filter, ''))
+    end
+
+    def searched_age_ranges
+      age_ranges.search(current_user, params.fetch(:search, ''))
     end
   end
 end

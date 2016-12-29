@@ -1,0 +1,16 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+.row
+  .col-xs-12
+    = professional.name
+.row
+  .col-xs-12
+    = professional.set_function_name
+.row
+  .col-xs-6
+    = professional.country_name
+  .col-xs-6
+    = localize(professional.birth) if professional.birth

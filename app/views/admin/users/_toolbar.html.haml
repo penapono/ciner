@@ -1,7 +1,18 @@
-.row.filters{ data: { dynamic_filter: '' } }
-  = simple_form_for :filter, url: admin_users_path, method: :get, data: { filter_form: '' } do |f|
-    = hidden_field_tag :search, params[:search]
-    .col-xs-4
-      = f.input :gender, collection: User.localized_genders, label: false, include_blank: t('.filters.gender'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:gender, '')
-    .col-xs-4
-      = f.input :role, collection: User.localized_roles, label: false, include_blank: t('.filters.role'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:role, '')
+= render 'shared/toolbar'
+
+.toolbar
+  .row.searchbar
+    .col-xs-12
+      = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
+
+  .row.filters{ data: { dynamic_filter: '' } }
+    = simple_form_for :filter, url: admin_users_path, method: :get, data: { filter_form: '' } do |f|
+      = hidden_field_tag :search, params[:search]
+      .col-xs-3
+        = f.input :gender, collection: User.localized_genders, label: false, include_blank: t('.filters.gender'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:gender, '')
+      .col-xs-3
+        = f.input :role, collection: User.localized_roles, label: false, include_blank: t('.filters.role'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:role, '')
+      .col-xs-3
+        = f.input :state, collection: State.all, label: false, include_blank: t('.filters.state'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:state, '')
+      .col-xs-3
+        = f.input :city, collection: filtered_cities, label: false, include_blank: t('.filters.city'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:city, '')

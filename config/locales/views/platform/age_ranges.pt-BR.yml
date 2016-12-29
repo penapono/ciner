@@ -1,0 +1,11 @@
+pt-BR:
+  platform:
+    age_ranges:
+      create:
+        title: Nova Classificação Indicativa
+      form:
+        general: Dados Gerais
+      index:
+        title: Classificação Indicativa
+      new:
+        title: Nova Classificação Indicativa
