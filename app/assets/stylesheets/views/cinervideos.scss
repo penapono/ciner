@@ -1,0 +1,32 @@
+/* Ciner Videos */
+
+@import 'base/colors';
+
+.video-item .info {
+  margin-top: 10px;
+}
+
+.video-item {
+  margin-top: 20px;
+}
+
+.video-item a:hover {
+  cursor: pointer;
+}
+
+.video-item h5.title {
+  font-size: 17px;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.video-item .nome,
+.video-item .genero,
+.video-item .tempo {
+  color: #524b4b;
+}
+
+.video-item .nome {
+  display: block;
+}
+
