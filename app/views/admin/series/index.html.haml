@@ -1,0 +1,43 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/index_title', title: Serie.model_name.human(count: 2), path: new_admin_series_path
+
+= render 'toolbar'
+
+%table
+  %thead
+    %tr
+      %th
+        = Serie.human_attribute_name(:original_title)
+      %th
+        = Serie.human_attribute_name(:title)
+      %th
+        = Serie.human_attribute_name(:year)
+
+      / Actions
+      %th{ colspan: 2 }
+
+  %tbody
+    - series.each do |serie|
+      %tr
+        %td
+          = link_to admin_serie_path(serie) do
+            = serie.original_title
+
+        %td
+          = serie.title
+
+        %td
+          = serie.year
+
+        %td
+          = link_to edit_admin_serie_path(serie) do
+            %i.fa.fa-pencil
+        %td
+          = link_to admin_serie_path(serie), method: 'delete' do
+            %i.fa.fa-trash
+
+= render 'shared/pagination', resources: series

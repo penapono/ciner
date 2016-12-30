@@ -51,7 +51,7 @@ module Admin
 
         :cover,
 
-        # Movie / Serie / CinerMovie
+        # Movie / Serie / CinerVideo
 
         :type,
 

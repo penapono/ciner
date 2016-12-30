@@ -11,13 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215025148) do
+ActiveRecord::Schema.define(version: 20161230003446) do
 
   create_table "age_ranges", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "age",        limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "ciner_videos", force: :cascade do |t|
+    t.string   "original_title",    limit: 255
+    t.string   "title",             limit: 255
+    t.integer  "year",              limit: 4
+    t.integer  "length",            limit: 4
+    t.text     "synopsis",          limit: 65535
+    t.datetime "release"
+    t.datetime "brazilian_release"
+    t.integer  "city_id",           limit: 4
+    t.integer  "state_id",          limit: 4
+    t.integer  "country_id",        limit: 4
+    t.integer  "age_range_id",      limit: 4
+    t.string   "cover",             limit: 255
+    t.integer  "studio_id",         limit: 4
+    t.date     "approval"
+    t.integer  "user_id",           limit: 4
+    t.integer  "approver_id",       limit: 4
+    t.integer  "owner_id",          limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -69,6 +91,24 @@ ActiveRecord::Schema.define(version: 20161215025148) do
     t.datetime "updated_at",                      null: false
   end
 
+  create_table "movies", force: :cascade do |t|
+    t.string   "original_title",    limit: 255
+    t.string   "title",             limit: 255
+    t.integer  "year",              limit: 4
+    t.integer  "length",            limit: 4
+    t.text     "synopsis",          limit: 65535
+    t.datetime "release"
+    t.datetime "brazilian_release"
+    t.integer  "city_id",           limit: 4
+    t.integer  "state_id",          limit: 4
+    t.integer  "country_id",        limit: 4
+    t.integer  "age_range_id",      limit: 4
+    t.string   "cover",             limit: 255
+    t.integer  "studio_id",         limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
   create_table "professionals", force: :cascade do |t|
     t.string   "name",            limit: 255
     t.integer  "gender",          limit: 4
@@ -97,6 +137,27 @@ ActiveRecord::Schema.define(version: 20161215025148) do
   add_index "professionals", ["city_id"], name: "index_professionals_on_city_id", using: :btree
   add_index "professionals", ["country_id"], name: "index_professionals_on_country_id", using: :btree
   add_index "professionals", ["state_id"], name: "index_professionals_on_state_id", using: :btree
+
+  create_table "series", force: :cascade do |t|
+    t.string   "original_title",    limit: 255
+    t.string   "title",             limit: 255
+    t.integer  "year",              limit: 4
+    t.integer  "length",            limit: 4
+    t.text     "synopsis",          limit: 65535
+    t.datetime "release"
+    t.datetime "brazilian_release"
+    t.integer  "city_id",           limit: 4
+    t.integer  "state_id",          limit: 4
+    t.integer  "country_id",        limit: 4
+    t.integer  "age_range_id",      limit: 4
+    t.string   "cover",             limit: 255
+    t.integer  "studio_id",         limit: 4
+    t.integer  "season",            limit: 4
+    t.integer  "number_episodes",   limit: 4
+    t.integer  "aired_episodes",    limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "set_functions", force: :cascade do |t|
     t.string   "name",        limit: 255

@@ -1,6 +1,6 @@
-class CreateFilmProductions < ActiveRecord::Migration
+class CreateSeries < ActiveRecord::Migration
   def change
-    create_table :film_productions do |t|
+    create_table :series do |t|
       t.string :original_title
       t.string :title
       t.integer :year
@@ -15,19 +15,7 @@ class CreateFilmProductions < ActiveRecord::Migration
 
       t.string :cover
 
-      # Movie / Serie / CinerVideo
-
-      t.integer :type
-
-      # Movie
-
       t.references :studio
-
-      # Ciner Movie
-
-      t.date :approval
-      t.references :user, :approver
-      t.references :user, :owner
 
       # Serie
 

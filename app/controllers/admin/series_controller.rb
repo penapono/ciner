@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 module Admin
-  class FilmProductionsController < AdminController
-    include Admin::FilmProductionsBreadcrumb
+  class SeriesController < AdminController
+    include Admin::SeriesBreadcrumb
 
     # exposes
-    expose(:film_productions) { FilmProduction.all }
-    expose(:film_production, attributes: :film_production_attributes)
+    expose(:series) { Serie.all }
+    expose(:serie, attributes: :serie_attributes)
 
-    expose(:film_production_categories) { FilmProductionCategory.all }
     expose(:countries) { Country.all }
     expose(:age_ranges) { AgeRange.all }
 
@@ -19,29 +18,29 @@ module Admin
     PER_PAGE = 10
 
     def index
-      self.film_productions = paginated_film_productions
+      self.series = paginated_series
     end
 
     private
 
     def resource
-      film_production
+      serie
     end
 
     def resource_title
-      film_production.title
+      serie.title
     end
 
     def index_path
-      admin_film_productions_path
+      admin_series_index_path
     end
 
     def show_path
-      admin_film_production_path(resource)
+      admin_serie_path(resource)
     end
 
-    def film_production_params
-      params.require(:film_production).permit(
+    def serie_params
+      params.require(:serie).permit(
         :original_title,
         :title,
         :year,
@@ -53,10 +52,6 @@ module Admin
         :age_range_id,
 
         :cover,
-
-        # Movie / Serie / CinerVideo
-
-        :type,
 
         # Movie
 
@@ -77,21 +72,21 @@ module Admin
     end
 
     def resource_params
-      film_production_params
+      serie_params
     end
 
     # Filtering
 
-    def paginated_film_productions
-      filtered_film_production.page(params[:page]).per(PER_PAGE)
+    def paginated_series
+      filtered_serie.page(params[:page]).per(PER_PAGE)
     end
 
-    def filtered_film_production
-      film_productions.filter_by(searched_film_productions, params.fetch(:filter, ''))
+    def filtered_serie
+      series.filter_by(searched_series, params.fetch(:filter, ''))
     end
 
-    def searched_film_productions
-      film_productions.search(current_user, params.fetch(:search, ''))
+    def searched_series
+      series.search(current_user, params.fetch(:search, ''))
     end
 
     # Filters

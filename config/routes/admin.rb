@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     resources :age_ranges
     resources :film_production_categories
     resources :film_productions
+    resources :movies
+    resources :series
+    resources :ciner_videos
   end
 end

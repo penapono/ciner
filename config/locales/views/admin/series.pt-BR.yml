@@ -1,0 +1,16 @@
+sept-BR:
+  admin:
+    series:
+      create:
+        title: Nova Produção Cinematográfica
+      form:
+        general: Dados Gerais
+      index:
+        title: Produção Cinematográfica
+      new:
+        title: Nova Produção Cinematográfica
+      toolbar:
+        filters:
+          city: Selecione uma Cidade
+          country: Selecione um País
+          state: Selecione um Estado

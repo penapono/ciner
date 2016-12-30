@@ -1,12 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      film_production:
-        one: Filme
-        other: Filmes
+      ciner_video:
+        one: Ciner Vídeo
+        other: Ciner Vídeos
 
     attributes:
-      film_production:
+      ciner_video:
         original_title: Título
         title: Título em outro idioma
         year: Ano
@@ -19,12 +19,6 @@ pt-BR:
 
         cover: Capa
 
-        # Movie / Serie / CinerVideo
-
-        type: Tipo
-
-        # Movie
-
         studio: Estúdio
 
         # Ciner Movie
@@ -32,15 +26,9 @@ pt-BR:
         approval: Data de Aprovação
         approver: Usuário da Aprovação
         owner: Proprietário
-
-        # Serie
-
-        season: Temporada
-        number_episodes: Número de Episódios
-        aired_episodes: Número de Episódios Exibidos
     errors:
       models:
-        film_production:
+        ciner_video:
           attributes:
             original_title:
               blank: "%{attribute} deve ser preenchido"
