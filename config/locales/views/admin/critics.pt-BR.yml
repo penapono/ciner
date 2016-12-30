@@ -1,0 +1,16 @@
+pt-BR:
+  admin:
+    critics:
+      create:
+        title: Nova Crítica
+      form:
+        general: Dados Gerais
+      index:
+        title: Crítica
+      new:
+        title: Nova Crítica
+      toolbar:
+        filters:
+          city: Selecione uma Cidade
+          country: Selecione um País
+          state: Selecione um Estado

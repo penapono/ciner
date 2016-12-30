@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     resources :movies
     resources :series
     resources :ciner_videos
+    resources :ciner_news
+    resources :critics
   end
 end

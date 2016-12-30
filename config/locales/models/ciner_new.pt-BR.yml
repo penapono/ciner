@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      ciner_new:
+        one: Notícia
+        other: Notícias
+
+    attributes:
+      ciner_new:
+        name: Nome
+        content: Conteúdo
+        country: País
+        country_id: País
+        state: Estado
+        state_id: Estado
+        city: Cidade
+        city_id: Cidade
+    errors:
+      models:
+        ciner_new:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"

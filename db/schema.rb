@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230003446) do
+ActiveRecord::Schema.define(version: 20161230071344) do
 
   create_table "age_ranges", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 20161230003446) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "ciner_news", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "city_id",    limit: 4
+    t.integer  "state_id",   limit: 4
+    t.integer  "country_id", limit: 4
+    t.string   "name",       limit: 255
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "ciner_news", ["user_id"], name: "index_ciner_news_on_user_id", using: :btree
 
   create_table "ciner_videos", force: :cascade do |t|
     t.string   "original_title",    limit: 255
@@ -57,6 +70,20 @@ ActiveRecord::Schema.define(version: 20161230003446) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "critics", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "city_id",    limit: 4
+    t.integer  "state_id",   limit: 4
+    t.integer  "country_id", limit: 4
+    t.string   "name",       limit: 255
+    t.text     "content",    limit: 65535
+    t.integer  "rating",     limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "critics", ["user_id"], name: "index_critics_on_user_id", using: :btree
 
   create_table "film_production_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
