@@ -1,0 +1,47 @@
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#critica"}
+          .media-body.media-bottom
+            .media-heading.title-section Crítica - ?Title?
+  .row
+    .col-xs-12.critica-mais-recente
+      .col-xs-12.col-sm-4.col-md-2
+        %img.img-responsive{:src => "http://placehold.it/250x300"}/
+      .col-xs-12.col-sm-8.col-md-10.critica-recente
+        .info
+          Estreia:
+          %span.bold.wine 12/05/2015
+          Categoria:
+          %a.bold.wine{:href => "#"} Suspense
+          .pull-right
+            %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+        %h4.title Batman vs Superman
+        %span.subtitle A origem da justiça
+        %span.original-title (Batman Vs Superman: Dawn of Justice)
+        .diretor-elenco
+          Direção:
+          %a.wine.bold{:href => "#"} Terrence Malick
+          %br/
+          Elenco:
+          = succeed "," do
+            %a.wine.bold{:href => "#"} Brad Pitt
+          = succeed "," do
+            %a.wine.bold{:href => "#"} Harison Ford
+          %a.wine.bold{:href => "#"} Robert Downey Jr.
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget consequat augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean tempus ex justo, eu tempus metus interdum in. Nullam eleifend, ligula sed condimentum ullamcorper, nisi ligula convallis ante, vitae blandit enim tellus quis lacus. Curabitur placerat dui nec massa tincidunt finibus. Vivamus viverra odio ut tortor imperdiet, nec condimentum neque ultricies. Donec at nunc auctor, porttitor odio ac, faucibus nisl. Duis pretium lorem scelerisque, congue lectus eget, vulputate elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus et lectus eget ante egestas facilisis. Cras at laoreet eros, nec consectetur nibh. Curabitur sed est eu nisi mattis varius id cursus nisl. Donec sit amet mollis ipsum. Vivamus finibus consectetur ipsum tempor ornare.
+        %p
+          Nam lacinia nec lorem id pellentesque. Quisque imperdiet lectus eget lacus congue fringilla. Morbi efficitur quam sit amet justo malesuada, vel ultricies mi semper. Praesent non molestie metus, quis volutpat metus. Ut elit lacus, placerat a ligula quis, lacinia maximus dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis non viverra turpis, pharetra suscipit leo. Phasellus in nibh quis tortor lobortis vehicula. Morbi finibus diam lacus, quis aliquet ipsum hendrerit nec.
+        %p
+          Suspendisse eget viverra ante, a scelerisque enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Donec malesuada urna vel urna scelerisque imperdiet. Sed eget purus fermentum, viverra erat vitae, condimentum tellus. Aenean vehicula consequat quam. Suspendisse in blandit lorem.
+        .info
+        Autor:
+        %a.bold.wine{:href => "#"} Username
+        %br/
+        Data publicação:
+        %span.bold.wine 10/10/2015

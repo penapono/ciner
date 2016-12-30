@@ -276,7 +276,9 @@ div.user-avatar, div.user-info {
 }
 
 .user-info span.user-name, .user-info span.user-age, .user-info span.user-city,
-.user-info span.user-birth-ciner, .user-info span.user-bio {
+.user-info span.user-birth-ciner, .user-info span.user-bio, .user-info span.user-gender,
+.user-info span.user-race, .user-info span.user-height, .user-info span.user-weight,
+.user-info span.user-drt {
   font-weight: bold;
   color: #a2275c;
   font-size: 16px;

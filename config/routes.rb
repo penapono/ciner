@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/debates", to: "debates#index", as: "debates"
   get "/news", to: "news#index", as: "news"
   get "/cinervideos", to: "cinervideos#index", as: "cinervideos"
+  get "/professionals", to: "professionals#index", as: "professionals"
+  get "/criticdetail", to: "critics#detail", as: "criticdetail"
 
   namespace :api do
     namespace :v1 do
