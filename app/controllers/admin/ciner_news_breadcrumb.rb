@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Admin
-  module NewsBreadcrumb
+  module CinerNewsBreadcrumb
     include ::BreadcrumbController
 
     def actions_breadcrumbs
@@ -17,7 +17,7 @@ module Admin
     def index_breadcrumbs
       [
         area_breadcrumb,
-        [New.model_name.human(count: 2), ""]
+        [CinerNew.model_name.human(count: 2), ""]
       ]
     end
 
@@ -35,7 +35,7 @@ module Admin
       [
         area_breadcrumb,
         index_breadcrumb,
-        [new.name, ""]
+        [ciner_new.name, ""]
       ]
     end
 
@@ -44,7 +44,7 @@ module Admin
     end
 
     def index_breadcrumb
-      [New.model_name.human(count: 2), admin_news_path]
+      [CinerNew.model_name.human(count: 2), admin_ciner_news_index_path]
     end
   end
 end

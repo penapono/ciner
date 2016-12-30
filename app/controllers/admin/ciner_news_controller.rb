@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 module Admin
-  class NewsController < AdminController
-    include Admin::NewsBreadcrumb
+  class CinerNewsController < AdminController
+    include Admin::CinerNewsBreadcrumb
 
     # exposes
-    expose(:news) { New.all }
-    expose(:new, attributes: :new_attributes)
+    expose(:ciner_news) { CinerNew.all }
+    expose(:ciner_new, attributes: :ciner_new_attributes)
     expose(:countries) { Country.all }
     expose(:states) { State.all }
     expose(:cities) { City.all }
@@ -18,49 +18,49 @@ module Admin
     PER_PAGE = 10
 
     def index
-      self.news = paginated_news
+      self.ciner_news = paginated_ciner_news
     end
 
     private
 
     def resource
-      new
+      ciner_new
     end
 
     def resource_title
-      new.name
+      ciner_new.name
     end
 
     def index_path
-      admin_news_path
+      admin_ciner_news_index_path
     end
 
     def show_path
-      admin_new_path(resource)
+      admin_ciner_news_path(resource)
     end
 
     def resource_params
-      new_params
+      ciner_new_params
     end
 
-    def new_params
-      params.require(:new).permit(
+    def ciner_new_params
+      params.require(:ciner_new).permit(
         :name, :country_id, :state_id, :city_id
       )
     end
 
     # Filtering
 
-    def paginated_news
-      filtered_new.page(params[:page]).per(PER_PAGE)
+    def paginated_ciner_news
+      filtered_ciner_new.page(params[:page]).per(PER_PAGE)
     end
 
-    def filtered_new
-      news.filter_by(searched_news, params.fetch(:filter, ''))
+    def filtered_ciner_new
+      ciner_news.filter_by(searched_ciner_news, params.fetch(:filter, ''))
     end
 
-    def searched_news
-      news.search(current_user, params.fetch(:search, ''))
+    def searched_ciner_news
+      ciner_news.search(current_user, params.fetch(:search, ''))
     end
 
     # Filters
