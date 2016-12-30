@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/critics", to: "critics#index", as: "critics"
   get "/debates", to: "debates#index", as: "debates"
   get "/news", to: "news#index", as: "news"
+  get "/newdetail", to: "news#detail", as: "newdetail"
   get "/cinervideos", to: "cinervideos#index", as: "cinervideos"
   get "/professionals", to: "professionals#index", as: "professionals"
   get "/criticdetail", to: "critics#detail", as: "criticdetail"
