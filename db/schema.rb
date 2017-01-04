@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20161230071344) do
     t.string   "original_title",    limit: 255
     t.string   "title",             limit: 255
     t.integer  "year",              limit: 4
-    t.integer  "length",            limit: 4
+    t.string   "length",            limit: 255
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20161230071344) do
     t.string   "original_title",    limit: 255
     t.string   "title",             limit: 255
     t.integer  "year",              limit: 4
-    t.integer  "length",            limit: 4
+    t.string   "length",            limit: 255
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20161230071344) do
     t.string   "original_title",    limit: 255
     t.string   "title",             limit: 255
     t.integer  "year",              limit: 4
-    t.integer  "length",            limit: 4
+    t.string   "length",            limit: 255
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 20161230071344) do
     t.string   "original_title",    limit: 255
     t.string   "title",             limit: 255
     t.integer  "year",              limit: 4
-    t.integer  "length",            limit: 4
+    t.string   "length",            limit: 255
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"

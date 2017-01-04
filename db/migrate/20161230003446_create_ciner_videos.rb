@@ -4,10 +4,10 @@ class CreateCinerVideos < ActiveRecord::Migration
       t.string :original_title
       t.string :title
       t.integer :year
-      t.integer :length
+      t.string :length
       t.text :synopsis
       t.datetime :release
-       t.datetime :brazilian_release
+      t.datetime :brazilian_release
       t.references :city
       t.references :state
       t.references :country
