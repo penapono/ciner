@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-module Admin
-  class CriticsController < AdminController
-    include Admin::CriticsBreadcrumb
+module Platform
+  class CriticsController < PlatformController
+    include Platform::CriticsBreadcrumb
 
     # exposes
     expose(:critics) { Critic.all }
@@ -32,11 +32,11 @@ module Admin
     end
 
     def index_path
-      admin_critics_path
+      platform_critics_path
     end
 
     def show_path
-      admin_critic_path(resource)
+      platform_critic_path(resource)
     end
 
     def resource_params
@@ -45,7 +45,7 @@ module Admin
 
     def critic_params
       params.require(:critic).permit(
-        :name, :content, :user_id, :country_id, :state_id, :city_id
+        :name, :country_id, :state_id, :city_id
       )
     end
 

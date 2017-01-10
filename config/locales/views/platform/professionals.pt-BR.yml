@@ -9,4 +9,9 @@ pt-BR:
         title: Profissional
       new:
         title: Novo Profissional
-
+      toolbar:
+        filters:
+          city: Selecione uma Cidade
+          country: Selecione um País
+          gender: Selecione um Gênero
+          state: Selecione um Estado

@@ -35,6 +35,12 @@ class Movie < ActiveRecord::Base
     where(country_id: id)
   end
 
+  # Methods
+  def title_str
+    return title unless title.blank?
+    original_title
+  end
+
   # Filter
 
   def self.filter_by(collection, params)

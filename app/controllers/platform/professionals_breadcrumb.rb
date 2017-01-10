@@ -40,7 +40,7 @@ module Platform
     end
 
     def area_breadcrumb
-      [t('admin.home.index.title'), root_path]
+      [t('platform.home.index.title'), root_path]
     end
 
     def index_breadcrumb

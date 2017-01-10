@@ -3,13 +3,9 @@
 
 = render 'shared/breadcrumbs'
 
-%h3
-  = Studio.model_name.human(count: 2)
+= render 'shared/index_title', title: Studio.model_name.human(count: 2), path: new_platform_studio_path
 
-.row.pull-right
-  .col-xs-6
-    = link_to new_admin_studio_path do
-      %i.fa.fa-plus= "Novo"
+= render 'toolbar'
 
 %table
   %thead
@@ -26,17 +22,17 @@
     - studios.each do |studio|
       %tr
         %td
-          = link_to admin_studio_path(studio) do
+          = link_to platform_studio_path(studio) do
             = studio.name
 
         %td
           = studio.country_name
 
         %td
-          = link_to edit_admin_studio_path(studio) do
+          = link_to edit_platform_studio_path(studio) do
             %i.fa.fa-pencil
         %td
-          = link_to admin_studio_path(studio), method: 'delete' do
+          = link_to platform_studio_path(studio), method: 'delete' do
             %i.fa.fa-trash
 
-= paginate studios
+= render 'shared/pagination', resources: studios

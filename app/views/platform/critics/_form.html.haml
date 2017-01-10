@@ -1,8 +1,6 @@
-= simple_form_for [:admin, critic] do |f|
+= simple_form_for [:platform, critic] do |f|
   %h3
     = t('.general')
-
-  = critic.errors.first.to_s
 
   .row
     .col-xs-12
@@ -17,7 +15,5 @@
       = f.input :state_id, collection: states
     .col-xs-3
       = f.input :country_id, collection: countries
-
-  = f.hidden_field :user_id, value: current_user.id
 
   = render 'shared/form_actions', f: f

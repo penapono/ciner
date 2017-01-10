@@ -1,0 +1,38 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/index_title', title: Critic.model_name.human(count: 2), path: new_platform_critic_path
+
+= render 'toolbar'
+
+%table
+  %thead
+    %tr
+      %th
+        = Critic.human_attribute_name(:name)
+      %th
+        = Critic.human_attribute_name(:country)
+
+      / Actions
+      %th{ colspan: 2 }
+
+  %tbody
+    - critics.each do |critic|
+      %tr
+        %td
+          = link_to platform_critic_path(critic) do
+            = critic.name
+
+        %td
+          = critic.country_name
+
+        %td
+          = link_to edit_platform_critic_path(critic) do
+            %i.fa.fa-pencil
+        %td
+          = link_to platform_critic_path(critic), method: 'delete' do
+            %i.fa.fa-trash
+
+= render 'shared/pagination', resources: critics

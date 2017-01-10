@@ -1,0 +1,49 @@
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#critica"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              = critic.name
+  .row
+    .col-xs-12.critica-mais-recente
+      .col-xs-12.col-sm-4.col-md-2
+        %img.img-responsive{:src => "http://placehold.it/250x300"}/
+      .col-xs-12.col-sm-8.col-md-10.critica-recente
+        .info
+          Estreia:
+          %span.bold.wine 12/05/2015
+          Categoria:
+          %a.bold.wine{:href => "#"} Suspense
+          .pull-right
+            %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+        %h4.title Batman vs Superman
+        %span.subtitle A origem da justiça
+        %span.original-title (Batman Vs Superman: Dawn of Justice)
+        .diretor-elenco
+          Direção:
+          %a.wine.bold{:href => "#"} Terrence Malick
+          %br/
+          Elenco:
+          = succeed "," do
+            %a.wine.bold{:href => "#"} Brad Pitt
+          = succeed "," do
+            %a.wine.bold{:href => "#"} Harison Ford
+          %a.wine.bold{:href => "#"} Robert Downey Jr.
+
+        .content
+          %p
+            = critic.content
+
+        .info
+          Por:
+          %a.bold.wine{:href => "#"}
+            = critic.user_name
+          %br/
+          Data publicação:
+          %span.bold.wine
+            = l(critic.updated_at, format: :short)

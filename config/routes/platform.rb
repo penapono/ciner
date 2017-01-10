@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
     root 'users#show'
 
-    resources :set_functions, only: [:index, :show]
     resources :studios, only: [:index, :show]
     resources :professionals, only: [:index, :show]
-    resources :age_ranges, only: [:index, :show]
-    resources :film_production_categories, only: [:index, :show]
-    resources :film_productions, only: [:index, :show]
+    resources :movies, only: [:index, :show]
+    resources :series, only: [:index, :show]
+    resources :ciner_videos, only: [:index, :show]
+    resources :critics, only: [:index, :show]
   end
 end

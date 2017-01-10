@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Platform
-  module StudiosBreadcrumb
+  module SeriesBreadcrumb
     include ::BreadcrumbController
 
     def actions_breadcrumbs
@@ -17,7 +17,7 @@ module Platform
     def index_breadcrumbs
       [
         area_breadcrumb,
-        [Studio.model_name.human(count: 2), ""]
+        [Serie.model_name.human(count: 2), ""]
       ]
     end
 
@@ -35,7 +35,7 @@ module Platform
       [
         area_breadcrumb,
         index_breadcrumb,
-        [studio.name, ""]
+        [serie.original_title, ""]
       ]
     end
 
@@ -44,7 +44,7 @@ module Platform
     end
 
     def index_breadcrumb
-      [Studio.model_name.human(count: 2), platform_studios_path]
+      [Serie.model_name.human(count: 2), platform_series_index_path]
     end
   end
 end

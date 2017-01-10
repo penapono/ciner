@@ -1,14 +1,14 @@
 pt-BR:
   platform:
-    studios:
+    ciner_videos:
       create:
-        title: Novo Estúdio / Produtora
+        title: Nova Produção Cinematográfica
       form:
         general: Dados Gerais
       index:
-        title: Estúdio / Produtora
+        title: Produção Cinematográfica
       new:
-        title: Novo Estúdio / Produtora
+        title: Nova Produção Cinematográfica
       toolbar:
         filters:
           city: Selecione uma Cidade

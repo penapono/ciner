@@ -1,14 +1,14 @@
 pt-BR:
   platform:
-    studios:
+    critics:
       create:
-        title: Novo Estúdio / Produtora
+        title: Nova Crítica
       form:
         general: Dados Gerais
       index:
-        title: Estúdio / Produtora
+        title: Crítica
       new:
-        title: Novo Estúdio / Produtora
+        title: Nova Crítica
       toolbar:
         filters:
           city: Selecione uma Cidade

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-module Admin
-  class ProfessionalsController < AdminController
+module Platform
+  class ProfessionalsController < PlatformController
     include Platform::ProfessionalsBreadcrumb
 
     # exposes
@@ -9,6 +9,11 @@ module Admin
 
     expose(:countries) { Country.all }
     expose(:set_functions) { SetFunction.all }
+
+    # Filters
+
+    expose(:filtered_states) { filtered_states }
+    expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 10
 
@@ -42,6 +47,32 @@ module Admin
 
     def resource_params
       professional_params
+    end
+
+    # Filtering
+
+    def paginated_professionals
+      filtered_professional.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_professional
+      professionals.filter_by(searched_professionals, params.fetch(:filter, ''))
+    end
+
+    def searched_professionals
+      professionals.search(current_user, params.fetch(:search, ''))
+    end
+
+    # Filters
+
+    def filtered_states
+      return unless params[:filter] && params[:filter][:country].present?
+      Country.find(params[:filter][:country]).states
+    end
+
+    def filtered_cities
+      return unless params[:filter] && params[:filter][:state].present?
+      State.find(params[:filter][:state]).cities
     end
   end
 end
