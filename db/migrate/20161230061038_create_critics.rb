@@ -6,6 +6,8 @@ class CreateCritics < ActiveRecord::Migration
       t.references :state
       t.references :country
 
+      t.references :filmable, polymorphic: true, index: true
+
       t.string :name
       t.text :content
       t.integer :rating

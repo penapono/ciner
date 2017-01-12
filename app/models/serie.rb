@@ -10,6 +10,8 @@ class Serie < ActiveRecord::Base
 
   belongs_to :studio
 
+  has_many :critics, as: :filmable
+
   # Validations
   validates :original_title,
             :year,

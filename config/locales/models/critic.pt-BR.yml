@@ -15,6 +15,10 @@ pt-BR:
         state_id: Estado
         city: Cidade
         city_id: Cidade
+      critic/filmable_type:
+        movie: Filme
+        serie: Série
+        ciner_video: Ciner Vídeo
     errors:
       models:
         critic:

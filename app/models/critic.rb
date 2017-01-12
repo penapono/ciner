@@ -8,6 +8,8 @@ class Critic < ActiveRecord::Base
   belongs_to :country
   belongs_to :user
 
+  belongs_to :filmable, polymorphic: true
+
   # Validations
   validates :name,
             :content,
