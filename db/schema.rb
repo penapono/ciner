@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230061038) do
+ActiveRecord::Schema.define(version: 20170116160619) do
 
   create_table "age_ranges", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -107,6 +107,18 @@ ActiveRecord::Schema.define(version: 20161230061038) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
+
+  create_table "filmable_professionals", force: :cascade do |t|
+    t.integer "filmable_id",     limit: 4
+    t.string  "filmable_type",   limit: 255
+    t.integer "professional_id", limit: 4
+    t.integer "set_function_id", limit: 4
+    t.text    "observation",     limit: 65535
+  end
+
+  add_index "filmable_professionals", ["filmable_type", "filmable_id"], name: "index_filmable_professionals_on_filmable_type_and_filmable_id", using: :btree
+  add_index "filmable_professionals", ["professional_id"], name: "index_filmable_professionals_on_professional_id", using: :btree
+  add_index "filmable_professionals", ["set_function_id"], name: "index_filmable_professionals_on_set_function_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "original_title",    limit: 255
