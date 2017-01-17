@@ -9,7 +9,7 @@
       = f.input :set_function_id, collection: set_functions
   .row
     .col-xs-3
-      = f.input :birth, as: :string, input_html: { value: (localize(f.object.birth) if f.object.birth), class: 'datepicker' }
+      = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
     .col-xs-3
       = f.input :country_id, collection: countries
 
