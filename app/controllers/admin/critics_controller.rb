@@ -9,8 +9,8 @@ module Admin
     expose(:countries) { Country.all }
     expose(:states) { State.all }
     expose(:cities) { City.all }
-    expose(:movies) { Movie.all }
-    expose(:series) { Serie.all }
+    expose(:movies) { Movie.first(20) }
+    expose(:series) { Serie.first(20) }
 
     # Filters
 
