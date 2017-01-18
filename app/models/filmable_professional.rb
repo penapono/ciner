@@ -10,5 +10,4 @@ class FilmableProfessional < ActiveRecord::Base
   validates :professional,
             :set_function,
             presence: true
-
 end
