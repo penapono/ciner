@@ -16,6 +16,11 @@ class Critic < ActiveRecord::Base
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
 
+  # Methods
+  def collapsed_content
+    content.truncate(155)
+  end
+
   # Filter
 
   def self.filter_by(collection, params)

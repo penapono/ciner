@@ -302,38 +302,7 @@
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "100%", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/137892682?color=ffffff&byline=0&portrait=0", :style => "min-height: 220px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
   / SECTION 03 CONTENT
   .row
-    / REVIEWS
-    .col-xs-12.col-sm-12.col-md-7.col-lg-5
-      .title-separator.ciner-review
-        .media
-          .media-left.media-middle
-            %svg.icon-title
-              %use{"xlink:href" => "#critica"}
-          .media-body.media-bottom
-            .media-heading.title-section Críticas do mês
-          .media-body.text-right.media-middle
-            %a{:href => "#"} ver mais
-      .reviews
-        .review-item
-          .col-xs-12.col-sm-5.thumb
-            %figure
-              %img.img-responsive{:src => "http://placehold.it/400x500"}/
-          .col-xs-12.col-sm-7.resume
-            %h4.title Batman vs Superman
-            %span.subtitle A origem da justiça
-            %span.original-title (Batman Vs Superman: Dawn of Justice)
-            %p
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            %a.btn.btn-saiba-mais{:href => "#"} Saiba mais
-        .review-item
-          .col-xs-12.col-sm-5.thumb
-            %figure
-              %img.img-responsive{:src => "http://placehold.it/400x500"}/
-          .col-xs-12.col-sm-7.resume
-            %h4.title Batman vs Superman
-            %p
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            %a.btn.btn-saiba-mais{:href => "#"} Saiba mais
+    = render 'critics'
     / SOCIAL CINER
     .col-xs-12.col-sm-12.col-md-5.col-lg-4
       .title-separator.ciner-social

@@ -1,0 +1,14 @@
+/ REVIEWS
+.col-xs-12.col-sm-12.col-md-7.col-lg-5
+  .title-separator.ciner-review
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#critica"}
+      .media-body.media-bottom
+        .media-heading.title-section Críticas do mês
+      .media-body.text-right.media-middle
+        %a{:href => "#"} ver mais
+  .reviews
+    - critics.each do |critic|
+      = render 'critic', critic: critic
