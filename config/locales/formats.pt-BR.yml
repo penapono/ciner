@@ -41,9 +41,9 @@ pt-BR:
 
   support:
     array:
-      last_word_connector: ! ' e '
-      two_words_connector: ! ' e '
-      words_connector: ! ', '
+      last_word_connector: ' e '
+      two_words_connector: ' e '
+      words_connector: ', '
 
   time:
     formats:
@@ -53,6 +53,8 @@ pt-BR:
       short: '%d/%m/%y'
       default: '%d/%m/%Y às %H:%M'
       simpletime: '%H:%M'
+      short_date: '%d/%m/%y'
+      long_date: '%d de %B de %Y'
 
   datetime:
     formats:

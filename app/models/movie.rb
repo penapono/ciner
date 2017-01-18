@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Movie < ActiveRecord::Base
   include Searchables::Movie
+  include FilmProfitable
 
   # Associations
   belongs_to :city
@@ -35,12 +36,6 @@ class Movie < ActiveRecord::Base
 
   def self.by_country(id)
     where(country_id: id)
-  end
-
-  # Methods
-  def title_str
-    return title unless title.blank?
-    original_title
   end
 
   # Filter

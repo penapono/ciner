@@ -17,6 +17,12 @@ pt-BR:
         country_id: País
         age_range_id: Classificação Indicativa
 
+        # Filmable
+
+        genders_str: Categoria
+        directors_str: Direção
+        cast_str: Elenco
+
         cover: Capa
 
         studio: Estúdio

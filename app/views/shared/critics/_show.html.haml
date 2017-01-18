@@ -1,3 +1,5 @@
+- filmable = critic.filmable
+
 .container.content
   .row
     .col-xs-12
@@ -5,45 +7,59 @@
         .media
           .media-left.media-middle
             %svg.icon-title
-              %use{"xlink:href" => "#critica"}
+              %use{"xlink:href": "#critica"}
           .media-body.media-bottom
             .media-heading.title-section
               = critic.name
   .row
     .col-xs-12.critica-mais-recente
       .col-xs-12.col-sm-4.col-md-2
-        %img.img-responsive{:src => "http://placehold.it/250x300"}/
+        %img.img-responsive{ src: "http://placehold.it/250x300" }
       .col-xs-12.col-sm-8.col-md-10.critica-recente
         .info
-          Estreia:
-          %span.bold.wine 12/05/2015
-          Categoria:
-          %a.bold.wine{:href => "#"} Suspense
-          .pull-right
-            %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
-        %h4.title Batman vs Superman
-        %span.subtitle A origem da justiça
-        %span.original-title (Batman Vs Superman: Dawn of Justice)
+          .row
+            .col-xs-12
+              = Critic.human_attribute_name(:release)
+              %span.bold.wine
+                = l(filmable.release, format: :long_date)
+
+              .pull-right
+                %input#input-2.rating.hide{ "data-max": "5", "data-min": "0", "data-readonly": "true", "data-show-caption": "false", "data-show-clear": "false", "data-size": "xss", "data-step": "0.5", name: "input-2", type: "number", value: "4" }
+
+          .row
+            .col-xs-12
+              = Movie.human_attribute_name(:genders_str)
+              %a.bold.wine{href: "#"}
+                = filmable.genders_str
+
+        %h4.title
+          = filmable.title_str
+        %span.original-title
+          = filmable.original_title
+
         .diretor-elenco
-          Direção:
-          %a.wine.bold{:href => "#"} Terrence Malick
-          %br/
-          Elenco:
+          = Movie.human_attribute_name(:directors_str)
+          %a.wine.bold{href: "#"}
+            = filmable.directors_str
+          %br
+
+          = Movie.human_attribute_name(:cast_str)
           = succeed "," do
-            %a.wine.bold{:href => "#"} Brad Pitt
-          = succeed "," do
-            %a.wine.bold{:href => "#"} Harison Ford
-          %a.wine.bold{:href => "#"} Robert Downey Jr.
+            %a.wine.bold{href: "#"} Brad Pitt
+          = succeed " e" do
+            %a.wine.bold{href: "#"} Harrison Ford
+          %a.wine.bold{href: "#"} Robert Downey Jr.
 
         .content
           %p
             = critic.content
 
         .info
-          Por:
-          %a.bold.wine{:href => "#"}
+          = Critic.human_attribute_name(:user)
+          %a.bold.wine{href: "#"}
             = critic.user_name
-          %br/
-          Data publicação:
+          %br
+
+          = Critic.human_attribute_name(:updated_at)
           %span.bold.wine
-            = l(critic.updated_at, format: :short)
+            = l(critic.updated_at, format: :long_date)

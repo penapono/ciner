@@ -18,6 +18,9 @@ pt-BR:
         filmable: Filme / Série
         filmable_id: Filme / Série
         filmable_type: Referente à
+        updated_at: Data de Publicação
+        user: Por
+        release: Estréia
       critic/filmable_type:
         movie: Filme
         serie: Série
