@@ -9,10 +9,8 @@ RSpec.describe Critic, type: :model do
   end
 
   describe '#associations' do
-    it { is_expected.to belong_to :city }
-    it { is_expected.to belong_to :state }
-    it { is_expected.to belong_to :country }
     it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :filmable }
   end
 
   describe '#validations' do
@@ -22,9 +20,6 @@ RSpec.describe Critic, type: :model do
   end
 
   describe 'delegations' do
-    it { is_expected.to delegate_method(:name).to(:city).with_prefix(true) }
-    it { is_expected.to delegate_method(:name).to(:state).with_prefix(true) }
-    it { is_expected.to delegate_method(:name).to(:country).with_prefix(true) }
     it { is_expected.to delegate_method(:name).to(:user).with_prefix(true) }
   end
 end

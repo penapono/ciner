@@ -1,5 +1,6 @@
 //= require datepicker_custom
 //= require components/datepicker
+//= require components/ciner_select2
 //= require components/cep_finder
 //= require components/limited_input
 //= require components/cpf_validator

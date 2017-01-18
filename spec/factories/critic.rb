@@ -4,9 +4,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "Critic #{n}" }
     sequence(:content) { |n| "Content #{n}" }
     user
-    city { user.city }
-    state { city.state }
-    country { city.state.country }
 
     trait :invalid do
       name nil

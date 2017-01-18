@@ -15,6 +15,9 @@ pt-BR:
         state_id: Estado
         city: Cidade
         city_id: Cidade
+        filmable: Filme / Série
+        filmable_id: Filme / Série
+        filmable_type: Referente à
       critic/filmable_type:
         movie: Filme
         serie: Série

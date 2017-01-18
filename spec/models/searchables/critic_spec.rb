@@ -10,13 +10,11 @@ describe Searchables::Critic do
     '
       critics.name LIKE :search OR
       critics.content LIKE :search OR
-      cities.name LIKE :search OR
-      states.name LIKE :search OR
-      countries.name LIKE :search
+      users.name LIKE :search
     '
   end
 
-  let(:expected_search_associations) { [:city, :state, :country] }
+  let(:expected_search_associations) { [:user] }
 
   describe 'search methods' do
     describe '#search_associations' do

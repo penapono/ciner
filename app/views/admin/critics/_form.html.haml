@@ -6,17 +6,19 @@
 
   .row
     .col-xs-12
-      = f.input :name, required: true, autofocus: true
+      = f.input :name, required: true, autofocus: true, value: 'Teste'
   .row
     .col-xs-12
-      = f.input :content, required: true, autofocus: true, input_html: { rows: 3 }
-  .row
-    .col-xs-3
-      = f.input :city_id, collection: cities
-    .col-xs-3
-      = f.input :state_id, collection: states
-    .col-xs-3
-      = f.input :country_id, collection: countries
+      = f.input :content, required: true, autofocus: true, input_html: { rows: 3 }, value: 'Teste'
+
+  .row{ data: { filmable: '' } }
+    .col-xs-3{ data: { filmable_select: '' } }
+      = f.input :filmable_type, collection: [['Filme', Movie],['Série', Serie]], selected: Movie
+    .col-xs-9
+      .div{ data: { filmable_type: 'Movie' } }
+        = f.input :filmable_id, collection: movies
+      .div.hidden{ data: { filmable_type: 'Serie' } }
+        = f.input :filmable_id, collection: series
 
   = f.hidden_field :user_id, value: current_user.id
 

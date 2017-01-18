@@ -2,10 +2,6 @@ class CreateCritics < ActiveRecord::Migration
   def change
     create_table :critics do |t|
       t.references :user, index: true
-      t.references :city
-      t.references :state
-      t.references :country
-
       t.references :filmable, polymorphic: true, index: true
 
       t.string :name

@@ -60,9 +60,6 @@ ActiveRecord::Schema.define(version: 20170116160619) do
 
   create_table "critics", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
-    t.integer  "city_id",       limit: 4
-    t.integer  "state_id",      limit: 4
-    t.integer  "country_id",    limit: 4
     t.integer  "filmable_id",   limit: 4
     t.string   "filmable_type", limit: 255
     t.string   "name",          limit: 255
