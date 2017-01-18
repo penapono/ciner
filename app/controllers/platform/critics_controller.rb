@@ -6,14 +6,6 @@ module Platform
     # exposes
     expose(:critics) { Critic.all }
     expose(:critic, attributes: :critic_attributes)
-    expose(:countries) { Country.all }
-    expose(:states) { State.all }
-    expose(:cities) { City.all }
-
-    # Filters
-
-    expose(:filtered_states) { filtered_states }
-    expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 10
 
@@ -61,18 +53,6 @@ module Platform
 
     def searched_critics
       critics.search(current_user, params.fetch(:search, ''))
-    end
-
-    # Filters
-
-    def filtered_states
-      return unless params[:filter] && params[:filter][:country].present?
-      Country.find(params[:filter][:country]).states
-    end
-
-    def filtered_cities
-      return unless params[:filter] && params[:filter][:state].present?
-      State.find(params[:filter][:state]).cities
     end
   end
 end
