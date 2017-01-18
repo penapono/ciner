@@ -6,8 +6,8 @@ class CreateSeries < ActiveRecord::Migration
       t.integer :year
       t.string :length
       t.text :synopsis
-      t.datetime :release
-      t.datetime :brazilian_release
+      t.date :release
+      t.date :brazilian_release
       t.references :city
       t.references :state
       t.references :country

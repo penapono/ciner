@@ -22,6 +22,10 @@ RSpec.describe CinerVideo, type: :model do
 
     it { is_expected.to belong_to :studio }
 
+    describe 'mounts' do
+      it { expect(ciner_video.cover).to be_a(CoverUploader) }
+    end
+
     # Ciner Movie
     it { is_expected.to belong_to :approver }
     it { is_expected.to belong_to :owner }

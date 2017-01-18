@@ -14,6 +14,9 @@ class CinerVideo < ActiveRecord::Base
   belongs_to :approver, class_name: 'User'
   belongs_to :owner, class_name: 'User'
 
+  # Uploaders
+  mount_uploader :cover, CoverUploader
+
   # Validations
   validates :original_title,
             :year,

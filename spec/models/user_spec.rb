@@ -12,6 +12,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to belong_to :city }
     it { is_expected.to belong_to :state }
     it { is_expected.to belong_to :country }
+
+    describe 'mounts' do
+      it { expect(user.avatar).to be_a(UserAvatarUploader) }
+    end
   end
 
   describe '#validations' do

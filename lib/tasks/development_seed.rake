@@ -34,7 +34,8 @@ namespace :development_seed do
       release: DateTime.parse("06/08/2010"),
       brazilian_release: DateTime.parse("06/08/2010"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/inception.jpg'))
     )
 
     Movie.find_or_create_by(
@@ -45,7 +46,8 @@ namespace :development_seed do
       release: DateTime.parse("01/06/2001"),
       brazilian_release: DateTime.parse("24/08/2001"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/moulin_rouge.jpg'))
     )
 
       Movie.find_or_create_by(
@@ -56,7 +58,8 @@ namespace :development_seed do
       release: DateTime.parse("15/06/2007"),
       brazilian_release: DateTime.parse("15/06/2007"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/once.jpg'))
     )
 
       Movie.find_or_create_by(
@@ -67,7 +70,8 @@ namespace :development_seed do
       release: DateTime.parse("26/10/2001"),
       brazilian_release: DateTime.parse("26/10/2001"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/donnie.jpg'))
     )
 
     # -------------------------------- Séries ---------------------------------
@@ -82,7 +86,8 @@ namespace :development_seed do
       release: DateTime.parse("02/10/2007"),
       brazilian_release: DateTime.parse("02/10/2007"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/skins.jpg'))
     )
 
     Serie.find_or_create_by(
@@ -93,7 +98,8 @@ namespace :development_seed do
       release: DateTime.parse("19/09/2005"),
       brazilian_release: DateTime.parse("19/09/2005"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/himym.jpg'))
     )
 
     Serie.find_or_create_by(
@@ -104,7 +110,8 @@ namespace :development_seed do
       release: DateTime.parse("09/01/2011"),
       brazilian_release: DateTime.parse("09/01/2011"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/shameless.jpg'))
     )
 
     Serie.find_or_create_by(
@@ -115,7 +122,20 @@ namespace :development_seed do
       release: DateTime.parse("26/03/2005"),
       brazilian_release: DateTime.parse("26/03/2005"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last
+      age_range: AgeRange.last,
+      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/doctor.jpg'))
+    )
+
+    # -------------------------------- Críticas --------------------------------
+
+    Critic.all.destroy_all
+
+    Critic.find_or_create_by(
+      user: User.find_by(name: 'Pedro Naponoceno'),
+      filmable_id: Serie.find_by(title: 'Doctor Who').id,
+      filmable_type: Serie,
+      name: "Doctor Who: Viajando no Espaço-Tempo",
+      content: "O que dizer sobre a maior serie de ficção cientifica? Fantástica,incrível,surpreendente,brilhante tudo isso é pouco para descrever Doctor who,com uma grande mistura de comedia e ficção cientifica doctor who surpreende com elenco fantástico e historia cativante,mesmo tendo um inicio meio fraco principalmente em relação a efeitos especiais,com o tempo você acaba se apaixonando pelo Doctor e suas companions e sofre com as despedidas,recomendo bastante. "
     )
   end
 end

@@ -13,6 +13,9 @@ class Movie < ActiveRecord::Base
 
   has_many :critics, as: :filmable
 
+  # Uploaders
+  mount_uploader :cover, CoverUploader
+
   # Validations
   validates :original_title,
             :year,

@@ -21,6 +21,10 @@ RSpec.describe Serie, type: :model do
     it { is_expected.to belong_to :age_range }
 
     it { is_expected.to belong_to :studio }
+
+    describe 'mounts' do
+      it { expect(serie.cover).to be_a(CoverUploader) }
+    end
   end
 
   describe '#delegations' do

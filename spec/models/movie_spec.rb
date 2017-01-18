@@ -21,6 +21,10 @@ RSpec.describe Movie, type: :model do
     it { is_expected.to belong_to :age_range }
 
     it { is_expected.to belong_to :studio }
+
+    describe 'mounts' do
+      it { expect(movie.cover).to be_a(CoverUploader) }
+    end
   end
 
   describe 'methods' do
