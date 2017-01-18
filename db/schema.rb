@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.integer  "year",              limit: 4
     t.string   "length",            limit: 255
     t.text     "synopsis",          limit: 65535
-    t.datetime "release"
-    t.datetime "brazilian_release"
+    t.date     "release"
+    t.date     "brazilian_release"
     t.integer  "city_id",           limit: 4
     t.integer  "state_id",          limit: 4
     t.integer  "country_id",        limit: 4
@@ -170,8 +170,8 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.integer  "year",              limit: 4
     t.string   "length",            limit: 255
     t.text     "synopsis",          limit: 65535
-    t.datetime "release"
-    t.datetime "brazilian_release"
+    t.date     "release"
+    t.date     "brazilian_release"
     t.integer  "city_id",           limit: 4
     t.integer  "state_id",          limit: 4
     t.integer  "country_id",        limit: 4

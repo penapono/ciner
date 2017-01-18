@@ -60,6 +60,7 @@ pt-BR:
     formats:
       long: '%d de %B de %Y, %H:%M'
       short: '%d de %B de %Y'
+      shorter: '%d/%m/%Y'
     distance_in_words:
       about_x_hours:
         one: aproximadamente 1 hora
@@ -97,6 +98,16 @@ pt-BR:
         other: ! '%{count} segundos'
 
   date:
+    formats:
+      monthname: "%B"
+      monthabbrev: "%b"
+      daymonthname: "%d de %B"
+      weekdaymonthday: '%A, %d de %B, %Y'
+      short: '%d/%m/%Y'
+      simpledate: '%d/%m/%Y'
+      month_year: '%m/%Y'
+      mont_name_year: '%B/%Y'
+      long_date: '%d de %B de %Y'
     short_day_names:
       - D
       - S
@@ -149,16 +160,6 @@ pt-BR:
       - Outubro
       - Novembro
       - Dezembro
-
-    formats:
-      monthname: "%B"
-      monthabbrev: "%b"
-      daymonthname: "%d de %B"
-      weekdaymonthday: '%A, %d de %B, %Y'
-      short: '%d/%m/%Y'
-      simpledate: '%d/%m/%Y'
-      month_year: '%m/%Y'
-      mont_name_year: '%B/%Y'
   helpers:
     page_entries_info:
       one_page:
