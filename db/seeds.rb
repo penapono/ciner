@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# ------------------------------ País ------------------------------
+
 country = Country.find_or_create_by(name: 'Brasil', acronym: 'BR')
 
 State.find_or_create_by(name: 'Acre', acronym: 'AC', country: country)
@@ -219,5 +221,3 @@ FilmProductionCategory.find_or_create_by(name: 'Mistério', description: 'Myster
 FilmProductionCategory.find_or_create_by(name: 'Ficção Científica', description: 'Sci-Fi')
 FilmProductionCategory.find_or_create_by(name: 'Faroeste', description: 'Western')
 FilmProductionCategory.find_or_create_by(name: 'Suspense', description: 'Thriller')
-
-

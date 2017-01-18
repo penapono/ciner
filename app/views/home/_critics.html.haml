@@ -6,9 +6,11 @@
         %svg.icon-title
           %use{"xlink:href" => "#critica"}
       .media-body.media-bottom
-        .media-heading.title-section Críticas do mês
+        .media-heading.title-section
+          Críticas do mês
       .media-body.text-right.media-middle
-        %a{:href => "#"} ver mais
+        = link_to critics_path do
+          ver mais
   .reviews
     - critics.each do |critic|
       = render 'critic', critic: critic

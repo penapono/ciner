@@ -49,8 +49,19 @@ form.form-criticas .btn-filter:hover {
   margin-bottom: 20px;
 }
 
+.critica-item .img-responsive {
+  min-height: 200px;
+}
+
 .critica-item .info {
   margin-top: 10px;
+}
+
+.critica-item .info .title {
+  height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .critica-item h4 {

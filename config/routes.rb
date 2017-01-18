@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get "/seja_ciner", to: "plans#index", as: "plans"
   get "/movies", to: "movies#index", as: "movies"
-  get "/critics", to: "critics#index", as: "critics"
+  resources :critics, only: [:index, :show]
   get "/debates", to: "debates#index", as: "debates"
   get "/news", to: "news#index", as: "news"
   get "/newdetail", to: "news#detail", as: "newdetail"
