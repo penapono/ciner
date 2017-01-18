@@ -11,6 +11,8 @@ class Critic < ActiveRecord::Base
   validates :name,
             :content,
             :user,
+            :filmable_type,
+            :filmable_id,
             presence: true
 
   # Delegations

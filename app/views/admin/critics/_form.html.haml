@@ -16,9 +16,9 @@
       = f.input :filmable_type, collection: [['Filme', Movie],['Série', Serie]], selected: Movie
     .col-xs-9
       .div{ data: { filmable_type: 'Movie' } }
-        = f.input :filmable_id, collection: movies, label_method: :title_str
+        = f.input :filmable_id, collection: movies, label_method: :title_str, value_method: :id
       .div.hidden{ data: { filmable_type: 'Serie' } }
-        = f.input :filmable_id, collection: series, label_method: :title_str
+        = f.input :filmable_id, collection: series, label_method: :title_str, value_method: :id
 
   = f.hidden_field :user_id, value: current_user.id
 

@@ -10,6 +10,13 @@ $(function() {
     _changeSelect(value);
   });
 
+  $('[data-filmable]').on("change", "[data-filmable-type] select", function(event) {
+    var self = $(this),
+        value = self.val();
+
+    $('[data-filmable-type] select').val(value);
+  });
+
   function _changeSelect(aValue) {
     _manageClass(aValue, "hidden");
   }
