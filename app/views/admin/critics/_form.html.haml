@@ -2,18 +2,13 @@
   %h3
     = t('.general')
 
-  = critic.errors.first.to_s
-
   .row
     .col-xs-12
-      = f.input :name, required: true, autofocus: true, value: 'Teste'
-  .row
-    .col-xs-12
-      = f.input :content, required: true, autofocus: true, input_html: { rows: 3 }, value: 'Teste'
+      = f.input :content, required: true, autofocus: true, input_html: { rows: 5 }
 
   .row{ data: { filmable: '' } }
     .col-xs-3{ data: { filmable_select: '' } }
-      = f.input :filmable_type, collection: [['Filme', Movie],['Série', Serie]], selected: Movie
+      = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, selected: Movie
     .col-xs-9
       .div{ data: { filmable_type: 'Movie' } }
         = f.input :filmable_id, collection: movies, label_method: :title_str, value_method: :id

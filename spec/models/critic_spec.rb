@@ -14,8 +14,9 @@ RSpec.describe Critic, type: :model do
   end
 
   describe '#validations' do
-    it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :content }
+    it { is_expected.to validate_presence_of :filmable_id }
+    it { is_expected.to validate_presence_of :filmable_type }
     it { is_expected.to validate_presence_of :user }
   end
 

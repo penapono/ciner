@@ -1,3 +1,5 @@
+- highlight_critic = critics.first
+
 .container.content
   .row
     .col-xs-12
@@ -10,8 +12,10 @@
             .media-heading.title-section
               = Critic.model_name.human(count: 2)
 
-  = render 'filters'
+  = render 'shared/critics/toolbar', path: platform_critics_path
 
-  = render 'highlight_critic', critic: critics.first
+  = render 'shared/critics/highlight_critic', critic: critics.first, path: platform_critic_path(critic)
 
-  = render 'critics', critics: critics
+  .row
+    - critics.each do |critic|
+      = render 'shared/critics/critic', critic: critic, path: platform_critic_path(critic)

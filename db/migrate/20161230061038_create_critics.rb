@@ -4,7 +4,6 @@ class CreateCritics < ActiveRecord::Migration
       t.references :user, index: true
       t.references :filmable, polymorphic: true, index: true
 
-      t.string :name
       t.text :content
       t.integer :rating
 

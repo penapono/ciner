@@ -1,0 +1,18 @@
+= render 'shared/toolbar'
+
+.toolbar
+  .row.searchbar
+    .col-xs-12
+      = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
+
+  .row.filters{ data: { dynamic_filter: '' } }
+    = simple_form_for :filter, url: path, method: :get, data: { filter_form: '' } do |f|
+      = hidden_field_tag :search, params[:search]
+      .col-xs-2
+        = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, label: false, include_blank: t('.filters.filmable_type'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:filmable_type, '')
+      .col-xs-4
+        = f.input :filmable_id, collection: [], label: false, include_blank: t('.filters.filmable_id'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')
+        .hidden
+          = f.input :filmable_id, collection: [], label: false, include_blank: t('.filters.filmable_id'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')
+      .col-xs-3
+        = f.input :year, collection: FilmProfitable.localized_years, label: false, include_blank: t('.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')

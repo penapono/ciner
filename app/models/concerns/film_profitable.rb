@@ -24,4 +24,14 @@ module FilmProfitable
     #   ["Não informado 1", "Não Informado 2", "Não informado 3"].to_sentence
     # end
   end
+
+  def self.localized_filmable_types
+    [['Filme', Movie],['Série', Serie]]
+  end
+
+  def self.localized_years
+    years = []
+    (1930..DateTime.now.year).each { |year| years << year }
+    years
+  end
 end

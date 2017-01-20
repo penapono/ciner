@@ -6,16 +6,8 @@ module Admin
     # exposes
     expose(:critics) { Critic.all }
     expose(:critic, attributes: :critic_attributes)
-    expose(:countries) { Country.all }
-    expose(:states) { State.all }
-    expose(:cities) { City.all }
     expose(:movies) { Movie.first(20) }
     expose(:series) { Serie.first(20) }
-
-    # Filters
-
-    expose(:filtered_states) { filtered_states }
-    expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 10
 
@@ -47,8 +39,7 @@ module Admin
 
     def critic_params
       params.require(:critic).permit(
-        :name, :content, :user_id, :country_id, :state_id, :city_id,
-        :filmable_id, :filmable_type, :filmable
+        :content, :user_id, :filmable_id, :filmable_type, :filmable
       )
     end
 
@@ -64,18 +55,6 @@ module Admin
 
     def searched_critics
       critics.search(current_user, params.fetch(:search, ''))
-    end
-
-    # Filters
-
-    def filtered_states
-      return unless params[:filter] && params[:filter][:country].present?
-      Country.find(params[:filter][:country]).states
-    end
-
-    def filtered_cities
-      return unless params[:filter] && params[:filter][:state].present?
-      State.find(params[:filter][:state]).cities
     end
   end
 end
