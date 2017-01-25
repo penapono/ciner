@@ -9,6 +9,8 @@ class CreateCritics < ActiveRecord::Migration
 
       t.integer :filmable_release_year
 
+      t.float :rating
+
       t.timestamps null: false
     end
   end

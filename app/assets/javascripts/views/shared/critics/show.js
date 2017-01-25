@@ -1,0 +1,1 @@
+//= require star-rating.min

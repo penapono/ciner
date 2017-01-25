@@ -21,6 +21,7 @@ pt-BR:
         updated_at: Data de Publicação
         user: Por
         release: Estréia
+        rating: Nota
       critic/filmable_type:
         movie: Filme
         serie: Série

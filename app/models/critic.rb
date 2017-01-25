@@ -12,10 +12,14 @@ class Critic < ActiveRecord::Base
             :user,
             :filmable_type,
             :filmable_id,
+            :rating,
             presence: true
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :title_str, to: :filmable, allow_nil: true, prefix: true
+  delegate :original_title, to: :filmable, allow_nil: true, prefix: true
+  delegate :cover, to: :filmable, allow_nil: true, prefix: true
 
   # Callbacks
   before_save :update_year

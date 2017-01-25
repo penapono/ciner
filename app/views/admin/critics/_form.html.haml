@@ -2,18 +2,21 @@
   %h3
     = t('.general')
 
-  .row
-    .col-xs-12
-      = f.input :content, required: true, autofocus: true, input_html: { rows: 5 }
-
   .row{ data: { filmable: '' } }
     .col-xs-3{ data: { filmable_select: '' } }
       = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, selected: Movie
-    .col-xs-9
+    .col-xs-6
       .div{ data: { filmable_type: 'Movie' } }
         = f.input :filmable_id, collection: movies, label_method: :title_str, value_method: :id
       .div.hidden{ data: { filmable_type: 'Serie' } }
         = f.input :filmable_id, collection: series, label_method: :title_str, value_method: :id
+    .col-xs-3
+      = f.input :rating, input_html: { step: 0.5, min: 0, max: 5 }
+
+  .row
+    .col-xs-12
+      = f.input :content, required: true, autofocus: true, input_html: { rows: 5 }
+
 
   = f.hidden_field :user_id, value: current_user.id
 

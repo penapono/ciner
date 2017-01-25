@@ -5,6 +5,7 @@ FactoryGirl.define do
     user
     filmable_id { create(:movie).id }
     filmable_type Movie
+    rating 5.0
 
     trait :invalid do
       content nil

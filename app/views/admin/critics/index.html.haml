@@ -14,6 +14,10 @@
         = Critic.human_attribute_name(:content)
       %th
         = Critic.human_attribute_name(:filmable)
+      %th
+        = Critic.human_attribute_name(:user)
+      %th
+        = Critic.human_attribute_name(:rating)
 
       / Actions
       %th{ colspan: 2 }
@@ -25,7 +29,13 @@
             = critic.name
 
         %td
-          = critic.filmable.title
+          = critic.filmable_title_str
+
+        %td
+          = critic.user_name
+
+        %td
+          = render 'shared/critics/rating', critic: critic
 
         %td
           = link_to edit_admin_critic_path(critic) do

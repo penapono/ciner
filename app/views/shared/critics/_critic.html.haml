@@ -1,13 +1,12 @@
-- filmable = critic.filmable
-- cover = filmable.cover
+- cover = critic.filmable_cover
 - cover ||= "http://placehold.it/250x300"
 
 = link_to path do
   .col-xs-12.col-sm-4.col-md-2.critica-item
     %img.img-responsive{ src: cover }
     .info
-      %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "3"}
+      = render 'shared/critics/rating', critic: critic
       %h4.bold.title
-        = filmable.title_str
+        = critic.filmable_title_str
       %span.original-title
-        = filmable.original_title
+        = critic.filmable_original_title

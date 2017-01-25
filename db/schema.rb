@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.integer  "age_range_id"
-    t.text     "cover",             limit: 65535
+    t.string   "cover"
     t.integer  "studio_id"
     t.date     "approval"
     t.integer  "user_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.string   "filmable_type"
     t.integer  "filmable_id"
     t.text     "content",               limit: 65535
-    t.integer  "rating"
+    t.float    "rating",                limit: 24
     t.integer  "filmable_release_year"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.integer  "age_range_id"
-    t.text     "cover",             limit: 65535
+    t.string   "cover"
     t.integer  "type"
     t.integer  "studio_id"
     t.date     "approval"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.integer  "age_range_id"
-    t.text     "cover",             limit: 65535
+    t.string   "cover"
     t.integer  "studio_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.integer  "age_range_id"
-    t.text     "cover",             limit: 65535
+    t.string   "cover"
     t.integer  "studio_id"
     t.integer  "season"
     t.integer  "number_episodes"
