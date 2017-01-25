@@ -5,121 +5,50 @@
     .media
       .media-left.media-middle
         %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-          %use{"xlink:href" => "#ficha"}
+          %use{"xlink:href" => "#busca"}
       .media-body.media-bottom
-        .media-heading.title-section Ficha técnica
+        .media-heading.title-section
+          = Movie.human_attribute_name(:trailer)
   .ficha
     .info
-      Título:
-      %strong
-        %span.wine Captain America: Civil War (Original)
-    .info
-      Ano de produção:
-      %strong
-        %span.wine 2016
-    .info
-      Dirigido por:
-      %strong
-        %a.wine{:href => "#"}> Anthony Russo
-        ,
-        %a.wine{:href => "#"} Joe Russo
-    .info
-      Estreia nacional:
-      %strong
-        %span.wine 28.05.2016
-    .info
-      Estreia mundial:
-      %strong
-        %span.wine 12.05.2016
-    .info
-      Duração:
-      %strong
-        %span.wine 147 minutos
-    .info
-      Classificação:
-      %strong
-        %span.wine 12 anos
-    .info
-      Gênero:
-      %strong
-        %span.wine Ação, Aventura
-    .info
-      Origem:
-      %strong
-        %span.wine Estados Unidos
-#roteiro.roteiro
-  .title-separator
-    .media
-      .media-body.media-bottom
-        .media-heading.title-section
-          = Movie.human_attribute_name(:writers_str)
-  .roteiristas
-    .row
-      - object.writers.each do |filmable_professional|
-        = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista'
-#direcao.direcao
-  .title-separator
-    .media
-      .media-body.media-bottom
-        .media-heading.title-section
-          = Movie.human_attribute_name(:directors_str)
-  .diretores
-    .row
-      - object.directors.each do |filmable_professional|
-        = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor'
-#elenco.elenco
-  .title-separator
-    .media
-      .media-body.media-bottom
-        .media-heading.title-section
-          = Movie.human_attribute_name(:cast_str)
-  .atores-principais
-    .row
-      - object.actors.each do |filmable_professional|
-        = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation
-  .atores
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Vision
-      .col-xs-6.ator{"data-mh" => "group"} Paul Bettany
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Wanda Maximoff / Scarlet Witch
-      .col-xs-6.ator{"data-mh" => "group"} Elizabeth Olsen
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Scott Lang / Ant-Man
-      .col-xs-6.ator{"data-mh" => "group"} Paul Rudd
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Sharon Carter
-      .col-xs-6.ator{"data-mh" => "group"} Emily VanCamp
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} May Parker
-      .col-xs-6.ator{"data-mh" => "group"} Marisa Tomei
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Brock Rumlow / Crossbones
-      .col-xs-6.ator{"data-mh" => "group"} Frank Grillo
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Peter Parker / Spider-Man
-      .col-xs-6.ator{"data-mh" => "group"} Tom Holland (II)
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Everett K. Ross
-      .col-xs-6.ator{"data-mh" => "group"} Martin Freeman
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Secretary of State Thaddeus Ross
-      .col-xs-6.ator{"data-mh" => "group"} William Hurt
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Zemo
-      .col-xs-6.ator{"data-mh" => "group"} Daniel Brühl
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} King T'Chaka
-      .col-xs-6.ator{"data-mh" => "group"} John Kani
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Howard Stark
-      .col-xs-6.ator{"data-mh" => "group"} John Slattery
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Miriam
-      .col-xs-6.ator{"data-mh" => "group"} Alfre Woodard
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} Security Chief
-      .col-xs-6.ator{"data-mh" => "group"} Florence Kasumba
-    .row
-      .col-xs-6.personagem{"data-mh" => "group"} GSG9 Task Force Gunner
-      .col-xs-6.ator{"data-mh" => "group"} Josh Peck
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/HiixbtN-O24", :width => "100%"}
+
+- if object.writers
+  #roteiro.roteiro
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:writers_str)
+    .roteiristas
+      .row
+        - object.writers.each do |filmable_professional|
+          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista'
+
+- if object.directors
+  #direcao.direcao
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:directors_str)
+    .diretores
+      .row
+        - object.directors.each do |filmable_professional|
+          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor'
+
+- if object.actors
+  #elenco.elenco
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:cast_str)
+    .atores-principais
+      .row
+        - object.actors.first(6).each do |filmable_professional|
+          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation
+    .atores
+      - object.actors.each_with_index do |filmable_professional, index|
+        - if index > 5
+          =  render 'shared/movies/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation

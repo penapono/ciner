@@ -1,0 +1,9 @@
+- object = professional
+- data_mh ||= ""
+- observation ||= nil
+
+.row
+  .col-xs-6.personagem{ "data-mh": data_mh }
+    = observation
+  .col-xs-6.ator{ "data-mh": data_mh }
+    = object.name

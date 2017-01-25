@@ -78,6 +78,11 @@
   transition: all linear 0.3s;
 }
 
+#ficha-tecnica {
+  height: 400px;
+  width: 100%;
+}
+
 .ficha-tecnica .ficha .info:nth-child(odd) {
   background-color: #eef3f6;
 }
