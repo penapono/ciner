@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,249 +12,242 @@
 
 ActiveRecord::Schema.define(version: 20170116160619) do
 
-  create_table "age_ranges", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "age",        limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "ciner_videos", force: :cascade do |t|
-    t.string   "original_title",    limit: 255
-    t.string   "title",             limit: 255
-    t.integer  "year",              limit: 4
-    t.string   "length",            limit: 255
+  create_table "ciner_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "original_title"
+    t.string   "title"
+    t.integer  "year"
+    t.string   "length"
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"
-    t.integer  "city_id",           limit: 4
-    t.integer  "state_id",          limit: 4
-    t.integer  "country_id",        limit: 4
-    t.integer  "age_range_id",      limit: 4
-    t.string   "cover",             limit: 255
-    t.integer  "studio_id",         limit: 4
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "age_range_id"
+    t.text     "cover",             limit: 65535
+    t.integer  "studio_id"
     t.date     "approval"
-    t.integer  "user_id",           limit: 4
-    t.integer  "approver_id",       limit: 4
-    t.integer  "owner_id",          limit: 4
+    t.integer  "user_id"
+    t.integer  "approver_id"
+    t.integer  "owner_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "state_id",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
   end
 
-  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
-
-  create_table "countries", force: :cascade do |t|
-    t.string   "acronym",    limit: 255
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "acronym"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "critics", force: :cascade do |t|
-    t.integer  "user_id",               limit: 4
-    t.integer  "filmable_id",           limit: 4
-    t.string   "filmable_type",         limit: 255
+  create_table "critics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "filmable_type"
+    t.integer  "filmable_id"
     t.text     "content",               limit: 65535
-    t.integer  "rating",                limit: 4
-    t.integer  "filmable_release_year", limit: 4
+    t.integer  "rating"
+    t.integer  "filmable_release_year"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
+    t.index ["user_id"], name: "index_critics_on_user_id", using: :btree
   end
 
-  add_index "critics", ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
-  add_index "critics", ["user_id"], name: "index_critics_on_user_id", using: :btree
-
-  create_table "film_production_categories", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "film_production_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "film_productions", force: :cascade do |t|
-    t.string   "original_title",    limit: 255
-    t.string   "title",             limit: 255
-    t.integer  "year",              limit: 4
-    t.string   "length",            limit: 255
+  create_table "film_productions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "original_title"
+    t.string   "title"
+    t.integer  "year"
+    t.string   "length"
     t.text     "synopsis",          limit: 65535
     t.datetime "release"
     t.datetime "brazilian_release"
-    t.integer  "city_id",           limit: 4
-    t.integer  "state_id",          limit: 4
-    t.integer  "country_id",        limit: 4
-    t.integer  "age_range_id",      limit: 4
-    t.string   "cover",             limit: 255
-    t.integer  "type",              limit: 4
-    t.integer  "studio_id",         limit: 4
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "age_range_id"
+    t.text     "cover",             limit: 65535
+    t.integer  "type"
+    t.integer  "studio_id"
     t.date     "approval"
-    t.integer  "user_id",           limit: 4
-    t.integer  "approver_id",       limit: 4
-    t.integer  "owner_id",          limit: 4
-    t.integer  "season",            limit: 4
-    t.integer  "number_episodes",   limit: 4
-    t.integer  "aired_episodes",    limit: 4
+    t.integer  "user_id"
+    t.integer  "approver_id"
+    t.integer  "owner_id"
+    t.integer  "season"
+    t.integer  "number_episodes"
+    t.integer  "aired_episodes"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
-  create_table "filmable_professionals", force: :cascade do |t|
-    t.integer "filmable_id",     limit: 4
-    t.string  "filmable_type",   limit: 255
-    t.integer "professional_id", limit: 4
-    t.integer "set_function_id", limit: 4
+  create_table "filmable_professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "filmable_type"
+    t.integer "filmable_id"
+    t.integer "professional_id"
+    t.integer "set_function_id"
     t.text    "observation",     limit: 65535
+    t.index ["filmable_type", "filmable_id"], name: "index_filmable_professionals_on_filmable_type_and_filmable_id", using: :btree
+    t.index ["professional_id"], name: "index_filmable_professionals_on_professional_id", using: :btree
+    t.index ["set_function_id"], name: "index_filmable_professionals_on_set_function_id", using: :btree
   end
 
-  add_index "filmable_professionals", ["filmable_type", "filmable_id"], name: "index_filmable_professionals_on_filmable_type_and_filmable_id", using: :btree
-  add_index "filmable_professionals", ["professional_id"], name: "index_filmable_professionals_on_professional_id", using: :btree
-  add_index "filmable_professionals", ["set_function_id"], name: "index_filmable_professionals_on_set_function_id", using: :btree
-
-  create_table "movies", force: :cascade do |t|
-    t.string   "original_title",    limit: 255
-    t.string   "title",             limit: 255
-    t.integer  "year",              limit: 4
-    t.string   "length",            limit: 255
+  create_table "movies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "original_title"
+    t.string   "title"
+    t.integer  "year"
+    t.string   "length"
     t.text     "synopsis",          limit: 65535
     t.date     "release"
     t.date     "brazilian_release"
-    t.integer  "city_id",           limit: 4
-    t.integer  "state_id",          limit: 4
-    t.integer  "country_id",        limit: 4
-    t.integer  "age_range_id",      limit: 4
-    t.string   "cover",             limit: 255
-    t.integer  "studio_id",         limit: 4
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "age_range_id"
+    t.text     "cover",             limit: 65535
+    t.integer  "studio_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
-  create_table "professionals", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.integer  "gender",          limit: 4
-    t.string   "nickname",        limit: 255
+  create_table "professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "gender"
+    t.string   "nickname"
     t.date     "birthday"
-    t.integer  "age",             limit: 4
-    t.string   "cep",             limit: 255
-    t.string   "address",         limit: 255
-    t.string   "number",          limit: 255
-    t.string   "neighbourhood",   limit: 255
-    t.string   "complement",      limit: 255
-    t.string   "cpf",             limit: 255
-    t.string   "phone",           limit: 255
-    t.string   "mobile",          limit: 255
-    t.string   "avatar",          limit: 255
+    t.integer  "age"
+    t.string   "cep"
+    t.string   "address"
+    t.string   "number"
+    t.string   "neighbourhood"
+    t.string   "complement"
+    t.string   "cpf"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "avatar"
     t.text     "biography",       limit: 65535
-    t.integer  "city_id",         limit: 4
-    t.integer  "state_id",        limit: 4
-    t.integer  "country_id",      limit: 4
-    t.integer  "set_function_id", limit: 4
-    t.integer  "user_id",         limit: 4
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "set_function_id"
+    t.integer  "user_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.index ["city_id"], name: "index_professionals_on_city_id", using: :btree
+    t.index ["country_id"], name: "index_professionals_on_country_id", using: :btree
+    t.index ["state_id"], name: "index_professionals_on_state_id", using: :btree
   end
 
-  add_index "professionals", ["city_id"], name: "index_professionals_on_city_id", using: :btree
-  add_index "professionals", ["country_id"], name: "index_professionals_on_country_id", using: :btree
-  add_index "professionals", ["state_id"], name: "index_professionals_on_state_id", using: :btree
-
-  create_table "series", force: :cascade do |t|
-    t.string   "original_title",    limit: 255
-    t.string   "title",             limit: 255
-    t.integer  "year",              limit: 4
-    t.string   "length",            limit: 255
+  create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "original_title"
+    t.string   "title"
+    t.integer  "year"
+    t.string   "length"
     t.text     "synopsis",          limit: 65535
     t.date     "release"
     t.date     "brazilian_release"
-    t.integer  "city_id",           limit: 4
-    t.integer  "state_id",          limit: 4
-    t.integer  "country_id",        limit: 4
-    t.integer  "age_range_id",      limit: 4
-    t.string   "cover",             limit: 255
-    t.integer  "studio_id",         limit: 4
-    t.integer  "season",            limit: 4
-    t.integer  "number_episodes",   limit: 4
-    t.integer  "aired_episodes",    limit: 4
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "age_range_id"
+    t.text     "cover",             limit: 65535
+    t.integer  "studio_id"
+    t.integer  "season"
+    t.integer  "number_episodes"
+    t.integer  "aired_episodes"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
-  create_table "set_functions", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.integer  "user_id",     limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "set_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_set_functions_on_user_id", using: :btree
   end
 
-  add_index "set_functions", ["user_id"], name: "index_set_functions_on_user_id", using: :btree
-
-  create_table "states", force: :cascade do |t|
-    t.string   "acronym",    limit: 255
-    t.string   "name",       limit: 255
-    t.integer  "country_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "acronym"
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_states_on_country_id", using: :btree
   end
 
-  add_index "states", ["country_id"], name: "index_states_on_country_id", using: :btree
-
-  create_table "studios", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "country_id", limit: 4
-    t.integer  "state_id",   limit: 4
-    t.integer  "city_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "studios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255,   default: "",    null: false
-    t.string   "encrypted_password",     limit: 255,   default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",                                default: "",    null: false
+    t.string   "encrypted_password",                   default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,     default: 0,     null: false
+    t.integer  "sign_in_count",                        default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "name",                   limit: 255
-    t.integer  "gender",                 limit: 4
-    t.string   "nickname",               limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "name"
+    t.integer  "gender"
+    t.string   "nickname"
     t.date     "birthday"
-    t.integer  "age",                    limit: 4
-    t.string   "cep",                    limit: 255
-    t.string   "address",                limit: 255
-    t.string   "number",                 limit: 255
-    t.string   "neighbourhood",          limit: 255
-    t.string   "complement",             limit: 255
-    t.integer  "role",                   limit: 4
-    t.string   "cpf",                    limit: 255
-    t.string   "phone",                  limit: 255
-    t.string   "mobile",                 limit: 255
-    t.string   "avatar",                 limit: 255
+    t.integer  "age"
+    t.string   "cep"
+    t.string   "address"
+    t.string   "number"
+    t.string   "neighbourhood"
+    t.string   "complement"
+    t.integer  "role"
+    t.string   "cpf"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "avatar"
     t.text     "biography",              limit: 65535
     t.boolean  "terms_of_use",                         default: false
     t.boolean  "accepted_term_of_use"
     t.date     "registered_at"
-    t.integer  "city_id",                limit: 4
-    t.integer  "state_id",               limit: 4
-    t.integer  "country_id",             limit: 4
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.index ["city_id"], name: "index_users_on_city_id", using: :btree
+    t.index ["country_id"], name: "index_users_on_country_id", using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["state_id"], name: "index_users_on_state_id", using: :btree
   end
-
-  add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
-  add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
 
   add_foreign_key "set_functions", "users"
 end
