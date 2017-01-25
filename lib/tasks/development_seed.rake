@@ -86,6 +86,68 @@ namespace :development_seed do
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/donnie.jpg'))
     object.save
 
+    # -------------------------------- Diretores ------------------------------
+
+    Professional.find_or_create_by(
+      name: 'Christopher Nolan',
+      set_function: SetFunction.find_by(name: 'Direção')
+    )
+
+    # -------------------------------- Elenco ------------------------------
+
+    Professional.find_or_create_by(
+      name: 'Leonardo DiCaprio',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Marion Cotillard',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Ellen Page',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    # ------------------------ Profissionais em Filmes -------------------------
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Leonardo DiCaprio',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    )
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Marion Cotillard',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    )
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Ellen Page',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    )
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Direção'),
+      professional: Professional.find_by(
+                      name: 'Christopher Nolan',
+                      set_function: SetFunction.find_by(name: 'Direção')
+                    )
+    )
+
     # -------------------------------- Séries ---------------------------------
 
     Serie.all.destroy_all

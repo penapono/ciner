@@ -16,13 +16,16 @@ module FilmProfitable
       "Não informado"
     end
 
-    def directors_str
-      "Não informado"
+    def actors_str
+      byebug
+      actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco'))
+      actors.map(&:name).to_sentence
     end
 
-    # def actors
-    #   ["Não informado 1", "Não Informado 2", "Não informado 3"].to_sentence
-    # end
+    def directors_str
+      directors = professionals.where(set_function: SetFunction.find_by(name: 'Direção'))
+      directors.map(&:name).to_sentence
+    end
   end
 
   def self.filmables_by_type(type)

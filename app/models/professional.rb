@@ -72,12 +72,14 @@ class Professional < ActiveRecord::Base
   private
 
   def update_address
+    return unless city
     self.state_id = city.state.id
     self.country_id = state.country.id
   end
 
   def update_age
-    self.age = 0 unless birthday
+    self.age = 0
+    return unless birthday
     now = Time.now.utc.to_date
     self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
   end

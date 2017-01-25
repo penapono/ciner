@@ -29,20 +29,15 @@
               %h4.light.cinza
                 = object.original_title
               Direção:
-              = succeed "," do
-                %a.bold.wine{:href => "#"} Anthony Russo
-              = succeed "." do
-                %a.bold.wine{:href => "#"} Joe Russo
+              %a.bold.wine
+                = object.directors_str
               %br
               %br
               Elenco:
-              = succeed "," do
-                %a.bold.wine{:href => "#"} Chris Evans
-              = succeed "," do
-                %a.bold.wine{:href => "#"} Robert Downey Jr.
-              = succeed "," do
-                %a.bold.wine{:href => "#"} Scarlett Johansson
-              %a.bold.preto{:href => "#ficha-tecnica"} mais
+              %a.bold.wine
+                = object.actors_str
+              %a.bold.preto{:href => "#ficha-tecnica"}
+                mais
               %br
               %br
               = object.synopsis
