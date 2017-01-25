@@ -31,9 +31,9 @@ class Movie < ActiveRecord::Base
   delegate :name, to: :age_range, allow_nil: true, prefix: true
 
   # Methods
-  def ciner_critic
+  def ciner_official_critic
     return unless critics.any?
-    critics.first
+    critics.ciner_official_critic
   end
 
   def ciner_rating_user

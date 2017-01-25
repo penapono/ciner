@@ -9,6 +9,9 @@ pt-BR:
   remaining_chars: >
     %{chars} caracteres restantes.
   search: Digite sua busca aqui...
+  more: Mais
+  votes: >
+    %{count} votos
 
   views:
     pagination:

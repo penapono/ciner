@@ -8,16 +8,16 @@ module FilmProfitable
       original_title
     end
 
-    def subtitle_str
-      "Não informado"
+    def genders_str
+      ["Ação", "Aventura"].to_sentence
     end
 
-    def genders_str
-      "Não informado"
+    def first_actors_str
+      actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco')).first(3)
+      actors.map(&:name).to_sentence
     end
 
     def actors_str
-      byebug
       actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco'))
       actors.map(&:name).to_sentence
     end
@@ -25,6 +25,23 @@ module FilmProfitable
     def directors_str
       directors = professionals.where(set_function: SetFunction.find_by(name: 'Direção'))
       directors.map(&:name).to_sentence
+    end
+
+    def first_actors
+      actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco')).first(3)
+      actors.map(&:name).to_sentence
+    end
+
+    def actors
+      filmable_professionals.where(set_function: SetFunction.find_by(name: 'Elenco'))
+    end
+
+    def directors
+      filmable_professionals.where(set_function: SetFunction.find_by(name: 'Direção'))
+    end
+
+    def writers
+      filmable_professionals.where(set_function: SetFunction.find_by(name: 'Roteiro'))
     end
   end
 

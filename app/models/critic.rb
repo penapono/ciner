@@ -58,6 +58,12 @@ class Critic < ActiveRecord::Base
     where(filmable_release_year: year)
   end
 
+  def self.ciner_official_critic
+    find_by(ciner_critic: true)
+  end
+
+  # Callbacks
+
   def update_year
     return unless filmable
     self.filmable_release_year = filmable.release.year

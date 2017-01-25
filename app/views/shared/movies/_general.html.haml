@@ -10,59 +10,67 @@
       .col-xs-12.col-sm-12.col-md-7.col-lg-8
         .row
           .col-xs-12.col-sm-6.col-md-6.col-lg-8
-            Categoria:
-            = succeed "," do
-              %a.wine.bold{:href => "#"} Ação
-            %a.wine.bold{:href => "#"} Aventura
+            = Movie.human_attribute_name(:genders_str)
+            %a.wine.bold
+              = object.genders_str
             %br
+
             = Movie.human_attribute_name(:age_range_id)
             %span.wine.bold
               = object.age_range_name
             %br
+
             = Movie.human_attribute_name(:length)
             %span.wine.bold
               = object.length
             %br
+
             .title
               %h3.bold.wine
                 = object.title_str
               %h4.light.cinza
                 = object.original_title
-              Direção:
+
+              = Movie.human_attribute_name(:directors_str)
               %a.bold.wine
                 = object.directors_str
               %br
               %br
-              Elenco:
+
+              = Movie.human_attribute_name(:cast_str)
               %a.bold.wine
-                = object.actors_str
+                = object.first_actors_str
               %a.bold.preto{:href => "#ficha-tecnica"}
-                mais
+                = t('more')
               %br
               %br
+
               = object.synopsis
               %br
               %br
+
               = Movie.human_attribute_name(:release)
               %br
               %span.wine.bold
                 = l(object.release, format: :long_date)
               %br
               %br
-          - if object.ciner_critic
+
+          - if object.ciner_official_critic
             .col-xs-12.col-sm-3.col-md-3.col-lg-2
               .nota.ciner-rating
                 = Movie.human_attribute_name(:ciner_rating)
                 %span.valor
-                  = object.ciner_critic.rating
-                = object.ciner_critic.user_name
+                  = object.ciner_official_critic.rating
+                = object.ciner_official_critic.user_name
+
           .col-xs-12.col-sm-3.col-md-3.col-lg-2
             .nota
               = Movie.human_attribute_name(:users_rating)
               %span.valor
                 = object.users_rating
-              = object.users_rating_count
-              votos
+              = t('votes', count: object.users_rating_count)
+
           .col-xs-12
             .row
               .tags
@@ -91,7 +99,3 @@
                     %svg.icon-tags
                       %use{"xlink:href" => "#like"}
                     indique
-          .col-xs-12
-            %hr{:style => "border-color: #000;"}/
-            %label.control-label{:for => "input-1"} Avalie esse filme
-            %input#input-2.rating.rating-loading{"data-max" => "5", "data-min" => "0", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xs", "data-step" => "0.5", :name => "input-2", :type => "number"}/

@@ -63,8 +63,9 @@ ActiveRecord::Schema.define(version: 20170116160619) do
     t.text     "content",               limit: 65535
     t.float    "rating",                limit: 24
     t.integer  "filmable_release_year"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.boolean  "ciner_critic",                        default: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
     t.index ["user_id"], name: "index_critics_on_user_id", using: :btree
   end

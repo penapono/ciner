@@ -37,7 +37,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Em um mundo onde é possível entrar na mente humana, Cobb (Leonardo DiCaprio) está entre os melhores na arte de roubar segredos valiosos do inconsciente, durante o estado de sono. Além disto ele é um fugitivo, pois está impedido de retornar aos Estados Unidos devido à morte de Mal (Marion Cotillard). Desesperado para rever seus filhos, Cobb aceita a ousada missão proposta por Saito (Ken Watanabe), um empresário japonês: entrar na mente de Richard Fischer (Cillian Murphy), o herdeiro de um império econômico, e plantar a ideia de desmembrá-lo. Para realizar este feito ele conta com a ajuda do parceiro Arthur (Joseph Gordon-Levitt), a inexperiente arquiteta de sonhos Ariadne (Ellen Page) e Eames (Tom Hardy), que consegue se disfarçar de forma precisa no mundo dos sonhos.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/inception.jpg'))
     object.save
 
@@ -52,7 +51,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Christian (Ewan McGregor) é um jovem escritor que possui um dom para a poesia e que enfrenta seu pai para poder se mudar para o bairro boêmio de Montmartre, em Paris. Lá ele recebe o apoio de Henri de Toulouse-Latrec (John Leguizamo), que o ajuda a participar da vida social e cultural do local, que gira em torno do Moulin Rouge, uma boate que possui um mundo próprio de sexo, drogas, adrenalina e Can-Can. Ao visitar o local, Christian logo se apaixona por Satine (Nicole Kidman), a mais bela cortesã de Paris e estrela maior do Moulin Rouge.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/moulin_rouge.jpg'))
     object.save
 
@@ -67,7 +65,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Dublin, Irlanda. Um músico de rua (Glen Hansard) sente-se inseguro para apresentar suas próprias canções. Um dia ele encontra uma jovem mãe (Markéta Inglová), que tenta ainda se encontrar na cidade. Logo eles se aproximam e, ao reconhecer o talento um do outro, começam a ajudar-se mutuamente para que seus sonhos se tornem realidade.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/once.jpg'))
     object.save
 
@@ -82,7 +79,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Donnie (Jake Gyllenhaal) é um jovem brilhante e excêntrico, que cursa o colegial mas despreza a grande maioria dos seus colegas de escola. Donnie tem visões, em especial de um coelho monstruoso o qual apenas ele consegue ver, que o encorajam a realizar brincadeiras destrutivas e humilhantes com quem o cerca. Até que um dia uma de suas visões o atrai para fora de casa e lhe diz que o mundo acabará dentro de um mês. Donnie inicialmente não acredita na profecia, mas momentos depois um avião cai bem no telhado de sua casa, quase matando-o. É quando ele começa a se perguntar qual o fundo de verdade da sua previsão.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/donnie.jpg'))
     object.save
 
@@ -93,9 +89,16 @@ namespace :development_seed do
       set_function: SetFunction.find_by(name: 'Direção')
     )
 
-    # -------------------------------- Elenco ------------------------------
+    # -------------------------------- Roteirista ------------------------------
 
     Professional.find_or_create_by(
+      name: 'Christopher Nolan',
+      set_function: SetFunction.find_by(name: 'Roteiro')
+    )
+
+    # -------------------------------- Elenco ------------------------------
+
+     Professional.find_or_create_by(
       name: 'Leonardo DiCaprio',
       set_function: SetFunction.find_by(name: 'Elenco')
     )
@@ -110,6 +113,51 @@ namespace :development_seed do
       set_function: SetFunction.find_by(name: 'Elenco')
     )
 
+    Professional.find_or_create_by(
+      name: 'Cillian Murphy',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Michael Caine',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Joseph Gordon-Levitt',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Ken Watanabe',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Tom Hardy',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Tom Berenger',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Lukas Haas',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Talulah Riley',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
+    Professional.find_or_create_by(
+      name: 'Yuji Okumoto',
+      set_function: SetFunction.find_by(name: 'Elenco')
+    )
+
     # ------------------------ Profissionais em Filmes -------------------------
 
     FilmableProfessional.find_or_create_by(
@@ -118,7 +166,8 @@ namespace :development_seed do
       professional: Professional.find_by(
                       name: 'Leonardo DiCaprio',
                       set_function: SetFunction.find_by(name: 'Elenco')
-                    )
+                    ),
+      observation: 'Dom Cobb'
     )
 
     FilmableProfessional.find_or_create_by(
@@ -127,7 +176,8 @@ namespace :development_seed do
       professional: Professional.find_by(
                       name: 'Marion Cotillard',
                       set_function: SetFunction.find_by(name: 'Elenco')
-                    )
+                    ),
+      observation: 'Mal'
     )
 
     FilmableProfessional.find_or_create_by(
@@ -136,6 +186,106 @@ namespace :development_seed do
       professional: Professional.find_by(
                       name: 'Ellen Page',
                       set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Ariadne'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Cillian Murphy',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Fischer'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Michael Caine',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Miles'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Joseph Gordon-Levitt',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Arthur'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Ken Watanabe',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Saito'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Tom Hardy',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Eames'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Tom Berenger',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Browning'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Lukas Haas',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Nash'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Talulah Riley',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Loira'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Elenco'),
+      professional: Professional.find_by(
+                      name: 'Yuji Okumoto',
+                      set_function: SetFunction.find_by(name: 'Elenco')
+                    ),
+      observation: 'Assistente de Saito'
+    )
+
+    FilmableProfessional.find_or_create_by(
+      filmable: Movie.find_by(original_title: 'Inception'),
+      set_function: SetFunction.find_by(name: 'Roteiro'),
+      professional: Professional.find_by(
+                      name: 'Christopher Nolan',
+                      set_function: SetFunction.find_by(name: 'Roteiro')
                     )
     )
 
@@ -163,7 +313,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Com pouca supervisão dos adultos e muitas festas, um grupo de adolescentes de Bristol, na Inglaterra, tenta descobrir sobre a vida e relacionamentos. A cada duas temporadas, a série vai acompanhar um grupo de amigos diferentes, sendo que cada um deles compõe uma "geração". Na temporada 7, personagens das gerações anteriores retornam para explorar como serão suas vidas enquanto adultos.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/skins.jpg'))
     object.save
 
@@ -178,7 +327,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Em 2030, o arquiteto Ted Mosby (Josh Radnor) conta a história sobre como conheceu a mãe dos seus filhos. Ele volta no tempo para 2005, relembrando suas aventuras amorosas em Nova York e a busca pela mulher dos seus sonhos. Ao longo do anos, Ted aproveita para falar a jornada dos seus amigos: o advogado Marshall Eriksen (Jason Segel), a professora Lily Aldrin (Alyson Hannigan), a jornalista Robin Scherbatsky (Cobie Smulders) e o mulherengo convicto Barney Stinson (Neil Patrick Harris).'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/himym.jpg'))
     object.save
 
@@ -193,7 +341,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'A série conta a história sobre a família disfuncional de Frank Gallagher (William H. Macy), um pai solteiro de seis filhos: Fiona Gallagher (Emmy Rossum), Phillip Gallagher (Jeremy Allen), Ian Gallagher (Cameron Monaghan), Debbie Gallagher (Emma Kenney), Carl Gallagher (Ethan Cutkosky) e Liam Gallagher (Brennan Kane Johnson e Blake Alexander), o único filho negro, apesar dos dois pais serem brancos. Enquanto ele passa seus dias totalmente bêbado, seus filhos precisam aprender a cuidar deles mesmos.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/shameless.jpg'))
     object.save
 
@@ -208,7 +355,6 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'O Doutor é um Senhor do Tempo - um alien de um planeta distante chamado Gallifrey que tem dois corações e aproximadamente 900 anos. Em sua nave espacial, a TARDIS, ele atravessa as barreiras do espaço e do tempo lutando contra inimigos e criando aventuras com seus companheiros, que sempre escolhe para viajar junto a ele. Quando ele está prestes a morrer, ele se regenera e renasce em outro corpo inteiramente novo.'
     )
-
     object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/doctor.jpg'))
     object.save
 
@@ -228,7 +374,8 @@ namespace :development_seed do
         "mesmo tendo um inicio meio fraco principalmente em relação " +
         "a efeitos especiais,com o tempo você acaba se apaixonando pelo " +
         "Doctor e suas companions e sofre com as despedidas,recomendo bastante.",
-      rating: 5.0
+      rating: 5.0,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -237,7 +384,8 @@ namespace :development_seed do
       filmable_type: Serie,
       content:
         "A Série retrata sobre adolescentes que vivem suas vidas loucas e baladeiras, Skins deveria ser uma série simples, mas não foi, com um roteiro incrível, a série retrata a realidade dos adolescentes de hoje em dia, a cada geração, mais a série fica incrível com emoções e despedida de queridos personagens. Skins é uma das melhores séries da atualidade mesmo tendo seu fim em 2013.",
-      rating: 4.0
+      rating: 4.0,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -246,7 +394,8 @@ namespace :development_seed do
       filmable_type: Serie,
       content:
         "Tá afim de se divertir ? Gosta de ser surpreendido ? Quer curtir um bom seriado ? Pronto! Shameless é a solução, mostrando a risca, o cotidiano de uma família americana, tendo o rei dos alcoólatras como pai, uma irmã mais velha um tanto quanto atraída por fazer escolhas erradas. Não fique ai parado, entre já para essa família.",
-      rating: 2.5
+      rating: 2.5,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -255,7 +404,8 @@ namespace :development_seed do
       filmable_type: Serie,
       content:
         "How i met your mother é uma série simplesmente fantástica que te prende do início ao fim. A história é sobre Ted (Josh Radnor) contando aos seus dois filhos como conheceu a mãe deles. HIMYM é uma história muito bem contada e com excelentes atores. A série é cheia de mistérios e imprevistos para o telespectador, o que torna ela muito mais viciante a cada temporada. Os atores se encaixam muito bem em seus personagens, ao passar do tempo você vê o amadurecimento deles e se identifica. Além desses elementos, a How i met é bem engraçada e traz uma comedia típica de sitcom e episódios com elementos marcantes. Sem dúvida, HIMYM é excelente e obrigatória para amantes do gênero.",
-      rating: 5.5
+      rating: 5.5,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -276,7 +426,8 @@ namespace :development_seed do
         "pelo roteirista e diretor Christopher Nolan. Ironicamente, o " +
         "totem de Ariadne é um peão de xadrez - ela só serve para ser " +
         "a intermediária, a intérprete.",
-      rating: 5.0
+      rating: 5.0,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -293,7 +444,8 @@ namespace :development_seed do
         "não por acaso permanece. A música e a afinidade os encorajam " +
         "a tentarem mais uma vez! Vale apena! A trilha sonora é tão " +
         "singela quanto o filme - The Swell Season. Você vai gostar!",
-      rating: 1.5
+      rating: 1.5,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -314,7 +466,8 @@ namespace :development_seed do
         "viagem no tempo..., é loucura, mas que por incrível que pareça, " +
         "o filme tem um sentido. Richard Kelly, a onde foi " +
         "parar todo esse talento?",
-      rating: 3.5
+      rating: 3.5,
+      ciner_critic: true
     )
 
     Critic.find_or_create_by(
@@ -323,7 +476,8 @@ namespace :development_seed do
       filmable_type: Movie,
       content:
         "Moulin Rouge chama a atenção logo no inicio, com a fotografia exuberante e repleta de cores, luzes e coreografias muito bem ensaiadas. Começa em um tom de comédia, com efeitos grotescos que contrastam com as seguintes cenas de drama. Ainda que as músicas escolhidas sejam sucessos dos anos 90 e em tese não deveriam combinar em nada com o filme, elas se encaixam e harmonizam perfeitamente com o roteiro. As atuações são ótimas e a performance de Kidman é admirável, ( não é à toa que consideram essa a melhor atuação de sua carreira) seus trajes são impecáveis, sua voz é melodiosa e a atuação não menos incrível (imagino que sejam poucas as atrizes que consigam cantar, dançar e dramatizar dentro de um espartilhos, sobre saltos altos enquanto estão dependuradas à 60 pés de altura)! Ainda que, Christian te alerte sobre o final da história durante todo o desenrolar da trama, ele não deixa de comover.E eu poderia continuar enumerando mais e mais coisas que tornam esse clássico do cinema moderno tão maravilhoso, mas termino dizendo que Moulin Rouge fechou a trilogia da cortina vermelha de Baz Luhrmann com chave de ouro. Simplesmente esplêndido, o melhor musical de todos!",
-      rating: 4.0
+      rating: 4.0,
+      ciner_critic: true
     )
   end
 end

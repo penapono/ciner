@@ -1,3 +1,5 @@
+- object = movie
+
 #ficha-tecnica.ficha-tecnica
   .title-separator
     .media
@@ -49,93 +51,32 @@
   .title-separator
     .media
       .media-body.media-bottom
-        .media-heading.title-section Roteiro
+        .media-heading.title-section
+          = Movie.human_attribute_name(:writers_str)
   .roteiristas
     .row
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.roteirista
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
+      - object.writers.each do |filmable_professional|
+        = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista'
 #direcao.direcao
   .title-separator
     .media
       .media-body.media-bottom
-        .media-heading.title-section Diretores
+        .media-heading.title-section
+          = Movie.human_attribute_name(:directors_str)
   .diretores
     .row
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.diretor
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Christopher Markus
+      - object.directors.each do |filmable_professional|
+        = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor'
 #elenco.elenco
   .title-separator
     .media
       .media-body.media-bottom
-        .media-heading.title-section Elenco
+        .media-heading.title-section
+          = Movie.human_attribute_name(:cast_str)
   .atores-principais
     .row
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Chris Evans
-        %p Steve Rogers / Captain America
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Robert Downey Jr.
-        %p Tony Stark / Iron Man
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Chris Evans
-        %p Steve Rogers / Captain America
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Chris Evans
-        %p Steve Rogers / Captain America
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Chris Evans
-        %p Steve Rogers / Captain America
-      .col-xs-6.col-sm-4.col-md-2.col-lg-2.ator{"data-mh" => "atores-principais"}
-        %img.img-responsive{:src => "http://placehold.it/155x170"}/
-        %h5
-          %a{:href => "#"} Chris Evans
-        %p Steve Rogers / Captain America
+      - object.actors.each do |filmable_professional|
+        = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation
   .atores
     .row
       .col-xs-6.personagem{"data-mh" => "group"} Vision
