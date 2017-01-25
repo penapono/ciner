@@ -1,3 +1,5 @@
+- object = movie
+
 #criticas.criticas
   .title-separator
     .media
@@ -5,26 +7,12 @@
         %svg.icon-title
           %use{"xlink:href" => "#critica"}
       .media-body.media-bottom
-        .media-heading.title-section Críticas
+        .media-heading.title-section
+          = Critic.model_name.human(count: 2)
       .media-body.text-right.media-middle
-        %a{:href => "#"} ver mais
+        %a
+          = link_to admin_critics_path, t('more')
   .reviews
     .row
-      .review-item
-        .col-xs-12.col-sm-3.thumb
-          %img.img-responsive{:src => "http://placehold.it/400x500"}/
-        .col-xs-12.col-sm-9.resume
-          %h4.title Batman vs Superman
-          %span.subtitle A origem da justiça
-          %span.original-title (Batman Vs Superman: Dawn of Justice)
-          %p
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          %a.button-default{:href => "#"} Saiba mais
-      .review-item
-        .col-xs-12.col-sm-3.thumb
-          %img.img-responsive{:src => "http://placehold.it/400x500"}/
-        .col-xs-12.col-sm-9.resume
-          %h4.title Batman vs Superman
-          %p
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          %a.button-default{:href => "#"} Saiba mais
+      - object.critics.first(2).each do |critic|
+        = render 'shared/movies/critic', critic: critic
