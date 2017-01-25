@@ -1,0 +1,11 @@
+pt-BR:
+  shared:
+    critics:
+      toolbar:
+        filters:
+          filmable_type: Seleção por Filme ou Série
+          year: Selecione o Ano
+          filmable_id:
+            Movie: Filme
+            Serie: Série
+            other: Selecione o Filme ou Série

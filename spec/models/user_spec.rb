@@ -13,6 +13,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to belong_to :state }
     it { is_expected.to belong_to :country }
 
+    it { is_expected.to have_many :critics }
+
     describe 'mounts' do
       it { expect(user.avatar).to be_a(UserAvatarUploader) }
     end

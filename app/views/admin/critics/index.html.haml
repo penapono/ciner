@@ -5,13 +5,13 @@
 
 = render 'shared/index_title', title: Critic.model_name.human(count: 2), path: new_admin_critic_path
 
-= render 'toolbar'
+= render 'shared/critics/toolbar', path: admin_critics_path
 
 %table
   %thead
     %tr
       %th
-        = Critic.human_attribute_name(:name)
+        = Critic.human_attribute_name(:content)
       %th
         = Critic.human_attribute_name(:filmable)
 

@@ -5,7 +5,6 @@ module Searchables
     include Searchables::Base
 
     SEARCH_EXPRESSION = '
-      critics.name LIKE :search OR
       critics.content LIKE :search OR
       users.name LIKE :search
     '
@@ -25,7 +24,7 @@ module Searchables
     end
 
     def search_title
-      name
+      content
     end
 
     def search_description

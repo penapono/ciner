@@ -134,7 +134,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Serie.find_by(title: 'Doctor Who').id,
       filmable_type: Serie,
-      name: "Doctor Who: Viajando no Espaço-Tempo",
       content:
         "O que dizer sobre a maior serie de ficção cientifica? Fantástica, " +
         "incrível,surpreendente,brilhante tudo isso é pouco para descrever " +
@@ -149,7 +148,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Serie.find_by(title: 'Skins').id,
       filmable_type: Serie,
-      name: "Skins",
       content:
         "A Série retrata sobre adolescentes que vivem suas vidas loucas e baladeiras, Skins deveria ser uma série simples, mas não foi, com um roteiro incrível, a série retrata a realidade dos adolescentes de hoje em dia, a cada geração, mais a série fica incrível com emoções e despedida de queridos personagens. Skins é uma das melhores séries da atualidade mesmo tendo seu fim em 2013."
     )
@@ -158,7 +156,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Serie.find_by(title: 'Shameless').id,
       filmable_type: Serie,
-      name: "Shameless",
       content:
         "Tá afim de se divertir ? Gosta de ser surpreendido ? Quer curtir um bom seriado ? Pronto! Shameless é a solução, mostrando a risca, o cotidiano de uma família americana, tendo o rei dos alcoólatras como pai, uma irmã mais velha um tanto quanto atraída por fazer escolhas erradas. Não fique ai parado, entre já para essa família."
     )
@@ -167,7 +164,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Serie.find_by(title: 'Como Eu Conheci Sua Mãe').id,
       filmable_type: Serie,
-      name: "Como Eu Conheci Sua Mãe",
       content:
         "How i met your mother é uma série simplesmente fantástica que te prende do início ao fim. A história é sobre Ted (Josh Radnor) contando aos seus dois filhos como conheceu a mãe deles. HIMYM é uma história muito bem contada e com excelentes atores. A série é cheia de mistérios e imprevistos para o telespectador, o que torna ela muito mais viciante a cada temporada. Os atores se encaixam muito bem em seus personagens, ao passar do tempo você vê o amadurecimento deles e se identifica. Além desses elementos, a How i met é bem engraçada e traz uma comedia típica de sitcom e episódios com elementos marcantes. Sem dúvida, HIMYM é excelente e obrigatória para amantes do gênero."
     )
@@ -176,7 +172,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Movie.find_by(title: 'A Origem').id,
       filmable_type: Movie,
-      name: "A Origem",
       content:
         "A Origem (Inception, 2010) não é nenhuma esfinge. Na verdade, a sua " +
         "estrutura, emprestada dos filmes-de-assalto, é bem trivial. " +
@@ -197,7 +192,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Movie.find_by(title: 'Apenas uma vez').id,
       filmable_type: Movie,
-      name: "Once!",
       content:
         "Apenas Uma Vez conta a estória de um cantor que faz apresentações " +
         "nas ruas de Dublin, e durante à noite canta suas próprias " +
@@ -214,7 +208,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Movie.find_by(title: 'Donnie Darko').id,
       filmable_type: Movie,
-      name: "Mais viagem no tempo!",
       content:
         "Donnie Darko é fantástico, com uma ótima direção, tu percebe o " +
         "cuidado que o Richard Kelly teve até nos figurantes de cena, " +
@@ -235,7 +228,6 @@ namespace :development_seed do
       user: User.find_by(name: 'Pedro Naponoceno'),
       filmable_id: Movie.find_by(title: 'Moulin Rouge! Amor em vermelho').id,
       filmable_type: Movie,
-      name: "Amor em vermelho",
       content:
         "Moulin Rouge chama a atenção logo no inicio, com a fotografia exuberante e repleta de cores, luzes e coreografias muito bem ensaiadas. Começa em um tom de comédia, com efeitos grotescos que contrastam com as seguintes cenas de drama. Ainda que as músicas escolhidas sejam sucessos dos anos 90 e em tese não deveriam combinar em nada com o filme, elas se encaixam e harmonizam perfeitamente com o roteiro. As atuações são ótimas e a performance de Kidman é admirável, ( não é à toa que consideram essa a melhor atuação de sua carreira) seus trajes são impecáveis, sua voz é melodiosa e a atuação não menos incrível (imagino que sejam poucas as atrizes que consigam cantar, dançar e dramatizar dentro de um espartilhos, sobre saltos altos enquanto estão dependuradas à 60 pés de altura)! Ainda que, Christian te alerte sobre o final da história durante todo o desenrolar da trama, ele não deixa de comover.E eu poderia continuar enumerando mais e mais coisas que tornam esse clássico do cinema moderno tão maravilhoso, mas termino dizendo que Moulin Rouge fechou a trilogia da cortina vermelha de Baz Luhrmann com chave de ouro. Simplesmente esplêndido, o melhor musical de todos!"
     )

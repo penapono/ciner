@@ -8,7 +8,6 @@ describe Searchables::Critic do
 
   let(:expected_search_expression) do
     '
-      critics.name LIKE :search OR
       critics.content LIKE :search OR
       users.name LIKE :search
     '

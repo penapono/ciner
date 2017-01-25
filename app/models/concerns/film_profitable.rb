@@ -25,13 +25,19 @@ module FilmProfitable
     # end
   end
 
+  def self.filmables_by_type(type)
+    return unless type.present?
+    Object.const_get(type).first(20)
+  end
+
   def self.localized_filmable_types
-    [['Filme', Movie],['Série', Serie]]
+    [['Filme', Movie], ['Série', Serie]]
   end
 
   def self.localized_years
+    limit_year = (DateTime.now + 5.years).year
     years = []
-    (1930..DateTime.now.year).each { |year| years << year }
+    (1895..limit_year).each { |year| years << year }
     years
   end
 end

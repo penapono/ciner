@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   belongs_to :state
   belongs_to :country
 
+  has_many :critics
+
   # Validations
   validates :email,
             :name,

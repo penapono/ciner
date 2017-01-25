@@ -11,6 +11,7 @@ pt-BR:
         title: Nova Crítica
       toolbar:
         filters:
-          city: Selecione uma Cidade
-          country: Selecione um País
-          state: Selecione um Estado
+          filmable_type: Seleção por Filme ou Série
+          filmable_id: Selecione o Filme ou Série
+          year: Selecione o Ano
+

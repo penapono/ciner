@@ -1,4 +1,9 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
 - highlight_critic = critics.first
+
+/ = render 'shared/breadcrumbs'
 
 .container.content
   .row
@@ -14,7 +19,7 @@
 
   = render 'shared/critics/toolbar', path: platform_critics_path
 
-  = render 'shared/critics/highlight_critic', critic: critics.first, path: platform_critic_path(critic)
+  = render 'shared/critics/highlight_critic', critic: highlight_critic, path: platform_critic_path(highlight_critic)
 
   .row
     - critics.each do |critic|

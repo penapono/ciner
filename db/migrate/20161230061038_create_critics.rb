@@ -7,6 +7,8 @@ class CreateCritics < ActiveRecord::Migration
       t.text :content
       t.integer :rating
 
+      t.integer :filmable_release_year
+
       t.timestamps null: false
     end
   end
