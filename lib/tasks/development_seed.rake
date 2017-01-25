@@ -26,7 +26,7 @@ namespace :development_seed do
 
     Movie.all.destroy_all
 
-    Movie.find_or_create_by(
+    object = Movie.find_or_create_by(
       original_title: "Inception",
       title: 'A Origem',
       year: 2010,
@@ -34,11 +34,13 @@ namespace :development_seed do
       release: DateTime.parse("06/08/2010"),
       brazilian_release: DateTime.parse("06/08/2010"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/inception.jpg'))
+      age_range: AgeRange.last
     )
 
-    Movie.find_or_create_by(
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/inception.jpg'))
+    object.save
+
+    object = Movie.find_or_create_by(
       original_title: "Moulin Rouge!",
       title: 'Moulin Rouge! Amor em vermelho',
       year: 2001,
@@ -46,11 +48,13 @@ namespace :development_seed do
       release: DateTime.parse("01/06/2001"),
       brazilian_release: DateTime.parse("24/08/2001"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/moulin_rouge.jpg'))
+      age_range: AgeRange.last
     )
 
-      Movie.find_or_create_by(
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/moulin_rouge.jpg'))
+    object.save
+
+    object = Movie.find_or_create_by(
       original_title: "Once",
       title: 'Apenas uma vez',
       year: 2007,
@@ -58,11 +62,13 @@ namespace :development_seed do
       release: DateTime.parse("15/06/2007"),
       brazilian_release: DateTime.parse("15/06/2007"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/once.jpg'))
+      age_range: AgeRange.last
     )
 
-      Movie.find_or_create_by(
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/once.jpg'))
+    object.save
+
+    object = Movie.find_or_create_by(
       original_title: "Donnie Darko",
       title: 'Donnie Darko',
       year: 2001,
@@ -70,15 +76,17 @@ namespace :development_seed do
       release: DateTime.parse("26/10/2001"),
       brazilian_release: DateTime.parse("26/10/2001"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/movies/donnie.jpg'))
+      age_range: AgeRange.last
     )
+
+      object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/donnie.jpg'))
+      object.save
 
     # -------------------------------- Séries ---------------------------------
 
     Serie.all.destroy_all
 
-    Serie.find_or_create_by(
+    object = Serie.find_or_create_by(
       original_title: "Skins",
       title: 'Skins',
       year: 2007,
@@ -86,11 +94,13 @@ namespace :development_seed do
       release: DateTime.parse("02/10/2007"),
       brazilian_release: DateTime.parse("02/10/2007"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/skins.jpg'))
+      age_range: AgeRange.last
     )
 
-    Serie.find_or_create_by(
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/skins.jpg'))
+    object.save
+
+    object = Serie.find_or_create_by(
       original_title: "How I Met Your Mother",
       title: 'Como Eu Conheci Sua Mãe',
       year: 2005,
@@ -98,11 +108,13 @@ namespace :development_seed do
       release: DateTime.parse("19/09/2005"),
       brazilian_release: DateTime.parse("19/09/2005"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/himym.jpg'))
+      age_range: AgeRange.last
     )
 
-    Serie.find_or_create_by(
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/himym.jpg'))
+    object.save
+
+    object = Serie.find_or_create_by(
       original_title: "Shameless",
       title: 'Shameless',
       year: 2011,
@@ -110,11 +122,13 @@ namespace :development_seed do
       release: DateTime.parse("09/01/2011"),
       brazilian_release: DateTime.parse("09/01/2011"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/shameless.jpg'))
+      age_range: AgeRange.last
     )
 
-    Serie.find_or_create_by(
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/shameless.jpg'))
+    object.save
+
+    object = Serie.find_or_create_by(
       original_title: "Doctor Who",
       title: 'Doctor Who',
       year: 2005,
@@ -122,9 +136,11 @@ namespace :development_seed do
       release: DateTime.parse("26/03/2005"),
       brazilian_release: DateTime.parse("26/03/2005"),
       country: Country.find_by(name: 'Brasil'),
-      age_range: AgeRange.last,
-      cover: open(File.join(Rails.root, 'app/assets/images/seed/series/doctor.jpg'))
+      age_range: AgeRange.last
     )
+
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/doctor.jpg'))
+    object.save
 
     # -------------------------------- Críticas --------------------------------
 
