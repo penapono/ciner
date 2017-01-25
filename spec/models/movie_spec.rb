@@ -22,6 +22,10 @@ RSpec.describe Movie, type: :model do
 
     it { is_expected.to belong_to :studio }
 
+    it { is_expected.to have_many(:critics) }
+    it { is_expected.to have_many(:filmable_professionals) }
+    it { is_expected.to have_many(:professionals).through(:filmable_professionals) }
+
     describe 'mounts' do
       it { expect(movie.cover).to be_a(CoverUploader) }
     end
@@ -48,5 +52,6 @@ RSpec.describe Movie, type: :model do
     it { is_expected.to delegate_method(:name).to(:city).with_prefix(true) }
     it { is_expected.to delegate_method(:name).to(:state).with_prefix(true) }
     it { is_expected.to delegate_method(:name).to(:country).with_prefix(true) }
+    it { is_expected.to delegate_method(:name).to(:age_range).with_prefix(true) }
   end
 end

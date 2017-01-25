@@ -17,6 +17,9 @@ pt-BR:
         country_id: País
         age_range_id: Classificação Indicativa
 
+        ciner_rating: Nota Ciner
+        users_rating: Média Geral
+
         # Filmable
 
         genders_str: Categoria

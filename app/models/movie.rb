@@ -12,6 +12,8 @@ class Movie < ActiveRecord::Base
   belongs_to :studio
 
   has_many :critics, as: :filmable
+  has_many :filmable_professionals, as: :filmable
+  has_many :professionals, through: :filmable_professionals
 
   # Uploaders
   mount_uploader :cover, CoverUploader
@@ -26,6 +28,25 @@ class Movie < ActiveRecord::Base
   delegate :name, to: :city, allow_nil: true, prefix: true
   delegate :name, to: :state, allow_nil: true, prefix: true
   delegate :name, to: :country, allow_nil: true, prefix: true
+  delegate :name, to: :age_range, allow_nil: true, prefix: true
+
+  # Methods
+  def ciner_critic
+    return unless critics.any?
+    critics.first
+  end
+
+  def ciner_rating_user
+    "João Bidu"
+  end
+
+  def users_rating
+    5.0
+  end
+
+  def users_rating_count
+    1000
+  end
 
   # Scopes
 
