@@ -7,7 +7,7 @@ ruby '2.3.1'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'rake'
-gem 'rails'
+gem 'rails', '>= 5.0.1'
 gem 'mini_magick'
 gem 'json'
 gem 'jbuilder'
@@ -39,7 +39,7 @@ gem 'cocoon'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'haml'
-gem 'handlebars_assets', '0.20.2'
+# gem 'handlebars_assets', '0.20.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'select2-rails'
@@ -72,7 +72,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.0'
   gem 'airbrussh'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -84,7 +84,7 @@ group :development do
   gem 'thin'
   gem 'letter_opener'
   gem 'rubocop'
-  gem 'quiet_assets'
+  # gem 'quiet_assets'
 end
 
 group :test do

@@ -19,6 +19,8 @@ module Ciner
 
     config.active_record.raise_in_transactional_callbacks = true
 
+    config.assets.quiet = true
+
     routes = Dir[Rails.root.join("config/routes/*.rb")] + config.paths['config/routes.rb']
     config.paths['config/routes.rb'] = routes
   end
