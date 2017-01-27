@@ -8,8 +8,11 @@ module Admin
     expose(:critic, attributes: :critic_attributes)
     expose(:movies) { Movie.first(20) }
     expose(:series) { Serie.first(20) }
+    expose(:users) { User.all }
 
     PER_PAGE = 10
+
+    before_filter :set_status, only: :update
 
     def index
       self.critics = paginated_critics
@@ -39,8 +42,16 @@ module Admin
 
     def critic_params
       params.require(:critic).permit(
-        :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating
+        :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating,
+        :status, :origin
       )
+    end
+
+    # Approving, Reproving
+
+    def set_status
+      critic.status = :reproved
+      critic.status = :approved if params[:approve]
     end
 
     # Filtering

@@ -1,0 +1,11 @@
+.row.filters{ data: { dynamic_filter: '' } }
+  = simple_form_for :filter, url: path, method: :get, data: { filter_form: '' } do |f|
+    = hidden_field_tag :search, params[:search]
+    .col-xs-2
+      = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, label: false, include_blank: t('shared.critics.toolbar.filters.filmable_type'), input_html: { data: { dynamic_input: '' } }, selected: filmable_type
+    .col-xs-6
+      = f.input :filmable_id, collection: FilmProfitable.filmables_by_type(filmable_type), label: false, include_blank: t("shared.critics.toolbar.filters.filmable_id.#{filmable_type}"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')
+    .col-xs-2
+      = f.input :year, collection: FilmProfitable.localized_years, label: false, include_blank: t('shared.critics.toolbar.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
+    .col-xs-4
+      = f.input :origin, collection: Critic.localized_origins, label: false, include_blank: t('shared.critics.toolbar.filters.origin'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:origin, '')

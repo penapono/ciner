@@ -13,6 +13,7 @@ module Ciner
     config.paths['config/routes.rb'] = routes
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = :local

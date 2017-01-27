@@ -13,6 +13,10 @@ class Serie < ActiveRecord::Base
 
   has_many :critics, as: :filmable
 
+  has_many :critics, as: :filmable
+  has_many :filmable_professionals, as: :filmable
+  has_many :professionals, through: :filmable_professionals
+
   # Uploaders
   mount_uploader :cover, CoverUploader
 

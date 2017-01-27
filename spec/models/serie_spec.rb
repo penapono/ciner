@@ -22,6 +22,10 @@ RSpec.describe Serie, type: :model do
 
     it { is_expected.to belong_to :studio }
 
+    it { is_expected.to have_many(:critics) }
+    it { is_expected.to have_many(:filmable_professionals) }
+    it { is_expected.to have_many(:professionals).through(:filmable_professionals) }
+
     describe 'mounts' do
       it { expect(serie.cover).to be_a(CoverUploader) }
     end

@@ -11,7 +11,8 @@ class CreateCritics < ActiveRecord::Migration
 
       t.float :rating
 
-      t.boolean :ciner_critic, default: false
+      t.integer :status, default: 1
+      t.integer :origin, default: 2
 
       t.timestamps null: false
     end

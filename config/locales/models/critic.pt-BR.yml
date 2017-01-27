@@ -19,13 +19,23 @@ pt-BR:
         filmable_id: Filme / Série
         filmable_type: Referente à
         updated_at: Data de Publicação
-        user: Por
+        user: Autor
+        user_id: Autor
         release: Estréia
         rating: Nota
+        origin: Origem
+        status: Situação
       critic/filmable_type:
         movie: Filme
         serie: Série
         ciner_video: Ciner Vídeo
+      critic/status:
+        pending: Aguardando Aprovação
+        approved: Aprovada
+        reproved: Reprovada
+      critic/origin:
+        ciner_critic: Equipe Ciner
+        user_critic: Usuário
     errors:
       models:
         critic:

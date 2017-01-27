@@ -1,24 +1,36 @@
+= javascript_include_tag Ckeditor.cdn_url
+
 = simple_form_for [:admin, critic] do |f|
+  - filmable_type = f.object.filmable_type || Movie
+  - filmable_type = filmable_type.to_s
+  - filmable_movies_class = (filmable_type == 'Movie') ? '' : 'hidden'
+  - filmable_series_class = (filmable_type == 'Serie') ? '' : 'hidden'
+  - rating = f.object.rating || 0
+
   %h3
     = t('.general')
 
   .row{ data: { filmable: '' } }
     .col-xs-3{ data: { filmable_select: '' } }
-      = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, selected: Movie
+      = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, selected: filmable_type
     .col-xs-6
-      .div{ data: { filmable_type: 'Movie' } }
+      .div{ class: "#{filmable_movies_class}", data: { filmable_type: 'Movie' } }
         = f.input :filmable_id, collection: movies, label_method: :title_str, value_method: :id
-      .div.hidden{ data: { filmable_type: 'Serie' } }
+      .div{ class: "#{filmable_series_class}", data: { filmable_type: 'Serie' } }
         = f.input :filmable_id, collection: series, label_method: :title_str, value_method: :id
     .col-xs-3
-      = f.input :rating, input_html: { step: 0.5, min: 0, max: 5 }
+      = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
 
   .row
     .col-xs-12
-      = f.input :content, required: true, autofocus: true, input_html: { rows: 5 }
+      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
 
+  .row
+    .col-xs-12
+      = f.input :user_id, collection: users
 
-  = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :ciner_critic, value: true
+
+  = render 'admin/critics/status_changer', f: f unless f.object.new_record?
 
   = render 'shared/form_actions', f: f

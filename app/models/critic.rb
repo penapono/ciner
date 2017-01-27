@@ -2,6 +2,10 @@
 class Critic < ActiveRecord::Base
   include Searchables::Critic
 
+  # Enums
+  enum status: { pending: 1, approved: 2, reproved: 3 }
+  enum origin: { ciner_critic: 1, user_critic: 2 }
+
   # Associations
   belongs_to :user
 
@@ -30,7 +34,15 @@ class Critic < ActiveRecord::Base
   end
 
   def name
-    content.truncate(50)
+    content.truncate(30)
+  end
+
+  def status_str
+    Critic.human_attribute_name("status.#{status}")
+  end
+
+  def origin_str
+    Critic.human_attribute_name("origin.#{origin}")
   end
 
   # Filter
@@ -42,6 +54,8 @@ class Critic < ActiveRecord::Base
     result = result.by_filmable_type(params[:filmable_type]) if params[:filmable_type].present?
     result = result.by_filmable_id(params[:filmable_id]) if params[:filmable_id].present?
     result = result.by_year(params[:year]) if params[:year].present?
+    result = result.by_status(params[:status]) if params[:status].present?
+    result = result.by_origin(params[:origin]) if params[:origin].present?
 
     result
   end
@@ -60,6 +74,22 @@ class Critic < ActiveRecord::Base
 
   def self.ciner_official_critic
     find_by(ciner_critic: true)
+  end
+
+  def self.by_status(status)
+    where(status: status)
+  end
+
+  def self.localized_statuses
+    statuses.map { |k, w| [human_attribute_name("status.#{k}"), w]}
+  end
+
+  def self.by_origin(origin)
+    where(origin: origin)
+  end
+
+  def self.localized_origins
+    origins.map { |k, w| [human_attribute_name("origin.#{k}"), w]}
   end
 
   # Callbacks

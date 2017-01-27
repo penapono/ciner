@@ -11,11 +11,15 @@
   %thead
     %tr
       %th
-        = Critic.human_attribute_name(:content)
-      %th
         = Critic.human_attribute_name(:filmable)
       %th
+        = Critic.human_attribute_name(:content)
+      %th
+        = Critic.human_attribute_name(:status)
+      %th
         = Critic.human_attribute_name(:user)
+      %th
+        = Critic.human_attribute_name(:origin)
       %th
         = Critic.human_attribute_name(:rating)
 
@@ -25,14 +29,20 @@
     - critics.each do |critic|
       %tr
         %td
+          = critic.filmable_title_str
+
+        %td
           = link_to admin_critic_path(critic) do
             = critic.name
 
         %td
-          = critic.filmable_title_str
+          = critic.status_str
 
         %td
           = critic.user_name
+
+        %td
+          = critic.origin_str
 
         %td
           = render 'shared/critics/rating', critic: critic
