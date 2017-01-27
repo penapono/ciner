@@ -106,3 +106,5 @@ group :test do
   gem 'terminal-notifier-guard', require: false
   gem 'timecop'
 end
+
+gem 'like_dislike'

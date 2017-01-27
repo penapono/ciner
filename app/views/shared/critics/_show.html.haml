@@ -62,3 +62,6 @@
           = Critic.human_attribute_name(:updated_at)
           %span.bold.wine
             = l(critic.updated_at, format: :long_date)
+  .row
+    .col-xs-12
+      = like_unlike_button(critic)

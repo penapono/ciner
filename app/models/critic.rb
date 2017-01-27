@@ -2,6 +2,8 @@
 class Critic < ActiveRecord::Base
   include Searchables::Critic
 
+  acts_as_votable
+
   # Enums
   enum status: { pending: 1, approved: 2, reproved: 3 }
   enum origin: { ciner_critic: 1, user_critic: 2 }
