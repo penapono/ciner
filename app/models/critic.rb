@@ -30,11 +30,11 @@ class Critic < ActiveRecord::Base
 
   # Methods
   def collapsed_content
-    content.truncate(155)
+    ActionView::Base.full_sanitizer.sanitize(content).truncate(155)
   end
 
   def name
-    content.truncate(30)
+    ActionView::Base.full_sanitizer.sanitize(content).truncate(30)
   end
 
   def status_str

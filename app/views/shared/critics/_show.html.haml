@@ -41,20 +41,17 @@
 
         .diretor-elenco
           = Movie.human_attribute_name(:directors_str)
-          %a.wine.bold{href: "#"}
+          %a.bold.wine
             = filmable.directors_str
           %br
 
           = Movie.human_attribute_name(:cast_str)
-          = succeed "," do
-            %a.wine.bold{href: "#"} Brad Pitt
-          = succeed " e" do
-            %a.wine.bold{href: "#"} Harrison Ford
-          %a.wine.bold{href: "#"} Robert Downey Jr.
+          %a.bold.wine
+            = filmable.first_actors_str
 
         .content
           %p
-            = critic.content
+            = critic.content.html_safe
 
         .info
           = Critic.human_attribute_name(:user)

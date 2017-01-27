@@ -33,7 +33,7 @@
 
         %td
           = link_to admin_critic_path(critic) do
-            = critic.name
+            = critic.name.html_safe
 
         %td
           = critic.status_str
