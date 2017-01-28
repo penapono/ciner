@@ -1,0 +1,18 @@
+- filmable = critic.filmable
+- cover = filmable.cover
+- cover ||= "http://placehold.it/400x500"
+
+.review-item
+  .col-xs-12.col-sm-5.thumb
+    %figure
+      %img.img-responsive{ src: cover }
+  .col-xs-12.col-sm-7.resume
+    %h4.title
+      = filmable.title_str
+    %span.original-title
+      = filmable.original_title
+    %p
+      = critic.collapsed_content
+    = link_to user_critic_path do
+      .btn.btn-saiba-mais
+        Saiba mais

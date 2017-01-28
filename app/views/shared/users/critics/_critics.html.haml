@@ -1,0 +1,14 @@
+.col-xs-12.col-sm-6.user-review#user-review
+  .title-separator
+    .media
+      .media-left.media-middle
+        %svg.media-object.icon-title
+          %use{"xlink:href" => "#critica"}
+      .media-body.media-middle
+        .media-heading.title-section Minhas críticas
+      .media-body.text-right.media-middle
+        = link_to platform_critics_path(filter: { user_id: user.id }) do
+          = t('more')
+
+  - critics.each do |critic|
+    = render 'shared/users/critics/critic', critic: critic, user_critic_path: platform_critic_path(critic)

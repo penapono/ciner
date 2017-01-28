@@ -6,6 +6,7 @@ module Platform
     # exposes
     expose(:critics) { Critic.all }
     expose(:critic, attributes: :critic_attributes)
+    expose(:users) { User.all }
 
     PER_PAGE = 10
 

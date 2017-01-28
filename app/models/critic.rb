@@ -59,6 +59,7 @@ class Critic < ActiveRecord::Base
     result = result.by_year(params[:year]) if params[:year].present?
     result = result.by_status(params[:status]) if params[:status].present?
     result = result.by_origin(params[:origin]) if params[:origin].present?
+    result = result.by_user_id(params[:user_id]) if params[:user_id].present?
 
     result
   end
@@ -93,6 +94,10 @@ class Critic < ActiveRecord::Base
 
   def self.localized_origins
     origins.map { |k, w| [human_attribute_name("origin.#{k}"), w] }
+  end
+
+  def self.by_user_id(user_id)
+    where(user: User.find(user_id))
   end
 
   # Callbacks

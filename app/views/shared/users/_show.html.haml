@@ -219,50 +219,9 @@
           = image_tag("example_movie_3.jpg", class: "img-responsive")
         .col-md-3.col-sm-6.col-xs-6.shelf
           = image_tag("example_movie_3.jpg", class: "img-responsive")
-    .col-xs-12.col-sm-6.user-review#user-review
-      .title-separator
-        .media
-          .media-left.media-middle
-            %svg.media-object.icon-title
-              %use{"xlink:href" => "#critica"}
-          .media-body.media-middle
-            .media-heading.title-section Minhas críticas
-          .media-body.text-right.media-middle
-            %a{:href => "#"} ver todos
-      .review-item
-        .col-xs-12.col-sm-5.thumb
-          %figure
-            %img.img-responsive{:src => "http://placehold.it/400x500"}/
-        .col-xs-12.col-sm-7.resume
-          .category
-            Categoria:
-            %span.category-type Suspense
-          %h4.title Batman vs Superman
-          %span.subtitle A origem da justiça
-          %span.original-title (Batman Vs Superman: Dawn of Justice)
-          %p
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-          %a.btn.btn-saiba-mais{:href => "#"} ler a crítica
-      .review-item.hidden-sm.hidden-xs
-        .col-xs-12.col-sm-5.thumb
-          %figure
-            %img.img-responsive{:src => "http://placehold.it/400x500"}/
-        .col-xs-12.col-sm-7.resume
-          .category
-            Categoria:
-            %span.category-type Suspense
-          %h4.title Batman vs Superman
-          %span.subtitle A origem da justiça
-          %span.original-title (Batman Vs Superman: Dawn of Justice)
-          %p
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-          %a.btn.btn-saiba-mais{:href => "#"} ler a crítica
+
+    = render 'shared/users/critics/critics'
+
     .col-xs-12.col-sm-6.friend-list#friend-list
       .title-separator
         .media
