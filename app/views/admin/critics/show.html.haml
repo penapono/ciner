@@ -3,6 +3,6 @@
 
 = render 'shared/breadcrumbs'
 
-= render 'shared/critics/show', critic: critic
+= render 'shared/critics/show', critic: critic, resource: critic, like_path: like_admin_critic_path(critic), dislike_path: dislike_admin_critic_path(critic)
 
 

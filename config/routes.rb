@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount LikeDislike::Engine, at: '/'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: { registrations: 'registrations' }
   root to: 'home#index'

@@ -1,0 +1,11 @@
+@import 'base/colors';
+
+.alert.info {
+  width: 100%;
+  background-color: $light-pink;
+  color: $white;
+  border: 1px solid $light-pink;
+  border-radius: 10px;
+  opacity: 0.7;
+  padding: 10px;
+}

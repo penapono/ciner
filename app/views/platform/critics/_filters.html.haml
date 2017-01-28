@@ -7,5 +7,5 @@
       = f.input :filmable_id, collection: FilmProfitable.filmables_by_type(filmable_type), label: false, include_blank: t("shared.critics.toolbar.filters.filmable_id.#{filmable_type}"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')
     .col-xs-2
       = f.input :year, collection: FilmProfitable.localized_years, label: false, include_blank: t('shared.critics.toolbar.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
-    .col-xs-4
+    .col-xs-2
       = f.input :origin, collection: Critic.localized_origins, label: false, include_blank: t('shared.critics.toolbar.filters.origin'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:origin, '')

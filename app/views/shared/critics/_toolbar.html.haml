@@ -1,5 +1,5 @@
 - filmable_type = params.fetch(:filter, {}).fetch(:filmable_type, '')
-- role = current_user.role
+- role = current_user.admin? ? "admin" : "platform"
 
 = render 'shared/toolbar'
 

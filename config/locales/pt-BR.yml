@@ -10,8 +10,18 @@ pt-BR:
     %{chars} caracteres restantes.
   search: Digite sua busca aqui...
   more: Mais
-  votes: >
-    %{count} votos
+  likes:
+    zero: ninguém gostou ainda
+    one: >
+      %{count} gostou
+    other: >
+      %{count} gostaram
+  dislikes:
+    zero: ninguém não gostou
+    one: >
+      %{count} não gostou
+    other: >
+      %{count} não gostaram
 
   views:
     pagination:

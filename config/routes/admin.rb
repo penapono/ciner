@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     resources :series
     resources :ciner_videos
     resources :ciner_news
-    resources :critics
+
+    resources :critics do
+      member do
+        put "like", to: "critics#upvote"
+        put "dislike", to: "critics#downvote"
+      end
+    end
   end
 end

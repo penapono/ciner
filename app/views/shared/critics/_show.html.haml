@@ -1,6 +1,8 @@
 - filmable = critic.filmable
 - cover = critic.filmable_cover
 - cover ||= "http://placehold.it/250x300"
+- like_path ||= nil
+- dislike_path ||= nil
 
 .container.content
   .row
@@ -62,6 +64,5 @@
           = Critic.human_attribute_name(:updated_at)
           %span.bold.wine
             = l(critic.updated_at, format: :long_date)
-  .row
-    .col-xs-12
-      = like_unlike_button(critic)
+
+  = render 'shared/reactions', resource: critic, like_path: like_path, dislike_path: dislike_path

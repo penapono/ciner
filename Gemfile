@@ -107,4 +107,4 @@ group :test do
   gem 'timecop'
 end
 
-gem 'like_dislike'
+gem 'acts_as_votable', '~> 0.10.0'

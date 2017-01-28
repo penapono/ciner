@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :show]
     resources :series, only: [:index, :show]
     resources :ciner_videos, only: [:index, :show]
-    resources :critics, only: [:index, :show]
+
+    resources :critics, only: [:index, :show] do
+      member do
+        put "like", to: "critics#upvote"
+        put "dislike", to: "critics#downvote"
+      end
+    end
   end
 end

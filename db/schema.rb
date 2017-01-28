@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127061831) do
+ActiveRecord::Schema.define(version: 20170128015231) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -79,12 +79,6 @@ ActiveRecord::Schema.define(version: 20170127061831) do
     t.integer  "origin",                              default: 2
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.integer  "cached_votes_up",                     default: 0
-    t.integer  "cached_votes_down",                   default: 0
-    t.integer  "cached_votes_score",                  default: 0
-    t.index ["cached_votes_down"], name: "index_critics_on_cached_votes_down", using: :btree
-    t.index ["cached_votes_score"], name: "index_critics_on_cached_votes_score", using: :btree
-    t.index ["cached_votes_up"], name: "index_critics_on_cached_votes_up", using: :btree
     t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
     t.index ["user_id"], name: "index_critics_on_user_id", using: :btree
   end

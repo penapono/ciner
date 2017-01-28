@@ -63,6 +63,14 @@ module ::BaseController
       end
     end
 
+    def upvote
+      render_json_result(resource.upvote_by current_user)
+    end
+
+    def downvote
+      render_json_result(resource.downvote_by current_user)
+    end
+
     private
 
     # custom actions
@@ -108,6 +116,20 @@ module ::BaseController
     def full_error_flash
       error = resource.errors.full_messages.join(", ")
       (t(".fail") % { title: resource_title, error: error })
+    end
+
+    # Reacting
+
+    def render_json_result(result)
+      if result
+        render json: { status: 'success',
+                       like_count: resource.likes_count,
+                       dislike_count: resource.dislikes_count,
+                       like_icon: resource.like_icon_class(current_user),
+                       dislike_icon: resource.dislike_icon_class(current_user) }
+      else
+        render json: { status: 'failure', errors: critic.errors }
+      end
     end
   end
 
