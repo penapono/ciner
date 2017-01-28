@@ -64,11 +64,15 @@ module ::BaseController
     end
 
     def upvote
-      render_json_result(resource.upvote_by current_user)
+      result = resource.upvote_by current_user
+      resource.update_attribute("likes_count", resource.likes_count)
+      render_json_result(result)
     end
 
     def downvote
-      render_json_result(resource.downvote_by current_user)
+      result = resource.downvote_by current_user
+      resource.update_attribute("dislikes_count", resource.dislikes_count)
+      render_json_result(result)
     end
 
     private

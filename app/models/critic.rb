@@ -31,7 +31,36 @@ class Critic < ActiveRecord::Base
   # Callbacks
   before_save :update_year
 
+  # Scopes
+
+  default_scope { where(status: :approved) }
+
+  def self.highlight
+    first_critic
+  end
+
+  def self.first_critic
+    where(origin: 1).order(created_at: :desc).first
+  end
+
+  def self.second_critic
+    where.not(id: first_critic.id).order(likes_count: :desc).first
+  end
+
+  def self.only_two
+    [first_critic, second_critic]
+  end
+
+  def self.all_but(denied_critics)
+    where.not(id: denied_critics.pluck(:id))
+  end
+
+  def self.ordered_by_status
+    unscoped.order(status: :asc)
+  end
+
   # Methods
+
   def collapsed_content
     ActionView::Base.full_sanitizer.sanitize(content).truncate(155)
   end

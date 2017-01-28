@@ -4,7 +4,7 @@ module Admin
     include Admin::CriticsBreadcrumb
 
     # exposes
-    expose(:critics) { Critic.all }
+    expose(:critics) { Critic.ordered_by_status }
     expose(:critic, attributes: :critic_attributes)
     expose(:movies) { Movie.first(20) }
     expose(:series) { Serie.first(20) }

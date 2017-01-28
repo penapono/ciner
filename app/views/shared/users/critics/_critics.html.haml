@@ -9,6 +9,8 @@
       .media-body.text-right.media-middle
         = link_to platform_critics_path(filter: { user_id: user.id }) do
           = t('more')
-
-  - critics.each do |critic|
-    = render 'shared/users/critics/critic', critic: critic, user_critic_path: platform_critic_path(critic)
+  - if critics.any?
+    - critics.each do |critic|
+      = render 'shared/users/critics/critic', critic: critic, user_critic_path: platform_critic_path(critic)
+  - else
+    = render 'shared/alerts/info', message: (t('empty', klass: Critic.model_name.human(count: 2)))

@@ -4,7 +4,8 @@ module Platform
     include Platform::CriticsBreadcrumb
 
     # exposes
-    expose(:critics) { Critic.all }
+    expose(:highlight) { Critic.all.highlight }
+    expose(:critics) { Critic.all_but([highlight]) }
     expose(:critic, attributes: :critic_attributes)
     expose(:users) { User.all }
 

@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 20170128015231) do
     t.integer  "filmable_release_year"
     t.integer  "status",                              default: 1
     t.integer  "origin",                              default: 2
+    t.integer  "likes_count",                         default: 0
+    t.integer  "dislikes_count",                      default: 0
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
