@@ -1,5 +1,6 @@
 - filmable_type = params.fetch(:filter, {}).fetch(:filmable_type, '')
-- role = current_user.admin? ? "admin" : "platform"
+- role = '' unless current_user
+- role ||= current_user.admin? ? "admin/" : "platform/"
 
 = render 'shared/toolbar'
 
@@ -8,4 +9,4 @@
     .col-xs-12
       = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
 
-  = render "#{role}/critics/filters", path: path, filmable_type: filmable_type
+  = render "#{role}critics/filters", path: path, filmable_type: filmable_type

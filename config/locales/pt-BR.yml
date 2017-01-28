@@ -22,6 +22,8 @@ pt-BR:
       %{count} não gostou
     other: >
       %{count} não gostaram
+  empty: >
+    Não há %{klass} disponíveis em nossa base que correspondam ao desejado.
 
   views:
     pagination:
