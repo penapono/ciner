@@ -84,7 +84,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.localized_statuses
-    statuses.map { |k, w| [human_attribute_name("status.#{k}"), w]}
+    statuses.map { |k, w| [human_attribute_name("status.#{k}"), w] }
   end
 
   def self.by_origin(origin)
@@ -92,7 +92,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.localized_origins
-    origins.map { |k, w| [human_attribute_name("origin.#{k}"), w]}
+    origins.map { |k, w| [human_attribute_name("origin.#{k}"), w] }
   end
 
   # Callbacks

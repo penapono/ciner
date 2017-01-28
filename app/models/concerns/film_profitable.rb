@@ -9,7 +9,7 @@ module FilmProfitable
     end
 
     def genders_str
-      ["Ação", "Aventura"].to_sentence
+      %w(Ação Aventura).to_sentence
     end
 
     def first_actors_str
