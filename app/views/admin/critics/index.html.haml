@@ -30,20 +30,24 @@
       - critics.each do |critic|
         %tr
           %td
-            = critic.filmable_title_str
+            = link_to admin_critic_path(critic) do
+              = critic.filmable_title_str
 
           %td
             = link_to admin_critic_path(critic) do
               = critic.name.html_safe
 
           %td
-            = critic.status_str
+            = link_to admin_critic_path(critic) do
+              = critic.status_str
 
           %td
-            = critic.user_name
+            = link_to admin_critic_path(critic) do
+              = critic.user_name
 
           %td
-            = critic.origin_str
+            = link_to admin_critic_path(critic) do
+              = critic.origin_str
 
           %td
             = render 'shared/critics/rating', critic: critic

@@ -1,4 +1,6 @@
 - object = movie
+- filmable_type = object.class
+- filmable_id = object.id
 
 #criticas.criticas
   .title-separator
@@ -11,8 +13,8 @@
           = Critic.model_name.human(count: 2)
       .media-body.text-right.media-middle
         %a
-          = link_to t('more'), current_critics_path
+          = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }])
   .reviews
     .row
       - object.critics.only_two.each do |critic|
-        = render 'shared/movies/critic', critic: critic if critic
+        = render 'shared/movies/critic', critic: critic, role: role if critic

@@ -13,6 +13,7 @@
       = filmable.original_title
     %p
       = critic.collapsed_content
-    = link_to admin_critic_path(critic) do
+
+    = link_to url_for([role, critic]) do
       .btn.btn-saiba-mais
         = t('more')
