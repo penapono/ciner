@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :ceps, only: :index
       resources :cities, only: :index
+      resources :countries, only: :index
+      resources :users, only: :index
+      resources :movies, only: :index
+      resources :series, only: :index
     end
   end
 end

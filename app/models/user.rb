@@ -58,6 +58,9 @@ class User < ActiveRecord::Base
   before_save :update_address
   before_save :update_age
 
+  # Aliases
+  alias_attribute :text, :name
+
   def self.localized_roles
     roles.map { |k, _w| [human_attribute_name("role.#{k}"), k] }
   end

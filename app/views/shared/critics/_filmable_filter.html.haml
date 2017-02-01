@@ -1,0 +1,6 @@
+- filmable_type ||= Movie
+
+- if filmable_type.to_s == "Movie"
+  = f.input :filmable_id, collection: FilmProfitable.filmables_by_type(filmable_type), label: false, include_blank: t("shared.critics.toolbar.filters.filmable_id.#{filmable_type}"), input_html: { data: { dynamic_input: '', remote_select: '', ajax_url: api_v1_movies_path } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')
+- else
+  = f.input :filmable_id, collection: FilmProfitable.filmables_by_type(filmable_type), label: false, include_blank: t("shared.critics.toolbar.filters.filmable_id.#{filmable_type}"), input_html: { data: { dynamic_input: '', remote_select: '', ajax_url: api_v1_series_index_path } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')

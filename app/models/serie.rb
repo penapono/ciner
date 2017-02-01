@@ -31,8 +31,10 @@ class Serie < ActiveRecord::Base
   delegate :name, to: :state, allow_nil: true, prefix: true
   delegate :name, to: :country, allow_nil: true, prefix: true
 
-  # Scopes
+  # Aliases
+  alias_attribute :text, :title_str
 
+  # Scopes
   def self.by_city(city)
     where(city: city)
   end

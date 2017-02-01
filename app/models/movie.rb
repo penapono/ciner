@@ -30,6 +30,9 @@ class Movie < ActiveRecord::Base
   delegate :name, to: :country, allow_nil: true, prefix: true
   delegate :name, to: :age_range, allow_nil: true, prefix: true
 
+  # Aliases
+  alias_attribute :text, :title_str
+
   # Scopes
 
   def self.by_city(city)

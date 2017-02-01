@@ -1,3 +1,4 @@
+- content_for :javascript, javascript_include_tag('components/filters')
 - content_for :stylesheet, stylesheet_link_tag('components/filters')
 
 .filters{ data: { dynamic_filter: '' } }
@@ -7,7 +8,7 @@
       .col-xs-4
         = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, label: false, include_blank: t('shared.critics.toolbar.filters.filmable_type'), input_html: { data: { dynamic_input: '' } }, selected: filmable_type
       .col-xs-4
-        = f.input :filmable_id, collection: FilmProfitable.filmables_by_type(filmable_type), label: false, include_blank: t("shared.critics.toolbar.filters.filmable_id.#{filmable_type}"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:filmable_id, '')
+        = render 'shared/critics/filmable_filter', f: f, params: params, filmable_type: filmable_type
       .col-xs-2
         = f.input :year, collection: FilmProfitable.localized_years, label: false, include_blank: t('shared.critics.toolbar.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
       .col-xs-2
