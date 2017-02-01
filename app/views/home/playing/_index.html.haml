@@ -1,0 +1,16 @@
+/ SECTION POSTER
+.section-poster
+  .ciner-poster.title-separator
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#filme"}/
+      .media-body.media-bottom
+        .media-heading.title-section Filmes em cartaz
+      .media-body.text-right.media-middle
+        %a{:href => "#"}
+          = t('see_more')
+
+  = render 'home/carousel/carousel', carousel_id: 'carousel-filmes-cartaz'
+
+  = render 'home/showcase/showcase', showcase_class: 'showcase-poster'

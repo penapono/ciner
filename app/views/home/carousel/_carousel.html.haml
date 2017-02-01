@@ -1,0 +1,16 @@
+- carousel_id ||= 'carousel-filmes-cartaz'
+
+.col-xs-12.hidden-lg.hidden-md
+  / Carousel Mobile Featured
+  .carousel.slide.carousel-responsive.carousel-showsixmoveone{id: carousel_id, "data-interval" => "7000", "data-ride" => "carousel", "data-type" => "multi"}
+    .carousel-inner
+      = render 'home/carousel/item', carousel_class: 'active'
+      - 9.times do
+        = render 'home/carousel/item', carousel_class: ''
+
+    %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-featured"}
+      %i.glyphicon.glyphicon-chevron-left
+
+    %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-featured"}
+      %i.glyphicon.glyphicon-chevron-right
+  / Carousel Mobile Featured

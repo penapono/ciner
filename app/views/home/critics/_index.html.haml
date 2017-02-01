@@ -10,7 +10,7 @@
           Críticas do mês
       .media-body.text-right.media-middle
         = link_to critics_path do
-          ver mais
+          = t('see_more')
   .reviews
     - critics.each do |critic|
-      = render 'critic', critic: critic
+      = render 'home/critics/item', critic: critic

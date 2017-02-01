@@ -1,0 +1,14 @@
+.col-xs-12.col-sm-12.col-md-7.col-lg-8
+  .title-separator.ciner-discussion
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#debate"}
+      .media-body.media-bottom
+        .media-heading.title-section Debate Ciner
+      .media-body.text-right.media-middle
+        %a{:href => "#"}
+          = t('see_more')
+  .discussion
+    - 5.times do
+      = render 'home/questions/item'

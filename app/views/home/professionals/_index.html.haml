@@ -1,0 +1,67 @@
+.col-xs-12.col-sm-12.col-md-5.col-lg-4
+  .title-separator.ciner-search
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#busca"}
+      .media-body.media-bottom
+        .media-heading.title-section Busca de Profissionais
+      .media-body.text-right.media-middle
+        %a{:href => "#"}
+          = t('see_more')
+  %form.form-profissionais{:action => "#", :method => "POST"}
+    .form-group
+      %select#tipo_profissional.form-control{:name => "tipo_profissional"}
+        %option{:disabled => "disabled", :selected => "selected"} Tipo profissional
+        %option{:value => ""} option
+        %option{:value => ""} option
+        %option{:value => ""} option
+    .form-group
+      %select#idade.form-control{:name => "idade"}
+        %option{:disabled => "disabled", :selected => "selected"} Idade
+        %option{:value => ""} option
+        %option{:value => ""} option
+        %option{:value => ""} option
+    .form-group
+      %select#sexo.form-control{:name => "sexo"}
+        %option{:disabled => "disabled", :selected => "selected"} Sexo
+        %option{:value => ""} option
+        %option{:value => ""} option
+    .row
+      .col-xs-5.form-group
+        %select#estado.form-control{:name => "estado"}
+          %option{:disabled => "disabled", :selected => "selected"} Estado
+          %option{:value => ""} option
+          %option{:value => ""} option
+      .col-xs-7.form-group
+        %select#cidade.form-control{:name => "cidade"}
+          %option{:disabled => "disabled", :selected => "selected"} Cidade
+          %option{:value => ""} option
+          %option{:value => ""} option
+    .row
+      .col-xs-6.form-group
+        %select#raca.form-control{:name => "raca"}
+          %option{:disabled => "disabled", :selected => "selected"} Raça
+          %option{:value => ""} option
+          %option{:value => ""} option
+      .col-xs-6.form-group
+        %select#altura.form-control{:name => "altura"}
+          %option{:disabled => "disabled", :selected => "selected"} Altura
+          %option{:value => ""} option
+          %option{:value => ""} option
+    .row
+      .col-xs-4.form-group
+        %select#drt.form-control{:name => "drt"}
+          %option{:disabled => "disabled", :selected => "selected"} DRT
+          %option{:value => ""} option
+          %option{:value => ""} option
+      .col-xs-8.form-group
+        %select#manequim.form-control{:name => "manequim"}
+          %option{:disabled => "disabled", :selected => "selected"} Manequim
+          %option{:value => ""} option
+          %option{:value => ""} option
+    .form-group
+      %button.btn.btn-login{:type => "submit"}
+        buscar
+        %svg.icon-botao
+          %use{"xlink:href" => "#ico-botao", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}

@@ -1,0 +1,16 @@
+/ SECTION FEATURED
+.section-featured
+  .col-xs-12.ciner-featured.title-separator
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#destaque"}
+      .media-body.media-bottom
+        .media-heading.title-section Destaques
+      .media-body.text-right.media-middle
+        %a{:href => "#"}
+          = t('see_more')
+
+  = render 'home/carousel/carousel', carousel_id: 'carousel-featured'
+
+  = render 'home/showcase/showcase', showcase_class: 'showcase-featured'
