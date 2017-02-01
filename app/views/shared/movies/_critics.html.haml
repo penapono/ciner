@@ -11,8 +11,8 @@
           = Critic.model_name.human(count: 2)
       .media-body.text-right.media-middle
         %a
-          = link_to admin_critics_path, t('more')
+          = link_to t('more'), current_critics_path
   .reviews
     .row
-      - object.critics.first(2).each do |critic|
-        = render 'shared/movies/critic', critic: critic
+      - object.critics.only_two.each do |critic|
+        = render 'shared/movies/critic', critic: critic if critic

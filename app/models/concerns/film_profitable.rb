@@ -43,6 +43,25 @@ module FilmProfitable
     def writers
       filmable_professionals.where(set_function: SetFunction.find_by(name: 'Roteiro'))
     end
+
+    # Critics
+
+    def ciner_official_critic
+      return unless critics.any?
+      critics.ciner_official_critic
+    end
+
+    def ciner_rating_user
+      "João Bidu"
+    end
+
+    def users_rating
+      5.0
+    end
+
+    def users_rating_count
+      1000
+    end
   end
 
   def self.filmables_by_type(type)

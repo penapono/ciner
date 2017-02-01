@@ -59,6 +59,10 @@ class Critic < ActiveRecord::Base
     unscoped.order(status: :asc)
   end
 
+  def self.ciner_official_critic
+    find_by(origin: 1)
+  end
+
   # Methods
 
   def collapsed_content
@@ -103,10 +107,6 @@ class Critic < ActiveRecord::Base
 
   def self.by_year(year)
     where(filmable_release_year: year)
-  end
-
-  def self.ciner_official_critic
-    find_by(ciner_critic: true)
   end
 
   def self.by_status(status)
