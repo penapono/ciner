@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Api::V1::BaseController
   extend ActiveSupport::Concern
 
@@ -28,7 +29,7 @@ module Api::V1::BaseController
 
     # action responses
     def create_render_success
-      render status: :created, json: { }
+      render status: :created, json: {}
     end
 
     def create_render_error
@@ -37,10 +38,8 @@ module Api::V1::BaseController
 
     # error handler
     def errors_to_render
-      resource.errors.inject({}) do |errors, (k, v)|
+      resource.errors.each_with_object({}) do |(k, v), errors|
         errors[resource.class.human_attribute_name(k)] = v
-
-        errors
       end
     end
   end

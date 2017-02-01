@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::MoviesController < ApplicationController
   include Api::V1::BaseController
 
