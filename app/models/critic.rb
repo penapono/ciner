@@ -116,7 +116,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.localized_detailed_statuses
-    statuses.keys.map { |w| [human_attribute_name("status.#{w}"), w]}
+    statuses.keys.map { |w| [human_attribute_name("status.#{w}"), w] }
   end
 
   def self.by_origin(origin)
