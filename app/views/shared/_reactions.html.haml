@@ -1,20 +1,21 @@
-- content_for :stylesheet, stylesheet_link_tag('views/shared/reactions')
-- user = current_user || nil
-- clickable_class = user ? 'clickable' : ''
+#reactions
+  - content_for :stylesheet, stylesheet_link_tag('views/shared/reactions')
+  - user = current_user || nil
+  - clickable_class = user ? 'clickable' : ''
 
-.row
-  .col-xs-12{ data: { reactions: '' } }
-    %div.reactionable{ class: clickable_class, data: { vote: '', url: like_path } }
-      %span{ data: { like_counter: '' } }
-        = resource.likes_count
-      %i.fa{ class: resource.like_icon_class(user), data: { like_icon: '' } }
+  .row
+    .col-xs-12{ data: { reactions: '' } }
+      %div.reactionable{ class: clickable_class, data: { vote: '', url: like_path } }
+        %span{ data: { like_counter: '' } }
+          = resource.likes_count
+        %i.fa{ class: resource.like_icon_class(user), data: { like_icon: '' } }
 
-    %div.reactionable{ class: clickable_class, data: { vote: '', url: dislike_path } }
-      %span{ data: { dislike_counter: '' } }
-        = resource.dislikes_count
-      %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
+      %div.reactionable{ class: clickable_class, data: { vote: '', url: dislike_path } }
+        %span{ data: { dislike_counter: '' } }
+          = resource.dislikes_count
+        %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
 
-- if user
-  - content_for :javascript, javascript_include_tag('views/shared/reactions')
-- else
-  = render 'shared/alerts/info', message: t('unauthorized.login_for_reactions')
+  - if user
+    - content_for :javascript, javascript_include_tag('views/shared/reactions')
+  - else
+    = render 'shared/alerts/info', message: t('unauthorized.login_for_reactions')
