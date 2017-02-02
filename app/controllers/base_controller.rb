@@ -65,15 +65,13 @@ module ::BaseController
 
     def upvote
       result = upvotes
-      resource.update_attribute("likes_count", resource.likes_count)
-      resource.update_attribute("dislikes_count", resource.dislikes_count)
+      update_votes_count
       render_json_result(result)
     end
 
     def downvote
       result = downvotes
-      resource.update_attribute("likes_count", resource.likes_count)
-      resource.update_attribute("dislikes_count", resource.dislikes_count)
+      update_votes_count
       render_json_result(result)
     end
 
@@ -91,24 +89,6 @@ module ::BaseController
 
     def destroyed?
       resource.destroy
-    end
-
-    def already_liked?
-      current_user.voted_up_on? resource
-    end
-
-    def already_disliked?
-      current_user.voted_down_on? resource
-    end
-
-    def upvotes
-      return (current_user.likes resource) unless already_liked?
-      current_user.unlike resource
-    end
-
-    def downvotes
-      return (current_user.dislikes resource) unless already_disliked?
-      current_user.undislike resource
     end
 
     def redirect_to_index_with_success
@@ -143,6 +123,29 @@ module ::BaseController
     end
 
     # Reacting
+
+    def already_liked?
+      current_user.voted_up_on? resource
+    end
+
+    def already_disliked?
+      current_user.voted_down_on? resource
+    end
+
+    def upvotes
+      return (current_user.likes resource) unless already_liked?
+      current_user.unlike resource
+    end
+
+    def downvotes
+      return (current_user.dislikes resource) unless already_disliked?
+      current_user.undislike resource
+    end
+
+    def update_votes_count
+      resource.update_attribute("likes_count", resource.likes_count)
+      resource.update_attribute("dislikes_count", resource.dislikes_count)
+    end
 
     def render_json_result(result)
       if result
