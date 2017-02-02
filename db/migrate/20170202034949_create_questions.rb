@@ -1,13 +1,11 @@
-class CreateCritics < ActiveRecord::Migration
+class CreateQuestions < ActiveRecord::Migration[5.0]
   def change
-    create_table :critics do |t|
+    create_table :questions do |t|
       t.references :user, index: true
-      t.references :filmable, polymorphic: true, index: true
+      t.references :questionable, polymorphic: true, index: true
 
+      t.string :title
       t.text :content
-      t.integer :rating
-
-      t.integer :filmable_release_year
 
       t.integer :status, default: 1
       t.integer :origin, default: 2

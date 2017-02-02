@@ -1,0 +1,8 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/questions/show', question: question, resource: question, like_path: like_admin_question_path(question), dislike_path: dislike_admin_question_path(question)
+
+

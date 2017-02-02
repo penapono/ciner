@@ -64,7 +64,4 @@ RSpec.describe Critic, type: :model do
       it { expect(critic.collapsed_content).to eq expected }
     end
   end
-
-  describe 'filters' do
-  end
 end

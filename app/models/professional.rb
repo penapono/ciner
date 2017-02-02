@@ -28,6 +28,10 @@ class Professional < ActiveRecord::Base
   before_save :update_address
   before_save :update_age
 
+  # Aliases
+  alias_attribute :title_str, :name
+  alias_attribute :text, :title_str
+
   def self.localized_genders
     genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end

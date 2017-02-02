@@ -1,0 +1,40 @@
+= javascript_include_tag Ckeditor.cdn_url
+
+= simple_form_for [:admin, question] do |f|
+  - questionable_type = f.object.questionable_type || Movie
+  - questionable_type = questionable_type.to_s
+  - questionable_movies_class = (questionable_type == 'Movie') ? '' : 'hidden'
+  - questionable_series_class = (questionable_type == 'Serie') ? '' : 'hidden'
+  - questionable_professionals_class = (questionable_type == 'Professional') ? '' : 'hidden'
+
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-12
+      = f.input :title
+
+  .row
+    .col-xs-12
+      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+
+  .row{ data: { questionable: '' } }
+    .col-xs-3{ data: { questionable_select: '' } }
+      = f.input :questionable_type, collection: Question.localized_questionable_types, selected: questionable_type
+    .col-xs-6
+      .div{ class: "#{questionable_movies_class}", data: { questionable_type: 'Movie' } }
+        = f.input :questionable_id, collection: movies, input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
+      .div{ class: "#{questionable_series_class}", data: { questionable_type: 'Serie' } }
+        = f.input :questionable_id, collection: series, input_html: { data: { remote_select: '', ajax_url: api_v1_series_index_path } }, label_method: :title_str, value_method: :id
+      .div{ class: "#{questionable_professionals_class}", data: { questionable_type: 'Professional' } }
+        = f.input :questionable_id, collection: professionals, input_html: { data: { remote_select: '', ajax_url: api_v1_professionals_path } }, label_method: :title_str, value_method: :id
+
+  .row
+    .col-xs-8
+      = f.input :user_id, collection: users, input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
+    .col-xs-4
+      = f.input :status, collection: Question.localized_detailed_statuses, include_blank: t('.select_status')
+
+  = f.hidden_field :ciner_question, value: true
+
+  = render 'shared/form_actions', f: f

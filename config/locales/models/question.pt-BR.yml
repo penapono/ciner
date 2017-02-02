@@ -1,0 +1,42 @@
+pt-BR:
+  activerecord:
+    models:
+      question:
+        one: Tópico de Debate
+        other: Tópicos de Debate
+
+    attributes:
+      question:
+        title: Título
+        content: Tópico de Debate
+        country: País
+        country_id: País
+        state: Estado
+        state_id: Estado
+        city: Cidade
+        city_id: Cidade
+        questionable: Filme / Série / Profissional
+        questionable_id: Filme / Série / Profissional
+        questionable_type: Referente à
+        updated_at: Data de Publicação
+        user: Autor
+        user_id: Autor
+        origin: Origem
+        status: Situação
+      question/questionable_type:
+        movie: Filme
+        serie: Série
+        professional: Profissional
+      question/status:
+        pending: Aguardando Aprovação
+        approved: Aprovado
+        reproved: Reprovado
+      question/origin:
+        ciner_question: Equipe Ciner
+        user_question: Usuário
+    errors:
+      models:
+        question:
+          attributes:
+            title:
+              blank: "%{attribute} deve ser preenchido"

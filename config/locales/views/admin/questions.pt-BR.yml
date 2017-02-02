@@ -1,0 +1,19 @@
+pt-BR:
+  admin:
+    questions:
+      create:
+        title: Novo Tópico de Debate
+      form:
+        general: Dados Gerais
+        select_status: Aprovado / Reprovado
+      status_changer:
+        approve: Aprovar Tópico de Debate
+        reprove: Reprovar Tópico de Debate
+      index:
+        title: Tópico de Debate
+      new:
+        title: Novo Tópico de Debate
+      toolbar:
+        filters:
+          questionable_type: Seleção por Filme ou Série
+          questionable_id: Selecione o Filme ou Série

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Admin
-  module FilmProductionsBreadcrumb
+  module QuestionsBreadcrumb
     include ::BreadcrumbController
 
     def actions_breadcrumbs
@@ -17,7 +17,7 @@ module Admin
     def index_breadcrumbs
       [
         area_breadcrumb,
-        [FilmProduction.model_name.human(count: 2), ""]
+        [Question.model_name.human(count: 2), ""]
       ]
     end
 
@@ -35,7 +35,7 @@ module Admin
       [
         area_breadcrumb,
         index_breadcrumb,
-        [film_production.original_title, ""]
+        [question.title, ""]
       ]
     end
 
@@ -44,7 +44,7 @@ module Admin
     end
 
     def index_breadcrumb
-      [FilmProduction.model_name.human(count: 2), admin_film_productions_path]
+      [Question.model_name.human(count: 2), admin_questions_path]
     end
   end
 end

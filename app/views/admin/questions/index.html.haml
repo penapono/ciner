@@ -1,0 +1,59 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/index_title', title: Question.model_name.human(count: 2), path: new_admin_question_path
+
+= render 'shared/questions/toolbar', path: admin_questions_path
+
+- if questions.any?
+  %table
+    %thead
+      %tr
+        %th
+          = Question.human_attribute_name(:questionable)
+        %th
+          = Question.human_attribute_name(:content)
+        %th
+          = Question.human_attribute_name(:status)
+        %th
+          = Question.human_attribute_name(:user)
+        %th
+          = Question.human_attribute_name(:origin)
+
+        / Actions
+        %th{ colspan: 2 }
+    %tbody
+      - questions.each do |question|
+        %tr
+          %td
+            = link_to admin_question_path(question) do
+              = question.questionable_title_str
+
+          %td
+            = link_to admin_question_path(question) do
+              = question.title
+
+          %td
+            = link_to admin_question_path(question) do
+              = question.status_str
+
+          %td
+            = link_to admin_question_path(question) do
+              = question.user_name
+
+          %td
+            = link_to admin_question_path(question) do
+              = question.origin_str
+
+          %td
+            = link_to edit_admin_question_path(question) do
+              %i.fa.fa-pencil
+          %td
+            = link_to admin_question_path(question), method: 'delete' do
+              %i.fa.fa-trash
+
+  = render 'shared/pagination', resources: questions
+- else
+  = render 'shared/alerts/info', message: (t('empty', klass: Question.model_name.human(count: 2)))

@@ -1,0 +1,14 @@
+pt-BR:
+  shared:
+    questions:
+      toolbar:
+        filters:
+          questionable_id:
+            Movie: Filme
+            Serie: Série
+            Professional: profissional
+            other: Filme / Série / Profissional
+          questionable_type: Filme / Série / Profissional
+          origin: Ciner ou Usuários
+          status: Situação
+          user_id: Autor

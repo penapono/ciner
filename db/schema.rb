@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128015231) do
+ActiveRecord::Schema.define(version: 20170202034949) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -173,6 +173,22 @@ ActiveRecord::Schema.define(version: 20170128015231) do
     t.index ["city_id"], name: "index_professionals_on_city_id", using: :btree
     t.index ["country_id"], name: "index_professionals_on_country_id", using: :btree
     t.index ["state_id"], name: "index_professionals_on_state_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "questionable_type"
+    t.integer  "questionable_id"
+    t.string   "title"
+    t.text     "content",           limit: 65535
+    t.integer  "status",                          default: 1
+    t.integer  "origin",                          default: 2
+    t.integer  "likes_count",                     default: 0
+    t.integer  "dislikes_count",                  default: 0
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id", using: :btree
+    t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end
 
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
