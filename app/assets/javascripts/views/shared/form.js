@@ -3,6 +3,7 @@
 //= require components/ciner_select2
 //= require components/cep_finder
 //= require components/limited_input
+//= require components/checkbox
 //= require components/cpf_validator
 //= require views/shared/users/terms
 //= require views/shared/users/plan_chooser

@@ -51,6 +51,10 @@
           %a.bold.wine
             = filmable.first_actors_str
 
+        .spoiler
+          .bold.wine
+            = critic.spoiler_str
+          %br
         .content
           %p
             = critic.content.html_safe

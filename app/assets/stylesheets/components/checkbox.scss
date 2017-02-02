@@ -1,0 +1,45 @@
+@import 'base/colors';
+
+[data-checkboxes] {
+  label {
+    cursor: pointer;
+  }
+
+  [data-check-item] {
+    display: none;
+  }
+}
+
+[data-check-box] {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    float: left;
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+    margin-top: 3px;
+
+    border: solid 2px $light-gray;
+    border-radius: 3px;
+  }
+
+  &.checked {
+    &::after {
+      position: absolute;
+      content: '\f00c';
+      top: -2px;
+      left: 1px;
+      height: 18px;
+      width: 18px;
+      z-index: 10;
+      margin-top: 3px;
+
+      color: $pink;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 18px;
+    }
+  }
+}

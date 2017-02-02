@@ -41,7 +41,7 @@ module Admin
     def critic_params
       params.require(:critic).permit(
         :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating,
-        :status, :origin
+        :status, :origin, :featured, :spoiler
       )
     end
 

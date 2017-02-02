@@ -73,10 +73,12 @@ ActiveRecord::Schema.define(version: 20170202034949) do
     t.string   "filmable_type"
     t.integer  "filmable_id"
     t.text     "content",               limit: 65535
-    t.float    "rating",                limit: 24
+    t.integer  "rating"
     t.integer  "filmable_release_year"
     t.integer  "status",                              default: 1
     t.integer  "origin",                              default: 2
+    t.boolean  "spoiler"
+    t.boolean  "featured"
     t.integer  "likes_count",                         default: 0
     t.integer  "dislikes_count",                      default: 0
     t.datetime "created_at",                                      null: false

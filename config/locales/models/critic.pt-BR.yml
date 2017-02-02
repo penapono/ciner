@@ -25,6 +25,8 @@ pt-BR:
         rating: Nota
         origin: Origem
         status: Situação
+        featured: Destaque
+        spoiler: Contém spoiler
       critic/filmable_type:
         movie: Filme
         serie: Série
@@ -36,6 +38,9 @@ pt-BR:
       critic/origin:
         ciner_critic: Equipe Ciner
         user_critic: Usuário
+      critic/spoiler:
+        has_spoiler: Contém spoilers
+        spoiler_free: Não contém spoilers
     errors:
       models:
         critic:

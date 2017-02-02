@@ -38,6 +38,8 @@ class Critic < ActiveRecord::Base
   end
 
   def self.first_critic
+    result = where(featured: true, origin: 1, status: 2).first
+    return result if result
     where(origin: 1, status: 2).order(created_at: :desc).first
   end
 
@@ -77,6 +79,11 @@ class Critic < ActiveRecord::Base
 
   def origin_str
     Critic.human_attribute_name("origin.#{origin}")
+  end
+
+  def spoiler_str
+    return Critic.human_attribute_name("spoiler.has_spoiler") if spoiler
+    Critic.human_attribute_name("spoiler.spoiler_free")
   end
 
   # Filter

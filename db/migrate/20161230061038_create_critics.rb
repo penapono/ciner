@@ -12,6 +12,9 @@ class CreateCritics < ActiveRecord::Migration
       t.integer :status, default: 1
       t.integer :origin, default: 2
 
+      t.boolean :spoiler, default: false
+      t.boolean :featured, default: false
+
       # Reacting
       t.integer :likes_count, default: 0
       t.integer :dislikes_count, default: 0
