@@ -1,7 +1,0 @@
-.row.critic-status
-  - if f.object.reproved? || f.object.pending?
-    .col-xs-12.col-sm-3.pull-right
-      = f.submit t('.approve'), class: 'btn btn-reprove pull-right', name: 'approve'
-  - if f.object.approved? || f.object.pending?
-    .col-xs-12.col-sm-3.pull-right
-      = f.submit t('.reprove'), class: 'btn btn-approve pull-right', name: 'reprove'

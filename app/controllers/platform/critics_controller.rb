@@ -4,8 +4,8 @@ module Platform
     include Platform::CriticsBreadcrumb
 
     # exposes
-    expose(:highlight) { Critic.all.highlight }
-    expose(:critics) { Critic.all_but([highlight]) }
+    expose(:highlight) { highlight_critic }
+    expose(:critics) { Critic.approved.all_but([highlight]) }
     expose(:critic, attributes: :critic_attributes)
     expose(:users) { User.all }
 
@@ -44,6 +44,10 @@ module Platform
     end
 
     # Filtering
+
+    def highlight_critic
+      Critic.all.filter_by(Critic.all, params.fetch(:filter, '')).highlight
+    end
 
     def paginated_critics
       filtered_critic.page(params[:page]).per(PER_PAGE)

@@ -26,11 +26,11 @@
       = f.input :content, as: :ckeditor, input_html: { rows: 5 }
 
   .row
-    .col-xs-12
+    .col-xs-8
       = f.input :user_id, collection: users, input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
+    .col-xs-4
+      = f.input :status, collection: Critic.localized_detailed_statuses, include_blank: t('.select_status')
 
   = f.hidden_field :ciner_critic, value: true
-
-  = render 'admin/critics/status_changer', f: f unless f.object.new_record?
 
   = render 'shared/form_actions', f: f

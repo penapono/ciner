@@ -33,14 +33,12 @@ class Critic < ActiveRecord::Base
 
   # Scopes
 
-  default_scope { where(status: :approved) }
-
   def self.highlight
     first_critic
   end
 
   def self.first_critic
-    where(origin: 1).order(created_at: :desc).first
+    where(origin: 1, status: 2).order(created_at: :desc).first
   end
 
   def self.second_critic
@@ -56,7 +54,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.ordered_by_status
-    unscoped.order(status: :asc)
+    order(status: :asc)
   end
 
   def self.ciner_official_critic
@@ -115,6 +113,10 @@ class Critic < ActiveRecord::Base
 
   def self.localized_statuses
     statuses.map { |k, w| [human_attribute_name("status.#{k}"), w] }
+  end
+
+  def self.localized_detailed_statuses
+    statuses.keys.map { |w| [human_attribute_name("status.#{w}"), w]}
   end
 
   def self.by_origin(origin)

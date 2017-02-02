@@ -5,6 +5,7 @@ pt-BR:
         title: Nova Crítica
       form:
         general: Dados Gerais
+        select_status: Aprovada / Reprovada
       status_changer:
         approve: Aprovar Crítica
         reprove: Reprovar Crítica

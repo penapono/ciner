@@ -12,8 +12,6 @@ module Admin
 
     PER_PAGE = 10
 
-    before_filter :set_status, only: :update
-
     def index
       self.critics = paginated_critics
     end
@@ -45,13 +43,6 @@ module Admin
         :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating,
         :status, :origin
       )
-    end
-
-    # Approving, Reproving
-
-    def set_status
-      critic.status = :reproved
-      critic.status = :approved if params[:approve]
     end
 
     # Filtering
