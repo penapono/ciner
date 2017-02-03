@@ -32,7 +32,7 @@ class Event < ActiveRecord::Base
   end
 
   def event_date_str
-    I18n.l(event_date, format: :long_date) if event_date.is_a?(Date)
+    I18n.l(event_date, format: :simpledate) if event_date.is_a?(Date)
   end
 
   def start_time_str
