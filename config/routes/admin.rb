@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :series
     resources :ciner_videos
     resources :ciner_news
+    resources :events
 
     resources :critics do
       member do

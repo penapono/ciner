@@ -5,12 +5,12 @@
         %svg.icon-title
           %use{"xlink:href" => "#noticia"}
       .media-body.media-bottom
-        .media-heading.title-section Notícias
+        .media-heading.title-section Agenda Ciner
       .media-body.text-right.media-middle
         %a{:href => "#"}
           = t('see_more')
   / POSTS ITEMS
-  - 2.times do
-    = render 'home/news/item'
+  - events.each do |event|
+    = render 'home/events/item', event: event
 
   / POSTS ITEMS

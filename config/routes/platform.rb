@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :show]
     resources :series, only: [:index, :show]
     resources :ciner_videos, only: [:index, :show]
+    resources :events
 
     resources :critics do
       member do

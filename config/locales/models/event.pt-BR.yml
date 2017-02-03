@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      event:
+        one: Evento
+        other: Eventos
+
+    attributes:
+      event:
+        title: Título
+        description: Descrição
+        event_date: Data
+        event_date_str: Data
+        start_time: Início
+        start_time_str: Início
+        end_time: Término
+        end_time_str: Término
+    errors:
+      models:
+        event:
+          attributes:
+            title:
+              blank: "%{attribute} deve ser preenchido"

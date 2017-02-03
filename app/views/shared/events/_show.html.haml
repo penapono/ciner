@@ -1,0 +1,72 @@
+/ - filmable = critic.filmable
+/ - cover = critic.filmable_cover
+/ - cover ||= "http://placehold.it/250x300"
+/ - like_path ||= nil
+/ - dislike_path ||= nil
+
+/ .container.content
+/   .row
+/     .col-xs-12
+/       .title-separator
+/         .media
+/           .media-left.media-middle
+/             %svg.icon-title
+/               %use{"xlink:href": "#critica"}
+/           .media-body.media-bottom
+/             .media-heading.title-section
+/               = critic.filmable_title_str
+/   .row
+/     .col-xs-12.critica-mais-recente
+/       .col-xs-12.col-sm-4.col-md-2
+/         %img.img-responsive{ src: cover }
+/       .col-xs-12.col-sm-8.col-md-10.critica-recente
+/         .info
+/           .row
+/             .col-xs-12
+/               = Critic.human_attribute_name(:release)
+/               %span.bold.wine
+/                 = l(filmable.release, format: :long_date)
+
+/               .pull-right
+/                 = render 'shared/critics/rating', critic: critic
+
+/           .row
+/             .col-xs-12
+/               = Movie.human_attribute_name(:genders_str)
+/               %a.bold.wine{href: "#"}
+/                 = filmable.genders_str
+
+/         %h4.title
+/           = critic.filmable_title_str
+/         %span.original-title
+/           = critic.filmable_original_title
+
+/         .diretor-elenco
+/           = Movie.human_attribute_name(:directors_str)
+/           %a.bold.wine
+/             = filmable.directors_str
+/           %br
+
+/           = Movie.human_attribute_name(:cast_str)
+/           %a.bold.wine
+/             = filmable.first_actors_str
+
+/         .spoiler
+/           .bold.wine
+/             = critic.spoiler_str
+/           %br
+/         .content
+/           %p
+/             = critic.content.html_safe
+
+/         .info
+/           = Critic.human_attribute_name(:user)
+/           %a.bold.wine{href: "#"}
+/             = critic.user_name
+/           %br
+
+/           = Critic.human_attribute_name(:updated_at)
+/           %span.bold.wine
+/             = l(critic.updated_at, format: :long_date)
+
+/   = render 'shared/reactions', resource: critic, like_path: like_path, dislike_path: dislike_path

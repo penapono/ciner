@@ -25,6 +25,7 @@ pt-BR:
       %{count} não gostaram
   empty: >
     Não há %{klass} disponíveis em nossa base que correspondam ao desejado.
+  select_hour: Selecione um horário
 
   views:
     pagination:

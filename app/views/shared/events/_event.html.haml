@@ -1,0 +1,12 @@
+- cover = critic.filmable_cover
+- cover ||= "http://placehold.it/250x300"
+
+= link_to path do
+  .col-xs-12.col-sm-4.col-md-2.critica-item
+    %img.img-responsive{ src: cover }
+    .info
+      = render 'shared/critics/rating', critic: critic
+      %h4.bold.title
+        = critic.filmable_title_str
+      %span.original-title
+        = critic.filmable_original_title

@@ -1,0 +1,8 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/events/show', event: event, resource: event, like_path: like_admin_event_path(event), dislike_path: dislike_admin_event_path(event)
+
+

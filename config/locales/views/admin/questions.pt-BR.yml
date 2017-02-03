@@ -6,9 +6,6 @@ pt-BR:
       form:
         general: Dados Gerais
         select_status: Aprovado / Reprovado
-      status_changer:
-        approve: Aprovar Tópico de Debate
-        reprove: Reprovar Tópico de Debate
       index:
         title: Tópico de Debate
       new:

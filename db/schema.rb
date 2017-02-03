@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202034949) do
+ActiveRecord::Schema.define(version: 20170203150456) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -77,14 +77,24 @@ ActiveRecord::Schema.define(version: 20170202034949) do
     t.integer  "filmable_release_year"
     t.integer  "status",                              default: 1
     t.integer  "origin",                              default: 2
-    t.boolean  "spoiler"
-    t.boolean  "featured"
+    t.boolean  "spoiler",                             default: false
+    t.boolean  "featured",                            default: false
     t.integer  "likes_count",                         default: 0
     t.integer  "dislikes_count",                      default: 0
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
     t.index ["user_id"], name: "index_critics_on_user_id", using: :btree
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.date     "event_date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "film_production_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

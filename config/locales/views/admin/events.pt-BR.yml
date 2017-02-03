@@ -1,0 +1,11 @@
+pt-BR:
+  admin:
+    events:
+      create:
+        title: Novo Evento
+      form:
+        general: Dados Gerais
+      index:
+        title: Evento
+      new:
+        title: Novo Evento

@@ -23,11 +23,11 @@ class CriticsController < ApplicationController
   end
 
   def index_path
-    admin_critics_path
+    critics_path
   end
 
   def show_path
-    admin_critic_path(resource)
+    critic_path(resource)
   end
 
   def resource_params

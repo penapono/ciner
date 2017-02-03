@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
+  expose(:events) { Event.all_next.first(2) }
   expose(:critics) { Critic.only_two }
 
   def index

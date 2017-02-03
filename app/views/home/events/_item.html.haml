@@ -1,0 +1,10 @@
+.post-item
+  %h4
+    = event.title
+  %p
+    = event.description_str
+  = link_to event_path(event) do
+    .btn.btn-saiba-mais
+      = t('see_more')
+  %span.pull-right
+    = event.event_date_str

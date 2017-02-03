@@ -8,13 +8,15 @@ Rails.application.routes.draw do
 
   get "/seja_ciner", to: "plans#index", as: "plans"
   get "/movies", to: "movies#index", as: "movies"
-  resources :critics, only: [:index, :show]
   get "/debates", to: "debates#index", as: "debates"
   get "/news", to: "news#index", as: "news"
   get "/newdetail", to: "news#detail", as: "newdetail"
   get "/cinervideos", to: "cinervideos#index", as: "cinervideos"
   get "/professionals", to: "professionals#index", as: "professionals"
   get "/criticdetail", to: "critics#detail", as: "criticdetail"
+
+  resources :critics, only: [:index, :show]
+  resources :events, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

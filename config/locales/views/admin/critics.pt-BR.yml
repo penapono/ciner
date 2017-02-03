@@ -6,9 +6,6 @@ pt-BR:
       form:
         general: Dados Gerais
         select_status: Situação da Crítica
-      status_changer:
-        approve: Aprovar Crítica
-        reprove: Reprovar Crítica
       index:
         title: Crítica
       new:
