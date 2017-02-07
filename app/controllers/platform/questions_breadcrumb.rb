@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Admin
+module Platform
   module QuestionsBreadcrumb
     include ::BreadcrumbController
 
@@ -40,11 +40,11 @@ module Admin
     end
 
     def area_breadcrumb
-      [t('admin.home.index.title'), root_path]
+      [t('platform.home.index.title'), root_path]
     end
 
     def index_breadcrumb
-      [t('shared.questions.index.title'), admin_questions_path]
+      [t('shared.questions.index.title'), platform_questions_path]
     end
   end
 end

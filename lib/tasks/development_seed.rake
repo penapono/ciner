@@ -487,5 +487,40 @@ namespace :development_seed do
       origin: 1,
       status: 2
     )
+
+    # -------------------------------- Debates ---------------------------------
+
+    Question.find_or_create_by(
+      user: User.find_by(name: 'Pedro Naponoceno'),
+      questionable_id: Movie.find_by(title: 'A Origem').id,
+      questionable_type: Movie,
+      title: 'Is this real life? Or is it just fantasy?',
+      content:
+        "At the end of the film it is left unknown whether Cobb is still in a dream or not. I only have one piece of evidence to prove this theory but i believe it is all the evidence i need. Throughout the film we see Cobb's children in the exact same pose, always standing together in the same positions because this is the last memory Cobb has of them before he left. At the end of the film, we see them in the exact same position we have been seeing them in every other time in the film. I believe this proves he is still dreaming because he is projecting them based on his last repeated memory of them. To argue that the fact he sees their faces at the end, he had the opportunity to see their faces every other time throuout the film but chooses to turn away before it happens, meaning he still has a memory of seeing their faces just before he originally left.",
+      origin: 1,
+      status: 2
+    )
+
+    Question.find_or_create_by(
+      user: User.find_by(name: 'Thiago Garcia'),
+      questionable_id: Professional.find_by(name: 'Leonardo DiCaprio').id,
+      questionable_type: Professional,
+      title: 'Cabia a Rose, cabia a Mal, cabia todo mundo naquela porta!',
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      origin: 1,
+      status: 2
+    )
+
+    Question.find_or_create_by(
+      user: User.find_by(name: 'Marquinhos'),
+      questionable_id: Serie.find_by(title: 'Doctor Who').id,
+      questionable_type: Serie,
+      title: 'QUERO UMA TARDIS!!!!!',
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      origin: 1,
+      status: 2
+    )
   end
 end

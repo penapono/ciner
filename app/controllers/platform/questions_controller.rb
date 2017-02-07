@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-module Admin
-  class QuestionsController < AdminController
-    include Admin::QuestionsBreadcrumb
+module Platform
+  class QuestionsController < PlatformController
+    include Platform::QuestionsBreadcrumb
 
     # exposes
-    expose(:questions) { Question.ordered_by_status }
+    expose(:questions) { Question.approved }
     expose(:question, attributes: :question_attributes)
     expose(:movies) { Movie.first(20) }
     expose(:series) { Serie.first(20) }
@@ -42,7 +42,7 @@ module Admin
     def question_params
       params.require(:question).permit(
         :title, :content, :user_id, :questionable_id, :questionable_type,
-        :questionable, :status, :origin
+        :questionable, :origin
       )
     end
 

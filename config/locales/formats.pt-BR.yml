@@ -55,6 +55,7 @@ pt-BR:
       simpletime: '%H:%M'
       short_date: '%d/%m/%y'
       long_date: '%d de %B de %Y'
+      shorter: '%d/%m/%Y'
 
   datetime:
     formats:

@@ -1,6 +1,8 @@
 pt-BR:
   shared:
     questions:
+      index:
+        title: Debate Ciner
       toolbar:
         filters:
           questionable_id:
@@ -12,3 +14,9 @@ pt-BR:
           origin: Ciner ou Usuários
           status: Situação
           user_id: Autor
+      created_at: Criado por %{user} em %{date}
+      header:
+        area: Área
+        topic: Tópico
+        comments: Comentários
+        activity: Atividades

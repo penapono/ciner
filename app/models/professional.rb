@@ -32,6 +32,10 @@ class Professional < ActiveRecord::Base
   alias_attribute :title_str, :name
   alias_attribute :text, :title_str
 
+  def title_str
+    name
+  end
+
   def self.localized_genders
     genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end

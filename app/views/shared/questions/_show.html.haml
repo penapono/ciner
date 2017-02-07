@@ -1,0 +1,30 @@
+- questionable = question.questionable
+- like_path ||= nil
+- dislike_path ||= nil
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .row.topico{ class: question_class(question) }
+          .col-xs-2.icone
+            %svg.icon-debate
+              %use{ "xlink:href": question_icon(question) }
+          .col-xs-10.titulo
+            %h4
+              = question.title
+      .content
+        .bold.wine
+          = question.questionable_title_str
+
+        %br
+
+        %p
+          = question.content.html_safe
+
+      .info
+        = question_created_at_str(question)
+
+= render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
+
+= render 'shared/comments/index', resource: question

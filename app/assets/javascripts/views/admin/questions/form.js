@@ -3,18 +3,21 @@
 $(function() {
   'use strict';
 
-  $('[data-filmable]').on("change", "[data-filmable-select] select", function(event) {
+  $('[data-questionable]').on("change", "[data-questionable-select] select", function(event) {
     var self = $(this),
         value = self.val();
+
+    alert(value);
 
     _changeSelect(value);
   });
 
-  $('[data-filmable]').on("change", "[data-filmable-type] select", function(event) {
+  $('[data-questionable]').on("change", "[data-questionable-type] select", function(event) {
     var self = $(this),
         value = self.val();
 
-    $('[data-filmable-type] select').val(value);
+    $('[data-questionable-type] select').value = value;
+    event.stopPropagation();
   });
 
   function _changeSelect(aValue) {
@@ -22,8 +25,8 @@ $(function() {
   }
 
   function _manageClass(aSelectorToRemoveClass, aClass) {
-    var aDataToAddClass       = "[data-filmable-type]",
-        aDataToRemoveClass    = "[data-filmable-type=" + aSelectorToRemoveClass + "]",
+    var aDataToAddClass       = "[data-questionable-type]",
+        aDataToRemoveClass    = "[data-questionable-type=" + aSelectorToRemoveClass + "]",
         aSelectToAddClass     = $(aDataToAddClass),
         aSelectToRemoveClass  = $(aDataToRemoveClass);
 
