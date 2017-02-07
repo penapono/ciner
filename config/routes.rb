@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :critics, only: [:index, :show]
   resources :events, only: [:index, :show]
+  resources :questions, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

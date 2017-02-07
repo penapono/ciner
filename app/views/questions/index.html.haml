@@ -15,7 +15,7 @@
             .media-heading.title-section
               = t('shared.questions.index.title')
 
-    = render 'shared/questions/toolbar', path: platform_questions_path
+    = render 'shared/questions/toolbar', path: questions_path
 
 .container.debates
   .row.cabecalho
@@ -34,7 +34,7 @@
 
   - if questions.any?
     - questions.each do |question|
-      = link_to platform_question_path(question) do
+      = link_to question_path(question) do
         .row.topico{ class: question_class(question) }
           .col-xs-2.col-sm-1.icone
             %svg.icon-debate
