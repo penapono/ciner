@@ -1,1 +1,4 @@
+- content_for :stylesheet, stylesheet_link_tag('views/shared/rating')
+- content_for :javascript, javascript_include_tag('views/shared/rating')
+
 %input#input-2.rating{ "data-max": "5", "data-min": "0", "data-readonly": "true", "data-show-caption": "false", "data-show-clear": "false", "data-size": "xss", "data-step": "0.5", name: "input-2", type: "number", value: critic.rating }

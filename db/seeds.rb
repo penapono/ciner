@@ -61,6 +61,7 @@ admin_user = User.find_or_initialize_by(
   biography: 'Sou administrador',
   terms_of_use: true
 )
+admin_user.avatar = File.open(File.join(Rails.root, 'app/assets/images/users/gui.png'))
 
 admin_user.password = 'ciner123'
 admin_user.password_confirmation = 'ciner123'
@@ -81,6 +82,7 @@ admin_user = User.find_or_initialize_by(
   biography: 'Sou administrador',
   terms_of_use: true
 )
+admin_user.avatar = File.open(File.join(Rails.root, 'app/assets/images/users/marquinhos.png'))
 
 admin_user.password = 'ciner123'
 admin_user.password_confirmation = 'ciner123'
@@ -101,6 +103,7 @@ admin_user = User.find_or_initialize_by(
   biography: 'Sou administrador',
   terms_of_use: true
 )
+admin_user.avatar = File.open(File.join(Rails.root, 'app/assets/images/users/thiago.png'))
 
 admin_user.password = 'ciner123'
 admin_user.password_confirmation = 'ciner123'
@@ -131,7 +134,7 @@ admin_user.save(validate: false)
 
 admin_user = User.find_or_initialize_by(
   name: 'Pedro Naponoceno',
-  email: 'pnaponoceno@caiena.net',
+  email: 'pedro.gnaponoceno@gmail.com',
   role: 0,
   registered_at: Date.parse("01/09/2016"),
   city: city,
@@ -141,6 +144,28 @@ admin_user = User.find_or_initialize_by(
   biography: 'Sou administrador',
   terms_of_use: true
 )
+admin_user.avatar = File.open(File.join(Rails.root, 'app/assets/images/users/pedro.png'))
+
+admin_user.password = 'ciner123'
+admin_user.password_confirmation = 'ciner123'
+
+admin_user.save(validate: false)
+
+# ------------------------------ Incinerador ------------------------------
+
+admin_user = User.find_or_initialize_by(
+  name: 'InCINERador',
+  email: 'incinerador@ciner.com',
+  role: 0,
+  registered_at: Date.parse("01/09/2016"),
+  city: city,
+  state: state,
+  birthday: Date.parse("21/09/1994"),
+  gender: :men,
+  biography: 'Sou o inCINERador',
+  terms_of_use: true
+)
+admin_user.avatar = File.open(File.join(Rails.root, 'app/assets/images/users/incinerador.png'))
 
 admin_user.password = 'ciner123'
 admin_user.password_confirmation = 'ciner123'

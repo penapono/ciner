@@ -14,6 +14,7 @@ class CreateCritics < ActiveRecord::Migration
 
       t.boolean :spoiler, default: false
       t.boolean :featured, default: false
+      t.boolean :quick, default: false
 
       # Reacting
       t.integer :likes_count, default: 0

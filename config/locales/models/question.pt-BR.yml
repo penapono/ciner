@@ -23,6 +23,8 @@ pt-BR:
         user_id: Autor
         origin: Origem
         status: Situação
+        featured: Destaque
+        spoiler: Contém spoiler
       question/questionable_type:
         movie: Filme
         serie: Série
@@ -34,6 +36,9 @@ pt-BR:
       question/origin:
         ciner_question: Equipe Ciner
         user_question: Usuário
+      question/spoiler:
+        has_spoiler: Contém spoilers
+        spoiler_free: Não contém spoilers
     errors:
       models:
         question:

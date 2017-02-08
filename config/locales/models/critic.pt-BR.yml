@@ -27,6 +27,7 @@ pt-BR:
         status: Situação
         featured: Destaque
         spoiler: Contém spoiler
+        quick: Curtinha
       critic/filmable_type:
         movie: Filme
         serie: Série

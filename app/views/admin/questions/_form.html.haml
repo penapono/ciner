@@ -30,6 +30,13 @@
         = f.input :questionable_id, collection: professionals, input_html: { data: { remote_select: '', ajax_url: api_v1_professionals_path } }, label_method: :title_str, value_method: :id
 
   .row
+    .col-xs-4
+      = checkbox_item(f, :spoiler)
+    - if admin
+      .col-xs-4
+        = checkbox_item(f, :featured)
+
+  .row
     .col-xs-8
       = f.input :user_id, collection: users, input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
     .col-xs-4

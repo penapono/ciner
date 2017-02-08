@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FormHelper
   def checkbox_item(f, field)
     class_name = object_class_name(f.object)
@@ -13,7 +14,7 @@ module FormHelper
     content_tag :span, data: { checkboxes: '' } do
       f.label field, data: { check_box: '' }, class: css_class do
         concat t("activerecord.attributes.#{class_name}.#{field}")
-        concat f.check_box(field, {class: 'checkbox', data: { check_item: '' }})
+        concat f.check_box(field, class: 'checkbox', data: { check_item: '' })
       end
     end
   end
@@ -22,7 +23,7 @@ module FormHelper
     object.send(field)
   end
 
-  def checked_class(checked=true)
+  def checked_class(checked = true)
     checked ? 'checked' : ''
   end
 

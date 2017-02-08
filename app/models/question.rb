@@ -50,6 +50,11 @@ class Question < ActiveRecord::Base
     [['Filme', Movie], ['Série', Serie], ['Profissional', Professional]]
   end
 
+  def spoiler_str
+    return Question.human_attribute_name("spoiler.has_spoiler") if spoiler
+    Question.human_attribute_name("spoiler.spoiler_free")
+  end
+
   # Filter
 
   def self.filter_by(collection, params)

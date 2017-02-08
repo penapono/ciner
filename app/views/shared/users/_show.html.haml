@@ -16,24 +16,24 @@
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
         .user-profile
           .col-xs-12.col-sm-3.user-avatar
-            %img.img-responsive{:src => user.avatar}/
+            %img.img-responsive{:src => user.avatar}
           .col-xs-12.col-sm-9.user-info
             Nome:
             %span.user-name
               = user.name
-            %br/
+            %br
             Idade:
             %span.user-age
               = user.age
-            %br/
+            %br
             Cidade:
             %span.user-city
               = user.city_name
-            %br/
+            %br
             Ciner desde:
             %span.user-birth-ciner
               = user.registered_at_str
-            %hr/
+            %hr
             .user-bio
               %span.user-bio Biografia:
               = user.biography
@@ -45,24 +45,25 @@
                 %svg.media-object.icon-title
                   %use{"xlink:href" => "#ficha"}
               .media-body.media-middle
-                .media-heading.title-section Minha sinopse
+                .media-heading.title-section Teste sinopse
           .box-sinopse
             Vídeos:
             %strong 2
-            %br/
+            %br
             Críticas:
-            %strong 3
-            %br/
+            %strong
+              = user.critics.approved.count
+            %br
             Coleção:
             %strong 300
-            %br/
+            %br
             Assistidos:
             %strong 1.000
-            %br/
+            %br
             Amigos:
             %strong 500
       .anchors
-        %a.btn-anchor{:href => "#movies-series"} Filmes e Séries
+        %a.btn-anchor{:href => "#movies-series"} Minha Conta
         %a.btn-anchor{:href => "#videos"} Vídeos
         %a.btn-anchor{:href => "#user-review"} Críticas
         %a.btn-anchor{:href => "#t1"} Currículo
@@ -173,16 +174,17 @@
         .box-sinopse
           Vídeos:
           %strong 2
-          %br/
+          %br
           Críticas:
-          %strong 3
-          %br/
+          %strong
+            = user.critics.approved.count
+          %br
           Coleção:
           %strong 300
-          %br/
+          %br
           Assistidos:
           %strong 1.000
-          %br/
+          %br
           Amigos:
           %strong 500
       .section-collection

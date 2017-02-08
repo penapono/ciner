@@ -37,7 +37,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Em um mundo onde é possível entrar na mente humana, Cobb (Leonardo DiCaprio) está entre os melhores na arte de roubar segredos valiosos do inconsciente, durante o estado de sono. Além disto ele é um fugitivo, pois está impedido de retornar aos Estados Unidos devido à morte de Mal (Marion Cotillard). Desesperado para rever seus filhos, Cobb aceita a ousada missão proposta por Saito (Ken Watanabe), um empresário japonês: entrar na mente de Richard Fischer (Cillian Murphy), o herdeiro de um império econômico, e plantar a ideia de desmembrá-lo. Para realizar este feito ele conta com a ajuda do parceiro Arthur (Joseph Gordon-Levitt), a inexperiente arquiteta de sonhos Ariadne (Ellen Page) e Eames (Tom Hardy), que consegue se disfarçar de forma precisa no mundo dos sonhos.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/inception.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/movies/inception.jpg'))
     object.save
 
     object = Movie.find_or_create_by(
@@ -51,7 +51,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Christian (Ewan McGregor) é um jovem escritor que possui um dom para a poesia e que enfrenta seu pai para poder se mudar para o bairro boêmio de Montmartre, em Paris. Lá ele recebe o apoio de Henri de Toulouse-Latrec (John Leguizamo), que o ajuda a participar da vida social e cultural do local, que gira em torno do Moulin Rouge, uma boate que possui um mundo próprio de sexo, drogas, adrenalina e Can-Can. Ao visitar o local, Christian logo se apaixona por Satine (Nicole Kidman), a mais bela cortesã de Paris e estrela maior do Moulin Rouge.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/moulin_rouge.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/movies/moulin_rouge.jpg'))
     object.save
 
     object = Movie.find_or_create_by(
@@ -65,7 +65,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Dublin, Irlanda. Um músico de rua (Glen Hansard) sente-se inseguro para apresentar suas próprias canções. Um dia ele encontra uma jovem mãe (Markéta Inglová), que tenta ainda se encontrar na cidade. Logo eles se aproximam e, ao reconhecer o talento um do outro, começam a ajudar-se mutuamente para que seus sonhos se tornem realidade.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/once.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/movies/once.jpg'))
     object.save
 
     object = Movie.find_or_create_by(
@@ -79,7 +79,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Donnie (Jake Gyllenhaal) é um jovem brilhante e excêntrico, que cursa o colegial mas despreza a grande maioria dos seus colegas de escola. Donnie tem visões, em especial de um coelho monstruoso o qual apenas ele consegue ver, que o encorajam a realizar brincadeiras destrutivas e humilhantes com quem o cerca. Até que um dia uma de suas visões o atrai para fora de casa e lhe diz que o mundo acabará dentro de um mês. Donnie inicialmente não acredita na profecia, mas momentos depois um avião cai bem no telhado de sua casa, quase matando-o. É quando ele começa a se perguntar qual o fundo de verdade da sua previsão.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/movies/donnie.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/movies/donnie.jpg'))
     object.save
 
     # -------------------------------- Diretores ------------------------------
@@ -313,7 +313,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Com pouca supervisão dos adultos e muitas festas, um grupo de adolescentes de Bristol, na Inglaterra, tenta descobrir sobre a vida e relacionamentos. A cada duas temporadas, a série vai acompanhar um grupo de amigos diferentes, sendo que cada um deles compõe uma "geração". Na temporada 7, personagens das gerações anteriores retornam para explorar como serão suas vidas enquanto adultos.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/skins.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/series/skins.jpg'))
     object.save
 
     object = Serie.find_or_create_by(
@@ -327,7 +327,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'Em 2030, o arquiteto Ted Mosby (Josh Radnor) conta a história sobre como conheceu a mãe dos seus filhos. Ele volta no tempo para 2005, relembrando suas aventuras amorosas em Nova York e a busca pela mulher dos seus sonhos. Ao longo do anos, Ted aproveita para falar a jornada dos seus amigos: o advogado Marshall Eriksen (Jason Segel), a professora Lily Aldrin (Alyson Hannigan), a jornalista Robin Scherbatsky (Cobie Smulders) e o mulherengo convicto Barney Stinson (Neil Patrick Harris).'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/himym.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/series/himym.jpg'))
     object.save
 
     object = Serie.find_or_create_by(
@@ -341,7 +341,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'A série conta a história sobre a família disfuncional de Frank Gallagher (William H. Macy), um pai solteiro de seis filhos: Fiona Gallagher (Emmy Rossum), Phillip Gallagher (Jeremy Allen), Ian Gallagher (Cameron Monaghan), Debbie Gallagher (Emma Kenney), Carl Gallagher (Ethan Cutkosky) e Liam Gallagher (Brennan Kane Johnson e Blake Alexander), o único filho negro, apesar dos dois pais serem brancos. Enquanto ele passa seus dias totalmente bêbado, seus filhos precisam aprender a cuidar deles mesmos.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/shameless.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/series/shameless.jpg'))
     object.save
 
     object = Serie.find_or_create_by(
@@ -355,7 +355,7 @@ namespace :development_seed do
       age_range: AgeRange.last,
       synopsis: 'O Doutor é um Senhor do Tempo - um alien de um planeta distante chamado Gallifrey que tem dois corações e aproximadamente 900 anos. Em sua nave espacial, a TARDIS, ele atravessa as barreiras do espaço e do tempo lutando contra inimigos e criando aventuras com seus companheiros, que sempre escolhe para viajar junto a ele. Quando ele está prestes a morrer, ele se regenera e renasce em outro corpo inteiramente novo.'
     )
-    object.cover = File.open(File.join(Rails.root, 'app/assets/images/seed/series/doctor.jpg'))
+    object.cover = File.open(File.join(Rails.root, 'app/assets/images/series/doctor.jpg'))
     object.save
 
     # -------------------------------- Críticas --------------------------------

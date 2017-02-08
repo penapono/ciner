@@ -1,11 +1,10 @@
-class CreateQuestions < ActiveRecord::Migration[5.0]
+class CreateComments < ActiveRecord::Migration[5.0]
   def change
-    create_table :questions do |t|
+    create_table :comments do |t|
       t.references :user, index: true
-      t.references :questionable, polymorphic: true, index: true
+      t.references :commentable, polymorphic: true, index: true
 
-      t.string :title
-      t.text :content
+      t.string :content
 
       t.integer :status, default: 1
       t.integer :origin, default: 2

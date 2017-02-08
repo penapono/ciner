@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class CriticsController < ApplicationController
+  include CriticsBreadcrumb
+
   # exposes
   expose(:highlight) { Critic.all.highlight }
   expose(:critics) { Critic.all_but([highlight]) }
