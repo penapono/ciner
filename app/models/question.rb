@@ -14,6 +14,8 @@ class Question < ActiveRecord::Base
 
   belongs_to :questionable, polymorphic: true
 
+  has_many :comments, as: :commentable
+
   # Validations
   validates :title,
             :content,

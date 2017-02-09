@@ -1,0 +1,22 @@
+- like_path = like_api_v1_comment_path(comment)
+- dislike_path ||= dislike_api_v1_comment_path(comment)
+- user_avatar = comment.user.avatar
+- user_avatar ||= "http://placehold.it/120x170"
+
+.comentario-item
+  .row
+    .col-xs-12.col-sm-2
+      .usuario-avatar
+        %img.img-responsive{ src: user_avatar }
+      = comment.user_name
+      %br
+    .col-xs-12.col-sm-10
+      .status
+        %span{:style => "display: inline-block; margin-right: 5px;"}
+          %svg.icon-comentario
+            %use{"xlink:href" => "#clock"}
+        = comment.created_at_str
+      .texto
+        = comment.content
+
+      = render 'shared/reactions', resource: comment, like_path: like_path, dislike_path: dislike_path

@@ -1,0 +1,31 @@
+pt-BR:
+  activerecord:
+    models:
+      comment:
+        one: Comentário
+        other: Comentários
+
+    attributes:
+      comment:
+        user: Autor
+        user_id: Autor
+        origin: Origem
+        status: Situação
+        featured: Destaque
+        spoiler: Contém spoiler
+      comment/status:
+        pending: Aguardando Aprovação
+        approved: Aprovado
+        reproved: Reprovado
+      comment/origin:
+        ciner_comment: Equipe Ciner
+        user_comment: Usuário
+      comment/spoiler:
+        has_spoiler: Contém spoilers
+        spoiler_free: Não contém spoilers
+    errors:
+      models:
+        comment:
+          attributes:
+            title:
+              blank: "%{attribute} deve ser preenchido"

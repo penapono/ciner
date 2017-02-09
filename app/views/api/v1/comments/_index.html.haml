@@ -1,0 +1,27 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+
+#comentarios.col-xs-12.comentarios
+  .input-comentario
+    .title-separator
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#comentario"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Comment.model_name.human(count: 2)
+
+    = render 'api/v1/comments/form'
+
+  .lista-comentarios
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = comments.count
+            comentários
+
+    = render 'api/v1/comments/filters'
+
+    - comments.each do |comment|
+      = render 'api/v1/comments/show', comment: comment

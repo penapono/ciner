@@ -1,1 +1,1 @@
-//= require views/shared/critics/show
+//= require views/shared/questions/show

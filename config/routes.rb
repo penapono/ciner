@@ -28,6 +28,12 @@ Rails.application.routes.draw do
       resources :movies, only: :index
       resources :series, only: :index
       resources :professionals, only: :index
+      resources :comments do
+        member do
+          put "like", to: "comments#upvote"
+          put "dislike", to: "comments#downvote"
+        end
+      end
     end
   end
 end
