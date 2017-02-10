@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::CommentsController < ApplicationController
   include ::BaseController
 
@@ -6,7 +7,7 @@ class Api::V1::CommentsController < ApplicationController
   PERMITTED_PARAMS = [
     :user_id, :commentable_type, :commentable_id, :content, :status,
     :origin, :spoiler, :featured, :commentable, :user
-  ]
+  ].freeze
 
   expose(:comment) { resource }
   expose(:comments) { find_comments }
@@ -59,9 +60,6 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def comment_params
-    if params[:comment]
-      params.require(:comment).permit(*PERMITTED_PARAMS)
-    end
+    params.require(:comment).permit(*PERMITTED_PARAMS) if params[:comment]
   end
-
 end
