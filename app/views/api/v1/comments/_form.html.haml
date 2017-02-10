@@ -6,7 +6,7 @@
   = f.hidden_field :commentable_type, value: Question
 
   .text-right
-    .col-xs-offset-6.col-xs-3
+    .col-xs-offset-6.col-xs-3.pull-right
       = checkbox_item(f, :spoiler)
     .col-xs-3.pull-right
       = label_tag '', t('confirm'), class: 'btn btn-submit', data: { submit: '' }

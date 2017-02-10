@@ -64,15 +64,17 @@ module ::BaseController
     end
 
     def upvote
-      result = upvotes(resource)
+      loaded_resource = load_resource(resource, params)
+      result = upvotes(loaded_resource)
       update_votes_count
-      render_json_result(result)
+      render_json_result(loaded_resource, result)
     end
 
     def downvote
-      result = downvotes(resource)
+      loaded_resource = load_resource(resource, params)
+      result = downvotes(loaded_resource)
       update_votes_count
-      render_json_result(result)
+      render_json_result(loaded_resource, result)
     end
 
     private
@@ -124,24 +126,22 @@ module ::BaseController
 
     # Reacting
 
-    def already_liked?
-      current_user.voted_up_on? resource
+    def already_liked?(loaded_resource)
+      current_user.voted_up_on? loaded_resource
     end
 
-    def already_disliked?
-      current_user.voted_down_on? resource
+    def already_disliked?(loaded_resource)
+      current_user.voted_down_on? loaded_resource
     end
 
-    def upvotes(resource)
-      resource = load_resource(resource, params) unless has_resource?
-      return (current_user.likes resource) unless already_liked?
-      current_user.unlike resource
+    def upvotes(loaded_resource)
+      return (current_user.likes loaded_resource) unless (already_liked?(loaded_resource))
+      current_user.unlike loaded_resource
     end
 
-    def downvotes(resource)
-      resource = load_resource(resource, params) unless has_resource?
-      return (current_user.dislikes resource) unless already_disliked?
-      current_user.undislike resource
+    def downvotes(loaded_resource)
+      return (current_user.dislikes loaded_resource) unless (already_disliked?(loaded_resource))
+      current_user.undislike loaded_resource
     end
 
     def update_votes_count
@@ -149,13 +149,13 @@ module ::BaseController
       resource.update_attribute("dislikes_count", resource.dislikes_count)
     end
 
-    def render_json_result(result)
+    def render_json_result(loaded_resource, result)
       if result
         render json: { status: 'success',
-                       like_count: resource.likes_count,
-                       dislike_count: resource.dislikes_count,
-                       like_icon: resource.like_icon_class(current_user),
-                       dislike_icon: resource.dislike_icon_class(current_user) }
+                       like_count: loaded_resource.likes_count,
+                       dislike_count: loaded_resource.dislikes_count,
+                       like_icon: loaded_resource.like_icon_class(current_user),
+                       dislike_icon: loaded_resource.dislike_icon_class(current_user) }
       else
         render json: { status: 'failure', errors: critic.errors }
       end

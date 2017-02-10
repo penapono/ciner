@@ -19,11 +19,11 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def create
-    render_json_result(comment.save)
+    render_json_object_result(comment.save)
   end
 
   def destroy
-    render_json_result(comment.destroy)
+    render_json_object_result(comment.destroy)
   end
 
   def comment
@@ -48,7 +48,7 @@ class Api::V1::CommentsController < ApplicationController
 
   private
 
-  def render_json_result(result)
+  def render_json_object_result(result)
     if result
       render json: { status: 'success', message: t('.success') }
     else
