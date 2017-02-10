@@ -1,38 +1,53 @@
-$(function() {
+function Reactions() {
   'use strict';
 
-  $('[data-reactions]').on('click', '[data-vote]', function() {
-    var self = $(this),
-        url = self.data("url");
+  // globals
 
-    _react(url);
-  });
+  var self = this;
 
-  function _react(aUrl) {
+  // public
+
+  self.bindReactions = function(aContainer) {
+    _bindReactions(aContainer);
+  };
+
+  function _bindReactions(aContainer) {
+    var dataReactions = aContainer.find('[data-reactions]');
+
+    $(dataReactions).on('click', '[data-vote]', function() {
+      var self = $(this),
+          parent = self.closest('[data-reactions]'),
+          url = self.data("url");
+
+      _react(parent, url);
+    });
+  }
+
+  function _react(aParent, aUrl) {
     $.ajax({
       type: 'PUT',
       dataType: 'JSON',
       url: aUrl,
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: function(data) {
-        _updateReactions(data);
+        _updateReactions(aParent, data);
       }
     });
   }
 
-  function _updateReactions(aData) {
+  function _updateReactions(aParent, aData) {
     var dislikeCount = aData.dislike_count,
         likeCount = aData.like_count,
         likeIconClass = aData.like_icon,
         dislikeIconClass = aData.dislike_icon;
 
-    _updateReaction('[data-like-counter]', '[data-like-icon]', likeCount, likeIconClass);
-    _updateReaction('[data-dislike-counter]', '[data-dislike-icon]', dislikeCount, dislikeIconClass);
+    _updateReaction(aParent, '[data-like-counter]', '[data-like-icon]', likeCount, likeIconClass);
+    _updateReaction(aParent, '[data-dislike-counter]', '[data-dislike-icon]', dislikeCount, dislikeIconClass);
   }
 
-  function _updateReaction(aCounterId, aIconId, aCount, aIconClass) {
-    $(aCounterId).html(aCount);
-    $(aIconId).removeClass();
-    $(aIconId).addClass(aIconClass);
+  function _updateReaction(aParent, aCounterId, aIconId, aCount, aIconClass) {
+    aParent.find(aCounterId).html(aCount);
+    aParent.find(aIconId).removeClass();
+    aParent.find(aIconId).addClass(aIconClass);
   }
-});
+};

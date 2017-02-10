@@ -5,19 +5,8 @@
   = f.hidden_field :commentable_id, value: Question.first.id
   = f.hidden_field :commentable_type, value: Question
 
-  .text-right{ :style => "margin-top: 20px;" }
-
-    / %span.compartilha-comentario
-    /   Compartilhe:
-    /   %svg.icon-social
-    /     %use{"xlink:href" => "#twitter"}
-    /   %svg.icon-social
-    /     %use{"xlink:href" => "#facebook"}
-    %button.btn.btn-spoiler{:type => "submit"} spoiler
-    .col-xs-12.col-sm-3.pull-right
-      = f.button :submit, t('confirm'), class: 'btn btn-submit'
-    / %button.btn.btn-submit{:type => "submit"}
-    /   enviar
-    /   %svg.icon-botao
-    /     %use{"xlink:href" => "#ico-botao", "xmlns:xlink" => "http://www.w3.
-    / org/1999/xlink"}
+  .text-right
+    .col-xs-offset-6.col-xs-3
+      = checkbox_item(f, :spoiler)
+    .col-xs-3.pull-right
+      = label_tag '', t('confirm'), class: 'btn btn-submit', data: { submit: '' }

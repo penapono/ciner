@@ -42,7 +42,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def find_comments
-    Comment.all
+    Comment.all.order(created_at: :desc)
   end
 
   private

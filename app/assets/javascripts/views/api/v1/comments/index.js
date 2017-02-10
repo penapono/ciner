@@ -1,3 +1,5 @@
+//= require views/shared/reactions
+
 $(function() {
   'use strict';
 
@@ -19,12 +21,24 @@ $(function() {
   function _reloadContent(aContainer, aData) {
     aContainer.empty().append(aData);
 
-    $(gContainer).on("ajax:success", function(e, data, status, xhr) {
-      alert("Hello!");
-      if(data.status == "success") {
-        _loadComments(gContainer);
-      }
-    });
+    _formAction();
+    (new Reactions()).bindReactions(gContainer);
   }
 
+  function _formAction() {
+    $("[data-submit]").click(function(e) {
+      var self = $(this),
+          form = $(this).closest('form');
+
+      $.ajax({
+        type: "POST",
+        url : '/api/v1/comments',
+        data : form.serialize(),
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        success: function(data) {
+          _loadComments(gContainer);
+        }
+      });
+    });
+  }
 });

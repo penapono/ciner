@@ -64,13 +64,13 @@ module ::BaseController
     end
 
     def upvote
-      result = upvotes
+      result = upvotes(resource)
       update_votes_count
       render_json_result(result)
     end
 
     def downvote
-      result = downvotes
+      result = downvotes(resource)
       update_votes_count
       render_json_result(result)
     end
@@ -132,12 +132,14 @@ module ::BaseController
       current_user.voted_down_on? resource
     end
 
-    def upvotes
+    def upvotes(resource)
+      resource = load_resource(resource, params) unless has_resource?
       return (current_user.likes resource) unless already_liked?
       current_user.unlike resource
     end
 
-    def downvotes
+    def downvotes(resource)
+      resource = load_resource(resource, params) unless has_resource?
       return (current_user.dislikes resource) unless already_disliked?
       current_user.undislike resource
     end
@@ -157,6 +159,14 @@ module ::BaseController
       else
         render json: { status: 'failure', errors: critic.errors }
       end
+    end
+
+    def has_resource?
+      resource && resource.id
+    end
+
+    def load_resource(resource, params)
+      resource.class.find(params[:id])
     end
   end
 

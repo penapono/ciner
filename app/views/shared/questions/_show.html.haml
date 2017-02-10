@@ -28,6 +28,7 @@
       .info
         = question_created_at_str(question)
 
-= render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
+#question-reaction
+  = render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
 
 = render 'shared/comments/index', resource: question

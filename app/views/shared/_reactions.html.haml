@@ -1,3 +1,5 @@
+- like_path ||= nil
+
 #reactions
   - content_for :stylesheet, stylesheet_link_tag('views/shared/reactions')
   - user = current_user || nil
@@ -15,7 +17,5 @@
           = resource.dislikes_count
         %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
 
-  - if user
-    - content_for :javascript, javascript_include_tag('views/shared/reactions')
-  - else
+  - unless like_path
     = render 'shared/alerts/info', message: t('unauthorized.login_for_reactions')

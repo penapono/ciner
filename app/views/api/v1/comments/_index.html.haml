@@ -21,7 +21,7 @@
             = comments.count
             comentários
 
-    = render 'api/v1/comments/filters'
+    / = render 'api/v1/comments/filters'
 
     - comments.each do |comment|
       = render 'api/v1/comments/show', comment: comment

@@ -1,5 +1,5 @@
 - like_path = like_api_v1_comment_path(comment)
-- dislike_path ||= dislike_api_v1_comment_path(comment)
+- dislike_path = dislike_api_v1_comment_path(comment)
 - user_avatar = comment.user.avatar
 - user_avatar ||= "http://placehold.it/120x170"
 
@@ -16,6 +16,8 @@
           %svg.icon-comentario
             %use{"xlink:href" => "#clock"}
         = comment.created_at_str
+      .bold.wine
+        = comment.spoiler_str if comment.spoiler
       .texto
         = comment.content
 
