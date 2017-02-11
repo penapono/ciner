@@ -10,11 +10,12 @@ class Api::V1::CommentsController < ApplicationController
   ].freeze
 
   expose(:comment) { resource }
-  expose(:comments) { find_comments }
+  expose(:comments) { filter_comments }
 
   # actions
 
   def index
+    # self.comments = filter_comments
     render partial: 'index', layout: false
   end
 
@@ -42,8 +43,12 @@ class Api::V1::CommentsController < ApplicationController
     comment = Comment.new(comment_params)
   end
 
-  def find_comments
-    Comment.all.order(created_at: :desc)
+  def filter_comments
+    return Comment.none if params[:commentableId].empty? || params[:commentableType].empty?
+    commentable_id = params[:commentableId]
+    commentable_type = params[:commentableType]
+
+    Comment.where(commentable_id: commentable_id, commentable_type: commentable_type).order(created_at: :desc)
   end
 
   private
@@ -58,6 +63,7 @@ class Api::V1::CommentsController < ApplicationController
       }
     end
   end
+
 
   def comment_params
     params.require(:comment).permit(*PERMITTED_PARAMS) if params[:comment]

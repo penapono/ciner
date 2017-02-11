@@ -1,9 +1,13 @@
+- commentable_id = params[:commentableId]
+- commentable_type = params[:commentableType]
+- user_id = current_user.id if current_user
+
 = simple_form_for [:api, :v1, comment], remote: true do |f|
   = f.input :content, label: false, input_html: { placeholder: "Deixe um comentário", rows: 5 }
 
-  = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :commentable_id, value: Question.first.id
-  = f.hidden_field :commentable_type, value: Question
+  = f.hidden_field :user_id, value: user_id
+  = f.hidden_field :commentable_id, value: commentable_id
+  = f.hidden_field :commentable_type, value: commentable_type
 
   .text-right
     .col-xs-3.pull-right

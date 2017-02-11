@@ -23,6 +23,9 @@ class Comment < ActiveRecord::Base
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
 
+  # Callbacks
+  after_create :update_commentable_comments_count
+
   # Scopes
 
   def self.ordered_by_status
@@ -52,33 +55,6 @@ class Comment < ActiveRecord::Base
     I18n.l(created_at, format: :long) if created_at.is_a?(Time)
   end
 
-  # Filter
-
-  # def self.filter_by(collection, params)
-  #   return collection unless params.present?
-
-  #   result = collection
-  #   result = result.by_commentable_type(params[:commentable_type]) if params[:commentable_type].present?
-  #   result = result.by_commentable_id(params[:commentable_id]) if params[:commentable_id].present?
-  #   result = result.by_status(params[:status]) if params[:status].present?
-  #   result = result.by_origin(params[:origin]) if params[:origin].present?
-  #   result = result.by_user_id(params[:user_id]) if params[:user_id].present?
-
-  #   result
-  # end
-
-  # def self.by_commentable_type(commentable_type)
-  #   where(commentable_type: commentable_type)
-  # end
-
-  # def self.by_commentable_id(commentable_id)
-  #   where(commentable_id: commentable_id)
-  # end
-
-  # def self.by_status(status)
-  #   where(status: status)
-  # end
-
   def self.localized_statuses
     statuses.map { |k, w| [human_attribute_name("status.#{k}"), w] }
   end
@@ -97,5 +73,13 @@ class Comment < ActiveRecord::Base
 
   def self.by_user_id(user_id)
     where(user: User.find(user_id))
+  end
+
+  private
+
+  # Callbacks
+
+  def update_commentable_comments_count
+    self.commentable.update_comments_count
   end
 end

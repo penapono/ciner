@@ -9,12 +9,23 @@ $(function() {
 
   function _loadComments(aContainer) {
     var path = aContainer.data('path'),
-        params = "";
-        // params = aContainer.data('params');
+        commentableType = aContainer.data('commentableType'),
+        commentableId = aContainer.data('commentableId');
 
-    $.get(path, params)
-      .done(function(data){
+    var params = {
+      commentableType: commentableType,
+      commentableId: commentableId
+    };
+
+    $.ajax({
+      url : path,
+      type: "GET",
+      dataType: "html",
+      data: params,
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      success: function(data) {
         _reloadContent(aContainer, data);
+      }
     });
   }
 

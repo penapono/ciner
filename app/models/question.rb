@@ -2,6 +2,7 @@
 class Question < ActiveRecord::Base
   include Searchables::Question
   include Reactionable
+  include CommentManageable
 
   acts_as_votable
 

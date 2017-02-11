@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20170208203316) do
     t.boolean  "featured",                        default: false
     t.integer  "likes_count",                     default: 0
     t.integer  "dislikes_count",                  default: 0
+    t.integer  "comments_count",                  default: 0
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id", using: :btree

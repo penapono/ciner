@@ -31,4 +31,4 @@
 #question-reaction
   = render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
 
-= render 'shared/comments/index', resource: question
+= render 'shared/comments/index', resource: question, commentable_type: Question, commentable_id: question.id

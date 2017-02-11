@@ -17,6 +17,9 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
       t.integer :likes_count, default: 0
       t.integer :dislikes_count, default: 0
 
+      # Commenting
+      t.integer :comments_count, default: 0
+
       t.timestamps null: false
     end
   end
