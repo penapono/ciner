@@ -1,6 +1,6 @@
 .discussion-item
   .title
-    %a{:href => "#"}
+    = link_to question_path(question) do
       = question.title
     %span.author
       = question.created_at_str
