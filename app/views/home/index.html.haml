@@ -79,8 +79,13 @@
             %p{:style => "font-size: 12px;"}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
     / ADVERTISES
-    .col-xs-12.col-sm-12.col-md-12.col-lg-3
-      = render 'home/events/index'
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 40px;"}
+      .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises{:style => "margin-bottom: 20px;"}
+        %figure
+          %img.img-responsive{:src => "http://placehold.it/360x250"}/
+      .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
+        %figure
+          %img.img-responsive{:src => "http://placehold.it/360x250"}/
 
   .row{:style => "margin-top: 30px"}
     = render 'home/questions/index'
