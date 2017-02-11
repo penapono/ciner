@@ -80,6 +80,6 @@ class Comment < ActiveRecord::Base
   # Callbacks
 
   def update_commentable_comments_count
-    self.commentable.update_comments_count
+    commentable.update_comments_count
   end
 end

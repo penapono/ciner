@@ -64,7 +64,6 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
-
   def comment_params
     params.require(:comment).permit(*PERMITTED_PARAMS) if params[:comment]
   end

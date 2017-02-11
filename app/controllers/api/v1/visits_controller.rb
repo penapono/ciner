@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::VisitsController < ApplicationController
   expose (:visit) { Visit.new(visit_params) }
 
