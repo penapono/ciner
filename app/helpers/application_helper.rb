@@ -21,4 +21,9 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def add_visit(params, path, current_user = nil)
+    user_id = current_user ? current_user.id : ""
+    raw("addVisit('#{params[:controller]}','#{params[:action]}', '#{params[:id]}' ,'#{path}', '#{user_id}');")
+  end
 end

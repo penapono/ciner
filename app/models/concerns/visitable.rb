@@ -4,7 +4,12 @@ module Visitable
 
   included do
     def visits_count_str
-      12
+      id = self.id
+      Visit.resource_count(current_model, id)
+    end
+
+    def current_model
+      self.class.to_s.pluralize.downcase
     end
   end
 end

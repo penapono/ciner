@@ -34,6 +34,7 @@ Rails.application.routes.draw do
           put "dislike", to: "comments#downvote"
         end
       end
+      resources :visits, only: :create
     end
   end
 end

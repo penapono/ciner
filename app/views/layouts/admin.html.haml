@@ -23,4 +23,8 @@
 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = yield(:javascript)
+
+    :javascript
+      #{add_visit(params, request.path, current_user)}
+
     = render 'layouts/footer'
