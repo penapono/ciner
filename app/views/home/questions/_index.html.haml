@@ -7,7 +7,7 @@
       .media-body.media-bottom
         .media-heading.title-section Debate Ciner
       .media-body.text-right.media-middle
-        %a{:href => "#"}
+        = link_to questions_path do
           = t('see_more')
   .discussion
     - questions.each do |question|
