@@ -11,5 +11,9 @@ module CommentManageable
       return unless comments.any?
       comments.order(created_at: :desc).first
     end
+
+    def last_comment_time
+      ((Time.now - last_comment.created_at) / 1.hour).round
+    end
   end
 end

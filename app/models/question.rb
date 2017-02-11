@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
   include Searchables::Question
   include Reactionable
   include CommentManageable
+  include Visitable
 
   acts_as_votable
 
@@ -56,6 +57,10 @@ class Question < ActiveRecord::Base
   def spoiler_str
     return Question.human_attribute_name("spoiler.has_spoiler") if spoiler
     Question.human_attribute_name("spoiler.spoiler_free")
+  end
+
+  def created_at_str
+    I18n.t('shared.questions.created_at', user: user_name, date: I18n.l(created_at, format: :shorter))
   end
 
   # Filter

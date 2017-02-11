@@ -10,5 +10,5 @@
         %a{:href => "#"}
           = t('see_more')
   .discussion
-    - 5.times do
-      = render 'home/questions/item'
+    - questions.each do |question|
+      = render 'home/questions/item', question: question
