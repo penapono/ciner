@@ -32,7 +32,7 @@
   .row
     .col-xs-4
       = checkbox_item(f, :spoiler)
-    - if admin
+    - if current_user.admin?
       .col-xs-4
         = checkbox_item(f, :featured)
 
