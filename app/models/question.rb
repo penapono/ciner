@@ -22,8 +22,6 @@ class Question < ActiveRecord::Base
   validates :title,
             :content,
             :user,
-            :questionable_type,
-            :questionable_id,
             presence: true
 
   # Delegations

@@ -5,7 +5,7 @@
 
 .container
   .row
-    .col-xs-12
+    .col-xs-9
       .title-separator
         .media
           .media-left.media-middle
@@ -14,6 +14,9 @@
           .media-body.media-bottom
             .media-heading.title-section
               = t('shared.questions.index.title')
+    .col-xs-3
+      = link_to new_platform_question_path, class: 'pull-right' do
+        %i.fa.fa-plus= t('new')
 
     = render 'shared/questions/toolbar', path: platform_questions_path
 
@@ -22,42 +25,19 @@
     .col-xs-2.col-sm-1
       %h4.wine
         = t('shared.questions.header.area')
-    .col-xs-8.col-sm-4
+    .col-xs-8.col-sm-3
       %h4.wine
         = t('shared.questions.header.topic')
     .col-sm-3.hidden-xs
       %h4.wine
         = t('shared.questions.header.comments')
-    .col-sm-4.hidden-xs
+    .col-sm-3.hidden-xs
       %h4.wine
         = t('shared.questions.header.activity')
 
   - if questions.any?
     - questions.each do |question|
-      .row.topico{ class: question_class(question) }
-        .col-xs-2.col-sm-1.icone
-          %svg.icon-debate
-            %use{ "xlink:href": question_icon(question) }
-        .col-xs-8.col-sm-4.titulo
-          = link_to question_path(question) do
-            %h4
-              = question.title
-          = question_created_at_str(question)
-        .col-xs-3.hidden-xs.comentario
-          %span
-            = question.comments_count
-          comentários
-          %br
-          %span= question.visits_count_str
-          visualizações
-        -if question.last_comment
-          .col-xs-4.hidden-xs.atividade
-            %span último comentário
-            %br
-            = question.last_comment.user_name
-            há
-            = question.last_comment_time
-            horas
+      = render question
 
     = render 'shared/pagination', resources: questions
   - else

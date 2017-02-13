@@ -1,0 +1,16 @@
+pt-BR:
+  platform:
+    questions:
+      create:
+        title: Novo Tópico de Debate
+      form:
+        general: Dados Gerais
+        select_questionable: Filme / Série / Profissional
+      index:
+        title: Tópico de Debate
+      new:
+        title: Novo Tópico de Debate
+      toolbar:
+        filters:
+          questionable_type: Seleção por Filme ou Série
+          questionable_id: Selecione o Filme ou Série

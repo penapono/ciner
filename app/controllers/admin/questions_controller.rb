@@ -42,7 +42,7 @@ module Admin
     def question_params
       params.require(:question).permit(
         :title, :content, :user_id, :questionable_id, :questionable_type,
-        :questionable, :status, :origin
+        :questionable, :status, :origin, :ciner_question, :spoiler, :featured
       )
     end
 

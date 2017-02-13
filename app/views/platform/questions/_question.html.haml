@@ -1,0 +1,32 @@
+.row.topico{ class: question_class(question) }
+  .col-xs-2.col-sm-1.icone
+    %svg.icon-debate
+      %use{ "xlink:href": question_icon(question) }
+  .col-xs-8.col-sm-3.titulo
+    = link_to question_path(question) do
+      %h4
+        = question.title
+    = question_created_at_str(question)
+  .col-xs-3.col-sm-3.hidden-xs.comentario
+    %span
+      = question.comments_count
+    comentários
+    %br
+    %span= question.visits_count_str
+    visualizações
+
+  .col-xs-4.col-sm-3.hidden-xs.atividade
+    -if question.last_comment
+      %span último comentário
+      %br
+      = question.last_comment.user_name
+      há
+      = question.last_comment_time
+      horas
+  - if question.user == current_user
+    .col-xs-1
+      = link_to edit_platform_question_path(question) do
+        %i.fa.fa-pencil
+    .col-xs-1
+      = link_to platform_question_path(question), method: 'delete' do
+        %i.fa.fa-trash

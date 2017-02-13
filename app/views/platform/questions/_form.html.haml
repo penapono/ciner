@@ -1,6 +1,6 @@
 = javascript_include_tag Ckeditor.cdn_url
 
-= simple_form_for [:admin, question] do |f|
+= simple_form_for [:platform, question] do |f|
   - origin = f.object.origin
   - origin ||= :ciner_question if current_user.admin?
   - questionable_type = f.object.questionable_type

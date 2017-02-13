@@ -28,11 +28,11 @@ module Platform
     end
 
     def index_path
-      admin_questions_path
+      platform_questions_path
     end
 
     def show_path
-      admin_question_path(resource)
+      platform_question_path(resource)
     end
 
     def resource_params
@@ -42,7 +42,7 @@ module Platform
     def question_params
       params.require(:question).permit(
         :title, :content, :user_id, :questionable_id, :questionable_type,
-        :questionable, :origin
+        :questionable, :status, :origin, :ciner_question, :spoiler, :featured
       )
     end
 
