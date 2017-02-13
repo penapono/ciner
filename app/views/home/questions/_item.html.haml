@@ -5,12 +5,14 @@
     %span.author
       = question.created_at_str
   .hidden-xs.views
-    %span.comments
-      %span.vermelho= question.comments_count
-      comentários
-    %span.views
-      %span.vermelho= question.visits_count_str
-      visualizações
+    .div
+      %span.comments
+        %span.vermelho= question.comments_count
+        comentários
+    .div
+      %span.views
+        %span.vermelho= question.visits_count_str
+        visualizações
   .hidden-xs.last-comment
     - if question.last_comment
       %span.vermelho último comentário

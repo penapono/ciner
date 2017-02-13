@@ -40,6 +40,31 @@ class Question < ActiveRecord::Base
     find_by(origin: 1)
   end
 
+  def self.more_commented
+    order(comments_count: :desc)
+  end
+
+  def self.last_created
+    order(created_at: :desc)
+  end
+
+  def self.all_but(objects)
+    ids = []
+
+    objects.each { |q| ids << q.id }
+    where.not(id: ids)
+  end
+
+  def self.top_questions
+    questions = []
+
+    more_commented.first(2).each { |q| questions << q }
+    two_last_created = last_created.all_but(questions).first(2)
+    two_last_created.each { |q| questions << q }
+
+    questions
+  end
+
   # Methods
 
   def status_str

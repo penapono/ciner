@@ -10,8 +10,10 @@
         .media-body.media-bottom
           .media-heading.title-section
             = Comment.model_name.human(count: 2)
-
-    = render 'api/v1/comments/form'
+    - if current_user
+      = render 'api/v1/comments/form'
+    - else
+      = render 'shared/alerts/info', message: t('unauthorized.login_for_comments')
 
   .lista-comentarios
     .title-separator
@@ -20,8 +22,6 @@
           .media-heading.title-section
             = comments.count
             comentários
-
-    / = render 'api/v1/comments/filters'
 
     - comments.each do |comment|
       = render 'api/v1/comments/show', comment: comment

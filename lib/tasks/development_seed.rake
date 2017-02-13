@@ -522,5 +522,38 @@ namespace :development_seed do
       origin: 1,
       status: 2
     )
+
+    # -------------------------------- Eventos ---------------------------------
+    Event.find_or_create_by(
+      title: 'Oscar 2017',
+      event_date: Date.parse("26/02/2017"),
+      start_time: '08:00',
+      end_time: '23:59',
+      description: 'Oscar 2017'
+    )
+
+    Event.find_or_create_by(
+      title: 'Festival de Cinema de Gramado - 45ª edição',
+      event_date: Date.parse("18/08/2017"),
+      start_time: '08:00',
+      end_time: '23:59',
+      description: 'Festival de Cinema de Gramado - 45ª edição'
+    )
+
+    Event.find_or_create_by(
+      title: '70º Festival de Cannes',
+      event_date: Date.parse("17/05/2017"),
+      start_time: '08:00',
+      end_time: '23:59',
+      description: '70º Festival de Cannes'
+    )
+
+    Event.find_or_create_by(
+      title: 'Festival Internacional de Filme de Madrid',
+      event_date: Date.parse("08/07/2017"),
+      start_time: '08:00',
+      end_time: '23:59',
+      description: 'Festival Internacional de Filme de Madrid'
+    )
   end
 end

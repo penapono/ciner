@@ -5,6 +5,7 @@ module Searchables
     include Searchables::Base
 
     SEARCH_EXPRESSION = '
+      questions.title LIKE :search OR
       questions.content LIKE :search OR
       users.name LIKE :search
     '
