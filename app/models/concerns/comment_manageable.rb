@@ -12,8 +12,8 @@ module CommentManageable
       comments.order(created_at: :desc).first
     end
 
-    def last_comment_time
-      ((Time.now - last_comment.created_at) / 1.hour).round
+    def last_updated_time(object)
+      ((Time.now - object.created_at) / 1.hour).round
     end
   end
 end

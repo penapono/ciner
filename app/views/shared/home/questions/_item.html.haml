@@ -15,15 +15,19 @@
         visualizações
   .hidden-xs.last-comment
     - if question.last_comment
-      %span.vermelho último comentário
-      .row
-        .col-xs-2
-          .thumb-user
-            %figure
-              %img.img-responsive{:src => question.last_comment.user.avatar}
-        .col-xs-10
-          .last-user
-            = question.last_comment.user_name
-            há
-            = question.last_comment_time
-            horas
+      - object = question.last_comment
+    - else
+      - object = question
+
+    %span.vermelho última atividade
+    .row
+      .col-xs-2
+        .thumb-user
+          %figure
+            %img.img-responsive{ src: object.user.avatar }
+      .col-xs-10
+        .last-user
+          = object.user_name
+          há
+          = question.last_updated_time(object)
+          horas
