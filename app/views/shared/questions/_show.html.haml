@@ -5,28 +5,33 @@
 .container.content
   .row
     .col-xs-12
-      .title-separator
-        .row.topico{ class: question_class(question) }
-          .col-xs-1.icone
+      .row
+        .col-xs-1
+          .icone{ style: 'margin-top: 10px;' }
             %svg.icon-debate
               %use{ "xlink:href": question_icon(question) }
-          .col-xs-10.titulo.pull-right
-            %h4
-              = question.title
-      .content
-        .bold.wine
-          = question.questionable_title_str
+        .col-xs-11.titulo{ style: 'margin-top: 5px;' }
+          %h4
+            = question.title
 
-        .bold.wine
-          = question.spoiler_str
+      %hr
 
-        %br
+      .row
+        .col-xs-12
+          .content
+            .bold.wine
+              = question.questionable_title_str
 
-        %p
-          = question.content.html_safe
+            .bold.wine
+              = question.spoiler_str
 
-      .info
-        = question_created_at_str(question)
+            %br
+
+            %p
+              = question.content.html_safe
+
+          .info
+            = question_created_at_str(question)
 
   #question-reaction
     = render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
