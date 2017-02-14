@@ -17,9 +17,9 @@
       = f.input :title
 
   .row{ data: { questionable: '' } }
-    .col-xs-4{ data: { questionable_select: '' } }
+    .col-xs-6{ data: { questionable_select: '' } }
       = f.input :questionable_type, collection: Question.localized_questionable_types, selected: questionable_type, include_blank: t('.select_questionable')
-    .col-xs-8
+    .col-xs-6
       .div{ class: "#{questionable_movies_class}", data: { questionable_type: 'Movie' } }
         = f.input :questionable_id, collection: movies, input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
       .div{ class: "#{questionable_series_class}", data: { questionable_type: 'Serie' } }
@@ -40,12 +40,13 @@
 
   - if current_user.admin?
     .row
-      .col-xs-8
+      .col-xs-6
         = f.input :user_id, collection: users, input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
-      .col-xs-4
+      .col-xs-6
         = f.input :status, collection: Question.localized_detailed_statuses, include_blank: t('.select_status')
     = f.hidden_field :origin, value: origin
   - else
     = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :status, value: :approved
 
   = render 'shared/form_actions', f: f

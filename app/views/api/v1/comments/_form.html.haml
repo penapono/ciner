@@ -9,8 +9,7 @@
   = f.hidden_field :commentable_id, value: commentable_id
   = f.hidden_field :commentable_type, value: commentable_type
 
-  .text-right
-    .col-xs-3.pull-right
-      = label_tag '', t('confirm'), class: 'btn btn-submit', data: { submit: '' }
-    .col-xs-offset-7.col-xs-2.pull-right
-      = checkbox_item(f, :spoiler)
+  .col-xs-3.pull-right
+    = label_tag '', t('confirm'), class: 'btn btn-submit', data: { submit: '' }
+  .col-xs-offset-7.col-xs-2.pull-right
+    = checkbox_item(f, :spoiler)

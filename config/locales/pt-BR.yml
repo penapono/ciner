@@ -27,6 +27,9 @@ pt-BR:
   empty: >
     Não há %{klass} disponíveis em nossa base que correspondam ao desejado.
   select_hour: Selecione um horário
+  hours:
+    one: hora
+    other: horas
 
   views:
     pagination:
