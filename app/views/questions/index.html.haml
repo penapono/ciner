@@ -41,7 +41,7 @@
         .col-xs-8.col-sm-4.titulo
           = link_to question_path(question) do
             %h4
-              = question.title
+              = question.title.truncate(30)
           = question_created_at_str(question)
         .col-xs-3.hidden-xs.comentario
           %span

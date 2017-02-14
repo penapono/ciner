@@ -6,6 +6,7 @@ pt-BR:
       form:
         general: Dados Gerais
         select_status: Aprovado / Reprovado
+        select_questionable: Filme / Série / Profissional
       index:
         title: Tópico de Debate
       new:

@@ -33,7 +33,7 @@
 
           %td
             = link_to admin_question_path(question) do
-              = question.title
+              = question.title.truncate(30)
 
           %td
             = link_to admin_question_path(question) do

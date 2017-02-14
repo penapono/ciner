@@ -9,19 +9,11 @@
             %use{"xlink:href" => "#comentario"}
         .media-body.media-bottom
           .media-heading.title-section
-            = Comment.model_name.human(count: 2)
+            = comments.count
+            = Comment.model_name.human(count: comments.count)
     - if current_user
       = render 'api/v1/comments/form'
-    - else
-      = render 'shared/alerts/info', message: t('unauthorized.login_for_comments')
 
   .lista-comentarios
-    .title-separator
-      .media
-        .media-body.media-bottom
-          .media-heading.title-section
-            = comments.count
-            comentários
-
     - comments.each do |comment|
       = render 'api/v1/comments/show', comment: comment
