@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   namespace :platform do
+    root 'home#index'
+
     resources :users, only: [:update]
 
     get '/profile', to: 'users#show'
     get 'profile/edit', to: 'users#edit'
-
-    root 'users#show'
 
     resources :studios, only: [:index, :show]
     resources :professionals, only: [:index, :show]

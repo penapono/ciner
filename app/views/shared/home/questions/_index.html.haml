@@ -7,8 +7,8 @@
       .media-body.media-bottom
         .media-heading.title-section Debate Ciner
       .media-body.text-right.media-middle
-        = link_to questions_path do
+        = link_to url_for([role, :questions]) do
           = t('see_more')
   .discussion
     - questions.each do |question|
-      = render 'home/questions/item', question: question
+      = render 'shared/home/questions/item', question: question, role: role

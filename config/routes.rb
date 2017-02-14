@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: { registrations: 'registrations' }
-  root to: 'home#index'
+  root 'home#index'
 
   # admin: rotas de administração - ciner
   # platform: rotas da plataforma - público

@@ -1,6 +1,6 @@
 .discussion-item
   .title
-    = link_to question_path(question) do
+    = link_to url_for([role, question]) do
       = question.title
     %span.author
       = question.created_at_str

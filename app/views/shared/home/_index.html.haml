@@ -1,0 +1,95 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+.container.content
+  / SECTION 01 CONTENT
+  .row
+    / FIRST COLUMN
+    .col-xs-12.col-md-8
+      = render 'shared/home/playing/index', role: role
+
+      = render 'shared/home/featured/index', role: role
+
+    / SECOND COLUMN
+    .col-xs-12.col-md-4
+      = render 'shared/home/news/index', role: role
+
+  / SECTION 02 CONTENT
+  .row{:style => "margin-top: 30px;"}
+    .col-xs-12.col-md-4.advertise
+      %figure
+        %img.img-responsive{:src => "http://placehold.it/360x300"}/
+    .col-xs-12.col-md-8
+      .title-separator.ciner-videos
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#video"}
+          .media-body.media-bottom
+            .media-heading.title-section Ciner vídeos
+          .media-body.text-right.media-middle
+            %a{:href => "#"} ver mais
+      / CINER MOVIES
+      .ciner-movie.col-xs-12.col-sm-6.col-md-4
+        .thumb
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "220px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+      .ciner-movie.col-xs-12.col-sm-6.col-md-4
+        .thumb
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "100%", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 220px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+      .ciner-movie.col-xs-12.col-sm-6.col-md-4
+        .thumb
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "100%", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/137892682?color=ffffff&byline=0&portrait=0", :style => "min-height: 220px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+  / SECTION 03 CONTENT
+  .row
+    = render 'shared/home/critics/index', role: role
+
+    / SOCIAL CINER
+    .col-xs-12.col-sm-12.col-md-5.col-lg-4
+      .title-separator.ciner-social
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#twitter"}
+          .media-body.media-bottom
+            .media-heading.title-section Papo de Ciner
+          .media-body.text-right.media-middle
+            %a{:href => "#"} ver mais
+      .social
+        .social-item
+          .col-xs-3
+            %figure{:style => "border-radius: 100%; background: #FDFDFD; padding: 5px;"}
+              %img.img-responsive{:src => "https://cdn2.iconfinder.com/data/icons/ourea-icons/128/Butterfly_256x256-32.png"}/
+          .col-xs-9
+            %h6 Lorem ipsum dolor
+            %p{:style => "font-size: 12px;"}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
+        .social-item
+          .col-xs-3
+            %figure{:style => "border-radius: 100%; background: #FDFDFD; padding: 5px;"}
+              %img.img-responsive{:src => "https://cdn2.iconfinder.com/data/icons/ourea-icons/128/Butterfly_256x256-32.png"}/
+          .col-xs-9
+            %h6 Lorem ipsum dolor
+            %p{:style => "font-size: 12px;"}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
+        .social-item
+          .col-xs-3
+            %figure{:style => "border-radius: 100%; background: #FDFDFD; padding: 5px;"}
+              %img.img-responsive{:src => "https://cdn2.iconfinder.com/data/icons/ourea-icons/128/Butterfly_256x256-32.png"}/
+          .col-xs-9
+            %h6 Lorem ipsum dolor
+            %p{:style => "font-size: 12px;"}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
+    / ADVERTISES
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 40px;"}
+      .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises{:style => "margin-bottom: 20px;"}
+        %figure
+          %img.img-responsive{:src => "http://placehold.it/360x250"}/
+      .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
+        %figure
+          %img.img-responsive{:src => "http://placehold.it/360x250"}/
+
+  .row{:style => "margin-top: 30px"}
+    = render 'shared/home/questions/index', role: role
+
+    = render 'shared/home/professionals/index', role: role

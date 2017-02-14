@@ -9,8 +9,8 @@
         .media-heading.title-section
           Críticas do mês
       .media-body.text-right.media-middle
-        = link_to critics_path do
+        = link_to url_for([role, :critics]) do
           = t('see_more')
   .reviews
     - critics.each do |critic|
-      = render 'home/critics/item', critic: critic
+      = render 'shared/home/critics/item', critic: critic, role: role

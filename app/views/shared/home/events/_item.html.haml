@@ -3,7 +3,7 @@
     = event.title
   %p
     = event.description_str
-  = link_to event_path(event) do
+  = link_to url_for([role, event]) do
     .btn.btn-saiba-mais
       = t('see_more')
   %span.pull-right
