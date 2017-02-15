@@ -1,24 +1,24 @@
 pt-BR:
   activerecord:
     models:
-      question:
+      broadcast:
         one: Notícia
         other: Notícias
 
     attributes:
-      question:
+      broadcast:
         title: Título
         content: Conteúdo
         user: Autor
         user_id: Autor
         featured: Destaque
         spoiler: Contém spoiler
-      question/spoiler:
+      broadcast/spoiler:
         has_spoiler: Contém spoilers
         spoiler_free: Não contém spoilers
     errors:
       models:
-        question:
+        broadcast:
           attributes:
             title:
               blank: "%{attribute} deve ser preenchido"

@@ -1,0 +1,19 @@
+.section-news
+  .title-separator.ciner-news
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#noticia"}
+      .media-body.media-bottom
+        .media-heading.title-section
+          = Broadcast.model_name.human(count: 2)
+      .media-body.text-right.media-middle
+        = link_to url_for([role, :broadcasts]) do
+          = t('see_more')
+  / POSTS ITEMS
+  - if broadcasts.any?
+    - broadcasts.each do |broadcast|
+      = render 'shared/home/broadcasts/item', role: role, broadcast: broadcast
+  - else
+    = render 'shared/alerts/info', message: (t('empty', klass: Broadcast.model_name.human(count: 2)))
+  / POSTS ITEMS
