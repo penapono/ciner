@@ -8,6 +8,7 @@ describe Searchables::Question do
 
   let(:expected_search_expression) do
     '
+      questions.title LIKE :search OR
       questions.content LIKE :search OR
       users.name LIKE :search
     '

@@ -23,8 +23,6 @@ RSpec.describe Question, type: :model do
   describe '#validations' do
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :content }
-    it { is_expected.to validate_presence_of :questionable_id }
-    it { is_expected.to validate_presence_of :questionable_type }
     it { is_expected.to validate_presence_of :user }
   end
 
