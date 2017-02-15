@@ -26,16 +26,6 @@ class Comment < ActiveRecord::Base
   # Callbacks
   after_create :update_commentable_comments_count
 
-  # Scopes
-
-  def self.ordered_by_status
-    order(status: :asc)
-  end
-
-  def self.ciner_official_comment
-    find_by(origin: 1)
-  end
-
   # Methods
 
   def status_str

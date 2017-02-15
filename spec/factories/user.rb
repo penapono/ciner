@@ -36,5 +36,13 @@ FactoryGirl.define do
       password_confirmation nil
       terms_of_use nil
     end
+
+    trait :admin do
+      role :admin
+    end
+
+    trait :common do
+      role :free
+    end
   end
 end
