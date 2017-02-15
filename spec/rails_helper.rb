@@ -52,6 +52,9 @@ RSpec.configure do |config|
     request.env['HTTP_REFERER'] = '/'
   end
 
+  config.filter_run :focus
+  config.run_all_when_everything_filtered = true
+
   config.infer_spec_type_from_file_location!
 
   # ## Mock Framework
@@ -88,7 +91,7 @@ RSpec.configure do |config|
   # config.raise_errors_for_deprecations!
 
   # Devise
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::TestHelpers, type: :helper
 
   # force spec_helper to read all uploaders

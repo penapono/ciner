@@ -40,9 +40,5 @@ FactoryGirl.define do
     trait :admin do
       role :admin
     end
-
-    trait :common do
-      role :free
-    end
   end
 end

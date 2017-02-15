@@ -3,12 +3,15 @@ module Admin
   class CriticsController < AdminController
     include Admin::CriticsBreadcrumb
 
+    # Params
+    PERMITTED_PARAMS = [
+      :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating,
+      :status, :origin, :featured, :spoiler, :quick
+    ].freeze
+
     # exposes
     expose(:critics) { Critic.ordered_by_status }
     expose(:critic, attributes: :critic_attributes)
-    expose(:movies) { Movie.first(20) }
-    expose(:series) { Serie.first(20) }
-    expose(:users) { User.all }
 
     PER_PAGE = 10
 
@@ -39,10 +42,7 @@ module Admin
     end
 
     def critic_params
-      params.require(:critic).permit(
-        :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating,
-        :status, :origin, :featured, :spoiler, :quick
-      )
+      params.require(:critic).permit(PERMITTED_PARAMS)
     end
 
     # Filtering

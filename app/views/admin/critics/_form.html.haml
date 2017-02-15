@@ -16,9 +16,9 @@
       = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, selected: filmable_type
     .col-xs-6
       .div{ class: "#{filmable_movies_class}", data: { filmable_type: 'Movie' } }
-        = f.input :filmable_id, collection: movies, input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
+        = f.input :filmable_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
       .div{ class: "#{filmable_series_class}", data: { filmable_type: 'Serie' } }
-        = f.input :filmable_id, collection: series, input_html: { data: { remote_select: '', ajax_url: api_v1_series_index_path } }, label_method: :title_str, value_method: :id
+        = f.input :filmable_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_series_index_path } }, label_method: :title_str, value_method: :id
     .col-xs-3
       = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
 
@@ -37,7 +37,7 @@
 
   .row
     .col-xs-8
-      = f.input :user_id, collection: users, input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
+      = f.input :user_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
     .col-xs-4
       = f.input :status, collection: Critic.localized_detailed_statuses, include_blank: t('.select_status')
 

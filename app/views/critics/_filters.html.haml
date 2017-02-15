@@ -17,4 +17,4 @@
       .col-xs-4
         = f.input :origin, collection: Critic.localized_origins, label: false, include_blank: t('shared.critics.toolbar.filters.origin'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:origin, '')
       .col-xs-8
-        = f.input :user_id, collection: users, label: false, include_blank: t("shared.critics.toolbar.filters.user_id"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:user_id, '')
+        = f.input :user_id, collection: [], label: false, include_blank: t("shared.critics.toolbar.filters.user_id"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:user_id, '')

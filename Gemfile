@@ -105,6 +105,7 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'terminal-notifier-guard', require: false
   gem 'timecop'
+  gem 'rails-controller-testing'
 end
 
 gem 'acts_as_votable', '~> 0.10.0'
