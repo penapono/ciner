@@ -1,0 +1,16 @@
+- content_for :javascript, javascript_include_tag('components/filters')
+- content_for :stylesheet, stylesheet_link_tag('components/filters')
+
+= hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
+
+/ #filters.filters{ data: { dynamic_filter: '' } }
+/   = simple_form_for :filter, url: path, method: :get, data: { filter_form: '' } do |f|
+/     = hidden_field_tag :search, params[:search]
+/     .row
+/       .col-xs-2
+/         = f.input :status, collection: Broadcast.localized_statuses, label: false, include_blank: t('shared.broadcasts.toolbar.filters.status'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:status, '')
+/     .row
+/       .col-xs-4
+/         = f.input :origin, collection: Broadcast.localized_origins, label: false, include_blank: t('shared.broadcasts.toolbar.filters.origin'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:origin, '')
+/       .col-xs-8
+/         = f.input :user_id, collection: users, label: false, include_blank: t("shared.broadcasts.toolbar.filters.user_id"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:user_id, '')

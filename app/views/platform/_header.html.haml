@@ -5,11 +5,7 @@
       .row
         .col-xs-12.col-sm-8.col-md-7
           %span.hidden-xs>
-          = link_to 'Faça do Ciner a sua página Inicial', '#'
-          \-
           = link_to 'Anuncie aqui', '#'
-          \-
-          = link_to ' Sobre ser Ciner', new_user_registration_path
         .col-xs-12.col-sm-3.col-md-3
           Entre em contato
         .col-xs-12.col-sm-1.col-md-2.social
@@ -37,7 +33,7 @@
           #mainmenu.collapse.navbar-collapse
             %ul.menu
               %li.col-xs-12.col-sm-2.active
-                = link_to "HOME",   root_path
+                = link_to "HOME", platform_root_path
               %li.col-xs-12.col-sm-2
                 = link_to "FILMES E SÉRIES", platform_movies_path
               %li.col-xs-12.col-sm-2
@@ -45,7 +41,7 @@
               %li.col-xs-12.col-sm-2
                 = link_to "CRÍTICAS", platform_critics_path
               %li.col-xs-12.col-sm-2
-                = link_to "NOTÍCIAS", '#'
+                = link_to "NOTÍCIAS", platform_broadcasts_path
               %li.col-xs-12.col-sm-2
                 = link_to "DEBATE CINER", platform_questions_path
       / MENU

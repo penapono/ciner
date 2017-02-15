@@ -1,0 +1,11 @@
+pt-BR:
+  admin:
+    broadcasts:
+      create:
+        title: Nova Notícia
+      form:
+        general: Dados Gerais
+      index:
+        title: Notícias
+      new:
+        title: Nova Notícia

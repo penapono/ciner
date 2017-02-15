@@ -9,12 +9,6 @@ pt-BR:
       question:
         title: Título
         content: Tópico de Debate
-        country: País
-        country_id: País
-        state: Estado
-        state_id: Estado
-        city: Cidade
-        city_id: Cidade
         questionable: Filme / Série / Profissional
         questionable_id: Filme / Série / Profissional
         questionable_type: Referente à

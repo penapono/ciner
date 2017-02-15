@@ -22,6 +22,13 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :broadcasts do
+      member do
+        put "like", to: "broadcasts#upvote"
+        put "dislike", to: "broadcasts#downvote"
+      end
+    end
+
     resources :questions do
       member do
         put "like", to: "questions#upvote"

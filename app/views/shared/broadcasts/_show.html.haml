@@ -1,0 +1,31 @@
+- like_path ||= nil
+- dislike_path ||= nil
+
+.container.content
+  .row
+    .col-xs-12
+      .row
+        .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
+          %h4
+            = broadcast.title
+
+      %hr
+
+      .row
+        .col-xs-12
+          .content
+            .bold.wine
+              = broadcast.spoiler_str
+
+            %br
+
+            %p
+              = broadcast.content.html_safe
+
+          .info
+            = broadcast.created_at_str
+
+  #broadcast-reaction
+    = render 'shared/reactions', resource: broadcast, like_path: like_path, dislike_path: dislike_path
+
+= render 'shared/comments/index', resource: broadcast, commentable_type: Broadcast, commentable_id: broadcast.id
