@@ -241,6 +241,27 @@ ActiveRecord::Schema.define(version: 20170215063702) do
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "original_title"
     t.string   "title"
+    t.integer  "start_year"
+    t.integer  "finish_year"
+    t.string   "length"
+    t.text     "synopsis",          limit: 65535
+    t.date     "release"
+    t.date     "brazilian_release"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "age_range_id"
+    t.string   "cover"
+    t.integer  "number_episodes"
+    t.integer  "aired_episodes"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  create_table "series_episode", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "serie_id"
+    t.string   "original_title_ep"
+    t.string   "title_ep"
     t.integer  "year"
     t.string   "length"
     t.text     "synopsis",          limit: 65535
@@ -251,10 +272,8 @@ ActiveRecord::Schema.define(version: 20170215063702) do
     t.integer  "country_id"
     t.integer  "age_range_id"
     t.string   "cover"
-    t.integer  "studio_id"
     t.integer  "season"
-    t.integer  "number_episodes"
-    t.integer  "aired_episodes"
+    t.integer  "episode_number"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
