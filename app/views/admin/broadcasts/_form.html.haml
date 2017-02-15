@@ -1,0 +1,29 @@
+= javascript_include_tag Ckeditor.cdn_url
+
+= simple_form_for [:admin, broadcast] do |f|
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-12
+      = f.input :title
+
+  .row
+    .col-xs-12
+      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+
+  .row
+    .col-xs-4
+      = checkbox_item(f, :spoiler)
+    - if current_user.admin?
+      .col-xs-4
+        = checkbox_item(f, :featured)
+
+  - if current_user.admin?
+    .row
+      .col-xs-6
+        = f.input :user_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
+  - else
+    = f.hidden_field :user_id, value: current_user.id
+
+  = render 'shared/form_actions', f: f

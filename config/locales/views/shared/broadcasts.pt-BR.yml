@@ -1,0 +1,6 @@
+pt-BR:
+  shared:
+    broadcasts:
+      index:
+        title: Notícias
+      created_at: Criado por %{user} em %{date}

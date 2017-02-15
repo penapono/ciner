@@ -3,15 +3,16 @@ module Admin
   class QuestionsController < AdminController
     include Admin::QuestionsBreadcrumb
 
+    PER_PAGE = 10
+
+    PERMITTED_PARAMS = [
+      :title, :content, :user_id, :questionable_id, :questionable_type,
+      :questionable, :status, :origin, :ciner_question, :spoiler, :featured
+    ].freeze
+
     # exposes
     expose(:questions) { Question.ordered_by_status }
     expose(:question, attributes: :question_attributes)
-    expose(:movies) { Movie.first(20) }
-    expose(:series) { Serie.first(20) }
-    expose(:professionals) { Serie.first(20) }
-    expose(:users) { User.all }
-
-    PER_PAGE = 10
 
     def index
       self.questions = paginated_questions
@@ -40,10 +41,7 @@ module Admin
     end
 
     def question_params
-      params.require(:question).permit(
-        :title, :content, :user_id, :questionable_id, :questionable_type,
-        :questionable, :status, :origin, :ciner_question, :spoiler, :featured
-      )
+      params.require(:question).permit(PERMITTED_PARAMS)
     end
 
     # Filtering

@@ -1,0 +1,11 @@
+- role = '' unless current_user
+- role ||= current_user.admin? ? "admin/" : "platform/"
+
+= render 'shared/toolbar'
+
+.toolbar
+  .row.searchbar
+    .col-xs-12
+      = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
+
+  = render "#{role}broadcasts/filters", path: path
