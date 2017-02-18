@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(version: 20170216130137) do
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end
 
+<<<<<<< HEAD
   create_table "serie_episodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "series_id"
     t.string   "original_title_ep"
@@ -256,6 +257,12 @@ ActiveRecord::Schema.define(version: 20170216130137) do
     t.string   "title"
     t.integer  "start_year"
     t.integer  "finish_year"
+=======
+  create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "original_title"
+    t.string   "title"
+    t.integer  "year"
+>>>>>>> ae851ffd227baf5ea8a393d8523e9d73d1fb8dfd
     t.string   "length"
     t.text     "synopsis",          limit: 65535
     t.date     "release"
@@ -266,6 +273,10 @@ ActiveRecord::Schema.define(version: 20170216130137) do
     t.integer  "age_range_id"
     t.string   "cover"
     t.integer  "studio_id"
+<<<<<<< HEAD
+=======
+    t.integer  "season"
+>>>>>>> ae851ffd227baf5ea8a393d8523e9d73d1fb8dfd
     t.integer  "number_episodes"
     t.integer  "aired_episodes"
     t.datetime "created_at",                      null: false
