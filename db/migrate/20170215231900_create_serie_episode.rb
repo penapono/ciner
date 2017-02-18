@@ -1,10 +1,10 @@
-class CreateSeries < ActiveRecord::Migration
+class CreateSerieEpisode < ActiveRecord::Migration[5.0]
   def change
-    create_table :series do |t|
-      t.string :original_title
-      t.string :title
-      t.integer :start_year
-      t.integer :finish_year
+    create_table :serie_episodes do |t|
+      t.references :series
+      t.string :original_title_ep
+      t.string :title_ep
+      t.integer :year
       t.string :length
       t.text :synopsis
       t.date :release
@@ -18,10 +18,10 @@ class CreateSeries < ActiveRecord::Migration
 
       t.references :studio
 
-      # Serie
+      # Serie episode
 
-      t.integer :number_episodes
-      t.integer :aired_episodes
+      t.integer :season
+      t.integer :episode_number
 
       t.timestamps null: false
     end

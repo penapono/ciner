@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215063702) do
+ActiveRecord::Schema.define(version: 20170216130137) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -23,36 +23,14 @@ ActiveRecord::Schema.define(version: 20170215063702) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content",        limit: 65535
-    t.boolean  "featured",                     default: false
     t.boolean  "spoiler",                      default: false
+    t.boolean  "featured",                     default: false
     t.integer  "likes_count",                  default: 0
     t.integer  "dislikes_count",               default: 0
     t.integer  "comments_count",               default: 0
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
-  end
-
-  create_table "ciner_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "original_title"
-    t.string   "title"
-    t.integer  "year"
-    t.string   "length"
-    t.text     "synopsis",          limit: 65535
-    t.datetime "release"
-    t.datetime "brazilian_release"
-    t.integer  "city_id"
-    t.integer  "state_id"
-    t.integer  "country_id"
-    t.integer  "age_range_id"
-    t.string   "cover"
-    t.integer  "studio_id"
-    t.date     "approval"
-    t.integer  "user_id"
-    t.integer  "approver_id"
-    t.integer  "owner_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
   end
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -79,15 +57,15 @@ ActiveRecord::Schema.define(version: 20170215063702) do
     t.integer  "user_id"
     t.string   "commentable_type"
     t.integer  "commentable_id"
-    t.string   "content"
-    t.integer  "status",           default: 1
-    t.integer  "origin",           default: 2
-    t.boolean  "spoiler",          default: false
-    t.boolean  "featured",         default: false
-    t.integer  "likes_count",      default: 0
-    t.integer  "dislikes_count",   default: 0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.text     "content",          limit: 65535
+    t.integer  "status",                         default: 1
+    t.integer  "origin",                         default: 2
+    t.boolean  "spoiler",                        default: false
+    t.boolean  "featured",                       default: false
+    t.integer  "likes_count",                    default: 0
+    t.integer  "dislikes_count",                 default: 0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -173,6 +151,14 @@ ActiveRecord::Schema.define(version: 20170215063702) do
     t.index ["set_function_id"], name: "index_filmable_professionals_on_set_function_id", using: :btree
   end
 
+  create_table "filmable_type", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "filmable_type"
+    t.integer "filmable_id"
+    t.integer "film_production_categories_id"
+    t.index ["film_production_categories_id"], name: "index_filmable_type_on_film_production_categories_id", using: :btree
+    t.index ["filmable_type", "filmable_id"], name: "index_filmable_type_on_filmable_type_and_filmable_id", using: :btree
+  end
+
   create_table "movies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "original_title"
     t.string   "title"
@@ -238,6 +224,33 @@ ActiveRecord::Schema.define(version: 20170215063702) do
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end
 
+  create_table "serie_episodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "series_id"
+    t.string   "original_title_ep"
+    t.string   "title_ep"
+    t.integer  "year"
+    t.string   "length"
+    t.text     "synopsis",          limit: 65535
+    t.date     "release"
+    t.date     "brazilian_release"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.integer  "age_range_id"
+    t.string   "cover"
+    t.integer  "studio_id"
+    t.integer  "season"
+    t.integer  "episode_number"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["age_range_id"], name: "index_serie_episodes_on_age_range_id", using: :btree
+    t.index ["city_id"], name: "index_serie_episodes_on_city_id", using: :btree
+    t.index ["country_id"], name: "index_serie_episodes_on_country_id", using: :btree
+    t.index ["series_id"], name: "index_serie_episodes_on_series_id", using: :btree
+    t.index ["state_id"], name: "index_serie_episodes_on_state_id", using: :btree
+    t.index ["studio_id"], name: "index_serie_episodes_on_studio_id", using: :btree
+  end
+
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "original_title"
     t.string   "title"
@@ -252,28 +265,9 @@ ActiveRecord::Schema.define(version: 20170215063702) do
     t.integer  "country_id"
     t.integer  "age_range_id"
     t.string   "cover"
+    t.integer  "studio_id"
     t.integer  "number_episodes"
     t.integer  "aired_episodes"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-  end
-
-  create_table "series_episode", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "serie_id"
-    t.string   "original_title_ep"
-    t.string   "title_ep"
-    t.integer  "year"
-    t.string   "length"
-    t.text     "synopsis",          limit: 65535
-    t.date     "release"
-    t.date     "brazilian_release"
-    t.integer  "city_id"
-    t.integer  "state_id"
-    t.integer  "country_id"
-    t.integer  "age_range_id"
-    t.string   "cover"
-    t.integer  "season"
-    t.integer  "episode_number"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
