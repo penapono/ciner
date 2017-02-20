@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Admin::BroadcastsController, type: :controller do
-  let(:user)    { create(:user, :admin) }
+  let(:user) { create(:user, :admin) }
   let!(:broadcasts) { create_list(:broadcast, 2, user: user) }
   let!(:broadcast)  { broadcasts.first }
 
@@ -49,14 +50,15 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
         subject { controller.broadcasts }
 
         it { is_expected.to have_received(:page) }
-        it { is_expected.to have_received(:per)
-              .with Admin::BroadcastsController::PER_PAGE }
+        it do
+          is_expected.to have_received(:per)
+            .with Admin::BroadcastsController::PER_PAGE
+        end
       end
     end
 
     skip do
       describe 'filters' do
-
       end
     end
   end
@@ -181,7 +183,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.broadcasts.create.done') %
-        { title: valid_params[:name] }
+          { title: valid_params[:name] }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -193,7 +195,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.broadcasts.create.fail') %
-        { title: invalid_params[:name] }
+          { title: invalid_params[:name] }
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -286,7 +288,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.broadcasts.update.done') %
-        { title: valid_params[:name] }
+          { title: valid_params[:name] }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -298,7 +300,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.broadcasts.update.fail') %
-        { title: invalid_params[:name] }
+          { title: invalid_params[:name] }
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -307,7 +309,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
   end
 
   describe '#destroy' do
-    let!(:broadcast)    { create(:broadcast, user: user) }
+    let!(:broadcast) { create(:broadcast, user: user) }
     let(:error_msg) { 'error message' }
 
     context 'on success' do
@@ -315,7 +317,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.broadcasts.destroy.done') %
-        { title: broadcast.title }
+          { title: broadcast.title }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Admin::EventsController, type: :controller do
@@ -50,14 +51,15 @@ RSpec.describe Admin::EventsController, type: :controller do
         subject { controller.events }
 
         it { is_expected.to have_received(:page) }
-        it { is_expected.to have_received(:per)
-              .with Admin::EventsController::PER_PAGE }
+        it do
+          is_expected.to have_received(:per)
+            .with Admin::EventsController::PER_PAGE
+        end
       end
     end
 
     skip do
       describe 'filters' do
-
       end
     end
   end
@@ -182,7 +184,7 @@ RSpec.describe Admin::EventsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.events.create.done') %
-        { title: valid_params[:name] }
+          { title: valid_params[:name] }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -194,7 +196,7 @@ RSpec.describe Admin::EventsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.events.create.fail') %
-        { title: invalid_params[:name] }
+          { title: invalid_params[:name] }
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -288,7 +290,7 @@ RSpec.describe Admin::EventsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.events.update.done') %
-        { title: valid_params[:name] }
+          { title: valid_params[:name] }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -300,7 +302,7 @@ RSpec.describe Admin::EventsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.events.update.fail') %
-        { title: invalid_params[:name] }
+          { title: invalid_params[:name] }
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -317,7 +319,7 @@ RSpec.describe Admin::EventsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.events.destroy.done') %
-        { title: event.title }
+          { title: event.title }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Admin::CriticsController, type: :controller do
-  let(:user)    { create(:user, :admin) }
+  let(:user) { create(:user, :admin) }
   let!(:critics) { create_list(:critic, 2, user: user) }
   let!(:critic)  { critics.first }
 
@@ -51,14 +52,15 @@ RSpec.describe Admin::CriticsController, type: :controller do
         subject { controller.critics }
 
         it { is_expected.to have_received(:page) }
-        it { is_expected.to have_received(:per)
-              .with Admin::CriticsController::PER_PAGE }
+        it do
+          is_expected.to have_received(:per)
+            .with Admin::CriticsController::PER_PAGE
+        end
       end
     end
 
     skip do
       describe 'filters' do
-
       end
     end
   end
@@ -183,7 +185,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.critics.create.done') %
-        { title: valid_params[:name] }
+          { title: valid_params[:name] }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -195,7 +197,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.critics.create.fail') %
-        { title: invalid_params[:name] }
+          { title: invalid_params[:name] }
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -288,7 +290,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.critics.update.done') %
-        { title: valid_params[:name] }
+          { title: valid_params[:name] }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -300,7 +302,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.critics.update.fail') %
-        { title: invalid_params[:name] }
+          { title: invalid_params[:name] }
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -309,7 +311,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
   end
 
   describe '#destroy' do
-    let!(:critic)    { create(:critic, user: user) }
+    let!(:critic) { create(:critic, user: user) }
     let(:error_msg) { 'error message' }
 
     context 'on success' do
@@ -317,7 +319,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
 
       let(:expected_flash) do
         I18n.t('admin.critics.destroy.done') %
-        { title: critic.name }
+          { title: critic.name }
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
