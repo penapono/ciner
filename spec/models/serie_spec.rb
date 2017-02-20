@@ -10,7 +10,7 @@ RSpec.describe Serie, type: :model do
 
   describe '#validations' do
     it { is_expected.to validate_presence_of :original_title }
-    it { is_expected.to validate_presence_of :year }
+    it { is_expected.to validate_presence_of :start_year }
     it { is_expected.to validate_presence_of :length }
   end
 

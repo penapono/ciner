@@ -31,7 +31,6 @@ pt-BR:
       critic/filmable_type:
         movie: Filme
         serie: Série
-        ciner_video: Ciner Vídeo
       critic/status:
         pending: Aguardando Aprovação
         approved: Aprovada
