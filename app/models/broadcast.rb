@@ -11,6 +11,7 @@ class Broadcast < ActiveRecord::Base
   belongs_to :user
 
   has_many :comments, as: :commentable
+  has_many :broadcast_broadcastables, dependent: :destroy
 
   # Validations
   validates :title,
@@ -20,6 +21,11 @@ class Broadcast < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
+
+  # Nested
+  accepts_nested_attributes_for :broadcast_broadcastables,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
   # Scopes
 

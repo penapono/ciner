@@ -26,4 +26,8 @@
   - else
     = f.hidden_field :user_id, value: current_user.id
 
+  .row
+    .col-xs-6
+      = render 'admin/broadcasts/broadcast_broadcastables/nested', f: f
+
   = render 'shared/form_actions', f: f

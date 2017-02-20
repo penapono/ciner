@@ -1,0 +1,9 @@
+- partial = 'admin/broadcasts/broadcast_broadcastables/fields'
+
+.row{'data-cocoon-container': ''}
+  .col-xs-12
+    %h2.title
+      = link_to_add_association '+', f, :broadcast_broadcastables, data: { association_insertion_method: 'after' }, class: 'action-button add', partial: partial
+
+    = f.simple_fields_for :broadcast_broadcastables do |ep|
+      = render partial, f: ep

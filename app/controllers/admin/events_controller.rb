@@ -3,11 +3,15 @@ module Admin
   class EventsController < AdminController
     include Admin::EventsBreadcrumb
 
+    PER_PAGE = 10
+
+    PERMITTED_PARAMS = [
+      :title, :description, :event_date, :start_time, :end_time
+    ].freeze
+
     # exposes
     expose(:events) { Event.all }
     expose(:event, attributes: :event_attributes)
-
-    PER_PAGE = 10
 
     def index
       self.events = paginated_events
@@ -36,9 +40,7 @@ module Admin
     end
 
     def event_params
-      params.require(:event).permit(
-        :title, :description, :event_date, :start_time, :end_time
-      )
+      params.require(:event).permit(PERMITTED_PARAMS)
     end
 
     # Filtering

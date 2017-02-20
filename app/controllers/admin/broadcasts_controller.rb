@@ -6,7 +6,8 @@ module Admin
     PER_PAGE = 10
 
     PERMITTED_PARAMS = [
-      :title, :content, :user_id, :spoiler, :featured
+      :title, :content, :user_id, :spoiler, :featured,
+      broadcast_broadcastable: [:id, :broadcast_id, :broadcastable_type, :broadcastable_id, :_destroy]
     ].freeze
 
     # exposes

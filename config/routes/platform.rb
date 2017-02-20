@@ -9,10 +9,27 @@ Rails.application.routes.draw do
 
     resources :studios, only: [:index, :show]
     resources :professionals, only: [:index, :show]
-    resources :movies, only: [:index, :show]
-    resources :series, only: [:index, :show]
-    resources :ciner_videos, only: [:index, :show]
-    resources :events
+
+    resources :movies, only: [:index, :show] do
+      member do
+        put "like", to: "movies#upvote"
+        put "dislike", to: "movies#downvote"
+      end
+    end
+
+    resources :series, only: [:index, :show] do
+      member do
+        put "like", to: "series#upvote"
+        put "dislike", to: "series#downvote"
+      end
+    end
+
+    resources :events do
+      member do
+        put "like", to: "events#upvote"
+        put "dislike", to: "events#downvote"
+      end
+    end
 
     resources :critics do
       member do

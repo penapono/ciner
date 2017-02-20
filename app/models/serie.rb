@@ -22,7 +22,7 @@ class Serie < ActiveRecord::Base
 
   # Validations
   validates :original_title,
-            :year,
+            :start_year,
             :length,
             presence: true
 

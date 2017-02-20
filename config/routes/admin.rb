@@ -8,12 +8,15 @@ Rails.application.routes.draw do
     resources :professionals
     resources :age_ranges
     resources :film_production_categories
-    resources :film_productions
     resources :movies
     resources :series
-    resources :ciner_videos
-    resources :ciner_news
-    resources :events
+
+    resources :events do
+      member do
+        put "like", to: "events#upvote"
+        put "dislike", to: "events#downvote"
+      end
+    end
 
     resources :critics do
       member do

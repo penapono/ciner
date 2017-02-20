@@ -3,11 +3,15 @@ module Admin
   class AgeRangesController < AdminController
     include Admin::AgeRangesBreadcrumb
 
-    # exposes
-    expose(:age_ranges) { AgeRange.all }
-    expose(:age_range, attributes: :age_range_attributes)
-
     PER_PAGE = 10
+
+    PERMITTED_PARAMS = [
+      :name, :age
+    ].freeze
+
+    # exposes
+    expose(:age_ranges) { AgeRange.order(age: :asc) }
+    expose(:age_range, attributes: :age_range_attributes)
 
     def index
       self.age_ranges = paginated_age_ranges
@@ -32,9 +36,7 @@ module Admin
     end
 
     def age_range_params
-      params.require(:age_range).permit(
-        :name, :age
-      )
+      params.require(:age_range).permit(PERMITTED_PARAMS)
     end
 
     def resource_params

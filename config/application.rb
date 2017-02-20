@@ -21,6 +21,7 @@ module Ciner
     config.encoding = "utf-8"
     config.assets.enabled = true
     config.assets.version = '1.0'
+    config.active_record.time_zone_aware_types = [:datetime, :time]
 
     # Destivar wrap de campos com erros
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|

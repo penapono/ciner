@@ -305,7 +305,7 @@ namespace :development_seed do
     object = Serie.find_or_create_by(
       original_title: "Skins",
       title: 'Skins',
-      year: 2007,
+      start_year: 2007,
       length: 45,
       release: DateTime.parse("02/10/2007"),
       brazilian_release: DateTime.parse("02/10/2007"),
@@ -319,7 +319,7 @@ namespace :development_seed do
     object = Serie.find_or_create_by(
       original_title: "How I Met Your Mother",
       title: 'Como Eu Conheci Sua Mãe',
-      year: 2005,
+      start_year: 2005,
       length: 25,
       release: DateTime.parse("19/09/2005"),
       brazilian_release: DateTime.parse("19/09/2005"),
@@ -333,7 +333,7 @@ namespace :development_seed do
     object = Serie.find_or_create_by(
       original_title: "Shameless",
       title: 'Shameless',
-      year: 2011,
+      start_year: 2011,
       length: 46,
       release: DateTime.parse("09/01/2011"),
       brazilian_release: DateTime.parse("09/01/2011"),
@@ -347,7 +347,7 @@ namespace :development_seed do
     object = Serie.find_or_create_by(
       original_title: "Doctor Who",
       title: 'Doctor Who',
-      year: 2005,
+      start_year: 2005,
       length: 45,
       release: DateTime.parse("26/03/2005"),
       brazilian_release: DateTime.parse("26/03/2005"),

@@ -1,0 +1,9 @@
+.nested-fields
+  .row
+    .col-xs-10.formatted-error-field
+      Olá
+      / = f.hidden_field :broadcast_id
+      / = f.input :broadcastable_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
+
+    .col-xs-2
+      = link_to_remove_association '', f, class: 'fa fa-trash-o delete-icon', title: t('remove'), data: { confirm: t('confirm_destroy') }
