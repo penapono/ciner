@@ -10,7 +10,6 @@ describe Searchables::Movie do
     '
       movies.original_title LIKE :search OR
       movies.title LIKE :search OR
-      movies.synopsis LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search
