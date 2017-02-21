@@ -2,6 +2,7 @@
 class Event < ActiveRecord::Base
   include Searchables::Event
   include Reactionable
+  include CommentManageable
 
   acts_as_votable
 
@@ -10,6 +11,9 @@ class Event < ActiveRecord::Base
             :description,
             :event_date,
             presence: true
+
+  # Associations
+  has_many :comments, as: :commentable
 
   # Filter
 

@@ -44,6 +44,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.second_critic
+    return unless first_critic
     where.not(id: first_critic.id).order(likes_count: :desc).first
   end
 

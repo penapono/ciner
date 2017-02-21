@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   include EventsBreadcrumb
 
   # exposes
-  expose(:events) { Event.all_but([highlight]) }
+  expose(:events) { Event.all }
   expose(:event, attributes: :event_attributes)
 
   PER_PAGE = 10

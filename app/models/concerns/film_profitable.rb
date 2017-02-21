@@ -44,6 +44,10 @@ module FilmProfitable
       filmable_professionals.where(set_function: SetFunction.find_by(name: 'Roteiro'))
     end
 
+    def release_str
+      I18n.l(release, format: :long_date) if release.is_a?(Date)
+    end
+
     # Critics
 
     def ciner_official_critic

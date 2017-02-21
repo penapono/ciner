@@ -45,41 +45,8 @@
     = render 'shared/home/critics/index', role: role
 
     / SOCIAL CINER
-    .col-xs-12.col-sm-12.col-md-5.col-lg-4
-      .title-separator.ciner-social
-        .media
-          .media-left.media-middle
-            %svg.icon-title
-              %use{"xlink:href" => "#twitter"}
-          .media-body.media-bottom
-            .media-heading.title-section Papo de Ciner
-          .media-body.text-right.media-middle
-            %a{:href => "#"} ver mais
-      .social
-        .social-item
-          .col-xs-3
-            %figure{:style => "border-radius: 100%; background: #FDFDFD; padding: 5px;"}
-              %img.img-responsive{:src => "https://cdn2.iconfinder.com/data/icons/ourea-icons/128/Butterfly_256x256-32.png"}/
-          .col-xs-9
-            %h6 Lorem ipsum dolor
-            %p{:style => "font-size: 12px;"}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
-        .social-item
-          .col-xs-3
-            %figure{:style => "border-radius: 100%; background: #FDFDFD; padding: 5px;"}
-              %img.img-responsive{:src => "https://cdn2.iconfinder.com/data/icons/ourea-icons/128/Butterfly_256x256-32.png"}/
-          .col-xs-9
-            %h6 Lorem ipsum dolor
-            %p{:style => "font-size: 12px;"}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
-        .social-item
-          .col-xs-3
-            %figure{:style => "border-radius: 100%; background: #FDFDFD; padding: 5px;"}
-              %img.img-responsive{:src => "https://cdn2.iconfinder.com/data/icons/ourea-icons/128/Butterfly_256x256-32.png"}/
-          .col-xs-9
-            %h6 Lorem ipsum dolor
-            %p{:style => "font-size: 12px;"}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet laoreet purus. Vivamus aliquet risus mi. Suspendisse sodales diam nu.
+    = render 'shared/home/events/index', role: role
+
     / ADVERTISES
     .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 40px;"}
       .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises{:style => "margin-bottom: 20px;"}

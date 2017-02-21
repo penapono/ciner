@@ -6,7 +6,7 @@ $(function() {
 
   $('select').select2({
     theme: "bootstrap",
-    minimumResultsForSearch: 10
+    minimumResultsForSearch: 30
   });
 
 
@@ -16,7 +16,7 @@ $(function() {
     return {
       language: 'pt-BR',
       allowClear: false,
-      minimumInputLength: 3,
+      minimumInputLength: 2,
       closeOnSelect: true,
       ajax: _defaultAjaxParams()
     }
