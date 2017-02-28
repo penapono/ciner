@@ -18,6 +18,8 @@ gem 'decent_exposure'
 gem 'rails_autolink'
 gem 'rmagick'
 
+gem 'httparty'
+
 gem "recaptcha", require: "recaptcha/rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -94,6 +96,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'guard-rspec', require: false
+  gem 'terminal-notifier-guard', require: false
   gem 'poltergeist'
   gem 'rspec-collection_matchers'
   gem 'rspec-core'
@@ -103,9 +106,9 @@ group :test do
   gem 'simplecov', require: false
   gem 'simplecov-rcov'
   gem 'spring-commands-rspec'
-  gem 'terminal-notifier-guard', require: false
   gem 'timecop'
   gem 'rails-controller-testing'
 end
 
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'easy_translate'

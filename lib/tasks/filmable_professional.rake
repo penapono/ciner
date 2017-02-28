@@ -4,12 +4,14 @@ namespace :filmable_professional do
 
   task create_or_update: :environment do
 
-    FilmableProfessional.all.each do |fp|
-      id = fp.filmable_type
-      type = (Movie.where(id: id).any?) ? "Movie" : "Serie"
-      fp.filmable_id = id
-      fp.filmable_type = type
-      puts "Funciona!" if fp.save
+    FilmableProfessional.all.find_in_batches do |batch|
+      batch.each do |fp|
+        id = fp.filmable_type
+        type = (Movie.where(id: id).any?) ? "Movie" : "Serie"
+        fp.filmable_id = id
+        fp.filmable_type = type
+        puts "Funciona!" if fp.save
+      end
     end
   end
 end
