@@ -13,7 +13,7 @@ namespace :ciner_omdb do
     # Movie.where(id: 3989957).each do |movie|
     # 2766408
     # Movie.where(id: 2766408).each do |movie|
-    Serie.all.each do |movie|
+    Serie.where("updated_at = created_at").find_each do |movie|
       title = movie.original_title
 
       title_str = title[0, title.length-6].gsub(/\P{ASCII}/, '').gsub("#", "")
