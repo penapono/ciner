@@ -1,0 +1,101 @@
+- object = serie
+- cover = object.cover
+- cover ||= "http://placehold.it/550x700"
+
+.internal-section-detail-filmable
+  .container.filmable
+    .row
+      .col-xs-12.col-sm-12.col-md-5.col-lg-4
+        %img.img-responsive{ src: cover }
+      .col-xs-12.col-sm-12.col-md-7.col-lg-8
+        .row
+          .col-xs-12.col-sm-6.col-md-6.col-lg-8
+            = Movie.human_attribute_name(:genders_str)
+            %a.wine.bold
+              = object.omdb_genre
+            %br
+
+            = Movie.human_attribute_name(:age_range_id)
+            %span.wine.bold
+              = object.omdb_rated
+            %br
+
+            = Movie.human_attribute_name(:length)
+            %span.wine.bold
+              = object.length
+            %br
+
+            .title
+              %h3.bold.wine
+                = object.title_str
+              %h4.light.cinza
+                = object.original_title
+
+              = Movie.human_attribute_name(:directors_str)
+              %a.bold.wine
+                = object.omdb_directors
+              %br
+              %br
+
+              = Movie.human_attribute_name(:cast_str)
+              %a.bold.wine
+                = object.omdb_actors
+              %a.bold.preto{:href => "#ficha-tecnica"}
+                = t('more')
+              %br
+              %br
+
+              = object.synopsis
+              %br
+              %br
+
+              = Movie.human_attribute_name(:release)
+              %br
+              %span.wine.bold
+                = object.release_str
+              %br
+              %br
+
+          - if object.ciner_official_critic
+            .col-xs-12.col-sm-3.col-md-3.col-lg-2
+              .nota.ciner-rating
+                = Movie.human_attribute_name(:ciner_rating)
+                %span.valor
+                  = object.ciner_official_critic.rating
+                = object.ciner_official_critic.user_name
+
+          .col-xs-12.col-sm-3.col-md-3.col-lg-2
+            .nota
+              = Movie.human_attribute_name(:users_rating)
+              %span.valor
+                = object.users_rating
+              = t('votes', count: object.users_rating_count)
+
+          .col-xs-12
+            .row
+              .tags
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#ja-assisti"}
+                    já assisti
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#quero-ver"}
+                    quero ver
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#adicionar"}
+                    adicionar
+                .button
+                  %a.active
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#favorito"}
+                    favorito
+                .button
+                  %a
+                    %svg.icon-tags
+                      %use{"xlink:href" => "#like"}
+                    indique

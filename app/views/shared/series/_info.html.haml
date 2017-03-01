@@ -1,0 +1,54 @@
+- object = serie
+
+#ficha-tecnica.ficha-tecnica
+  .title-separator
+    .media
+      .media-left.media-middle
+        %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+          %use{"xlink:href" => "#video"}
+      .media-body.media-bottom
+        .media-heading.title-section
+          = Movie.human_attribute_name(:trailer)
+  .ficha
+    .info
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/HiixbtN-O24", :width => "100%"}
+
+- if object.writers
+  #roteiro.roteiro
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:writers_str)
+    .roteiristas
+      .row
+        - object.writers.each do |filmable_professional|
+          = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'roteirista'
+
+- if object.directors
+  #direcao.direcao
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:directors_str)
+    .diretores
+      .row
+        - object.directors.each do |filmable_professional|
+          = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'diretor'
+
+- if object.actors
+  #elenco.elenco
+    .title-separator
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:cast_str)
+    .atores-principais
+      .row
+        - object.actors.first(6).each do |filmable_professional|
+          = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation
+    .atores
+      - object.actors.each_with_index do |filmable_professional, index|
+        - if index > 5
+          =  render 'shared/series/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation

@@ -24,20 +24,20 @@
     - series.each do |serie|
       %tr
         %td
-          = link_to admin_serie_path(serie) do
+          = link_to admin_series_path(serie) do
             = serie.original_title
 
         %td
           = serie.title
 
         %td
-          = serie.year
+          = serie.start_year
 
         %td
-          = link_to edit_admin_serie_path(serie) do
+          = link_to edit_admin_series_path(serie) do
             %i.fa.fa-pencil
         %td
-          = link_to admin_serie_path(serie), method: 'delete' do
+          = link_to admin_series_index_path(serie), method: 'delete' do
             %i.fa.fa-trash
 
 = render 'shared/pagination', resources: series

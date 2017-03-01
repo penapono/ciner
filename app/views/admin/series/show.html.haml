@@ -3,12 +3,4 @@
 
 = render 'shared/breadcrumbs'
 
-.row
-  .col-xs-12
-    = serie.title
-.row
-  .col-xs-12
-    = serie.original_title
-.row
-  .col-xs-12
-    = serie.year
+= render 'shared/series/show', serie: serie, current_critics_path: admin_critics_path, current_new_critic_path: new_admin_critic_path

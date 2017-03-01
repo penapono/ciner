@@ -10,7 +10,6 @@ describe Searchables::Serie do
     '
       series.original_title LIKE :search OR
       series.title LIKE :search OR
-      series.synopsis LIKE :search OR
       cities.name LIKE :search OR
       states.name LIKE :search OR
       countries.name LIKE :search

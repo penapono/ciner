@@ -21,6 +21,10 @@ module Admin
       self.series = paginated_series
     end
 
+    def show
+      serie.api_transform
+    end
+
     private
 
     def resource
@@ -36,7 +40,7 @@ module Admin
     end
 
     def show_path
-      admin_serie_path(resource)
+      admin_series_index_path(resource)
     end
 
     def serie_params
