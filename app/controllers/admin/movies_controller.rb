@@ -21,6 +21,10 @@ module Admin
       self.movies = paginated_movies
     end
 
+    def show
+      movie.api_transform
+    end
+
     private
 
     def resource

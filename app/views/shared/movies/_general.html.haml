@@ -12,12 +12,12 @@
           .col-xs-12.col-sm-6.col-md-6.col-lg-8
             = Movie.human_attribute_name(:genders_str)
             %a.wine.bold
-              = object.genders_str
+              = object.omdb_genre
             %br
 
             = Movie.human_attribute_name(:age_range_id)
             %span.wine.bold
-              = object.age_range_name
+              = object.omdb_rated
             %br
 
             = Movie.human_attribute_name(:length)
@@ -33,13 +33,13 @@
 
               = Movie.human_attribute_name(:directors_str)
               %a.bold.wine
-                = object.directors_str
+                = object.omdb_directors
               %br
               %br
 
               = Movie.human_attribute_name(:cast_str)
               %a.bold.wine
-                = object.first_actors_str
+                = object.omdb_actors
               %a.bold.preto{:href => "#ficha-tecnica"}
                 = t('more')
               %br

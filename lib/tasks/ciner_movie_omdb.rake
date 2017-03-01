@@ -27,8 +27,6 @@ namespace :ciner_movie_omdb do
         begin
           response = HTTParty.get(url)
 
-          # byebug
-
           response = response.parsed_response
 
           response_status = response["Response"]
@@ -92,13 +90,18 @@ namespace :ciner_movie_omdb do
             end
 
             object.length = omdb_runtime
+
             object.synopsis = omdb_plot
 
+            object.omdb_rated = omdb_rated
+
             object.omdb_directors = omdb_directors
+
             object.omdb_writers = omdb_writers
+
             object.omdb_actors = omdb_actors
 
-            object.genre = omdb_genre
+            object.omdb_genre = omdb_genre
 
             if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
               cover = open(omdb_poster)
