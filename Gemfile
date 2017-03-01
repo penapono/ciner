@@ -61,6 +61,9 @@ gem 'brcep'
 
 gem 'cpf_faker'
 
+# cron
+gem 'whenever'
+
 group :production do
   gem 'passenger'
 end
