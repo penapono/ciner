@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.0'
 
 # core
 gem 'uglifier', '>= 1.3.0'
 
 gem 'rake'
-gem 'rails', '>= 5.0.1'
+gem 'rails', '> 5.0.1'
 gem 'mini_magick'
 gem 'json'
 gem 'jbuilder'

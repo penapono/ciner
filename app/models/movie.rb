@@ -66,7 +66,7 @@ class Movie < ActiveRecord::Base
     object = self
     title = object.original_title
 
-    title_str = title[0, title.length-6].gsub(/\P{ASCII}/, '').gsub("#", "")
+    title_str = title[0, title.length - 6].gsub(/\P{ASCII}/, '').delete("#")
     year_str = title[title.length - 5, 4]
 
     url = "http://www.omdbapi.com/?t=#{title_str}&y=#{year_str}&plot=short&r=json"
@@ -76,7 +76,6 @@ class Movie < ActiveRecord::Base
     if uri.is_a?(URI::HTTP)
       begin
         response = HTTParty.get(url)
-
 
         response = response.parsed_response
 
@@ -89,7 +88,11 @@ class Movie < ActiveRecord::Base
 
           omdb_rated = response["Rated"]
 
-          omdb_released = Date.parse(response["Released"]) rescue nil
+          omdb_released = begin
+                            Date.parse(response["Released"])
+                          rescue
+                            nil
+                          end
 
           omdb_runtime = response["Runtime"]
 
@@ -131,9 +134,7 @@ class Movie < ActiveRecord::Base
           object.title = omdb_title
           object.year = omdb_year
 
-          unless omdb_released
-            object.release = omdb_released
-          end
+          object.release = omdb_released unless omdb_released
 
           object.length = omdb_runtime
           object.synopsis = omdb_plot
@@ -147,7 +148,6 @@ class Movie < ActiveRecord::Base
           object.omdb_actors = omdb_actors
 
           object.omdb_genre = omdb_genre
-
 
           if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
             cover = open(omdb_poster)
