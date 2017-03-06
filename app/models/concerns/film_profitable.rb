@@ -3,6 +3,30 @@ module FilmProfitable
   extend ActiveSupport::Concern
 
   included do
+    def genre_pt
+      genres = omdb_genre.split(",").map(&:strip)
+
+      pt_genre = []
+
+      genres.each do |genre|
+        pt_genre << FilmProductionCategory.find_by(description: genre).name
+      end
+
+      pt_genre.to_sentence
+    end
+
+    def rated_pt
+      return "Livre" if omdb_rated == "G"
+
+      return "10 anos" if omdb_rated == "PG"
+
+      return "14 anos" if omdb_rated == "PG-13"
+
+      return "16 anos" if omdb_rated == "R"
+
+      "18 anos" # if omdb_rated = "NC-17"
+    end
+
     def title_str
       return title unless title.blank?
       original_title
