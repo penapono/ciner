@@ -134,7 +134,7 @@ class Serie < ActiveRecord::Base
           object.title = omdb_title
           object.start_year = omdb_year
 
-          object.release = omdb_released unless omdb_released
+          object.release = omdb_released if omdb_released
 
           object.length = omdb_runtime
           object.synopsis = omdb_plot
