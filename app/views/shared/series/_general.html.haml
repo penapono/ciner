@@ -10,14 +10,14 @@
       .col-xs-12.col-sm-12.col-md-7.col-lg-8
         .row
           .col-xs-12.col-sm-6.col-md-6.col-lg-8
-            = Movie.human_attribute_name(:genders_str)
+            Gênero
             %a.wine.bold
               = object.omdb_genre
             %br
 
             = Movie.human_attribute_name(:age_range_id)
             %span.wine.bold
-              = object.omdb_rated
+              = object.rated_pt
             %br
 
             = Movie.human_attribute_name(:length)
@@ -31,9 +31,17 @@
               %h4.light.cinza
                 = object.original_title
 
+              %br
+
               = Movie.human_attribute_name(:directors_str)
               %a.bold.wine
                 = object.omdb_directors
+              %br
+              %br
+
+              Roteiro
+              %a.bold.wine
+                = object.omdb_writers
               %br
               %br
 
@@ -49,12 +57,21 @@
               %br
               %br
 
-              = Movie.human_attribute_name(:release)
+              Estreia Nacional
+              %span.wine.bold
+                \-
               %br
+
+              Estreia Mundial
               %span.wine.bold
                 = object.release_str
+
               %br
               %br
+
+              Ano de Produção
+              %span.wine.bold
+                = object.start_year
 
           - if object.ciner_official_critic
             .col-xs-12.col-sm-3.col-md-3.col-lg-2
