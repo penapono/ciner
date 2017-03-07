@@ -9,7 +9,8 @@ module FilmProfitable
       pt_genre = []
 
       genres.each do |genre|
-        pt_genre << FilmProductionCategory.find_by(description: genre).name
+        category = FilmProductionCategory.find_by(description: genre)
+        pt_genre << category.name if category
       end
 
       pt_genre.to_sentence

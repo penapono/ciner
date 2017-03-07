@@ -25,6 +25,8 @@
               = object.length
             %br
 
+            %br
+
             .title
               %h3.bold.wine
                 = object.title_str
@@ -34,6 +36,12 @@
               = Movie.human_attribute_name(:directors_str)
               %a.bold.wine
                 = object.omdb_directors
+              %br
+              %br
+
+              Roteiro
+              %a.bold.wine
+                = object.omdb_writers
               %br
               %br
 
