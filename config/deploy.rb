@@ -3,7 +3,7 @@ lock '3.4.0'
 
 set :application, 'ciner'
 set :repo_url, 'git@github.com:pnaponoceno/ciner.git'
-set :rvm_ruby_version, 'ruby-2.4.0@ciner'
+set :rvm_ruby_version, 'ruby-2.3.1@ciner'
 set :rvm_type, :system
 
 # Default branch is :master
