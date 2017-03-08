@@ -35,7 +35,7 @@ module Platform
       [
         area_breadcrumb,
         index_breadcrumb,
-        [movie.original_title, ""]
+        [movie.title, ""]
       ]
     end
 
