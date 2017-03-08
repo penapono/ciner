@@ -56,11 +56,6 @@ module FilmProfitable
       original_title_str
     end
 
-    def original_title_str
-      return original_title unless year
-      original_title.gsub("(#{year})", "")
-    end
-
     def length_str
       length = self.length
       return "Não disponível" unless length

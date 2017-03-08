@@ -60,6 +60,11 @@ class Movie < ActiveRecord::Base
     result
   end
 
+  def original_title_str
+    return original_title unless year
+    original_title.gsub("(#{year})", "")
+  end
+
   # API
 
   def api_transform
@@ -225,9 +230,9 @@ class Movie < ActiveRecord::Base
             array = href_element.first
             array.delete("href")
             omdb_trailer = array[0]
-            omdb_trailer = "imdb.com#{omdb_trailer}"
+            omdb_trailer = "wwww.imdb.com#{omdb_trailer}"
             omdb_trailer = omdb_trailer.split("?").first
-            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=100%"
+            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
 
             object.omdb_trailer = omdb_trailer
           end

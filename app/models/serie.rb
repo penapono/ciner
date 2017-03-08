@@ -60,6 +60,11 @@ class Serie < ActiveRecord::Base
     result
   end
 
+  def original_title_str
+    return original_title unless start_year
+    original_title.gsub("(#{start_year})", "")
+  end
+
   # API
 
   def api_transform
@@ -68,6 +73,12 @@ class Serie < ActiveRecord::Base
 
     title_str = title[0, title.length - 6].gsub(/\P{ASCII}/, '').delete("#")
     year_str = title[title.length - 5, 4]
+
+    year_str = begin
+                Integer(year_str)
+              rescue
+                object.start_year
+              end
 
     url = "http://www.omdbapi.com/?t=#{title_str}&y=#{year_str}&plot=short&r=json"
 
@@ -159,6 +170,86 @@ class Serie < ActiveRecord::Base
             rescue
             end
           end
+
+          imdb_release_info_url = "http://www.imdb.com/title/#{omdb_id}/releaseinfo"
+
+          page = HTTParty.get(imdb_release_info_url)
+
+          parsed_page = Nokogiri::HTML(page)
+
+          odd_rows = parsed_page.css('.subpage_data.spFirst').css('.odd')
+          even_rows = parsed_page.css('.subpage_data.spFirst').css('.even')
+
+          rows = odd_rows + even_rows
+
+          rows.each do |row|
+            if row.text.include? "Brazil"
+              omdb_brazilian_release = nil
+              array = row.text.split("\n").map(&:strip)
+              array.delete("")
+              array.delete("Brazil")
+              array.each do |element|
+                omdb_brazilian_release = begin
+                                           Date.parse(element)
+                                         rescue
+                                           nil
+                                         end
+                break if omdb_brazilian_release
+              end
+              object.brazilian_release = omdb_brazilian_release if omdb_brazilian_release
+            end
+          end
+
+          odd_rows = parsed_page.css('.subpage_data.spEven2Col').css('.odd')
+          even_rows = parsed_page.css('.subpage_data.spEven2Col').css('.even')
+
+          rows = odd_rows + even_rows
+
+          rows.each do |row|
+            if row.text.include? "Brazil"
+              omdb_brazilian_title = nil
+              array = row.text.split("\n").map(&:strip)
+              array.delete("")
+              array.delete("Brazil")
+              omdb_brazilian_title = array[0] unless array.empty?
+              object.title = omdb_brazilian_title if omdb_brazilian_title
+            end
+          end
+
+          imdb_url = "http://www.imdb.com/title/#{omdb_id}"
+
+          page = HTTParty.get(imdb_url)
+
+          parsed_page = Nokogiri::HTML(page)
+
+          trailer = parsed_page.css('.slate_button.prevent-ad-overlay.video-modal')
+
+          href_element = trailer.first
+
+          if href_element
+            array = href_element.first
+            array.delete("href")
+            omdb_trailer = array[0]
+            omdb_trailer = "www.imdb.com#{omdb_trailer}"
+            omdb_trailer = omdb_trailer.split("?").first
+            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
+
+            object.omdb_trailer = omdb_trailer
+          end
+
+          # Google
+
+          # friendly_omdb_plot = omdb_plot.gsub(/"/, '').gsub(",", "%2C").gsub(" ", "%20")
+
+          # translate_url = "https://translate.google.com/#en/pt/#{friendly_omdb_plot}"
+
+          # page = HTTParty.get(translate_url)
+
+          # parsed_page = Nokogiri::HTML(page)
+
+          # byebug
+
+          # object.original_title = omdb_title
 
           object.save(validate: false)
         end
