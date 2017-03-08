@@ -20,7 +20,7 @@
               = object.rated_pt
             %br
 
-            = Movie.human_attribute_name(:length)
+            Duração
             %span.wine.bold
               = object.length_str
             %br
@@ -32,6 +32,8 @@
                 = object.title_str
               %h4.light.cinza
                 = object.original_title_str
+              %h5.light.wine
+                = object.year
 
               %br
 
@@ -71,9 +73,9 @@
               %br
               %br
 
-              Ano de Produção
-              %span.wine.bold
-                = object.year
+              / Ano de Produção
+              / %span.wine.bold
+              /   = object.year
 
           - if object.ciner_official_critic
             .col-xs-12.col-sm-3.col-md-3.col-lg-2
