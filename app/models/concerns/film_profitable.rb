@@ -4,6 +4,7 @@ module FilmProfitable
 
   included do
     def genre_pt
+      return unless omdb_genre
       genres = omdb_genre.split(",").map(&:strip)
 
       pt_genre = []

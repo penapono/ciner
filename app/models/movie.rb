@@ -72,6 +72,12 @@ class Movie < ActiveRecord::Base
     title_str = title[0, title.length - 6].gsub(/\P{ASCII}/, '').delete("#")
     year_str = title[title.length - 5, 4]
 
+    year_str = begin
+                Integer(year_str)
+              rescue
+                object.year
+              end
+
     url = "http://www.omdbapi.com/?t=#{title_str}&y=#{year_str}&plot=short&r=json"
 
     uri = URI.parse(url)
@@ -174,7 +180,6 @@ class Movie < ActiveRecord::Base
 
           rows.each do |row|
             if row.text.include? "Brazil"
-              byebug
               omdb_brazilian_release = nil
               array = row.text.split("\n").map(&:strip)
               array.delete("")
@@ -207,7 +212,7 @@ class Movie < ActiveRecord::Base
             end
           end
 
-          object.original_title = omdb_title
+          # object.original_title = omdb_title
 
           object.save(validate: false)
         end
