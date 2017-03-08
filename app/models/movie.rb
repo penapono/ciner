@@ -227,7 +227,7 @@ class Movie < ActiveRecord::Base
             omdb_trailer = array[0]
             omdb_trailer = "imdb.com#{omdb_trailer}"
             omdb_trailer = omdb_trailer.split("?").first
-            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
+            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=100%"
 
             object.omdb_trailer = omdb_trailer
 
