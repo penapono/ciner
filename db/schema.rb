@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301115224) do
+ActiveRecord::Schema.define(version: 20170308023643) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20170301115224) do
     t.string   "omdb_actors"
     t.string   "omdb_genre"
     t.string   "omdb_rated"
+    t.string   "omdb_id"
   end
 
   create_table "professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -262,6 +263,7 @@ ActiveRecord::Schema.define(version: 20170301115224) do
     t.string   "omdb_actors"
     t.string   "omdb_genre"
     t.string   "omdb_rated"
+    t.string   "omdb_id"
   end
 
   create_table "set_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -124,7 +124,7 @@ class Serie < ActiveRecord::Base
 
           # response["imdbVotes"]
 
-          # response["imdbID"]
+          omdb_id = response["imdbID"]
 
           # response["Type"]
 
@@ -148,6 +148,8 @@ class Serie < ActiveRecord::Base
           object.omdb_actors = omdb_actors
 
           object.omdb_genre = omdb_genre
+
+          object.omdb_id = omdb_id
 
           if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
             cover = open(omdb_poster)

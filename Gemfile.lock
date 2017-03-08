@@ -467,6 +467,7 @@ DEPENDENCIES
   mini_magick
   momentjs-rails
   mysql2 (= 0.3.20)
+  nokogiri
   passenger
   poltergeist
   pry-rails
@@ -505,4 +506,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.5
+   1.14.6

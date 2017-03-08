@@ -18,6 +18,7 @@ gem 'decent_exposure'
 gem 'rails_autolink'
 gem 'rmagick'
 
+gem 'nokogiri'
 gem 'httparty'
 
 gem "recaptcha", require: "recaptcha/rails"

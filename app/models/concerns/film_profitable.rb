@@ -73,6 +73,10 @@ module FilmProfitable
       I18n.l(release, format: :long_date) if release.is_a?(Date)
     end
 
+    def brazilian_release_str
+      I18n.l(brazilian_release, format: :long_date) if brazilian_release.is_a?(Date)
+    end
+
     # Critics
 
     def ciner_official_critic
