@@ -66,7 +66,7 @@ gem 'cpf_faker'
 gem 'whenever'
 
 group :production do
-  gem 'passenger'
+  gem 'passenger', '5.0.30'
 end
 
 group :development, :test do
