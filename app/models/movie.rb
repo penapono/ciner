@@ -1,6 +1,3 @@
-require 'HTTParty'
-require 'Nokogiri'
-
 # frozen_string_literal: true
 class Movie < ActiveRecord::Base
   include Searchables::Movie
