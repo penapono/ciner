@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.0'
 
 # core
 gem 'uglifier', '>= 1.3.0'
@@ -66,7 +66,7 @@ gem 'cpf_faker'
 gem 'whenever'
 
 group :production do
-  gem 'passenger', '5.0.30'
+  gem 'passenger'
 end
 
 group :development, :test do

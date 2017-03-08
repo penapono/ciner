@@ -468,7 +468,7 @@ DEPENDENCIES
   momentjs-rails
   mysql2 (= 0.3.20)
   nokogiri
-  passenger (= 5.0.30)
+  passenger
   poltergeist
   pry-rails
   rails (> 5.0.1)
@@ -503,7 +503,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.4.0p0
 
 BUNDLED WITH
    1.14.6
