@@ -53,7 +53,30 @@ module FilmProfitable
 
     def title_str
       return title unless title.blank?
-      original_title
+      original_title_str
+    end
+
+    def original_title_str
+      return original_title unless year
+      original_title.gsub("(#{year})", "")
+    end
+
+    def length_str
+      length = self.length
+      return "Não disponível" unless length
+      length = begin
+                 Integer(length.gsub("min", "").strip)
+               rescue
+                 0
+               end
+      hours = 0
+      while length >= 60
+        length -= 60
+        hours += 1
+      end
+
+      return "#{hours}h#{length}min" if length > 0
+      "#{hours}h"
     end
 
     def genders_str
