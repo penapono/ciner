@@ -29,6 +29,28 @@ module FilmProfitable
       "18 anos" # if omdb_rated = "NC-17"
     end
 
+    def writers_pt
+      return "Não disponível" unless omdb_writers
+      omdb_writers.gsub("(as)", "(como)")
+                  .gsub("(author)", "(autor)")
+                  .gsub("(book)", "(livro)")
+                  .gsub("(characters)", "(personagens)")
+                  .gsub("(co-author)", "(co-autor)")
+                  .gsub("(from the stage musical book by)", "(peça musical)")
+                  .gsub("(novel)", "(romance)")
+                  .gsub("(original play)", "(peça original)")
+                  .gsub("(original screen play)", "(roteiro original)")
+                  .gsub("(original story by)", "(história original)")
+                  .gsub("(play)", "(peça de teatro)")
+                  .gsub("(screenplay)", "(roteiro)")
+                  .gsub("(short story)", "(conto)")
+                  .gsub("(story)", "(história)")
+                  .gsub("(uncredited)", "(não creditado)")
+                  .gsub("(with the partial use of ideas by)", "(com o uso parcial de idéias)")
+                  .gsub("(written by)", "(escrito)")
+      # collaborator on screenplay
+    end
+
     def title_str
       return title unless title.blank?
       original_title
