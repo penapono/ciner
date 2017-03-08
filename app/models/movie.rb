@@ -185,9 +185,9 @@ class Movie < ActiveRecord::Base
               array.delete("Brazil")
               array.each do |element|
                 omdb_brazilian_release = begin
-                                          Date.parse(element)
+                                           Date.parse(element)
                                          rescue
-                                          nil
+                                           nil
                                          end
                 break if omdb_brazilian_release
               end
@@ -230,11 +230,7 @@ class Movie < ActiveRecord::Base
             omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=100%"
 
             object.omdb_trailer = omdb_trailer
-
-            # http://www.imdb.com/video/imdb/vi4219471385/imdb/embed?autoplay=false&width=480
           end
-
-          # <iframe src="http://www.imdb.com/video/imdb/vi4219471385/imdb/embed?autoplay=false&width=480" width="480" height="270" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
 
           # Google
 
