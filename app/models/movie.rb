@@ -166,7 +166,9 @@ class Movie < ActiveRecord::Base
             end
           end
 
-          page = HTTParty.get("http://www.imdb.com/title/#{omdb_id}/releaseinfo")
+          imdb_release_info_url = "http://www.imdb.com/title/#{omdb_id}/releaseinfo"
+
+          page = HTTParty.get(imdb_release_info_url)
 
           parsed_page = Nokogiri::HTML(page)
 
@@ -208,6 +210,43 @@ class Movie < ActiveRecord::Base
               object.title = omdb_brazilian_title if omdb_brazilian_title
             end
           end
+
+          imdb_url = "http://www.imdb.com/title/#{omdb_id}"
+
+          page = HTTParty.get(imdb_url)
+
+          parsed_page = Nokogiri::HTML(page)
+
+          trailer = parsed_page.css('.slate_button.prevent-ad-overlay.video-modal')
+
+          href_element = trailer.first
+
+          if href_element
+            array = href_element.first
+            array.delete("href")
+            omdb_trailer = array[0]
+            omdb_trailer = "imdb.com#{omdb_trailer}"
+            omdb_trailer = omdb_trailer.split("?").first
+            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
+
+            object.omdb_trailer = omdb_trailer
+
+            # http://www.imdb.com/video/imdb/vi4219471385/imdb/embed?autoplay=false&width=480
+          end
+
+          # <iframe src="http://www.imdb.com/video/imdb/vi4219471385/imdb/embed?autoplay=false&width=480" width="480" height="270" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
+
+          # Google
+
+          # friendly_omdb_plot = omdb_plot.gsub(/"/, '').gsub(",", "%2C").gsub(" ", "%20")
+
+          # translate_url = "https://translate.google.com/#en/pt/#{friendly_omdb_plot}"
+
+          # page = HTTParty.get(translate_url)
+
+          # parsed_page = Nokogiri::HTML(page)
+
+          # byebug
 
           # object.original_title = omdb_title
 
