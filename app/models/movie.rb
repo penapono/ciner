@@ -80,6 +80,12 @@ class Movie < ActiveRecord::Base
                 object.year
               end
 
+    # TMDB
+
+
+
+    # OMDB
+
     url = "http://www.omdbapi.com/?t=#{title_str}&y=#{year_str}&plot=short&r=json"
 
     uri = URI.parse(url)
@@ -94,6 +100,19 @@ class Movie < ActiveRecord::Base
 
         if response_status == "True"
           omdb_title = response["Title"]
+
+          tmdb_query = omdb_title
+          tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=8802a6c6583ac6edc44bea8d577baa97&query=#{tmdb_query}&language=pt-BR"
+
+          tmdb_response = HTTParty.get(tmdb_url)
+
+          tmdb_response = tmdb_response.parsed_response
+
+          tmdb_results = tmdb_response["results"]
+
+          tmdb_result = tmdb_results.first
+
+          tmdb_plot = tmdb_result["overview"]
 
           omdb_year = response["Year"]
 
@@ -146,7 +165,7 @@ class Movie < ActiveRecord::Base
           object.release = omdb_released if omdb_released
 
           object.length = omdb_runtime
-          object.synopsis = omdb_plot
+          object.synopsis = tmdb_plot
 
           # object.omdb_rated = omdb_rated
 
@@ -275,6 +294,8 @@ class Movie < ActiveRecord::Base
 
           object.omdb_rated = omdb_rated
 
+          byebug
+
           # Google
 
           # friendly_omdb_plot = omdb_plot.gsub(/"/, '').gsub(",", "%2C").gsub(" ", "%20")
@@ -288,6 +309,7 @@ class Movie < ActiveRecord::Base
           # byebug
 
           # object.original_title = omdb_title
+
 
           object.save(validate: false)
         end
