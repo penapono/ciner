@@ -97,8 +97,6 @@ class Movie < ActiveRecord::Base
 
           omdb_year = response["Year"]
 
-          omdb_rated = response["Rated"]
-
           omdb_released = begin
                             Date.parse(response["Released"])
                           rescue
@@ -150,7 +148,7 @@ class Movie < ActiveRecord::Base
           object.length = omdb_runtime
           object.synopsis = omdb_plot
 
-          object.omdb_rated = omdb_rated
+          # object.omdb_rated = omdb_rated
 
           object.omdb_directors = omdb_directors
 
@@ -177,6 +175,8 @@ class Movie < ActiveRecord::Base
 
           parsed_page = Nokogiri::HTML(page)
 
+          # Lançamento Brasil
+
           odd_rows = parsed_page.css('.subpage_data.spFirst').css('.odd')
           even_rows = parsed_page.css('.subpage_data.spFirst').css('.even')
 
@@ -200,6 +200,8 @@ class Movie < ActiveRecord::Base
             end
           end
 
+          # Nome Brasil
+
           odd_rows = parsed_page.css('.subpage_data.spEven2Col').css('.odd')
           even_rows = parsed_page.css('.subpage_data.spEven2Col').css('.even')
 
@@ -215,6 +217,8 @@ class Movie < ActiveRecord::Base
               object.title = omdb_brazilian_title if omdb_brazilian_title
             end
           end
+
+          # Trailer
 
           imdb_url = "http://www.imdb.com/title/#{omdb_id}"
 
@@ -236,6 +240,40 @@ class Movie < ActiveRecord::Base
 
             object.omdb_trailer = omdb_trailer
           end
+
+          # Profissionais
+
+          imdb_cast_url = "http://www.imdb.com/title/#{omdb_id}/fullcredits"
+
+          page = HTTParty.get(imdb_cast_url)
+
+          parsed_page = Nokogiri::HTML(page)
+
+          # Classificação Etária
+
+          imdb_rating = "http://www.imdb.com/title/#{omdb_id}/parentalguide"
+
+          page = HTTParty.get(imdb_rating)
+
+          parsed_page = Nokogiri::HTML(page)
+
+          ratings = parsed_page.css('.info-content')
+
+          array = ratings.text.split("\n")
+
+          ratings = array.last
+
+          ratings_array = ratings.split("/").map(&:strip)
+
+          ratings_array.each do |rating|
+            if rating.include? "Brazil:"
+              rating.gsub!("Brazil:", "")
+              omdb_rated = rating
+              break
+            end
+          end
+
+          object.omdb_rated = omdb_rated
 
           # Google
 

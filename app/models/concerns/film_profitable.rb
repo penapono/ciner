@@ -18,15 +18,7 @@ module FilmProfitable
     end
 
     def rated_pt
-      return "Livre" if omdb_rated == "G"
-
-      return "10 anos" if omdb_rated == "PG"
-
-      return "14 anos" if omdb_rated == "PG-13"
-
-      return "16 anos" if omdb_rated == "R"
-
-      "18 anos" # if omdb_rated = "NC-17"
+      omdb_rated + " anos"
     end
 
     def writers_pt
