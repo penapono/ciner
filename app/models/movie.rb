@@ -80,10 +80,6 @@ class Movie < ActiveRecord::Base
                 object.year
               end
 
-    # TMDB
-
-
-
     # OMDB
 
     url = "http://www.omdbapi.com/?t=#{title_str}&y=#{year_str}&plot=short&r=json"
@@ -101,7 +97,9 @@ class Movie < ActiveRecord::Base
         if response_status == "True"
           omdb_title = response["Title"]
 
-          tmdb_query = omdb_title
+          # TMDB
+
+          tmdb_query = omdb_title.gsub(" ", "+")
           tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=8802a6c6583ac6edc44bea8d577baa97&query=#{tmdb_query}&language=pt-BR"
 
           tmdb_response = HTTParty.get(tmdb_url)
@@ -113,6 +111,8 @@ class Movie < ActiveRecord::Base
           tmdb_result = tmdb_results.first
 
           tmdb_plot = tmdb_result["overview"]
+
+          # OMDB
 
           omdb_year = response["Year"]
 
@@ -285,16 +285,12 @@ class Movie < ActiveRecord::Base
           ratings_array = ratings.split("/").map(&:strip)
 
           ratings_array.each do |rating|
-            if rating.include? "Brazil:"
-              rating.gsub!("Brazil:", "")
-              omdb_rated = rating
+            if rating.include? "Brazil"
+              omdb_rated = rating.gsub("Brazil:", "")
+              object.omdb_rated = omdb_rated
               break
             end
           end
-
-          object.omdb_rated = omdb_rated
-
-          byebug
 
           # Google
 
@@ -306,10 +302,7 @@ class Movie < ActiveRecord::Base
 
           # parsed_page = Nokogiri::HTML(page)
 
-          # byebug
-
           # object.original_title = omdb_title
-
 
           object.save(validate: false)
         end
