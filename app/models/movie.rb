@@ -71,8 +71,12 @@ class Movie < ActiveRecord::Base
     object = self
     title = object.original_title
 
-    title_str = title[0, title.length - 6].gsub(/\P{ASCII}/, '').delete("#")
-    year_str = title[title.length - 5, 4]
+    tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
+
+    title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
+
+    title_str = Regexp.last_match(1)
+    year_str = Regexp.last_match(2)
 
     year_str = begin
                 Integer(year_str)
@@ -80,9 +84,55 @@ class Movie < ActiveRecord::Base
                 object.year
               end
 
+    tmdb_query = title_str
+
+    tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=#{tmdb_api_key}&language=pt-BR&query=#{tmdb_query}&page=1&include_adult=true&year=#{year}"
+
+    tmdb_url = URI.encode(tmdb_url)
+
+    tmdb_response = HTTParty.get(tmdb_url)
+
+    tmdb_response = tmdb_response.parsed_response
+
+    # TMDB
+    tmdb_results = tmdb_response["results"]
+
+    tmdb_result = tmdb_results.first
+
+    tmdb_plot = tmdb_result["overview"]
+
+    tmdb_id = tmdb_result["id"]
+
+    tmdb_movie_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}?api_key=#{tmdb_api_key}&language=pt-BR"
+
+    tmdb_response = HTTParty.get(tmdb_url)
+
+    tmdb_response = tmdb_response.parsed_response
+
+    tmdb_results = tmdb_response["results"]
+
+    tmdb_result = tmdb_results.first
+
+    url = URI("https://api.themoviedb.org/3/movie/#{tmdb_id}?language=pt-BR&api_key=#{tmdb_api_key}")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request.body = "{}"
+
+    response = http.request(request)
+
+    body = response.read_body
+
+    result = JSON.parse(body)
+
+    imdb_id = result["imdb_id"]
+
     # OMDB
 
-    url = "http://www.omdbapi.com/?t=#{title_str}&y=#{year_str}&plot=short&r=json"
+    url = "http://www.omdbapi.com/?i=#{imdb_id}"
 
     uri = URI.parse(url)
 
@@ -95,22 +145,12 @@ class Movie < ActiveRecord::Base
         response_status = response["Response"]
 
         if response_status == "True"
+          # omdb_id = response["imdbID"]
+          omdb_id = imdb_id
+
+          object.omdb_id = omdb_id
+
           omdb_title = response["Title"]
-
-          # TMDB
-
-          tmdb_query = omdb_title.gsub(" ", "+")
-          tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=8802a6c6583ac6edc44bea8d577baa97&query=#{tmdb_query}&language=pt-BR"
-
-          tmdb_response = HTTParty.get(tmdb_url)
-
-          tmdb_response = tmdb_response.parsed_response
-
-          tmdb_results = tmdb_response["results"]
-
-          tmdb_result = tmdb_results.first
-
-          tmdb_plot = tmdb_result["overview"]
 
           # OMDB
 
@@ -152,8 +192,6 @@ class Movie < ActiveRecord::Base
 
           # response["imdbVotes"]
 
-          omdb_id = response["imdbID"]
-
           # response["Type"]
 
           # response["Response"]
@@ -176,8 +214,6 @@ class Movie < ActiveRecord::Base
           object.omdb_actors = omdb_actors
 
           object.omdb_genre = omdb_genre
-
-          object.omdb_id = omdb_id
 
           if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
             cover = open(omdb_poster)
@@ -253,20 +289,12 @@ class Movie < ActiveRecord::Base
             array = href_element.first
             array.delete("href")
             omdb_trailer = array[0]
-            omdb_trailer = "wwww.imdb.com#{omdb_trailer}"
+            omdb_trailer = "www.imdb.com#{omdb_trailer}"
             omdb_trailer = omdb_trailer.split("?").first
             omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
 
             object.omdb_trailer = omdb_trailer
           end
-
-          # Profissionais
-
-          imdb_cast_url = "http://www.imdb.com/title/#{omdb_id}/fullcredits"
-
-          page = HTTParty.get(imdb_cast_url)
-
-          parsed_page = Nokogiri::HTML(page)
 
           # Classificação Etária
 
@@ -292,6 +320,18 @@ class Movie < ActiveRecord::Base
             end
           end
 
+          # Profissionais
+
+          tmdb_cast_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/credits?api_key=#{tmdb_api_key}"
+
+          tmdb_response = HTTParty.get(tmdb_cast_url)
+
+          tmdb_response = tmdb_response.parsed_response
+
+          cast = tmdb_response["cast"]
+
+          crew = tmdb_response["crew"]
+
           # Google
 
           # friendly_omdb_plot = omdb_plot.gsub(/"/, '').gsub(",", "%2C").gsub(" ", "%20")
@@ -309,5 +349,6 @@ class Movie < ActiveRecord::Base
       rescue
       end
     end
+  rescue
   end
 end

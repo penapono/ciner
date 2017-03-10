@@ -18,6 +18,7 @@ module FilmProfitable
     end
 
     def rated_pt
+      return unless omdb_rated
       omdb_rated + " anos"
     end
 

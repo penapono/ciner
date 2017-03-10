@@ -209,7 +209,6 @@ class Serie < ActiveRecord::Base
 
           rows.each do |row|
             if row.text.include? "Brazil"
-              byebug
               omdb_brazilian_title = nil
               array = row.text.split("\n").map(&:strip)
               array.delete("")
