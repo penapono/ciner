@@ -130,6 +130,17 @@ class Movie < ActiveRecord::Base
 
     imdb_id = result["imdb_id"]
 
+    imdb_poster = result["poster_path"]
+
+    if imdb_poster && !imdb_poster.empty? && imdb_poster != "N/A" && imdb_poster
+      cover = open("https://image.tmdb.org/t/p/w500#{imdb_poster}")
+
+      begin
+        object.cover = cover if cover
+      rescue
+      end
+    end
+
     # OMDB
 
     url = "http://www.omdbapi.com/?i=#{imdb_id}"
@@ -175,25 +186,7 @@ class Movie < ActiveRecord::Base
 
         omdb_genre = response["Genre"]
 
-        # EasyTranslate.translate(omdb_plot, :to => 'pt', :key => "AIzaSyD66z0ODjU0B65NUYZiTD-hwyQVgdCfu6Y")
-
-        # response["Language"]
-
         omdb_country = response["Country"]
-
-        # response["Awards"]
-
-        omdb_poster = response["Poster"]
-
-        # response["Metascore"]
-
-        # response["imdbRating"]
-
-        # response["imdbVotes"]
-
-        # response["Type"]
-
-        # response["Response"]
 
         # object.original_title = omdb_title
         object.title = omdb_title
@@ -204,8 +197,6 @@ class Movie < ActiveRecord::Base
         object.length = omdb_runtime
         object.synopsis = tmdb_plot
 
-        # object.omdb_rated = omdb_rated
-
         object.omdb_directors = omdb_directors
 
         object.omdb_writers = omdb_writers
@@ -214,12 +205,16 @@ class Movie < ActiveRecord::Base
 
         object.omdb_genre = omdb_genre
 
-        if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
-          cover = open(omdb_poster)
+        unless object.cover
+          omdb_poster = response["Poster"]
 
-          begin
-            object.cover = cover if cover
-          rescue
+          if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
+            cover = open(omdb_poster)
+
+            begin
+              object.cover ||= cover if cover
+            rescue
+            end
           end
         end
 
@@ -333,7 +328,7 @@ class Movie < ActiveRecord::Base
 
         load_actors(object, cast) unless object.actors.any?
 
-        if object.directors.empty? && object.writers.empty?
+        if object.directors.empty? || object.writers.empty?
           load_crew(object, crew)
         end
 
@@ -390,7 +385,6 @@ class Movie < ActiveRecord::Base
   end
 
   def load_actors(object, cast)
-    # byebug
     set_function = SetFunction.find_by(name: "Elenco")
 
     cast.each do |actor|
