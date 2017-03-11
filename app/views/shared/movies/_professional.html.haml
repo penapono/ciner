@@ -1,16 +1,17 @@
 - object = professional
-- avatar = object.avatar
-- avatar ||= "http://placehold.it/155x170"
-- professional_class ||= ""
-- data_mh ||= ""
-- observation ||= nil
+- if object
+  - avatar = object.avatar
+  - avatar ||= "http://placehold.it/155x170"
+  - professional_class ||= ""
+  - data_mh ||= ""
+  - observation ||= nil
 
 
-.col-xs-6.col-sm-4.col-md-2.col-lg-2{ class: professional_class, "data-mh": data_mh }
-  %img.img-responsive{ src: avatar }
-  %h5
-    %a
-      = object.name
-  - unless observation && observation.empty?
-    %p
-      = observation
+  .col-xs-6.col-sm-4.col-md-2.col-lg-2{ class: professional_class, "data-mh": data_mh }
+    %img.img-responsive{ src: avatar }
+    %h5
+      %a
+        = object.name
+    - unless observation && observation.empty?
+      %p
+        = observation

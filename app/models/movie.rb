@@ -137,218 +137,293 @@ class Movie < ActiveRecord::Base
     uri = URI.parse(url)
 
     if uri.is_a?(URI::HTTP)
-      begin
-        response = HTTParty.get(url)
+      response = HTTParty.get(url)
 
-        response = response.parsed_response
+      response = response.parsed_response
 
-        response_status = response["Response"]
+      response_status = response["Response"]
 
-        if response_status == "True"
-          # omdb_id = response["imdbID"]
-          omdb_id = imdb_id
+      if response_status == "True"
+        # omdb_id = response["imdbID"]
+        omdb_id = imdb_id
 
-          object.omdb_id = omdb_id
+        object.omdb_id = omdb_id
 
-          omdb_title = response["Title"]
+        omdb_title = response["Title"]
 
-          # OMDB
+        # OMDB
 
-          omdb_year = response["Year"]
+        omdb_year = response["Year"]
 
-          omdb_released = begin
-                            Date.parse(response["Released"])
-                          rescue
-                            nil
-                          end
+        omdb_released = begin
+                          Date.parse(response["Released"])
+                        rescue
+                          nil
+                        end
 
-          omdb_runtime = response["Runtime"]
+        omdb_runtime = response["Runtime"]
 
-          omdb_genre = response["Genre"]
+        omdb_genre = response["Genre"]
 
-          omdb_directors = response["Director"]
+        omdb_directors = response["Director"]
 
-          omdb_writers = response["Writer"]
+        omdb_writers = response["Writer"]
 
-          omdb_actors = response["Actors"]
+        omdb_actors = response["Actors"]
 
-          omdb_plot = response["Plot"]
+        omdb_plot = response["Plot"]
 
-          omdb_genre = response["Genre"]
+        omdb_genre = response["Genre"]
 
-          # EasyTranslate.translate(omdb_plot, :to => 'pt', :key => "AIzaSyD66z0ODjU0B65NUYZiTD-hwyQVgdCfu6Y")
+        # EasyTranslate.translate(omdb_plot, :to => 'pt', :key => "AIzaSyD66z0ODjU0B65NUYZiTD-hwyQVgdCfu6Y")
 
-          # response["Language"]
+        # response["Language"]
 
-          omdb_country = response["Country"]
+        omdb_country = response["Country"]
 
-          # response["Awards"]
+        # response["Awards"]
 
-          omdb_poster = response["Poster"]
+        omdb_poster = response["Poster"]
 
-          # response["Metascore"]
+        # response["Metascore"]
 
-          # response["imdbRating"]
+        # response["imdbRating"]
 
-          # response["imdbVotes"]
+        # response["imdbVotes"]
 
-          # response["Type"]
+        # response["Type"]
 
-          # response["Response"]
+        # response["Response"]
 
-          # object.original_title = omdb_title
-          object.title = omdb_title
-          object.year = omdb_year
+        # object.original_title = omdb_title
+        object.title = omdb_title
+        object.year = omdb_year
 
-          object.release = omdb_released if omdb_released
+        object.release = omdb_released if omdb_released
 
-          object.length = omdb_runtime
-          object.synopsis = tmdb_plot
+        object.length = omdb_runtime
+        object.synopsis = tmdb_plot
 
-          # object.omdb_rated = omdb_rated
+        # object.omdb_rated = omdb_rated
 
-          object.omdb_directors = omdb_directors
+        object.omdb_directors = omdb_directors
 
-          object.omdb_writers = omdb_writers
+        object.omdb_writers = omdb_writers
 
-          object.omdb_actors = omdb_actors
+        object.omdb_actors = omdb_actors
 
-          object.omdb_genre = omdb_genre
+        object.omdb_genre = omdb_genre
 
-          if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
-            cover = open(omdb_poster)
+        if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
+          cover = open(omdb_poster)
 
-            begin
-              object.cover = cover if cover
-            rescue
-            end
+          begin
+            object.cover = cover if cover
+          rescue
           end
-
-          imdb_release_info_url = "http://www.imdb.com/title/#{omdb_id}/releaseinfo"
-
-          page = HTTParty.get(imdb_release_info_url)
-
-          parsed_page = Nokogiri::HTML(page)
-
-          # Lançamento Brasil
-
-          odd_rows = parsed_page.css('.subpage_data.spFirst').css('.odd')
-          even_rows = parsed_page.css('.subpage_data.spFirst').css('.even')
-
-          rows = odd_rows + even_rows
-
-          rows.each do |row|
-            if row.text.include? "Brazil"
-              omdb_brazilian_release = nil
-              array = row.text.split("\n").map(&:strip)
-              array.delete("")
-              array.delete("Brazil")
-              array.each do |element|
-                omdb_brazilian_release = begin
-                                           Date.parse(element)
-                                         rescue
-                                           nil
-                                         end
-                break if omdb_brazilian_release
-              end
-              object.brazilian_release = omdb_brazilian_release if omdb_brazilian_release
-            end
-          end
-
-          # Nome Brasil
-
-          odd_rows = parsed_page.css('.subpage_data.spEven2Col').css('.odd')
-          even_rows = parsed_page.css('.subpage_data.spEven2Col').css('.even')
-
-          rows = odd_rows + even_rows
-
-          rows.each do |row|
-            if row.text.include? "Brazil"
-              omdb_brazilian_title = nil
-              array = row.text.split("\n").map(&:strip)
-              array.delete("")
-              array.delete("Brazil")
-              omdb_brazilian_title = array[0] unless array.empty?
-              object.title = omdb_brazilian_title if omdb_brazilian_title
-            end
-          end
-
-          # Trailer
-
-          imdb_url = "http://www.imdb.com/title/#{omdb_id}"
-
-          page = HTTParty.get(imdb_url)
-
-          parsed_page = Nokogiri::HTML(page)
-
-          trailer = parsed_page.css('.slate_button.prevent-ad-overlay.video-modal')
-
-          href_element = trailer.first
-
-          if href_element
-            array = href_element.first
-            array.delete("href")
-            omdb_trailer = array[0]
-            omdb_trailer = "www.imdb.com#{omdb_trailer}"
-            omdb_trailer = omdb_trailer.split("?").first
-            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
-
-            object.omdb_trailer = omdb_trailer
-          end
-
-          # Classificação Etária
-
-          imdb_rating = "http://www.imdb.com/title/#{omdb_id}/parentalguide"
-
-          page = HTTParty.get(imdb_rating)
-
-          parsed_page = Nokogiri::HTML(page)
-
-          ratings = parsed_page.css('.info-content')
-
-          array = ratings.text.split("\n")
-
-          ratings = array.last
-
-          ratings_array = ratings.split("/").map(&:strip)
-
-          ratings_array.each do |rating|
-            if rating.include? "Brazil"
-              omdb_rated = rating.gsub("Brazil:", "")
-              object.omdb_rated = omdb_rated
-              break
-            end
-          end
-
-          # Profissionais
-
-          tmdb_cast_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/credits?api_key=#{tmdb_api_key}"
-
-          tmdb_response = HTTParty.get(tmdb_cast_url)
-
-          tmdb_response = tmdb_response.parsed_response
-
-          cast = tmdb_response["cast"]
-
-          crew = tmdb_response["crew"]
-
-          # Google
-
-          # friendly_omdb_plot = omdb_plot.gsub(/"/, '').gsub(",", "%2C").gsub(" ", "%20")
-
-          # translate_url = "https://translate.google.com/#en/pt/#{friendly_omdb_plot}"
-
-          # page = HTTParty.get(translate_url)
-
-          # parsed_page = Nokogiri::HTML(page)
-
-          # object.original_title = omdb_title
-
-          object.save(validate: false)
         end
-      rescue
+
+        imdb_release_info_url = "http://www.imdb.com/title/#{omdb_id}/releaseinfo"
+
+        page = HTTParty.get(imdb_release_info_url)
+
+        parsed_page = Nokogiri::HTML(page)
+
+        # Lançamento Brasil
+
+        odd_rows = parsed_page.css('.subpage_data.spFirst').css('.odd')
+        even_rows = parsed_page.css('.subpage_data.spFirst').css('.even')
+
+        rows = odd_rows + even_rows
+
+        rows.each do |row|
+          if row.text.include? "Brazil"
+            omdb_brazilian_release = nil
+            array = row.text.split("\n").map(&:strip)
+            array.delete("")
+            array.delete("Brazil")
+            array.each do |element|
+              omdb_brazilian_release = begin
+                                         Date.parse(element)
+                                       rescue
+                                         nil
+                                       end
+              break if omdb_brazilian_release
+            end
+            object.brazilian_release = omdb_brazilian_release if omdb_brazilian_release
+          end
+        end
+
+        # Nome Brasil
+
+        odd_rows = parsed_page.css('.subpage_data.spEven2Col').css('.odd')
+        even_rows = parsed_page.css('.subpage_data.spEven2Col').css('.even')
+
+        rows = odd_rows + even_rows
+
+        rows.each do |row|
+          if row.text.include? "Brazil"
+            omdb_brazilian_title = nil
+            array = row.text.split("\n").map(&:strip)
+            array.delete("")
+            array.delete("Brazil")
+            omdb_brazilian_title = array[0] unless array.empty?
+            object.title = omdb_brazilian_title if omdb_brazilian_title
+          end
+        end
+
+        # Trailer
+
+        imdb_url = "http://www.imdb.com/title/#{omdb_id}"
+
+        page = HTTParty.get(imdb_url)
+
+        parsed_page = Nokogiri::HTML(page)
+
+        trailer = parsed_page.css('.slate_button.prevent-ad-overlay.video-modal')
+
+        href_element = trailer.first
+
+        if href_element
+          array = href_element.first
+          array.delete("href")
+          omdb_trailer = array[0]
+          omdb_trailer = "www.imdb.com#{omdb_trailer}"
+          omdb_trailer = omdb_trailer.split("?").first
+          omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
+
+          object.omdb_trailer = omdb_trailer
+        end
+
+        # Classificação Etária
+
+        imdb_rating = "http://www.imdb.com/title/#{omdb_id}/parentalguide"
+
+        page = HTTParty.get(imdb_rating)
+
+        parsed_page = Nokogiri::HTML(page)
+
+        ratings = parsed_page.css('.info-content')
+
+        array = ratings.text.split("\n")
+
+        ratings = array.last
+
+        ratings_array = ratings.split("/").map(&:strip)
+
+        ratings_array.each do |rating|
+          if rating.include? "Brazil"
+            omdb_rated = rating.gsub("Brazil:", "")
+            object.omdb_rated = omdb_rated
+            break
+          end
+        end
+
+        # Profissionais
+
+        tmdb_cast_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/credits?api_key=#{tmdb_api_key}"
+
+        tmdb_response = HTTParty.get(tmdb_cast_url)
+
+        tmdb_response = tmdb_response.parsed_response
+
+        cast = tmdb_response["cast"]
+
+        crew = tmdb_response["crew"]
+
+        load_actors(object, cast) unless object.actors.any?
+
+        if object.directors.empty? && object.writers.empty?
+          load_crew(object, crew)
+        end
+
+        object.save(validate: false)
       end
     end
   rescue
+  end
+
+  def load_crew(object, crew)
+    set_function_director = SetFunction.find_by(name: "Direção")
+    set_function_writer = SetFunction.find_by(name: "Roteiro")
+
+    crew.each do |person|
+      job = person["job"]
+
+      if %w(Director Writer).include? job
+
+        name = person["name"]
+
+        if job == "Director"
+          set_function = set_function_director
+        elsif job == "Writer"
+          set_function = set_function_writer
+        end
+
+        professional = Professional.find_or_initialize_by(
+          name: name,
+          set_function: set_function
+        )
+
+        avatar_url = person["profile_path"]
+
+        if avatar_url && !avatar_url.empty? && avatar_url != "N/A" && avatar_url
+          begin
+            avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
+            professional.avatar = avatar if avatar
+          rescue
+          end
+        end
+
+        professional.save(validate: false)
+
+        filmable_professional = FilmableProfessional.find_or_initialize_by(
+          filmable_type: Movie,
+          filmable_id: object.id,
+          professional_id: professional.id,
+          set_function_id: set_function.id
+        )
+
+        filmable_professional.save(validate: false)
+      end
+    end
+  end
+
+  def load_actors(object, cast)
+    # byebug
+    set_function = SetFunction.find_by(name: "Elenco")
+
+    cast.each do |actor|
+      character = actor["character"]
+
+      name = actor["name"]
+
+      professional = Professional.find_or_initialize_by(
+        name: name,
+        set_function: set_function
+      )
+
+      avatar_url = actor["profile_path"]
+
+      if avatar_url && !avatar_url.empty? && avatar_url != "N/A" && avatar_url
+        begin
+          avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
+          professional.avatar = avatar if avatar
+        rescue
+        end
+      end
+
+      professional.save(validate: false)
+
+      filmable_professional = FilmableProfessional.find_or_initialize_by(
+        filmable_type: Movie,
+        filmable_id: object.id,
+        professional_id: professional.id,
+        set_function_id: set_function.id,
+        observation: character
+      )
+
+      filmable_professional.save(validate: false)
+    end
   end
 end

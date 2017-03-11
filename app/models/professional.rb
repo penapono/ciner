@@ -32,6 +32,9 @@ class Professional < ActiveRecord::Base
   alias_attribute :title_str, :name
   alias_attribute :text, :title_str
 
+  # Uploaders
+  mount_uploader :avatar, ProfessionalAvatarUploader
+
   def title_str
     name
   end
