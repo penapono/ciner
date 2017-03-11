@@ -1,21 +1,21 @@
 - object = movie
 
-#ficha-tecnica.ficha-tecnica
-  .title-separator
-    .media
-      .media-left.media-middle
-        %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-          %use{"xlink:href" => "#video"}
-      .media-body.media-bottom
-        .media-heading.title-section
-          = Movie.human_attribute_name(:trailer)
+- if object.omdb_trailer
+  #ficha-tecnica.ficha-tecnica
+    .title-separator
+      .media
+        .media-left.media-middle
+          %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+            %use{"xlink:href" => "#video"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Movie.human_attribute_name(:trailer)
 
-  .ficha
-    .info
-      - if object.omdb_trailer
+    .ficha
+      .info
         %iframe{:allowfullscreen => "true", :frameborder => "no", :height => "315", :mozallowfullscreen => "true", :scrolling => "no", :src => object.omdb_trailer.to_s, :webkitallowfullscreen => "true", :width => "100%"}
 
-- if object.writers
+- if object.writers.any?
   #roteiro.roteiro
     .title-separator
       .media
@@ -27,7 +27,7 @@
         - object.writers.each do |filmable_professional|
           = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista'
 
-- if object.directors
+- if object.directors.any?
   #direcao.direcao
     .title-separator
       .media
@@ -39,7 +39,7 @@
         - object.directors.each do |filmable_professional|
           = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor'
 
-- if object.actors
+- if object.actors.any?
   #elenco.elenco
     .title-separator
       .media
