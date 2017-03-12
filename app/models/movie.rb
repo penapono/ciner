@@ -86,7 +86,7 @@ class Movie < ActiveRecord::Base
 
     tmdb_query = title_str
 
-    tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=#{tmdb_api_key}&language=pt-BR&query=#{tmdb_query}&page=1&include_adult=true&year=#{year}"
+    tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=#{tmdb_api_key}&language=pt-BR&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
 
     tmdb_url = URI.encode(tmdb_url)
 
@@ -269,25 +269,45 @@ class Movie < ActiveRecord::Base
 
         # Trailer
 
-        imdb_url = "http://www.imdb.com/title/#{omdb_id}"
+        begin
+          tmdb_video_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/videos?api_key=#{tmdb_api_key}&language=pt-BR"
 
-        page = HTTParty.get(imdb_url)
+          tmdb_response = HTTParty.get(tmdb_video_url)
 
-        parsed_page = Nokogiri::HTML(page)
+          tmdb_response = tmdb_response.parsed_response
 
-        trailer = parsed_page.css('.slate_button.prevent-ad-overlay.video-modal')
+          tmdb_result = tmdb_response["results"].first
 
-        href_element = trailer.first
+          video_key = tmdb_result["key"]
 
-        if href_element
-          array = href_element.first
-          array.delete("href")
-          omdb_trailer = array[0]
-          omdb_trailer = "www.imdb.com#{omdb_trailer}"
-          omdb_trailer = omdb_trailer.split("?").first
-          omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
+          object.omdb_trailer = "https://www.youtube.com/embed/" + video_key
+        rescue
+          video_key = nil
+        end
 
-          object.omdb_trailer = omdb_trailer
+        # <iframe width="560" height="315" src="https://www.youtube.com/embed/lp00DMy3aVw" frameborder="0" allowfullscreen></iframe>
+
+        unless video_key
+          imdb_url = "http://www.imdb.com/title/#{omdb_id}"
+
+          page = HTTParty.get(imdb_url)
+
+          parsed_page = Nokogiri::HTML(page)
+
+          trailer = parsed_page.css('.slate_button.prevent-ad-overlay.video-modal')
+
+          href_element = trailer.first
+
+          if href_element
+            array = href_element.first
+            array.delete("href")
+            omdb_trailer = array[0]
+            omdb_trailer = "www.imdb.com#{omdb_trailer}"
+            omdb_trailer = omdb_trailer.split("?").first
+            omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
+
+            object.omdb_trailer = omdb_trailer
+          end
         end
 
         # Classificação Etária
