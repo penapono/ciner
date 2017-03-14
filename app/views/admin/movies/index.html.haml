@@ -11,9 +11,9 @@
   %thead
     %tr
       %th
-        = Movie.human_attribute_name(:original_title)
-      %th
         = Movie.human_attribute_name(:title)
+      %th
+        = Movie.human_attribute_name(:original_title)
       %th
         = Movie.human_attribute_name(:year)
 
@@ -25,10 +25,11 @@
       %tr
         %td
           = link_to admin_movie_path(movie) do
-            = movie.original_title
+            = movie.title
 
         %td
-          = movie.title
+          = link_to admin_movie_path(movie) do
+            = movie.original_title
 
         %td
           = movie.year

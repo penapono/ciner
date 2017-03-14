@@ -11,9 +11,9 @@
   %thead
     %tr
       %th
-        = Serie.human_attribute_name(:original_title)
-      %th
         = Serie.human_attribute_name(:title)
+      %th
+        = Serie.human_attribute_name(:original_title)
       %th
         = Serie.human_attribute_name(:year)
 
@@ -25,10 +25,11 @@
       %tr
         %td
           = link_to admin_series_path(serie) do
-            = serie.original_title
+            = serie.title
 
         %td
-          = serie.title
+          = link_to admin_series_path(serie) do
+            = serie.original_title
 
         %td
           = serie.start_year
