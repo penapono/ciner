@@ -69,6 +69,9 @@ class Movie < ActiveRecord::Base
 
   def api_transform
     object = self
+
+    return if object.tmdb_id
+
     title = object.original_title
 
     tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
@@ -102,6 +105,8 @@ class Movie < ActiveRecord::Base
     tmdb_plot = tmdb_result["overview"]
 
     tmdb_id = tmdb_result["id"]
+
+    object.tmdb_id = tmdb_id
 
     tmdb_movie_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}?api_key=#{tmdb_api_key}&language=pt-BR"
 
@@ -155,7 +160,6 @@ class Movie < ActiveRecord::Base
       response_status = response["Response"]
 
       if response_status == "True"
-        # omdb_id = response["imdbID"]
         omdb_id = imdb_id
 
         object.omdb_id = omdb_id
@@ -369,6 +373,8 @@ class Movie < ActiveRecord::Base
 
         name = person["name"]
 
+        tmdb_id = person["id"]
+
         if job == "Director"
           set_function = set_function_director
         elsif job == "Writer"
@@ -377,7 +383,7 @@ class Movie < ActiveRecord::Base
 
         professional = Professional.find_or_initialize_by(
           name: name,
-          set_function: set_function
+          tmdb_id: tmdb_id
         )
 
         avatar_url = person["profile_path"]
@@ -411,10 +417,11 @@ class Movie < ActiveRecord::Base
       character = actor["character"]
 
       name = actor["name"]
+      tmdb_id = actor["id"]
 
       professional = Professional.find_or_initialize_by(
         name: name,
-        set_function: set_function
+        tmdb_id: tmdb_id
       )
 
       avatar_url = actor["profile_path"]

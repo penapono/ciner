@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308175107) do
+ActiveRecord::Schema.define(version: 20170313223900) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20170308175107) do
     t.string   "omdb_id"
     t.string   "omdb_trailer"
     t.string   "trailer"
+    t.integer  "tmdb_id"
   end
 
   create_table "professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -190,6 +191,7 @@ ActiveRecord::Schema.define(version: 20170308175107) do
     t.integer  "user_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "tmdb_id"
     t.index ["city_id"], name: "index_professionals_on_city_id", using: :btree
     t.index ["country_id"], name: "index_professionals_on_country_id", using: :btree
     t.index ["state_id"], name: "index_professionals_on_state_id", using: :btree
@@ -268,6 +270,7 @@ ActiveRecord::Schema.define(version: 20170308175107) do
     t.string   "omdb_id"
     t.string   "omdb_trailer"
     t.string   "trailer"
+    t.integer  "tmdb_id"
   end
 
   create_table "set_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
