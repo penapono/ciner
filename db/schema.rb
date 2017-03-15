@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313223900) do
+ActiveRecord::Schema.define(version: 20170315233131) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -243,6 +243,34 @@ ActiveRecord::Schema.define(version: 20170313223900) do
     t.index ["studio_id"], name: "index_serie_episodes_on_studio_id", using: :btree
   end
 
+  create_table "serie_season_episodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "serie_id"
+    t.integer  "serie_season_id"
+    t.date     "air_date"
+    t.integer  "episode_number"
+    t.string   "name"
+    t.text     "overview",        limit: 65535
+    t.integer  "tmdb_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["serie_id"], name: "index_serie_season_episodes_on_serie_id", using: :btree
+    t.index ["serie_season_id"], name: "index_serie_season_episodes_on_serie_season_id", using: :btree
+  end
+
+  create_table "serie_seasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "serie_id"
+    t.string   "name"
+    t.text     "overview",           limit: 65535
+    t.date     "air_date"
+    t.integer  "tmdb_id"
+    t.string   "poster"
+    t.integer  "season_number"
+    t.integer  "number_of_episodes",               default: 0
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.index ["serie_id"], name: "index_serie_seasons_on_serie_id", using: :btree
+  end
+
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "original_title"
     t.string   "title"
@@ -260,8 +288,8 @@ ActiveRecord::Schema.define(version: 20170313223900) do
     t.integer  "studio_id"
     t.integer  "number_episodes"
     t.integer  "aired_episodes"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "omdb_directors"
     t.string   "omdb_writers"
     t.string   "omdb_actors"
@@ -271,6 +299,7 @@ ActiveRecord::Schema.define(version: 20170313223900) do
     t.string   "omdb_trailer"
     t.string   "trailer"
     t.integer  "tmdb_id"
+    t.integer  "number_of_seasons",               default: 1
   end
 
   create_table "set_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

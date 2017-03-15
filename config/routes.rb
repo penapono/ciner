@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :questions, only: [:index, :show]
   resources :broadcasts, only: [:index, :show]
+  resources :movies, only: [:index, :show]
+  resources :series, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do
