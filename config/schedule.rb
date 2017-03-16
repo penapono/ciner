@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 10.minutes do
+every 1.hour do
   rake 'ciner_movie_omdb:create_or_update'
   rake 'ciner_serie_omdb:create_or_update'
 end
