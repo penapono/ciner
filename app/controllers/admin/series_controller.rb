@@ -47,31 +47,33 @@ module Admin
       params.require(:serie).permit(
         :original_title,
         :title,
-        :year,
+        :start_year,
+        :finish_year,
         :length,
         :synopsis,
         :release,
         :brazilian_release,
+        :city_id,
+        :state_id,
         :country_id,
         :age_range_id,
-
         :cover,
-
-        # Movie
-
-        :studio,
-
-        # Ciner Movie
-
-        :approval,
-        :approver,
-        :owner,
-
-        # Serie
-
-        :season,
+        :studio_id,
         :number_episodes,
-        :aired_episodes
+        :aired_episodes,
+        :created_at,
+        :updated_at,
+        :omdb_directors,
+        :omdb_writers,
+        :omdb_actors,
+        :omdb_genre,
+        :omdb_rated,
+        :omdb_id,
+        :omdb_trailer,
+        :trailer,
+        :tmdb_id,
+        :number_of_seasons,
+        :playing
       )
     end
 

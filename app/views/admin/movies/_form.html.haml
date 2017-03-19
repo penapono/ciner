@@ -54,6 +54,10 @@
       = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
 
   .row
+    .col-xs-4
+      = checkbox_item(f, :playing)
+
+  .row
     .col-xs-12
       = f.input :omdb_trailer
 

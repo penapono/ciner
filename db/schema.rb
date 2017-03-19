@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315233131) do
+ActiveRecord::Schema.define(version: 20170319033959) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 20170315233131) do
     t.integer  "age_range_id"
     t.string   "cover"
     t.integer  "studio_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "omdb_directors"
     t.string   "omdb_writers"
     t.string   "omdb_actors"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20170315233131) do
     t.string   "omdb_trailer"
     t.string   "trailer"
     t.integer  "tmdb_id"
+    t.boolean  "playing",                         default: false
   end
 
   create_table "professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -288,8 +289,8 @@ ActiveRecord::Schema.define(version: 20170315233131) do
     t.integer  "studio_id"
     t.integer  "number_episodes"
     t.integer  "aired_episodes"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "omdb_directors"
     t.string   "omdb_writers"
     t.string   "omdb_actors"
@@ -300,6 +301,7 @@ ActiveRecord::Schema.define(version: 20170315233131) do
     t.string   "trailer"
     t.integer  "tmdb_id"
     t.integer  "number_of_seasons",               default: 1
+    t.boolean  "playing",                         default: false
   end
 
   create_table "set_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

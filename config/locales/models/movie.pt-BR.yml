@@ -44,6 +44,8 @@ pt-BR:
         omdb_actors: Elenco
 
         omdb_trailer: Trailer
+
+        playing: Em cartaz
     errors:
       models:
         movie:

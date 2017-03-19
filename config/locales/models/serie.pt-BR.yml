@@ -25,7 +25,21 @@ pt-BR:
 
         season: Temporada
         number_episodes: Número de Episódios
-        aired_episodes: Número de Episódios Exibidos
+        aired_episodes: Número de Episódios Exibidos\
+
+        omdb_genre: Gênero
+
+        omdb_rated: Classificação Indicativa
+
+        omdb_directors: Diretor(es)
+
+        omdb_writers: Roteiro
+
+        omdb_actors: Elenco
+
+        omdb_trailer: Trailer
+
+        playing: Em cartaz
     errors:
       models:
         serie:

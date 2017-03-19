@@ -1,18 +1,33 @@
 = simple_form_for [:admin, serie] do |f|
-  %h3
+    %h3
     = t('.general')
 
   .row
     .col-xs-6
-      = f.input :original_title, required: true, autofocus: true
+      = f.input :omdb_genre
+  .row
     .col-xs-6
-      = f.input :title, required: true, autofocus: true
+      = f.input :omdb_rated
+  .row
+    .col-xs-6
+      = f.input :length
 
   .row
-    .col-xs-3
-      = f.input :year
-    .col-xs-3
-      = f.input :length
+    .col-xs-6
+      .row
+        .col-xs-12
+          = f.input :original_title, required: true, autofocus: true
+      .row
+        .col-xs-12
+          = f.input :title, required: true, autofocus: true
+      .row
+        .col-xs-3
+          = f.input :start_year
+
+    .col-xs-6
+      .row
+        .col-xs-12
+          = f.input :cover
 
   .row
     .col-xs-12{ data: { limited: '', limit: 350 } }
@@ -21,14 +36,29 @@
         = t('remaining_chars', chars: 350)
 
   .row
-    .col-xs-3
-      = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
+    .col-xs-12
+      = f.input :omdb_directors
+
+  .row
+    .col-xs-12
+      = f.input :omdb_writers
+
+  .row
+    .col-xs-12
+      = f.input :omdb_actors
+
+  .row
     .col-xs-3
       = f.input :brazilian_release, as: :string, input_html: { value: (localize(f.object.brazilian_release) if f.object.brazilian_release), class: 'datepicker' }
     .col-xs-3
-      = f.input :country_id, collection: countries
-    .col-xs-3
-      = f.input :age_range_id, collection: age_ranges
+      = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
 
+  .row
+    .col-xs-4
+      = checkbox_item(f, :playing)
+
+  .row
+    .col-xs-12
+      = f.input :omdb_trailer
 
   = render 'shared/form_actions', f: f
