@@ -3,6 +3,8 @@ class Movie < ActiveRecord::Base
   include Searchables::Movie
   include FilmProfitable
 
+  API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
+
   # Associations
   belongs_to :city
   belongs_to :state
@@ -67,12 +69,8 @@ class Movie < ActiveRecord::Base
 
   # API
 
-  def api_transform
-    object = self
-
+  def load_basic(object)
     title = object.original_title
-
-    tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
 
     title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
 
@@ -87,7 +85,7 @@ class Movie < ActiveRecord::Base
 
     tmdb_query = title_str
 
-    tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=#{tmdb_api_key}&language=pt-BR&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
+    tmdb_url = "https://api.themoviedb.org/3/search/movie?api_key=#{API_KEY}&language=pt-BR&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
 
     tmdb_url = URI.encode(tmdb_url)
 
@@ -98,7 +96,13 @@ class Movie < ActiveRecord::Base
     # TMDB
     tmdb_results = tmdb_response["results"]
 
-    tmdb_result = tmdb_results.first
+    tmdb_results.first
+  end
+
+  def api_transform
+    object = self
+
+    tmdb_result = load_basic(object)
 
     tmdb_plot = tmdb_result["overview"]
 
@@ -106,17 +110,7 @@ class Movie < ActiveRecord::Base
 
     object.tmdb_id = tmdb_id
 
-    tmdb_movie_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}?api_key=#{tmdb_api_key}&language=pt-BR"
-
-    tmdb_response = HTTParty.get(tmdb_url)
-
-    tmdb_response = tmdb_response.parsed_response
-
-    tmdb_results = tmdb_response["results"]
-
-    tmdb_result = tmdb_results.first
-
-    url = URI("https://api.themoviedb.org/3/movie/#{tmdb_id}?language=pt-BR&api_key=#{tmdb_api_key}")
+    url = URI("https://api.themoviedb.org/3/movie/#{tmdb_id}?language=pt-BR&api_key=#{API_KEY}")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -272,7 +266,7 @@ class Movie < ActiveRecord::Base
         # Trailer
 
         begin
-          tmdb_video_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/videos?api_key=#{tmdb_api_key}&language=pt-BR"
+          tmdb_video_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/videos?api_key=#{API_KEY}&language=pt-BR"
 
           tmdb_response = HTTParty.get(tmdb_video_url)
 
@@ -338,7 +332,7 @@ class Movie < ActiveRecord::Base
 
         # Profissionais
 
-        tmdb_cast_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/credits?api_key=#{tmdb_api_key}"
+        tmdb_cast_url = "https://api.themoviedb.org/3/movie/#{tmdb_id}/credits?api_key=#{API_KEY}"
 
         tmdb_response = HTTParty.get(tmdb_cast_url)
 
@@ -357,7 +351,6 @@ class Movie < ActiveRecord::Base
         object.save(validate: false)
       end
     end
-  rescue
   end
 
   def load_crew(object, crew)

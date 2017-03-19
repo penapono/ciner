@@ -3,6 +3,8 @@ class Serie < ActiveRecord::Base
   include Searchables::Serie
   include FilmProfitable
 
+  API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
+
   # Associations
   belongs_to :city
   belongs_to :state
@@ -70,40 +72,12 @@ class Serie < ActiveRecord::Base
 
   # API
 
+  def load_basic(object); end
+
   def api_transform
     object = self
 
-    title = object.original_title
-
-    tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
-
-    title = title.delete("\"")
-
-    title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
-
-    title_str = Regexp.last_match(1)
-    year_str = Regexp.last_match(2)
-
-    year_str = begin
-                Integer(year_str)
-              rescue
-                object.start_year
-              end
-
-    tmdb_query = title_str
-
-    tmdb_url = "https://api.themoviedb.org/3/search/tv?api_key=#{tmdb_api_key}&language=pt-BR&query=#{tmdb_query}&page=1&first_air_date_year=#{year_str}"
-
-    tmdb_url = URI.encode(tmdb_url)
-
-    tmdb_response = HTTParty.get(tmdb_url)
-
-    tmdb_response = tmdb_response.parsed_response
-
-    # TMDB
-    tmdb_results = tmdb_response["results"]
-
-    tmdb_result = tmdb_results.first
+    tmdb_result = load_basic(object)
 
     tmdb_plot = tmdb_result["overview"]
 
@@ -111,17 +85,7 @@ class Serie < ActiveRecord::Base
 
     object.tmdb_id = tmdb_id
 
-    tmdb_movie_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}?api_key=#{tmdb_api_key}&language=pt-BR"
-
-    tmdb_response = HTTParty.get(tmdb_url)
-
-    tmdb_response = tmdb_response.parsed_response
-
-    tmdb_results = tmdb_response["results"]
-
-    tmdb_result = tmdb_results.first
-
-    url = URI("https://api.themoviedb.org/3/tv/#{tmdb_id}?language=pt-BR&api_key=#{tmdb_api_key}")
+    url = URI("https://api.themoviedb.org/3/tv/#{tmdb_id}?language=pt-BR&api_key=#{API_KEY}")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -149,9 +113,9 @@ class Serie < ActiveRecord::Base
 
     object.number_of_seasons = result["number_of_seasons"]
 
-    load_seasons(tmdb_api_key, object, tmdb_id)
+    load_seasons(object, tmdb_id)
 
-    tmdb_movie_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/external_ids?api_key=#{tmdb_api_key}&language=pt-BR"
+    tmdb_movie_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/external_ids?api_key=#{API_KEY}&language=pt-BR"
 
     tmdb_response = HTTParty.get(tmdb_movie_url)
 
@@ -288,7 +252,7 @@ class Serie < ActiveRecord::Base
         # Trailer
 
         begin
-          tmdb_video_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/videos?api_key=#{tmdb_api_key}&language=pt-BR"
+          tmdb_video_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/videos?api_key=#{API_KEY}&language=pt-BR"
 
           tmdb_response = HTTParty.get(tmdb_video_url)
 
@@ -354,7 +318,7 @@ class Serie < ActiveRecord::Base
 
         # Profissionais
 
-        tmdb_cast_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/credits?api_key=#{tmdb_api_key}"
+        tmdb_cast_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/credits?api_key=#{API_KEY}"
 
         tmdb_response = HTTParty.get(tmdb_cast_url)
 
@@ -375,16 +339,16 @@ class Serie < ActiveRecord::Base
     end
   end
 
-  def load_seasons(tmdb_api_key, serie, serie_tmdb_id)
+  def load_seasons(serie, serie_tmdb_id)
     seasons = serie.number_of_seasons.to_i
 
     (1..seasons).each do |season|
-      load_season(tmdb_api_key, serie, serie_tmdb_id, season)
+      load_season(serie, serie_tmdb_id, season)
     end
   end
 
-  def load_season(tmdb_api_key, serie, serie_tmdb_id, season)
-    url = URI("https://api.themoviedb.org/3/tv/#{serie_tmdb_id}/season/#{season}?api_key=#{tmdb_api_key}&language=pt-BR")
+  def load_season(serie, serie_tmdb_id, season)
+    url = URI("https://api.themoviedb.org/3/tv/#{serie_tmdb_id}/season/#{season}?api_key=#{API_KEY}&language=pt-BR")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -433,22 +397,22 @@ class Serie < ActiveRecord::Base
     serie_season.number_of_episodes = number_of_episodes
 
     if serie_season.number_of_episodes > 0
-      load_episodes(tmdb_api_key, serie, serie_season, serie_tmdb_id, tmdb_id)
+      load_episodes(serie, serie_season, serie_tmdb_id, tmdb_id)
     end
 
     serie_season.save(validate: false)
   end
 
-  def load_episodes(tmdb_api_key, serie, season, serie_tmdb_id, _season_tmdb_id)
+  def load_episodes(serie, season, serie_tmdb_id, _season_tmdb_id)
     episodes = season.number_of_episodes.to_i
 
     (1..episodes).each do |episode|
-      load_episode(tmdb_api_key, serie, serie_tmdb_id, season, episode)
+      load_episode(serie, serie_tmdb_id, season, episode)
     end
   end
 
-  def load_episode(tmdb_api_key, serie, serie_tmdb_id, season, episode)
-    url = URI("https://api.themoviedb.org/3/tv/#{serie_tmdb_id}/season/#{season.season_number}/episode/#{episode}?api_key=#{tmdb_api_key}&language=pt-BR")
+  def load_episode(serie, serie_tmdb_id, season, episode)
+    url = URI("https://api.themoviedb.org/3/tv/#{serie_tmdb_id}/season/#{season.season_number}/episode/#{episode}?api_key=#{API_KEY}&language=pt-BR")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
