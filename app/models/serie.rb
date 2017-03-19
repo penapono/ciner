@@ -576,4 +576,8 @@ class Serie < ActiveRecord::Base
       filmable_professional.save(validate: false)
     end
   end
+
+  def self.current_playing
+    where(playing: true).order(release: :desc)
+  end
 end

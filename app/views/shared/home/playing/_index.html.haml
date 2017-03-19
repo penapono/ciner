@@ -1,3 +1,5 @@
+- role = role
+
 / SECTION POSTER
 .section-poster
   .ciner-poster.title-separator
@@ -11,6 +13,6 @@
         %a{:href => "#"}
           = t('see_more')
 
-  = render 'shared/home/carousel/carousel', carousel_id: 'carousel-filmes-cartaz'
+  = render 'shared/home/carousel/carousel', role: role, carousel_id: 'carousel-filmes-cartaz', playing_movies: playing_movies
 
-  = render 'shared/home/showcase/showcase', showcase_class: 'showcase-poster'
+  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', playing_movies: playing_movies
