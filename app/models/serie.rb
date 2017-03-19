@@ -73,8 +73,6 @@ class Serie < ActiveRecord::Base
   def api_transform
     object = self
 
-    return if object.tmdb_id
-
     title = object.original_title
 
     tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
@@ -375,7 +373,6 @@ class Serie < ActiveRecord::Base
         object.save(validate: false)
       end
     end
-  rescue
   end
 
   def load_seasons(tmdb_api_key, serie, serie_tmdb_id)
@@ -505,6 +502,8 @@ class Serie < ActiveRecord::Base
 
         name = person["name"]
 
+        tmdb_id = person["id"]
+
         if job == "Director"
           set_function = set_function_director
         elsif job == "Writer"
@@ -513,7 +512,7 @@ class Serie < ActiveRecord::Base
 
         professional = Professional.find_or_initialize_by(
           name: name,
-          set_function: set_function
+          tmdb_id: tmdb_id
         )
 
         avatar_url = person["profile_path"]
@@ -529,7 +528,7 @@ class Serie < ActiveRecord::Base
         professional.save(validate: false)
 
         filmable_professional = FilmableProfessional.find_or_initialize_by(
-          filmable_type: Serie,
+          filmable_type: Movie,
           filmable_id: object.id,
           professional_id: professional.id,
           set_function_id: set_function.id
@@ -547,10 +546,11 @@ class Serie < ActiveRecord::Base
       character = actor["character"]
 
       name = actor["name"]
+      tmdb_id = actor["id"]
 
       professional = Professional.find_or_initialize_by(
         name: name,
-        set_function: set_function
+        tmdb_id: tmdb_id
       )
 
       avatar_url = actor["profile_path"]
@@ -566,7 +566,7 @@ class Serie < ActiveRecord::Base
       professional.save(validate: false)
 
       filmable_professional = FilmableProfessional.find_or_initialize_by(
-        filmable_type: Serie,
+        filmable_type: Movie,
         filmable_id: object.id,
         professional_id: professional.id,
         set_function_id: set_function.id,

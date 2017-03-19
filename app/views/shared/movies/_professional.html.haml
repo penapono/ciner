@@ -1,4 +1,6 @@
 - object = professional
+- role = role
+
 - if object
   - avatar = object.avatar
   - avatar ||= "http://placehold.it/155x170"
@@ -6,12 +8,11 @@
   - data_mh ||= ""
   - observation ||= nil
 
-
-  .col-xs-6.col-sm-4.col-md-2.col-lg-2{ class: professional_class, "data-mh": data_mh }
-    %img.img-responsive{ src: avatar }
-    %h5
-      %a
+  = link_to url_for([role, object]) do
+    .col-xs-6.col-sm-4.col-md-2.col-lg-2{ class: professional_class, "data-mh": data_mh }
+      %img.img-responsive{ src: avatar }
+      %h5
         = object.name
-    - unless observation && observation.empty?
-      %p
-        = observation
+      - unless observation && observation.empty?
+        %p
+          = observation

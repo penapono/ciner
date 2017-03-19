@@ -70,8 +70,6 @@ class Movie < ActiveRecord::Base
   def api_transform
     object = self
 
-    return if object.tmdb_id
-
     title = object.original_title
 
     tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"

@@ -21,6 +21,10 @@ module Platform
       self.professionals = professionals.page(params[:page]).per(PER_PAGE)
     end
 
+    def show
+      professional.api_transform
+    end
+
     private
 
     def resource

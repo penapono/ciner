@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :broadcasts, only: [:index, :show]
   resources :movies, only: [:index, :show]
   resources :series, only: [:index, :show]
+  resources :professionals, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

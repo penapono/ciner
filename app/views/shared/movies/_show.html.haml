@@ -1,6 +1,7 @@
 - current_critics_path ||= platform_critics_path
 - current_new_critic_path ||= new_platform_critic_path
-- role = current_user.admin? ? :admin : :platform
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
 - role ||= nil
 
 = render 'shared/movies/general', movie: movie
@@ -16,7 +17,7 @@
     .col-xs-12.col-sm-3
       %a.btn.btn-block.btn-ancora{:href => "#noticias"} Notícias
     .col-xs-12.col-sm-8
-      = render 'shared/movies/info', movie: movie
+      = render 'shared/movies/info', movie: movie, role: role
       = render 'shared/movies/critics', movie: movie, role: role
     .col-xs-12.col-sm-4
       = render 'shared/movies/statistics', movie: movie

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-class MoviesController < ApplicationController
-  include MoviesBreadcrumb
+class SeriesController < ApplicationController
+  include SeriesBreadcrumb
 
   # exposes
-  expose(:movies) { Movie.all }
-  expose(:movie, attributes: :movie_attributes)
+  expose(:series) { Serie.all }
+  expose(:serie, attributes: :serie_attributes)
 
   expose(:countries) { Country.all }
   expose(:age_ranges) { AgeRange.all }
@@ -14,36 +14,36 @@ class MoviesController < ApplicationController
   expose(:filtered_states) { filtered_states }
   expose(:filtered_cities) { filtered_cities }
 
-  PER_PAGE = 10
+  PER_PAGE = 50
 
   def index
-    self.movies = paginated_movies
+    self.series = paginated_series
   end
 
   def show
-    movie.api_transform
+    serie.api_transform
   end
 
   private
 
   def resource
-    movie
+    serie
   end
 
   def resource_title
-    movie.title
+    serie.title
   end
 
   def index_path
-    movies_path
+    series_index_path
   end
 
   def show_path
-    movie_path(resource)
+    serie_path(resource)
   end
 
-  def movie_params
-    params.require(:movie).permit(
+  def serie_params
+    params.require(:serie).permit(
       :original_title,
       :title,
       :year,
@@ -75,21 +75,21 @@ class MoviesController < ApplicationController
   end
 
   def resource_params
-    movie_params
+    serie_params
   end
 
   # Filtering
 
-  def paginated_movies
-    filtered_movie.page(params[:page]).per(PER_PAGE)
+  def paginated_series
+    filtered_serie.page(params[:page]).per(PER_PAGE)
   end
 
-  def filtered_movie
-    movies.filter_by(searched_movies, params.fetch(:filter, ''))
+  def filtered_serie
+    series.filter_by(searched_series, params.fetch(:filter, ''))
   end
 
-  def searched_movies
-    movies.search(current_user, params.fetch(:search, ''))
+  def searched_series
+    series.search(current_user, params.fetch(:search, ''))
   end
 
   # Filters

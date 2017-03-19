@@ -1,0 +1,41 @@
+.container
+  .row
+    .col-xs-12.col-sm-8.col-md-8
+      .section-pessoal
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.media-object.icon-title
+                %use{"xlink:href" => "#perfil"}
+            .media-body.media-middle
+              .media-heading.title-section
+                Dados Gerais
+        .user-profile
+          .col-xs-12.col-sm-3.user-avatar
+            %img.img-responsive{:src => professional.avatar}
+          .col-xs-12.col-sm-9.user-info
+            Nome:
+            %span.user-name
+              = professional.name
+            %br
+            %br
+            Idade:
+            %span.user-age
+              = professional.age
+              - if professional.birthday
+                \(
+                = l professional.birthday
+                - if professional.deathday
+                  \-
+                  = l professional.deathday
+                \)
+            %br
+            %br
+            Origem:
+            %span.user-city
+              = professional.place_of_birth
+            %br
+            %br
+            .user-bio
+              %span.user-bio Biografia:
+              = professional.biography

@@ -1,9 +1,13 @@
 - object = professional
-- data_mh ||= ""
-- observation ||= nil
+- role = role
 
-.row
-  .col-xs-6.personagem{ "data-mh": data_mh }
-    = observation
-  .col-xs-6.ator{ "data-mh": data_mh }
-    = object.name
+- if object
+  - data_mh ||= ""
+  - observation ||= nil
+
+  = link_to url_for([role, object]) do
+    .row
+      .col-xs-6.personagem{ "data-mh": data_mh }
+        = observation
+      .col-xs-6.ator{ "data-mh": data_mh }
+        = object.name

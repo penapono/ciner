@@ -15,10 +15,14 @@ module Platform
     expose(:filtered_states) { filtered_states }
     expose(:filtered_cities) { filtered_cities }
 
-    PER_PAGE = 10
+    PER_PAGE = 50
 
     def index
       self.series = paginated_series
+    end
+
+    def show
+      serie.api_transform
     end
 
     private

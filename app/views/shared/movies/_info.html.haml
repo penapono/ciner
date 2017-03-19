@@ -1,4 +1,5 @@
 - object = movie
+- role = role
 
 - if object.omdb_trailer
   #ficha-tecnica
@@ -25,7 +26,7 @@
     .roteiristas
       .row
         - object.writers.each do |filmable_professional|
-          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista'
+          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
 
 - if object.directors.any?
   #direcao.direcao
@@ -37,7 +38,7 @@
     .diretores
       .row
         - object.directors.each do |filmable_professional|
-          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor'
+          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
 
 - if object.actors.any?
   #elenco.elenco
@@ -49,8 +50,8 @@
     .atores-principais
       .row
         - object.actors.first(6).each do |filmable_professional|
-          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation
+          = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation, role: role
     .atores
       - object.actors.each_with_index do |filmable_professional, index|
         - if index > 5
-          =  render 'shared/movies/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation
+          =  render 'shared/movies/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation, role: role

@@ -80,6 +80,80 @@ class Professional < ActiveRecord::Base
     result
   end
 
+  def tmdb_gender(tmdb)
+    return 0 if tmdb == 2
+    1
+  end
+
+  def api_transform
+    object = self
+
+    tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
+
+    tmdb_id = object.tmdb_id
+
+    tmdb_person_url = "https://api.themoviedb.org/3/person/#{tmdb_id}?api_key=#{tmdb_api_key}&language=pt-BR"
+
+    url = URI(tmdb_person_url)
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request.body = "{}"
+
+    response = http.request(request)
+
+    body = response.read_body
+
+    result = JSON.parse(body)
+
+    object.biography = result["biography"]
+    object.birthday = begin
+                        Date.parse(result["birthday"])
+                      rescue
+                        nil
+                      end
+
+    object.deathday = begin
+                        Date.parse(result["deathday"])
+                      rescue
+                        nil
+                      end
+
+    object.gender = tmdb_gender(result["gender"])
+
+    object.imdb_id = result["imdb_id"]
+
+    object.name = result["name"]
+
+    object.place_of_birth = result["place_of_birth"]
+
+    unless object.biography
+      tmdb_person_url = "https://api.themoviedb.org/3/person/#{tmdb_id}?api_key=#{tmdb_api_key}&language=en-US"
+
+      url = URI(tmdb_person_url)
+
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      request = Net::HTTP::Get.new(url)
+      request.body = "{}"
+
+      response = http.request(request)
+
+      body = response.read_body
+
+      result = JSON.parse(body)
+
+      object.biography = "(Disponível apenas em inglês) #{result['biography']}"
+    end
+
+    object.save(validate: false)
+  end
+
   private
 
   def update_address
