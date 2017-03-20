@@ -264,6 +264,8 @@ class Serie < ActiveRecord::Base
 
     ratings = parsed_page.css('.info-content')
 
+    return unless ratings
+
     array = ratings.text.split("\n")
 
     ratings = array.last
