@@ -7,6 +7,10 @@ module FilmProfitable
   LANGUAGE  = "language=pt-BR"
 
   included do
+    def is_serie?(object)
+      object.class.to_s == "Serie"
+    end
+
     def genre_pt
       return unless omdb_genre
       genres = omdb_genre.split(",").map(&:strip)

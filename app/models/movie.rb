@@ -116,9 +116,11 @@ class Movie < ActiveRecord::Base
 
     object.cover ||= load_poster(tmdb_object)
 
-    tmdb_movie_url = "#{OBJECT_BASE_URL}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
+    object.number_of_seasons ||= tmdb_object["number_of_seasons"] if is_serie?(object)
 
-    tmdb_response = HTTParty.get(tmdb_movie_url)
+    tmdb_url = "#{OBJECT_BASE_URL}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
+
+    tmdb_response = HTTParty.get(tmdb_url)
 
     tmdb_result = tmdb_response.parsed_response
 
@@ -142,12 +144,6 @@ class Movie < ActiveRecord::Base
 
         object.omdb_id = omdb_id
 
-        omdb_title = response["Title"]
-
-        # OMDB
-
-        omdb_year = response["Year"]
-
         object.release ||= begin
                           Date.parse(response["Released"])
                         rescue
@@ -164,44 +160,45 @@ class Movie < ActiveRecord::Base
 
         object.omdb_genre ||= response["Genre"]
 
-        omdb_country = response["Country"]
-
-        object.year = omdb_year
-
-        unless object.cover
-          omdb_poster = response["Poster"]
-
-          if omdb_poster && !omdb_poster.empty? && omdb_poster != "N/A" && omdb_poster
-            cover = open(omdb_poster)
-
-            begin
-              object.cover ||= cover if cover
-            rescue
-            end
-          end
+        if is_serie?(object)
+          object.start_year ||= response["Year"]
+        else
+          object.year ||= response["Year"]
         end
 
-        imdb_brazilian_page = load_imdb_brazilian_page(omdb_id)
-
-        object.brazilian_release = load_brazilian_release(imdb_brazilian_page)
-
-        object.title = load_brazilian_title(imdb_brazilian_page)
-
-        # Trailer
-
-        object.trailer = load_trailer
-
-        # Classificação Etária
-
-        object.omdb_rated = load_rating
-
-        # Profissionais
-
-        load_professionals(object, tmdb_id)
-
-        object.save(validate: false)
+        object.cover ||= load_omdb_cover(response["Poster"])
       end
     end
+
+    imdb_brazilian_page = load_imdb_brazilian_page(imdb_id)
+
+    object.brazilian_release = load_brazilian_release(imdb_brazilian_page)
+
+    object.title = load_brazilian_title(imdb_brazilian_page)
+
+    object.trailer = load_trailer
+
+    object.omdb_rated = load_rating
+
+    omdb_country = response["Country"]
+
+    load_professionals(object, tmdb_id)
+
+    load_seasons(object, tmdb_id) if is_serie?(object)
+
+    object.save(validate: false)
+  end
+
+  def load_omdb_cover(omdb_poster)
+    cover = ""
+
+    cover = begin
+              open(omdb_poster)
+            rescue
+              nil
+            end
+
+    cover
   end
 
   def load_tmdb_object(tmdb_id)
@@ -222,17 +219,17 @@ class Movie < ActiveRecord::Base
   end
 
   def load_poster(tmdb_object)
+    cover = ""
+
     result = tmdb_object
 
     imdb_poster = result["poster_path"]
 
-    if imdb_poster && !imdb_poster.empty? && imdb_poster != "N/A" && imdb_poster
-      cover = begin
-                open("https://image.tmdb.org/t/p/w500#{imdb_poster}")
-              rescue
-                nil
-              end
-    end
+    cover = begin
+              open("https://image.tmdb.org/t/p/w500#{imdb_poster}")
+            rescue
+              nil
+            end
 
     cover
   end

@@ -34,7 +34,7 @@ module MoviesBreadcrumb
     [
       area_breadcrumb,
       index_breadcrumb,
-      [movie.title, ""]
+      [movie.title_str, ""]
     ]
   end
 
