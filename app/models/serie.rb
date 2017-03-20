@@ -337,6 +337,7 @@ class Serie < ActiveRecord::Base
         object.save(validate: false)
       end
     end
+  rescue
   end
 
   def load_seasons(serie, serie_tmdb_id)

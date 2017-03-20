@@ -74,7 +74,7 @@ class Movie < ActiveRecord::Base
 
     title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
 
-    title_str = Regexp.last_match(1)
+    title_str = Regexp.last_match(1).strip
     year_str = Regexp.last_match(2)
 
     year_str = begin
@@ -351,6 +351,7 @@ class Movie < ActiveRecord::Base
         object.save(validate: false)
       end
     end
+  rescue
   end
 
   def load_crew(object, crew)
