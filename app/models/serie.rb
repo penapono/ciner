@@ -3,7 +3,7 @@ class Serie < ActiveRecord::Base
   include Searchables::Serie
   include FilmProfitable
 
-  API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
+  OBJECT_BASE_URL = "#{BASE_URL}/tv"
 
   # Associations
   belongs_to :city
@@ -72,50 +72,58 @@ class Serie < ActiveRecord::Base
 
   # API
 
-  def load_basic(object); end
+  def start_tmdb(object)
+    title = object.original_title
+
+    title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
+
+    title_str = Regexp.last_match(1).strip
+    year_str = Regexp.last_match(2)
+
+    year_str = begin
+                Integer(year_str)
+              rescue
+                object.year
+              end
+
+    tmdb_query = title_str
+
+    tmdb_url = "#{BASE_URL}/search/tv?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
+
+    tmdb_url = URI.encode(tmdb_url)
+
+    tmdb_response = HTTParty.get(tmdb_url)
+
+    tmdb_response = tmdb_response.parsed_response
+
+    # TMDB
+    tmdb_results = tmdb_response["results"]
+
+    tmdb_results.first if tmdb_results.any?
+  end
 
   def api_transform
     object = self
 
-    tmdb_result = load_basic(object)
+    tmdb_result = start_tmdb(object)
 
-    tmdb_plot = tmdb_result["overview"]
+    if tmdb_result
+      object.synopsis = tmdb_result["overview"] unless object.synopsis
 
-    tmdb_id = tmdb_result["id"]
-
-    object.tmdb_id = tmdb_id
-
-    url = URI("https://api.themoviedb.org/3/tv/#{tmdb_id}?language=pt-BR&api_key=#{API_KEY}")
-
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{}"
-
-    response = http.request(request)
-
-    body = response.read_body
-
-    result = JSON.parse(body)
-
-    imdb_poster = result["poster_path"]
-
-    if imdb_poster && !imdb_poster.empty? && imdb_poster != "N/A" && imdb_poster
-      cover = open("https://image.tmdb.org/t/p/w500#{imdb_poster}")
-
-      begin
-        object.cover = cover if cover
-      rescue
-      end
+      object.tmdb_id = tmdb_result["id"] unless object.tmdb_id
     end
 
-    object.number_of_seasons = result["number_of_seasons"]
+    tmdb_id = object.tmdb_id
+
+    tmdb_object = load_tmdb_object(tmdb_id)
+
+    object.cover ||= load_poster(tmdb_object)
+
+    object.number_of_seasons ||= tmdb_object["number_of_seasons"]
 
     load_seasons(object, tmdb_id)
 
-    tmdb_movie_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/external_ids?api_key=#{API_KEY}&language=pt-BR"
+    tmdb_movie_url = "#{OBJECT_BASE_URL}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
 
     tmdb_response = HTTParty.get(tmdb_movie_url)
 
@@ -252,7 +260,7 @@ class Serie < ActiveRecord::Base
         # Trailer
 
         begin
-          tmdb_video_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/videos?api_key=#{API_KEY}&language=pt-BR"
+          tmdb_video_url = "#{OBJECT_BASE_URL}/#{tmdb_id}/videos?api_key=#{API_KEY}&#{LANGUAGE}"
 
           tmdb_response = HTTParty.get(tmdb_video_url)
 
@@ -318,7 +326,7 @@ class Serie < ActiveRecord::Base
 
         # Profissionais
 
-        tmdb_cast_url = "https://api.themoviedb.org/3/tv/#{tmdb_id}/credits?api_key=#{API_KEY}"
+        tmdb_cast_url = "#{OBJECT_BASE_URL}/#{tmdb_id}/credits?api_key=#{API_KEY}"
 
         tmdb_response = HTTParty.get(tmdb_cast_url)
 
@@ -335,7 +343,39 @@ class Serie < ActiveRecord::Base
         object.save(validate: false)
       end
     end
-  rescue
+  end
+
+  def load_tmdb_object(tmdb_id)
+    url = URI("#{OBJECT_BASE_URL}/#{tmdb_id}?language=pt-BR&api_key=#{API_KEY}")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request.body = "{}"
+
+    response = http.request(request)
+
+    body = response.read_body
+
+    result = JSON.parse(body)
+  end
+
+  def load_poster(tmdb_object)
+    result = tmdb_object
+
+    imdb_poster = result["poster_path"]
+
+    if imdb_poster && !imdb_poster.empty? && imdb_poster != "N/A" && imdb_poster
+      cover = begin
+                open("https://image.tmdb.org/t/p/w500#{imdb_poster}")
+              rescue
+                nil
+              end
+    end
+
+    cover
   end
 
   def load_seasons(serie, serie_tmdb_id)
@@ -347,7 +387,7 @@ class Serie < ActiveRecord::Base
   end
 
   def load_season(serie, serie_tmdb_id, season)
-    url = URI("https://api.themoviedb.org/3/tv/#{serie_tmdb_id}/season/#{season}?api_key=#{API_KEY}&language=pt-BR")
+    url = URI("#{OBJECT_BASE_URL}/#{serie_tmdb_id}/season/#{season}?api_key=#{API_KEY}&#{LANGUAGE}")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -411,7 +451,7 @@ class Serie < ActiveRecord::Base
   end
 
   def load_episode(serie, serie_tmdb_id, season, episode)
-    url = URI("https://api.themoviedb.org/3/tv/#{serie_tmdb_id}/season/#{season.season_number}/episode/#{episode}?api_key=#{API_KEY}&language=pt-BR")
+    url = URI("#{OBJECT_BASE_URL}/#{serie_tmdb_id}/season/#{season.season_number}/episode/#{episode}?api_key=#{API_KEY}&#{LANGUAGE}")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true

@@ -2,6 +2,10 @@
 module FilmProfitable
   extend ActiveSupport::Concern
 
+  API_KEY   = "8802a6c6583ac6edc44bea8d577baa97"
+  BASE_URL  = "https://api.themoviedb.org/3"
+  LANGUAGE  = "language=pt-BR"
+
   included do
     def genre_pt
       return unless omdb_genre
