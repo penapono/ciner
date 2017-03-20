@@ -342,11 +342,9 @@ class Movie < ActiveRecord::Base
 
         crew = tmdb_response["crew"]
 
-        load_actors(object, cast) unless object.actors.any?
+        load_actors(object, cast)
 
-        if object.directors.empty? || object.writers.empty?
-          load_crew(object, crew)
-        end
+        load_crew(object, crew)
 
         object.save(validate: false)
       end
