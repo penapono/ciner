@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
   include Searchables::Movie
   include FilmProfitable
 
-  OBJECT_BASE_URL = "#{BASE_URL}/movie"
+  OBJECT_BASE_URL = "#{BASE_URL}/movie".freeze
 
   # Associations
   belongs_to :city
@@ -263,7 +263,11 @@ class Movie < ActiveRecord::Base
 
     return "" unless ratings && ratings.text
 
-    array = ratings.text.split("\n") rescue [""]
+    array = begin
+              ratings.text.split("\n")
+            rescue
+              [""]
+            end
 
     ratings = array.last
 
@@ -281,6 +285,7 @@ class Movie < ActiveRecord::Base
     end
 
     loaded_rating
+  rescue ""
   end
 
   def load_trailer

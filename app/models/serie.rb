@@ -3,7 +3,7 @@ class Serie < ActiveRecord::Base
   include Searchables::Serie
   include FilmProfitable
 
-  OBJECT_BASE_URL = "#{BASE_URL}/tv"
+  OBJECT_BASE_URL = "#{BASE_URL}/tv".freeze
 
   # Associations
   belongs_to :city
@@ -264,9 +264,7 @@ class Serie < ActiveRecord::Base
 
     ratings = parsed_page.css('.info-content')
 
-    return "" unless ratings && ratings.text
-
-    array = ratings.text.split("\n") rescue [""]
+    array = ratings.text.split("\n")
 
     ratings = array.last
 
@@ -284,6 +282,7 @@ class Serie < ActiveRecord::Base
     end
 
     loaded_rating
+  rescue ""
   end
 
   def load_trailer
