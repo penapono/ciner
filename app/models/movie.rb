@@ -261,9 +261,9 @@ class Movie < ActiveRecord::Base
 
     ratings = parsed_page.css('.info-content')
 
-    return "" unless ratings
+    return "" unless ratings && ratings.text
 
-    array = ratings.text.split("\n")
+    array = ratings.text.split("\n") rescue [""]
 
     ratings = array.last
 
