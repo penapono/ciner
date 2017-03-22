@@ -88,7 +88,11 @@ class Serie < ActiveRecord::Base
 
     tmdb_query = title_str
 
-    tmdb_url = "#{BASE_URL}/search/tv?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
+    tmdb_url = if is_serie?(object)
+                  "#{BASE_URL}/search/tv?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
+                else
+                  "#{BASE_URL}/search/movie?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
+                end
 
     tmdb_url = URI.encode(tmdb_url)
 
@@ -190,6 +194,7 @@ class Serie < ActiveRecord::Base
     load_seasons(object, tmdb_id) if is_serie?(object)
 
     object.save(validate: false)
+    rescue
   end
 
   def load_omdb_cover(omdb_poster)
@@ -202,6 +207,7 @@ class Serie < ActiveRecord::Base
             end
 
     cover
+    rescue
   end
 
   def load_tmdb_object(tmdb_id)
@@ -235,6 +241,7 @@ class Serie < ActiveRecord::Base
             end
 
     cover
+    rescue
   end
 
   def load_professionals(object, tmdb_id)
@@ -251,6 +258,7 @@ class Serie < ActiveRecord::Base
     load_actors(object, cast)
 
     load_crew(object, crew)
+    rescue
   end
 
   def load_rating
@@ -330,6 +338,7 @@ class Serie < ActiveRecord::Base
     end
 
     trailer
+    rescue
   end
 
   def load_imdb_brazilian_page(omdb_id)
@@ -368,6 +377,7 @@ class Serie < ActiveRecord::Base
     end
 
     omdb_brazilian_release
+    rescue
   end
 
   def load_brazilian_title(parsed_page)
@@ -391,6 +401,7 @@ class Serie < ActiveRecord::Base
     end
 
     omdb_brazilian_title
+    rescue
   end
 
   def load_crew(object, crew)
@@ -439,6 +450,7 @@ class Serie < ActiveRecord::Base
         filmable_professional.save(validate: false)
       end
     end
+  rescue
   end
 
   def load_actors(object, cast)
@@ -477,6 +489,7 @@ class Serie < ActiveRecord::Base
 
       filmable_professional.save(validate: false)
     end
+    rescue
   end
 
   def load_seasons(serie, serie_tmdb_id)
@@ -485,6 +498,7 @@ class Serie < ActiveRecord::Base
     (1..seasons).each do |season|
       load_season(serie, serie_tmdb_id, season)
     end
+    rescue
   end
 
   def load_season(serie, serie_tmdb_id, season)
@@ -541,6 +555,7 @@ class Serie < ActiveRecord::Base
     end
 
     serie_season.save(validate: false)
+    rescue
   end
 
   def load_episodes(serie, season, serie_tmdb_id, _season_tmdb_id)
@@ -549,6 +564,7 @@ class Serie < ActiveRecord::Base
     (1..episodes).each do |episode|
       load_episode(serie, serie_tmdb_id, season, episode)
     end
+    rescue
   end
 
   def load_episode(serie, serie_tmdb_id, season, episode)
@@ -593,6 +609,7 @@ class Serie < ActiveRecord::Base
     serie_season_episode.tmdb_id = tmdb_id
 
     serie_season_episode.save(validate: false)
+    rescue
   end
 
   def self.current_playing

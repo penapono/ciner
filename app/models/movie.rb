@@ -80,12 +80,16 @@ class Movie < ActiveRecord::Base
     year_str = begin
                 Integer(year_str)
               rescue
-                object.year
+                is_serie?(object) ? object.start_year : object.year
               end
 
     tmdb_query = title_str
 
-    tmdb_url = "#{BASE_URL}/search/movie?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
+    tmdb_url = if is_serie?(object)
+                  "#{BASE_URL}/search/tv?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
+                else
+                  "#{BASE_URL}/search/movie?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
+                end
 
     tmdb_url = URI.encode(tmdb_url)
 
@@ -96,7 +100,7 @@ class Movie < ActiveRecord::Base
     # TMDB
     tmdb_results = tmdb_response["results"]
 
-    tmdb_results.first if tmdb_results.any?
+    tmdb_results.first if tmdb_results
   end
 
   def api_transform
@@ -187,6 +191,7 @@ class Movie < ActiveRecord::Base
     load_seasons(object, tmdb_id) if is_serie?(object)
 
     object.save(validate: false)
+    rescue
   end
 
   def load_omdb_cover(omdb_poster)
@@ -199,6 +204,7 @@ class Movie < ActiveRecord::Base
             end
 
     cover
+    rescue
   end
 
   def load_tmdb_object(tmdb_id)
@@ -232,6 +238,7 @@ class Movie < ActiveRecord::Base
             end
 
     cover
+    rescue
   end
 
   def load_professionals(object, tmdb_id)
@@ -248,10 +255,13 @@ class Movie < ActiveRecord::Base
     load_actors(object, cast)
 
     load_crew(object, crew)
+    rescue
   end
 
   def load_rating
     loaded_rating = ""
+
+    nil.split("/")
 
     imdb_rating = "http://www.imdb.com/title/#{omdb_id}/parentalguide"
 
@@ -260,8 +270,6 @@ class Movie < ActiveRecord::Base
     parsed_page = Nokogiri::HTML(page)
 
     ratings = parsed_page.css('.info-content')
-
-    return "" unless ratings && ratings.text
 
     array = ratings.text.split("\n")
 
@@ -327,6 +335,7 @@ class Movie < ActiveRecord::Base
     end
 
     trailer
+    rescue
   end
 
   def load_imdb_brazilian_page(omdb_id)
@@ -365,6 +374,7 @@ class Movie < ActiveRecord::Base
     end
 
     omdb_brazilian_release
+    rescue
   end
 
   def load_brazilian_title(parsed_page)
@@ -388,6 +398,7 @@ class Movie < ActiveRecord::Base
     end
 
     omdb_brazilian_title
+    rescue
   end
 
   def load_crew(object, crew)
@@ -427,7 +438,7 @@ class Movie < ActiveRecord::Base
         professional.save(validate: false)
 
         filmable_professional = FilmableProfessional.find_or_initialize_by(
-          filmable_type: Movie,
+          filmable_type: object.class.to_s,
           filmable_id: object.id,
           professional_id: professional.id,
           set_function_id: set_function.id
@@ -436,6 +447,7 @@ class Movie < ActiveRecord::Base
         filmable_professional.save(validate: false)
       end
     end
+  rescue
   end
 
   def load_actors(object, cast)
@@ -465,7 +477,7 @@ class Movie < ActiveRecord::Base
       professional.save(validate: false)
 
       filmable_professional = FilmableProfessional.find_or_initialize_by(
-        filmable_type: Movie,
+        filmable_type: object.class.to_s,
         filmable_id: object.id,
         professional_id: professional.id,
         set_function_id: set_function.id,
@@ -474,6 +486,127 @@ class Movie < ActiveRecord::Base
 
       filmable_professional.save(validate: false)
     end
+    rescue
+  end
+
+  def load_seasons(serie, serie_tmdb_id)
+    seasons = serie.number_of_seasons.to_i
+
+    (1..seasons).each do |season|
+      load_season(serie, serie_tmdb_id, season)
+    end
+    rescue
+  end
+
+  def load_season(serie, serie_tmdb_id, season)
+    url = URI("#{OBJECT_BASE_URL}/#{serie_tmdb_id}/season/#{season}?api_key=#{API_KEY}&#{LANGUAGE}")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request.body = "{}"
+
+    response = http.request(request)
+
+    body = response.read_body
+
+    result = JSON.parse(body)
+
+    season_number = result["season_number"]
+
+    name = result["name"]
+
+    overview = result["overview"]
+
+    air_date = result["air_date"]
+
+    tmdb_id = result["id"]
+
+    season_number = result["season_number"]
+
+    number_of_episodes = begin
+                           result["episodes"].count
+                         rescue
+                           0
+                         end
+
+    serie_season = SerieSeason.find_or_initialize_by(
+      serie: serie,
+      season_number: season_number
+    )
+
+    serie_season.name = name
+    serie_season.overview = overview
+    serie_season.air_date = begin
+                              Date.parse(air_date)
+                            rescue
+                              nil
+                            end
+    serie_season.tmdb_id = tmdb_id
+    serie_season.number_of_episodes = number_of_episodes
+
+    if serie_season.number_of_episodes > 0
+      load_episodes(serie, serie_season, serie_tmdb_id, tmdb_id)
+    end
+
+    serie_season.save(validate: false)
+    rescue
+  end
+
+  def load_episodes(serie, season, serie_tmdb_id, _season_tmdb_id)
+    episodes = season.number_of_episodes.to_i
+
+    (1..episodes).each do |episode|
+      load_episode(serie, serie_tmdb_id, season, episode)
+    end
+    rescue
+  end
+
+  def load_episode(serie, serie_tmdb_id, season, episode)
+    url = URI("#{OBJECT_BASE_URL}/#{serie_tmdb_id}/season/#{season.season_number}/episode/#{episode}?api_key=#{API_KEY}&#{LANGUAGE}")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request.body = "{}"
+
+    response = http.request(request)
+
+    body = response.read_body
+
+    result = JSON.parse(body)
+
+    air_date = result["air_date"]
+
+    episode_number = result["episode_number"]
+
+    name = result["name"]
+
+    overview = result["overview"]
+
+    tmdb_id = result["id"]
+
+    serie_season_episode = SerieSeasonEpisode.find_or_initialize_by(
+      serie: serie,
+      serie_season: season,
+      episode_number: episode_number
+    )
+
+    serie_season_episode.name = name
+    serie_season_episode.overview = overview
+    serie_season_episode.air_date = begin
+                              Date.parse(air_date)
+                            rescue
+                              nil
+                            end
+    serie_season_episode.tmdb_id = tmdb_id
+
+    serie_season_episode.save(validate: false)
+    rescue
   end
 
   def self.current_playing
