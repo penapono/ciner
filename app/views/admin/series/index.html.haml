@@ -38,7 +38,7 @@
           = link_to edit_admin_series_path(serie) do
             %i.fa.fa-pencil
         %td
-          = link_to admin_series_index_path(serie), method: 'delete' do
+          = link_to admin_series_path(serie), method: 'delete' do
             %i.fa.fa-trash
 
 = render 'shared/pagination', resources: series
