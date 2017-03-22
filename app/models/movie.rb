@@ -263,11 +263,7 @@ class Movie < ActiveRecord::Base
 
     return "" unless ratings && ratings.text
 
-    array = begin
-              ratings.text.split("\n")
-            rescue
-              [""]
-            end
+    array = ratings.text.split("\n")
 
     ratings = array.last
 
@@ -285,7 +281,7 @@ class Movie < ActiveRecord::Base
     end
 
     loaded_rating
-  rescue ""
+  rescue
   end
 
   def load_trailer

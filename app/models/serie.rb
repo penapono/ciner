@@ -256,6 +256,8 @@ class Serie < ActiveRecord::Base
   def load_rating
     loaded_rating = ""
 
+    nil.split("/")
+
     imdb_rating = "http://www.imdb.com/title/#{omdb_id}/parentalguide"
 
     page = HTTParty.get(imdb_rating)
@@ -282,7 +284,7 @@ class Serie < ActiveRecord::Base
     end
 
     loaded_rating
-  rescue ""
+  rescue
   end
 
   def load_trailer
