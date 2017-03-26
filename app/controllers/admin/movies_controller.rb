@@ -22,7 +22,7 @@ module Admin
     end
 
     def show
-      # movie.api_transform
+      movie.api_transform
     end
 
     private
