@@ -137,6 +137,11 @@ module FilmProfitable
     def users_rating_count
       1000
     end
+
+    def incinerator
+      return unless critics.any?
+      critics.find_by(quick: true)
+    end
   end
 
   def self.filmables_by_type(type)

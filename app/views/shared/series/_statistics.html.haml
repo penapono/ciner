@@ -1,84 +1,20 @@
-- content_for :stylesheet, stylesheet_link_tag('views/shared/incinerator')
+- object = serie
+- incinerator = object.incinerator
 
-.title-separator
-  .media
-    .media-left.media-middle
-      %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-        %use{"xlink:href" => "#debate"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Fala inCINERador
-.incinerator-box
-  %i.fa.fa-quote-left
+- if incinerator
+  - content_for :stylesheet, stylesheet_link_tag('views/shared/incinerator')
 
-  A Origem é um daqueles filmes que você assiste para o resto da vida e sempre te surpreende a cada vez.
+  .title-separator
+    .media
+      .media-left.media-middle
+        %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+          %use{"xlink:href" => "#debate"}
+      .media-body.media-bottom
+        .media-heading.title-section
+          Fala inCINERador
+  .incinerator-box
+    %i.fa.fa-quote-left
 
-  %i.fa.fa-quote-right
+    = incinerator.content.html_safe
 
-/ .title-separator
-/   .media
-/     .media-left.media-middle
-/       %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-/         %use{"xlink:href" => "#ficha"}
-/     .media-body.media-bottom
-/       .media-heading.title-section Estatísticas
-/ .estatistica
-/   .meta-ja-assistiram
-/     %span.wine Já viram
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#ja-assisti"}
-/     5000
-/   .interesses
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#usuario"}
-/     %a{:href => "#"} Amigos
-/     |
-/     %a{:href => "#"} Todos
-/ .estatistica
-/   .meta-querem-ver
-/     %span.wine Querem ver
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#quero-ver"}
-/     5000
-/   .interesses
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#usuario"}
-/     %a{:href => "#"} Amigos
-/     |
-/     %a{:href => "#"} Todos
-/ .estatistica
-/   .meta-nao-querem-ver
-/     %span.wine Não querem
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#nao-quer-ver"}
-/     5000
-/   .interesses
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#usuario"}
-/     %a{:href => "#"} Amigos
-/     |
-/     %a{:href => "#"} Todos
-/ .estatistica
-/   .meta-comentarios
-/     %span.wine Comentários
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#comentario-usuario"}
-/     5000
-/   .interesses
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#usuario"}
-/     %a{:href => "#"} Amigos
-/     |
-/     %a{:href => "#"} Todos
-/ .estatistica
-/   .meta-favoritos
-/     %span.wine Favoritos
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#favorito"}
-/     5000
-/   .interesses
-/     %svg.icon-estatisticas
-/       %use{"xlink:href" => "#usuario"}
-/     %a{:href => "#"} Amigos
-/     |
-/     %a{:href => "#"} Todos
+    %i.fa.fa-quote-right
