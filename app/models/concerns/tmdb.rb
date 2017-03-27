@@ -359,8 +359,6 @@ module Tmdb
         end
       end
 
-      byebug
-
       omdb_brazilian_title
     # rescue
     end
