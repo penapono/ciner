@@ -60,7 +60,7 @@ module Tmdb
     def api_transform
       object = self
 
-      return if object.user
+      # return if object.user
 
       tmdb_result = start_tmdb(object)
 
@@ -358,6 +358,7 @@ module Tmdb
           array.delete("")
           array.delete("Brazil")
           omdb_brazilian_title = array[0] unless array.empty?
+          return omdb_brazilian_title unless omdb_brazilian_title.blank?
         end
       end
 
