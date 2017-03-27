@@ -67,8 +67,10 @@ module FilmProfitable
         hours += 1
       end
 
-      return "#{hours}h#{length}min" if length > 0
-      "#{hours}h"
+      return "#{hours}h" if length == 0 && hours > 0
+      return "#{length}min" if length > 0 && hours == 0
+      "#{hours}h#{length}min" if length > 0 && hours > 0
+      " - "
     end
 
     def genders_str

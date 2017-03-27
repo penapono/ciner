@@ -18,7 +18,7 @@ module Tmdb
     # API
 
     def start_tmdb(object)
-      title = object.original_title
+      title = object.original_title.gsub("\"", "")
 
       title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
 
@@ -38,6 +38,7 @@ module Tmdb
                  else
                    "#{BASE_URL}/search/movie?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
                   end
+
 
       tmdb_url = URI(URI.encode(tmdb_url))
 
@@ -73,6 +74,7 @@ module Tmdb
       tmdb_id = object.tmdb_id
 
       tmdb_object = load_tmdb_object(tmdb_id)
+
 
       object.cover = load_poster(tmdb_object)
 
@@ -205,11 +207,13 @@ module Tmdb
     end
 
     def load_professionals(object, tmdb_id)
+
       tmdb_cast_url = "#{object_base_url}/#{tmdb_id}/credits?api_key=#{API_KEY}"
 
       tmdb_response = HTTParty.get(tmdb_cast_url)
 
       tmdb_response = tmdb_response.parsed_response
+
 
       cast = tmdb_response["cast"]
 
