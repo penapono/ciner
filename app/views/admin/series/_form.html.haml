@@ -61,4 +61,6 @@
     .col-xs-12
       = f.input :omdb_trailer
 
+  = f.hidden_field :user, value: current_user
+
   = render 'shared/form_actions', f: f

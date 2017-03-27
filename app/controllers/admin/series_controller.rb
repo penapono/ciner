@@ -73,7 +73,8 @@ module Admin
         :trailer,
         :tmdb_id,
         :number_of_seasons,
-        :playing
+        :playing,
+        :user
       )
     end
 

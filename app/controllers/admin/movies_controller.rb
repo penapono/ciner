@@ -69,7 +69,8 @@ module Admin
         :omdb_trailer,
         :trailer,
         :tmdb_id,
-        :playing
+        :playing,
+        :user
       )
     end
 

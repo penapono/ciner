@@ -28,3 +28,4 @@ spec/reports
 db/*.BACKUP
 
 .byebug_history
+dump*
