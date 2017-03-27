@@ -34,7 +34,7 @@ module Tmdb
       tmdb_query = title_str
 
       tmdb_url = if is_serie?(object)
-                   "#{BASE_URL}/search/tv?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&page=1&include_adult=true&year=#{year_str}"
+                   "#{BASE_URL}/search/tv?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
                  else
                    "#{BASE_URL}/search/movie?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
                   end
