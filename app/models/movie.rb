@@ -20,7 +20,7 @@ class Movie < ActiveRecord::Base
 
   # Validations
   validates :original_title,
-            :year
+            :year,
             presence: true
 
   # Delegations
