@@ -143,7 +143,6 @@ module Tmdb
 
       object.trailer = load_trailer
 
-
       object.omdb_rated = load_rating
 
       omdb_country = response["Country"]
@@ -155,7 +154,7 @@ module Tmdb
       object.user = User.first
 
       object.save(validate: false)
-    # rescue
+      # rescue
     end
 
     def load_omdb_cover(omdb_poster)
@@ -168,7 +167,7 @@ module Tmdb
               end
 
       cover
-    # rescue
+      # rescue
     end
 
     def load_tmdb_object(tmdb_id)
@@ -202,7 +201,7 @@ module Tmdb
               end
 
       cover
-    # rescue
+      # rescue
     end
 
     def load_professionals(object, tmdb_id)
@@ -219,7 +218,7 @@ module Tmdb
       load_actors(object, cast)
 
       load_crew(object, crew)
-    # rescue
+      # rescue
     end
 
     def load_rating
@@ -233,13 +232,11 @@ module Tmdb
 
       ratings = parsed_page.css('.info-content')
 
-
       return "" unless ratings && ratings.text
 
       array = ratings.text.split("\n")
 
       ratings = array.last
-
 
       return "" unless ratings
 
@@ -257,7 +254,7 @@ module Tmdb
       end
 
       loaded_rating
-    # rescue
+      # rescue
     end
 
     def load_trailer
@@ -303,7 +300,7 @@ module Tmdb
       end
 
       trailer
-    # rescue
+      # rescue
     end
 
     def load_imdb_brazilian_page(omdb_id)
@@ -342,7 +339,7 @@ module Tmdb
       end
 
       omdb_brazilian_release
-    # rescue
+      # rescue
     end
 
     def load_brazilian_title(parsed_page)
@@ -366,7 +363,7 @@ module Tmdb
       end
 
       omdb_brazilian_title
-    # rescue
+      # rescue
     end
 
     def load_crew(object, crew)
@@ -415,7 +412,7 @@ module Tmdb
           filmable_professional.save(validate: false)
         end
       end
-    # rescue
+      # rescue
     end
 
     def load_actors(object, cast)
@@ -454,7 +451,7 @@ module Tmdb
 
         filmable_professional.save(validate: false)
       end
-    # rescue
+      # rescue
     end
 
     def load_seasons(serie, serie_tmdb_id)
@@ -463,7 +460,7 @@ module Tmdb
       (1..seasons).each do |season|
         load_season(serie, serie_tmdb_id, season)
       end
-    # rescue
+      # rescue
     end
 
     def load_season(serie, serie_tmdb_id, season)
@@ -520,7 +517,7 @@ module Tmdb
       end
 
       serie_season.save(validate: false)
-    # rescue
+      # rescue
     end
 
     def load_episodes(serie, season, serie_tmdb_id, _season_tmdb_id)
@@ -529,7 +526,7 @@ module Tmdb
       (1..episodes).each do |episode|
         load_episode(serie, serie_tmdb_id, season, episode)
       end
-    # rescue
+      # rescue
     end
 
     def load_episode(serie, serie_tmdb_id, season, episode)
@@ -574,7 +571,7 @@ module Tmdb
       serie_season_episode.tmdb_id = tmdb_id
 
       serie_season_episode.save(validate: false)
-    # rescue
+      # rescue
     end
   end
 end
