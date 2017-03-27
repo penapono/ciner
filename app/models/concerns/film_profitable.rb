@@ -22,8 +22,8 @@ module FilmProfitable
     end
 
     def rated_pt
-      return unless omdb_rated
-      omdb_rated + " anos"
+      return omdb_rated + " anos" unless omdb_rated.blank?
+      " - "
     end
 
     def writers_pt

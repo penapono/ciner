@@ -60,7 +60,7 @@ module Tmdb
     def api_transform
       object = self
 
-      # return if object.user
+      return if object.user && !Rails.env.development?
 
       tmdb_result = start_tmdb(object)
 
@@ -142,6 +142,7 @@ module Tmdb
       object.title = load_brazilian_title(imdb_brazilian_page)
 
       object.trailer = load_trailer
+
 
       object.omdb_rated = load_rating
 
@@ -232,11 +233,13 @@ module Tmdb
 
       ratings = parsed_page.css('.info-content')
 
+
       return "" unless ratings && ratings.text
 
       array = ratings.text.split("\n")
 
       ratings = array.last
+
 
       return "" unless ratings
 
