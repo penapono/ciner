@@ -35,16 +35,12 @@ class Movie < ActiveRecord::Base
 
   # Scopes
 
-  def self.by_city(city)
-    where(city: city)
-  end
-
-  def self.by_state(id)
-    where(state_id: id)
-  end
-
   def self.by_country(id)
     where(country_id: id)
+  end
+
+  def self.by_year(year)
+    where(year: year)
   end
 
   # Filter
@@ -54,8 +50,7 @@ class Movie < ActiveRecord::Base
 
     result = collection
     result = result.by_country(params[:country]) if params[:country].present?
-    result = result.by_state(params[:state]) if params[:state].present?
-    result = result.by_city(params[:city]) if params[:city].present?
+    result = result.by_year(params[:year]) if params[:year].present?
 
     result
   end

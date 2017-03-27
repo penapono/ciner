@@ -11,6 +11,5 @@ pt-BR:
         title: Nova Produção Cinematográfica
       toolbar:
         filters:
-          city: Selecione uma Cidade
+          year: Selecione um Ano
           country: Selecione um País
-          state: Selecione um Estado

@@ -11,6 +11,4 @@
       .col-xs-4
         = f.input :country, collection: countries, label: false, include_blank: t('.filters.country'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:country, '')
       .col-xs-4
-        = f.input :state, collection: filtered_states, label: false, include_blank: t('.filters.state'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:state, '')
-      .col-xs-4
-        = f.input :city, collection: filtered_cities, label: false, include_blank: t('.filters.city'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:city, '')
+        = f.input :year, collection: (1839..2021), label: false, include_blank: t('.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
