@@ -238,6 +238,8 @@ module Tmdb
 
       ratings = array.last
 
+      return "" unless ratings
+
       ratings_array = ratings.split("/").map(&:strip)
 
       ratings_array.each do |rating|
