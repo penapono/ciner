@@ -70,7 +70,7 @@ module Admin
         :trailer,
         :tmdb_id,
         :playing,
-        :user
+        :user_id
       )
     end
 
