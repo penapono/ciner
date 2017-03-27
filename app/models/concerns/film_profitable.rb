@@ -45,6 +45,7 @@ module FilmProfitable
                   .gsub("(uncredited)", "(não creditado)")
                   .gsub("(with the partial use of ideas by)", "(com o uso parcial de idéias)")
                   .gsub("(written by)", "(escrito)")
+                  .gsub("(story by)", "(história)")
       # collaborator on screenplay
     end
 
