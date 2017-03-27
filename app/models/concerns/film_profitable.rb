@@ -69,7 +69,7 @@ module FilmProfitable
 
       return "#{hours}h" if length == 0 && hours > 0
       return "#{length}min" if length > 0 && hours == 0
-      "#{hours}h#{length}min" if length > 0 && hours > 0
+      return "#{hours}h#{length}min" if length > 0 && hours > 0
       " - "
     end
 

@@ -18,12 +18,14 @@ module Tmdb
     # API
 
     def start_tmdb(object)
-      title = object.original_title.gsub("\"", "")
+      title = object.original_title.delete("\"")
 
       title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
 
-      title_str = Regexp.last_match(1).strip
+      title_str = Regexp.last_match(1)
       year_str = Regexp.last_match(2)
+
+      title_str = title_str.blank? ? title : title_str.strip
 
       year_str = begin
                   Integer(year_str)
@@ -38,7 +40,6 @@ module Tmdb
                  else
                    "#{BASE_URL}/search/movie?api_key=#{API_KEY}&#{LANGUAGE}&query=#{tmdb_query}&year=#{year_str}"
                   end
-
 
       tmdb_url = URI(URI.encode(tmdb_url))
 
@@ -69,12 +70,23 @@ module Tmdb
         object.synopsis = tmdb_result["overview"]
 
         object.tmdb_id = tmdb_result["id"]
+
+        object.title = if is_serie?(object)
+                         tmdb_result["name"]
+                       else
+                         tmdb_result["title"]
+                       end
+
+        object.original_title = if is_serie?(object)
+                                  tmdb_result["original_name"]
+                                else
+                                  tmdb_result["original_title"]
+                                end
       end
 
       tmdb_id = object.tmdb_id
 
       tmdb_object = load_tmdb_object(tmdb_id)
-
 
       object.cover = load_poster(tmdb_object)
 
@@ -88,9 +100,7 @@ module Tmdb
 
         imdb_id = tmdb_result["imdb_id"]
       else
-        tmdb_result = load_tmdb_object(tmdb_id)
-
-        imdb_id = tmdb_result["imdb_id"]
+        imdb_id = tmdb_object["imdb_id"]
       end
 
       # OMDB
@@ -141,7 +151,12 @@ module Tmdb
 
       object.brazilian_release = load_brazilian_release(imdb_brazilian_page)
 
-      object.title = load_brazilian_title(imdb_brazilian_page)
+      imdb_title = load_brazilian_title(imdb_brazilian_page)
+
+      object.title = imdb_title unless imdb_title.blank?
+
+      object.title = object.title.delete("\"")
+      object.original_title = object.original_title.delete("\"")
 
       object.trailer = load_trailer
 
@@ -207,13 +222,11 @@ module Tmdb
     end
 
     def load_professionals(object, tmdb_id)
-
       tmdb_cast_url = "#{object_base_url}/#{tmdb_id}/credits?api_key=#{API_KEY}"
 
       tmdb_response = HTTParty.get(tmdb_cast_url)
 
       tmdb_response = tmdb_response.parsed_response
-
 
       cast = tmdb_response["cast"]
 
@@ -361,6 +374,7 @@ module Tmdb
           array = row.text.split("\n").map(&:strip)
           array.delete("")
           array.delete("Brazil")
+          array.delete("Brazil (alternative title)")
           omdb_brazilian_title = array[0] unless array.empty?
           return omdb_brazilian_title unless omdb_brazilian_title.blank?
         end
