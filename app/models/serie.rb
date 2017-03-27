@@ -23,8 +23,7 @@ class Serie < ActiveRecord::Base
 
   # Validations
   validates :original_title,
-            :start_year,
-            :length,
+            :start_year
             presence: true
 
   # Delegations
