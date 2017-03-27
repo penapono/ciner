@@ -61,6 +61,8 @@
     .col-xs-12
       = f.input :omdb_trailer
 
-  = f.hidden_field :user_id, value: current_user.id
+  .row
+    .col-xs-12
+      = f.input :user_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
 
   = render 'shared/form_actions', f: f
