@@ -290,8 +290,6 @@ module Tmdb
 
         trailer = "https://www.youtube.com/embed/" + video_key
 
-        byebug
-
         return trailer unless video_key.blank?
       rescue
         video_key = nil
@@ -309,8 +307,6 @@ module Tmdb
         video_key = tmdb_result["key"]
 
         trailer = "https://www.youtube.com/embed/" + video_key
-
-        byebug
 
         return trailer unless video_key.blank?
       rescue
@@ -337,8 +333,6 @@ module Tmdb
           omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
 
           trailer = omdb_trailer
-
-          byebug
 
           return trailer unless omdb_trailer.blank?
         end
