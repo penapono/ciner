@@ -20,7 +20,7 @@ module Tmdb
     def start_tmdb(object)
       title = object.original_title.delete("\"")
 
-      title =~ /(\w*(?:\s\w*)*)\((\d+)\)/
+      title =~ /(\w*(?:\w\W*)*)\((\d+)\)/
 
       title_str = Regexp.last_match(1)
       year_str = Regexp.last_match(2)
