@@ -1,7 +1,7 @@
 - role = role
 - object = serie
 
-- if object.omdb_trailer
+- if object.trailer
   #ficha-tecnica
     .title-separator
       .media
@@ -14,7 +14,7 @@
 
     .ficha
       .info
-        %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.omdb_trailer.to_s, width: "100%"}
+        %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
 - if object.writers.any?
   #roteiro.roteiro

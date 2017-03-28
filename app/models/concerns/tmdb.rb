@@ -289,6 +289,30 @@ module Tmdb
         video_key = tmdb_result["key"]
 
         trailer = "https://www.youtube.com/embed/" + video_key
+
+        byebug
+
+        return trailer unless video_key.blank?
+      rescue
+        video_key = nil
+      end
+
+      begin
+        tmdb_video_url = "#{object_base_url}/#{tmdb_id}/videos?api_key=#{API_KEY}"
+
+        tmdb_response = HTTParty.get(tmdb_video_url)
+
+        tmdb_response = tmdb_response.parsed_response
+
+        tmdb_result = tmdb_response["results"].first
+
+        video_key = tmdb_result["key"]
+
+        trailer = "https://www.youtube.com/embed/" + video_key
+
+        byebug
+
+        return trailer unless video_key.blank?
       rescue
         video_key = nil
       end
@@ -313,6 +337,10 @@ module Tmdb
           omdb_trailer = "http://#{omdb_trailer}/imdb/embed?autoplay=false&width=480"
 
           trailer = omdb_trailer
+
+          byebug
+
+          return trailer unless omdb_trailer.blank?
         end
       end
 
