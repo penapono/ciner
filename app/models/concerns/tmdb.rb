@@ -397,6 +397,8 @@ module Tmdb
           array.delete("")
           array.delete("Brazil")
           array.delete("Brazil (alternative title)")
+          array.delete("Brazil (complete title)")
+          array.delete("Brazil (short title)")
           omdb_brazilian_title = array[0] unless array.empty?
           return omdb_brazilian_title unless omdb_brazilian_title.blank?
         end
