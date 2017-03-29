@@ -62,7 +62,7 @@ module Tmdb
     def api_transform
       object = self
 
-      return if object.user && !Rails.env.development?
+      return if object.user # && !Rails.env.development?
 
       tmdb_result = start_tmdb(object)
 
@@ -155,8 +155,11 @@ module Tmdb
 
       object.title = imdb_title unless imdb_title.blank?
 
-      object.title = object.title.delete("\"")
-      object.original_title = object.original_title.delete("\"")
+      object.title = object.title.delete("\"") if object.title
+
+      if object.original_title
+        object.original_title = object.original_title.delete("\"")
+      end
 
       object.trailer = load_trailer
 
@@ -412,6 +415,8 @@ module Tmdb
       set_function_director = SetFunction.find_by(name: "Direção")
       set_function_writer = SetFunction.find_by(name: "Roteiro")
 
+      return unless crew
+
       crew.each do |person|
         job = person["job"]
 
@@ -459,6 +464,8 @@ module Tmdb
 
     def load_actors(object, cast)
       set_function = SetFunction.find_by(name: "Elenco")
+
+      return unless cast
 
       cast.each do |actor|
         character = actor["character"]

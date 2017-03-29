@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327042714) do
+ActiveRecord::Schema.define(version: 20170329035737) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -157,14 +157,14 @@ ActiveRecord::Schema.define(version: 20170327042714) do
     t.integer  "studio_id"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "omdb_directors"
-    t.string   "omdb_writers"
-    t.string   "omdb_actors"
-    t.string   "omdb_genre"
-    t.string   "omdb_rated"
-    t.string   "omdb_id"
-    t.string   "omdb_trailer"
-    t.string   "trailer"
+    t.text     "omdb_directors",    limit: 65535
+    t.text     "omdb_writers",      limit: 65535
+    t.text     "omdb_actors",       limit: 65535
+    t.text     "omdb_genre",        limit: 65535
+    t.text     "omdb_rated",        limit: 65535
+    t.text     "omdb_id",           limit: 65535
+    t.text     "omdb_trailer",      limit: 65535
+    t.text     "trailer",           limit: 65535
     t.integer  "tmdb_id"
     t.boolean  "playing",                         default: false
     t.integer  "user_id"
@@ -296,14 +296,14 @@ ActiveRecord::Schema.define(version: 20170327042714) do
     t.integer  "aired_episodes"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "omdb_directors"
-    t.string   "omdb_writers"
-    t.string   "omdb_actors"
-    t.string   "omdb_genre"
-    t.string   "omdb_rated"
-    t.string   "omdb_id"
-    t.string   "omdb_trailer"
-    t.string   "trailer"
+    t.text     "omdb_directors",    limit: 65535
+    t.text     "omdb_writers",      limit: 65535
+    t.text     "omdb_actors",       limit: 65535
+    t.text     "omdb_genre",        limit: 65535
+    t.text     "omdb_rated",        limit: 65535
+    t.text     "omdb_id",           limit: 65535
+    t.text     "omdb_trailer",      limit: 65535
+    t.text     "trailer",           limit: 65535
     t.integer  "tmdb_id"
     t.integer  "number_of_seasons",               default: 1
     t.boolean  "playing",                         default: false

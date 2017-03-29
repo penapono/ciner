@@ -2,6 +2,9 @@
 class Professional < ActiveRecord::Base
   include Searchables::Professional
 
+  TMDB_API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
+  BASE_URL = "https://api.themoviedb.org/3/person"
+
   # Associations
   belongs_to :user
   belongs_to :city
@@ -88,28 +91,12 @@ class Professional < ActiveRecord::Base
   def api_transform
     object = self
 
-    tmdb_api_key = "8802a6c6583ac6edc44bea8d577baa97"
-
     tmdb_id = object.tmdb_id
 
-    tmdb_person_url = "https://api.themoviedb.org/3/person/#{tmdb_id}?api_key=#{tmdb_api_key}&language=pt-BR"
+    tmdb_person_url = "#{BASE_URL}/#{tmdb_id}?api_key=#{TMDB_API_KEY}&language=pt-BR"
 
-    url = URI(tmdb_person_url)
+    result = load_resource(tmdb_person_url)
 
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Get.new(url)
-    request.body = "{}"
-
-    response = http.request(request)
-
-    body = response.read_body
-
-    result = JSON.parse(body)
-
-    object.biography = result["biography"]
     object.birthday = begin
                         Date.parse(result["birthday"])
                       rescue
@@ -130,31 +117,60 @@ class Professional < ActiveRecord::Base
 
     object.place_of_birth = result["place_of_birth"]
 
-    unless object.biography
-      tmdb_person_url = "https://api.themoviedb.org/3/person/#{tmdb_id}?api_key=#{tmdb_api_key}&language=en-US"
-
-      url = URI(tmdb_person_url)
-
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      request = Net::HTTP::Get.new(url)
-      request.body = "{}"
-
-      response = http.request(request)
-
-      body = response.read_body
-
-      result = JSON.parse(body)
-
-      object.biography = "(Disponível apenas em inglês) #{result['biography']}"
-    end
+    load_credits(object)
 
     object.save(validate: false)
   end
 
+  def load_credits(object)
+    tmdb_id = object.tmdb_id
+
+    tmdb_person_credits = "#{BASE_URL}/#{tmdb_id}/combined_credits?api_key=#{TMDB_API_KEY}"
+
+    result = load_resource(tmdb_person_credits)
+
+    result = result["cast"]
+
+    result.each do |credit|
+      credit_id = credit["id"]
+      media_type = credit["media_type"]
+
+      load_credit_resource(credit_id, media_type)
+    end
+  end
+
   private
+
+  def load_credit_resource(id, media_type)
+    resource_url = "https://api.themoviedb.org/3/#{media_type}/#{id}?api_key=#{TMDB_API_KEY}"
+
+    result = load_resource(resource_url)
+
+    original_title = result["original_title"]
+
+    if media_type == "movie"
+      Movie.where("original_title LIKE '%#{original_title}%'").each(&:api_transform)
+    elsif media_type == "tv"
+      Serie.where("original_title LIKE '%#{original_title}%'").each(&:api_transform)
+    end
+  end
+
+  def load_resource(url)
+    url = URI(url)
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request.body = "{}"
+
+    response = http.request(request)
+
+    body = response.read_body
+
+    JSON.parse(body)
+  end
 
   def update_address
     return unless city
