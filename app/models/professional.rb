@@ -149,9 +149,9 @@ class Professional < ActiveRecord::Base
     original_title = result["original_title"]
 
     if media_type == "movie"
-      Movie.where("original_title LIKE '%#{original_title}%'").each(&:api_transform)
+      Movie.search(nil, "#{original_title}").each(&:api_transform)
     elsif media_type == "tv"
-      Serie.where("original_title LIKE '%#{original_title}%'").each(&:api_transform)
+      Serie.search(nil, "#{original_title}").each(&:api_transform)
     end
   end
 

@@ -143,11 +143,13 @@ module Tmdb
             object.year = response["Year"]
           end
 
-          # object.cover = begin
-          #                  load_omdb_cover(response["Poster"])
-          #                rescue
-          #                  ""
-          #                end
+          if object.cover.blank?
+            begin
+              object.cover = load_omdb_cover(response["Poster"])
+            rescue
+              object.cover = ""
+            end
+          end
         end
       end
 
