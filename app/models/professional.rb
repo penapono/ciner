@@ -148,10 +148,42 @@ class Professional < ActiveRecord::Base
 
     original_title = result["original_title"]
 
+    tmdb_id = result["id"]
+
+    release_date = begin
+                     Date.parse(result["release_date"])
+                   rescue
+                     Date.today
+                   end
+
     if media_type == "movie"
-      Movie.search(nil, "#{original_title}").each(&:api_transform)
+      by_tmdb_id = Movie.where(tmdb_id: tmdb_id)
+      if by_tmdb_id.any?
+        by_tmdb_id.each(&:api_transform)
+      else
+        year = release_date.year
+
+        on_title = Movie.search(nil, "#{original_title} (#{year})")
+
+        on_year = Movie.where(original_title: original_title, year: year)
+
+        on_title.each(&:api_transform) unless on_title.blank?
+        on_year.each(&:api_transform) unless on_year.blank?
+      end
     elsif media_type == "tv"
-      Serie.search(nil, "#{original_title}").each(&:api_transform)
+      by_tmdb_id = Serie.where(tmdb_id: tmdb_id)
+      if by_tmdb_id.any?
+        by_tmdb_id.each(&:api_transform)
+      else
+        start_year = release_date.year
+
+        on_title = Serie.search(nil, "#{original_title} (#{start_year})")
+
+        on_year = Serie.where(original_title: original_title, start_year: start_year)
+
+        on_title.each(&:api_transform) unless on_title.blank?
+        on_year.each(&:api_transform) unless on_year.blank?
+      end
     end
   end
 

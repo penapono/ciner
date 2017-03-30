@@ -46,7 +46,8 @@ module FilmProfitable
                   .gsub("(with the partial use of ideas by)", "(com o uso parcial de idéias)")
                   .gsub("(written by)", "(escrito)")
                   .gsub("(story by)", "(história)")
-      # collaborator on screenplay
+                  .gsub("adaptation", "adaptação")
+                  .gsub("based upon his play", "peça")
     end
 
     def title_str
