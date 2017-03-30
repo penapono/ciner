@@ -155,34 +155,33 @@ class Professional < ActiveRecord::Base
                    rescue
                      Date.today
                    end
+    year = release_date.year
 
     if media_type == "movie"
       by_tmdb_id = Movie.where(tmdb_id: tmdb_id)
       if by_tmdb_id.any?
         by_tmdb_id.each(&:api_transform)
       else
-        year = release_date.year
+        ((year - 2)..(year + 2)).each do |ranged_year|
+          on_title = Movie.search(nil, "#{original_title} (#{ranged_year})")
+          on_title.each(&:api_transform) unless on_title.blank?
+        end
 
-        on_title = Movie.search(nil, "#{original_title} (#{year})")
-
-        on_year = Movie.where(original_title: original_title, year: year)
-
-        on_title.each(&:api_transform) unless on_title.blank?
-        on_year.each(&:api_transform) unless on_year.blank?
+        any_year = Movie.where(original_title: original_title)
+        any_year.each(&:api_transform) unless any_year.blank?
       end
     elsif media_type == "tv"
       by_tmdb_id = Serie.where(tmdb_id: tmdb_id)
       if by_tmdb_id.any?
         by_tmdb_id.each(&:api_transform)
       else
-        start_year = release_date.year
+        ((year - 2)..(year + 2)).each do |ranged_year|
+          on_title = Serie.search(nil, "#{original_title} (#{ranged_year})")
+          on_title.each(&:api_transform) unless on_title.blank?
+        end
 
-        on_title = Serie.search(nil, "#{original_title} (#{start_year})")
-
-        on_year = Serie.where(original_title: original_title, start_year: start_year)
-
-        on_title.each(&:api_transform) unless on_title.blank?
-        on_year.each(&:api_transform) unless on_year.blank?
+        any_year = Serie.where(original_title: original_title)
+        any_year.each(&:api_transform) unless any_year.blank?
       end
     end
   end
