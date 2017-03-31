@@ -1,11 +1,11 @@
 %footer
   .container
-    .col-xs-12.col-md-3
+    .col-xs-12.col-md-2
       .media
         .media-left.media-middle
           %figure
             = image_tag("logo_rodape.png", class: "img-responsive", style: 'margin-top: 20px;')
-    .col-xs-12.col-md-3
+    .col-xs-12.col-md-2
       .sitemap
         %ul
           %li
@@ -16,29 +16,38 @@
             = link_to "Ciner Vídeos",   '#'
           %li
             = link_to "Críticas",   '#'
+    .col-xs-12.col-md-2
+      .sitemap
+        %ul
           %li
             = link_to "Notícias",   '#'
           %li
             = link_to "Debate Ciner",   '#'
-    .col-xs-12.col-md-3
+          %li
+            = link_to "Termos de Uso",   '#'
+          %li
+            = link_to "Privacidade",   '#'
+    .col-xs-12.col-md-2
       .sitemap
         %ul
           %li
             = link_to "Missão",   '#'
           %li
-            = link_to "Termos de Uso",   '#'
-          %li
-            = link_to "Política de Privacidade",   '#'
-          %li
-            = link_to "Sobre Ser Ciner",   '#'
+            = link_to "Contato",   root_path
           %li
             = link_to "Anuncie Aqui",   '#'
           %li
-            = link_to "Contato",   root_path
+            = link_to "Ser Ciner",   '#'
+    .col-xs-12.col-md-2
+      .sitemap
+        %ul
+          %li
+            = link_to "FAQ",   '#'
+          %li
+            = link_to "Adendo",   '#'
 
 .copyright
   .container
     .row
       .col-xs-12.text-center
-        © 2017 Ciner. Todos os direitos reservados. Criado por
-        %a{:href => "http://agenciacarbon.com.br", :target => "_blank"} Agência Carbon
+        © 2017 Ciner. Todos os direitos reservados.
