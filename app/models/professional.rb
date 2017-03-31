@@ -91,6 +91,8 @@ class Professional < ActiveRecord::Base
   def api_transform
     object = self
 
+    return if object.lock_updates?
+
     tmdb_id = object.tmdb_id
 
     tmdb_person_url = "#{BASE_URL}/#{tmdb_id}?api_key=#{TMDB_API_KEY}&language=pt-BR"
@@ -117,9 +119,11 @@ class Professional < ActiveRecord::Base
 
     object.place_of_birth = result["place_of_birth"]
 
-    load_credits(object)
+    object.lock_updates = true
 
     object.save(validate: false)
+
+    load_credits(object)
   end
 
   def load_credits(object)

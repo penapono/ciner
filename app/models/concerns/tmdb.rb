@@ -62,7 +62,7 @@ module Tmdb
     def api_transform
       object = self
 
-      return if object.user # && !Rails.env.development?
+      return if object.lock_updates? # && !Rails.env.development?
 
       tmdb_result = start_tmdb(object)
 
@@ -173,13 +173,13 @@ module Tmdb
 
       omdb_country = response["Country"]
 
+      object.lock_updates = true
+
+      object.save(validate: false)
+
       load_professionals(object, tmdb_id)
 
       load_seasons(object, tmdb_id) if is_serie?(object)
-
-      object.user = User.first
-
-      object.save(validate: false)
       # rescue
     end
 

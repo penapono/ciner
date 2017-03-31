@@ -46,6 +46,8 @@ pt-BR:
         omdb_trailer: Trailer
 
         playing: Em cartaz
+
+        lock_updates: Bloquear atualização automática
     errors:
       models:
         movie:

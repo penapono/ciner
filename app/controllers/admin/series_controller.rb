@@ -74,7 +74,8 @@ module Admin
         :tmdb_id,
         :number_of_seasons,
         :playing,
-        :user_id
+        :user_id,
+        :lock_updates
       )
     end
 
