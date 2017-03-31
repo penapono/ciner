@@ -6,7 +6,7 @@ module Admin
     PER_PAGE = 10
 
     PERMITTED_PARAMS = [
-      :title, :description, :event_date, :start_time, :end_time
+      :title, :description, :event_date, :start_time, :end_time, :featured
     ].freeze
 
     # exposes

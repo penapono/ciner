@@ -4,7 +4,7 @@
 
 .container.content
   / SECTION 01 CONTENT
-  .row
+  .row{ style: 'margin-top: 20px' }
     .col-xs-12.col-md-8
       .row
         .col-xs-12
@@ -19,7 +19,7 @@
       = render 'shared/home/broadcasts/index', role: role
 
   / SECTION 02 CONTENT
-  .row
+  .row{ style: 'margin-top: 20px' }
     .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
       %figure
         %img.img-responsive{ src: "http://placehold.it/360x300", style: 'height: 280px; width: 360px;' }
@@ -53,22 +53,22 @@
           = link_to "Ciner Movie", "#"
 
   / SECTION 03 CONTENT
-  .row
+  .row{ style: 'margin-top: 20px' }
     = render 'shared/home/critics/index', role: role
 
     / SOCIAL CINER
     = render 'shared/home/events/index', role: role
 
     / ADVERTISES
-    .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 40px;"}
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 20px;"}
       .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises{:style => "margin-bottom: 20px;"}
         %figure
-          %img.img-responsive{:src => "http://placehold.it/360x250"}/
+          %img.img-responsive{ src: "http://placehold.it/360x250", style: 'height: 230px;' }
       .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
         %figure
-          %img.img-responsive{:src => "http://placehold.it/360x250"}/
+          %img.img-responsive{ src: "http://placehold.it/360x250", style: 'height: 230px;' }
 
-  .row{:style => "margin-top: 30px"}
+  .row
     = render 'shared/home/questions/index', role: role
 
     = render 'shared/home/professionals/index', role: role

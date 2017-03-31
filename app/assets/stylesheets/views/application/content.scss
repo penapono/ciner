@@ -40,7 +40,6 @@
   .ciner-poster, .ciner-featured, .ciner-news,
   .ciner-review, .ciner-social,
   .ciner-discussion, .ciner-search {
-    margin-top: 20px;
   }
 
   .title-separator .big-item .title-section {
@@ -97,10 +96,13 @@
     }
 
     &.featured {
-      background-color: rgba(243, 110, 36, 0.4);
+      background-color: rgba(241, 242, 242, 0.8);
+      border-bottom: none;
+      border-top: none;
+      border-radius: 10px;
     }
 
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .btn-saiba-mais {

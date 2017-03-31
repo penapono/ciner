@@ -84,6 +84,13 @@ class User < ActiveRecord::Base
     User.human_attribute_name("role.#{role}")
   end
 
+  def nickname_str
+    return name if nickname.blank? && !admin?
+    return "#{name} (CINER)" if nickname.blank? && admin?
+    return "#{nickname} (CINER)" if admin?
+    nickname
+  end
+
   # Scopes
 
   def self.by_gender(gender)

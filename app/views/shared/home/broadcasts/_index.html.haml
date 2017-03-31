@@ -10,7 +10,7 @@
       .media-body.text-right.media-middle
         = link_to url_for([role, :broadcasts]) do
           = t('see_more')
-  / POSTS ITEMS
+
   - if broadcasts.any?
     - broadcasts.each do |broadcast|
       = render 'shared/home/broadcasts/item', role: role, broadcast: broadcast

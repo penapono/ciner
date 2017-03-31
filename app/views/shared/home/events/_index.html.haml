@@ -6,12 +6,15 @@
           %svg.icon-title
             %use{"xlink:href" => "#noticia"}
         .media-body.media-bottom
-          .media-heading.title-section Agenda Ciner
+          .media-heading.title-section
+            = Event.model_name.human(count: 2)
         .media-body.text-right.media-middle
           = link_to url_for([role, :events]) do
             = t('see_more')
-    / POSTS ITEMS
-    - events.each do |event|
-      = render 'shared/home/events/item', event: event, role: role
 
-    / POSTS ITEMS
+    - if events.any?
+      - 3.times do
+        - events.each do |event|
+          = render 'shared/home/events/item', event: event, role: role
+    - else
+      = render 'shared/alerts/info', message: (t('empty', klass: Event.model_name.human(count: 2)))

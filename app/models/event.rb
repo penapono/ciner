@@ -35,6 +35,10 @@ class Event < ActiveRecord::Base
     ActionView::Base.full_sanitizer.sanitize(description).truncate(155)
   end
 
+  def collapsed_description
+    description_str.truncate(50)
+  end
+
   def event_date_str
     I18n.l(event_date, format: :simpledate) if event_date.is_a?(Date)
   end

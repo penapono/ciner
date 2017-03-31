@@ -20,4 +20,9 @@
     .col-xs-4
       = f.input :end_time, as: :string, input_html: { class: 'timepicker', placeholder: t('select_hour'), value: f.object.end_time_str }
 
+  .row
+    - if admin
+      .col-xs-4
+        = checkbox_item(f, :featured)
+
   = render 'shared/form_actions', f: f

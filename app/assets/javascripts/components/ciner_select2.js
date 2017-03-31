@@ -6,7 +6,7 @@ $(function() {
 
   $('select').select2({
     theme: "bootstrap",
-    minimumResultsForSearch: 30
+    minimumResultsForSearch: 50
   });
 
 
@@ -16,7 +16,7 @@ $(function() {
     return {
       language: 'pt-BR',
       allowClear: false,
-      minimumInputLength: 2,
+      minimumInputLength: 3,
       closeOnSelect: true,
       ajax: _defaultAjaxParams()
     }
@@ -25,7 +25,7 @@ $(function() {
   function _defaultAjaxParams() {
     return {
       dataType: 'json',
-      delay: 250,
+      delay: 150,
       data: function (search) {
         return {
           search: search

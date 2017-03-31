@@ -1,10 +1,5 @@
-.post-item
-  %h4
-    = event.title
-  %p
-    = event.description_str
-  = link_to url_for([role, event]) do
-    .btn.btn-saiba-mais
-      = t('see_more')
-  %span.pull-right
-    = event.event_date_str
+.post-item{ class: (event.featured? ? 'featured' : '') }
+  .content
+    = link_to [role, event] do
+      %h4
+        = "#{event.event_date_str} - #{event.title}"
