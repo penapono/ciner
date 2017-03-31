@@ -2,17 +2,18 @@
 - cover = filmable.cover
 - cover ||= "http://placehold.it/400x500"
 
-.review-item
-  .col-xs-12.col-sm-5.thumb
-    %figure
-      %img.img-responsive{ src: cover }
-  .col-xs-12.col-sm-7.resume
-    %h4.title
-      = filmable.title_str
-    %span.original-title
-      = filmable.original_title
-    %p
-      = critic.collapsed_content
-    = link_to url_for([role, critic]) do
-      .btn.btn-saiba-mais
-        = t('more')
+.row
+  .review-item.col-xs-12.col-sm-12
+    .movie-poster-item{ style: 'width: 30%; height: 195px; float: left; margin-right: 10px;' }
+      .thumb
+        %img.img-responsive{ src: cover, style: 'width: 130px; height: 195px;' }
+    .critic-content{ style: 'display:inline; float: left; width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+      %h4.title
+        = filmable.title_str
+      %span.original-title
+        = filmable.original_title
+      %p{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+        = critic.collapsed_content
+      = link_to url_for([role, critic]) do
+        .btn.btn-saiba-mais
+          = t('more')

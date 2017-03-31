@@ -2,7 +2,7 @@
 class HomeController < ApplicationController
   # Exposes
   expose(:events) { Event.all_next.first(4) }
-  expose(:critics) { Critic.only_two }
+  expose(:critics) { Critic.all }
   expose(:questions) { Question.top_questions }
   expose(:broadcasts) { Broadcast.top_broadcasts.last(7) }
 
