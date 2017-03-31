@@ -13,6 +13,10 @@ module Admin
     # exposes
     expose(:questions) { Question.ordered_by_status }
     expose(:question, attributes: :question_attributes)
+    expose(:movies) { Movie.first(20) }
+    expose(:series) { Serie.first(20) }
+    expose(:professionals) { Serie.first(20) }
+    expose(:users) { User.all }
 
     def index
       self.questions = paginated_questions

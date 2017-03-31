@@ -7,16 +7,10 @@
   = simple_form_for :filter, url: path, method: :get, data: { filter_form: '' } do |f|
     = hidden_field_tag :search, params[:search]
     .row
-      / .col-xs-4
-      /   = f.input :questionable_type, collection: FilmProfitable.localized_questionable_types, label: false, include_blank: t('shared.questions.toolbar.filters.questionable_type'), input_html: { data: { dynamic_input: '' } }, selected: questionable_type
-      / .col-xs-4
-      /   = render 'shared/questions/questionable_filter', f: f, params: params, questionable_type: questionable_type
-      / .col-xs-2
-      /   = f.input :year, collection: FilmProfitable.localized_years, label: false, include_blank: t('shared.questions.toolbar.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
       .col-xs-2
         = f.input :status, collection: Question.localized_statuses, label: false, include_blank: t('shared.questions.toolbar.filters.status'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:status, '')
     .row
       .col-xs-4
         = f.input :origin, collection: Question.localized_origins, label: false, include_blank: t('shared.questions.toolbar.filters.origin'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:origin, '')
       .col-xs-8
-        = f.input :user_id, collection: users, label: false, include_blank: t("shared.questions.toolbar.filters.user_id"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:user_id, '')
+        = f.input :user_id, collection: [], label: false, include_blank: t("shared.questions.toolbar.filters.user_id"), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:user_id, '')
