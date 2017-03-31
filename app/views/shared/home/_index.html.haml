@@ -23,7 +23,7 @@
     .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
       %figure
         %img.img-responsive{ src: "http://placehold.it/360x300", style: 'height: 280px; width: 360px;' }
-    .col-xs-12.col-md-8
+    .col-xs-12.col-md-8{ style: 'margin-top: 15px;' }
       .title-separator.ciner-videos
         .media
           .media-left.media-middle
@@ -36,13 +36,22 @@
       / CINER MOVIES
       .ciner-movie.col-xs-12.col-sm-6.col-md-4
         .thumb
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "220px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "200px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+        .title.text-center{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+          = link_to "Batman vs Superman: Dawn of Justice", "#"
+
       .ciner-movie.col-xs-12.col-sm-6.col-md-4
         .thumb
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "100%", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 220px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "195px", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 200px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+        .title.text-center{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+          = link_to "Avengers: Age of Ultron", "#"
+
       .ciner-movie.col-xs-12.col-sm-6.col-md-4
         .thumb
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "100%", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/137892682?color=ffffff&byline=0&portrait=0", :style => "min-height: 220px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "100px", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/137892682?color=ffffff&byline=0&portrait=0", :style => "min-height: 200px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+        .title.text-center{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+          = link_to "Ciner Movie", "#"
+
   / SECTION 03 CONTENT
   .row
     = render 'shared/home/critics/index', role: role
