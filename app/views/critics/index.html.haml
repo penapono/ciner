@@ -17,8 +17,9 @@
 
   = render 'shared/critics/toolbar', path: critics_path
 
-  = render 'shared/critics/highlight_critic', critic: highlight, path: critic_path(highlight)
+  - unless critics.blank?
+    = render 'shared/critics/highlight_critic', critic: highlight, path: critic_path(highlight)
 
-  .row
-    - critics.each do |critic|
-      = render 'shared/critics/critic', critic: critic, path: critic_path(critic)
+    .row
+      - critics.each do |critic|
+        = render 'shared/critics/critic', critic: critic, path: critic_path(critic)

@@ -1,7 +1,7 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
 
-/ = render 'shared/breadcrumbs'
+= render 'shared/breadcrumbs'
 
 .container.content
   .row
@@ -17,7 +17,7 @@
 
   = render 'shared/critics/toolbar', path: platform_critics_path
 
-  - if critics.any?
+  - unless critics.blank?
     = render 'shared/critics/highlight_critic', critic: highlight, path: platform_critic_path(highlight)
 
     .row

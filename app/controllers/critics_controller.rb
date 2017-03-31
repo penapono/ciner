@@ -11,6 +11,7 @@ class CriticsController < ApplicationController
   PER_PAGE = 10
 
   def index
+    return if critics.blank?
     self.critics = paginated_critics
   end
 

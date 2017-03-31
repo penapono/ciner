@@ -22,6 +22,7 @@ module FilmProfitable
     end
 
     def rated_pt
+      return omdb_rated if !omdb_rated.blank? && omdb_rated == "Livre"
       return omdb_rated + " anos" unless omdb_rated.blank?
       " - "
     end

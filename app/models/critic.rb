@@ -44,7 +44,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.second_critic
-    return unless first_critic
+    return if first_critic.blank?
     where.not(id: first_critic.id).order(likes_count: :desc).first
   end
 
@@ -53,6 +53,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.all_but(denied_critics)
+    return if denied_critics.blank? || denied_critics.first.blank?
     where.not(id: denied_critics.pluck(:id))
   end
 
