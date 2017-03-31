@@ -1,11 +1,5 @@
-.post-item
-  %h4
-    = broadcast.title
-  %p
-    = broadcast.content_str.truncate(30)
-  = link_to [role, broadcast] do
-    .btn.btn-saiba-mais
-      = t('more')
-
-  %span.pull-right
-    = broadcast.created_at_str
+.post-item{ class: (broadcast.featured? ? 'featured' : '') }
+  .content
+    = link_to [role, broadcast] do
+      %h4
+        = broadcast.collapsed_title

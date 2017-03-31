@@ -51,7 +51,7 @@ class Broadcast < ActiveRecord::Base
     two_last_created = last_created.all_but(broadcasts).first(2)
     two_last_created.each { |q| broadcasts << q }
 
-    broadcasts
+    broadcasts.first(10)
   end
 
   # Methods
@@ -63,6 +63,18 @@ class Broadcast < ActiveRecord::Base
 
   def created_at_str
     I18n.l(created_at, format: :long) if created_at.is_a?(Time)
+  end
+
+  def content_str
+    ActionView::Base.full_sanitizer.sanitize(content).truncate(155)
+  end
+
+  def collapsed_content
+    content_str.truncate(50)
+  end
+
+  def collapsed_title
+    title.truncate(140)
   end
 
   # Filter

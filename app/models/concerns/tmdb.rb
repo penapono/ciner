@@ -62,7 +62,7 @@ module Tmdb
     def api_transform
       object = self
 
-      return if object.user # && !Rails.env.development?
+      return if object.user && !Rails.env.development?
 
       tmdb_result = start_tmdb(object)
 

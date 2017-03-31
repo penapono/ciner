@@ -40,7 +40,7 @@
   .ciner-poster, .ciner-featured, .ciner-news,
   .ciner-review, .ciner-social,
   .ciner-discussion, .ciner-search {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .title-separator .big-item .title-section {
@@ -81,18 +81,26 @@
   }
 
   .post-item {
-    border-bottom: 1px solid #CCCCCC;
-    padding-bottom: 15px;
-  }
+    padding: 10px;
 
-  .post-item h4 {
-    font-size: 16px;
-    line-height: 16px;
-  }
+    .content {
+      h4 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-wrap: break-word;
+        height: 30px;
+        font-size: 15px;
+        line-height: 16px;
+        font-size: 13px;
+        line-height: 15px;
+      }
+    }
 
-  .post-item p {
-    font-size: 13px;
-    line-height: 15px;
+    &.featured {
+      background-color: rgba(243, 110, 36, 0.4);
+    }
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   .btn-saiba-mais {
@@ -200,7 +208,7 @@
   display: inline-block;
 }
 
-.discussion-item .last-comment .last-user span.vermelho {
+.discussion-item .last-comment span.vermelho {
   color: #a61e57;
   display: block;
 }
@@ -243,3 +251,98 @@
 
 /*extra*/
 
+div.welcome {
+  font-weight: bold;
+  color: white;
+  font-size: 14pt;
+  margin-top: 20px;
+}
+
+div.logout a {
+    color: white;
+}
+
+div.logout a:hover {
+  color: whitesmoke;
+};
+
+.icon-social-topo {
+  width: 25px;
+  height: 20px;
+  vertical-align: middle;
+  fill: #FFFFFF;
+}
+
+.icon-popular {
+  width: 27px;
+  height: 31px;
+  vertical-align: middle;
+}
+
+.icon-tags {
+  width: 18px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.icon-title {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.icon-comentario {
+  width: 17px;
+  height: 15px;
+  vertical-align: middle;
+  fill: #524c4c !important;
+}
+
+.icon-social {
+  width: 27px;
+  height: 25px;
+  vertical-align: middle;
+  fill: #524c4c !important;
+}
+
+.icon-estatisticas {
+  width: 20px;
+  height: 18px;
+  vertical-align: bottom;
+}
+
+.icon-debate {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+.icon-botao {
+  width: 19px;
+  height: 19px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+  color: #FFFFFF !important;
+  background-color: #a1275c !important;
+  border-color: #a1275c !important;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  color: #524b4b !important;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+  color: #E2347D !important;
+}

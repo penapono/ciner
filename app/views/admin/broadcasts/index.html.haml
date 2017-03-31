@@ -29,7 +29,7 @@
 
           %td
             = link_to admin_broadcast_path(broadcast) do
-              = broadcast.content.truncate(30)
+              = broadcast.collapsed_content
 
           %td
             = link_to admin_broadcast_path(broadcast) do

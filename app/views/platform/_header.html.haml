@@ -2,13 +2,14 @@
   / ACTIONBAR
   .actionbar
     .container
-      .row
-        .col-xs-12.col-sm-8.col-md-7
+      .row{ style: 'margin-bottom: 0px;' }
+        .col-xs-12.col-sm-10.col-md-10
           %span.hidden-xs>
           = link_to 'Anuncie aqui', '#'
-        .col-xs-12.col-sm-3.col-md-3
-          Entre em contato
-        .col-xs-12.col-sm-1.col-md-2.social
+          %span{ style: 'margin-right: 10px; margin-left: 10px' }
+            \|
+          = link_to 'Entre em contato', '#'
+        .col-xs-12.col-sm-2.col-md-2.social
           = link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#'
           = link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#'
   / BANNER
@@ -23,7 +24,7 @@
 
       / SECTION LOGIN
       / MENU
-      .row{:style => "margin: 40px 0;"}
+      .row{:style => "margin: 15px 0;"}
         %nav
           .navbar-header
             %button.navbar-toggle{"data-target" => "#mainmenu", "data-toggle" => "collapse", :type => "button"}
@@ -32,11 +33,9 @@
               %span.icon-bar
           #mainmenu.collapse.navbar-collapse
             %ul.menu
-              %li.col-xs-12.col-sm-2.active
-                = link_to "HOME", platform_root_path
-              %li.col-xs-12.col-sm-1
+              %li.col-xs-12.col-sm-2
                 = link_to "FILMES", platform_movies_path
-              %li.col-xs-12.col-sm-1
+              %li.col-xs-12.col-sm-2
                 = link_to "SÉRIES", platform_series_index_path
               %li.col-xs-12.col-sm-2
                 = link_to "CINER VÍDEOS", '#'

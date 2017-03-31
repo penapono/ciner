@@ -5,31 +5,34 @@
 .container.content
   / SECTION 01 CONTENT
   .row
-    / FIRST COLUMN
     .col-xs-12.col-md-8
-      = render 'shared/home/playing/index', role: role, playing_movies: playing_movies
+      .row
+        .col-xs-12
+          / FIRST COLUMN
+          = render 'shared/home/playing/index', role: role, playing_movies: playing_movies
 
-      = render 'shared/home/featured/index', role: role
-
-    / SECOND COLUMN
+      .row
+        .col-xs-12
+          = render 'shared/home/featured/index', role: role
     .col-xs-12.col-md-4
+      / SECOND COLUMN
       = render 'shared/home/broadcasts/index', role: role
 
   / SECTION 02 CONTENT
-  .row{:style => "margin-top: 30px;"}
-    .col-xs-12.col-md-4.advertise
+  .row
+    .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
       %figure
-        %img.img-responsive{:src => "http://placehold.it/360x300"}/
+        %img.img-responsive{ src: "http://placehold.it/360x300", style: 'height: 280px; width: 360px;' }
     .col-xs-12.col-md-8
       .title-separator.ciner-videos
         .media
           .media-left.media-middle
             %svg.icon-title
-              %use{"xlink:href" => "#video"}
+              %use{ "xlink:href": "#video" }
           .media-body.media-bottom
             .media-heading.title-section Ciner vídeos
           .media-body.text-right.media-middle
-            %a{:href => "#"} ver mais
+            %a{ href: "#" } ver mais
       / CINER MOVIES
       .ciner-movie.col-xs-12.col-sm-6.col-md-4
         .thumb

@@ -3,7 +3,7 @@
 
 / MOVIES THUMB
 .hidden-xs.visible-lg.visible-md{ class: showcase_class }
-  - playing_movies.each do |pm|
+  - playing_movies.first(5).each do |pm|
     = render 'shared/home/showcase/item', role: role, pm: pm
 
 / MOVIES THUMB

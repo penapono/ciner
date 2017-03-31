@@ -1,3 +1,20 @@
+.welcome {
+  margin-top: 45px;
+  font-size: 20px;
+  color: white;
+}
+
+.logout {
+  color: white;
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: #808080;
+  }
+}
+
 .actionbar {
   position: relative;
   z-index: 10;
@@ -10,6 +27,11 @@
   display: inline-block;
   margin-right: 10px;
   width: 18px;
+}
+
+.actionbar a,
+.actionbar a:hover {
+  color: white;
 }
 
 .icon {
@@ -38,7 +60,9 @@ span.register, span.register a { color: #FFFFFF; }
 
 .actionbar .container .row [class*='col-'] { padding: 12px 0; }
 
-.banner { background: asset-url('banner_home.jpg') no-repeat top center; }
+.banner {
+  background: asset-url('banner_home.jpg') no-repeat top center;
+}
 
 .banner-front{
   background-color: rgba(166, 30, 87,0.9);
@@ -97,12 +121,21 @@ ul.menu li:before {
   display: block;
   content: "";
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: #FFFFFF;
   margin-bottom: 10px;
 }
+
 ul.menu li a { color: #FFFFFF; }
 
 ul.menu li.active:before {
   background: #ee4573;
+}
+
+ul.menu li:hover:before {
+  background: #ee4573;
+}
+
+#mainmenu.collapse.navbar-collapse {
+  font-size: 13px;
 }

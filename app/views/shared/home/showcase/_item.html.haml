@@ -1,7 +1,6 @@
 - role = role
 
-.movie-poster-item.col-xs-12.col-sm-4.col-md-4.col-lg-2
-  .thumb
-    = link_to url_for([role, pm]) do
-      %span.rollover
+= link_to url_for([role, pm]) do
+  .movie-poster-item{ style: 'width: 130px; float: left; margin-left: 10px; margin-right: 10px;'}
+    .thumb
       = image_tag(pm.cover.url, class: "img-responsive")
