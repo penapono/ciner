@@ -5,11 +5,11 @@
 .internal-section-detail-filmable
   .container.filmable
     .row
-      .col-xs-12.col-sm-12.col-md-5.col-lg-4
-        %img.img-responsive{ src: cover }
-      .col-xs-12.col-sm-12.col-md-7.col-lg-8
+      .col-xs-12.col-sm-12.col-md-3.col-lg-3
+        %img.img-responsive{ src: cover, style: 'height: 400px; width: 266px;' }
+      .col-xs-12.col-sm-12.col-md-9.col-lg-9
         .row
-          .col-xs-12.col-sm-6.col-md-6.col-lg-8
+          .col-xs-12.col-sm-8.col-md-8.col-lg-8
             Gênero
             %a.wine.bold
               = object.genre_pt
@@ -18,39 +18,55 @@
             = Movie.human_attribute_name(:age_range_id)
             %span.wine.bold
               = object.rated_pt
-            %br
+
+            \|
 
             Duração
             %span.wine.bold
               = object.length_str
-            %br
 
+            %br
             %br
 
             .title
               %h3.bold.wine
                 = object.title_str
               %h4.light.cinza
-                = object.original_title_str
-              %h5.light.wine
-                = object.year
+                = "#{object.original_title_str} (#{object.year})"
 
-              %br
+            %br
 
-              = object.synopsis
-              %br
+          .col-xs-12.col-sm-4.col-md-4.col-lg-4
+            .row
+              .col-xs-6
+                .nota
+                  = Movie.human_attribute_name(:users_rating)
+                  %span.valor
+                    = object.users_rating
+                  = t('votes', count: object.users_rating_count)
+
+              - if object.ciner_official_critic
+                .col-xs-6
+                  .nota.ciner-rating
+                    = Movie.human_attribute_name(:ciner_rating)
+                    %span.valor
+                      = object.ciner_official_critic.rating
+                    = object.ciner_official_critic.user_name
+        .row
+          .col-xs-12
+            .title
+              .synopsis{ style: "height: 60px; overflow: hidden; wrap-word: break-all " }
+                = object.synopsis
               %br
 
               = Movie.human_attribute_name(:directors_str)
               %a.bold.wine
                 = object.omdb_directors
               %br
-              %br
 
               Roteiro
               %a.bold.wine
                 = object.writers_pt
-              %br
               %br
 
               = Movie.human_attribute_name(:cast_str)
@@ -59,31 +75,18 @@
               %a.bold.preto{:href => "#ficha-tecnica"}
                 = t('more')
               %br
+
+              %br
+              País de Produção
+              %a.bold.wine
+                = "Rússia"
               %br
 
               Lançamento no Brasil
               %span.wine.bold
                 = object.brazilian_release_str
-              %br
 
-              %br
-              %br
-
-          - if object.ciner_official_critic
-            .col-xs-12.col-sm-3.col-md-3.col-lg-2
-              .nota.ciner-rating
-                = Movie.human_attribute_name(:ciner_rating)
-                %span.valor
-                  = object.ciner_official_critic.rating
-                = object.ciner_official_critic.user_name
-
-          .col-xs-12.col-sm-3.col-md-3.col-lg-2
-            .nota
-              = Movie.human_attribute_name(:users_rating)
-              %span.valor
-                = object.users_rating
-              = t('votes', count: object.users_rating_count)
-
+        .row
           .col-xs-12
             .row
               .tags
