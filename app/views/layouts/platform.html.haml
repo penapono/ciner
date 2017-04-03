@@ -18,8 +18,12 @@
     %meta{'name' => 'robots', 'content' => 'noindex, nofollow' }
   %body
     = render 'platform/header'
-    .container
+
+    - if (%w(platform/movies platform/series).include? controller_path) && (%w(show).include? action_name)
       = yield
+    - else
+      .container
+        = yield
 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = yield(:javascript)
