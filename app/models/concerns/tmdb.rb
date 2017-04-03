@@ -88,7 +88,11 @@ module Tmdb
 
       tmdb_object = load_tmdb_object(tmdb_id)
 
-      object.cover = load_poster(tmdb_object)
+      object.cover = begin
+                      load_poster(tmdb_object)
+                     rescue
+                      ""
+                     end
 
       if is_serie?(object)
         object.number_of_seasons = tmdb_object["number_of_seasons"]
