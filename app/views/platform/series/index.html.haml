@@ -3,41 +3,32 @@
 
 = render 'shared/breadcrumbs'
 
-= render 'shared/index_title', title: Serie.model_name.human(count: 2), path: new_platform_series_path
+= render 'shared/index_title', title: Serie.model_name.human(count: 2)
 
-= render 'toolbar'
+= render 'admin/series/toolbar'
 
 %table
   %thead
     %tr
       %th
-        = Serie.human_attribute_name(:original_title)
-      %th
         = Serie.human_attribute_name(:title)
       %th
+        = Serie.human_attribute_name(:original_title)
+      %th
         = Serie.human_attribute_name(:year)
-
-      / Actions
-      %th{ colspan: 2 }
 
   %tbody
     - series.each do |serie|
       %tr
         %td
-          = link_to platform_serie_path(serie) do
+          = link_to platform_series_path(serie) do
+            = serie.title
+
+        %td
+          = link_to platform_series_path(serie) do
             = serie.original_title
 
         %td
-          = serie.title
-
-        %td
-          = serie.year
-
-        %td
-          = link_to edit_platform_serie_path(serie) do
-            %i.fa.fa-pencil
-        %td
-          = link_to platform_serie_path(serie), method: 'delete' do
-            %i.fa.fa-trash
+          = serie.start_year
 
 = render 'shared/pagination', resources: series
