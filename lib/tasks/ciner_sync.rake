@@ -9,7 +9,7 @@ namespace :ciner_sync do
       sleep 1
     end
 
-    Serie.where(lock_updates: false).order(year: :desc).first(25).each do |serie|
+    Serie.where(lock_updates: false).order(start_year: :desc).first(25).each do |serie|
       serie.api_transform
       sleep 1
     end
