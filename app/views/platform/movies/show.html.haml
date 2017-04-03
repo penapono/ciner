@@ -1,6 +1,7 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
 
-= render 'shared/breadcrumbs'
+.container
+  = render 'shared/breadcrumbs'
 
 = render 'shared/movies/show', movie: movie, current_critics_path: platform_critics_path, current_new_critic_path: new_platform_critic_path
