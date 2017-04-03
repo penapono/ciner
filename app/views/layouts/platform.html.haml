@@ -19,7 +19,7 @@
   %body
     = render 'platform/header'
 
-    - if (%w(platform/movies platform/series).include? controller_path) && (%w(show).include? action_name)
+    - if extended_container?
       = yield
     - else
       .container

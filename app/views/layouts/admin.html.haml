@@ -19,7 +19,7 @@
   %body
     = render 'admin/header'
 
-    - if (%w(admin/movies admin/series).include? controller_path) && (%w(show).include? action_name)
+    - if extended_container?
       = yield
     - else
       .container

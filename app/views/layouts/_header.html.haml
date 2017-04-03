@@ -36,17 +36,17 @@
               %span.icon-bar
           #mainmenu.collapse.navbar-collapse
             %ul.menu
-              %li.col-xs-12.col-sm-2.active
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("movies") }
                 = link_to "FILMES",   movies_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("series") }
                 = link_to "SÉRIES",   series_index_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("ciner_videos") }
                 = link_to "CINER VÍDEOS",   cinervideos_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("critics") }
                 = link_to "CRÍTICAS",   critics_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("broadcasts") }
                 = link_to "NOTÍCIAS",   news_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("questions") }
                 = link_to "DEBATE CINER", questions_path
       / MENU
     .search-field{ :style => "margin-top: 5px;" }

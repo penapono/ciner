@@ -33,17 +33,17 @@
               %span.icon-bar
           #mainmenu.collapse.navbar-collapse
             %ul.menu
-              %li.col-xs-12.col-sm-2
-                = link_to "FILMES", platform_movies_path
-              %li.col-xs-12.col-sm-2
-                = link_to "SÉRIES", platform_series_index_path
-              %li.col-xs-12.col-sm-2
-                = link_to "CINER VÍDEOS", '#'
-              %li.col-xs-12.col-sm-2
-                = link_to "CRÍTICAS", platform_critics_path
-              %li.col-xs-12.col-sm-2
-                = link_to "NOTÍCIAS", platform_broadcasts_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("movies") }
+                = link_to "FILMES",   platform_movies_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("series") }
+                = link_to "SÉRIES",   platform_series_index_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("ciner_videos") }
+                = link_to "CINER VÍDEOS",   cinervideos_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("critics") }
+                = link_to "CRÍTICAS",   platform_critics_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("broadcasts") }
+                = link_to "NOTÍCIAS",   platform_broadcasts_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("questions") }
                 = link_to "DEBATE CINER", platform_questions_path
       / MENU
     .search-field

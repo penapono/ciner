@@ -32,18 +32,19 @@
               %span.icon-bar
           #mainmenu.collapse.navbar-collapse
             %ul.menu
-              %li.col-xs-12.col-sm-2
-                = link_to "FILMES", admin_movies_path
-              %li.col-xs-12.col-sm-2
-                = link_to "SÉRIES", admin_series_index_path
-              %li.col-xs-12.col-sm-2
-                = link_to "CINER VÍDEOS", '#'
-              %li.col-xs-12.col-sm-2
-                = link_to "CRÍTICAS", admin_critics_path
-              %li.col-xs-12.col-sm-2
-                = link_to "NOTÍCIAS", admin_broadcasts_path
-              %li.col-xs-12.col-sm-2
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("movies") }
+                = link_to "FILMES",   admin_movies_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("series") }
+                = link_to "SÉRIES",   admin_series_index_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("ciner_videos") }
+                = link_to "CINER VÍDEOS",   cinervideos_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("critics") }
+                = link_to "CRÍTICAS",   admin_critics_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("broadcasts") }
+                = link_to "NOTÍCIAS",   admin_broadcasts_path
+              %li.col-xs-12.col-sm-2{ class: active_menu_class("questions") }
                 = link_to "DEBATE CINER", admin_questions_path
+
       / MENU
     .search-field
       .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8
