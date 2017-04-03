@@ -20,5 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.minute do
-  rake 'ciner_sync:update'
+  rake 'movie_sync:update'
+  rake 'serie_sync:update'
 end
