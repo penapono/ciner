@@ -62,7 +62,7 @@ module Tmdb
     def api_transform
       object = self
 
-      return if object.lock_updates? # && !Rails.env.development?
+      return if object.lock_updates?
 
       tmdb_result = start_tmdb(object)
 
@@ -247,9 +247,9 @@ module Tmdb
 
       crew = tmdb_response["crew"]
 
-      load_actors(object, cast)
+      load_actors(object, cast) if cast
 
-      load_crew(object, crew)
+      load_crew(object, crew) if crew
       # rescue
     end
 
@@ -424,10 +424,10 @@ module Tmdb
     end
 
     def load_crew(object, crew)
+      return unless crew
+
       set_function_director = SetFunction.find_by(name: "Direção")
       set_function_writer = SetFunction.find_by(name: "Roteiro")
-
-      return unless crew
 
       crew.each do |person|
         job = person["job"]
@@ -475,9 +475,9 @@ module Tmdb
     end
 
     def load_actors(object, cast)
-      set_function = SetFunction.find_by(name: "Elenco")
-
       return unless cast
+
+      set_function = SetFunction.find_by(name: "Elenco")
 
       cast.each do |actor|
         character = actor["character"]
