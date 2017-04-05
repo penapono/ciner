@@ -1,3 +1,6 @@
+- content_for :javascript, javascript_include_tag('components/ciner_slider')
+- content_for :stylesheet, stylesheet_link_tag('components/ciner_slider')
+
 - role = role
 
 / SECTION POSTER
@@ -13,6 +16,6 @@
         %a{:href => "#"}
           = t('see_more')
 
-  = render 'shared/home/carousel/carousel', role: role, carousel_id: 'carousel-filmes-cartaz', playing_movies: playing_movies
+  = render 'shared/home/carousel/carousel', role: role, carousel_id: 'carousel-filmes-cartaz', slider_movies: playing_movies
 
-  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', playing_movies: playing_movies
+  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: playing_movies

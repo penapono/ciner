@@ -11,6 +11,6 @@
         %a{:href => "#"}
           = t('see_more')
 
-  = render 'shared/home/carousel/carousel', carousel_id: 'carousel-featured'
+  = render 'shared/home/carousel/carousel', role: role, carousel_id: 'carousel-featured', slider_movies: featured_movies
 
-  = render 'shared/home/showcase/showcase', showcase_class: 'showcase-featured'
+  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-featured', slider_movies: featured_movies

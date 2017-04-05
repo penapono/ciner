@@ -8,5 +8,6 @@ module Platform
     expose(:broadcasts) { Broadcast.top_broadcasts.last(7) }
 
     expose(:playing_movies) { Movie.current_playing }
+    expose(:featured_movies) { Movie.current_playing }
   end
 end

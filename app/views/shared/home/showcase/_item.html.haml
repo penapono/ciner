@@ -1,6 +1,6 @@
 - role = role
 
-= link_to url_for([role, pm]) do
-  .movie-poster-item{ style: 'width: 130px; height: 195px; float: left; margin-left: 10px; margin-right: 10px;'}
+.slide.movie-poster-item{ style: "width: 130px; height: 195px; float: left; margin-left: 10px; margin-right: 10px;" }
+  = link_to url_for([role, pm]) do
     .thumb
       = image_tag(pm.cover.url, class: "img-responsive", style: 'width: 130px; height: 195px;')
