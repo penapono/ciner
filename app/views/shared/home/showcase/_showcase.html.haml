@@ -7,7 +7,7 @@
     .btn.prev
     .btn.next
     .slider-container
-      - slider_movies.first(5).each do |pm|
+      - slider_movies.each do |pm|
         = render 'shared/home/showcase/item', role: role, pm: pm
 
 / MOVIES THUMB
