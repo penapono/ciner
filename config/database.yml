@@ -15,5 +15,10 @@ development:
   database: ciner_development
 
 production:
-  <<: *default
-  database: ciner_production
+  host: 45.55.81.37
+  adapter: mysql2
+  encoding: utf8
+  database: ciner
+  username: root
+  password: 3chzSMys
+  timeout: 5000

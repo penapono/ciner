@@ -45,8 +45,8 @@ function init(){
     //set sizes
     // sliderFrame.width(windowWidth);
     sliderFrame.width("100%");
-    sliderFrame.height(videoHeight * scaling);
-
+    // sliderFrame.height(videoHeight * scaling);
+    sliderFrame.height("195px");
 
     sliderFrame.css("top", (videoHeightDiff / 2));
 
@@ -55,7 +55,8 @@ function init(){
     sliderContainer.css("top", (videoHeightDiff / 2));
     sliderContainer.css("margin-left", (controlsWidth));
 
-    slide.height(videoHeight);
+    // slide.height(videoHeight);
+    slide.height("195px");
     // slide.width(videoWidth);
     slide.width("130px");
 
