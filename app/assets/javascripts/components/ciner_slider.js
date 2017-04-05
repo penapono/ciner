@@ -100,7 +100,7 @@ function controls(frameWidth, scollWidth){
             left: - scollWidth
         }, 300, function(){
             if(currentSliderCount >= sliderCount-1){
-                $(".slider-container").css("left", 0);
+                sliderContainer.css("left", 0);
                 currentSliderCount = 0;
                 scollWidth = 0;
             }else{
@@ -108,6 +108,7 @@ function controls(frameWidth, scollWidth){
             }
         });
     });
+
     prev.on("click", function(){
         scollWidth = scollWidth - frameWidth;
         var self = $(this),
