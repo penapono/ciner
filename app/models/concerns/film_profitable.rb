@@ -54,6 +54,7 @@ module FilmProfitable
                   .gsub("(books)", "(livros)")
                   .gsub("(scenario)", "(enredo)")
                   .gsub("(scenario consultant)", "(consultor de enredo)")
+                  .gsub("(based on characters created by)", "(criador dos personagens)")
     end
 
     def title_str
