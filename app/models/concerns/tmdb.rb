@@ -82,6 +82,7 @@ module Tmdb
                                 else
                                   tmdb_result["original_title"]
                                 end
+
       end
 
       tmdb_id = object.tmdb_id
@@ -140,6 +141,21 @@ module Tmdb
           object.omdb_actors = response["Actors"]
 
           object.omdb_genre = response["Genre"]
+
+          countries = tmdb_object["production_countries"]
+
+          countries_str = []
+
+          unless countries.blank?
+            countries.each do |country|
+              country_name = country["name"]
+              countries_str << country_name
+            end
+          end
+
+          countries_str = countries_str.join(", ")
+
+          object.countries = countries_str
 
           if is_serie?(object)
             object.start_year = response["Year"]
