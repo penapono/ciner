@@ -50,6 +50,10 @@ module FilmProfitable
                   .gsub("(adaptation)", "(adaptação)")
                   .gsub("(based upon his play)", "(peça)")
                   .gsub("(written for the screen by)", "(adaptação)")
+                  .gsub("(based on the manga by)", "(criador do mangá)")
+                  .gsub("(books)", "(livros)")
+                  .gsub("(scenario)", "(enredo)")
+                  .gsub("(scenario consultant)", "(consultor de enredo)")
     end
 
     def title_str
