@@ -42,6 +42,8 @@ pt-BR:
         playing: Em cartaz
 
         lock_updates: Bloquear atualização automática
+
+        countries: País(es) de Origem
     errors:
       models:
         serie:
