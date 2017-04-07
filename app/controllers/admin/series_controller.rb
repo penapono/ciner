@@ -75,7 +75,8 @@ module Admin
         :number_of_seasons,
         :playing,
         :user_id,
-        :lock_updates
+        :lock_updates,
+        :countries
       )
     end
 

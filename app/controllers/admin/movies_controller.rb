@@ -71,7 +71,8 @@ module Admin
         :tmdb_id,
         :playing,
         :user_id,
-        :lock_updates
+        :lock_updates,
+        :countries
       )
     end
 
