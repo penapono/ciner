@@ -7,13 +7,10 @@ module Searchables
     SEARCH_EXPRESSION = '
       series.original_title LIKE :search OR
       series.title LIKE :search OR
-      cities.name LIKE :search OR
-      states.name LIKE :search OR
-      countries.name LIKE :search
+      series.countries LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = [
-      :city, :state, :country
     ].freeze
 
     class_methods do

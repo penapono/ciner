@@ -7,13 +7,10 @@ module Searchables
     SEARCH_EXPRESSION = '
       movies.original_title LIKE :search OR
       movies.title LIKE :search OR
-      cities.name LIKE :search OR
-      states.name LIKE :search OR
-      countries.name LIKE :search
+      movies.countries LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = [
-      :city, :state, :country
     ].freeze
 
     class_methods do

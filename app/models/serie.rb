@@ -5,9 +5,6 @@ class Serie < ActiveRecord::Base
   include Tmdb
 
   # Associations
-  belongs_to :city
-  belongs_to :state
-  belongs_to :country
   belongs_to :age_range
   belongs_to :user
 
