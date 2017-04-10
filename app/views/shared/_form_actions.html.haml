@@ -2,4 +2,6 @@
   .col-xs-12.col-sm-3.pull-right
     = f.button :submit, t('confirm')
   .col-xs-12.col-sm-3.pull-right
-    = submit_tag t('cancel'), class: 'btn'
+    = link_to :back do
+      .btn.submit{ input: { type: 'submit' } }
+        = t('cancel')

@@ -3,6 +3,7 @@ $(function() {
 
   // Initialize datepickers
   $('input.datepicker').datepicker();
+  $('input.datepicker').mask('99/99/9999');
 
   // When add a field, datepicker is initialized
   $('form').on('cocoon:after-insert', function(e, insertedItem) {
