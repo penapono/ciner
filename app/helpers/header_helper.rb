@@ -3,6 +3,8 @@ module HeaderHelper
   def active_menu_class(controller)
     pages = [controller.to_s, "admin/#{controller}", "platform/#{controller}"]
 
-    pages.include? controller_path ? "active" : ""
+    klass = (pages.include? controller_path) ? "active" : ""
+
+    klass
   end
 end
