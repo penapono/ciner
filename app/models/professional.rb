@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Professional < ActiveRecord::Base
   include Searchables::Professional
 

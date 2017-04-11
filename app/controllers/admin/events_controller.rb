@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 module Admin
   class EventsController < AdminController
     include Admin::EventsBreadcrumb
 
     PER_PAGE = 10
 
-    PERMITTED_PARAMS = [
-      :title, :description, :event_date, :start_time, :end_time, :featured
+    PERMITTED_PARAMS = %i[
+      title description event_date start_time end_time featured
     ].freeze
 
     # exposes

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Searchables::Serie do
@@ -16,7 +17,7 @@ describe Searchables::Serie do
     '
   end
 
-  let(:expected_search_associations) { [:city, :state, :country] }
+  let(:expected_search_associations) { %i[city state country] }
 
   describe 'search methods' do
     describe '#search_associations' do

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Módulo para organizar e testar os breadcrumbs dos controllers
 # Cada controller deve implementar seu breadcrumb por action em app/breadcrumbs.

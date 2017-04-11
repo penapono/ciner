@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Admin
   class MoviesController < AdminController
     include Admin::MoviesBreadcrumb

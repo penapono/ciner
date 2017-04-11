@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::EventsController, type: :controller do
@@ -8,8 +9,8 @@ RSpec.describe Admin::EventsController, type: :controller do
   let!(:event)    { events.first }
 
   let(:permitted_params) do
-    [
-      :title, :description, :event_date, :start_time, :end_time
+    %i[
+      title description event_date start_time end_time
     ]
   end
 

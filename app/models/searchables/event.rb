@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Searchables
   module Event
     extend ActiveSupport::Concern

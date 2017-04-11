@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Módulo usado por todos os models que fazem parte da busca geral.
 #

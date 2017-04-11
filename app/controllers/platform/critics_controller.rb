@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Platform
   class CriticsController < PlatformController
     include Platform::CriticsBreadcrumb

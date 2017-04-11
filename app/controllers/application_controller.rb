@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include ::BaseController
 
@@ -11,11 +12,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
       :sign_up,
-      keys: [
-        :name, :gender, :nickname, :birthday, :email, :cep, :address,
-        :number, :neighbourhood, :city_id, :state_id, :country_id,
-        :cpf, :phone, :password, :password_confirmation, :role, :avatar,
-        :biography, :mobile, :complement, :registered_at, :terms_of_use, :age
+      keys: %i[
+        name gender nickname birthday email cep address
+        number neighbourhood city_id state_id country_id
+        cpf phone password password_confirmation role avatar
+        biography mobile complement registered_at terms_of_use age
       ]
     )
   end

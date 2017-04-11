@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AgeRange < ActiveRecord::Base
   include Searchables::AgeRange
 

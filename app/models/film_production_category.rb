@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class FilmProductionCategory < ActiveRecord::Base
   include Searchables::FilmProductionCategory
 

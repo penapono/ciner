@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SerieSeason < ActiveRecord::Base
   # Associations
   belongs_to :serie

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module FilmProfitable
   extend ActiveSupport::Concern
 
@@ -83,7 +84,7 @@ module FilmProfitable
     end
 
     def genders_str
-      %w(Ação Aventura).to_sentence
+      %w[Ação Aventura].to_sentence
     end
 
     def first_actors_str

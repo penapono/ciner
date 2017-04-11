@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # customize registration controller
 class RegistrationsController < Devise::RegistrationsController
   layout 'application'

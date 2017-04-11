@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # XXX this must stay in the beginning of the file!
 # coverage report generated only with COVERAGE env variable set
 if ENV['COVERAGE']

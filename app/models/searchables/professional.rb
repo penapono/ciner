@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Searchables
   module Professional
     extend ActiveSupport::Concern
@@ -19,8 +20,8 @@ module Searchables
       countries.name LIKE :search
     '
 
-    SEARCH_ASSOCIATIONS = [
-      :city, :state, :country
+    SEARCH_ASSOCIATIONS = %i[
+      city state country
     ].freeze
 
     class_methods do

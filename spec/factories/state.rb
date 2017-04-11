@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :state do
     sequence(:acronym) { |n| "State Acronym #{n}" }

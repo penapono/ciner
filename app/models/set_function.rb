@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SetFunction < ActiveRecord::Base
   include Searchables::SetFunction
 

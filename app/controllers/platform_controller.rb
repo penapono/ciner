@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class PlatformController < ApplicationController
   before_filter :check_admin
 

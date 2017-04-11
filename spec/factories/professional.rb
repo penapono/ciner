@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :professional do
     sequence(:name) { |n| "Professional Name #{n}" }

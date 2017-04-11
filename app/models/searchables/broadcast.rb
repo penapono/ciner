@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Searchables
   module Broadcast
     extend ActiveSupport::Concern

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Api::V1::CountrysController < ApplicationController
   include Api::V1::BaseController
 

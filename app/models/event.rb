@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Event < ActiveRecord::Base
   include Searchables::Event
   include Reactionable

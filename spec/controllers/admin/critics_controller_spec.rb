@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::CriticsController, type: :controller do
@@ -7,10 +8,10 @@ RSpec.describe Admin::CriticsController, type: :controller do
   let!(:critic)  { critics.first }
 
   let(:permitted_params) do
-    [
-      :content, :user_id, :filmable_id, :filmable_type,
-      :filmable, :rating, :status, :origin, :featured,
-      :spoiler, :quick
+    %i[
+      content user_id filmable_id filmable_type
+      filmable rating status origin featured
+      spoiler quick
     ]
   end
 

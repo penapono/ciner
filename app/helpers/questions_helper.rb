@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module QuestionsHelper
   def question_class(question)
     return 'filme' if questionable_type(question) == "Movie"

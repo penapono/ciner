@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Platform
   class StudiosController < PlatformController
     include Platform::StudiosBreadcrumb

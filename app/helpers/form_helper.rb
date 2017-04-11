@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module FormHelper
   def checkbox_item(f, field)
     class_name = object_class_name(f.object)

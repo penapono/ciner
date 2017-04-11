@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class BroadcastBroadcastable < ActiveRecord::Base
   # Associations
   belongs_to :broadcastable, polymorphic: true

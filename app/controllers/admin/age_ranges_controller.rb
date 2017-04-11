@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 module Admin
   class AgeRangesController < AdminController
     include Admin::AgeRangesBreadcrumb
 
     PER_PAGE = 10
 
-    PERMITTED_PARAMS = [
-      :name, :age
+    PERMITTED_PARAMS = %i[
+      name age
     ].freeze
 
     # exposes

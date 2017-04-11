@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::AgeRangesController, type: :controller do
@@ -8,8 +9,8 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
   let!(:age_range)  { age_ranges.first }
 
   let(:permitted_params) do
-    [
-      :name, :age
+    %i[
+      name age
     ]
   end
 

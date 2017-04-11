@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class City < ActiveRecord::Base
   # Associations
   belongs_to :state

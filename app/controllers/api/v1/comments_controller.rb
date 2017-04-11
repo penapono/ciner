@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 class Api::V1::CommentsController < ApplicationController
   include ::BaseController
 
   PER_PAGE = 10
 
-  PERMITTED_PARAMS = [
-    :user_id, :commentable_type, :commentable_id, :content, :status,
-    :origin, :spoiler, :featured, :commentable, :user
+  PERMITTED_PARAMS = %i[
+    user_id commentable_type commentable_id content status
+    origin spoiler featured commentable user
   ].freeze
 
   expose(:comment) { resource }

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Critic < ActiveRecord::Base
   include Searchables::Critic
   include Reactionable

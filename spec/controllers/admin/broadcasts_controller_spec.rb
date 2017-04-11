@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::BroadcastsController, type: :controller do
@@ -7,8 +8,8 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
   let!(:broadcast)  { broadcasts.first }
 
   let(:permitted_params) do
-    [
-      :title, :content, :user_id, :spoiler, :featured
+    %i[
+      title content user_id spoiler featured
     ]
   end
 

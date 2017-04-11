@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Platform
   class HomeController < PlatformController
     # Exposes
@@ -8,6 +9,6 @@ module Platform
     expose(:broadcasts) { Broadcast.top_broadcasts.last(7) }
 
     expose(:playing_movies) { Movie.current_playing }
-    expose(:featured_movies) { Movie.current_playing.first(5) }
+    expose(:featured_movies) { Movie.most_viewed.first(5) }
   end
 end

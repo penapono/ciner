@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Broadcast < ActiveRecord::Base
   include Searchables::Broadcast
   include Reactionable

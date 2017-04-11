@@ -1,13 +1,14 @@
 # frozen_string_literal: true
+
 module Admin
   class QuestionsController < AdminController
     include Admin::QuestionsBreadcrumb
 
     PER_PAGE = 10
 
-    PERMITTED_PARAMS = [
-      :title, :content, :user_id, :questionable_id, :questionable_type,
-      :questionable, :status, :origin, :ciner_question, :spoiler, :featured
+    PERMITTED_PARAMS = %i[
+      title content user_id questionable_id questionable_type
+      questionable status origin ciner_question spoiler featured
     ].freeze
 
     # exposes

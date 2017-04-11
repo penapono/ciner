@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Serie < ActiveRecord::Base
   include Searchables::Serie
   include FilmProfitable

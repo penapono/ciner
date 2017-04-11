@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
   default from: 'ciner@gmail.com'
 

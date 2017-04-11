@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 module Admin
   class CriticsController < AdminController
     include Admin::CriticsBreadcrumb
 
     # Params
-    PERMITTED_PARAMS = [
-      :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating,
-      :status, :origin, :featured, :spoiler, :quick
+    PERMITTED_PARAMS = %i[
+      content user_id filmable_id filmable_type filmable rating
+      status origin featured spoiler quick
     ].freeze
 
     # exposes

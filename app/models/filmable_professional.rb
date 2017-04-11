@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class FilmableProfessional < ActiveRecord::Base
   # Associations
   belongs_to :filmable, polymorphic: true

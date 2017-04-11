@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Admin
   class BroadcastsController < AdminController
     include Admin::BroadcastsBreadcrumb
@@ -7,7 +8,7 @@ module Admin
 
     PERMITTED_PARAMS = [
       :title, :content, :user_id, :spoiler, :featured,
-      broadcast_broadcastable: [:id, :broadcast_id, :broadcastable_type, :broadcastable_id, :_destroy]
+      broadcast_broadcastable: %i[id broadcast_id broadcastable_type broadcastable_id _destroy]
     ].freeze
 
     # exposes

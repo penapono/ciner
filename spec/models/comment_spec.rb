@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
@@ -81,7 +82,7 @@ RSpec.describe Comment, type: :model do
     end
 
     describe 'localized_detailed_statuses' do
-      let(:expected) { [["Aguardando Aprovação", "pending"], %w(Aprovado approved), %w(Reprovado reproved)] }
+      let(:expected) { [["Aguardando Aprovação", "pending"], %w[Aprovado approved], %w[Reprovado reproved]] }
 
       it { expect(Comment.localized_detailed_statuses).to eq(expected) }
     end

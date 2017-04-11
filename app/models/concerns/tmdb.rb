@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Tmdb
   extend ActiveSupport::Concern
 
@@ -448,7 +449,7 @@ module Tmdb
       crew.each do |person|
         job = person["job"]
 
-        if %w(Director Writer).include? job
+        if %w[Director Writer].include? job
 
           name = person["name"]
 

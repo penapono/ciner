@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :critic do
     sequence(:content) { |n| "Content #{n}" }
