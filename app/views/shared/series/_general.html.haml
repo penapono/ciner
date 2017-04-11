@@ -56,8 +56,10 @@
           .row
             .col-xs-12
               .title
-                .synopsis{ style: "height: 60px; overflow: hidden; wrap-word: break-all " }
+                .synopsis
                   = object.synopsis
+                  %a.bold.wine
+                    = t('more')
                 %br
 
                 = Movie.human_attribute_name(:directors_str)
