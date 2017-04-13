@@ -77,9 +77,9 @@
             .media-body.media-bottom
               .media-heading.title-section
                 = season.name
-                .media-body.text-right.media-middle
-                  %a{ data: { collapse_control: '' } }
-                    ver mais
+            .media-body.text-right.media-middle
+              %a{ data: { collapse_control: '' } }
+                ver mais
 
         - if season.serie_season_episodes.any?
           - episodes = season.serie_season_episodes

@@ -1,3 +1,6 @@
+- avatar = user.avatar
+- avatar ||= "http://placehold.it/155x170"
+
 .container
   .row
     .col-xs-12.col-sm-8.col-md-8
@@ -15,8 +18,8 @@
                 = link_to path do
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
         .user-profile
-          .col-xs-12.col-sm-3.user-avatar
-            %img.img-responsive{:src => user.avatar}
+          .col-xs-12.col-sm-3.user-avatar{ style: "width: 170px; height: 180px;" }
+            %img.img-responsive{:src => user.avatar, style: "width: 170px; height: 180px;" }
           .col-xs-12.col-sm-9.user-info
             Nome:
             %span.user-name
