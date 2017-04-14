@@ -1,6 +1,3 @@
-- content_for :javascript, javascript_include_tag('components/ciner_slider')
-- content_for :stylesheet, stylesheet_link_tag('components/ciner_slider')
-
 - if current_user
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil
@@ -9,12 +6,12 @@
   / SECTION 01 CONTENT
   .row{ style: 'margin-top: 20px' }
     .col-xs-12.col-md-8
-      .row
+      .row{ data: { slider: { playing: '' } } }
         .col-xs-12
           / FIRST COLUMN
           = render 'shared/home/playing/index', role: role, slider_movies: playing_movies
 
-      .row
+      .row{ data: { slider: { featured: '' } } }
         .col-xs-12
           = render 'shared/home/featured/index', role: role, slider_movies: featured_movies
     .col-xs-12.col-md-4
@@ -22,32 +19,33 @@
       = render 'shared/home/broadcasts/index', role: role
 
   / SECTION 02 CONTENT
-  .row{ style: 'margin-top: 20px' }
-    .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
-      %figure
-        %img.img-responsive{ src: "http://placehold.it/360x300", style: 'height: 280px; width: 360px;' }
-    .col-xs-12.col-md-8{ style: 'margin-top: 15px;' }
-      .title-separator.ciner-videos
-        .media
-          .media-left.media-middle
-            %svg.icon-title
-              %use{ "xlink:href": "#video" }
-          .media-body.media-bottom
-            .media-heading.title-section Ciner vídeos
-          .media-body.text-right.media-middle
-            %a{ href: "#" } ver mais
-      / CINER MOVIES
-      .ciner-movie.col-xs-12.col-sm-6.col-md-4
-        .thumb
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "200px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
-        .title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
-          = link_to "Batman vs Superman: Dawn of Justice", "#"
+  - if false
+    .row{ style: 'margin-top: 20px' }
+      .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
+        %figure
+          %img.img-responsive{ src: "http://placehold.it/360x300", style: 'height: 280px; width: 360px;' }
+      .col-xs-12.col-md-8{ style: 'margin-top: 15px;' }
+        .title-separator.ciner-videos
+          .media
+            .media-left.media-middle
+              %svg.icon-title
+                %use{ "xlink:href": "#video" }
+            .media-body.media-bottom
+              .media-heading.title-section Ciner vídeos
+            .media-body.text-right.media-middle
+              %a{ href: "#" } ver mais
+        / CINER MOVIES
+        .ciner-movie.col-xs-12.col-sm-6.col-md-4
+          .thumb
+            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "200px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+          .title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+            = link_to "Batman vs Superman: Dawn of Justice", "#"
 
-      .ciner-movie.col-xs-12.col-sm-6.col-md-4
-        .thumb
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "195px", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 200px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
-        .title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
-          = link_to "Avengers: Age of Ultron", "#"
+        .ciner-movie.col-xs-12.col-sm-6.col-md-4
+          .thumb
+            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "195px", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 200px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+          .title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+            = link_to "Avengers: Age of Ultron", "#"
 
       .ciner-movie.col-xs-12.col-sm-6.col-md-4
         .thumb
