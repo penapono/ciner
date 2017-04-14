@@ -17,17 +17,18 @@
     position: absolute;
     top: 0;
     z-index: 1000;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 175px;
     color: white;
     text-align: center;
     font-weight: lighter;
+    font-family: FontAwesome;
 
     &.prev {
       left: 0px;
 
       &::after {
-        content: '<';
+        content: '\f053';
       }
     }
 
@@ -35,7 +36,7 @@
       right: 0px;
 
       &::after {
-        content: '>';
+        content: '\f054';
       }
     }
 
