@@ -13,42 +13,42 @@
       .sitemap
         %ul
           %li
-            = link_to "Filmes",   root_path
+            = link_to "Filmes", url_for([role, :movies])
           %li
-            = link_to "Séries",   '#'
+            = link_to "Séries", url_for([role, :series_index])
           %li
-            = link_to "Ciner Vídeos",   '#'
+            = link_to "Ciner Vídeos", url_for([:cinervideos])
           %li
-            = link_to "Críticas",   '#'
+            = link_to "Críticas", url_for([role, :critics])
     .col-xs-12.col-md-2
       .sitemap
         %ul
           %li
-            = link_to "Notícias",   '#'
+            = link_to "Notícias", url_for([role, :broadcasts])
           %li
-            = link_to "Debate Ciner",   '#'
+            = link_to "Debate Ciner", url_for([role, :questions])
           %li
-            = link_to "Termos de Uso",   '#'
+            = link_to "Termos de Uso", '#'
           %li
-            = link_to "Privacidade",   '#'
+            = link_to "Privacidade", '#'
     .col-xs-12.col-md-2
       .sitemap
         %ul
           %li
-            = link_to "Missão",   '#'
+            = link_to "Missão", '#'
           %li
-            = link_to "Contato",   root_path
+            = link_to "Contato", '#'
           %li
-            = link_to "Anuncie Aqui",   '#'
+            = link_to "Anuncie Aqui", '#'
           %li
-            = link_to "Ser Ciner",   '#'
+            = link_to "Ser Ciner", '#'
     .col-xs-12.col-md-2
       .sitemap
         %ul
           %li
-            = link_to "FAQ",   '#'
+            = link_to "FAQ", '#'
           %li
-            = link_to "Adendo",   '#'
+            = link_to "Adendo", '#'
 
 .copyright
   .container

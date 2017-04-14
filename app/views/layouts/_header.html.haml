@@ -38,7 +38,11 @@
               = link_to "NOTÍCIAS", url_for([role, :broadcasts])
             %li.col-xs-2{ class: active_menu_class("questions") }
               = link_to "DEBATE CINER", url_for([role, :questions])
-        .col-xs-2
+        .col-xs-2.text-center
+          - if current_user
+            = render 'shared/user_menu', user: current_user
+          - else
+            = link_to "Entrar", new_user_session_path
 
   / BANNER
   .banner-front
