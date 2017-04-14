@@ -15,7 +15,12 @@
           = link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#'
     .container.collapse{ data: { container: { fixed: '' } } }
       .row{ style: 'margin-bottom: 0px;' }
-        .col-xs-12
+        .col-xs-2
+          = link_to root_path do
+            .logo
+              %figure
+                = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 30px; width: 90px; margin: auto; margin-bottom: 10px;')
+        .col-xs-8
           %ul.menu.row
             %li.col-sm-2{ class: active_menu_class("movies") }
               = link_to "FILMES",   movies_path
@@ -29,6 +34,7 @@
               = link_to "NOTÍCIAS",   broadcasts_path
             %li.col-sm-2{ class: active_menu_class("questions") }
               = link_to "DEBATE CINER", questions_path
+        .col-xs-2
 
   / BANNER
   .banner-front
