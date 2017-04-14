@@ -1,17 +1,35 @@
+- content_for :javascript, javascript_include_tag('components/header')
+
 .banner
   / ACTIONBAR
-  .actionbar
-    .container
+  .actionbar.nav-container
+    .container{ data: { container: { full: '' } } }
       .row{ style: 'margin-bottom: 0px;' }
         .col-xs-12.col-sm-10.col-md-10
           %span.hidden-xs>
           = link_to 'Anuncie aqui', '#'
-          %span{ style: 'margin-right: 10px; margin-left: 10px' }
-            \|
+          \|
           = link_to 'Entre em contato', '#'
-        .col-xs-12.col-sm-2.col-md-2.social
+        .col-xs-12.col-sm-1.col-md-2.social
           = link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#'
           = link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#'
+    .container.collapse{ data: { container: { fixed: '' } } }
+      .row{ style: 'margin-bottom: 0px;' }
+        .col-xs-12
+          %ul.menu.row
+            %li.col-sm-2{ class: active_menu_class("movies") }
+              = link_to "FILMES",   platform_movies_path
+            %li.col-sm-2{ class: active_menu_class("series") }
+              = link_to "SÉRIES",   platform_series_index_path
+            %li.col-sm-2{ class: active_menu_class("ciner_videos") }
+              = link_to "CINER VÍDEOS",   cinervideos_path
+            %li.col-sm-2{ class: active_menu_class("critics") }
+              = link_to "CRÍTICAS",   platform_critics_path
+            %li.col-sm-2{ class: active_menu_class("broadcasts") }
+              = link_to "NOTÍCIAS",   platform_broadcasts_path
+            %li.col-sm-2{ class: active_menu_class("questions") }
+              = link_to "DEBATE CINER", platform_questions_path
+
   / BANNER
   .banner-front
     .container
