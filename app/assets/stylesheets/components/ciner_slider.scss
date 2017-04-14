@@ -1,3 +1,5 @@
+@import 'base/colors';
+
 .slider-frame {
   position: relative;
   margin: 0 auto;
@@ -7,6 +9,7 @@
     margin: 0;
     padding: 0;
   }
+
   .btn {
     width: 40px;
     height: 100%;
@@ -14,14 +17,30 @@
     position: absolute;
     top: 0;
     z-index: 1000;
+    font-size: 30px;
+    line-height: 175px;
+    color: white;
+    text-align: center;
+    font-weight: lighter;
 
     &.prev {
       left: 0px;
+
+      &::after {
+        content: '<';
+      }
     }
+
     &.next {
       right: 0px;
+
+      &::after {
+        content: '>';
+      }
     }
+
   }
+
   .slider-container {
     transition: margin-left .2s ease, left .5s ease;
     position: absolute;
@@ -33,5 +52,7 @@
       top: 0;
       transition: width .2s ease, height .2s ease, top .2s ease;
     }
+
   }
+
 }
