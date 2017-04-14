@@ -11,7 +11,7 @@
   .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
-        = f.input :email, label: false, required: false, autofocus: true, input_html: { class: 'form-control' }, placeholder: 'e-mail'
+        = f.input :email, label: false, required: false, input_html: { class: 'form-control' }, placeholder: 'e-mail'
       .form-group
         = f.input :password, label: false, required: false, input_html: { class: 'form-control', placeholder: 'senha' }
       .form-group
