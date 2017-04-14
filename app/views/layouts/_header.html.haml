@@ -1,5 +1,9 @@
 - content_for :javascript, javascript_include_tag('components/header')
 
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
 .banner
   / ACTIONBAR
   .actionbar.nav-container
@@ -22,18 +26,18 @@
                 = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 30px; width: 90px; margin: auto; margin-bottom: 10px;')
         .col-xs-8
           %ul.menu.row
-            %li.col-sm-2{ class: active_menu_class("movies") }
-              = link_to "FILMES",   movies_path
-            %li.col-sm-2{ class: active_menu_class("series") }
-              = link_to "SÉRIES",   series_index_path
-            %li.col-sm-2{ class: active_menu_class("ciner_videos") }
-              = link_to "CINER VÍDEOS",   cinervideos_path
-            %li.col-sm-2{ class: active_menu_class("critics") }
-              = link_to "CRÍTICAS",   critics_path
-            %li.col-sm-2{ class: active_menu_class("broadcasts") }
-              = link_to "NOTÍCIAS",   broadcasts_path
-            %li.col-sm-2{ class: active_menu_class("questions") }
-              = link_to "DEBATE CINER", questions_path
+            %li.col-xs-2{ class: active_menu_class("movies") }
+              = link_to "FILMES", url_for([role, :movies])
+            %li.col-xs-2{ class: active_menu_class("series") }
+              = link_to "SÉRIES", url_for([role, :series_index])
+            %li.col-xs-2{ class: active_menu_class("ciner_videos") }
+              = link_to "CINER VÍDEOS", url_for([:cinervideos])
+            %li.col-xs-2{ class: active_menu_class("critics") }
+              = link_to "CRÍTICAS", url_for([role, :critics])
+            %li.col-xs-2{ class: active_menu_class("broadcasts") }
+              = link_to "NOTÍCIAS", url_for([role, :broadcasts])
+            %li.col-xs-2{ class: active_menu_class("questions") }
+              = link_to "DEBATE CINER", url_for([role, :questions])
         .col-xs-2
 
   / BANNER
@@ -57,18 +61,18 @@
               %span.icon-bar
           #mainmenu.collapse.navbar-collapse
             %ul.menu
-              %li.col-xs-12.col-sm-2{ class: active_menu_class("movies") }
-                = link_to "FILMES",   movies_path
-              %li.col-xs-12.col-sm-2{ class: active_menu_class("series") }
-                = link_to "SÉRIES",   series_index_path
-              %li.col-xs-12.col-sm-2{ class: active_menu_class("ciner_videos") }
-                = link_to "CINER VÍDEOS",   cinervideos_path
-              %li.col-xs-12.col-sm-2{ class: active_menu_class("critics") }
-                = link_to "CRÍTICAS",   critics_path
-              %li.col-xs-12.col-sm-2{ class: active_menu_class("broadcasts") }
-                = link_to "NOTÍCIAS",   news_path
-              %li.col-xs-12.col-sm-2{ class: active_menu_class("questions") }
-                = link_to "DEBATE CINER", questions_path
+              %li.col-xs-2{ class: active_menu_class("movies") }
+                = link_to "FILMES", url_for([role, :movies])
+              %li.col-xs-2{ class: active_menu_class("series") }
+                = link_to "SÉRIES", url_for([role, :series_index])
+              %li.col-xs-2{ class: active_menu_class("ciner_videos") }
+                = link_to "CINER VÍDEOS", url_for([:cinervideos])
+              %li.col-xs-2{ class: active_menu_class("critics") }
+                = link_to "CRÍTICAS", url_for([role, :critics])
+              %li.col-xs-2{ class: active_menu_class("broadcasts") }
+                = link_to "NOTÍCIAS", url_for([role, :broadcasts])
+              %li.col-xs-2{ class: active_menu_class("questions") }
+                = link_to "DEBATE CINER", url_for([role, :questions])
       / MENU
     .search-field{ :style => "margin-top: 5px;" }
       .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8

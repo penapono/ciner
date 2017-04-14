@@ -1,3 +1,7 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
 %footer
   .container
     .col-xs-12.col-md-2
