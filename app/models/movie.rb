@@ -58,7 +58,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.current_playing
-    where(playing: true).order(brazilian_release: :desc)
+    where(playing: true).order('brazilian_release DESC')
   end
 
   def self.most_viewed
@@ -70,6 +70,6 @@ class Movie < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    Movie.where(id: result.keys.first(15))
+    where(id: result.keys.first(15))
   end
 end

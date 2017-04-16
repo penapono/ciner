@@ -38,6 +38,10 @@ class Critic < ActiveRecord::Base
     first_critic
   end
 
+  def self.home
+    Critic.only_two
+  end
+
   def self.first_critic
     result = where(featured: true, origin: 1, status: 2).first
     return result if result

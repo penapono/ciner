@@ -67,4 +67,16 @@ class Serie < ActiveRecord::Base
   def self.current_playing
     where(playing: true).order(brazilian_release: :desc)
   end
+
+  def self.most_viewed
+    ids = Visit.where(action: 'show').where("controller like ?", "%series%").pluck(:resource_id)
+
+    result = Hash.new(0)
+
+    ids.each { |v| result[v] += 1 }
+
+    result = result.sort_by { |_k, v| v }.to_h
+
+    where(id: result.keys.first(15))
+  end
 end
