@@ -6,7 +6,6 @@ namespace :movie_sync do
   task update: :environment do
     Movie.where(lock_updates: false).first(20).each do |movie|
       movie.api_transform
-      sleep 1
     end
   end
 end

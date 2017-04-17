@@ -6,7 +6,6 @@ namespace :serie_sync do
   task update: :environment do
     Serie.where(lock_updates: false).first(20).each do |serie|
       serie.api_transform
-      sleep 1
     end
   end
 end
