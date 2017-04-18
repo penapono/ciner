@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
             :terms_of_use,
             presence: true
 
+  validates_uniqueness_of :nickname, :email, :cpf
+
   validates_presence_of :password_confirmation, on: :create
 
   # Enums

@@ -20,13 +20,13 @@
 
 .row
   .col-xs-6
-    = f.input :nickname, required: true
+    = f.input :nickname, required: true, disabled: true
   .col-xs-3
     = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
 
 .row
   .col-xs-6
-    = f.input :cpf
+    = f.input :cpf, disabled: true
   .col-xs-6
     = f.input :email
 
