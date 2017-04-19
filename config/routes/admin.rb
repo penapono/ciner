@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :age_ranges
     resources :film_production_categories
     resources :movies
+    match 'movies/bulk_destroy' => 'movies#bulk_destroy', via: :post
+
     resources :series
+    match 'series/bulk_destroy' => 'series#bulk_destroy', via: :post
 
     resources :events do
       member do
