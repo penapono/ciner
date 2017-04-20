@@ -11,7 +11,7 @@
   %thead
     %tr
       %th
-        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;', data: { check_all: '' }}
+        .text-center{ style: 'cursor: pointer; margin-right: 30px; width: 30px;', data: { check_all: '' } }
           = check_box_tag :remove
       %th
         = Serie.human_attribute_name(:title)
@@ -31,7 +31,7 @@
     - series.each do |serie|
       %tr{ data: { selectable: '' } }
         %td{ data: { item_checkbox: '', serie_id: serie.id } }
-          .text-center{ style: 'padding-left: 15px; padding-right: 15px' }
+          .text-center{ style: 'cursor: pointer; margin-right: 30px; width: 30px;' }
             = check_box_tag :remove
         %td
           = link_to admin_series_path(serie) do
