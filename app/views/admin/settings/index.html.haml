@@ -35,3 +35,14 @@
 
 %p
   = link_to Event.model_name.human(count: 2), admin_events_path
+
+%br
+%br
+
+%p
+  Status da base:
+  %span.wine
+    = Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 115000
+  \/
+  %span.wine
+    = Movie.count + Serie.count
