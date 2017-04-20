@@ -26,6 +26,24 @@ module Admin
       serie.api_transform
     end
 
+    def bulk_destroy
+      if params[:destroy] && params[:destroy][:ids]
+        ids = params[:destroy][:ids]
+        ids.each do |id_to_destroy|
+          status = Serie.find(id_to_destroy).destroy
+        end
+        respond_to do |format|
+          format.json do
+            if status
+              render :json => { :status => 'OK' }
+            else
+              render :json => { :status => 'error' }
+            end
+          end
+        end
+      end
+    end
+
     private
 
     def resource

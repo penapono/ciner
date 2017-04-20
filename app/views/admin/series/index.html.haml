@@ -7,9 +7,12 @@
 
 = render 'admin/series/toolbar'
 
-%table
+%table{ data: { bulk_delete: '' } }
   %thead
     %tr
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;', data: { check_all: '' }}
+          = check_box_tag :remove
       %th
         = Serie.human_attribute_name(:title)
       %th
@@ -18,11 +21,18 @@
         = Serie.human_attribute_name(:year)
 
       / Actions
-      %th{ colspan: 2 }
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
+          %i.fa.fa-trash{ data: { trash: '' } }
 
   %tbody
     - series.each do |serie|
-      %tr
+      %tr{ data: { selectable: '' } }
+        %td{ data: { item_checkbox: '', serie_id: serie.id } }
+          .text-center{ style: 'padding-left: 15px; padding-right: 15px' }
+            = check_box_tag :remove
         %td
           = link_to admin_series_path(serie) do
             = serie.title
