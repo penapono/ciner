@@ -41,5 +41,7 @@ Rails.application.routes.draw do
         put "dislike", to: "questions#downvote"
       end
     end
+
+    get "settings", to: "settings#index", as: "settings"
   end
 end
