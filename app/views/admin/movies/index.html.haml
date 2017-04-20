@@ -11,8 +11,8 @@
   %thead
     %tr
       %th
-        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
-          %i.fa.fa-trash{ data: { trash: '' } }
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;', data: { check_all: '' }}
+          = check_box_tag :remove
       %th
         = Movie.human_attribute_name(:title)
       %th
@@ -21,8 +21,11 @@
         = Movie.human_attribute_name(:year)
 
       / Actions
-      %th{ colspan: 2 }
-
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
+          %i.fa.fa-trash{ data: { trash: '' } }
   %tbody
     - movies.each do |movie|
       %tr{ data: { selectable: '' } }
