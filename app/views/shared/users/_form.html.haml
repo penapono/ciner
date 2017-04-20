@@ -1,6 +1,9 @@
 - content_for :javascript, javascript_include_tag('views/shared/users/form')
 - content_for :stylesheet, stylesheet_link_tag('views/shared/users/form')
 
+- disabled = f.object.persisted?
+- role_class = (current_user && current_user.admin?) ? '' : 'hidden'
+
 %h3
   = t('.general')
 %span
@@ -15,18 +18,18 @@
     = f.input :name, required: true, autofocus: true
   .col-xs-3
     = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
-  .col-xs-3.hidden{ data: { role: '' } }
+  .col-xs-3{ class: role_class, data: { role: '' } }
     = f.input :role, collection: User.localized_roles, input_html: { class: 'form-field' }
 
 .row
   .col-xs-6
-    = f.input :nickname, required: true, disabled: true
+    = f.input :nickname, required: true, disabled: disabled
   .col-xs-3
     = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
 
 .row
   .col-xs-6
-    = f.input :cpf, disabled: true
+    = f.input :cpf, disabled: disabled
   .col-xs-6
     = f.input :email
 

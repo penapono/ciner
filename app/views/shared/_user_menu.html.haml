@@ -2,10 +2,11 @@
 - avatar ||= "http://placehold.it/155x170"
 
 .row
+  - if current_user.admin?
+    .col-xs-4
+      .text-center{ style: "font-size: 22px; padding-left: 50%;" }
+        = link_to admin_settings_path do
+          %i.fa.fa-cogs
   .col-xs-4
-    .text-center{ style: "font-size: 22px; padding-left: 50%;" }
-      = link_to admin_settings_path do
-        %i.fa.fa-cogs
-  .col-xs-4
-    .text-center
+    .text-center{ style: "padding-left: 30px; padding-right: 30px;" }
       %img.img-responsive{ src: avatar, style: "width: 30px; height: 30px; border-radius: 100%; margin: auto" }

@@ -49,6 +49,9 @@
             = link_to "FAQ", '#'
           %li
             = link_to "Adendo", '#'
+          - if role == :admin
+            %li
+              = link_to "Configurações", admin_settings_path
 
 .copyright
   .container

@@ -3,7 +3,7 @@
 
 = render 'shared/breadcrumbs'
 
-= render 'shared/index_title', title: User.model_name.human(count: 2)
+= render 'shared/index_title', title: User.model_name.human(count: 2), path: new_admin_user_path
 
 = render 'toolbar'
 
