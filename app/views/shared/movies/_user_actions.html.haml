@@ -2,9 +2,11 @@
 - object = object
 - role = role
 - url = url_for([:user_action, role, object])
+- user_id = user.id if user
+- user_id ||= nil
 
 #user-actions
-  .row{ data: { user_id: nil, filmable_id: object.id, filmable_type: object.class, user_action: '', url: url } }
+  .row{ data: { user_id: user_id, filmable_id: object.id, filmable_type: object.class, user_action: '', url: url } }
     .col-xs-12
       .tags
         .button{ style: 'width: 140px;', data: { action: 'watched' } }
