@@ -1,0 +1,76 @@
+- slider_movies = current_user.user_favorites
+
+#movies-series.user-movies-series{ data: { slider: { playing: '' } } }
+  .title-separator
+    .media
+      .media-left.media-middle
+        %svg.media-object.icon-title
+          %use{"xlink:href" => "#filme"}
+      .media-body.media-middle
+        .media-heading.title-section Meus filmes e séries
+      .media-body.text-right.media-middle
+        %a{:href => "#"} ver todos
+  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: slider_movies
+
+  / .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /   .thumb
+  /     %a{:href => "#"}
+  /       %span.rollover
+  /       = image_tag("example_movie.jpg", class: "img-responsive")
+  / .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /   .thumb
+  /     %a{:href => "#"}
+  /       %span.rollover
+  /       = image_tag("example_movie.jpg", class: "img-responsive")
+  / .hidden-xs
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /     .thumb
+  /       %a{:href => "#"}
+  /         %span.rollover
+  /         = image_tag("example_movie.jpg", class: "img-responsive")
+  /   .hidden-sm
+  /     .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /       .thumb
+  /         %a{:href => "#"}
+  /           %span.rollover
+  /           = image_tag("example_movie.jpg", class: "img-responsive")
+  /     .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /       .thumb
+  /         %a{:href => "#"}
+  /           %span.rollover
+  /           = image_tag("example_movie.jpg", class: "img-responsive")
+  /     .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
+  /       .thumb
+  /         %a{:href => "#"}
+  /           %span.rollover
+  /           = image_tag("example_movie.jpg", class: "img-responsive")

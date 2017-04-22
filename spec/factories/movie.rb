@@ -9,7 +9,6 @@ FactoryGirl.define do
     synopsis "Synopsis"
     release DateTime.now
     brazilian_release DateTime.now
-    country
     age_range
 
     trait :invalid do

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       member do
         put "like", to: "movies#upvote"
         put "dislike", to: "movies#downvote"
+        put "user_action", to: "movies#user_action"
       end
     end
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       member do
         put "like", to: "series#upvote"
         put "dislike", to: "series#downvote"
+        put "user_action", to: "series#user_action"
       end
     end
 

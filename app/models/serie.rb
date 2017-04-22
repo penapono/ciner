@@ -4,6 +4,7 @@ class Serie < ActiveRecord::Base
   include Searchables::Serie
   include FilmProfitable
   include Tmdb
+  include UserActionable
 
   # Associations
   belongs_to :age_range

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407112128) do
+ActiveRecord::Schema.define(version: 20170422055937) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -342,6 +342,17 @@ ActiveRecord::Schema.define(version: 20170407112128) do
     t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_filmables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "filmable_type"
+    t.integer  "filmable_id"
+    t.integer  "action"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["filmable_type", "filmable_id"], name: "index_user_filmables_on_filmable_type_and_filmable_id", using: :btree
+    t.index ["user_id"], name: "index_user_filmables_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

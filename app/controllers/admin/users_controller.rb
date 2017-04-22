@@ -11,6 +11,7 @@ module Admin
     expose(:users) { User.all }
     expose(:states) { State.order(:acronym).map(&:acronym) }
     expose(:cities) { user.city.state.cities if user.city }
+    expose(:critics) { user.critics }
 
     # Filters
 
@@ -20,6 +21,10 @@ module Admin
 
     def index
       self.users = paginated_users
+    end
+
+    def show
+      self.user = current_user
     end
 
     private

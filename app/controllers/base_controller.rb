@@ -78,6 +78,34 @@ module ::BaseController
       render_json_result(loaded_resource, result)
     end
 
+    def user_action
+      result = manage_user_filmable(params)
+      render_json_result_for_action(result)
+    end
+
+    def manage_user_filmable(params)
+      return '' unless params[:user_id] && params[:filmable_id]
+
+      user_id = params[:user_id]
+      filmable_id = params[:filmable_id]
+      filmable_type = params[:filmable_type]
+      user_action = params[:user_action]
+
+      user_filmable = UserFilmable.find_or_initialize_by(
+        user_id: user_id,
+        filmable_id: filmable_id, filmable_type: filmable_type,
+        action: user_action
+      )
+
+      if user_filmable.persisted?
+        user_filmable.destroy
+        return ''
+      end
+
+      user_filmable.save
+      'active'
+    end
+
     private
 
     # custom actions
@@ -158,7 +186,21 @@ module ::BaseController
                        like_icon: loaded_resource.like_icon_class(current_user),
                        dislike_icon: loaded_resource.dislike_icon_class(current_user) }
       else
-        render json: { status: 'failure', errors: critic.errors }
+        render json: { status: 'failure', errors: '' }
+      end
+    end
+
+    def render_json_result_for_action(result)
+      if result
+        render json: { status: 'success',
+                       watched_str: resource.watched_str,
+                       want_to_see_str: resource.want_to_see_str,
+                       collection_str: resource.collection_str,
+                       favorite_str: resource.favorite_str,
+                       like_str: resource.like_str,
+                       result_class: result }
+      else
+        render json: { status: 'failure', errors: '' }
       end
     end
 

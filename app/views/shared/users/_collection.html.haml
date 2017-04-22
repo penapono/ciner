@@ -1,0 +1,42 @@
+.section-collection
+  .title-separator
+    .media
+      .media-left.media-middle
+        %svg.media-object.icon-title
+          %use{"xlink:href" => "#filme"}
+      .media-body.media-middle
+        .media-heading.title-section Minha coleção
+      .media-body.text-right.media-middle
+        %a{:href => "#"} ver todos
+
+  - current_user.user_collection.each do |movie|
+    - object = movie
+    - cover = object.cover
+    - cover ||= "http://placehold.it/550x700"
+
+    .col-md-3.col-sm-6.col-xs-6.shelf
+      = link_to url_for([role, object]) do
+        = image_tag(cover, class: "img-responsive")
+
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+    / .col-md-3.col-sm-6.col-xs-6.shelf
+    /   = image_tag("example_movie_3.jpg", class: "img-responsive")

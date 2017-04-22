@@ -1,3 +1,7 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
 - avatar = user.avatar
 - avatar ||= "http://placehold.it/155x170"
 
@@ -57,11 +61,25 @@
             %strong
               = user.critics.approved.count
             %br
-            Coleção:
-            %strong 300
-            %br
             Assistidos:
-            %strong 1.000
+            %strong
+              = watched_count_for_user(user)
+            %br
+            Quer Ver:
+            %strong
+              = want_to_see_count_for_user(user)
+            %br
+            Coleção:
+            %strong
+              = collection_count_for_user(user)
+            %br
+            Favoritos:
+            %strong
+              = favorite_count_for_user(user)
+            %br
+            Indicados:
+            %strong
+              = favorite_count_for_user(user)
             %br
             Amigos:
             %strong 500
@@ -72,99 +90,10 @@
         %a.btn-anchor{:href => "#t1"} Currículo
         %a.btn-anchor{:href => "#friend-list"} Amigos
         %a.btn-anchor{:href => "#t1"} Atividades
-      #movies-series.user-movies-series
-        .title-separator
-          .media
-            .media-left.media-middle
-              %svg.media-object.icon-title
-                %use{"xlink:href" => "#filme"}
-            .media-body.media-middle
-              .media-heading.title-section Meus filmes e séries
-            .media-body.text-right.media-middle
-              %a{:href => "#"} ver todos
-        .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-          .thumb
-            %a{:href => "#"}
-              %span.rollover
-              = image_tag("example_movie.jpg", class: "img-responsive")
-        .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-          .thumb
-            %a{:href => "#"}
-              %span.rollover
-              = image_tag("example_movie.jpg", class: "img-responsive")
-        .hidden-xs
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-            .thumb
-              %a{:href => "#"}
-                %span.rollover
-                = image_tag("example_movie.jpg", class: "img-responsive")
-          .hidden-sm
-            .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-              .thumb
-                %a{:href => "#"}
-                  %span.rollover
-                  = image_tag("example_movie.jpg", class: "img-responsive")
-            .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-              .thumb
-                %a{:href => "#"}
-                  %span.rollover
-                  = image_tag("example_movie.jpg", class: "img-responsive")
-            .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-              .thumb
-                %a{:href => "#"}
-                  %span.rollover
-                  = image_tag("example_movie.jpg", class: "img-responsive")
-      #videos.user-videos
-        .title-separator
-          .media
-            .media-left.media-middle
-              %svg.media-object.icon-title
-                %use{"xlink:href" => "#video"}
-            .media-body.media-middle
-              .media-heading.title-section Meus vídeos
-            .media-body.text-right.media-middle
-              %a{:href => "#"} ver todos
-        .ciner-movie.col-xs-12.col-sm-6.col-md-4
-          .thumb
-            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "220px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
-        .hidden-xs
-          .ciner-movie.col-xs-12.col-sm-6.col-md-4
-            .thumb
-              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "220px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
-          .hidden-sm
-            .ciner-movie.col-xs-12.col-sm-6.col-md-4
-              .thumb
-                %iframe{:allowfullscreen => "", :frameborder => "0", :height => "220px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+      = render 'shared/users/all_medias', role: role
+
+      = render 'shared/users/user_videos'
+
     .col-xs-12.col-sm-4.col-md-4.hidden-xs
       .section-sinopse
         .title-separator
@@ -176,133 +105,39 @@
               .media-heading.title-section Minha sinopse
         .box-sinopse
           Vídeos:
-          %strong 2
+          %strong
+            2
           %br
           Críticas:
           %strong
             = user.critics.approved.count
           %br
-          Coleção:
-          %strong 300
-          %br
           Assistidos:
-          %strong 1.000
+          %strong
+            = watched_count_for_user(user)
+          %br
+          Quer Ver:
+          %strong
+            = want_to_see_count_for_user(user)
+          %br
+          Coleção:
+          %strong
+            = collection_count_for_user(user)
+          %br
+          Favoritos:
+          %strong
+            = favorite_count_for_user(user)
+          %br
+          Indicados:
+          %strong
+            = favorite_count_for_user(user)
           %br
           Amigos:
-          %strong 500
-      .section-collection
-        .title-separator
-          .media
-            .media-left.media-middle
-              %svg.media-object.icon-title
-                %use{"xlink:href" => "#filme"}
-            .media-body.media-middle
-              .media-heading.title-section Minha coleção
-            .media-body.text-right.media-middle
-              %a{:href => "#"} ver todos
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
+          %strong
+            500
+
+      = render 'shared/users/collection', role: role
 
     = render 'shared/users/critics/critics'
 
-    .col-xs-12.col-sm-6.friend-list#friend-list
-      .title-separator
-        .media
-          .media-left.media-middle
-            %svg.media-object.icon-title
-              %use{"xlink:href" => "#usuario"}
-          .media-body.media-middle
-            .media-heading.title-section Meus amigos
-          .media-body.text-right.media-middle
-            %a{:href => "#"} ver todos
-      .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-        .media
-          .media-left.media-middle
-            = image_tag("users/user3.jpg", class: "media-object")
-          .media-body.media-bottom
-            .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold;"} Mr. Bean
-            %a{:href => "#", :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
-      .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-        .media
-          .media-left.media-middle
-            = image_tag("users/user3.jpg", class: "media-object")
-          .media-body.media-bottom
-            .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold;"} Mr. Bean
-            %a{:href => "#", :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
-      .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-        .media
-          .media-left.media-middle
-            = image_tag("users/user3.jpg", class: "media-object")
-          .media-body.media-bottom
-            .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold;"} Mr. Bean
-            %a{:href => "#", :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
-      .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-        .media
-          .media-left.media-middle
-            = image_tag("users/user3.jpg", class: "media-object")
-          .media-body.media-bottom
-            .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold;"} Mr. Bean
-            %a{:href => "#", :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
-      .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-        .media
-          .media-left.media-middle
-            = image_tag("users/user3.jpg", class: "media-object")
-          .media-body.media-bottom
-            .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold;"} Mr. Bean
-            %a{:href => "#", :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
-      .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-        .media
-          .media-left.media-middle
-            = image_tag("users/user3.jpg", class: "media-object")
-          .media-body.media-bottom
-            .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold;"} Mr. Bean
-            %a{:href => "#", :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
-    .col-xs-12.visible-xs.hidden-sm
-      .section-collection
-        .title-separator
-          .media
-            .media-left.media-middle
-              %svg.media-object.icon-title
-                %use{"xlink:href" => "#filme"}
-            .media-body.media-middle
-              .media-heading.title-section Minha coleção
-            .media-body.text-right.media-middle
-              %a{:href => "#"} ver todos
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
-        .col-md-3.col-sm-6.col-xs-6.shelf
-          = image_tag("example_movie_3.jpg", class: "img-responsive")
+    = render 'shared/users/friends_list'

@@ -1,5 +1,8 @@
 - avatar = user.avatar
 - avatar ||= "http://placehold.it/155x170"
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
 
 .row
   - if current_user.admin?
@@ -8,5 +11,7 @@
         = link_to admin_settings_path do
           %i.fa.fa-cogs
   .col-xs-4
-    .text-center{ style: "padding-left: 30px; padding-right: 30px;" }
-      %img.img-responsive{ src: avatar, style: "width: 30px; height: 30px; border-radius: 100%; margin: auto" }
+    - if current_user
+      = link_to url_for([role, "profile"]) do
+        .text-center{ style: "padding-left: 30px; padding-right: 30px;" }
+          %img.img-responsive{ src: avatar, style: "width: 30px; height: 30px; border-radius: 100%; margin: auto" }

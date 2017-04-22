@@ -2,16 +2,32 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'home#index'
 
+    get '/profile', to: 'users#show'
+    get 'profile/edit', to: 'users#edit'
+
     resources :users
     resources :set_functions
     resources :studios
     resources :professionals
     resources :age_ranges
     resources :film_production_categories
-    resources :movies
+
+    resources :movies do
+      member do
+        put "like", to: "movies#upvote"
+        put "dislike", to: "movies#downvote"
+        put "user_action", to: "movies#user_action"
+      end
+    end
     match 'movies/bulk_destroy' => 'movies#bulk_destroy', via: :post
 
-    resources :series
+    resources :series do
+      member do
+        put "like", to: "series#upvote"
+        put "dislike", to: "series#downvote"
+        put "user_action", to: "series#user_action"
+      end
+    end
     match 'series/bulk_destroy' => 'series#bulk_destroy', via: :post
 
     resources :events do

@@ -19,8 +19,23 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :questions, only: [:index, :show]
   resources :broadcasts, only: [:index, :show]
-  resources :movies, only: [:index, :show]
-  resources :series, only: [:index, :show]
+
+  resources :movies, only: [:index, :show] do
+    member do
+      put "like", to: "movies#upvote"
+      put "dislike", to: "movies#downvote"
+      put "user_action", to: "movies#user_action"
+    end
+  end
+
+  resources :series, only: [:index, :show] do
+    member do
+      put "like", to: "series#upvote"
+      put "dislike", to: "series#downvote"
+      put "user_action", to: "series#user_action"
+    end
+  end
+
   resources :professionals, only: [:index, :show]
   resources :users
 

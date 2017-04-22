@@ -35,9 +35,9 @@ module Admin
         respond_to do |format|
           format.json do
             if status
-              render :json => { :status => 'OK' }
+              render json: { status: 'OK' }
             else
-              render :json => { :status => 'error' }
+              render json: { status: 'error' }
             end
           end
         end

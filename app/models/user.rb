@@ -124,6 +124,26 @@ class User < ActiveRecord::Base
     result
   end
 
+  def user_collection
+    filmables = []
+
+    UserFilmable.collection.where(user: self).each do |user_filmable|
+      filmables << user_filmable.filmable
+    end
+
+    filmables
+  end
+
+  def user_favorites
+    filmables = []
+
+    UserFilmable.favorite.where(user: self).each do |user_filmable|
+      filmables << user_filmable.filmable
+    end
+
+    filmables
+  end
+
   private
 
   def update_address

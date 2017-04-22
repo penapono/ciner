@@ -4,6 +4,7 @@ class Movie < ActiveRecord::Base
   include Searchables::Movie
   include FilmProfitable
   include Tmdb
+  include UserActionable
 
   # Associations
   belongs_to :age_range

@@ -1,3 +1,4 @@
+- role = role
 - object = movie
 - cover = object.cover
 - cover ||= "http://placehold.it/550x700"
@@ -87,32 +88,4 @@
                 %span.wine.bold
                   = object.brazilian_release_str
 
-          .row
-            .col-xs-12
-              .row
-                .tags
-                  .button
-                    %a
-                      %svg.icon-tags
-                        %use{"xlink:href" => "#ja-assisti"}
-                      já assisti
-                  .button
-                    %a
-                      %svg.icon-tags
-                        %use{"xlink:href" => "#quero-ver"}
-                      quero ver
-                  .button
-                    %a
-                      %svg.icon-tags
-                        %use{"xlink:href" => "#adicionar"}
-                      adicionar
-                  .button
-                    %a.active
-                      %svg.icon-tags
-                        %use{"xlink:href" => "#favorito"}
-                      favorito
-                  .button
-                    %a
-                      %svg.icon-tags
-                        %use{"xlink:href" => "#like"}
-                      indique
+          = render 'shared/movies/user_actions', object: object, role: role
