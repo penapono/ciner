@@ -14,27 +14,92 @@ function UserFilmables() {
   function _bindUserFilmables(aContainer) {
     var dataUserFilmables = aContainer.find('[data-user-action]');
 
-    $(dataUserFilmables).on('click', '.button', function() {
+    $(dataUserFilmables).on('click', '[data-action]', function() {
+      var self = $(this);
+
+      if (!self.data('unlocked')) {
+        $('#actionLockedModal').modal('show');
+      }
+      else {
+        var parent = self.closest('[data-user-action]'),
+            url = parent.data("url"),
+            user_id = parent.data("user-id"),
+            filmable_id = parent.data("filmable-id"),
+            filmable_type = parent.data("filmable-type"),
+            user_action = self.data("action"),
+            data = {
+              user_id: user_id,
+              filmable_id: filmable_id,
+              filmable_type: filmable_type,
+              user_action: user_action
+          };
+
+        _action(parent, url, data, self);
+      }
+    });
+
+    $(dataUserFilmables).on('click', '[data-collection]', function() {
       var self = $(this),
-          parent = self.closest('[data-user-action]'),
-          url = parent.data("url"),
-          user_id = parent.data("user-id"),
-          filmable_id = parent.data("filmable-id"),
-          filmable_type = parent.data("filmable-type"),
-          user_action = self.data("action"),
+          a = self.find('a');
+
+      if (!self.data('unlocked')) {
+        $('#collectionLockedModal').modal('show');
+      }
+      else {
+        if (a.hasClass('active')) {
+          var parent = self.closest('[data-user-action]'),
+              url = parent.data("url"),
+              user_id = parent.data("user-id"),
+              filmable_id = parent.data("filmable-id"),
+              filmable_type = parent.data("filmable-type"),
+              user_action = self.data("collection"),
+              data = {
+                user_id: user_id,
+                filmable_id: filmable_id,
+                filmable_type: filmable_type,
+                user_action: user_action
+            };
+
+          _action(parent, url, data, self);
+        }
+        else {
+          $('#collectionModal').modal('show');
+        }
+      }
+    });
+
+    $('#collectionModal').on('click', '[data-collect]', function() {
+      var self = $(this),
+          parentModal = self.closest('.modal'),
+          mediaSelect = parentModal.find('#media'),
+          mediaValue = mediaSelect.val(),
+          versionSelect = parentModal.find('#version'),
+          versionValue = versionSelect.val(),
+          user_id = parentModal.data('user-id'),
+          filmable_id = parentModal.data('filmable-id'),
+          filmable_type = parentModal.data('filmable-type'),
+          user_action = parentModal.data('action'),
+          url = parentModal.data('url'),
           data = {
             user_id: user_id,
             filmable_id: filmable_id,
             filmable_type: filmable_type,
-            user_action: user_action
+            user_action: user_action,
+            media: mediaValue,
+            version: versionValue
           };
 
-      _action(parent, url, data, self);
+      _action($('[data-user-action]'), url, data, $('[data-collection]'));
+
+      $('#collectionModal').modal('hide');
+    });
+
+    $(dataUserFilmables).on('click', '[data-recommend]', function() {
+      $('#recommendModal').modal('show');
     });
   }
 
   function _action(aParent, aUrl, aData, aButton) {
-    console.log(aData);
     $.ajax({
       type: 'PUT',
       dataType: 'JSON',
@@ -64,8 +129,8 @@ function UserFilmables() {
 
     aParent.find("[data-action='watched'] [data-count]").html(watched_str);
     aParent.find("[data-action='want_to_see'] [data-count]").html(want_to_see_str);
-    aParent.find("[data-action='collection'] [data-count]").html(collection_str);
+    aParent.find("[data-collection='collection'] [data-count]").html(collection_str);
     aParent.find("[data-action='favorite'] [data-count]").html(favorite_str);
-    aParent.find("[data-action='like'] [data-count]").html(like_str);
+    aParent.find("[data-reccomend='like'] [data-count]").html(like_str);
   }
 };

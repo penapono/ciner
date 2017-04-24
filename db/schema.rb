@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422055937) do
+ActiveRecord::Schema.define(version: 20170424052439) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -351,6 +351,8 @@ ActiveRecord::Schema.define(version: 20170422055937) do
     t.integer  "action"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "media"
+    t.integer  "version"
     t.index ["filmable_type", "filmable_id"], name: "index_user_filmables_on_filmable_type_and_filmable_id", using: :btree
     t.index ["user_id"], name: "index_user_filmables_on_user_id", using: :btree
   end

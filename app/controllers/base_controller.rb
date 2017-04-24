@@ -90,6 +90,16 @@ module ::BaseController
       filmable_id = params[:filmable_id]
       filmable_type = params[:filmable_type]
       user_action = params[:user_action]
+      media = begin
+                params[:media]
+              rescue
+                5
+              end
+      version = begin
+                  params[:version]
+                rescue
+                  5
+                end
 
       user_filmable = UserFilmable.find_or_initialize_by(
         user_id: user_id,
@@ -100,9 +110,12 @@ module ::BaseController
       if user_filmable.persisted?
         user_filmable.destroy
         return ''
+      else
+        user_filmable.media = media
+        user_filmable.version = version
       end
 
-      user_filmable.save
+      user_filmable = user_filmable.save
       'active'
     end
 

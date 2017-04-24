@@ -125,13 +125,7 @@ class User < ActiveRecord::Base
   end
 
   def user_collection
-    filmables = []
-
-    UserFilmable.collection.where(user: self).each do |user_filmable|
-      filmables << user_filmable.filmable
-    end
-
-    filmables
+    UserFilmable.collection.where(user: self)
   end
 
   def user_favorite

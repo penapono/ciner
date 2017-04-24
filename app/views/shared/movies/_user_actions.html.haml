@@ -5,37 +5,105 @@
 - user_id = user.id if user
 - user_id ||= nil
 
+- actions_unlocked = user && !user.blank?
+- actions_unlocked ||= false
+
+- collection_unlocked = (user && (user.classic? || user.cult?))
+- collection_unlocked ||= false
+
 #user-actions
   .row{ data: { user_id: user_id, filmable_id: object.id, filmable_type: object.class, user_action: '', url: url } }
     .col-xs-12
       .tags
-        .button{ data: { action: 'watched' } }
+        .button{ data: { action: 'watched', unlocked: actions_unlocked.to_s } }
           %a{ class: user_action_class_on(user, object, 'watched') }
             %svg.icon-tags
               %use{"xlink:href" => "#ja-assisti"}
             %span{ data: { count: '' } }
               = object.watched_str
-        .button{ data: { action: 'want_to_see' } }
+        .button{ data: { action: 'want_to_see', unlocked: actions_unlocked.to_s } }
           %a{ class: user_action_class_on(user, object, 'want_to_see') }
             %svg.icon-tags
               %use{"xlink:href" => "#quero-ver"}
             %span{ data: { count: '' } }
               = object.want_to_see_str
-        .button{ data: { action: 'collection' } }
+        .button{ data: { collection: 'collection', unlocked: collection_unlocked.to_s } }
           %a{ class: user_action_class_on(user, object, 'collection') }
             %svg.icon-tags
               %use{"xlink:href" => "#adicionar"}
             %span{ data: { count: '' } }
               = object.collection_str
-        .button{ data: { action: 'favorite' } }
+        .button{ data: { action: 'favorite', unlocked: actions_unlocked.to_s } }
           %a{ class: user_action_class_on(user, object, 'favorite') }
             %svg.icon-tags
               %use{"xlink:href" => "#favorito"}
             %span{ data: { count: '' } }
               = object.favorite_str
-        .button{ data: { action: 'like' } }
+        .button{ data: { recommend: 'like' } }
           %a{ class: user_action_class_on(user, object, 'like') }
             %svg.icon-tags
               %use{"xlink:href" => "#like"}
             %span{ data: { count: '' } }
               = object.like_str
+
+#actionLockedModal.modal.fade{ role: 'dialog' }
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Entre no Ciner para interagir com conteúdos!
+      .modal-body
+        %p
+          Atenção, funcionalidade disponível apenas para usuários logados!
+        = link_to new_user_registration_path do
+          %strong Seja Ciner
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+
+/ Modal
+#collectionModal.modal.fade{ role: 'dialog', data: { user_id: user_id, filmable_id: object.id, filmable_type: object.class, user_action: '', url: url, action: 'collection' } }
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Adicionar à Coleção
+      .modal-body
+        = select_tag :media, options_for_select([["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]])
+
+        = select_tag :version, options_for_select([["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]])
+      .modal-footer
+        %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"} Fechar
+        %button.btn.btn-default{:type => "button", data: { collect: '' } } Adicionar
+
+/ Modal
+#collectionLockedModal.modal.fade{ role: 'dialog' }
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Coleção disponível apenas para Clássico e Cult!
+      .modal-body
+        %p
+          Atenção, seu perfil de assinante não contempla essa funcionalidade.
+        %p
+          Aproveite para assinar o Ciner Clássico ou Cult hoje mesmo!
+        = link_to new_user_registration_path do
+          %strong Quero ser Ciner Clássico ou Cult!
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+
+#recommendModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Indicar para alguém!
+      .modal-body
+        %p
+          Será implementada na integração, pois não temos para quem indicar ainda, nem notificações
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar

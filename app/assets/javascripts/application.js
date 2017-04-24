@@ -1,8 +1,10 @@
-//= require jquery
+//= require jquery-3.2.1.min
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require bootstrap.min
 //= require select2-full
 //= require select2_locale_pt-BR
 //= require ckeditor/init
 //= require modules/visits
+//= require cocoon
 //= require_tree .

@@ -10,12 +10,12 @@
         = link_to 'ver mais', url_for([role, user, :collection_index])
 
 
-  - user_collection.first(20).each do |movie|
-    - object = movie
+  - user_collection.first(20).each do |user_filmable|
+    - object = user_filmable.filmable
     - cover = object.cover
     - cover ||= "http://placehold.it/550x700"
 
-    .col-md-3.col-sm-6.col-xs-6.shelf
+    .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str }
       = link_to url_for([role, object]) do
         = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
 
@@ -23,10 +23,11 @@
   - if count > 0
     - count.times do
       .col-md-3.col-sm-6.col-xs-6.shelf
-        .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
+        / pontilhado
+        / .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
 
         / opção vazia
-        / .div{ style: 'height: 90px; width: 60px;' }
+        .div{ style: 'height: 90px; width: 60px;' }
 
         / opção placeholder
         / - cover = "http://placehold.it/550x700"
