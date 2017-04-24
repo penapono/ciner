@@ -7,36 +7,27 @@
       .media-body.media-middle
         .media-heading.title-section Minha coleção
       .media-body.text-right.media-middle
-        %a{:href => "#"} ver todos
+        = link_to 'ver mais', url_for([role, user, :collection_index])
 
-  - current_user.user_collection.each do |movie|
+
+  - user_collection.first(20).each do |movie|
     - object = movie
     - cover = object.cover
     - cover ||= "http://placehold.it/550x700"
 
     .col-md-3.col-sm-6.col-xs-6.shelf
       = link_to url_for([role, object]) do
-        = image_tag(cover, class: "img-responsive")
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
 
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
-    / .col-md-3.col-sm-6.col-xs-6.shelf
-    /   = image_tag("example_movie_3.jpg", class: "img-responsive")
+  - count = 20 - user_collection.count
+  - if count > 0
+    - count.times do
+      .col-md-3.col-sm-6.col-xs-6.shelf
+        .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
+
+        / opção vazia
+        / .div{ style: 'height: 90px; width: 60px;' }
+
+        / opção placeholder
+        / - cover = "http://placehold.it/550x700"
+        / = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')

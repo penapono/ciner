@@ -1,14 +1,19 @@
 //= require components/ciner_slider
 
 $(document).ready(function() {
-  var container = $('[data-slider-playing]');
-  _sliderize(container);
-  // $('.slider-container .slide:nth-last-child(-n+4)').prependTo('.slider-container');
+  var container_favorite = $('[data-slider-favorites]');
+  _sliderize(container_favorite);
+
+  var container_watched = $('[data-slider-watched]');
+  _sliderize(container_watched);
 });
 
 $(window).resize(function() {
-  var container = $('[data-slider-playing]');
-  _sliderize(container);
+  var container_favorite = $('[data-slider-favorites]');
+  _sliderize(container_favorite);
+
+  var container_watched = $('[data-slider-watched]');
+  _sliderize(container_watched);
 });
 
 function _sliderize(aContainer) {

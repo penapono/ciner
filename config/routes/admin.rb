@@ -5,7 +5,12 @@ Rails.application.routes.draw do
     get '/profile', to: 'users#show'
     get 'profile/edit', to: 'users#edit'
 
-    resources :users
+    resources :users do
+      resources :collection, only: :index, module: 'users'
+      resources :favorite, only: :index, module: 'users'
+      resources :watched, only: :index, module: 'users'
+    end
+
     resources :set_functions
     resources :studios
     resources :professionals

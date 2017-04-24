@@ -9,31 +9,31 @@
   .row{ data: { user_id: user_id, filmable_id: object.id, filmable_type: object.class, user_action: '', url: url } }
     .col-xs-12
       .tags
-        .button{ style: 'width: 140px;', data: { action: 'watched' } }
+        .button{ data: { action: 'watched' } }
           %a{ class: user_action_class_on(user, object, 'watched') }
             %svg.icon-tags
               %use{"xlink:href" => "#ja-assisti"}
             %span{ data: { count: '' } }
               = object.watched_str
-        .button{ style: 'width: 140px;', data: { action: 'want_to_see' } }
+        .button{ data: { action: 'want_to_see' } }
           %a{ class: user_action_class_on(user, object, 'want_to_see') }
             %svg.icon-tags
               %use{"xlink:href" => "#quero-ver"}
             %span{ data: { count: '' } }
               = object.want_to_see_str
-        .button{ style: 'width: 170px;', data: { action: 'collection' } }
+        .button{ data: { action: 'collection' } }
           %a{ class: user_action_class_on(user, object, 'collection') }
             %svg.icon-tags
               %use{"xlink:href" => "#adicionar"}
             %span{ data: { count: '' } }
               = object.collection_str
-        .button{ style: 'width: 140px;', data: { action: 'favorite' } }
+        .button{ data: { action: 'favorite' } }
           %a{ class: user_action_class_on(user, object, 'favorite') }
             %svg.icon-tags
               %use{"xlink:href" => "#favorito"}
             %span{ data: { count: '' } }
               = object.favorite_str
-        .button{ style: 'width: 140px;', data: { action: 'like' } }
+        .button{ data: { action: 'like' } }
           %a{ class: user_action_class_on(user, object, 'like') }
             %svg.icon-tags
               %use{"xlink:href" => "#like"}

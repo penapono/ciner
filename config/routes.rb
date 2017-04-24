@@ -37,7 +37,11 @@ Rails.application.routes.draw do
   end
 
   resources :professionals, only: [:index, :show]
-  resources :users
+  resources :users do
+    resources :collection, only: :index, module: 'users'
+    resources :favorite, only: :index, module: 'users'
+    resources :watched, only: :index, module: 'users'
+  end
 
   namespace :api do
     namespace :v1 do

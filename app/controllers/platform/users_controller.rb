@@ -8,6 +8,7 @@ module Platform
     expose(:states) { State.order(:acronym).collect(&:acronym) }
     expose(:cities) { user.city.state.cities if user.city }
     expose(:critics) { user.critics }
+    expose(:user_collection) { user.user_collection }
 
     def show; end
 

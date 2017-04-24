@@ -51,6 +51,7 @@
 }
 
 .tags .button {
+  cursor: pointer;
   float: left;
   margin-top: 15px;
   margin-left: 10px;
@@ -67,9 +68,9 @@
 
 .tags .button a.active,
 .tags .button a:hover {
-  border-color: #27A12C !important;
+  border-color: $light-orange !important;
   color: #FFFFFF !important;
-  background: #27A12C !important;
+  background: $light-orange !important;
 }
 
 .tags .button a.active svg,

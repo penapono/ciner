@@ -1,9 +1,10 @@
 - role = role
 - showcase_class ||= 'showcase-poster'
+- background_color ||= 'parent'
 
 / MOVIES THUMB
 .col-xs-12{ class: showcase_class }
-  .slider-frame
+  .slider-frame{ style: "background-color: #{background_color}" }
     .btn.prev
     .btn.next
     .slider-container

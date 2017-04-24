@@ -90,9 +90,11 @@
         %a.btn-anchor{:href => "#t1"} Currículo
         %a.btn-anchor{:href => "#friend-list"} Amigos
         %a.btn-anchor{:href => "#t1"} Atividades
+
+      / Favoritos e Assistidos
       = render 'shared/users/all_medias', role: role
 
-      = render 'shared/users/user_videos'
+      = render 'shared/users/user_videos', role: role
 
     .col-xs-12.col-sm-4.col-md-4.hidden-xs
       .section-sinopse
@@ -138,6 +140,6 @@
 
       = render 'shared/users/collection', role: role
 
-    = render 'shared/users/critics/critics'
+    = render 'shared/users/critics/critics', role: role
 
-    = render 'shared/users/friends_list'
+    = render 'shared/users/friends_list', role: role

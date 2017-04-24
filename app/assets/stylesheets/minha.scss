@@ -299,10 +299,14 @@ div.user-bio {
   padding: 10px 0;
 }
 
+.shelf,
+.no-shelf {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
 .shelf {
   background: asset-url('prateleira.jpg') bottom left repeat-x;
-  margin-bottom: 20px;
-  padding-bottom: 33px;
 }
 
 .user-movies-series-item {

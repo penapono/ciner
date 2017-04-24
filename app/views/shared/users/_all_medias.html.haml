@@ -1,76 +1,34 @@
-- slider_movies = current_user.user_favorites
+- favorites = current_user.user_favorite
+- watched = current_user.user_watched
 
-#movies-series.user-movies-series{ data: { slider: { playing: '' } } }
-  .title-separator
-    .media
-      .media-left.media-middle
-        %svg.media-object.icon-title
-          %use{"xlink:href" => "#filme"}
-      .media-body.media-middle
-        .media-heading.title-section Meus filmes e séries
-      .media-body.text-right.media-middle
-        %a{:href => "#"} ver todos
-  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: slider_movies
+.title-separator
+  .media
+    .media-left.media-middle
+      %svg.media-object.icon-title
+        %use{"xlink:href" => "#filme"}
+    .media-body.media-middle
+      .media-heading.title-section Meus Favoritos
+    .media-body.text-right.media-middle
+      = link_to 'ver mais', url_for([role, user, :favorite_index])
 
-  / .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /   .thumb
-  /     %a{:href => "#"}
-  /       %span.rollover
-  /       = image_tag("example_movie.jpg", class: "img-responsive")
-  / .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /   .thumb
-  /     %a{:href => "#"}
-  /       %span.rollover
-  /       = image_tag("example_movie.jpg", class: "img-responsive")
-  / .hidden-xs
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /     .thumb
-  /       %a{:href => "#"}
-  /         %span.rollover
-  /         = image_tag("example_movie.jpg", class: "img-responsive")
-  /   .hidden-sm
-  /     .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /       .thumb
-  /         %a{:href => "#"}
-  /           %span.rollover
-  /           = image_tag("example_movie.jpg", class: "img-responsive")
-  /     .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /       .thumb
-  /         %a{:href => "#"}
-  /           %span.rollover
-  /           = image_tag("example_movie.jpg", class: "img-responsive")
-  /     .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
-  /       .thumb
-  /         %a{:href => "#"}
-  /           %span.rollover
-  /           = image_tag("example_movie.jpg", class: "img-responsive")
+.row{ style: 'margin-bottom: 20px;', data: { slider: { favorites: '' } } }
+  - if favorites.any?
+    = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: favorites, background_color: "#ccc"
+  - else
+    = render 'shared/alerts/info', message: "Você ainda não marcou nenhum filme / série como favorito, para isso, acesse um dos títulos disponíveis e clique em 'Adicionar aos favoritos'"
+
+.title-separator
+  .media
+    .media-left.media-middle
+      %svg.media-object.icon-title
+        %use{"xlink:href" => "#filme"}
+    .media-body.media-middle
+      .media-heading.title-section Assistidos
+    .media-body.text-right.media-middle
+      = link_to 'ver mais', url_for([role, user, :watched_index])
+
+.row{ style: 'margin-top: 20px;', data: { slider: { watched: '' } } }
+  - if watched.any?
+    = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: watched
+  - else
+    = render 'shared/alerts/info', message: "Você ainda não adicionou nenhum filme / série à sua lista de assistidos, para isso, acesse um dos títulos disponíveis e clique em 'Já assisti'"
