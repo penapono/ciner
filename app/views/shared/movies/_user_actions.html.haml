@@ -8,7 +8,7 @@
 - actions_unlocked = user && !user.blank?
 - actions_unlocked ||= false
 
-- collection_unlocked = (user && (user.classic? || user.cult?))
+- collection_unlocked = (user && (user.classic? || user.cult? || user.admin?))
 - collection_unlocked ||= false
 
 #user-actions
