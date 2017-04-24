@@ -12,8 +12,8 @@
               = "Coleção de #{user.name}"
 
       .row
-        - filmables.each do |filmable|
-          - object = filmable
+        - filmables.each do |user_filmable|
+          - object = user_filmable.filmable
           - cover = object.cover
           - cover ||= "http://placehold.it/550x700"
 
