@@ -100,6 +100,11 @@ module ::BaseController
                 rescue
                   5
                 end
+      position = begin
+                params[:position]
+              rescue
+                0
+              end
 
       user_filmable = UserFilmable.find_or_initialize_by(
         user_id: user_id,
@@ -113,6 +118,7 @@ module ::BaseController
       else
         user_filmable.media = media
         user_filmable.version = version
+        user_filmable.position = position
       end
 
       user_filmable = user_filmable.save

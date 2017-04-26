@@ -75,6 +75,8 @@ function UserFilmables() {
           mediaValue = mediaSelect.val(),
           versionSelect = parentModal.find('#version'),
           versionValue = versionSelect.val(),
+          positionField = parentModal.find("#position"),
+          positionValue = positionField.val(),
           user_id = parentModal.data('user-id'),
           filmable_id = parentModal.data('filmable-id'),
           filmable_type = parentModal.data('filmable-type'),
@@ -86,7 +88,8 @@ function UserFilmables() {
             filmable_type: filmable_type,
             user_action: user_action,
             media: mediaValue,
-            version: versionValue
+            version: versionValue,
+            position: positionValue
           };
 
       _action($('[data-user-action]'), url, data, $('[data-collection]'));

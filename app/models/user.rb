@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
   end
 
   def user_collection
-    UserFilmable.collection.where(user: self)
+    UserFilmable.collection.where(user: self).order(position: :asc)
   end
 
   def user_favorite
