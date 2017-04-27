@@ -15,9 +15,9 @@ module ::BaseController
   # def show_path
   # end
 
-  FIND_ACTIONS = %i[show edit update destroy].freeze
+  FIND_ACTIONS = %i(show edit update destroy).freeze
 
-  BASE_HELPER_METHODS = %i[breadcrumbs javascript stylesheet].freeze
+  BASE_HELPER_METHODS = %i(breadcrumbs javascript stylesheet).freeze
 
   included do
     helper_method BASE_HELPER_METHODS
@@ -106,22 +106,42 @@ module ::BaseController
                 0
               end
 
-      user_filmable = UserFilmable.find_or_initialize_by(
+      if user_action == "collection"
+        user_filmable = UserFilmable.find_or_initialize_by(
+          user_id: user_id,
+          filmable_id: filmable_id, filmable_type: filmable_type,
+          action: user_action, media: media, version: version,
+          position: position
+        )
+        return 'active' if user_filmable.save
+      else
+        user_filmables = UserFilmable.where(
+          user_id: user_id,
+          filmable_id: filmable_id, filmable_type: filmable_type
+        )
+
+        if user_filmables
+          user_filmables.each do |user_filmable|
+            if user_action == user_filmable.action
+              user_filmable.destroy
+              return ''
+            else
+              if (user_action == "watched" && user_filmable.want_to_see?) ||
+                 (user_action == "want_to_see" && user_filmable.watched?)
+                user_filmable.action = user_action
+                user_filmable.save
+                return 'active'
+              end
+            end
+          end
+        end
+      end
+
+      UserFilmable.create(
         user_id: user_id,
         filmable_id: filmable_id, filmable_type: filmable_type,
         action: user_action
       )
-
-      if user_filmable.persisted?
-        user_filmable.destroy
-        return ''
-      else
-        user_filmable.media = media
-        user_filmable.version = version
-        user_filmable.position = position
-      end
-
-      user_filmable = user_filmable.save
       'active'
     end
 

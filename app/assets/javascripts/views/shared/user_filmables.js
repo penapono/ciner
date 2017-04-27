@@ -46,25 +46,25 @@ function UserFilmables() {
         $('#collectionLockedModal').modal('show');
       }
       else {
-        if (a.hasClass('active')) {
-          var parent = self.closest('[data-user-action]'),
-              url = parent.data("url"),
-              user_id = parent.data("user-id"),
-              filmable_id = parent.data("filmable-id"),
-              filmable_type = parent.data("filmable-type"),
-              user_action = self.data("collection"),
-              data = {
-                user_id: user_id,
-                filmable_id: filmable_id,
-                filmable_type: filmable_type,
-                user_action: user_action
-            };
+        // if (a.hasClass('active')) {
+        //   var parent = self.closest('[data-user-action]'),
+        //       url = parent.data("url"),
+        //       user_id = parent.data("user-id"),
+        //       filmable_id = parent.data("filmable-id"),
+        //       filmable_type = parent.data("filmable-type"),
+        //       user_action = self.data("collection"),
+        //       data = {
+        //         user_id: user_id,
+        //         filmable_id: filmable_id,
+        //         filmable_type: filmable_type,
+        //         user_action: user_action
+        //     };
 
-          _action(parent, url, data, self);
-        }
-        else {
-          $('#collectionModal').modal('show');
-        }
+        //   _action(parent, url, data, self);
+        // }
+        // else {
+        $('#collectionModal').modal('show');
+        // }
       }
     });
 
@@ -118,6 +118,14 @@ function UserFilmables() {
 
   function _updateUserFilmables(aParent, aData, aButton) {
     var classToAdd = aData.result_class;
+
+    if (aButton.data("action") == "want_to_see" && classToAdd == "active") {
+      aParent.find("[data-action='watched'] a").removeClass('active');
+    }
+
+    if (aButton.data("action") == "watched" && classToAdd == "active") {
+      aParent.find("[data-action='want_to_see'] a").removeClass('active');
+    }
 
     aButton.find('a').removeClass('active');
     aButton.find('a').addClass(classToAdd);
