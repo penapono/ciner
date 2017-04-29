@@ -15,9 +15,9 @@ module ::BaseController
   # def show_path
   # end
 
-  FIND_ACTIONS = %i(show edit update destroy).freeze
+  FIND_ACTIONS = %i[show edit update destroy].freeze
 
-  BASE_HELPER_METHODS = %i(breadcrumbs javascript stylesheet).freeze
+  BASE_HELPER_METHODS = %i[breadcrumbs javascript stylesheet].freeze
 
   included do
     helper_method BASE_HELPER_METHODS
@@ -90,28 +90,43 @@ module ::BaseController
       filmable_id = params[:filmable_id]
       filmable_type = params[:filmable_type]
       user_action = params[:user_action]
-      media = begin
+
+      if user_action == "collection"
+        media = begin
                 params[:media]
               rescue
                 5
               end
-      version = begin
-                  params[:version]
+        version = begin
+                    params[:version]
+                  rescue
+                    5
+                  end
+        position = begin
+                  params[:position]
                 rescue
-                  5
+                  0
                 end
-      position = begin
-                params[:position]
-              rescue
-                0
-              end
+        store = params[:store]
+        gift = params[:gift]
+        price = params[:price]
+        begin
+          bought = Date.parse(params[:bought])
+        rescue
+          bought = Date.today
+        end
+        isbn = params[:isbn]
 
-      if user_action == "collection"
+        borrowed = params[:borrowed]
+        observation = params[:observation]
+
         user_filmable = UserFilmable.find_or_initialize_by(
           user_id: user_id,
           filmable_id: filmable_id, filmable_type: filmable_type,
           action: user_action, media: media, version: version,
-          position: position
+          position: position, store: store, gift: gift, price: price,
+          bought: bought, isbn: isbn, borrowed: borrowed,
+          observation: observation
         )
         return 'active' if user_filmable.save
       else
@@ -120,18 +135,16 @@ module ::BaseController
           filmable_id: filmable_id, filmable_type: filmable_type
         )
 
-        if user_filmables
-          user_filmables.each do |user_filmable|
-            if user_action == user_filmable.action
-              user_filmable.destroy
-              return ''
-            else
-              if (user_action == "watched" && user_filmable.want_to_see?) ||
-                 (user_action == "want_to_see" && user_filmable.watched?)
-                user_filmable.action = user_action
-                user_filmable.save
-                return 'active'
-              end
+        user_filmables&.each do |user_filmable|
+          if user_action == user_filmable.action
+            user_filmable.destroy
+            return ''
+          else
+            if (user_action == "watched" && user_filmable.want_to_see?) ||
+               (user_action == "want_to_see" && user_filmable.watched?)
+              user_filmable.action = user_action
+              user_filmable.save
+              return 'active'
             end
           end
         end

@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     resources :watched, only: :index, module: 'users'
   end
 
+  resources :user_filmables
+
   namespace :api do
     namespace :v1 do
       resources :ceps, only: :index

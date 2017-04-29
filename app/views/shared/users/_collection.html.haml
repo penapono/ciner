@@ -15,9 +15,8 @@
     - cover = object.cover
     - cover ||= "http://placehold.it/550x700"
 
-    .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str }
-      = link_to url_for([role, object]) do
-        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
+    .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable) } }
+      = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
 
   - count = 20 - user_collection.count
   - if count > 0
@@ -32,3 +31,7 @@
         / opção placeholder
         / - cover = "http://placehold.it/550x700"
         / = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
+
+#collectionModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+

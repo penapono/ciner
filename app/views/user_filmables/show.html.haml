@@ -1,0 +1,101 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+/ Modal content
+.modal-content
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h4.modal-title
+      = user_filmable.filmable.title_str
+  .modal-body
+    .row
+      .col-xs-4
+        - object = user_filmable.filmable
+        - cover = object.cover
+        - cover ||= "http://placehold.it/550x700"
+
+        = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
+      .col-xs-8
+        .wine
+          = link_to [role, user_filmable.filmable] do
+            = user_filmable.filmable.title_str
+
+        - if user_filmable.media
+          %br
+          %span.wine.float-left
+            Mídia
+          %span
+            = user_filmable.media_str
+
+        - if user_filmable.store
+          %br
+          %span.wine.float-left
+            Loja
+          %span
+            = user_filmable.store
+
+        - if user_filmable.gift
+          %br
+          %span.wine.float-left
+            Presente?
+          %span
+            = user_filmable.gift ? 'Sim' : 'Não'
+
+        - if user_filmable.price
+          %br
+          %span.wine.float-left
+            Preço
+          %span
+            R$
+            = user_filmable.price
+
+        - if user_filmable.bought
+          %br
+          %span.wine.float-left
+            Data da Aquisição
+          %span
+            = I18n.l(user_filmable.bought, format: :long)
+
+        - if user_filmable.isbn
+          %br
+          %span.wine.float-left
+            ISBN
+          %span
+            = user_filmable.isbn
+
+        - if user_filmable.version
+          %br
+          %span.wine.float-left
+            Versão
+          %span
+            = user_filmable.version_str
+
+        - if user_filmable.borrowed
+          %br
+          %span.wine.float-left
+            Emprestado?
+          %span
+            = user_filmable.borrowed
+
+        - if user_filmable.observation
+          %br
+          %span.wine.float-left
+            Observações:
+          %span
+            = user_filmable.observation
+
+        - if user_filmable.position
+          %br
+          %span.wine.float-left
+            Posição na Coleção:
+          %span
+            = user_filmable.position
+
+
+  .modal-footer
+    .pull-left
+      = link_to user_filmable_path(user_filmable), method: 'delete', data: { confirm: 'Deseja mesmo remover esse item de sua coleção?' } do
+        %button.btn.btn-default
+          Remover da Coleção
+    %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar

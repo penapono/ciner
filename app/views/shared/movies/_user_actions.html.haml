@@ -88,6 +88,10 @@
 
         = text_field_tag :position, "", placeholder: "Posição"
 
+        = text_field_tag :borrowed, "", placeholder: "Emprestado? Pra quem? Quando? Detalhes..."
+
+        = text_field_tag :observation, "", placeholder: "Observações"
+
       .modal-footer
         %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"} Fechar
         %button.btn.btn-default{:type => "button", data: { collect: '' } } Adicionar
