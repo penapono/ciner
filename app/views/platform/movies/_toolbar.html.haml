@@ -9,6 +9,4 @@
     = simple_form_for :filter, url: platform_movies_path, method: :get, data: { filter_form: '' } do |f|
       = hidden_field_tag :search, params[:search]
       .col-xs-4
-        = f.input :country, collection: countries, label: false, include_blank: t('.filters.country'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:country, '')
-      .col-xs-4
         = f.input :year, collection: (1839..2021), label: false, include_blank: t('.filters.year'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
