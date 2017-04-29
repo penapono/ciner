@@ -25,17 +25,12 @@ class Movie < ActiveRecord::Base
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true
   delegate :name, to: :state, allow_nil: true, prefix: true
-  delegate :name, to: :country, allow_nil: true, prefix: true
   delegate :name, to: :age_range, allow_nil: true, prefix: true
 
   # Aliases
   alias_attribute :text, :title_str
 
   # Scopes
-
-  def self.by_country(id)
-    where(country_id: id)
-  end
 
   def self.by_year(year)
     where(year: year)
@@ -47,7 +42,6 @@ class Movie < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    result = result.by_country(params[:country]) if params[:country].present?
     result = result.by_year(params[:year]) if params[:year].present?
 
     result

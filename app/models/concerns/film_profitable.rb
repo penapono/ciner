@@ -58,6 +58,59 @@ module FilmProfitable
                   .gsub("(based on characters created by)", "(criador dos personagens)")
     end
 
+    def countries_str
+      countries = self.countries
+      return "Não disponível" unless countries
+
+      countries =
+        countries.gsub("Argentina", "Argentina")
+                  .gsub("Australia", "Austrália")
+                  .gsub("Austria", "Áustria")
+                  .gsub("Belgium", "Bélgica")
+                  .gsub("Brazil", "Brasil")
+                  .gsub("Bulgaria", "Bulgária")
+                  .gsub("Canada", "Canadá")
+                  .gsub("China", "China")
+                  .gsub("Costa Rica", "Costa Rica")
+                  .gsub("Czech Republic", "República Tcheca")
+                  .gsub("Denmark", "Dinamarca")
+                  .gsub("Colombia", "Colômbia")
+                  .gsub("Finland", "Finlândia")
+                  .gsub("France", "França")
+                  .gsub("Germany", "Alemanha")
+                  .gsub("Greece", "Grécia")
+                  .gsub("Hong Kong", "Hong Kong")
+                  .gsub("Hungary", "Hungria")
+                  .gsub("Iceland", "Islândia")
+                  .gsub("India", "Índia")
+                  .gsub("Iran", "Irã")
+                  .gsub("Ireland", "Irlanda")
+                  .gsub("Italy", "Itália")
+                  .gsub("Japan", "Japão")
+                  .gsub("Malaysia", "Malásia")
+                  .gsub("Mexico", "México")
+                  .gsub("Netherlands", "Holanda")
+                  .gsub("New Zealand", "Nova Zelândia")
+                  .gsub("Pakistan", "Paquistão")
+                  .gsub("Poland", "Polônia")
+                  .gsub("Portugal", "Portugal")
+                  .gsub("Romania", "Romênia")
+                  .gsub("Russia", "Rússia")
+                  .gsub("Singapore", "Singapura")
+                  .gsub("South Africa", "África do Sul")
+                  .gsub("Spain", "Espanha")
+                  .gsub("Sweden", "Suécia")
+                  .gsub("Switzerland", "Suíça")
+                  .gsub("Thailand", "Tailândia")
+                  .gsub("United Kingdom", "Reino Unido")
+                  .gsub("United States", "EUA")
+                  .gsub("USA", "EUA")
+
+      self.countries = countries
+      self.save(validate: false) if countries
+      countries
+    end
+
     def title_str
       return title unless title.blank?
       original_title_str

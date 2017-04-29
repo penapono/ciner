@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426053247) do
+ActiveRecord::Schema.define(version: 20170429013146) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -152,7 +152,6 @@ ActiveRecord::Schema.define(version: 20170426053247) do
     t.date     "brazilian_release"
     t.integer  "city_id"
     t.integer  "state_id"
-    t.integer  "country_id"
     t.integer  "age_range_id"
     t.string   "cover"
     t.integer  "studio_id"
@@ -292,7 +291,6 @@ ActiveRecord::Schema.define(version: 20170426053247) do
     t.date     "brazilian_release"
     t.integer  "city_id"
     t.integer  "state_id"
-    t.integer  "country_id"
     t.integer  "age_range_id"
     t.string   "cover"
     t.integer  "studio_id"

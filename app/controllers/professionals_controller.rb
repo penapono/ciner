@@ -7,7 +7,6 @@ class ProfessionalsController < ApplicationController
   expose(:professionals) { Professional.all }
   expose(:professional, attributes: :professional_attributes)
 
-  expose(:countries) { Country.all }
   expose(:set_functions) { SetFunction.all }
 
   # Filters

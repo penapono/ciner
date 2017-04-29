@@ -8,7 +8,6 @@ module Admin
     expose(:movies) { Movie.all }
     expose(:movie, attributes: :movie_attributes)
 
-    expose(:countries) { Country.all }
     expose(:age_ranges) { AgeRange.all }
 
     # Filters
