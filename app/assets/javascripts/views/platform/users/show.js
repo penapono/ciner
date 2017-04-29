@@ -1,17 +1,39 @@
 //= require components/ciner_slider
 
 $(document).ready(function() {
-  var container = $('[data-slider-playing]');
-  _sliderize(container);
-  // $('.slider-container .slide:nth-last-child(-n+4)').prependTo('.slider-container');
+  var container_favorite = $('[data-slider-favorites]');
+  _sliderize(container_favorite);
+
+  var container_watched = $('[data-slider-watched]');
+  _sliderize(container_watched);
+
+  $(document).on('click', '.shelf', function() {
+    var self = $(this),
+        url = self.data('url');
+
+    $.ajax({
+      type: 'GET',
+      dataType: 'html',
+      url: url,
+      success: function(data) {
+        $('#collectionModal .modal-dialog').html(data);
+        $('#collectionModal').modal('show');
+      }
+    });
+
+  });
 });
 
 $(window).resize(function() {
-  var container = $('[data-slider-playing]');
-  _sliderize(container);
+  var container_favorite = $('[data-slider-favorites]');
+  _sliderize(container_favorite);
+
+  var container_watched = $('[data-slider-watched]');
+  _sliderize(container_watched);
 });
 
 function _sliderize(aContainer) {
   var cinerSlider = new CinerSlider();
   cinerSlider.sliderize(aContainer);
 }
+
