@@ -196,12 +196,11 @@ module Tmdb
 
         object.save(validate: false)
       end
+      load_professionals(object, tmdb_id)
+
+      load_seasons(object, tmdb_id) if is_serie?(object)
 
       object.lock_updates = true
-
-      # load_professionals(object, tmdb_id)
-
-      # load_seasons(object, tmdb_id) if is_serie?(object)
 
       object.save(validate: false)
       # rescue
