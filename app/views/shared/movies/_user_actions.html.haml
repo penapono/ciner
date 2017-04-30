@@ -70,27 +70,65 @@
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h4.modal-title Adicionar à Coleção
       .modal-body
-        = select_tag :media, options_for_select([["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]])
+        .row
+          .col-xs-3
+            = label_tag "Tipo de Media"
+          .col-xs-9
+            = select_tag :media, options_for_select([["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]])
 
-        = text_field_tag :store, "", placeholder: "Em qual loja?"
+        .row
+          .col-xs-3
+            = label_tag "Loja"
+          .col-xs-9
+            = text_field_tag :store, "", placeholder: "Em qual loja?"
 
-        = select_tag :version, options_for_select([["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]])
+        .row
+          .col-xs-3
+            = label_tag "Versão"
+          .col-xs-9
+            = select_tag :version, options_for_select([["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]])
 
-        = check_box_tag :gift, "", class: 'float: left;'
-        %span
-          Presente
+        .row
+          .col-xs-3
+            = label_tag "Presente"
+          .col-xs-1
+            = check_box_tag :gift, "", class: 'float: left;'
 
-        = text_field_tag :price, "", placeholder: "Preço R$ 10,00"
+        .row
+          .col-xs-3
+            = label_tag "Valor pago em reais"
+          .col-xs-9
+            = text_field_tag :price, "", placeholder: "R$ 10,00"
 
-        = date_field_tag :bought, I18n.l(Date.today, format: :short), placeholder: "Data da Compra", class: 'datepicker'
+        .row
+          .col-xs-3
+            = label_tag "Data da Compra"
+          .col-xs-9
+            = date_field_tag :bought, I18n.l(Date.today, format: :short), placeholder: "Data da Compra", class: 'datepicker'
 
-        = text_field_tag :isbn, "", placeholder: "ISBN"
+        .row
+          .col-xs-3
+            = label_tag "ISBN"
+          .col-xs-9
+            = text_field_tag :isbn, "", placeholder: "ISBN"
 
-        = text_field_tag :position, "", placeholder: "Posição"
+        .row
+          .col-xs-3
+            = label_tag "Posição na Estante"
+          .col-xs-9
+            = text_field_tag :position, "", placeholder: "Posição"
 
-        = text_field_tag :borrowed, "", placeholder: "Emprestado? Pra quem? Quando? Detalhes..."
+        .row
+          .col-xs-3
+            = label_tag "Empréstimo"
+          .col-xs-9
+            = text_field_tag :borrowed, "", placeholder: "Emprestado? Pra quem? Quando? Detalhes..."
 
-        = text_field_tag :observation, "", placeholder: "Observações"
+        .row
+          .col-xs-3
+            = label_tag "Observações"
+          .col-xs-9
+            = text_field_tag :observation, "", placeholder: "Observações"
 
       .modal-footer
         %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"} Fechar

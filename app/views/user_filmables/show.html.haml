@@ -17,85 +17,89 @@
 
         = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
       .col-xs-8
-        .wine
-          = link_to [role, user_filmable.filmable] do
-            = user_filmable.filmable.title_str
+        .row
+          .col-xs-12
+            = link_to [role, user_filmable.filmable] do
+              = user_filmable.filmable.title_str
 
         - if user_filmable.media
-          %br
-          %span.wine.float-left
-            Mídia
-          %span
-            = user_filmable.media_str
+          .row
+            .col-xs-3.wine
+              Tipo de Mídia
+            .col-xs-9
+              = user_filmable.media_str
 
         - if user_filmable.store
-          %br
-          %span.wine.float-left
-            Loja
-          %span
-            = user_filmable.store
+          .row
+            .col-xs-3.wine
+              Loja
+            .col-xs-9
+              = user_filmable.store
+
+        - if user_filmable.version
+          .row
+            .col-xs-3.wine
+              Versão
+            .col-xs-9
+              = user_filmable.version
 
         - if user_filmable.gift
-          %br
-          %span.wine.float-left
-            Presente?
-          %span
-            = user_filmable.gift ? 'Sim' : 'Não'
+          .row
+            .col-xs-3.wine
+              Presente?
+            .col-xs-9
+              = user_filmable.gift ? 'Sim' : 'Não'
 
         - if user_filmable.price
-          %br
-          %span.wine.float-left
-            Preço
-          %span
-            R$
+          .row
+            .col-xs-3.wine
+              Valor pago em reais
+            .col-xs-9
+              R$
             = user_filmable.price
 
         - if user_filmable.bought
-          %br
-          %span.wine.float-left
-            Data da Aquisição
-          %span
-            = I18n.l(user_filmable.bought, format: :long)
+          .row
+            .col-xs-3.wine
+              Data da Compra
+            .col-xs-9
+              = I18n.l(user_filmable.bought, format: :long)
 
         - if user_filmable.isbn
-          %br
-          %span.wine.float-left
-            ISBN
-          %span
-            = user_filmable.isbn
-
-        - if user_filmable.version
-          %br
-          %span.wine.float-left
-            Versão
-          %span
-            = user_filmable.version_str
-
-        - if user_filmable.borrowed
-          %br
-          %span.wine.float-left
-            Emprestado?
-          %span
-            = user_filmable.borrowed
-
-        - if user_filmable.observation
-          %br
-          %span.wine.float-left
-            Observações:
-          %span
-            = user_filmable.observation
+          .row
+            .col-xs-3.wine
+              ISBN
+            .col-xs-9
+              = user_filmable.isbn
 
         - if user_filmable.position
-          %br
-          %span.wine.float-left
-            Posição na Coleção:
-          %span
-            = user_filmable.position
+          .row
+            .col-xs-3.wine
+              Posição na Estante:
+            .col-xs-9
+              = user_filmable.position
 
+        - if user_filmable.borrowed
+          .row
+            .col-xs-3.wine
+              Empréstimo
+            .col-xs-9
+              = user_filmable.borrowed
+
+        - if user_filmable.observation
+          .row
+            .col-xs-3.wine
+              Observações
+            .col-xs-9
+              = user_filmable.observation
 
   .modal-footer
     .pull-left
       = link_to user_filmable_path(user_filmable), method: 'delete', data: { confirm: 'Deseja mesmo remover esse item de sua coleção?' } do
         %button.btn.btn-default
           Remover da Coleção
-    %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+      / = link_to edit_user_filmable_path(user_filmable) do
+      %button.btn.btn-default.edit-shelf{ data: { user_filmable_id: user_filmable.id, url: edit_user_filmable_path(user_filmable) } }
+        Editar
+    %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+      Fechar
