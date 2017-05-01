@@ -23,7 +23,6 @@ $(document).ready(function() {
   });
 
   $(document).on('click', '.edit-shelf', function() {
-    alert("Clicou!");
     var self = $(this),
         url = self.data('url');
 

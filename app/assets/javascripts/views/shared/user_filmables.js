@@ -40,31 +40,35 @@ function UserFilmables() {
 
     $(dataUserFilmables).on('click', '[data-collection]', function() {
       var self = $(this),
-          a = self.find('a');
+          url = self.data('url'),
+          a = self.find('a'),
+          parent = self.closest('[data-user-action]'),
+          user_id = parent.data('user-id'),
+          filmable_id = parent.data('filmable-id'),
+          filmable_type = parent.data('filmable-type');
+
+      var data = {
+            user_id: user_id,
+            filmable_id: filmable_id,
+            filmable_type: filmable_type
+          }
 
       if (!self.data('unlocked')) {
         $('#collectionLockedModal').modal('show');
       }
       else {
-        // if (a.hasClass('active')) {
-        //   var parent = self.closest('[data-user-action]'),
-        //       url = parent.data("url"),
-        //       user_id = parent.data("user-id"),
-        //       filmable_id = parent.data("filmable-id"),
-        //       filmable_type = parent.data("filmable-type"),
-        //       user_action = self.data("collection"),
-        //       data = {
-        //         user_id: user_id,
-        //         filmable_id: filmable_id,
-        //         filmable_type: filmable_type,
-        //         user_action: user_action
-        //     };
+        // $('#collectionModal').modal('show');
 
-        //   _action(parent, url, data, self);
-        // }
-        // else {
-        $('#collectionModal').modal('show');
-        // }
+        $.ajax({
+          type: 'GET',
+          dataType: 'html',
+          url: url,
+          data: data,
+          success: function(data) {
+            $('#collectionModal .modal-dialog').html(data);
+            $('#collectionModal').modal('show');
+          }
+        });
       }
     });
 

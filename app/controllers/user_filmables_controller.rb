@@ -17,13 +17,52 @@ class UserFilmablesController < ApplicationController
     redirect_to :back
   end
 
-  def user_filmable_params
-      params.require(:user_filmable).permit(
-        :store
-      )
-    end
+  def new
+    @filmable_id = params[:filmable_id]
+    @filmable_type = params[:filmable_type]
 
-    def resource_params
-      user_filmable_params
-    end
+    super
+  end
+
+  def redirect_to_index_with_success
+    redirect_to :back
+  end
+
+  def resource
+    user_filmable
+  end
+
+  def resource_title
+    user_filmable.filmable.title
+  end
+
+  def show_path
+    :back
+  end
+
+  def user_filmable_params
+    params.require(:user_filmable).permit(
+      :user_id,
+      :filmable_type,
+      :filmable_id,
+      :action,
+      :created_at,
+      :updated_at,
+      :media,
+      :version,
+      :position,
+      :store,
+      :gift,
+      :price,
+      :bought,
+      :isbn,
+      :borrowed,
+      :observation,
+      :cover
+    )
+  end
+
+  def resource_params
+    user_filmable_params
+  end
 end

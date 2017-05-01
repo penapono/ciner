@@ -17,6 +17,9 @@ class UserFilmable < ActiveRecord::Base
   belongs_to :user
   belongs_to :filmable, polymorphic: true
 
+  # Uploaders
+  mount_uploader :cover, CoverUploader
+
   def media_str
     return 'Blu-Ray' if bluray?
     return 'DVD' if dvd?

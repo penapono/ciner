@@ -20,7 +20,21 @@ $(document).ready(function() {
         $('#collectionModal').modal('show');
       }
     });
+  });
 
+  $(document).on('click', '.edit-shelf', function() {
+    var self = $(this),
+        url = self.data('url');
+
+    $.ajax({
+      type: 'GET',
+      dataType: 'html',
+      url: url,
+      success: function(data) {
+        $('#collectionModal .modal-dialog').html(data);
+        $('#collectionModal').modal('show');
+      }
+    });
   });
 });
 

@@ -8,10 +8,17 @@
     .modal-header
       %button.close{"data-dismiss" => "modal", :type => "button"} ×
       %h4.modal-title
-        = user_filmable.filmable.title_str
+        Adicionar à Coleção
     .modal-body
       .row
         .col-xs-12
+          .row
+            .col-xs-12
+              = f.hidden_field :action, value: "collection"
+              = f.hidden_field :user_id, value: current_user.id
+              = f.hidden_field :filmable_id, value: @filmable_id
+              = f.hidden_field :filmable_type, value: @filmable_type
+
           .row
             .col-xs-3
               = label_tag "Tipo de Media"

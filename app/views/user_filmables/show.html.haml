@@ -11,86 +11,87 @@
   .modal-body
     .row
       .col-xs-4
+        - cover = user_filmable.cover unless user_filmable.cover.url.blank?
         - object = user_filmable.filmable
-        - cover = object.cover
+        - cover ||= object.cover
         - cover ||= "http://placehold.it/550x700"
 
-        = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
+        = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')
       .col-xs-8
         .row
           .col-xs-12
             = link_to [role, user_filmable.filmable] do
               = user_filmable.filmable.title_str
 
-        - if user_filmable.media
+        - unless user_filmable.media.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Tipo de Mídia
-            .col-xs-9
+            .col-xs-7
               = user_filmable.media_str
 
-        - if user_filmable.store
+        - unless user_filmable.store.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Loja
-            .col-xs-9
+            .col-xs-7
               = user_filmable.store
 
-        - if user_filmable.version
+        - unless user_filmable.version.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Versão
-            .col-xs-9
-              = user_filmable.version
+            .col-xs-7
+              = user_filmable.version_str
 
         - if user_filmable.gift
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Presente?
-            .col-xs-9
+            .col-xs-7
               = user_filmable.gift ? 'Sim' : 'Não'
 
-        - if user_filmable.price
+        - unless user_filmable.price.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Valor pago em reais
-            .col-xs-9
+            .col-xs-7
               R$
-            = user_filmable.price
+              = user_filmable.price
 
-        - if user_filmable.bought
+        - unless user_filmable.bought.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Data da Compra
-            .col-xs-9
+            .col-xs-7
               = I18n.l(user_filmable.bought, format: :long)
 
-        - if user_filmable.isbn
+        - unless user_filmable.isbn.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               ISBN
-            .col-xs-9
+            .col-xs-7
               = user_filmable.isbn
 
-        - if user_filmable.position
+        - unless user_filmable.position.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Posição na Estante:
-            .col-xs-9
+            .col-xs-7
               = user_filmable.position
 
-        - if user_filmable.borrowed
+        - unless user_filmable.borrowed.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Empréstimo
-            .col-xs-9
+            .col-xs-7
               = user_filmable.borrowed
 
-        - if user_filmable.observation
+        - unless user_filmable.observation.blank?
           .row
-            .col-xs-3.wine
+            .col-xs-5.wine
               Observações
-            .col-xs-9
+            .col-xs-7
               = user_filmable.observation
 
   .modal-footer

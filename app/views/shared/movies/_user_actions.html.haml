@@ -27,7 +27,7 @@
               %use{"xlink:href" => "#quero-ver"}
             %span{ data: { count: '' } }
               = object.want_to_see_str
-        .button{ data: { collection: 'collection', unlocked: collection_unlocked.to_s } }
+        .button{ data: { collection: 'collection', unlocked: collection_unlocked.to_s, url: new_user_filmable_path } }
           %a{ class: user_action_class_on(user, object, 'collection') }
             %svg.icon-tags
               %use{"xlink:href" => "#adicionar"}
