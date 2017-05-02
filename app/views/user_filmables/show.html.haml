@@ -16,7 +16,8 @@
         - cover ||= object.cover
         - cover ||= "http://placehold.it/550x700"
 
-        = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')
+        = link_to [role, object] do
+          = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')
       .col-xs-8
         .row
           .col-xs-12
