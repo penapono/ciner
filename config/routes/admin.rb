@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :set_functions
     resources :studios
     resources :professionals
+    resources :curriculums
     resources :age_ranges
     resources :film_production_categories
 

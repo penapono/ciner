@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   belongs_to :country
 
   has_many :critics
+  has_one :curriculum
 
   # Validations
   validates :email,

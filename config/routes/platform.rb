@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     resources :studios, only: [:index, :show]
     resources :professionals, only: [:index, :show]
+    resources :curriculums
 
     resources :movies, only: [:index, :show] do
       member do

@@ -2,6 +2,9 @@
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil
 
+- currriculum = current_user.curriculum
+- curriculum ||= nil
+
 - avatar = user.avatar
 - avatar ||= "http://placehold.it/155x170"
 
@@ -87,7 +90,14 @@
         %a.btn-anchor{:href => "#movies-series"} Minha Conta
         %a.btn-anchor{:href => "#videos"} Vídeos
         %a.btn-anchor{:href => "#user-review"} Críticas
-        %a.btn-anchor{:href => "#t1"} Currículo
+        - if curriculum
+          = link_to url_for([role, curriculum]) do
+            .btn-anchor
+              Currículo
+        - else
+          = link_to url_for([:new, role, :curriculum]) do
+            .btn-anchor
+              Currículo
         %a.btn-anchor{:href => "#friend-list"} Amigos
         %a.btn-anchor{:href => "#t1"} Atividades
 

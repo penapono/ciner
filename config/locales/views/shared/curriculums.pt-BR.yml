@@ -1,0 +1,18 @@
+pt-BR:
+  shared:
+    curriculums:
+      new:
+        title: Currículo Profissional
+      form:
+        general: Dados Gerais
+        avatar: Foto de Perfil
+        about: Conte-nos um pouco sobre você!
+        gallery: Galeria de Fotos
+        videos: Vídeos
+        audios: Áudios
+        files: Arquivos
+        winnings: Prêmios
+        jobs: Trabalhos realizados
+
+      show:
+        general: Dados Gerais

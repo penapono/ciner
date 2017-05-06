@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      curriculum:
+        one: Currículo Profissional
+        other: Profissionais
+
+    attributes:
+      curriculum:
+        play_name: Nome Artístico
+        biography: Biografia
+        set_function: Função Profissional
+        set_function_id: Função Profissional

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501050401) do
+ActiveRecord::Schema.define(version: 20170506192502) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -103,6 +103,48 @@ ActiveRecord::Schema.define(version: 20170501050401) do
     t.datetime "updated_at",                                          null: false
     t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id", using: :btree
     t.index ["user_id"], name: "index_critics_on_user_id", using: :btree
+  end
+
+  create_table "curriculums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "play_name"
+    t.string   "avatar"
+    t.text     "biography",       limit: 65535
+    t.boolean  "drt"
+    t.string   "winnings1"
+    t.string   "winnings2"
+    t.string   "winnings3"
+    t.string   "winnings4"
+    t.string   "winnings5"
+    t.string   "jobs1"
+    t.string   "jobs2"
+    t.string   "jobs3"
+    t.string   "jobs4"
+    t.string   "jobs5"
+    t.string   "photo1"
+    t.string   "photo2"
+    t.string   "photo3"
+    t.string   "photo4"
+    t.string   "photo5"
+    t.string   "photo6"
+    t.string   "photo7"
+    t.string   "photo8"
+    t.string   "photo9"
+    t.string   "photo10"
+    t.string   "video1"
+    t.string   "video2"
+    t.string   "video3"
+    t.string   "audio1"
+    t.string   "audio2"
+    t.string   "audio3"
+    t.string   "file1"
+    t.string   "file2"
+    t.string   "file3"
+    t.integer  "set_function_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["set_function_id"], name: "index_curriculums_on_set_function_id", using: :btree
+    t.index ["user_id"], name: "index_curriculums_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

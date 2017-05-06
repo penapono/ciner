@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :professionals, only: [:index, :show]
+  resources :curriculums, only: [:index, :show]
   resources :users do
     resources :collection, only: :index, module: 'users'
     resources :favorite, only: :index, module: 'users'

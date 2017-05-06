@@ -40,7 +40,6 @@ module ::BaseController
       if created?
         redirect_to_index_with_success
       else
-        byebug
         render_new_with_error
       end
     end

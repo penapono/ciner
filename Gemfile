@@ -30,6 +30,10 @@ gem 'kaminari'
 
 # file upload
 gem 'carrierwave'
+# video uploader
+gem 'carrierwave-video'
+# audio uploader
+gem 'carrierwave-audio'
 
 # session
 gem 'devise'

@@ -1,0 +1,12 @@
+pt-BR:
+  admin:
+    curriculums:
+      new:
+        title: Currículo Profissional
+      form:
+        general: Dados Gerais
+        avatar: Foto de Perfil
+        about: Conte-nos um pouco sobre você!
+
+      show:
+        general: Dados Gerais
