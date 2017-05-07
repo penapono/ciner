@@ -23,9 +23,7 @@ class Curriculum < ActiveRecord::Base
   delegate :biography, to: :user, allow_nil: true, prefix: true
   delegate :gender_str, to: :user, allow_nil: true, prefix: true
   delegate :simple_address, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :avatar, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :set_function, allow_nil: true, prefix: true
 
   # Uploaders
@@ -52,6 +50,12 @@ class Curriculum < ActiveRecord::Base
   mount_uploader :audio1, CurriculumAudioUploader
   mount_uploader :audio2, CurriculumAudioUploader
   mount_uploader :audio3, CurriculumAudioUploader
+
+  def current_avatar
+    return avatar unless avatar.url.blank?
+    return user_avatar unless user_avatar.url.blank?
+    "http://placehold.it/550x700"
+  end
 
   def set_success(_format, _opts)
     self.success = true
