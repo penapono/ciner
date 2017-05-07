@@ -7,6 +7,9 @@ module ExtendedContainerHelper
         movies series
         admin/movies admin/series
         platform/movies platform/series
+        curriculums
+        admin/curriculums
+        platform/curriculums
       ]
 
     extended_actions = %w[show]

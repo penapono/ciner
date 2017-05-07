@@ -1,0 +1,83 @@
+- role = role
+- object = curriculum
+- avatar = object.avatar
+- avatar = "http://placehold.it/550x700" if avatar.url.blank?
+
+.internal-section-detail-filmable
+  .filmable
+    .container
+      .row
+        .col-xs-12.col-sm-12.col-md-3.col-lg-3
+          %img.img-responsive{ src: avatar, style: 'height: 400px; width: 266px;' }
+        .col-xs-12.col-sm-12.col-md-9.col-lg-9
+          .row
+            .col-xs-12.col-sm-6.col-md-6.col-lg-6
+              Funções no Set
+              %a.wine.bold
+                = object.set_function_name
+              %br
+              %br
+
+              .title
+                %h3.bold.wine
+                  = object.title_str
+                %h4.light.cinza
+                  = object.user_age
+                  anos
+
+              %br
+
+            .col-xs-12.col-sm-6.col-md-6.col-lg-6
+              - if current_user == object.user
+                .row
+                  .col-xs-6
+                    = link_to url_for([:edit, role, object]) do
+                      .btn.submit
+                        Editar
+                .row
+                  .col-xs-6
+                    = link_to url_for([role, object]), method: 'delete' do
+                      .btn.submit
+                        Excluir
+              - else
+                .row
+                  .col-xs-6
+                    = link_to '#' do
+                      .btn.submit
+                        Quero entrar em contato com este profissional
+
+          .row
+            .col-xs-12
+              = object.user_gender_str
+
+          .row
+            .col-xs-12
+              = object.user_simple_address
+
+          .row
+            .col-xs-12
+              .title
+                .biograpy
+                  = object.biography_str
+                %br
+
+                Premiações
+                %a.bold.wine
+                  = object.winnings_str
+                %br
+
+                Trabalhos
+                %a.bold.wine
+                  = object.jobs_str
+                %br
+
+                Possui DRT
+                %a.bold.wine
+                  = object.drt_str
+                %br
+
+                %a.bold.wine
+                  = object.appearance_str
+                %br
+
+          = render 'shared/curriculums/user_actions', object: object, role: role

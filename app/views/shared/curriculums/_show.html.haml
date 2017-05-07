@@ -1,0 +1,21 @@
+- content_for :javascript, javascript_include_tag('components/collapser')
+
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+= render 'shared/curriculums/general', curriculum: curriculum, role: role
+
+.container
+  .row
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#fotos"} Fotos
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#videos"} Vídeos
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#audios"} Áudios
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#arquivos"} Arquivos
+/   .row
+/     = render 'shared/movies/comments', movie: movie
+/     = render 'shared/movies/broadcasts', movie: movie

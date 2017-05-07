@@ -16,6 +16,11 @@ module Platform
       end
     end
 
+    def destroy
+      destroyed?
+      redirect_to url_for([:platform, "profile"])
+    end
+
     private
 
     def resource

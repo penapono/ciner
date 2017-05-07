@@ -16,6 +16,11 @@ module Admin
       end
     end
 
+    def destroy
+      destroyed?
+      redirect_to url_for([:admin, "profile"])
+    end
+
     private
 
     def resource

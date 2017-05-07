@@ -17,20 +17,16 @@ class Curriculum < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :age, to: :user, allow_nil: true, prefix: true
+  delegate :city, to: :user, allow_nil: true, prefix: true
+  delegate :state, to: :user, allow_nil: true, prefix: true
+  delegate :biography, to: :user, allow_nil: true, prefix: true
+  delegate :gender_str, to: :user, allow_nil: true, prefix: true
+  delegate :simple_address, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :set_function, allow_nil: true, prefix: true
-
-  # Aliases
-  alias_attribute :title_str, :name
-  alias_attribute :text, :title_str
 
   # Uploaders
   mount_uploader :avatar, CurriculumAvatarUploader
@@ -62,6 +58,52 @@ class Curriculum < ActiveRecord::Base
   end
 
   def title_str
-    user.name
+    return user_name if play_name.blank?
+    play_name
+  end
+
+  def original_title_str
+    return user_name unless user_name == title_str
+  end
+
+  def biography_str
+    return user_biography if biography.blank?
+    biography
+  end
+
+  def drt_str
+    return "Sim" if drt
+    "Não"
+  end
+
+  def winnings_str
+    [winnings1, winnings2, winnings3, winnings4, winnings5].reject(&:blank?).to_sentence
+  end
+
+  def jobs_str
+    [jobs1, jobs2, jobs3, jobs4, jobs5].reject(&:blank?).to_sentence
+  end
+
+  def height_str
+    return "Altura não informada" if height.blank?
+    height
+  end
+
+  def mannequin_str
+    return "Manequim não informado" if mannequin.blank?
+    mannequin
+  end
+
+  def ethnicity_str
+    return "Branca" if white?
+    return "Preta" if afrodescendant?
+    return "Parda" if brown?
+    return "Amarela" if yellow?
+    return "Indígena" if indigenous?
+    nil
+  end
+
+  def appearance_str
+    [mannequin, height, ethnicity_str].reject(&:blank?).join(" / ")
   end
 end

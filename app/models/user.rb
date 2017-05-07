@@ -149,6 +149,13 @@ class User < ActiveRecord::Base
     filmables
   end
 
+  def simple_address
+    return "" unless city || state
+    return "#{city_name} - #{state_name}" if city && state
+    return city_name if city
+    state_name if state
+  end
+
   private
 
   def update_address
