@@ -109,6 +109,11 @@ ActiveRecord::Schema.define(version: 20170506192502) do
     t.string   "play_name"
     t.string   "avatar"
     t.text     "biography",       limit: 65535
+    t.integer  "set_function_id"
+    t.integer  "user_id"
+    t.integer  "mannequin"
+    t.float    "height",          limit: 24
+    t.integer  "ethnicity"
     t.boolean  "drt"
     t.string   "winnings1"
     t.string   "winnings2"
@@ -139,8 +144,6 @@ ActiveRecord::Schema.define(version: 20170506192502) do
     t.string   "file1"
     t.string   "file2"
     t.string   "file3"
-    t.integer  "set_function_id"
-    t.integer  "user_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["set_function_id"], name: "index_curriculums_on_set_function_id", using: :btree

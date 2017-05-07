@@ -36,7 +36,7 @@ module Admin
       [
         area_breadcrumb,
         index_breadcrumb,
-        [curriculum.name, ""]
+        [curriculum.user_name, ""]
       ]
     end
 

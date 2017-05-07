@@ -6,6 +6,17 @@ class CreateCurriculum < ActiveRecord::Migration[5.0]
       t.string :avatar
       t.text :biography
 
+      # Professional Attributes
+      t.references :set_function
+
+      # If Professional is an User
+      t.references :user
+
+      # Measures
+      t.integer :mannequin
+      t.float :height
+      t.integer :ethnicity
+
       t.boolean :drt
       t.string :winnings1
       t.string :winnings2
@@ -36,12 +47,6 @@ class CreateCurriculum < ActiveRecord::Migration[5.0]
       t.string :file1
       t.string :file2
       t.string :file3
-
-      # Professional Attributes
-      t.references :set_function
-
-      # If Professional is an User
-      t.references :user
 
       t.timestamps null: false
     end

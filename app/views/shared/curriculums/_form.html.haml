@@ -14,15 +14,25 @@
   .col-xs-6
     = f.input :play_name
 
+    = f.hidden_field :user_id, value: (f.object.user ? f.object.user.id : current_user.id)
 .row
   .col-xs-6
     = f.input :set_function_id, collection: SetFunction.all, input_html: { class: 'select2 form-field' }
 
 .row
-  .col-xs-1
-    = f.input :drt, label: false
-  .col-xs-1
-    = 'Tenho DRT'
+  .col-xs-12
+    = checkbox_item(f, :drt)
+
+%h3
+  = t('.body')
+
+.row
+  .col-xs-4
+    = f.input :ethnicity, collection: [["Branca", :white], ["Preta", :afrodescendant], ["Parda", :brown], ["Amarela", :yellow], ["Indígena", :indigenous]]
+  .col-xs-4
+    = f.input :height
+  .col-xs-4
+    = f.input :mannequin
 
 %h3
   = t('.winnings')
@@ -66,18 +76,21 @@
     = f.input :photo2, label: false
   .col-xs-4
     = f.input :photo3, label: false
+.row
   .col-xs-4
     = f.input :photo4, label: false
   .col-xs-4
     = f.input :photo5, label: false
   .col-xs-4
     = f.input :photo6, label: false
+.row
   .col-xs-4
     = f.input :photo7, label: false
   .col-xs-4
     = f.input :photo8, label: false
   .col-xs-4
     = f.input :photo9, label: false
+.row
   .col-xs-4
     = f.input :photo10, label: false
 

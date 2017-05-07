@@ -8,6 +8,14 @@ module Admin
     expose(:curriculums) { Curriculum.all }
     expose(:curriculum, attributes: :curriculum_attributes)
 
+    def create
+      if created?
+        redirect_to_show_with_success
+      else
+        render_new_with_error
+      end
+    end
+
     private
 
     def resource
@@ -15,7 +23,7 @@ module Admin
     end
 
     def resource_title
-      curriculum.name
+      curriculum.user_name
     end
 
     def index_path
@@ -32,7 +40,51 @@ module Admin
 
     def curriculum_params
       params.require(:curriculum).permit(
-        :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating
+        :play_name,
+        :avatar,
+        :biography,
+
+        # Professional Attributes
+        :set_function_id,
+
+        # If Professional is an User
+        :user_id,
+
+        # Measures
+        :mannequin,
+        :height,
+        :ethnicity,
+
+        :drt,
+        :winnings1,
+        :winnings2,
+        :winnings3,
+        :winnings4,
+        :winnings5,
+        :jobs1,
+        :jobs2,
+        :jobs3,
+        :jobs4,
+        :jobs5,
+        :photo1,
+        :photo2,
+        :photo3,
+        :photo4,
+        :photo5,
+        :photo6,
+        :photo7,
+        :photo8,
+        :photo9,
+        :photo10,
+        :video1,
+        :video2,
+        :video3,
+        :audio1,
+        :audio2,
+        :audio3,
+        :file1,
+        :file2,
+        :file3
       )
     end
   end

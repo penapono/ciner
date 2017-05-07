@@ -6,19 +6,18 @@ class Curriculum < ActiveRecord::Base
   belongs_to :set_function
 
   # Validations
-  validates :name,
-            :set_function,
+  validates :user_id,
+            :set_function_id,
             presence: true
 
   # gender
   # 0: Men, 1: Women, 2: Other
   enum gender: { men: 0, women: 1, other: 2 }
+  enum ethnicity: { white: 1, afrodescendant: 2, brown: 3, yellow: 4, indigenous: 5 }
 
   # Delegations
+  delegate :name, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :set_function, allow_nil: true, prefix: true
-
-  # Callbacks
-  before_save :update_age
 
   # Aliases
   alias_attribute :title_str, :name
@@ -49,44 +48,11 @@ class Curriculum < ActiveRecord::Base
   mount_uploader :audio2, CurriculumAudioUploader
   mount_uploader :audio3, CurriculumAudioUploader
 
-  def set_success(format, opts)
+  def set_success(_format, _opts)
     self.success = true
   end
 
   def title_str
-    name
-  end
-
-  def self.localized_genders
-    genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
-  end
-
-  def gender_str
-    return "Não informado" unless gender
-    User.human_attribute_name("gender.#{gender}")
-  end
-
-  # Scopes
-
-  def self.by_gender(gender)
-    where(gender: gender)
-  end
-
-  # Filter
-
-  def self.filter_by(collection, params)
-    return collection unless params.present?
-
-    result = collection
-    result = result.by_gender(genders[params[:gender]]) if params[:gender].present?
-
-    result
-  end
-
-  def update_age
-    self.age = 0
-    return unless birthday
-    now = Time.now.utc.to_date
-    self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
+    user.name
   end
 end

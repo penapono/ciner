@@ -13,6 +13,7 @@ pt-BR:
         files: Arquivos
         winnings: Prêmios
         jobs: Trabalhos realizados
+        body: Aparência
 
       show:
         general: Dados Gerais
