@@ -4,7 +4,7 @@
 %h3
   = t('.general')
 %span
-  Os campos sinalizados com * são se preenchimento obrigatório
+  Os campos sinalizados com * são de preenchimento obrigatório
 
 - curriculum.errors.each do |e|
   %p
@@ -18,6 +18,15 @@
 .row
   .col-xs-6
     = f.input :set_function_id, collection: SetFunction.all, input_html: { class: 'select2 form-field' }
+
+%h3
+  = t('.about')
+
+.row
+  .col-xs-12{ data: { limited: '', limit: 1000 } }
+    = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 1000
+    %span.char-counter
+      = t('remaining_chars', chars: 1000)
 
 .row
   .col-xs-12
@@ -133,14 +142,5 @@
 .row
   .col-xs-6
     = f.input :avatar, label: false
-
-%h3
-  = t('.about')
-
-.row
-  .col-xs-12{ data: { limited: '', limit: 1000 } }
-    = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 1000
-    %span.char-counter
-      = t('remaining_chars', chars: 1000)
 
 = render 'shared/form_actions', f: f

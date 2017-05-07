@@ -17,6 +17,15 @@ class Curriculum < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :name, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :set_function, allow_nil: true, prefix: true
 
   # Aliases
