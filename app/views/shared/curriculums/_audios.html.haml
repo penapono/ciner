@@ -1,0 +1,18 @@
+#arquivos.criticas
+  .title-separator
+    .media
+      .media-body.media-bottom
+        .media-heading.title-section
+          Áudios
+
+  .row
+    - if curriculum.audio1.url
+      .col-xs-4
+        = link_to 'Download Áudio 1', curriculum.audio1.url, download: ''
+
+    - if curriculum.audio2.url
+      .col-xs-4
+        = link_to 'Download Áudio 2', curriculum.audio2.url, download: ''
+    - if curriculum.audio3.url
+      .col-xs-4
+        = link_to 'Download Áudio 3', curriculum.audio3.url, download: ''

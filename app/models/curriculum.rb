@@ -52,6 +52,63 @@ class Curriculum < ActiveRecord::Base
   mount_uploader :audio2, CurriculumAudioUploader
   mount_uploader :audio3, CurriculumAudioUploader
 
+  # Filters
+  # filter[set_function_id]=1&
+  # filter[age]=22&
+  # filter[gender]=men&
+  # filter[state_id]=27&
+  # filter[state_id]=8&
+  # filter[ethnicity]=white&
+  # filter[drt]=true&
+  # filter[mannequin]=
+
+  def self.by_set_function(set_function_id)
+    where(set_function: set_function_id)
+  end
+
+  def self.by_age(age)
+    references(:user).where("users.age = ?", age).includes(:user)
+  end
+
+  def self.by_gender(gender)
+    references(:user).where("users.gender = ?", gender).includes(:user)
+  end
+
+  def self.by_state(state_id)
+    references(:user).where("users.state_id = ?", state_id).includes(:user)
+  end
+
+  def self.by_city(city_id)
+    references(:user).where("users.city_id = ?", city_id).includes(:user)
+  end
+
+  def self.by_ethnicity(ethnicity)
+    where(ethnicity: ethnicity)
+  end
+
+  def self.by_drt(drt)
+    where(drt: drt)
+  end
+
+  def self.by_mannequin(mannequin)
+    where(mannequin: mannequin)
+  end
+
+  def self.filter_by(collection, params)
+    return collection unless params.present?
+
+    result = collection
+    result = result.by_set_function(params[:set_function_id]) unless params[:set_function_id].blank?
+    result = result.by_age(params[:age]) unless params[:age].blank?
+    result = result.by_gender(params[:gender]) unless params[:gender].blank?
+    result = result.by_state(params[:state_id]) unless params[:state_id].blank?
+    result = result.by_city(params[:city_id]) unless params[:city_id].blank?
+    result = result.by_ethnicity(params[:ethnicity]) unless params[:ethnicity].blank?
+    result = result.by_drt(params[:drt]) unless params[:drt].blank?
+    result = result.by_mannequin(params[:mannequin]) unless params[:mannequin].blank?
+    result
+  end
+
   def current_avatar
     return avatar unless avatar.url.blank?
     return user_avatar unless user_avatar.url.blank?
@@ -65,6 +122,11 @@ class Curriculum < ActiveRecord::Base
   def title_str
     return user_name if play_name.blank?
     play_name
+  end
+
+  def age_str
+    return "" if user_age.blank?
+    "#{user_age} anos"
   end
 
   def original_title_str

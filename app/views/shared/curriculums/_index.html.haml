@@ -1,0 +1,24 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              = "Curriculums"
+
+      .row
+        - curriculums.each do |curriculum|
+          - object = curriculum
+          - cover = object.current_avatar
+
+          .col-sm-2.col-xs-3.no-shelf
+            = link_to url_for([role, object]) do
+              = image_tag(cover, class: "img-responsive")
+            .wine
+              = object.title_str
+            = object.age_str

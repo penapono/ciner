@@ -8,6 +8,13 @@ module Admin
     expose(:curriculums) { Curriculum.all }
     expose(:curriculum, attributes: :curriculum_attributes)
 
+    PER_PAGE = 50
+
+    def index
+      return if curriculums.blank?
+      self.curriculums = paginated_curriculums
+    end
+
     def create
       if created?
         redirect_to_show_with_success
@@ -22,6 +29,20 @@ module Admin
     end
 
     private
+
+    # Filtering
+
+    def paginated_curriculums
+      filtered_curriculum.page(params[:page]).per(PER_PAGE)
+    end
+
+    def filtered_curriculum
+      curriculums.filter_by(searched_curriculums, params.fetch(:filter, ''))
+    end
+
+    def searched_curriculums
+      curriculums
+    end
 
     def resource
       curriculum

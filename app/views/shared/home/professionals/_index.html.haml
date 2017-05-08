@@ -1,3 +1,7 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
 .col-xs-12.col-sm-12.col-md-5.col-lg-4
   .title-separator.ciner-search
     .media
@@ -5,61 +9,41 @@
         %svg.icon-title
           %use{"xlink:href" => "#busca"}
       .media-body.media-bottom
-        .media-heading.title-section Busca de Profissionais
+        .media-heading.title-section
+          Busca de Profissionais
       .media-body.text-right.media-middle
-        %a{:href => "#"}
+        = link_to url_for([role, :curriculums]) do
           = t('see_more')
-  %form.form-profissionais{:action => "#", :method => "POST"}
+
+  = simple_form_for :filter, url: url_for([role, :curriculums]), method: :get do |f|
     .form-group
-      %select#tipo_profissional.form-control{:name => "tipo_profissional"}
-        %option{:disabled => "disabled", :selected => "selected"} Tipo profissional
-        %option{:value => ""} option
-        %option{:value => ""} option
-        %option{:value => ""} option
+      = f.input :set_function_id, label: false, collection: SetFunction.all, input_html: { class: 'select2 form-field' }, include_blank: 'Tipo do Profissional'
+
     .form-group
-      %select#idade.form-control{:name => "idade"}
-        %option{:disabled => "disabled", :selected => "selected"} Idade
-        %option{:value => ""} option
-        %option{:value => ""} option
-        %option{:value => ""} option
+      = f.input :age, label: false, collection: (1..99), input_html: { class: 'select2 form-field' }, include_blank: 'Idade'
+
     .form-group
-      %select#sexo.form-control{:name => "sexo"}
-        %option{:disabled => "disabled", :selected => "selected"} Sexo
-        %option{:value => ""} option
-        %option{:value => ""} option
+      = f.input :gender, label: false, collection: User.localized_genders, input_html: { class: 'select2 form-field' }, include_blank: 'Sexo'
+
     .row
       .col-xs-5.form-group
-        %select#estado.form-control{:name => "estado"}
-          %option{:disabled => "disabled", :selected => "selected"} Estado
-          %option{:value => ""} option
-          %option{:value => ""} option
+        = f.input :state_id, label: false, collection: State.all, input_html: { class: 'select2 form-field' }, include_blank: 'Estado'
       .col-xs-7.form-group
-        %select#cidade.form-control{:name => "cidade"}
-          %option{:disabled => "disabled", :selected => "selected"} Cidade
-          %option{:value => ""} option
-          %option{:value => ""} option
+        = f.input :state_id, label: false, collection: City.all, input_html: { class: 'select2 form-field' }, include_blank: 'Cidade'
+
     .row
       .col-xs-6.form-group
-        %select#raca.form-control{:name => "raca"}
-          %option{:disabled => "disabled", :selected => "selected"} Raça
-          %option{:value => ""} option
-          %option{:value => ""} option
+        = f.input :ethnicity, label: false, collection: [["Branca", :white], ["Preta", :afrodescendant], ["Parda", :brown], ["Amarela", :yellow], ["Indígena", :indigenous]], input_html: { class: 'select2 form-field' }, include_blank: 'Raça'
       .col-xs-6.form-group
         %select#altura.form-control{:name => "altura"}
           %option{:disabled => "disabled", :selected => "selected"} Altura
-          %option{:value => ""} option
-          %option{:value => ""} option
+          %option{:value => ""} 1,60
+          %option{:value => ""} 1,70
     .row
       .col-xs-4.form-group
-        %select#drt.form-control{:name => "drt"}
-          %option{:disabled => "disabled", :selected => "selected"} DRT
-          %option{:value => ""} option
-          %option{:value => ""} option
+        = f.input :drt, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field' }, include_blank: 'Possui DRT'
       .col-xs-8.form-group
-        %select#manequim.form-control{:name => "manequim"}
-          %option{:disabled => "disabled", :selected => "selected"} Manequim
-          %option{:value => ""} option
-          %option{:value => ""} option
+        = f.input :mannequin, label: false, collection: (1..70), input_html: { class: 'select2 form-field' }, include_blank: 'Manequim'
     .form-group
       %button.btn.btn-login{:type => "submit"}
         buscar

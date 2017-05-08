@@ -1,0 +1,25 @@
+#arquivos.criticas
+  .title-separator
+    .media
+      .media-body.media-bottom
+        .media-heading.title-section
+          Vídeos
+
+  .row
+    - if curriculum.video1.url
+      .col-xs-4
+        %video{:controls => "", :height => "240", :width => "100%"}
+          %source{:src => curriculum.video1, :type => "video/mp4"}
+            Your browser does not support the video tag.
+
+    - if curriculum.video2.url
+      .col-xs-4
+        %video{:controls => "", :height => "240", :width => "100%"}
+          %source{:src => curriculum.video2, :type => "video/mp4"}
+            Your browser does not support the video tag.
+
+    - if curriculum.video3.url
+      .col-xs-4
+        %video{:controls => "", :height => "240", :width => "100%"}
+          %source{:src => curriculum.video3, :type => "video/mp4"}
+            Your browser does not support the video tag.

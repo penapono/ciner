@@ -17,7 +17,7 @@ module ActionView
 
       def content_str(_content, method)
         required_mark = ''
-        required_mark = ' *' if
+        required_mark = ' *' if object &&
           validators_include?(object.class.validators_on(method).map(&:class))
 
         I18n.t('activerecord.attributes.' \

@@ -16,6 +16,8 @@
       %a.btn.btn-block.btn-ancora{:href => "#audios"} Áudios
     .col-xs-12.col-sm-3
       %a.btn.btn-block.btn-ancora{:href => "#arquivos"} Arquivos
-/   .row
-/     = render 'shared/movies/comments', movie: movie
-/     = render 'shared/movies/broadcasts', movie: movie
+    .col-xs-12.col-sm-8
+      = render 'shared/curriculums/gallery', curriculum: curriculum, role: role
+      = render 'shared/curriculums/videos', curriculum: curriculum, role: role
+      = render 'shared/curriculums/audios', curriculum: curriculum, role: role
+      = render 'shared/curriculums/files', curriculum: curriculum, role: role
