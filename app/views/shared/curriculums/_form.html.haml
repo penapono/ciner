@@ -1,26 +1,45 @@
 - content_for :javascript, javascript_include_tag('views/shared/curriculums/form')
 - content_for :stylesheet, stylesheet_link_tag('views/shared/curriculums/form')
 
-%h3
+%h3.wine
   = t('.general')
 %span
   Os campos sinalizados com * são de preenchimento obrigatório
 
-- curriculum.errors.each do |e|
-  %p
-    = e.to_s
+.row
+  .col-xs-6
+    = label_tag 'Nome'
+    = text_field_tag :user_name, current_user.name, disabled: true
 
 .row
   .col-xs-6
     = f.input :play_name
-
     = f.hidden_field :user_id, value: (f.object.user ? f.object.user.id : current_user.id)
+
+.row
+  .col-xs-3
+    = label_tag 'Sexo'
+    = text_field_tag :user_gender, current_user.gender_str, disabled: true
+  .col-xs-3
+    = label_tag 'Idade'
+    = text_field_tag :user_gender, "#{current_user.age} anos", disabled: true
+
+.row
+  .col-xs-3
+    = label_tag 'Cidade'
+    = text_field_tag :user_name, current_user.city_name, disabled: true
+  .col-xs-3
+    = label_tag 'Estado'
+    = text_field_tag :user_name, current_user.state_name, disabled: true
+
 .row
   .col-xs-6
     = f.input :set_function_id, collection: SetFunction.all, input_html: { class: 'select2 form-field' }
 
-%h3
-  = t('.about')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.about')
 
 .row
   .col-xs-12{ data: { limited: '', limit: 1000 } }
@@ -32,51 +51,68 @@
   .col-xs-12
     = checkbox_item(f, :drt)
 
-%h3
-  = t('.body')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.body')
 
 .row
   .col-xs-4
     = f.input :ethnicity, collection: [["Branca", :white], ["Preta", :afrodescendant], ["Parda", :brown], ["Amarela", :yellow], ["Indígena", :indigenous]]
   .col-xs-4
-    = f.input :height
+    = f.input :height, input_html: { pattern: "[0-9]+([\.,][0-9]+)?", step: "0.01", type: :number }
   .col-xs-4
-    = f.input :mannequin
+    = f.input :mannequin, input_html: { type: "number", min: 1,  max: 99, step: 1 }
 
-%h3
-  = t('.winnings')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.winnings')
 
 .row
   .col-xs-4
-    = f.input :winnings1, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }
-  .col-xs-4
-    = f.input :winnings2, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }
-  .col-xs-4
-    = f.input :winnings3, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }
-.row
-  .col-xs-4
-    = f.input :winnings4, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }
-  .col-xs-4
-    = f.input :winnings5, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }
+    = f.input :winnings1, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
 
-%h3
-  = t('.jobs')
+  .col-xs-4
+    = f.input :winnings2, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
+
+  .col-xs-4
+    = f.input :winnings3, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
 
 .row
   .col-xs-4
-    = f.input :jobs1, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }
+    = f.input :winnings4, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
+
   .col-xs-4
-    = f.input :jobs2, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }
-  .col-xs-4
-    = f.input :jobs3, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }
+    = f.input :winnings5, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
+
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.jobs')
+
 .row
   .col-xs-4
-    = f.input :jobs4, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }
-  .col-xs-4
-    = f.input :jobs5, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }
+    = f.input :jobs1, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
 
-%h3
-  = t('.gallery')
+  .col-xs-4
+    = f.input :jobs2, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
+
+  .col-xs-4
+    = f.input :jobs3, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
+
+.row
+  .col-xs-4
+    = f.input :jobs4, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
+
+  .col-xs-4
+    = f.input :jobs5, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
+
+
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.gallery')
 
 .row
   .col-xs-4
@@ -103,8 +139,10 @@
   .col-xs-4
     = f.input :photo10, label: false
 
-%h3
-  = t('.videos')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.videos')
 
 .row
   .col-xs-4
@@ -114,8 +152,10 @@
   .col-xs-4
     = f.input :video3, label: false
 
-%h3
-  = t('.audios')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.audios')
 
 .row
   .col-xs-4
@@ -125,8 +165,10 @@
   .col-xs-4
     = f.input :audio3, label: false
 
-%h3
-  = t('.files')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.files')
 
 .row
   .col-xs-4
@@ -136,8 +178,10 @@
   .col-xs-4
     = f.input :file3, label: false
 
-%h3
-  = t('.avatar')
+.row
+  .col-xs-12
+    %h3.wine
+      = t('.avatar')
 
 .row
   .col-xs-6

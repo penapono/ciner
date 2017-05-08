@@ -8,6 +8,7 @@ class Curriculum < ActiveRecord::Base
   # Validations
   validates :user_id,
             :set_function_id,
+            :play_name,
             presence: true
 
   # gender
@@ -90,24 +91,24 @@ class Curriculum < ActiveRecord::Base
 
   def height_str
     return "Altura não informada" if height.blank?
-    height
+    "Altura: #{height}"
   end
 
   def mannequin_str
     return "Manequim não informado" if mannequin.blank?
-    mannequin
+    "Manequim: #{mannequin}"
   end
 
   def ethnicity_str
-    return "Branca" if white?
-    return "Preta" if afrodescendant?
-    return "Parda" if brown?
-    return "Amarela" if yellow?
-    return "Indígena" if indigenous?
-    nil
+    return "Raça: Branca" if white?
+    return "Raça: Preta" if afrodescendant?
+    return "Raça: Parda" if brown?
+    return "Raça: Amarela" if yellow?
+    return "Raça: Indígena" if indigenous?
+    "Raça não informada"
   end
 
   def appearance_str
-    [mannequin, height, ethnicity_str].reject(&:blank?).join(" / ")
+    [ethnicity_str, height_str, mannequin_str].reject(&:blank?).join(" / ")
   end
 end
