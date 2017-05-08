@@ -29,11 +29,12 @@
       .col-xs-5.form-group
         = f.input :state_id, label: false, collection: State.all, input_html: { class: 'select2 form-field' }, include_blank: 'Estado'
       .col-xs-7.form-group
-        = f.input :state_id, label: false, collection: City.all, input_html: { class: 'select2 form-field' }, include_blank: 'Cidade'
+        = f.input :city_id, label: false, collection: City.all, input_html: { class: 'select2 form-field' }, include_blank: 'Cidade'
 
     .row
       .col-xs-6.form-group
         = f.input :ethnicity, label: false, collection: [["Branca", :white], ["Preta", :afrodescendant], ["Parda", :brown], ["Amarela", :yellow], ["Indígena", :indigenous]], input_html: { class: 'select2 form-field' }, include_blank: 'Raça'
+
       .col-xs-6.form-group
         %select#altura.form-control{:name => "altura"}
           %option{:disabled => "disabled", :selected => "selected"} Altura

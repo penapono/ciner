@@ -2,6 +2,9 @@
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil
 
+- content_for :stylesheet, stylesheet_link_tag('views/shared/toolbar')
+- content_for :javascript, javascript_include_tag('views/shared/toolbar')
+
 .container.content
   .row
     .col-xs-12
@@ -10,6 +13,9 @@
           .media-body.media-bottom
             .media-heading.title-section
               = "Curriculums"
+
+
+      = render 'shared/curriculums/toolbar'
 
       .row
         - curriculums.each do |curriculum|

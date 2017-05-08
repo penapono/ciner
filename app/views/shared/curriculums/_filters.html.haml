@@ -1,0 +1,31 @@
+- content_for :javascript, javascript_include_tag('components/filters')
+- content_for :stylesheet, stylesheet_link_tag('components/filters')
+
+= hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
+
+#filters.filters{ data: { dynamic_filter: '' } }
+  = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
+    = hidden_field_tag :search, params[:search]
+    .row
+      .col-xs-3
+        = f.input :set_function_id, label: false, collection: SetFunction.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tipo do Profissional', selected: params.fetch(:filter, {}).fetch(:set_function_id, '')
+      .col-xs-1
+        = f.input :age, label: false, collection: (1..99), input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Idade', selected: params.fetch(:filter, {}).fetch(:age, '')
+      .col-xs-2
+        = f.input :gender, label: false, collection: User.localized_genders, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Sexo', selected: params.fetch(:filter, {}).fetch(:gender, '')
+      .col-xs-3
+        = f.input :state_id, label: false, collection: State.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Estado', selected: params.fetch(:filter, {}).fetch(:state_id, '')
+      .col-xs-3
+        = f.input :city_id, label: false, collection: City.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Cidade', selected: params.fetch(:filter, {}).fetch(:city_id, '')
+    .row
+      .col-xs-3
+        = f.input :ethnicity, label: false, collection: [["Branca", :white], ["Preta", :afrodescendant], ["Parda", :brown], ["Amarela", :yellow], ["Indígena", :indigenous]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Raça', selected: params.fetch(:filter, {}).fetch(:ethnicity, '')
+      .col-xs-3
+        %select#altura.form-control{:name => "altura"}
+          %option{:disabled => "disabled", :selected => "selected"} Altura
+          %option{:value => ""} 1,60
+          %option{:value => ""} 1,70
+      .col-xs-3
+        = f.input :mannequin, label: false, collection: (1..70), input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Manequim', selected: params.fetch(:filter, {}).fetch(:drt, '')
+      .col-xs-3
+        = f.input :drt, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Possui DRT', selected: params.fetch(:filter, {}).fetch(:drt, '')

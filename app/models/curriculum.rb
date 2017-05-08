@@ -152,12 +152,12 @@ class Curriculum < ActiveRecord::Base
   end
 
   def height_str
-    return "Altura não informada" if height.blank?
+    return "-" if height.blank?
     "#{height} m"
   end
 
   def mannequin_str
-    return "" if mannequin.blank?
+    return "-" if mannequin.blank?
     mannequin
   end
 
