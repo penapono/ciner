@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Curriculum < ActiveRecord::Base
+  include Searchables::Curriculum
+
   # Associations
   belongs_to :user
   belongs_to :set_function

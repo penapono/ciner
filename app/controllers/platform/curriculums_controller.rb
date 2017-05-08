@@ -41,7 +41,7 @@ module Platform
     end
 
     def searched_curriculums
-      curriculums
+      curriculums.search(nil, params.fetch(:search, ''))
     end
 
     def resource
