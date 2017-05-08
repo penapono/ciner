@@ -162,11 +162,11 @@ class Curriculum < ActiveRecord::Base
   end
 
   def ethnicity_str
-    return "Raça: Branca" if white?
-    return "Raça: Preta" if afrodescendant?
-    return "Raça: Parda" if brown?
-    return "Raça: Amarela" if yellow?
-    return "Raça: Indígena" if indigenous?
+    return "Branca" if white?
+    return "Preta" if afrodescendant?
+    return "Parda" if brown?
+    return "Amarela" if yellow?
+    return "Indígena" if indigenous?
     "-"
   end
 
