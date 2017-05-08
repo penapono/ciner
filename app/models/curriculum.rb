@@ -91,12 +91,12 @@ class Curriculum < ActiveRecord::Base
 
   def height_str
     return "Altura não informada" if height.blank?
-    "Altura: #{height}"
+    "#{height} m"
   end
 
   def mannequin_str
-    return "Manequim não informado" if mannequin.blank?
-    "Manequim: #{mannequin}"
+    return "" if mannequin.blank?
+    mannequin
   end
 
   def ethnicity_str
@@ -105,7 +105,7 @@ class Curriculum < ActiveRecord::Base
     return "Raça: Parda" if brown?
     return "Raça: Amarela" if yellow?
     return "Raça: Indígena" if indigenous?
-    "Raça não informada"
+    "-"
   end
 
   def appearance_str

@@ -76,8 +76,15 @@
                   = object.drt_str
                 %br
 
+                Raça:
                 %span.bold.wine
-                  = object.appearance_str
+                  = object.ethnicity_str
+                Altura:
+                %span.bold.wine
+                  = object.height_str
+                Manequim:
+                %span.bold.wine
+                  = object.mannequin_str
                 %br
 
           = render 'shared/curriculums/user_actions', object: object, role: role
