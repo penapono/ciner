@@ -32,10 +32,10 @@
           = f.input :cover
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 350 } }
-      = f.input :synopsis, input_html: { rows: 5 }, maxlength: 350
+    .col-xs-12{ data: { limited: '', limit: 1000 } }
+      = f.input :synopsis, input_html: { rows: 5 }, maxlength: 1000
       %span.char-counter
-        = t('remaining_chars', chars: 350)
+        = t('remaining_chars', chars: 1000)
 
   .row
     .col-xs-12
