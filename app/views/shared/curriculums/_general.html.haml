@@ -1,7 +1,6 @@
 - role = role
 - object = curriculum
 - avatar = object.current_avatar
-/ - avatar = "http://placehold.it/550x700" if avatar.url.blank?
 
 .internal-section-detail-filmable
   .filmable
@@ -12,7 +11,7 @@
         .col-xs-12.col-sm-12.col-md-9.col-lg-9
           .row
             .col-xs-12.col-sm-6.col-md-6.col-lg-6
-              Funções no Set
+              Profissão
               %a.wine.bold
                 = object.set_function_name
               %br
@@ -21,9 +20,10 @@
               .title
                 %h3.bold.wine
                   = object.title_str
-                %h4.light.cinza
-                  = object.user_age
-                  anos
+                - unless object.user_age.blank?
+                  %h4.light.cinza
+                    = object.user_age
+                    anos
 
               %br
 
@@ -32,59 +32,69 @@
                 .row
                   .col-xs-6
                     = link_to url_for([:edit, role, object]) do
-                      .btn.submit
-                        Editar
-                .row
-                  .col-xs-6
-                    = link_to url_for([role, object]), method: 'delete' do
-                      .btn.submit
-                        Excluir
+                      .nota{ style: 'padding: 5px;' }
+                        .valor{ style: 'font-size: 20px; line-height: 34px;' }
+                          Editar
+                        .valor{ style: 'font-size: 20px; line-height: 34px;' }
+                          Currículo
               - else
                 .row
                   .col-xs-6
                     = link_to '#' do
-                      .btn.submit
-                        Quero entrar em contato com este profissional
+                      .nota{ style: 'padding: 5px;' }
+                        .valor{ style: 'font-size: 20px; line-height: 24px;' }
+                          Quero entrar em contato com este profissional
 
-          .row
-            .col-xs-12
-              = object.user_gender_str
+          - unless object.user_gender_str.blank?
+            .row
+              .col-xs-12
+                = object.user_gender_str
 
-          .row
-            .col-xs-12
-              = object.user_simple_address
+          - unless object.user_simple_address.blank?
+            .row
+              .col-xs-12
+                = object.user_simple_address
 
           .row
             .col-xs-12{ style: 'overflow: hidden' }
               .title
-                .curriculum-biograpy
-                  = object.biography_str
-                %br
+                - unless object.biography_str.blank?
+                  .curriculum-biograpy
+                    = object.biography_str
+                  %br
 
-                Premiações
-                %span.bold.wine
-                  = object.winnings_str
-                %br
+                - unless object.winnings_str.blank?
+                  Premiações
+                  %span.bold.wine
+                    = object.winnings_str
+                  %br
 
-                Trabalhos
-                %span.bold.wine
-                  = object.jobs_str
-                %br
+                - unless object.jobs_str.blank?
+                  Trabalhos
+                  %span.bold.wine
+                    = object.jobs_str
+                  %br
 
-                Possui DRT
-                %span.bold.wine
-                  = object.drt_str
-                %br
+                - unless object.drt_str.blank?
+                  Possui DRT
+                  %span.bold.wine
+                    = object.drt_str
+                  %br
 
-                Raça:
-                %span.bold.wine
-                  = object.ethnicity_str
-                Altura:
-                %span.bold.wine
-                  = object.height_str
-                Manequim:
-                %span.bold.wine
-                  = object.mannequin_str
-                %br
+                - unless object.ethnicity_str.blank?
+                  Raça:
+                  %span.bold.wine
+                    = object.ethnicity_str
+
+                - unless object.height_str.blank?
+                  Altura:
+                  %span.bold.wine
+                    = object.height_str
+
+                - unless object.mannequin_str.blank?
+                  Manequim:
+                  %span.bold.wine
+                    = object.mannequin_str
+                  %br
 
           = render 'shared/curriculums/user_actions', object: object, role: role

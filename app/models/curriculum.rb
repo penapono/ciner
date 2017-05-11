@@ -30,7 +30,6 @@ class Curriculum < ActiveRecord::Base
   delegate :name, to: :set_function, allow_nil: true, prefix: true
 
   # Uploaders
-  mount_uploader :avatar, CurriculumAvatarUploader
   mount_uploader :photo1, CurriculumAvatarUploader
   mount_uploader :photo2, CurriculumAvatarUploader
   mount_uploader :photo3, CurriculumAvatarUploader
@@ -112,7 +111,6 @@ class Curriculum < ActiveRecord::Base
   end
 
   def current_avatar
-    return avatar unless avatar.url.blank?
     return user_avatar unless user_avatar.url.blank?
     "http://placehold.it/550x700"
   end
@@ -154,12 +152,12 @@ class Curriculum < ActiveRecord::Base
   end
 
   def height_str
-    return "-" if height.blank?
+    return if height.blank?
     "#{height} m"
   end
 
   def mannequin_str
-    return "-" if mannequin.blank?
+    return if mannequin.blank?
     mannequin
   end
 

@@ -1,6 +1,10 @@
 - content_for :javascript, javascript_include_tag('views/shared/curriculums/form')
 - content_for :stylesheet, stylesheet_link_tag('views/shared/curriculums/form')
 
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
 %h3.wine
   = t('.general')
 %span
@@ -178,13 +182,16 @@
   .col-xs-4
     = f.input :file3, label: false
 
-.row
-  .col-xs-12
-    %h3.wine
-      = t('.avatar')
+.row.actions
+  - if f.object.persisted?
+    .col-xs-3.pull-left
+      = link_to url_for([role, f.object]), method: 'delete' do
+        .btn.submit
+          Excluir Currículo
+  .col-xs-12.col-sm-3.pull-right
+    = f.button :submit, t('confirm')
+  .col-xs-12.col-sm-3.pull-right
+    = link_to :back do
+      .btn.submit{ input: { type: 'submit' } }
+        = t('cancel')
 
-.row
-  .col-xs-6
-    = f.input :avatar, label: false
-
-= render 'shared/form_actions', f: f
