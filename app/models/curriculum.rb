@@ -167,7 +167,7 @@ class Curriculum < ActiveRecord::Base
     return "Parda" if brown?
     return "Amarela" if yellow?
     return "Indígena" if indigenous?
-    "-"
+    ""
   end
 
   def appearance_str
