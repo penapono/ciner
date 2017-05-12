@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :studios, only: [:index, :show]
     resources :professionals, only: [:index, :show]
     resources :curriculums
+    resources :featured_filmables, only: :index
+    resources :playing_filmables, only: :index
 
     resources :movies, only: [:index, :show] do
       member do

@@ -16,29 +16,20 @@
       .info
         %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
-- if object.writers.any?
-  #roteiro.roteiro
+#direcao.direcao
     .title-separator
       .media
         .media-body.media-bottom
           .media-heading.title-section
-            = Movie.human_attribute_name(:writers_str)
-    .roteiristas
-      .row
-        - object.writers.each do |filmable_professional|
-          = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
-
-- if object.directors.any?
-  #direcao.direcao
-    .title-separator
-      .media
-        .media-body.media-bottom
-          .media-heading.title-section
-            = Movie.human_attribute_name(:directors_str)
+            Direção e Roteiro
     .diretores
       .row
-        - object.directors.each do |filmable_professional|
-          = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
+        - if object.directors.any?
+          - object.directors.first(3).each do |filmable_professional|
+            = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
+        - if object.writers.any?
+          - object.writers.first(3).each do |filmable_professional|
+            = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
 
 - if object.actors.any?
   #elenco.elenco

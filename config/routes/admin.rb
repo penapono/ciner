@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :curriculums
     resources :age_ranges
     resources :film_production_categories
+    resources :featured_filmables, only: :index
+    resources :playing_filmables, only: :index
 
     resources :movies do
       member do

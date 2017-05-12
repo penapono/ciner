@@ -10,7 +10,7 @@
       .media-body.media-bottom
         .media-heading.title-section Filmes em cartaz
       .media-body.text-right.media-middle
-        %a{:href => "#"}
+        = link_to url_for([role, :playing_filmables]) do
           = t('see_more')
 
   .row

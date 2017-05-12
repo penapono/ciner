@@ -8,11 +8,11 @@
   .row
     - if curriculum.audio1.url
       .col-xs-4
-        = link_to 'Download Áudio 1', curriculum.audio1.url, download: ''
+        = link_to "Download #{curriculum.audio1.filename}", curriculum.audio1.url, download: ""
 
     - if curriculum.audio2.url
       .col-xs-4
-        = link_to 'Download Áudio 2', curriculum.audio2.url, download: ''
+        = link_to "Download #{curriculum.audio2.filename}", curriculum.audio2.url, download: ""
     - if curriculum.audio3.url
       .col-xs-4
-        = link_to 'Download Áudio 3', curriculum.audio3.url, download: ''
+        = link_to "Download #{curriculum.audio3.filename}", curriculum.audio3.url, download: ""

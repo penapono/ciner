@@ -8,7 +8,7 @@
       .media-body.media-bottom
         .media-heading.title-section Destaques
       .media-body.text-right.media-middle
-        %a{:href => "#"}
+        = link_to url_for([role, :featured_filmables]) do
           = t('see_more')
 
   .row
