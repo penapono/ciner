@@ -123,7 +123,7 @@ module Tmdb
           response_status = response["Response"]
 
           if response_status == "True"
-            omdb_id = imdb_id
+            omdb_id = imdb_id.gsub(/\s+/, "")
 
             object.omdb_id = omdb_id
 
