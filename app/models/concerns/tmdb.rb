@@ -111,7 +111,7 @@ module Tmdb
 
         # OMDB
 
-        imdb_id = imdb_id.gsub(/\s+/, "")
+        imdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
 
         url = "http://www.omdbapi.com/?i=#{imdb_id}"
 
@@ -125,7 +125,7 @@ module Tmdb
           response_status = response["Response"]
 
           if response_status == "True"
-            omdb_id = imdb_id.gsub(/\s+/, "")
+            omdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
 
             object.omdb_id = omdb_id
 
