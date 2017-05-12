@@ -111,6 +111,8 @@ module Tmdb
 
         # OMDB
 
+        imdb_id = imdb_id.gsub(/\s+/, "")
+
         url = "http://www.omdbapi.com/?i=#{imdb_id}"
 
         uri = URI.parse(url)
