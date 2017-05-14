@@ -14,7 +14,7 @@
         - cover = user_filmable.cover unless user_filmable.cover.url.blank?
         - object = user_filmable.filmable
         - cover ||= object.cover
-        - cover ||= "http://placehold.it/550x700"
+        - cover ||= image_path("default/movie/image.png")
 
         = link_to [role, object] do
           = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')

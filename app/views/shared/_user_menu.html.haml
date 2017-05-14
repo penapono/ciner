@@ -1,5 +1,5 @@
 - avatar = user.avatar
-- avatar ||= "http://placehold.it/155x170"
+- avatar ||= image_path("default/user/image.png")
 - if current_user
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil

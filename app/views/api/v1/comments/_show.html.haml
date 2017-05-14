@@ -1,7 +1,7 @@
 - like_path = like_api_v1_comment_path(comment)
 - dislike_path = dislike_api_v1_comment_path(comment)
 - user_avatar = comment.user.avatar
-- user_avatar ||= "http://placehold.it/120x170"
+- user_avatar ||= image_path("default/user/image.png")
 
 .comentario-item
   .row

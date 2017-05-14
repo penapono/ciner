@@ -1,6 +1,6 @@
 - role = role
 - cover = pm.try(:cover).try(:url)
-- cover ||= "http://placehold.it/400x500"
+- cover ||= image_path("default/movie/image.png")
 
 .slide.movie-poster-item{ style: "width: 130px; height: 195px; float: left; margin-left: 10px; margin-right: 10px;" }
   = link_to url_for([role, pm]) do

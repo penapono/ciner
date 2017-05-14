@@ -22,7 +22,7 @@
   .row{ style: 'margin-top: 20px' }
     .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
       %figure
-        %img.img-responsive{ src: "http://placehold.it/360x300", style: 'height: 280px; width: 360px;' }
+        %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 280px; width: 360px;' }
     .col-xs-12.col-md-8
       .title-separator.ciner-videos
         .media
@@ -69,10 +69,10 @@
     .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 20px;"}
       .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises{:style => "margin-bottom: 20px;"}
         %figure
-          %img.img-responsive{ src: "http://placehold.it/360x250", style: 'height: 230px;' }
+          %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 230px;' }
       .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
         %figure
-          %img.img-responsive{ src: "http://placehold.it/360x250", style: 'height: 230px;' }
+          %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 230px;' }
 
   .row
     = render 'shared/home/questions/index', role: role
