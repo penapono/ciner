@@ -9,8 +9,10 @@ pt-BR:
       event:
         title: Evento
         description: Descrição
-        event_date: Data
-        event_date_str: Data
+        event_date: Data de Início
+        event_date_str: Data de Início
+        end_date: Data de Encerramento
+        end_date_str: Data de Encerramento
         start_time: Horário de Início
         start_time_str: Horário de Início
         end_time: Horário de Término

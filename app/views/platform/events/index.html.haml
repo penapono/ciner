@@ -1,0 +1,22 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#evento"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              = Event.model_name.human(count: 2)
+
+  = render 'shared/events/toolbar', path: platform_events_path
+
+  .row
+    - events.each do |event|
+      = render 'shared/events/event', event: event, path: platform_event_path(event), like_path: like_platform_event_path(event), dislike_path: dislike_platform_event_path(event)

@@ -1,18 +1,14 @@
 # frozen_string_literal: true
 
-module Admin
-  class EventsController < AdminController
-    include Admin::EventsBreadcrumb
-
-    PER_PAGE = 10
-
-    PERMITTED_PARAMS = %i[
-      title description event_date end_date start_time end_time featured
-    ].freeze
+module Platform
+  class EventsController < ApplicationController
+    include EventsBreadcrumb
 
     # exposes
     expose(:events) { Event.order(event_date: :desc) }
     expose(:event, attributes: :event_attributes)
+
+    PER_PAGE = 10
 
     def index
       self.events = paginated_events
@@ -29,19 +25,15 @@ module Admin
     end
 
     def index_path
-      admin_events_path
+      platform_events_path
     end
 
     def show_path
-      admin_event_path(resource)
+      platform_event_path(resource)
     end
 
     def resource_params
       event_params
-    end
-
-    def event_params
-      params.require(:event).permit(PERMITTED_PARAMS)
     end
 
     # Filtering
@@ -55,7 +47,7 @@ module Admin
     end
 
     def searched_events
-      events.search(current_user, params.fetch(:search, ''))
+      events.search(nil, params.fetch(:search, ''))
     end
   end
 end

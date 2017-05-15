@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   include EventsBreadcrumb
 
   # exposes
-  expose(:events) { Event.all }
+  expose(:events) { Event.order(event_date: :desc) }
   expose(:event, attributes: :event_attributes)
 
   PER_PAGE = 10

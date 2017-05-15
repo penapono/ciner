@@ -1,27 +1,26 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
 - like_path ||= nil
 - dislike_path ||= nil
 
-.container.content
+.container.content{ class: (event.featured? ? 'featured' : '') }
   .row
     .col-xs-12
       .row
         .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
-          %h4
-            = event.title
+          = link_to url_for([role, event]) do
+            %h4
+              = event.title
 
       %hr
 
       .row
-        .col-xs-12
-          .content
-            %p
-              = event.content.html_safe
+        .col-xs-12{ style: 'overflow: hidden' }
+          .curriculum-biograpy
+            = event.description.html_safe
 
             %p
               .wine
-                = event.event_date_str
-
-  #event-reaction
-    = render 'shared/reactions', resource: event, like_path: like_path, dislike_path: dislike_path
-
-= render 'shared/comments/index', resource: event, commentable_type: Question, commentable_id: event.id
+                = event.datetime_str

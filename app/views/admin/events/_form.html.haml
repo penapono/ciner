@@ -14,11 +14,13 @@
       = f.input :description, as: :ckeditor, input_html: { rows: 5 }
 
   .row
-    .col-xs-4
+    .col-xs-3
       = f.input :event_date, as: :string, input_html: { value: (localize(f.object.event_date) if f.object.event_date), class: 'datepicker' }
-    .col-xs-4
+    .col-xs-3
+      = f.input :end_date, as: :string, input_html: { value: (localize(f.object.end_date) if f.object.end_date), class: 'datepicker' }
+    .col-xs-3
       = f.input :start_time, as: :string, input_html: { class: 'timepicker', placeholder: t('select_hour'), value: f.object.start_time_str }
-    .col-xs-4
+    .col-xs-3
       = f.input :end_time, as: :string, input_html: { class: 'timepicker', placeholder: t('select_hour'), value: f.object.end_time_str }
 
   .row

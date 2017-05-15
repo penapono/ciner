@@ -40,8 +40,28 @@ class Event < ActiveRecord::Base
     description_str.truncate(50)
   end
 
+  def date_str
+    return event_date_str if end_date.blank?
+    "#{event_date_str} a #{end_date_str}"
+  end
+
+  def time_str
+    return "" if start_time.blank? && end_time.blank?
+    return "às #{start_time_str}" if end_time.blank?
+    return "às #{end_time_str}" if start_time.blank?
+    "das #{start_time_str} às #{end_time_str}"
+  end
+
+  def datetime_str
+    "#{date_str} #{time_str}"
+  end
+
   def event_date_str
     I18n.l(event_date, format: :simpledate) if event_date.is_a?(Date)
+  end
+
+  def end_date_str
+    I18n.l(end_date, format: :simpledate) if end_date.is_a?(Date)
   end
 
   def start_time_str

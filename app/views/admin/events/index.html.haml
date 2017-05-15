@@ -16,6 +16,8 @@
         %th
           = Event.human_attribute_name(:event_date)
         %th
+          = Event.human_attribute_name(:end_date)
+        %th
           = Event.human_attribute_name(:start_time)
         %th
           = Event.human_attribute_name(:end_time)
@@ -32,6 +34,10 @@
           %td
             = link_to admin_event_path(event) do
               = event.event_date_str
+
+          %td
+            = link_to admin_event_path(event) do
+              = event.end_date_str
 
           %td
             = link_to admin_event_path(event) do

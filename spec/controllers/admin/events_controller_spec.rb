@@ -10,7 +10,7 @@ RSpec.describe Admin::EventsController, type: :controller do
 
   let(:permitted_params) do
     %i[
-      title description event_date start_time end_time
+      title description event_date end_date start_time end_time featured
     ]
   end
 
