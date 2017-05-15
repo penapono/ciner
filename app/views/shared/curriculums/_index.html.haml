@@ -12,7 +12,7 @@
         .media
           .media-body.media-bottom
             .media-heading.title-section
-              = "Curriculums"
+              Curriculums
 
 
       = render 'shared/curriculums/toolbar'
@@ -24,7 +24,7 @@
 
           .col-sm-2.col-xs-3.no-shelf
             = link_to url_for([role, object]) do
-              = image_tag(cover, class: "img-responsive")
+              = image_tag(cover, class: "img-responsive", style: 'height: 200px; width: 200px;')
             .wine
               = object.title_str
             = object.age_str

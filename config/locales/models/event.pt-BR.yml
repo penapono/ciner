@@ -7,14 +7,14 @@ pt-BR:
 
     attributes:
       event:
-        title: Título
+        title: Evento
         description: Descrição
         event_date: Data
         event_date_str: Data
-        start_time: Início
-        start_time_str: Início
-        end_time: Término
-        end_time_str: Término
+        start_time: Horário de Início
+        start_time_str: Horário de Início
+        end_time: Horário de Término
+        end_time_str: Horário de Término
         featured: Destaque
     errors:
       models:

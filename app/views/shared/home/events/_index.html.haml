@@ -13,8 +13,7 @@
             = t('see_more')
 
     - if events.any?
-      - 3.times do
-        - events.each do |event|
-          = render 'shared/home/events/item', event: event, role: role
+      - events.each do |event|
+        = render 'shared/home/events/item', event: event, role: role
     - else
       = render 'shared/alerts/info', message: (t('empty', klass: Event.model_name.human(count: 2)))
