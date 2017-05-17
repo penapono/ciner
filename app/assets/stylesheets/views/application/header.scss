@@ -1,3 +1,5 @@
+@import 'base/colors';
+
 .welcome {
   margin-top: 45px;
   font-size: 20px;
@@ -22,7 +24,7 @@
   z-index: 10;
   color: #FFFFFF;
   font-size: 14px;
-  background: rgba(238, 69, 115, 0.9);
+  background: $pink;
 }
 
 .actionbar .social img {
