@@ -11,10 +11,13 @@
             .media-heading.title-section
               = "Coleção de #{user.name}"
 
+      = render 'shared/users/collection/toolbar'
+
       .row
         - filmables.each do |user_filmable|
+          - cover = user_filmable.cover unless user_filmable.cover.url.blank?
           - object = user_filmable.filmable
-          - cover = object.cover
+          - cover ||= object.cover
           - cover ||= image_path("default/movie/image.png")
 
           .col-sm-2.col-xs-3.shelf

@@ -1,0 +1,8 @@
+= render 'shared/toolbar'
+
+.toolbar
+  .row.searchbar
+    .col-xs-12
+      = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
+
+  = render "shared/users/collection/filters"

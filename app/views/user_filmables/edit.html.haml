@@ -14,7 +14,7 @@
         .col-xs-12
           .row
             .col-xs-3
-              = label_tag "Tipo de Media"
+              = label_tag "Tipo de Mídia"
             .col-xs-9
               = f.input :media, label: false, collection: [["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]]
 
@@ -22,7 +22,7 @@
             .col-xs-3
               = label_tag "Loja"
             .col-xs-9
-              = f.input :store, label: false, input_html: { placeholder: "Em qual  loja?" }
+              = f.input :store, label: false, input_html: { placeholder: "Comprado em qual  loja?" }
 
           .row
             .col-xs-3
@@ -46,7 +46,7 @@
             .col-xs-3
               = label_tag "Valor pago em reais"
             .col-xs-9
-              = f.input :price, label: false, input_html: { placeholder: "R$ 10,00" }
+              = f.input :price, label: false, input_html: { placeholder: "20,00" }
 
           .row
             .col-xs-3
@@ -58,19 +58,19 @@
             .col-xs-3
               = label_tag "ISBN"
             .col-xs-9
-              = f.input :isbn, label: false, input_html: { placeholder: "ISBN" }
+              = f.input :isbn, label: false, input_html: { placeholder: "Cadastre o ISBN do produto" }
 
           .row
             .col-xs-3
               = label_tag "Posição na Estante"
             .col-xs-9
-              = f.input :position, label: false, input_html: { placeholder: " Posição" }
+              = f.input :position, label: false, input_html: { placeholder: " Escolha a ordem em que aparecerá na estante" }
 
           .row
             .col-xs-3
               = label_tag "Empréstimo"
             .col-xs-9
-              = f.input :borrowed, label: false, input_html: { placeholder: " Emprestado? Pra quem? Quando? Detalhes..." }
+              = f.input :borrowed, label: false, input_html: { placeholder: " Emprestado para quem? Quando? Anote aqui" }
 
           .row
             .col-xs-3
