@@ -63,6 +63,18 @@
 
           .row
             .col-xs-3
+              = label_tag "Parte de um box"
+            .col-xs-1
+              = check_box_tag :box, "", class: 'float: left;'
+
+          .row
+            .col-xs-3
+              = label_tag "Título do Box"
+            .col-xs-9
+              = f.input :box_title, label: false, input_html: { placeholder: "Informe o título do Box caso faça parte de um" }
+
+          .row
+            .col-xs-3
               = label_tag "ISBN"
             .col-xs-9
               = f.input :isbn, label: false, input_html: { placeholder: "Cadastre o ISBN do produto" }

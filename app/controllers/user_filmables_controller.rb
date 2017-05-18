@@ -58,7 +58,9 @@ class UserFilmablesController < ApplicationController
       :isbn,
       :borrowed,
       :observation,
-      :cover
+      :cover,
+      :box,
+      :box_title
     )
   end
 

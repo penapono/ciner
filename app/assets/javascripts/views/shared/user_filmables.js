@@ -93,6 +93,9 @@ function UserFilmables() {
           isbn = parentModal.find("#isbn").val(),
           borrowed = parentModal.find('#borrowed').val(),
           observation = parentModal.find('#observation').val(),
+          box = parentModal.find("#box").prop('checked'),
+          box_title = parentModal.find('#box_title').val(),
+
           data = {
             user_id: user_id,
             filmable_id: filmable_id,
@@ -107,7 +110,9 @@ function UserFilmables() {
             bought: bought,
             isbn: isbn,
             borrowed: borrowed,
-            observation: observation
+            observation: observation,
+            box: box,
+            box_title: box_title
           };
 
       _action($('[data-user-action]'), url, data, $('[data-collection]'));
