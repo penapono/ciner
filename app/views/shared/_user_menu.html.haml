@@ -5,11 +5,6 @@
 - role ||= nil
 
 .row
-  - if current_user.admin?
-    .col-xs-4
-      .text-center{ style: "font-size: 22px; padding-left: 50%;" }
-        = link_to admin_settings_path do
-          %i.fa.fa-cogs
   .col-xs-4
     - if current_user
       = link_to url_for([role, "profile"]) do
