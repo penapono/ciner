@@ -215,6 +215,10 @@ ul.menu li:hover:before {
     display: none;
   }
 
+  ul.menu.row li.dropdown:hover .dropdown-menu.horizontal {
+    display: block;
+  }
+
   ul.dropdown-menu.horizontal {
     background: rgba(166, 30, 87, 0.8);
     padding: 10px;
