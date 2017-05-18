@@ -23,7 +23,7 @@
           = link_to root_path do
             .logo
               %figure
-                = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 35px; width: 90px; margin: auto; margin-bottom: 10px;')
+                = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 40px; width: 120px; margin: auto; margin-bottom: 10px;')
         .col-xs-6
           %ul.menu.row
             %li.dropdown
@@ -50,15 +50,11 @@
                   %li
                     Debate Ciner
 
-        .col-xs-2.text-center{ style: "font-size: 18px;" }
+        .col-xs-1.text-center{ style: "font-size: 18px;" }
           %i.fa.fa-search{ style: 'margin-right: 15px;' }
           %i.fa.fa-envelope
-          - if current_user
-            - if current_user.admin?
-              = link_to admin_settings_path do
-                %i.fa.fa-cogs{ style: "font-size: 22px; margin-left: 15px;" }
 
-        .col-xs-2.text-center
+        .col-xs-3.text-center
           - if current_user
             = render 'shared/user_menu', user: current_user
           - else

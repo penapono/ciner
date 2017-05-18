@@ -5,8 +5,9 @@
 - role ||= nil
 
 .row
-  .col-xs-4
+  .col-xs-offset-4.col-xs-2{ style: 'margin-top: -5px;' }
     - if current_user
       = link_to url_for([role, "profile"]) do
-        .text-center{ style: "padding-left: 30px; padding-right: 30px;" }
-          %img.img-responsive{ src: avatar, style: "width: 30px; height: 30px; margin: auto" }
+        %img.img-responsive{ src: avatar, style: "width: 45px; height: 45px; margin: auto" }
+  .col-xs-4
+    = current_user.name

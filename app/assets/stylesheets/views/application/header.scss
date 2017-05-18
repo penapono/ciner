@@ -203,14 +203,6 @@ ul.menu li:hover:before {
   line-height: 40px;
   background: rgba(166, 30, 87, 0.8);
 
-  .container {
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-left: 0px;
-    margin-right: 0px;
-    width: 100%;
-  }
-
   [class*='col-'] {
     padding: 0px;
   }
@@ -227,13 +219,11 @@ ul.menu li:hover:before {
     background: rgba(166, 30, 87, 0.8);
     padding: 10px;
     margin: 0px;
-    list-style:none;
-    width: 400px;
+    list-style: none;
+    width: 500px;
 
     li {
       display: inline;
-      width: 33%;
-      float: left;
 
       a {
         display: inline-block;
