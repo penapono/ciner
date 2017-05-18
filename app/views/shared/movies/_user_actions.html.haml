@@ -89,7 +89,7 @@
           .col-xs-3
             = label_tag "Loja"
           .col-xs-9
-            = text_field_tag :store, "", placeholder: "Em qual loja?"
+            = text_field_tag :store, "", placeholder: "Comprado em qual loja?"
 
         .row
           .col-xs-3
@@ -99,21 +99,33 @@
 
         .row
           .col-xs-3
+            = label_tag "Parte de um box"
+          .col-xs-1
+            = check_box_tag :box, "", false, class: 'float: left;'
+
+        .row
+          .col-xs-3
+            = label_tag "Título do Box"
+          .col-xs-9
+            = text_field_tag :box_title, label: false, input_html: { placeholder: "Informe o título do Box caso faça parte de um" }
+
+        .row
+          .col-xs-3
             = label_tag "Presente"
           .col-xs-1
-            = check_box_tag :gift, "", class: 'float: left;'
+            = check_box_tag :gift, "", false, class: 'float: left;'
 
         .row
           .col-xs-3
             = label_tag "Valor pago em reais"
           .col-xs-9
-            = text_field_tag :price, "", placeholder: "R$ 10,00"
+            = text_field_tag :price, "", placeholder: "Ex: 20,00"
 
         .row
           .col-xs-3
             = label_tag "Data da Compra"
           .col-xs-9
-            = date_field_tag :bought, I18n.l(Date.today, format: :short), placeholder: "Data da Compra", class: 'datepicker'
+            = date_field_tag :bought, I18n.l(Date.today, format: :short), placeholder: "dd/mm/aaaa", class: 'datepicker'
 
         .row
           .col-xs-3
@@ -125,13 +137,13 @@
           .col-xs-3
             = label_tag "Posição na Estante"
           .col-xs-9
-            = text_field_tag :position, "", placeholder: "Escolha a ordem em que aparecerá na estante. Ex: 2 para ser o segundo"
+            = text_field_tag :position, "", placeholder: "Ordem em que aparecerá na estante. Somente número."
 
         .row
           .col-xs-3
             = label_tag "Empréstimo"
           .col-xs-9
-            = text_field_tag :borrowed, "", placeholder: "Emprestado? Pra quem? Quando? Detalhes..."
+            = text_field_tag :borrowed, "", placeholder: "Emprestado para quem? Quando? Anote aqui"
 
         .row
           .col-xs-3

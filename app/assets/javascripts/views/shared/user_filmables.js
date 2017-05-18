@@ -66,6 +66,7 @@ function UserFilmables() {
           data: data,
           success: function(data) {
             $('#collectionModal .modal-dialog').html(data);
+            $('#collectionModal input.datepicker').mask('99/99/9999');
             $('#collectionModal').modal('show');
           }
         });

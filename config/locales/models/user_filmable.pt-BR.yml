@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    attributes:
+      user_filmable:
+        gift: Presente
+        box: Parte de um box

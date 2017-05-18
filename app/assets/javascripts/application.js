@@ -1,6 +1,7 @@
 //= require jquery-3.2.1.min
 //= require jquery_ujs
 //= require jquery-ui.min
+//= require jquery.mask
 //= require bootstrap.min
 //= require select2-full
 //= require select2_locale_pt-BR

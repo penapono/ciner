@@ -8,7 +8,7 @@
   .col-xs-3
     = label_tag "Loja"
   .col-xs-9
-    = f.input :store, label: false, input_html: { placeholder: "Comprado em qual  loja?" }
+    = f.input :store, label: false, input_html: { placeholder: "Comprado em qual loja?" }
 
 .row
   .col-xs-3
@@ -23,10 +23,8 @@
     = f.input :cover, label: false
 
 .row
-  .col-xs-3
-    = label_tag "Parte de um box"
-  .col-xs-1
-    = check_box_tag :box, "", false, class: 'float: left;'
+  .col-xs-4
+    = checkbox_item(f, :box)
 
 .row
   .col-xs-3
@@ -35,10 +33,8 @@
     = f.input :box_title, label: false, input_html: { placeholder: "Informe o título do Box caso faça parte de um" }
 
 .row
-  .col-xs-3
-    = label_tag "Presente"
-  .col-xs-1
-    = check_box_tag :gift, "", false, class: 'float: left;'
+  .col-xs-12
+    = checkbox_item(f, :gift)
 
 .row
   .col-xs-3
@@ -50,7 +46,7 @@
   .col-xs-3
     = label_tag "Data da Compra"
   .col-xs-9
-    = f.input :bought, label: false, as: :string, value: I18n.l((f.object.bought || Date.today), format: :short), placeholder: "01/01/2017", class: 'datepicker'
+    = f.input :bought, label: false, as: :string, value: I18n.l((f.object.bought || Date.today), format: :short), placeholder: "dd/mm/aaaa", class: 'datepicker'
 
 .row
   .col-xs-3
@@ -62,13 +58,13 @@
   .col-xs-3
     = label_tag "Posição na Estante"
   .col-xs-9
-    = f.input :position, label: false, as: :string, input_html: { placeholder: "Escolha a ordem em que aparecerá na estante. Ex: 2 para ser o segundo" }
+    = f.input :position, label: false, as: :string, input_html: { placeholder: "Ordem em que aparecerá na estante. Somente número." }
 
 .row
   .col-xs-3
     = label_tag "Empréstimo"
   .col-xs-9
-    = f.input :borrowed, label: false, input_html: { placeholder: " Emprestado para quem? Quando? Anote aqui" }
+    = f.input :borrowed, label: false, input_html: { placeholder: "Emprestado para quem? Quando? Anote aqui" }
 
 .row
   .col-xs-3
