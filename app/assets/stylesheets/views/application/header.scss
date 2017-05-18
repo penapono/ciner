@@ -220,10 +220,11 @@ ul.menu li:hover:before {
     padding: 10px;
     margin: 0px;
     list-style: none;
-    width: 500px;
+    width: 600px;
 
     li {
       display: inline;
+      margin-right: 20px;
 
       a {
         display: inline-block;
