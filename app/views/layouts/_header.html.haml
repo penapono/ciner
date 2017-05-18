@@ -53,9 +53,10 @@
         .col-xs-2.text-center{ style: "font-size: 18px;" }
           %i.fa.fa-search{ style: 'margin-right: 15px;' }
           %i.fa.fa-envelope
-          - if current_user.admin?
-            = link_to admin_settings_path do
-              %i.fa.fa-cogs{ style: "font-size: 22px; margin-left: 15px;" }
+          - if current_user
+            - if current_user.admin?
+              = link_to admin_settings_path do
+                %i.fa.fa-cogs{ style: "font-size: 22px; margin-left: 15px;" }
 
         .col-xs-2.text-center
           - if current_user
