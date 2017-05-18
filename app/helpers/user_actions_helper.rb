@@ -12,6 +12,17 @@ module UserActionsHelper
     user_filmable.blank? ? '' : 'active'
   end
 
+  def user_action_on(user, object, user_action)
+    return '' unless user
+    user_filmable =
+      UserFilmable.find_by(user_id: user.id,
+                           filmable_id: object.id,
+                           filmable_type: object.class,
+                           action: user_action.to_sym)
+
+    user_filmable
+  end
+
   def watched_count_for_user(user)
     UserFilmable.watched.where(user: user).count
   end

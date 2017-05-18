@@ -11,21 +11,14 @@
         = f.input :media, label: false, collection: [["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tipo de Mídia', selected: params.fetch(:filter, {}).fetch(:media, '')
       .col-xs-3
         = f.input :version, label: false, collection: [["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Versão', selected: params.fetch(:filter, {}).fetch(:version, '')
-    /   .col-xs-2
-    /     = f.input :gender, label: false, collection: User.localized_genders, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Sexo', selected: params.fetch(:filter, {}).fetch(:gender, '')
-    /   .col-xs-3
-    /     = f.input :state_id, label: false, collection: State.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Estado', selected: params.fetch(:filter, {}).fetch(:state_id, '')
-    /   .col-xs-3
-    /     = f.input :city_id, label: false, collection: City.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Cidade', selected: params.fetch(:filter, {}).fetch(:city_id, '')
-    / .row
-    /   .col-xs-3
-    /     = f.input :ethnicity, label: false, collection: [["Branca", :white], ["Preta", :afrodescendant], ["Parda", :brown], ["Amarela", :yellow], ["Indígena", :indigenous]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Raça', selected: params.fetch(:filter, {}).fetch(:ethnicity, '')
-    /   .col-xs-3
-    /     %select#altura.form-control{:name => "altura"}
-    /       %option{:disabled => "disabled", :selected => "selected"} Altura
-    /       %option{:value => ""} 1,60
-    /       %option{:value => ""} 1,70
-    /   .col-xs-3
-    /     = f.input :mannequin, label: false, collection: (1..70), input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Manequim', selected: params.fetch(:filter, {}).fetch(:drt, '')
-    /   .col-xs-3
-    /     = f.input :drt, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Possui DRT', selected: params.fetch(:filter, {}).fetch(:drt, '')
+      .col-xs-3
+        = f.input :box, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Faz parte de box?', selected: params.fetch(:filter, {}).fetch(:box, '')
+      .col-xs-3
+        = f.input :gift, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Foi presente?', selected: params.fetch(:filter, {}).fetch(:gift, '')
+    .row
+      .col-xs-3
+        = f.input :price, label: false, input_html: { class: 'form-field', data: { dynamic_input: '' } }, value: params.fetch(:filter, {}).fetch(:price, ''), placeholder: 'Preço até'
+      .col-xs-3
+        = f.input :bought, label: false, input_html: { class: 'datepicker form-field', data: { dynamic_input: '' } }, value: params.fetch(:filter, {}).fetch(:bought, ''), placeholder: 'Data da Compra até'
+      .col-xs-offset-3.col-xs-3
+        = f.input :order, label: false, collection: [["Posição", :position], ["Alfabética", :alphabet], ["Ano Mais Recente", :newly], ["Ano Mais Antigo", :oldly], ["Compras Recentes", :newly_bought], ["Compras Antigas", :oldly_bought], ["Maior Valor", :expensive], ["Menor Valor", :cheap]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar Por', selected: params.fetch(:filter, {}).fetch(:order, '')

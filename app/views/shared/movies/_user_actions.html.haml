@@ -27,12 +27,21 @@
               %use{"xlink:href" => "#quero-ver"}
             %span{ data: { count: '' } }
               = object.want_to_see_str
-        .button{ data: { collection: 'collection', unlocked: collection_unlocked.to_s, url: new_user_filmable_path } }
-          %a{ class: user_action_class_on(user, object, 'collection') }
-            %svg.icon-tags
-              %use{"xlink:href" => "#adicionar"}
-            %span{ data: { count: '' } }
-              = object.collection_str
+        - if user_action_class_on(user, object, 'collection') == "active"
+          - user_filmable = user_action_on(user, object, 'collection')
+          .button.collector{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable) } }
+            %a{ class: user_action_class_on(user, object, 'collection') }
+              %svg.icon-tags
+                %use{"xlink:href" => "#adicionar"}
+              %span{ data: { count: '' } }
+                = object.collection_str
+        - else
+          .button{ data: { collection: 'collection', unlocked: collection_unlocked.to_s, url: new_user_filmable_path } }
+            %a{ class: user_action_class_on(user, object, 'collection') }
+              %svg.icon-tags
+                %use{"xlink:href" => "#adicionar"}
+              %span{ data: { count: '' } }
+                = object.collection_str
         .button{ data: { action: 'favorite', unlocked: actions_unlocked.to_s } }
           %a{ class: user_action_class_on(user, object, 'favorite') }
             %svg.icon-tags

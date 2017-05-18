@@ -67,4 +67,8 @@ class Movie < ActiveRecord::Base
 
     where(id: result.keys.first(15))
   end
+
+  def filmable_year
+    year
+  end
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UserFilmable < ActiveRecord::Base
+  include Searchables::UserFilmable
+
   # Validations
   validates :user,
             :filmable_id,
@@ -39,5 +41,97 @@ class UserFilmable < ActiveRecord::Base
   def title_str
     return filmable.title unless collection?
     media_str + " - " + version_str
+  end
+
+  def self.by_bought(bought)
+    where("bought <= ?", bought)
+  end
+
+  def self.by_price(price)
+    where("price <= ?", price)
+  end
+
+  def self.by_gift(gift)
+    where(gift: gift)
+  end
+
+  def self.by_box(box)
+    where(box: box)
+  end
+
+  def self.by_media(media)
+    where(media: media)
+  end
+
+  def self.by_version(version)
+    where(version: version)
+  end
+
+  def self.by_alphabet(result)
+    ids = result.pluck(:id)
+
+    hash_result = Hash.new(0)
+
+    ids.each { |v| hash_result[v] = result.find(v).filmable.title }
+
+    hash_result = hash_result.sort_by { |_k, v| v }.to_h
+
+    where(id: hash_result.keys)
+  end
+
+  def self.by_new_year(result)
+    ids = result.pluck(:id)
+
+    hash_result = Hash.new(0)
+
+    ids.each { |v| hash_result[v] = result.find(v).filmable.filmable_year }
+
+    hash_result = hash_result.sort_by { |_k, v| v }.to_h
+
+    where(id: hash_result.keys)
+  end
+
+  def self.by_old_year(result)
+    ids = result.pluck(:id)
+
+    hash_result = Hash.new(0)
+
+    ids.each { |v| hash_result[v] = result.find(v).filmable.filmable_year }
+
+    hash_result = hash_result.sort_by { |_k, v| v }.to_h
+
+    where(id: hash_result.keys.reverse)
+  end
+
+  def self.by_order(result, order)
+    return by_alphabet(result) if order == "alphabet"
+
+    return by_new_year(result) if order == "newly"
+
+    return by_old_year(result) if order == "oldly"
+
+    return order(bought: :desc) if order == "newly_bought"
+
+    return order(bought: :asc) if order == "oldly_bought"
+
+    return order(price: :desc) if order == "expensive"
+
+    return order(price: :asc) if order == "cheap"
+
+    order(position: :asc)
+  end
+
+  def self.filter_by(collection, params)
+    return collection unless params.present?
+
+    result = collection
+    result = result.by_media(params[:media]) unless params[:media].blank?
+    result = result.by_version(params[:version]) unless params[:version].blank?
+    result = result.by_box(params[:box]) unless params[:box].blank?
+    result = result.by_gift(params[:gift]) unless params[:gift].blank?
+    result = result.by_price(params[:price]) unless params[:price].blank?
+    result = result.by_bought(params[:bought]) unless params[:bought].blank?
+    result = result.by_order(result, params[:order]) unless params[:order].blank?
+    result
   end
 end

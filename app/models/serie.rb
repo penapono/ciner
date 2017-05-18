@@ -80,4 +80,8 @@ class Serie < ActiveRecord::Base
 
     where(id: result.keys.first(15))
   end
+
+  def filmable_year
+    start_year
+  end
 end
