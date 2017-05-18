@@ -46,7 +46,7 @@
             .col-xs-3
               = label_tag "Valor pago em reais"
             .col-xs-9
-              = f.input :price, label: false, input_html: { placeholder: "20,00" }
+              = f.input :price, label: false, input_html: { placeholder: "Ex: 20,00" }
 
           .row
             .col-xs-3
@@ -68,7 +68,7 @@
 
           .row
             .col-xs-3
-              = label_tag "ISBN"
+              = label_tag "ISBN", "ISBN"
             .col-xs-9
               = f.input :isbn, label: false, input_html: { placeholder: "Cadastre o ISBN do produto" }
 
