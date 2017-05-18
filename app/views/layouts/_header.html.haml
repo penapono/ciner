@@ -31,18 +31,24 @@
                 ACESSAR
                 %b.caret
               %ul.dropdown-menu.horizontal
-                %li
-                  = link_to "FILMES", url_for([role, :movies])
-                %li
-                  = link_to "SÉRIES", url_for([role, :series_index])
-                %li
-                  = link_to "CINER VÍDEOS", url_for([:cinervideos])
-                %li
-                  = link_to "CRÍTICAS", url_for([role, :critics])
-                %li
-                  = link_to "NOTÍCIAS", url_for([role, :broadcasts])
-                %li
-                  = link_to "DEBATE CINER", url_for([role, :questions])
+                = link_to url_for([role, :movies]) do
+                  %li
+                    Filmes
+                = link_to url_for([role, :series_index]) do
+                  %li
+                    Séries
+                = link_to url_for([:cinervideos]) do
+                  %li
+                    Ciner Vídeos
+                = link_to url_for([role, :critics]) do
+                  %li
+                    Críticas
+                = link_to url_for([role, :broadcasts]) do
+                  %li
+                    Notícias
+                = link_to url_for([role, :questions]) do
+                  %li
+                    Debate Ciner
 
         .col-xs-2.text-center{ style: "font-size: 18px;" }
           %i.fa.fa-search{ style: 'margin-right: 15px;' }

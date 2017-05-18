@@ -225,16 +225,33 @@ ul.menu li:hover:before {
 
   ul.dropdown-menu.horizontal {
     background: rgba(166, 30, 87, 0.8);
-    padding:0px;
-    margin:0px;
+    padding: 10px;
+    margin: 0px;
     list-style:none;
+    width: 400px;
 
     li {
       display: inline;
+      width: 33%;
+      float: left;
 
       a {
-        padding: 2px 10px;
         display: inline-block;
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        font-family: "Montserrat";
+        font-size: 12px;
+        font-weight: 200;
+        line-height: 40px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+
+      }
+
+      a:hover {
+        text-transform: none;
+        background: transparent;
       }
     }
   }
