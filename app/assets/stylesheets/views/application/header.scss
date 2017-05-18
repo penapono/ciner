@@ -166,10 +166,6 @@ ul.menu li:hover:before {
   font-size: 13px;
 }
 
-// .nav-container {
-//   background: url('images/nav_bg.jpg') repeat-x 0 0;
-// }
-
 .actionbar {
   position: relative;
   z-index: 10;
@@ -178,17 +174,18 @@ ul.menu li:hover:before {
   background: rgba(238, 69, 115, 0.9);
   height: 57.6px;
   line-height: 28.5px;
-}
 
-.actionbar .social img {
-  display: inline-block;
-  margin-right: 10px;
-  width: 18px;
-}
+  .social img {
+    display: inline-block;
+    margin-right: 10px;
+    width: 18px;
+  }
 
-.actionbar a,
-.actionbar a:hover {
-  color: white;
+  a,
+  a:hover {
+    color: white;
+  }
+
 }
 
 .actionbar.nav-container.f-nav {
@@ -203,6 +200,77 @@ ul.menu li:hover:before {
   line-height: 40px;
   background: rgba(166, 30, 87, 0.8);
 
+  .simple_form.searches {
+    margin-top: 5px;
+
+    // original state
+    input[type="text"] {
+      width: 30px;
+      height: 30px;
+      float: right;
+      padding: 0px;
+      margin: 0px;
+      color: transparent;
+      border-radius: 100%;
+      background: transparent;
+      border: solid 1px white;
+    }
+
+    .glyphicon.glyphicon-search {
+      color: white;
+      top: 6px;
+      left: 25px;
+    }
+
+    // focus state
+    input[type="text"]:focus {
+      transition: all 0.1s linear;
+      color: black;
+      height: 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      line-height: 16px;
+      padding-left: 12px;
+      width: 100%;
+      padding-right: 25px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    input[type="text"]:focus ~ .glyphicon.glyphicon-search {
+      transition: all 0s linear;
+      color: $gray;
+      left: -5px;
+      top: -24px;
+    }
+
+  }
+
+  // hover state
+  .simple_form.searches:active,
+  .simple_form.searches:focus,
+  .simple_form.searches:hover {
+    input[type="text"] {
+      transition: all 0.1s linear;
+      color: black;
+      height: 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      line-height: 16px;
+      padding-left: 12px;
+      width: 100%;
+      padding-right: 25px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .glyphicon.glyphicon-search {
+      transition: all 0s linear;
+      color: $gray;
+      left: -5px;
+      top: -24px;
+    }
+
+  }
+
   [class*='col-'] {
     padding: 0px;
   }
@@ -215,7 +283,7 @@ ul.menu li:hover:before {
     display: none;
   }
 
-  ul.menu.row li.dropdown:hover .dropdown-menu.horizontal {
+  ul.menu li.dropdown:hover .dropdown-menu.horizontal {
     display: block;
   }
 
@@ -241,40 +309,15 @@ ul.menu li:hover:before {
         list-style-image: none;
         list-style-position: outside;
         list-style-type: none;
-
       }
 
       a:hover {
         text-transform: none;
         background: transparent;
       }
+
     }
+
   }
+
 }
-
-/* this make our menu fixed top */
-// .nav {
-//   height: 42px;
-// }
-
-// .nav ul {
-//   list-style: none;
-// }
-
-// .nav ul li {
-//   float: left;
-//   margin-top: 6px;
-//   padding: 6px;
-//   border-right: 1px solid #ACACAC;
-// }
-
-// .nav ul li:first-child {
-//   padding-left: 0;
-// }
-
-// .nav ul li a {
-// }
-
-// .nav ul li a:hover {
-//   text-decoration: underline;
-// }
