@@ -24,7 +24,7 @@
             .logo
               %figure
                 = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 40px; width: 120px; margin: auto; margin-bottom: 10px;')
-        .col-xs-5
+        .col-xs-4
           %ul.menu.row
             %li.dropdown
               .dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -50,16 +50,16 @@
                   %li
                     Debate Ciner
 
-        .col-xs-2{ style: "font-size: 18px;" }
+        .col-xs-3{ style: "font-size: 18px;" }
           .row
-            .col-xs-9
+            .col-xs-10
               = simple_form_for :searches, url: request.url, method: :get, class: 'navbar-form', role: :search do |f|
                 = text_field_tag :search, params[:search], placeholder: 'Buscar'
                 .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
-            .col-xs-offset-1.col-xs-2
+            .col-xs-offset-1.col-xs-1
               %i.fa.fa-envelope
 
-        .col-xs-3.text-center
+        .col-xs-3.text-center{ style: "overflow: hidden;" }
           - if current_user
             = render 'shared/user_menu', user: current_user
           - else
