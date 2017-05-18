@@ -26,18 +26,36 @@
                 = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 30px; width: 90px; margin: auto; margin-bottom: 10px;')
         .col-xs-8
           %ul.menu.row
-            %li.col-xs-2{ class: active_menu_class("movies") }
-              = link_to "FILMES", url_for([role, :movies])
-            %li.col-xs-2{ class: active_menu_class("series") }
-              = link_to "SÉRIES", url_for([role, :series_index])
-            %li.col-xs-2{ class: active_menu_class("ciner_videos") }
-              = link_to "CINER VÍDEOS", url_for([:cinervideos])
-            %li.col-xs-2{ class: active_menu_class("critics") }
-              = link_to "CRÍTICAS", url_for([role, :critics])
-            %li.col-xs-2{ class: active_menu_class("broadcasts") }
-              = link_to "NOTÍCIAS", url_for([role, :broadcasts])
-            %li.col-xs-2{ class: active_menu_class("questions") }
-              = link_to "DEBATE CINER", url_for([role, :questions])
+            %li.dropdown
+              .dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                ACESSAR
+                %b.caret
+              %ul.dropdown-menu.horizontal
+                %li
+                  = link_to "FILMES", url_for([role, :movies])
+                %li
+                  = link_to "SÉRIES", url_for([role, :series_index])
+                %li
+                  = link_to "CINER VÍDEOS", url_for([:cinervideos])
+                %li
+                  = link_to "CRÍTICAS", url_for([role, :critics])
+                %li
+                  = link_to "NOTÍCIAS", url_for([role, :broadcasts])
+                %li
+                  = link_to "DEBATE CINER", url_for([role, :questions])
+          /   %li.col-xs-2{ class: active_menu_class("movies") }
+          /     = link_to "FILMES", url_for([role, :movies])
+          /   %li.col-xs-2{ class: active_menu_class("series") }
+          /     = link_to "SÉRIES", url_for([role, :series_index])
+          /   %li.col-xs-2{ class: active_menu_class("ciner_videos") }
+          /     = link_to "CINER VÍDEOS", url_for([:cinervideos])
+          /   %li.col-xs-2{ class: active_menu_class("critics") }
+          /     = link_to "CRÍTICAS", url_for([role, :critics])
+          /   %li.col-xs-2{ class: active_menu_class("broadcasts") }
+          /     = link_to "NOTÍCIAS", url_for([role, :broadcasts])
+          /   %li.col-xs-2{ class: active_menu_class("questions") }
+          /     = link_to "DEBATE CINER", url_for([role, :questions])
+
         .col-xs-2.text-center
           - if current_user
             = render 'shared/user_menu', user: current_user
