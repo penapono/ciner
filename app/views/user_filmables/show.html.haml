@@ -91,12 +91,12 @@
               = user_filmable.observation
 
   .modal-footer.user-collection-actions
-    %ul
+    %ul{ style: 'padding: 0px' }
       - user_collection = user_collections(current_user, user_filmable.filmable)
 
       - if user_collection.count > 1
         %li.dropdown
-          %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %button.btn.btn-default.dropdown-toggle{ style: 'float: left; margin-right: 15px;', "data-toggle" => "dropdown", :href => "#"}
             Editar
           .dropdown-menu.horizontal
             - user_collection.each_with_index do |user_collection_item, index|
@@ -105,16 +105,16 @@
       - else
         / = link_to edit_user_filmable_path(user_filmable) do
         %li
-          %button.btn.btn-default.edit-shelf{ data: { user_filmable_id: user_filmable.id, url: edit_user_filmable_path(user_filmable) } }
+          %button.btn.btn-default.edit-shelf{ style: 'float: left; margin-right: 15px;', data: { user_filmable_id: user_filmable.id, url: edit_user_filmable_path(user_filmable) } }
             Editar
 
       %li
-        %button.btn.btn-default.edit-shelf{ data: { user_filmable_id: user_filmable.id, url: new_user_filmable_path(filmable_id: user_filmable.filmable_id, filmable_type: user_filmable.filmable_type) } }
+        %button.btn.btn-default.edit-shelf{ style: 'float: left; margin-right: 15px;', data: { user_filmable_id: user_filmable.id, url: new_user_filmable_path(filmable_id: user_filmable.filmable_id, filmable_type: user_filmable.filmable_type) } }
           Adicionar Mídia
 
       - if user_collection.count > 1
         %li.dropdown
-          %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %button.btn.btn-default.dropdown-toggle{ style: 'float: left; margin-right: 15px;', "data-toggle" => "dropdown", :href => "#"}
             Remover da Coleção
           .dropdown-menu.horizontal
             - user_collection.each_with_index do |user_collection_item, index|
@@ -123,10 +123,10 @@
                   = "Remover Mídia #{index + 1} da Coleção"
       - else
         %li
-          = link_to user_filmable_path(user_filmable), method: 'delete', data: { confirm: 'Deseja mesmo remover esse item de sua coleção?' } do
+          = link_to user_filmable_path(user_filmable), method: 'delete', data: { confirm: 'Deseja mesmo remover esse item de sua coleção?' }, style: 'float: left; margin-right: 15px;' do
             %button.btn.btn-default
               Remover da Coleção
 
       %li
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+        %button.btn.btn-default{style: 'float: right;', "data-dismiss" => "modal", :type => "button"}
           Fechar
