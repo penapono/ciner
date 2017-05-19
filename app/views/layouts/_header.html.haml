@@ -50,14 +50,18 @@
                   %li
                     Debate Ciner
 
-        .col-xs-3{ style: "font-size: 18px;" }
+        .col-xs-3{ style: "font-size: 22px;" }
           .row
-            .col-xs-10
+            .col-xs-9
               = simple_form_for :searches, url: request.url, method: :get, class: 'navbar-form', role: :search do |f|
                 = text_field_tag :search, params[:search], placeholder: 'Buscar'
-                .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
-            .col-xs-offset-1.col-xs-1
+                .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();", style: 'font-size: 18px' }
+            .col-xs-offset-1.col-xs-1{ style: 'padding-left: 0px;' }
               %i.fa.fa-envelope
+            - if current_user && current_user.admin?
+              .col-xs-1{ style: 'padding-left: 20px;' }
+                = link_to admin_settings_path do
+                  %i.fa.fa-cogs
 
         .col-xs-3.text-center{ style: "overflow: hidden;" }
           - if current_user

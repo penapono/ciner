@@ -220,16 +220,17 @@ ul.menu li:hover:before {
       color: white;
       top: 6px;
       left: 25px;
+      font-size: 18px;
     }
 
     // focus state
     input[type="text"]:focus {
       transition: all 0.1s linear;
-      color: black;
+      color: $gray;
       height: 30px;
       border-radius: 50px;
-      font-size: 16px;
-      line-height: 16px;
+      font-size: 14px;
+      line-height: 14px;
       padding-left: 12px;
       width: 100%;
       padding-right: 25px;
@@ -251,11 +252,11 @@ ul.menu li:hover:before {
   .simple_form.searches:hover {
     input[type="text"] {
       transition: all 0.1s linear;
-      color: black;
+      color: $gray;
       height: 30px;
       border-radius: 50px;
-      font-size: 16px;
-      line-height: 16px;
+      font-size: 14px;
+      line-height: 14px;
       padding-left: 12px;
       width: 100%;
       padding-right: 25px;
