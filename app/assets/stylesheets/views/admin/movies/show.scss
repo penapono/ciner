@@ -9,3 +9,16 @@
     height: 100%;
   }
 }
+
+.user-collection-actions {
+  ul {
+    list-style: none;
+    width: 100%;
+
+    li {
+      display: inline;
+      width: 22%;
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 module UserActionsHelper
+  def user_collections(user, object)
+    UserFilmable.where(user_id: user.id,
+                       filmable_id: object.id,
+                       filmable_type: object.class,
+                       action: :collection)
+  end
+
   def user_action_class_on(user, object, user_action)
     return '' unless user
     user_filmable =
