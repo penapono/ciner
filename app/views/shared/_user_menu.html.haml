@@ -9,6 +9,6 @@
     - if current_user
       = link_to url_for([role, "profile"]) do
         %img.img-responsive{ src: avatar, style: "width: 45px; height: 45px; margin: auto" }
-  .col-xs-4
+  .col-xs-4{ style: 'overflow: hidden; height: 45px;' }
     = link_to url_for([role, "profile"]) do
       = current_user.name
