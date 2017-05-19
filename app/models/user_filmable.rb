@@ -38,6 +38,10 @@ class UserFilmable < ActiveRecord::Base
     'Outra Versão'
   end
 
+  def event_date_str
+    I18n.l(bought, format: :simpledate) if event_date.is_a?(Date)
+  end
+
   def title_str
     return filmable.title unless collection?
     media_str + " - " + version_str

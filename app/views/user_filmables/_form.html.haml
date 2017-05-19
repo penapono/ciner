@@ -46,7 +46,7 @@
   .col-xs-3
     = label_tag "Data da Compra"
   .col-xs-9
-    = f.input :bought, label: false, as: :string, value: I18n.l((f.object.bought || Date.today), format: :short), placeholder: "dd/mm/aaaa", class: 'datepicker'
+    = f.input :bought, label: false, as: :string, value: I18n.l(f.object.bought, format: :short), placeholder: "dd/mm/aaaa", class: 'datepicker'
 
 .row
   .col-xs-3

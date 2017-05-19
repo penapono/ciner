@@ -19,11 +19,6 @@
         = link_to [role, object] do
           = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')
       .col-xs-8
-        .row
-          .col-xs-12
-            = link_to [role, user_filmable.filmable] do
-              = user_filmable.filmable.title_str
-
         - unless user_filmable.media.blank?
           .row
             .col-xs-5.wine

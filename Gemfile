@@ -17,6 +17,7 @@ gem 'simple_form', '>= 3.4.0'
 gem 'decent_exposure'
 gem 'rails_autolink'
 gem 'rmagick'
+gem 'jquery_mask_rails'
 
 gem 'nokogiri'
 gem 'httparty'

@@ -36,6 +36,14 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.modal').on('show.bs.modal', function () {
+    $('datepicker').mask('99/99/9999');
+    $('select').select2({
+      theme: "bootstrap",
+      minimumResultsForSearch: 50
+    });
+  });
 });
 
 $(window).resize(function() {
