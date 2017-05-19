@@ -23,7 +23,7 @@
     = f.input :cover, label: false
 
 .row{ data: { brother_unlocker: '1' } }
-  .col-xs-4
+  .col-xs-5
     = checkbox_item(f, :box)
 
 .row{ data: { brother_unlocked: '1' } }
@@ -33,7 +33,7 @@
     = f.input :box_title, label: false, input_html: { placeholder: "Informe o título do Box caso faça parte de um", disabled: !f.object.box }
 
 .row{ data: { brother_locker: '1' } }
-  .col-xs-12
+  .col-xs-5
     = checkbox_item(f, :gift)
 
 .row{ data: { brother_locked: '1' } }

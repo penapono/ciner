@@ -44,3 +44,39 @@
     }
   }
 }
+
+#collectionModal {
+  [data-check-box] {
+    position: relative;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      float: right;
+      height: 16px;
+      width: 16px;
+      margin-right: 5px;
+      margin-top: 3px;
+
+      border: solid 2px $light-gray;
+      border-radius: 3px;
+    }
+
+    &.checked {
+      &::after {
+        position: relative;
+        content: '\f00c';
+        display: inline-block;
+        float: right;
+        height: 16px;
+        width: 16px;
+        margin-right: -14px;
+        margin-top: 3px;
+
+        color: $pink;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: 18px;
+      }
+    }
+  }
+}
