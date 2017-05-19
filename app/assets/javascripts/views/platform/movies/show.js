@@ -15,7 +15,6 @@ $(function() {
       url: url,
       success: function(data) {
         $('#collectionModal .modal-dialog').html(data);
-        $('#collectionModal input.datepicker').mask('99/99/9999');
         $('#collectionModal').modal('show');
       }
     });
@@ -31,9 +30,16 @@ $(function() {
       url: url,
       success: function(data) {
         $('#collectionModal .modal-dialog').html(data);
-        $('#collectionModal input.datepicker').mask('99/99/9999');
         $('#collectionModal').modal('show');
       }
+    });
+  });
+
+  $('.modal').on('show.bs.modal', function () {
+    $('#collectionModal input.datepicker').mask('99/99/9999');
+    $('select').select2({
+      theme: "bootstrap",
+      minimumResultsForSearch: 50
     });
   });
 });
