@@ -1,5 +1,18 @@
 .modal-dialog {
   margin-top: 60px !important;
+
+  label {
+    font-size: 13px;
+    line-height: 7px;
+  }
+
+  [data-checkboxes] {
+    label {
+      cursor: pointer;
+      float: left;
+      line-height: 21px;
+    }
+  }
 }
 
  .title-separator {

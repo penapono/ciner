@@ -1,25 +1,25 @@
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Tipo de Mídia"
-  .col-xs-9
+  .col-xs-8
     = f.input :media, label: false, collection: [["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]]
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Loja"
-  .col-xs-9
+  .col-xs-8
     = f.input :store, label: false, input_html: { placeholder: "Comprado em qual loja?" }
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Versão"
-  .col-xs-9
+  .col-xs-8
     = f.input :version, label: false, collection: [["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]]
 
 .row
-  .col-xs-3{ title: 'Caso você não faça upload, será utilizada imagem do Pôster' }
+  .col-xs-4{ title: 'Caso você não faça upload, será utilizada imagem do Pôster' }
     = label_tag "Capa Personalizada"
-  .col-xs-9
+  .col-xs-8
     = f.input :cover, label: false
 
 .row
@@ -27,9 +27,9 @@
     = checkbox_item(f, :box)
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Título do Box"
-  .col-xs-9
+  .col-xs-8
     = f.input :box_title, label: false, input_html: { placeholder: "Informe o título do Box caso faça parte de um" }
 
 .row
@@ -37,37 +37,37 @@
     = checkbox_item(f, :gift)
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Valor pago em reais"
-  .col-xs-9
+  .col-xs-8
     = f.input :price, label: false, as: :string, input_html: { placeholder: "Ex: 20,00", class: 'money' }
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Data da Compra"
-  .col-xs-9
+  .col-xs-8
     = f.input :bought, label: false, as: :string, input_html: { value: I18n.l((f.object.bought || Date.today), format: :simpledate), placeholder: "dd/mm/aaaa" , class: 'datepicker' }
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "ISBN", "ISBN"
-  .col-xs-9
+  .col-xs-8
     = f.input :isbn, label: false, input_html: { placeholder: "Cadastre o ISBN do produto" }
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Posição na Estante"
-  .col-xs-9
+  .col-xs-8
     = f.input :position, label: false, as: :string, input_html: { placeholder: "Ordem em que aparecerá na estante. Somente número." }
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Empréstimo"
-  .col-xs-9
+  .col-xs-8
     = f.input :borrowed, label: false, input_html: { placeholder: "Emprestado para quem? Quando? Anote aqui" }
 
 .row
-  .col-xs-3
+  .col-xs-4
     = label_tag "Observações"
-  .col-xs-9
+  .col-xs-8
     = f.input :observation, label: false, input_html: { placeholder: " Observações" }
