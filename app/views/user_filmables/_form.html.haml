@@ -46,7 +46,7 @@
   .col-xs-4
     = label_tag "Data da Compra"
   .col-xs-8
-    = f.input :bought, label: false, as: :string, input_html: { value: I18n.l((f.object.bought || Date.today), format: :simpledate), placeholder: "dd/mm/aaaa" , class: 'datepicker' }
+    = f.input :bought, label: false, as: :string, input_html: { value: (f.object.bought ? I18n.l((f.object.bought), format: :simpledate) : ""), placeholder: "dd/mm/aaaa" , class: 'datepicker' }
 
 .row
   .col-xs-4
@@ -58,7 +58,7 @@
   .col-xs-4
     = label_tag "Posição na Estante"
   .col-xs-8
-    = f.input :position, label: false, as: :string, input_html: { placeholder: "Ordem em que aparecerá na estante. Somente número." }
+    = f.input :position, label: false, as: :string, input_html: { placeholder: "Ordem em que aparecerá na estante." }
 
 .row
   .col-xs-4
