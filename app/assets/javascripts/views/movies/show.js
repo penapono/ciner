@@ -36,7 +36,8 @@ $(function() {
   });
 
   $('.modal').on('show.bs.modal', function () {
-    $('#collectionModal input.datepicker').mask('99/99/9999');
+    $('.datepicker').mask('99/99/9999');
+    $('.money').mask('000.000.000.000.000,00', {reverse: true});
     $('select').select2({
       theme: "bootstrap",
       minimumResultsForSearch: 50
