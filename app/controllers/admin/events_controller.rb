@@ -34,7 +34,7 @@ module Admin
     end
 
     def show_path
-      admin_event_path(resource)
+      admin_events_path
     end
 
     def resource_params

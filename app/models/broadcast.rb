@@ -8,6 +8,9 @@ class Broadcast < ActiveRecord::Base
 
   acts_as_votable
 
+  # Uploaders
+  mount_uploader :cover, BroadcastCoverUploader
+
   # Associations
   belongs_to :user
 
@@ -38,6 +41,10 @@ class Broadcast < ActiveRecord::Base
     order(created_at: :desc)
   end
 
+  def self.featured
+    where(featured: true)
+  end
+
   def self.all_but(objects)
     ids = []
 
@@ -48,7 +55,7 @@ class Broadcast < ActiveRecord::Base
   def self.top_broadcasts
     broadcasts = []
 
-    more_commented.first(2).each { |q| broadcasts << q }
+    featured.first(2).each { |q| broadcasts << q }
     two_last_created = last_created.all_but(broadcasts).first(2)
     two_last_created.each { |q| broadcasts << q }
 

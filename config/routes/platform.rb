@@ -54,7 +54,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :broadcasts do
+    resources :broadcasts, only: :index do
       member do
         put "like", to: "broadcasts#upvote"
         put "dislike", to: "broadcasts#downvote"

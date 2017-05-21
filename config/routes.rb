@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :critics, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :questions, only: [:index, :show]
-  resources :broadcasts, only: [:index, :show]
+  resources :broadcasts, only: :index
   resources :featured_filmables, only: :index
   resources :playing_filmables, only: :index
 

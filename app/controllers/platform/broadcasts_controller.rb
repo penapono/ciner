@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
-module Admin
-  class BroadcastsController < AdminController
-    include Admin::BroadcastsBreadcrumb
+module Platform
+  class BroadcastsController < PlatformController
+    include Platform::BroadcastsBreadcrumb
 
     PER_PAGE = 10
-
-    PERMITTED_PARAMS = [
-      :title, :content, :user_id, :spoiler, :featured,
-      :cover, :more, :video
-      broadcast_broadcastable: %i[
-        id broadcast_id broadcastable_type broadcastable_id _destroy
-      ]
-    ].freeze
 
     # exposes
     expose(:broadcasts) { Broadcast.last_created }
@@ -33,11 +25,11 @@ module Admin
     end
 
     def index_path
-      admin_broadcasts_path
+      platform_broadcasts_path
     end
 
     def show_path
-      admin_broadcast_path(resource)
+      platform_broadcasts_path
     end
 
     def resource_params

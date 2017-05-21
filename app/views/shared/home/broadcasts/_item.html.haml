@@ -1,11 +1,37 @@
-.post-item
-  - if broadcast.featured?
-    .row
-      .col-xs-12
+- if current_user
+  - if current_user.admin?
+    .post-item
+      .content
+        = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
+          %h4
+            = broadcast.collapsed_title
         .highlight
+          - if broadcast.featured?
+            .button
+              %span
+                Destaque
+          = "Data: #{broadcast.datetime_str}"
+  - else
+    .post-item
+      .content
+        = link_to platform_broadcasts_path(anchor: "#{broadcast.id}") do
+          %h4
+            = broadcast.collapsed_title
+        .highlight
+          - if broadcast.featured?
+            .button
+              %span
+                Destaque
+          = "Data: #{broadcast.datetime_str}"
+- else
+  .post-item
+    .content
+      = link_to broadcasts_path(anchor: "#{broadcast.id}") do
+        %h4
+          = broadcast.collapsed_title
+      .highlight
+        - if broadcast.featured?
           .button
-            Destaque
-  .content
-    = link_to [role, broadcast] do
-      %h4
-        = broadcast.collapsed_title
+            %span
+              Destaque
+        = "Data: #{broadcast.datetime_str}"
