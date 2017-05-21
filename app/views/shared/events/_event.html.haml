@@ -36,6 +36,7 @@
         = event.description.html_safe
 
   - more = event.more
+  - cover = event.cover
   - unless more.blank?
     .row{ data: { collapsed_area: '' } }
       .col-xs-12
@@ -43,7 +44,14 @@
           .col-xs-12
             %a{ data: { collapse_control: '' } }
               ver mais
-        .row{ data: { collapse_content: '' } }
-          .col-xs-12
-            = event.more
+        .row.collapse{ data: { collapse_content: '' } }
+          - if cover.blank?
+            .col-xs-12
+              = event.more
+          - else
+            .col-xs-2
+              = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')
+
+            .col-xs-10
+              = event.more
 
