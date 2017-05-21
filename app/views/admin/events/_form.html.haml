@@ -7,6 +7,10 @@
 
   .row
     .col-xs-12
+      = f.input :place
+
+  .row
+    .col-xs-12
       = f.input :title
 
   .row
@@ -22,6 +26,21 @@
       = f.input :start_time, as: :string, input_html: { class: 'timepicker', placeholder: t('select_hour'), value: f.object.start_time_str }
     .col-xs-3
       = f.input :end_time, as: :string, input_html: { class: 'timepicker', placeholder: t('select_hour'), value: f.object.end_time_str }
+
+  .row
+    .col-xs-12
+      %h3.wine
+        = f.label :cover
+
+  .row
+    .col-xs-4
+      = f.input :cover, label: false
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 500 } }
+      = f.input :more, label: false, input_html: { rows: 5 }, maxlength: 500
+      %span.char-counter
+        = t('remaining_chars', chars: 500)
 
   .row
     - if admin

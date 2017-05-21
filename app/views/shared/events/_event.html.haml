@@ -5,14 +5,13 @@
 - like_path ||= nil
 - dislike_path ||= nil
 
-.container.content{ class: (event.featured? ? 'featured' : '') }
+.container.content{ id: "#{event.id}" }
   .row
     .col-xs-12
       .row
         .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
-          = link_to url_for([role, event]) do
-            %h4
-              = event.title
+          %h4.wine
+            = event.title
 
       %hr
 
@@ -21,6 +20,11 @@
           .curriculum-biograpy
             = event.description.html_safe
 
-            %p
-              .wine
-                = event.datetime_str
+      .row
+        .col-xs-12
+          .highlight
+            - if event.featured?
+              .button
+                %span
+                  Destaque
+            = "Data: #{event.datetime_str}"

@@ -4,10 +4,11 @@ module Admin
   class EventsController < AdminController
     include Admin::EventsBreadcrumb
 
-    PER_PAGE = 10
+    PER_PAGE = 20
 
     PERMITTED_PARAMS = %i[
       title description event_date end_date start_time end_time featured
+      place more cover
     ].freeze
 
     # exposes

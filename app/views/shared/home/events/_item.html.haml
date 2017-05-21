@@ -1,5 +1,37 @@
-.post-item{ class: (event.featured? ? 'featured' : '') }
-  .content
-    = link_to [role, event] do
-      %h4
-        = "#{event.datetime_str} - #{event.title}"
+- if current_user
+  - if current_user.admin?
+    .post-item
+      .content
+        = link_to admin_events_path(anchor: "#{event.id}") do
+          %h4
+            = event.title
+        .highlight
+          - if event.featured?
+            .button
+              %span
+                Destaque
+          = "Data: #{event.datetime_str}"
+  - else
+    .post-item
+      .content
+        = link_to platform_events_path(anchor: "#{event.id}") do
+          %h4
+            = event.title
+        .highlight
+          - if event.featured?
+            .button
+              %span
+                Destaque
+          = "Data: #{event.datetime_str}"
+- else
+  .post-item
+    .content
+      = link_to events_path(anchor: "#{event.id}") do
+        %h4
+          = event.title
+      .highlight
+        - if event.featured?
+          .button
+            %span
+              Destaque
+        = "Data: #{event.datetime_str}"

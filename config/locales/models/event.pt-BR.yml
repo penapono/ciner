@@ -8,6 +8,9 @@ pt-BR:
     attributes:
       event:
         title: Evento
+        place: Local
+        more: Mais informações
+        cover: Capa
         description: Descrição
         event_date: Data de Início
         event_date_str: Data de Início

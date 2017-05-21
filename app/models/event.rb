@@ -7,6 +7,9 @@ class Event < ActiveRecord::Base
 
   acts_as_votable
 
+  # Uploaders
+  mount_uploader :cover, EventCoverUploader
+
   # Validations
   validates :title,
             :description,

@@ -1,4 +1,10 @@
-.post-item{ class: (broadcast.featured? ? 'featured' : '') }
+.post-item
+  - if broadcast.featured?
+    .row
+      .col-xs-12
+        .highlight
+          .button
+            Destaque
   .content
     = link_to [role, broadcast] do
       %h4

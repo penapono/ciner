@@ -8,7 +8,7 @@ module Platform
     expose(:events) { Event.order(event_date: :desc) }
     expose(:event, attributes: :event_attributes)
 
-    PER_PAGE = 10
+    PER_PAGE = 20
 
     def index
       self.events = paginated_events
