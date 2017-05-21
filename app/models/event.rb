@@ -74,4 +74,20 @@ class Event < ActiveRecord::Base
   def end_time_str
     I18n.l(end_time, format: :simpletime) if end_time.is_a?(Time)
   end
+
+  def status_str
+    today = Date.today
+    if (end_date.blank? && event_date == today) ||
+       (!end_date.blank? && event_date <= today && today <= end_date)
+      now = DateTime.now
+      if (end_time.blank? && start_time <= now) ||
+         (!end_time.blank? && start_time <= now && now >= end_time)
+        return 'acontecendo'
+      end
+    end
+    if (event_date - today) <= 30
+      return 'acontecendo'
+    end
+    ''
+  end
 end
