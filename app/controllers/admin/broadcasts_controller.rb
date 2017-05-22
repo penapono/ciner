@@ -8,7 +8,7 @@ module Admin
 
     PERMITTED_PARAMS = [
       :title, :content, :spoiler, :featured,
-      :cover, :more, :video
+      :cover, :more, :video, :broadcast_date
     ].freeze
 
     # exposes
@@ -34,7 +34,7 @@ module Admin
     end
 
     def show_path
-      admin_broadcast_path(resource)
+      admin_broadcasts_path
     end
 
     def resource_params

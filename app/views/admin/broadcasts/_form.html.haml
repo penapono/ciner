@@ -5,12 +5,35 @@
     = t('.general')
 
   .row
-    .col-xs-12
-      = f.input :title
+    .col-xs-12{ data: { limited: '', limit: 75 } }
+      = f.input :title, input_html: { rows: 1 }, maxlength: 75
+      %span.char-counter
+        = t('remaining_chars', chars: 75)
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 550 } }
+      = f.input :content, input_html: { rows: 5 }, maxlength: 550
+      %span.char-counter
+        = t('remaining_chars', chars: 550)
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 30 } }
+      = f.input :more, input_html: { rows: 5 }, maxlength: 30
+      %span.char-counter
+        = t('remaining_chars', chars: 30)
 
   .row
     .col-xs-12
-      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+      %h3.wine
+        = f.label :cover
+
+  .row
+    .col-xs-4
+      = f.input :cover, label: false
+
+  .row
+    .col-xs-4
+      = f.input :broadcast_date, as: :string, input_html: { value: (localize(f.object.broadcast_date) if f.object.broadcast_date), class: 'datepicker' }
 
   .row
     .col-xs-4
@@ -18,6 +41,10 @@
     - if current_user.admin?
       .col-xs-4
         = checkbox_item(f, :featured)
+
+  .row
+    .col-xs-4
+      = f.input :video
 
   .row
     .col-xs-6

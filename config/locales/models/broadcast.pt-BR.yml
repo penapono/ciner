@@ -9,10 +9,14 @@ pt-BR:
       broadcast:
         title: Título
         content: Conteúdo
+        more: Fonte
+        cover: Capa
         user: Autor
         user_id: Autor
         featured: Destaque
         spoiler: Contém spoiler
+        video: Vídeo
+        broadcast_date: Data
       broadcast/spoiler:
         has_spoiler: Contém spoilers
         spoiler_free: Não contém spoilers
