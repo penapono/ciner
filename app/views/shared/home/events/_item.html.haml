@@ -9,7 +9,7 @@
             .button
               Destaque
           .info
-            = "Data: #{event.datetime_str}"
+            = "Data: #{event.date_str}"
   - else
     .post-item.event
       .content
@@ -20,7 +20,7 @@
             .button
               Destaque
           .info
-            = "Data: #{event.datetime_str}"
+            = "Data: #{event.date_str}"
 - else
   .post-item.event
     .content
@@ -31,4 +31,4 @@
           .button
             Destaque
         .info
-          = "Data: #{event.datetime_str}"
+          = "Data: #{event.date_str}"

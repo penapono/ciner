@@ -58,6 +58,11 @@ class Broadcast < ActiveRecord::Base
 
   # Methods
 
+  def date_str
+    return I18n.l(broadcast_date, format: :simpledate) unless broadcast_date.blank?
+    ""
+  end
+
   def spoiler_str
     return Broadcast.human_attribute_name("spoiler.has_spoiler") if spoiler
     Broadcast.human_attribute_name("spoiler.spoiler_free")

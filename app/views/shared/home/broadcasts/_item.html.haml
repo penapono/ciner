@@ -3,22 +3,26 @@
     .post-item
       .content
         = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
-          %h4
-            = broadcast.collapsed_title
+          = broadcast.collapsed_title
         .highlight
           - if broadcast.featured?
             .button
               Destaque
+          - else
+            .info
+              = broadcast.date_str
   - else
     .post-item
       .content
         = link_to platform_broadcasts_path(anchor: "#{broadcast.id}") do
-          %h4
-            = broadcast.collapsed_title
+          = broadcast.collapsed_title
         .highlight
           - if broadcast.featured?
             .button
               Destaque
+          - else
+            .info
+              = broadcast.date_str
 - else
   .post-item
     .content
@@ -29,3 +33,6 @@
         - if broadcast.featured?
           .button
             Destaque
+        - else
+          .info
+            = broadcast.date_str
