@@ -80,13 +80,17 @@ class Event < ActiveRecord::Base
     if (end_date.blank? && event_date == today) ||
        (!end_date.blank? && event_date <= today && today <= end_date)
       now = DateTime.now
-      if (end_time.blank? && start_time <= now) ||
-         (!end_time.blank? && start_time <= now && now >= end_time)
+      if start_time
+        if (end_time.blank? && start_time <= now) ||
+           (!end_time.blank? && start_time <= now && now >= end_time)
+          return 'acontecendo'
+        end
+      else
         return 'acontecendo'
       end
     end
     if (event_date - today) <= 30
-      return 'acontecendo'
+      return 'breve'
     end
     ''
   end
