@@ -16,9 +16,11 @@
 
 .highlight {
   color: rgb(184, 184, 184);
+  margin-bottom: 5px;
+  margin-top: 10px;
 
   .button {
-    cursor: pointer;
+    cursor: normal;
     float: left;
     border: 1px solid $light-orange;
     border-radius: 8px;
@@ -27,5 +29,9 @@
     background: transparent;
     margin-right: 10px;
     margin-bottom: 5px;
+  }
+
+  .info {
+    line-height: 30px;
   }
 }

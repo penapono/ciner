@@ -1,37 +1,34 @@
 - if current_user
   - if current_user.admin?
-    .post-item
+    .post-item.event
       .content
         = link_to admin_events_path(anchor: "#{event.id}") do
-          %h4
-            = event.title
+          = event.title
         .highlight
           - if event.featured?
             .button
-              %span
-                Destaque
-          = "Data: #{event.datetime_str}"
+              Destaque
+          .info
+            = "Data: #{event.datetime_str}"
   - else
-    .post-item
+    .post-item.event
       .content
         = link_to platform_events_path(anchor: "#{event.id}") do
-          %h4
-            = event.title
+          = event.title
         .highlight
           - if event.featured?
             .button
-              %span
-                Destaque
-          = "Data: #{event.datetime_str}"
+              Destaque
+          .info
+            = "Data: #{event.datetime_str}"
 - else
-  .post-item
+  .post-item.event
     .content
       = link_to events_path(anchor: "#{event.id}") do
-        %h4
-          = event.title
+        = event.title
       .highlight
         - if event.featured?
           .button
-            %span
-              Destaque
-        = "Data: #{event.datetime_str}"
+            Destaque
+        .info
+          = "Data: #{event.datetime_str}"
