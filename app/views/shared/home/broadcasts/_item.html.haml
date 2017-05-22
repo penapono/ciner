@@ -8,9 +8,7 @@
         .highlight
           - if broadcast.featured?
             .button
-              %span
-                Destaque
-          = "Data: #{broadcast.datetime_str}"
+              Destaque
   - else
     .post-item
       .content
@@ -20,9 +18,7 @@
         .highlight
           - if broadcast.featured?
             .button
-              %span
-                Destaque
-          = "Data: #{broadcast.datetime_str}"
+              Destaque
 - else
   .post-item
     .content
@@ -32,6 +28,4 @@
       .highlight
         - if broadcast.featured?
           .button
-            %span
-              Destaque
-        = "Data: #{broadcast.datetime_str}"
+            Destaque

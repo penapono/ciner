@@ -37,7 +37,7 @@
 
   - more = event.more
   - cover = event.cover
-  - unless more.blank?
+  - unless more.blank? && cover.blank?
     .row{ data: { collapsed_area: '' } }
       .col-xs-12
         .row

@@ -19,13 +19,6 @@
       .col-xs-4
         = checkbox_item(f, :featured)
 
-  - if current_user.admin?
-    .row
-      .col-xs-6
-        = f.input :user_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
-  - else
-    = f.hidden_field :user_id, value: current_user.id
-
   .row
     .col-xs-6
       = render 'admin/broadcasts/broadcast_broadcastables/nested', f: f

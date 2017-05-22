@@ -7,12 +7,10 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       broadcasts.title LIKE :search OR
-      broadcasts.content LIKE :search OR
-      users.name LIKE :search
+      broadcasts.content LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = [
-      :user
     ].freeze
 
     class_methods do

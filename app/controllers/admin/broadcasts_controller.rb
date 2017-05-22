@@ -7,11 +7,8 @@ module Admin
     PER_PAGE = 10
 
     PERMITTED_PARAMS = [
-      :title, :content, :user_id, :spoiler, :featured,
+      :title, :content, :spoiler, :featured,
       :cover, :more, :video
-      broadcast_broadcastable: %i[
-        id broadcast_id broadcastable_type broadcastable_id _destroy
-      ]
     ].freeze
 
     # exposes
@@ -59,7 +56,7 @@ module Admin
     end
 
     def searched_broadcasts
-      broadcasts.search(current_user, params.fetch(:search, ''))
+      broadcasts.search(nil, params.fetch(:search, ''))
     end
   end
 end

@@ -12,19 +12,13 @@ class Broadcast < ActiveRecord::Base
   mount_uploader :cover, BroadcastCoverUploader
 
   # Associations
-  belongs_to :user
-
   has_many :comments, as: :commentable
   has_many :broadcast_broadcastables, dependent: :destroy
 
   # Validations
   validates :title,
             :content,
-            :user,
             presence: true
-
-  # Delegations
-  delegate :name, to: :user, allow_nil: true, prefix: true
 
   # Nested
   accepts_nested_attributes_for :broadcast_broadcastables,
