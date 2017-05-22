@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class BroadcastsController < PlatformController
+class BroadcastsController < ApplicationController
   include BroadcastsBreadcrumb
 
   PER_PAGE = 10
 
   # exposes
-  expose(:broadcasts) { Broadcast.last_created }
+  expose(:broadcasts) { Broadcast.all_creation }
   expose(:broadcast, attributes: :broadcast_attributes)
 
   def index

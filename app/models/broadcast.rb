@@ -56,6 +56,16 @@ class Broadcast < ActiveRecord::Base
     broadcasts.first(10)
   end
 
+  def self.all_creation
+    broadcasts = []
+
+    featured.first(2).each { |q| broadcasts << q }
+    two_last_created = last_created.all_but(broadcasts).first(2)
+    two_last_created.each { |q| broadcasts << q }
+
+    Broadcast.where(id: broadcasts.pluck(:id))
+  end
+
   # Methods
 
   def date_str
