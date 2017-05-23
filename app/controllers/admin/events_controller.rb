@@ -12,7 +12,7 @@ module Admin
     ].freeze
 
     # exposes
-    expose(:events) { Event.order(event_date: :desc) }
+    expose(:events) { Event.order(event_date: :asc) }
     expose(:event, attributes: :event_attributes)
 
     def index

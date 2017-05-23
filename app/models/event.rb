@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
   # Methods
 
   def description_str
-    ActionView::Base.full_sanitizer.sanitize(description).truncate(155)
+    ActionView::Base.full_sanitizer.sanitize(description)
   end
 
   def collapsed_description
@@ -90,7 +90,7 @@ class Event < ActiveRecord::Base
       end
     end
     if (event_date - today) <= 30
-      return 'breve'
+      return 'Em breve'
     end
     ''
   end

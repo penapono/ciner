@@ -44,8 +44,8 @@ $lines-to-show: 3;
   display: block; /* Fallback for non-webkit */
   display: -webkit-box;
   max-width: 100%;
-  min-height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
-  height: $font-size*$line-height*$lines-to-show;
+  min-height: $font-size*$line-height*1; /* Fallback for non-webkit */
+  height: $font-size*$line-height*1;
   margin: 0 auto;
   font-size: $font-size;
   line-height: $line-height;
@@ -53,12 +53,4 @@ $lines-to-show: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  &:hover {
-    height: auto;
-
-    .bold.wine {
-      display: none;
-    }
-  }
 }

@@ -29,8 +29,8 @@
 
   .row
     .col-xs-12
-      %h3.wine
-        = f.label :cover
+      .wine
+        = f.label :cover, style: 'font-weight: normal;'
 
   .row
     .col-xs-4
@@ -38,7 +38,7 @@
 
   .row
     .col-xs-12{ data: { limited: '', limit: 500 } }
-      = f.input :more, label: false, input_html: { rows: 5 }, maxlength: 500
+      = f.input :more, input_html: { rows: 5 }, maxlength: 500
       %span.char-counter
         = t('remaining_chars', chars: 500)
 
