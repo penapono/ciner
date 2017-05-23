@@ -3,7 +3,8 @@
     .post-item.event
       .content
         = link_to admin_events_path(anchor: "#{event.id}") do
-          = event.title
+          %h4{ data: { tipsy: '' }, title: "#{event.title}" }
+            = event.title
         .highlight
           - if event.featured?
             .button
@@ -14,7 +15,8 @@
     .post-item.event
       .content
         = link_to platform_events_path(anchor: "#{event.id}") do
-          = event.title
+          %h4{ data: { tipsy: '' }, title: "#{event.title}" }
+            = event.title
         .highlight
           - if event.featured?
             .button
@@ -25,7 +27,8 @@
   .post-item.event
     .content
       = link_to events_path(anchor: "#{event.id}") do
-        = event.title
+        %h4{ data: { tipsy: '' }, title: "#{event.title}" }
+          = event.title
       .highlight
         - if event.featured?
           .button

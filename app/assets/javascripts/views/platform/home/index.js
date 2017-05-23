@@ -1,4 +1,5 @@
 //= require components/ciner_slider
+//= require components/ciner_tipsy
 
 $(document).ready(function() {
   var container = $('[data-slider-playing]');

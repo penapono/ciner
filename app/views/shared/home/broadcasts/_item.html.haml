@@ -2,8 +2,6 @@
   - if current_user.admin?
     .post-item
       .content
-        = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
-          = broadcast.collapsed_title
         .highlight
           - if broadcast.featured?
             .button
@@ -11,11 +9,12 @@
           - else
             .info
               = broadcast.date_str
+        = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
+          %h4{ data: { tipsy: '' }, title: "#{broadcast.title}" }
+            = broadcast.title
   - else
     .post-item
       .content
-        = link_to platform_broadcasts_path(anchor: "#{broadcast.id}") do
-          = broadcast.collapsed_title
         .highlight
           - if broadcast.featured?
             .button
@@ -23,12 +22,12 @@
           - else
             .info
               = broadcast.date_str
+        = link_to platform_broadcasts_path(anchor: "#{broadcast.id}") do
+          %h4{ data: { tipsy: '' }, title: "#{broadcast.title}" }
+            = broadcast.title
 - else
   .post-item
     .content
-      = link_to broadcasts_path(anchor: "#{broadcast.id}") do
-        %h4
-          = broadcast.collapsed_title
       .highlight
         - if broadcast.featured?
           .button
@@ -36,3 +35,6 @@
         - else
           .info
             = broadcast.date_str
+      = link_to broadcasts_path(anchor: "#{broadcast.id}") do
+        %h4{ data: { tipsy: '' }, title: "#{broadcast.title}" }
+          = broadcast.title

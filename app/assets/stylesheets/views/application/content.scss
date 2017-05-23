@@ -85,33 +85,6 @@
   box-shadow: 0px 0px 4px #000;
 }
 
-.post-item {
-  padding: 10px;
-
-  .content {
-    h4 {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      word-wrap: break-word;
-      height: 30px;
-      font-size: 15px;
-      line-height: 16px;
-      font-size: 13px;
-      line-height: 15px;
-    }
-
-  }
-
-  &.featured {
-    background-color: rgba(241, 242, 242, 0.8);
-    border-bottom: none;
-    border-top: none;
-    border-radius: 10px;
-  }
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .featured {
   background-color: rgba(241, 242, 242, 0.8);
   border-bottom: none;

@@ -79,18 +79,36 @@
 // Post Item
 
 .post-item {
+  padding: 10px;
   border-bottom: 1px solid #CCCCCC;
   padding-bottom: 15px;
-}
 
-.post-item h4 {
-  font-size: 16px;
-  line-height: 16px;
-}
+  .content {
+    h4 {
+      overflow: hidden;
+      word-wrap: break-word;
+      height: 20px;
+      font-size: 13px;
+      line-height: 15px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
 
-.post-item p {
-  font-size: 13px;
-  line-height: 15px;
+  p {
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  &.featured {
+    background-color: rgba(241, 242, 242, 0.8);
+    border-bottom: none;
+    border-top: none;
+    border-radius: 10px;
+  }
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .btn-saiba-mais {
