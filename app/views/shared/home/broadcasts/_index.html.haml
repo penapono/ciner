@@ -3,7 +3,7 @@
     .media
       .media-left.media-middle
         .icon-title
-          %img.img-responsive{ src: image_path("icons/ico_broadcasts.png") }
+          %img.img-responsive{ src: image_path("icons/ico_broadcasts.png"), style: 'width: 30px; height: 30px;' }
       .media-body.media-bottom
         .media-heading.title-section
           = Broadcast.model_name.human(count: 2)
