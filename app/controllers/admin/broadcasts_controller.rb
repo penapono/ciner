@@ -8,7 +8,20 @@ module Admin
 
     PERMITTED_PARAMS = [
       :title, :content, :spoiler, :featured,
-      :cover, :more, :video, :broadcast_date
+      :cover, :more, :video, :broadcast_date,
+      broadcast_broadcastables_attributes: %i[
+        broadcastable_id
+        broadcastable_type
+        broadcast_id
+        id
+        _destroy
+      ],
+      broadcast_images_attributes: %i[
+        media
+        broadcast_id
+        id
+        _destroy
+      ]
     ].freeze
 
     # exposes

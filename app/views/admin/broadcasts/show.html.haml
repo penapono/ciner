@@ -5,4 +5,9 @@
 
 = render 'shared/broadcasts/show', broadcast: broadcast, resource: broadcast, like_path: like_admin_broadcast_path(broadcast), dislike_path: dislike_admin_broadcast_path(broadcast)
 
+- broadcast.broadcast_images.each do |image|
+  - cover = image.media
+  .col-sm-3
+    = image_tag(cover, class: "img-responsive", style: 'width: 200px; height: 200px;' )
+
 

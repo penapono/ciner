@@ -7,8 +7,7 @@ class BroadcastBroadcastable < ActiveRecord::Base
   belongs_to :broadcast
 
   # Validations
-  validates :broadcast,
-            :broadcastable_id,
+  validates :broadcastable_id,
             :broadcastable_type,
             presence: true
 end

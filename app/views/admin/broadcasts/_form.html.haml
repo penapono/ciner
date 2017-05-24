@@ -48,6 +48,18 @@
 
   .row
     .col-xs-6
+      %h3.wine
+        Filmes / Séries
+
+    .col-xs-6
+      %h3.wine
+        Imagens
+
+  .row
+    .col-xs-6
       = render 'admin/broadcasts/broadcast_broadcastables/nested', f: f
+
+    .col-xs-6
+      = render 'admin/broadcasts/broadcast_images/nested', f: f
 
   = render 'shared/form_actions', f: f

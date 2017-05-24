@@ -13,6 +13,7 @@ class Broadcast < ActiveRecord::Base
 
   # Associations
   has_many :comments, as: :commentable
+  has_many :broadcast_images, dependent: :destroy
   has_many :broadcast_broadcastables, dependent: :destroy
 
   # Validations
@@ -22,6 +23,10 @@ class Broadcast < ActiveRecord::Base
 
   # Nested
   accepts_nested_attributes_for :broadcast_broadcastables,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+
+  accepts_nested_attributes_for :broadcast_images,
                                 allow_destroy: true,
                                 reject_if: :all_blank
 
@@ -83,7 +88,7 @@ class Broadcast < ActiveRecord::Base
   end
 
   def content_str
-    ActionView::Base.full_sanitizer.sanitize(content).truncate(155)
+    ActionView::Base.full_sanitizer.sanitize(content)
   end
 
   def collapsed_content
@@ -96,10 +101,26 @@ class Broadcast < ActiveRecord::Base
 
   # Filter
 
+  def self.by_broadcastable_type(broadcastable_type)
+    broadcast_ids = BroadcastBroadcastable.where(broadcastable_type: broadcastable_type).pluck(:broadcast_id)
+    where(id: broadcast_ids)
+  end
+
+  def self.by_year(year)
+    broadcast_ids = []
+    BroadcastBroadcastable.each do |bb|
+      broadcast_ids << bb.broadcast_id if bb.filmable_year == year
+    end
+
+    where(id: brodcast_ids)
+  end
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
+    result = result.by_broadcastable_type(params[:broadcastable_type]) unless params[:broadcastable_type].blank?
+    result = result.by_year(params[:year]) unless params[:year].blank?
 
     result
   end

@@ -10,8 +10,8 @@ module Searchables
       series.title LIKE :search
     '
 
-    SEARCH_ASSOCIATIONS = [
-      :movie, :serie
+    SEARCH_ASSOCIATIONS = %i[
+      movie serie
     ].freeze
 
     class_methods do

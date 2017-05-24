@@ -89,9 +89,7 @@ class Event < ActiveRecord::Base
         return 'acontecendo'
       end
     end
-    if (event_date - today) <= 30
-      return 'Em breve'
-    end
+    return 'Em breve' if (event_date - today) <= 30
     ''
   end
 end

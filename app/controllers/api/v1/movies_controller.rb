@@ -12,10 +12,10 @@ class Api::V1::MoviesController < ApplicationController
   private
 
   def fetch_term
-    params.fetch(:search, {}).fetch(:term, '')
+    params.fetch(:term, '')
   end
 
   def resources
-    Movie.search(current_user, fetch_term).limit(LIMIT)
+    Movie.search(nil, fetch_term).limit(LIMIT)
   end
 end

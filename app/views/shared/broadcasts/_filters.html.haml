@@ -1,0 +1,15 @@
+- content_for :javascript, javascript_include_tag('components/filters')
+- content_for :stylesheet, stylesheet_link_tag('components/filters')
+
+= hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
+
+#filters.row.filters{ data: { dynamic_filter: '' } }
+  = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
+    = hidden_field_tag :search, params[:search]
+
+    .col-xs-4
+      = f.input :broadcastable_type, label: false, collection: [["Filmes", "Movie"], ["Séries", "Serie"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filme / Série', selected: params.fetch(:filter, {}).fetch(:broadcastable_type, '')
+
+    .col-xs-4
+      = f.input :year, collection: (1839..2021), label: false, include_blank: "Ano", input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
+

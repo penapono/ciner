@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    attributes:
+      broadcast_broadcastable:
+        broadcastable_type: Filme / Série
+        broadcastable_id: Filme / Série

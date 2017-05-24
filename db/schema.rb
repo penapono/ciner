@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521200604) do
+ActiveRecord::Schema.define(version: 20170524120835) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20170521200604) do
     t.integer  "broadcast_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "broadcast_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "broadcast_id"
+    t.string   "media"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "broadcasts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170521200604) do
     t.string   "more"
     t.string   "video"
     t.date     "broadcast_date"
+    t.string   "source"
     t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
   end
 
