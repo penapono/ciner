@@ -17,7 +17,7 @@
     = f.input :version, label: false, collection: [["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]]
 
 .row
-  .col-xs-4{ title: 'Caso você não faça upload, será utilizada imagem do Pôster' }
+  .col-xs-4{ data: { tipsy: '' }, title: 'Caso você não faça upload, será utilizada imagem do Pôster' }
     = label_tag "Capa Personalizada"
   .col-xs-8
     = f.input :cover, label: false
