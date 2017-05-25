@@ -63,7 +63,7 @@ module Tmdb
     def api_transform
       object = self
 
-      if object.lock_updates?
+      unless object.lock_updates?
 
         tmdb_result = start_tmdb(object)
 
