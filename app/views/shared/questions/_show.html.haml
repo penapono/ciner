@@ -3,9 +3,9 @@
 - dislike_path ||= nil
 
 .container.content
-  .row
+  .debates.row
     .col-xs-12
-      .row
+      .row{ class: question_class(question) }
         .col-xs-1
           .icone{ style: 'margin-top: 10px;' }
             %svg.icon-debate

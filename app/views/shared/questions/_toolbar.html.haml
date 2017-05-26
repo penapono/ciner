@@ -9,4 +9,4 @@
     .col-xs-12
       = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
 
-  = render "#{role}questions/filters", path: path, questionable_type: questionable_type
+  = render "shared/questions/filters"

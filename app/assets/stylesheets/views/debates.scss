@@ -27,21 +27,30 @@
 
 .debates .topico.filme h4,
 .debates .topico.filme span,
-.debates .topico.filme .icone svg {
+.debates .topico.filme .icone svg,
+.debates .filme h4,
+.debates .filme span,
+.debates .filme .icone svg {
   color: #f36e24;
   fill: #f36e24;
 }
 
 .debates .topico.serie h4,
 .debates .topico.serie span,
-.debates .topico.serie .icone svg {
+.debates .topico.serie .icone svg,
+.debates .serie h4,
+.debates .serie span,
+.debates .serie .icone svg {
   color: #ee4573;
   fill: #ee4573;
 }
 
 .debates .topico.offtopic h4,
 .debates .topico.offtopic span,
-.debates .topico.offtopic .icone svg {
+.debates .topico.offtopic .icone svg,
+.debates .offtopic h4,
+.debates .offtopic span,
+.debates .offtopic .icone svg {
   color: #a61e57;
   fill: #a61e57;
 }

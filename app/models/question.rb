@@ -93,25 +93,37 @@ class Question < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    result = result.by_questionable_type(params[:questionable_type]) if params[:questionable_type].present?
-    result = result.by_questionable_id(params[:questionable_id]) if params[:questionable_id].present?
-    result = result.by_status(params[:status]) if params[:status].present?
-    result = result.by_origin(params[:origin]) if params[:origin].present?
-    result = result.by_user_id(params[:user_id]) if params[:user_id].present?
+    result = result.by_area(params[:area]) if params[:area].present?
+    result = result.by_like_count(params[:like_count]) if params[:like_count].present?
+    result = result.by_time(params[:time]) if params[:time].present?
 
     result
   end
 
-  def self.by_questionable_type(questionable_type)
-    where(questionable_type: questionable_type)
+  def self.by_area(area)
+    if area == "movies"
+      where(questionable_type: 'Movie')
+    elsif area == "series"
+      where(questionable_type: 'Serie')
+    elsif area == "general"
+      all
+    end
   end
 
-  def self.by_questionable_id(questionable_id)
-    where(questionable_id: questionable_id)
+  def self.by_like_count(like_count)
+    if like_count == "more_like"
+      order(likes_count: :desc)
+    elsif like_count = "more_comment"
+      order(comments_count: :desc)
+    end
   end
 
-  def self.by_status(status)
-    where(status: status)
+  def self.by_time(time)
+    if time == "recent"
+      order(updated_at: :desc)
+    elsif time == "oldest"
+      order(updated_at: :asc)
+    end
   end
 
   def self.localized_statuses
