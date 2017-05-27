@@ -8,6 +8,7 @@ pt-BR:
     attributes:
       event:
         title: Evento
+        subtitle: Chamada
         place: Local
         more: Mais informações
         cover: Capa
