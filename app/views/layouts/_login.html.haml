@@ -1,14 +1,13 @@
 - if current_user
-  .welcome
-    Olá,
-    = current_user.name.split(' ').first
-    = link_to '#' do
-      %i.fa.fa-chevron-down.white
-  .logout
-    = link_to 'Não é você?', destroy_user_session_path, method: :delete
+  .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 150px;' }
+    .welcome
+      Olá,
+      = current_user.name.split(' ').first
+    .logout
+      = link_to 'Sair', destroy_user_session_path, method: :delete
 
 - else
-  .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3
+  .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 150px;' }
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
         = f.input :email, label: false, required: false, input_html: { class: 'form-control' }, placeholder: 'e-mail'

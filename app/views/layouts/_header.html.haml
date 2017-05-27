@@ -8,11 +8,14 @@
   / ACTIONBAR
   .actionbar.nav-container
     .container{ data: { container: { full: '' } } }
-      .row{ style: 'margin-bottom: 0px;' }
+      .row{ style: 'margin-bottom: 0px; margin-right: 15px; margin-left: 15px;' }
         .col-xs-12.col-sm-10.col-md-10
-          %span.hidden-xs>
+          = link_to 'Sobre Ser Ciner', new_user_registration_path
+          %span{ style: 'margin-right: 5px; margin-left: 5px;'}
+            \|
           = link_to 'Anuncie aqui', '#'
-          \|
+          %span{ style: 'margin-right: 5px; margin-left: 5px;'}
+            \|
           = link_to 'Entre em contato', '#'
         .col-xs-12.col-sm-1.col-md-2.social
           = link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#'
@@ -76,40 +79,37 @@
       .row.section-login
         = link_to root_path do
           .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
-            %figure= image_tag("logo_home.png", alt: "CINER", class: "img-responsive")
+            %figure
+              = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'width: 62%; height: 62%; margin-top: 10px;')
         = render 'layouts/login'
 
       / SECTION LOGIN
       / MENU
       .row{ :style => "margin: 20px 0;" }
-        %nav
-          .navbar-header
-            %button.navbar-toggle{"data-target" => "#mainmenu", "data-toggle" => "collapse", :type => "button"}
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-          #mainmenu.collapse.navbar-collapse
-            %ul.menu
-              %li.col-xs-2{ class: active_menu_class("movies") }
-                = link_to "FILMES", url_for([role, :movies])
-              %li.col-xs-2{ class: active_menu_class("series") }
-                = link_to "SÉRIES", url_for([role, :series_index])
-              %li.col-xs-2{ class: active_menu_class("ciner_videos") }
-                = link_to "CINER VÍDEOS", url_for([:cinervideos])
-              %li.col-xs-2{ class: active_menu_class("critics") }
-                = link_to "CRÍTICAS", url_for([role, :critics])
-              %li.col-xs-2{ class: active_menu_class("broadcasts") }
-                = link_to "NOTÍCIAS", url_for([role, :broadcasts])
-              %li.col-xs-2{ class: active_menu_class("questions") }
-                = link_to "DEBATE CINER", url_for([role, :questions])
+        .col-xs-12
+          %nav
+            #mainmenu.collapse.navbar-collapse
+              %ul.menu.row{ style: 'padding-left: 0px;' }
+                %li.col-xs-2{ class: active_menu_class("movies") }
+                  = link_to "FILMES", url_for([role, :movies])
+                %li.col-xs-2{ class: active_menu_class("series") }
+                  = link_to "SÉRIES", url_for([role, :series_index])
+                %li.col-xs-2{ class: active_menu_class("ciner_videos") }
+                  = link_to "CINER VÍDEOS", url_for([:cinervideos])
+                %li.col-xs-2{ class: active_menu_class("critics") }
+                  = link_to "CRÍTICAS", url_for([role, :critics])
+                %li.col-xs-2{ class: active_menu_class("broadcasts") }
+                  = link_to "NOTÍCIAS", url_for([role, :broadcasts])
+                %li.col-xs-2{ class: active_menu_class("questions") }
+                  = link_to "DEBATE CINER", url_for([role, :questions])
       / MENU
     .search-field{ :style => "margin-top: 5px;" }
       .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8
         %form.form-horizontal.form-search{"accept-charset" => "utf-8", :action => "#", :method => "GET"}
-          .form-group
-            .col-xs-8.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-7.col-lg-offset-3.col-lg-6
+          .form-group.row{ style: 'margin-left: 30px;' }
+            .col-xs-offset-2.col-xs-6
               %input#search.form-control{:name => "search", :placeholder => "digite sua busca aqui...", :type => "text"}/
-            .col-xs-12.col-sm-2.col-md-3.col-lg-3
+            .col-xs-2
               %button.btn.btn-login{:type => "submit"}
                 buscar
                 %span.icon.icon-button
