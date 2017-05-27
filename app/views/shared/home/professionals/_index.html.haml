@@ -42,7 +42,7 @@
           %option{:value => ""} 1,70
     .row
       .col-xs-4.form-group
-        = f.input :drt, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field' }, include_blank: 'Possui DRT'
+        = f.input :drt, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field' }, include_blank: 'DRT'
       .col-xs-8.form-group
         = f.input :mannequin, label: false, collection: (1..70), input_html: { class: 'select2 form-field' }, include_blank: 'Manequim'
     .form-group

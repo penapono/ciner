@@ -1,5 +1,5 @@
-.discussion-item{ class: question_class(question) }
-  .title
+.discussion-item
+  .title{ class: question_class(question) }
     = link_to url_for([role, question]), data: { tipsy: '' }, title: question.title do
       = question.title
     %span.author
@@ -23,5 +23,7 @@
           %img.img-responsive{ src: object.user.avatar }
       .last-user
         %span.vermelho
-          último comentário
-        = "#{object.user_name.split(' ').first}, #{object.date_str}"
+          Último comentário
+        = link_to object.user do
+          = "#{object.user_name.split(' ').first}"
+        = ", #{object.date_str}"

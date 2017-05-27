@@ -416,11 +416,11 @@
       a {
         background-color: transparent;
         box-sizing: border-box;
-        // color: rgb(166, 30, 87);
+        color: #333333;
         display: inline-block;
         font-family: "Montserrat";
         font-size: 15px;
-        font-weight: 200;
+        font-weight: 500;
         line-height: 21.4333px;
         text-decoration: none;
         text-decoration-color: rgb(166, 30, 87);
@@ -431,6 +431,10 @@
         white-space: nowrap;
         overflow: hidden;
         width: 100%;
+
+        &:hover {
+          color: #E2347D;
+        }
       }
 
       span.author {
