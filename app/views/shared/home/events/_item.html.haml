@@ -1,37 +1,40 @@
 - if current_user
   - if current_user.admin?
-    .post-item.event
-      .content
-        = link_to admin_events_path(anchor: "#{event.id}") do
-          %h4{ data: { tipsy: '' }, title: "#{event.title}" }
-            = event.title
-        .highlight
-          - if event.featured?
-            .button
-              Destaque
-          .info
-            = "Data: #{event.date_str}"
-  - else
-    .post-item.event
-      .content
-        = link_to platform_events_path(anchor: "#{event.id}") do
-          %h4{ data: { tipsy: '' }, title: "#{event.title}" }
-            = event.title
-        .highlight
-          - if event.featured?
-            .button
-              Destaque
-          .info
-            = "Data: #{event.date_str}"
-- else
-  .post-item.event
-    .content
-      = link_to events_path(anchor: "#{event.id}") do
-        %h4{ data: { tipsy: '' }, title: "#{event.title}" }
+    .post-item
+      = link_to admin_events_path(anchor: "#{event.id}") do
+        %h4
           = event.title
-      .highlight
+      %p
+        = event.subtitle
+      .highlight.pull-left
         - if event.featured?
           .button
             Destaque
-        .info
-          = "Data: #{event.date_str}"
+      %span.date.pull-right
+        = event.date_str
+  - else
+    .post-item
+      = link_to platform_events_path(anchor: "#{event.id}") do
+        %h4
+          = event.title
+      %p
+        = event.subtitle
+      .highlight.pull-left
+        - if event.featured?
+          .button
+            Destaque
+      %span.date.pull-right
+        = event.date_str
+- else
+  .post-item
+    = link_to events_path(anchor: "#{event.id}") do
+      %h4
+        = event.title
+    %p
+      = event.subtitle
+    .highlight.pull-left
+      - if event.featured?
+        .button
+          Destaque
+    %span.date.pull-right
+      = event.date_str

@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
 
   # Validations
   validates :title,
+            :subtitle,
             :description,
             :event_date,
             presence: true

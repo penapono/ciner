@@ -9,9 +9,16 @@
     .col-xs-12
       = f.input :place
 
+  .col-xs-12{ data: { limited: '', limit: 35 } }
+    = f.input :title, input_html: { rows: 1 }, maxlength: 35
+    %span.char-counter
+      = t('remaining_chars', chars: 35)
+
   .row
-    .col-xs-12
-      = f.input :title
+    .col-xs-12{ data: { limited: '', limit: 100 } }
+      = f.input :subtitle, input_html: { rows: 1 }, maxlength: 100
+      %span.char-counter
+        = t('remaining_chars', chars: 100)
 
   .row
     .col-xs-12
