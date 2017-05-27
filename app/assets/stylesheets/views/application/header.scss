@@ -216,6 +216,10 @@ ul.menu li:hover:before {
       border: none;
     }
 
+    input[type="text"]::before {
+      content: '';
+    }
+
     .glyphicon.glyphicon-search {
       color: white;
       top: 6px;
@@ -235,6 +239,10 @@ ul.menu li:hover:before {
       width: 100%;
       padding-right: 25px;
       background: rgba(255, 255, 255, 0.9);
+    }
+
+    input[type="text"]:focus::before {
+      content: '';
     }
 
     input[type="text"]:focus ~ .glyphicon.glyphicon-search {
