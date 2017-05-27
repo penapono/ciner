@@ -10,7 +10,7 @@
       = link_to url_for([role, "profile"]) do
         %img.img-responsive{ src: avatar, style: "width: 45px; height: 45px; margin: auto" }
   .col-xs-4{ style: 'overflow: hidden; height: 45px; text-align: left; margin-left: 15px;' }
-    .name{ style: 'height: 20px; margin-top: -10px;' }
+    .name{ style: 'height: 20px; margin-top: -10px; font-size: 18px; font-weight: bold;' }
       = link_to url_for([role, "profile"]) do
         = current_user.name.split(' ').first
     .logout{ style: 'height: 20px;' }
