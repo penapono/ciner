@@ -32,10 +32,10 @@
 
 a {
   color: #a61e57;
-}
-
-a:hover {
-  color: #E2347D;
+  &:hover {
+    color: #E2347D;
+    text-decoration: none;
+  }
 }
 
 .section-pessoal,
