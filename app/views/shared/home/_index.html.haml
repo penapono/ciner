@@ -33,13 +33,13 @@
     = render 'shared/home/events/index', role: role
 
     / ADVERTISES
-    .col-xs-12.col-sm-12.col-md-12.col-lg-3
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3{ style: 'margin-top: 35px' }
       .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises
         %figure
-          %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 230px;' }
+          %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 215px; width: 100%; margin-bottom: 15px;' }
       .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
         %figure
-          %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 230px;' }
+          %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 215px; width: 100%;' }
 
   .row
     = render 'shared/home/questions/index', role: role
