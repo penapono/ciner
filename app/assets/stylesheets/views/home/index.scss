@@ -123,12 +123,15 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+
   .movie-poster-item:first-child {
     margin-left: 0px;
   }
+
   .movie-poster-item:last-child {
     margin-right: 0px;
   }
+
 }
 
 .ciner-videos {
@@ -142,6 +145,7 @@
   .ciner-movie:first-child {
     margin-left: -15px;
   }
+
   .ciner-movie:last-child {
     margin-right: -15px;
   }
@@ -168,7 +172,7 @@
       .name {
         box-sizing: border-box;
         color: rgb(138, 149, 153);
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 12px;
         line-height: 16.8px;
         overflow: hidden;
@@ -201,7 +205,7 @@
           box-sizing: border-box;
           color: rgb(135, 156, 171);
           cursor: pointer;
-          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-size: 12px;
           font-weight: 400;
           line-height: 16.8px;
@@ -224,6 +228,7 @@
           -moz-border-right-colors: none;
           -moz-border-top-colors: none;
         }
+
       }
 
       a {
@@ -231,7 +236,7 @@
         color: rgb(23, 39, 46);
         cursor: pointer;
         display: block;
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 12px;
         font-weight: 400;
         height: 16px;
@@ -281,7 +286,7 @@
           color: rgb(23, 39, 46);
           cursor: pointer;
           display: block;
-          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-size: 12px;
           font-weight: 400;
           line-height: 16.8px;
@@ -293,8 +298,11 @@
           -moz-border-right-colors: none;
           -moz-border-top-colors: none;
         }
+
       }
+
     }
+
   }
 
   .ciner-video-title {
@@ -354,5 +362,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
+
   }
+
 }

@@ -1,0 +1,67 @@
+.col-xs-12.col-md-8.ciner-videos{ style: 'margin-top: -10px' }
+  .title-separator
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{ "xlink:href": "#video" }
+      .media-body.media-bottom
+        .media-heading.title-section
+          Ciner Vídeos
+      .media-body.text-right.media-middle.see-more
+        %a{ href: "#" } Ver mais
+  / CINER MOVIES
+  .ciner-movie.col-xs-12.col-sm-6.col-md-3{ style: 'margin-left: 0px' }
+    .thumb
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "172px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+      = link_to "Batman vs Superman: Dawn of Justice", "#"
+    .ciner-video-user
+      .user
+        = link_to User.first do
+          - avatar ||= image_path("default/user/image.png")
+          %img.img-responsive{ src: avatar }
+        .name
+          = link_to User.first do
+            Pedro Naponoceno
+
+  .ciner-movie.col-xs-12.col-sm-6.col-md-3
+    .thumb
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "172px", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 172px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+      = link_to "Avengers: Age of Ultron", "#"
+    .ciner-video-user
+      .user
+        = link_to User.first do
+          - avatar ||= image_path("default/user/image.png")
+          %img.img-responsive{ src: avatar }
+        .name
+          = link_to User.first do
+            Pedro Naponoceno
+
+  .ciner-movie.col-xs-12.col-sm-6.col-md-3
+    .thumb
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "172px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
+    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+      = link_to "Batman vs Superman: Dawn of Justice", "#"
+    .ciner-video-user
+      .user
+        = link_to User.first do
+          - avatar ||= image_path("default/user/image.png")
+          %img.img-responsive{ src: avatar }
+        .name
+          = link_to User.first do
+            Pedro Naponoceno
+
+  .ciner-movie.col-xs-12.col-sm-6.col-md-3{ style: 'margin-right: 0px' }
+    .thumb
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "172px", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/146901168?color=ffffff&byline=0&portrait=0", :style => "min-height: 172px; min-width: 100%;", :webkitallowfullscreen => "", :width => "100%"}
+    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+      = link_to "Avengers: Age of Ultron", "#"
+    .ciner-video-user
+      .user
+        = link_to User.first do
+          - avatar ||= image_path("default/user/image.png")
+          %img.img-responsive{ src: avatar }
+        .name
+          = link_to User.first do
+            Pedro Naponoceno
