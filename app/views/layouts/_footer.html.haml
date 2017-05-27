@@ -3,57 +3,58 @@
 - role ||= nil
 
 %footer
-  .container
+  .container{ style: 'width: 100%' }
     .col-xs-12.col-md-2
       .media
         .media-left.media-middle
           %figure
-            = image_tag("logo_rodape.png", class: "img-responsive", style: 'margin-top: 20px;')
-    .col-xs-12.col-md-2
-      .sitemap
-        %ul
-          %li
-            = link_to "Filmes", url_for([role, :movies])
-          %li
-            = link_to "Séries", url_for([role, :series_index])
-          %li
-            = link_to "Ciner Vídeos", url_for([:cinervideos])
-          %li
-            = link_to "Críticas", url_for([role, :critics])
-    .col-xs-12.col-md-2
-      .sitemap
-        %ul
-          %li
-            = link_to "Notícias", url_for([role, :broadcasts])
-          %li
-            = link_to "Debate Ciner", url_for([role, :questions])
-          %li
-            = link_to "Agenda Ciner", url_for([role, :events])
-          %li
-            = link_to "Contrato e Termos de Uso", '#'
-    .col-xs-12.col-md-2
-      .sitemap
-        %ul
-          %li
-            = link_to "Política de Privacidade", '#'
-          %li
-            = link_to "Adendo de Aplicativo Móvel", '#'
-          %li
-            = link_to "Perguntas Frequentes", '#'
-          %li
-            = link_to "Ser Ciner", new_user_registration_path
-    .col-xs-12.col-md-2
-      .sitemap
-        %ul
-          %li
-            = link_to "Anuncie Aqui", '#'
-          %li
-            = link_to "Missão", '#'
-          %li
-            = link_to "Contato", '#'
-          - if role == :admin
+            = image_tag("logo_rodape.png", class: "img-responsive", style: 'margin-top: 10px;')
+    .col-xs-10
+      .col-xs-12.col-md-3
+        .sitemap
+          %ul
             %li
-              = link_to "Configurações", admin_settings_path
+              = link_to "Filmes", url_for([role, :movies])
+            %li
+              = link_to "Séries", url_for([role, :series_index])
+            %li
+              = link_to "Ciner Vídeos", url_for([:cinervideos])
+            %li
+              = link_to "Críticas", url_for([role, :critics])
+      .col-xs-12.col-md-3
+        .sitemap
+          %ul
+            %li
+              = link_to "Notícias", url_for([role, :broadcasts])
+            %li
+              = link_to "Debate Ciner", url_for([role, :questions])
+            %li
+              = link_to "Agenda Ciner", url_for([role, :events])
+            %li
+              = link_to "Contrato e Termos de Uso", '#'
+      .col-xs-12.col-md-3
+        .sitemap
+          %ul
+            %li
+              = link_to "Política de Privacidade", '#'
+            %li
+              = link_to "Adendo de Aplicativo Móvel", '#'
+            %li
+              = link_to "Perguntas Frequentes", '#'
+            %li
+              = link_to "Ser Ciner", new_user_registration_path
+      .col-xs-12.col-md-3
+        .sitemap
+          %ul
+            %li
+              = link_to "Anuncie Aqui", '#'
+            %li
+              = link_to "Missão", '#'
+            %li
+              = link_to "Contato", '#'
+            - if role == :admin
+              %li
+                = link_to "Configurações", admin_settings_path
 
 .copyright
   .container
