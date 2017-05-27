@@ -16,5 +16,10 @@ module CommentManageable
     def last_updated_time(object)
       ((Time.now - object.created_at) / 1.hour).round
     end
+
+    def comments_count_str
+      return "+ 99999" if comments_count > 99999
+      comments_count
+    end
   end
 end

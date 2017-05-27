@@ -58,8 +58,8 @@ class Question < ActiveRecord::Base
     questions = []
 
     more_commented.first(2).each { |q| questions << q }
-    two_last_created = last_created.all_but(questions).first(2)
-    two_last_created.each { |q| questions << q }
+    three_last_created = last_created.all_but(questions).first(3)
+    three_last_created.each { |q| questions << q }
 
     questions
   end

@@ -14,7 +14,7 @@ pt-BR:
           origin: Ciner ou Usuários
           status: Situação
           user_id: Autor
-      created_at: Criado por %{user} em %{date}
+      created_at: Criado por %{user}, %{date}
       header:
         area: Área
         topic: Tópico

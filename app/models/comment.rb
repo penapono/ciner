@@ -29,6 +29,10 @@ class Comment < ActiveRecord::Base
 
   # Methods
 
+  def date_str
+    I18n.l(created_at, format: :short_date)
+  end
+
   def status_str
     Comment.human_attribute_name("status.#{status}")
   end

@@ -1,35 +1,27 @@
 .discussion-item{ class: question_class(question) }
-  .title{ style: 'padding-right: 15px;' }
-    .link{ style: 'word-break: keep-all; max-height: 40px; overflow: hidden; text-overflow: ellipsis;' }
-      = link_to url_for([role, question]), data: { tipsy: '' }, title: question.title do
-        = question.title
-    .author
+  .title
+    = link_to url_for([role, question]), data: { tipsy: '' }, title: question.title do
+      = question.title
+    %span.author
       = question.created_at_str
-  .hidden-xs.views{ style: 'margin-left: 15px;' }
-    .div
-      %span.comments
-        %span.vermelho
-          = question.comments_count
-        comentários
-    .div
-      %span.views
-        %span.vermelho= question.visits_count_str
-        visualizações
+
+  .hidden-xs.views
+    %span.comments
+      %span.vermelho
+        = question.comments_count_str
+      comentários
+    %span.views
+      %span.vermelho
+        = question.visits_count_str
+      visualizações
+
   .hidden-xs.last-comment
     - if question.last_comment
       - object = question.last_comment
-    - else
-      - object = question
-
-    %span.vermelho Última atividade
-    .row
-      .col-xs-2
-        .thumb-user
-          %figure
-            %img.img-responsive{ src: object.user.avatar }
-      .col-xs-10
-        .last-user
-          = object.user_name
-          há
-          = question.last_updated_time(object)
-          = t('hours', count: question.last_updated_time(object))
+      .thumb-user
+        %figure
+          %img.img-responsive{ src: object.user.avatar }
+      .last-user
+        %span.vermelho
+          último comentário
+        = "#{object.user_name.split(' ').first}, #{object.date_str}"
