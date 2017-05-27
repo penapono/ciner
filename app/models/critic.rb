@@ -39,7 +39,13 @@ class Critic < ActiveRecord::Base
   end
 
   def self.home
-    Critic.only_two
+    first = where(origin: 1, status: 2, featured: true).order(created_at: :desc).first
+    first ||= where(status: 2, origin: 2).order(created_at: :desc).first
+
+    second = where(status: 2, origin: 2).where.not(id: first.id).order(created_at: :desc).first
+    second ||= where(status: 2).where.not(id: first.id).order(created_at: :desc).first
+
+    [first, second]
   end
 
   def self.first_critic
@@ -71,6 +77,10 @@ class Critic < ActiveRecord::Base
   end
 
   # Methods
+
+  def date_str
+    I18n.l(created_at, format: :shorter)
+  end
 
   def collapsed_content
     ActionView::Base.full_sanitizer.sanitize(content).truncate(155)

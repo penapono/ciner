@@ -7,18 +7,17 @@
     .movie-poster-item{ style: 'width: 133px; height: 200px; float: left; margin-right: 10px;' }
       .thumb
         %img.img-responsive{ src: cover, style: 'width: 133px; height: 200px;' }
-    .critic-content{ style: 'display:inline; float: left; width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
-      %h4.title
-        = filmable.title_str
+    .critic-content{ style: 'display:inline; float: left; width: 60%;' }
+      = link_to url_for([role, critic]) do
+        %h4
+          = filmable.title_str
       %span.original-title
         = filmable.original_title
-      %p{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #808080' }
-        = critic.collapsed_content
+      .resume
+        %p
+          = critic.collapsed_content
       %p
-        Autor:
-        - user = critic.user
-        = link_to url_for([role, user]) do
-          = user.nickname_str
-      = link_to url_for([role, critic]) do
-        .btn.btn-saiba-mais
-          = t('more')
+        = link_to url_for([role, critic.user]) do
+          = critic.user_name.split(' ').first
+        em
+        = critic.date_str
