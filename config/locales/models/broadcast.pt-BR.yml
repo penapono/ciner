@@ -8,6 +8,7 @@ pt-BR:
     attributes:
       broadcast:
         title: Título
+        subtitle: Subtítulo
         content: Conteúdo
         more: Fonte
         cover: Capa

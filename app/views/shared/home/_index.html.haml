@@ -4,7 +4,7 @@
 
 .container.content
   / SECTION 01 CONTENT
-  .row{ style: 'margin-top: -10px' }
+  .row{ style: 'margin-top: 10px;' }
     .col-xs-12.col-md-8
       .row{ data: { slider: { playing: '' } } }
         .col-xs-12
@@ -19,8 +19,8 @@
       = render 'shared/home/broadcasts/index', role: role
 
   / SECTION 02 CONTENT
-  .row{ style: 'margin-top: 20px' }
-    .col-xs-12.col-md-4.advertise{ style: 'margin-top: 30px;' }
+  .row
+    .col-xs-12.col-md-4.advertise
       %figure
         %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 280px; width: 360px;' }
     .col-xs-12.col-md-8
@@ -60,15 +60,15 @@
           = link_to "Avengers: Age of Ultron", "#"
 
   / SECTION 03 CONTENT
-  .row{ style: 'margin-top: 20px' }
+  .row
     = render 'shared/home/critics/index', role: role
 
     / SOCIAL CINER
     = render 'shared/home/events/index', role: role
 
     / ADVERTISES
-    .col-xs-12.col-sm-12.col-md-12.col-lg-3{:style => "margin-top: 20px;"}
-      .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises{:style => "margin-bottom: 20px;"}
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3
+      .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises
         %figure
           %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 230px;' }
       .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises

@@ -20,6 +20,7 @@ class Broadcast < ActiveRecord::Base
   validates :title,
             :subtitle,
             :content,
+            :broadcast_date,
             presence: true
 
   # Nested
