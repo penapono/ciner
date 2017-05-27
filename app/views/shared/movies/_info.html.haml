@@ -54,7 +54,7 @@
         - object.actors.first(6).each do |filmable_professional|
           = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation, role: role
     .collapsed-area{ data: { collapsed_area: '' } }
-      .media-body.text-right.media-middle
+      .media-body.text-right.media-middle.see-more
         %a{ data: { collapse_control: '' } }
           ver mais
       .atores.collapse{ data: { collapse_content: '' } }

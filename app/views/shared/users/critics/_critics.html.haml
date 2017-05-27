@@ -6,7 +6,7 @@
           %use{"xlink:href" => "#critica"}
       .media-body.media-middle
         .media-heading.title-section Minhas críticas
-      .media-body.text-right.media-middle
+      .media-body.text-right.media-middle.see-more
         = link_to platform_critics_path(filter: { user_id: user.id }) do
           = t('more')
   - if critics.any?

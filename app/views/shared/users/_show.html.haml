@@ -21,7 +21,7 @@
               .media-heading.title-section
                 = t('.general')
             - if (current_user && current_user == user) || (current_user.admin?)
-              .media-body.text-right.media-middle
+              .media-body.text-right.media-middle.see-more
                 = link_to path do
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
         .user-profile

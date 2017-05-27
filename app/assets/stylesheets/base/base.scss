@@ -12,3 +12,13 @@ input[type="text"] {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.media .media-body.see-more {
+  line-height: 12px;
+  font-size: 12px;
+  vertical-align: bottom;
+
+  a {
+    color: grey;
+  }
+}

@@ -2,12 +2,12 @@
   .title-separator.ciner-news
     .media
       .media-left.media-middle
-        .icon-title
+        .icon-title{ style: 'margin-top: 10px;' }
           %img.img-responsive{ src: image_path("icons/ico_broadcasts.png"), style: 'width: 30px; height: 30px;' }
       .media-body.media-bottom
         .media-heading.title-section
           = Broadcast.model_name.human(count: 2)
-      .media-body.text-right.media-middle
+      .media-body.text-right.media-middle.see-more
         = link_to url_for([role, :broadcasts]) do
           = t('see_more')
 

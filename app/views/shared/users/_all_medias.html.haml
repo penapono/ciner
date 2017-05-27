@@ -8,7 +8,7 @@
         %use{"xlink:href" => "#filme"}
     .media-body.media-middle
       .media-heading.title-section Meus Favoritos
-    .media-body.text-right.media-middle
+    .media-body.text-right.media-middle.see-more
       = link_to 'ver mais', url_for([role, user, :favorite_index])
 
 .row{ style: 'margin-bottom: 20px;', data: { slider: { favorites: '' } } }
@@ -24,7 +24,7 @@
         %use{"xlink:href" => "#filme"}
     .media-body.media-middle
       .media-heading.title-section Assistidos
-    .media-body.text-right.media-middle
+    .media-body.text-right.media-middle.see-more
       = link_to 'ver mais', url_for([role, user, :watched_index])
 
 .row{ style: 'margin-top: 20px;', data: { slider: { watched: '' } } }

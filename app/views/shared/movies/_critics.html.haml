@@ -11,7 +11,7 @@
       .media-body.media-bottom
         .media-heading.title-section
           = Critic.model_name.human(count: 2)
-      .media-body.text-right.media-middle
+      .media-body.text-right.media-middle.see-more
         %a
           = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }])
   .reviews

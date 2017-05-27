@@ -10,7 +10,7 @@
             .media-body.media-middle
               .media-heading.title-section
                 = t('.general')
-              .media-body.text-right.media-middle
+              .media-body.text-right.media-middle.see-more
         .user-profile
           .col-xs-12.col-sm-3.user-avatar
             /%img.img-responsive{:src => user.avatar}/
@@ -104,7 +104,7 @@
                 %use{"xlink:href" => "#filme"}
             .media-body.media-middle
               .media-heading.title-section Meus filmes e séries
-            .media-body.text-right.media-middle
+            .media-body.text-right.media-middle.see-more
               %a{:href => "#"} ver todos
         .user-movies-series-item.col-xs-6.col-sm-4.col-md-3.col-lg-2
           .thumb
@@ -176,7 +176,7 @@
                 %use{"xlink:href" => "#video"}
             .media-body.media-middle
               .media-heading.title-section Meus vídeos
-            .media-body.text-right.media-middle
+            .media-body.text-right.media-middle.see-more
               %a{:href => "#"} ver todos
         .ciner-movie.col-xs-12.col-sm-6.col-md-4
           .thumb
@@ -221,7 +221,7 @@
                 %use{"xlink:href" => "#filme"}
             .media-body.media-middle
               .media-heading.title-section Minha coleção
-            .media-body.text-right.media-middle
+            .media-body.text-right.media-middle.see-more
               %a{:href => "#"} ver todos
         .col-md-3.col-sm-6.col-xs-6.shelf
           = image_tag("example_movie_3.jpg", class: "img-responsive")
@@ -255,7 +255,7 @@
               %use{"xlink:href" => "#critica"}
           .media-body.media-middle
             .media-heading.title-section Minhas críticas
-          .media-body.text-right.media-middle
+          .media-body.text-right.media-middle.see-more
             %a{:href => "#"} ver todos
       .review-item
         .col-xs-12.col-sm-5.thumb
@@ -299,7 +299,7 @@
               %use{"xlink:href" => "#usuario"}
           .media-body.media-middle
             .media-heading.title-section Meus amigos
-          .media-body.text-right.media-middle
+          .media-body.text-right.media-middle.see-more
             %a{:href => "#"} ver todos
       .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
         .media
@@ -352,7 +352,7 @@
                 %use{"xlink:href" => "#filme"}
             .media-body.media-middle
               .media-heading.title-section Minha coleção
-            .media-body.text-right.media-middle
+            .media-body.text-right.media-middle.see-more
               %a{:href => "#"} ver todos
         .col-md-3.col-sm-6.col-xs-6.shelf
           = image_tag("example_movie_3.jpg", class: "img-responsive")
