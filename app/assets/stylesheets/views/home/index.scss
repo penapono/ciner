@@ -11,7 +11,9 @@
       width: 100%;
       height: 100%;
     }
+
   }
+
 }
 
 .highlight {
@@ -37,43 +39,8 @@
   .info {
     line-height: 30px;
   }
+
 }
-
-// Post Item
-
-// .post-item {
-//   padding: 10px;
-//   border-bottom: 1px solid #CCCCCC;
-//   padding-bottom: 15px;
-
-
-//   .content {
-//     h4 {
-//       overflow: hidden;
-//       word-wrap: break-word;
-//       height: 20px;
-//       font-size: 13px;
-//       line-height: 15px;
-//       white-space: nowrap;
-//       text-overflow: ellipsis;
-//       width: 100%;
-//     }
-//   }
-
-//   p {
-//     font-size: 13px;
-//     line-height: 15px;
-//   }
-
-//   &.featured {
-//     background-color: rgba(241, 242, 242, 0.8);
-//     border-bottom: none;
-//     border-top: none;
-//     border-radius: 10px;
-//   }
-
-//   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-// }
 
 .title-separator {
   margin-top: 0px;
@@ -111,11 +78,14 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     &:hover {
       h4 {
         color: #E2347D;
       }
+
     }
+
   }
 
   p {
@@ -141,5 +111,22 @@
     font-weight: 200;
     line-height: 30px;
     color: rgb(184, 184, 184);
+  }
+
+}
+
+.featured-items {
+  .movie-poster-item {
+    width: 133px;
+    height: 200px;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .movie-poster-item:first-child {
+    margin-left: 0px;
+  }
+  .movie-poster-item:last-child {
+    margin-right: 0px;
   }
 }

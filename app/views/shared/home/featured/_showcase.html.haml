@@ -1,9 +1,6 @@
 - role = role
 - showcase_class ||= 'showcase-poster'
 
-/ MOVIES THUMB
-.col-xs-12{ class: showcase_class }
+.col-xs-12.featured-items{ class: showcase_class }
   - slider_movies.each do |pm|
     = render 'shared/home/featured/item', role: role, pm: pm
-
-/ MOVIES THUMB

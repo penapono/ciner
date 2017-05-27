@@ -23,7 +23,7 @@
     .col-xs-12.col-md-4.advertise
       %figure
         %img.img-responsive{ src: image_path("default/movie/image.png"), style: 'height: 280px; width: 360px;' }
-    .col-xs-12.col-md-8
+    .col-xs-12.col-md-8{ style: 'margin-top: -10px' }
       .title-separator.ciner-videos
         .media
           .media-left.media-middle
@@ -60,7 +60,7 @@
           = link_to "Avengers: Age of Ultron", "#"
 
   / SECTION 03 CONTENT
-  .row
+  .row{ style: 'margin-top: 20px;' }
     = render 'shared/home/critics/index', role: role
 
     / SOCIAL CINER
