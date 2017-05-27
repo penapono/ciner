@@ -362,9 +362,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
-
   }
-
 }
 
 .discussion {
@@ -381,7 +379,6 @@
     border-bottom-style: solid;
     border-bottom-width: 1px;
     box-sizing: border-box;
-    // color: rgb(51, 51, 51);
     display: flex;
     flex-direction: row;
     font-family: "Montserrat";
@@ -401,7 +398,6 @@
 
     .title {
       box-sizing: border-box;
-      // color: rgb(51, 51, 51);
       flex-basis: 0px;
       flex-grow: 2;
       flex-shrink: 0;
@@ -449,6 +445,18 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
+
+        a {
+          color: rgb(51, 51, 51);
+          font-family: "Montserrat";
+          font-size: 13px;
+          font-weight: 200;
+          line-height: 18.5667px;
+
+          &:hover {
+            color: #E2347D;
+          }
+        }
       }
     }
 

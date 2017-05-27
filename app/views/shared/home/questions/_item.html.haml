@@ -3,7 +3,11 @@
     = link_to url_for([role, question]), data: { tipsy: '' }, title: question.title do
       = question.title
     %span.author
-      = question.created_at_str
+      Criado por
+      = question.user.name.split(' ').first
+      em
+      = question.date_str
+
 
   .hidden-xs.views
     %span.comments
@@ -18,12 +22,14 @@
   .hidden-xs.last-comment
     - if question.last_comment
       - object = question.last_comment
-      .thumb-user
-        %figure
-          %img.img-responsive{ src: object.user.avatar }
+      = link_to url_for([role, object.user]) do
+        .thumb-user
+          %figure
+            %img.img-responsive{ src: object.user.avatar }
       .last-user
         %span.vermelho
           Último comentário
-        = link_to object.user do
-          = "#{object.user_name.split(' ').first}"
-        = ", #{object.date_str}"
+        = link_to url_for([role, object.user]) do
+          = object.user_name.split(' ').first
+        em
+        = object.date_str

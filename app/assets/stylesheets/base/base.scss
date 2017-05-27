@@ -1,8 +1,14 @@
+@import 'base/colors';
+
 label,
 input,
 textarea,
 select {
   width: 100%;
+}
+
+select {
+  color: $pink;
 }
 
 select,

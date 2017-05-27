@@ -87,6 +87,10 @@ class Question < ActiveRecord::Base
     I18n.t('shared.questions.created_at', user: user_name, date: I18n.l(created_at, format: :shorter))
   end
 
+  def date_str
+    I18n.l(created_at, format: :shorter)
+  end
+
   # Filter
 
   def self.filter_by(collection, params)

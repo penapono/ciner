@@ -30,7 +30,7 @@ class Comment < ActiveRecord::Base
   # Methods
 
   def date_str
-    I18n.l(created_at, format: :short_date)
+    I18n.l(created_at, format: :shorter)
   end
 
   def status_str
