@@ -1,14 +1,18 @@
-= javascript_include_tag Ckeditor.cdn_url
-
 = simple_form_for [:admin, broadcast] do |f|
   %h3
     = t('.general')
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 75 } }
-      = f.input :title, input_html: { rows: 1 }, maxlength: 75
+    .col-xs-12{ data: { limited: '', limit: 35 } }
+      = f.input :title, input_html: { rows: 1 }, maxlength: 35
       %span.char-counter
-        = t('remaining_chars', chars: 75)
+        = t('remaining_chars', chars: 35)
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 100 } }
+      = f.input :subtitle, input_html: { rows: 1 }, maxlength: 100
+      %span.char-counter
+        = t('remaining_chars', chars: 100)
 
   .row
     .col-xs-12{ data: { limited: '', limit: 550 } }
@@ -17,10 +21,12 @@
         = t('remaining_chars', chars: 550)
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 30 } }
+    .col-xs-6{ data: { limited: '', limit: 30 } }
       = f.input :more, input_html: { rows: 5 }, maxlength: 30
       %span.char-counter
         = t('remaining_chars', chars: 30)
+    .col-xs-6
+      = f.input :broadcast_date, as: :string, input_html: { value: (localize(f.object.broadcast_date) if f.object.broadcast_date), class: 'datepicker' }
 
   .row
     .col-xs-12
@@ -30,10 +36,6 @@
   .row
     .col-xs-4
       = f.input :cover, label: false
-
-  .row
-    .col-xs-4
-      = f.input :broadcast_date, as: :string, input_html: { value: (localize(f.object.broadcast_date) if f.object.broadcast_date), class: 'datepicker' }
 
   .row
     .col-xs-4

@@ -1,40 +1,40 @@
 - if current_user
   - if current_user.admin?
     .post-item
-      .content
-        .highlight
-          - if broadcast.featured?
-            .button
-              Destaque
-          - else
-            .info
-              = broadcast.date_str
-        = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
-          %h4{ data: { tipsy: '' }, title: "#{broadcast.title}" }
-            = broadcast.title
-  - else
-    .post-item
-      .content
-        .highlight
-          - if broadcast.featured?
-            .button
-              Destaque
-          - else
-            .info
-              = broadcast.date_str
-        = link_to platform_broadcasts_path(anchor: "#{broadcast.id}") do
-          %h4{ data: { tipsy: '' }, title: "#{broadcast.title}" }
-            = broadcast.title
-- else
-  .post-item
-    .content
-      .highlight
+      = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
+        %h4
+          = broadcast.title
+      %p
+        = broadcast.subtitle
+      .highlight.pull-left
         - if broadcast.featured?
           .button
             Destaque
-        - else
-          .info
-            = broadcast.date_str
-      = link_to broadcasts_path(anchor: "#{broadcast.id}") do
-        %h4{ data: { tipsy: '' }, title: "#{broadcast.title}" }
+      %span.date.pull-right
+        = broadcast.date_str
+  - else
+    .post-item
+      = link_to platform_broadcasts_path(anchor: "#{broadcast.id}") do
+        %h4
           = broadcast.title
+      %p
+        = broadcast.subtitle
+      .highlight.pull-left
+        - if broadcast.featured?
+          .button
+            Destaque
+      %span.date.pull-right
+        = broadcast.date_str
+- else
+  .post-item
+    = link_to broadcasts_path(anchor: "#{broadcast.id}") do
+      %h4
+        = broadcast.title
+    %p
+      = broadcast.subtitle
+    .highlight.pull-left
+      - if broadcast.featured?
+        .button
+          Destaque
+    %span.date.pull-right
+      = broadcast.date_str

@@ -18,6 +18,7 @@ class Broadcast < ActiveRecord::Base
 
   # Validations
   validates :title,
+            :subtitle,
             :content,
             presence: true
 

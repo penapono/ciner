@@ -1,4 +1,3 @@
-//= require datepicker_custom
 //= require components/datepicker
 //= require components/timepicker
 //= require components/ciner_select2

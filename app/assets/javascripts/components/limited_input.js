@@ -2,15 +2,23 @@ $(function() {
   'use strict';
 
   $(document).ready(function() {
-    var input = $('[data-limited] textarea');
+    var textArea = $('[data-limited] textarea'),
+        input = $('[data-limited] input');
 
+    _calculateRemaining(textArea);
     _calculateRemaining(input);
-  });
 
-  $('[data-limited]').on('input', 'textarea', function() {
-    var input = $(this);
+    $('[data-limited]').on('input', 'textarea', function() {
+      var input = $(this);
 
-    _calculateRemaining(input);
+      _calculateRemaining(input);
+    });
+
+    $('[data-limited]').on('input', 'input', function() {
+      var input = $(this);
+
+      _calculateRemaining(input);
+    });
   });
 
   // privates
