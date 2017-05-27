@@ -203,81 +203,25 @@ ul.menu li:hover:before {
   .simple_form.searches {
     margin-top: 5px;
 
-    // original state
     input[type="text"] {
-      width: 30px;
-      height: 30px;
       float: right;
-      padding: 0px;
-      margin: 0px;
-      color: transparent;
-      border-radius: 100%;
-      background: transparent;
-      border: none;
-    }
-
-    input[type="text"]::before {
-      content: '';
+      color: $gray;
+      height: 30px;
+      border-radius: 50px;
+      font-size: 14px;
+      line-height: 14px;
+      padding-left: 12px;
+      width: 100%;
+      padding-right: 25px;
+      background: rgba(255, 255, 255, 0.9);
     }
 
     .glyphicon.glyphicon-search {
-      color: white;
-      top: 6px;
-      left: 25px;
+      color: $gray;
+      left: -10px;
+      top: -24px;
       font-size: 18px;
     }
-
-    // focus state
-    input[type="text"]:focus {
-      transition: all 0.1s linear;
-      color: $gray;
-      height: 30px;
-      border-radius: 50px;
-      font-size: 14px;
-      line-height: 14px;
-      padding-left: 12px;
-      width: 100%;
-      padding-right: 25px;
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    input[type="text"]:focus::before {
-      content: '';
-    }
-
-    input[type="text"]:focus ~ .glyphicon.glyphicon-search {
-      transition: all 0s linear;
-      color: $gray;
-      left: -5px;
-      top: -24px;
-    }
-
-  }
-
-  // hover state
-  .simple_form.searches:active,
-  .simple_form.searches:focus,
-  .simple_form.searches:hover {
-    input[type="text"] {
-      transition: all 0.1s linear;
-      color: $gray;
-      height: 30px;
-      border-radius: 50px;
-      font-size: 14px;
-      line-height: 14px;
-      padding-left: 12px;
-      width: 100%;
-      padding-right: 25px;
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .glyphicon.glyphicon-search {
-      transition: all 0s linear;
-      color: $gray;
-      left: -5px;
-      top: -24px;
-    }
-
   }
 
   [class*='col-'] {
