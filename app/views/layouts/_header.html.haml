@@ -34,23 +34,23 @@
                 ACESSAR
                 %b.caret
               %ul.dropdown-menu.horizontal
-                %li
-                  = link_to url_for([role, :movies]) do
+                = link_to url_for([role, :movies]) do
+                  %li
                     Filmes
-                %li
-                  = link_to url_for([role, :series_index]) do
+                = link_to url_for([role, :series_index]) do
+                  %li
                     Séries
-                %li
-                  = link_to url_for([:cinervideos]) do
+                = link_to url_for([:cinervideos]) do
+                  %li
                     Ciner Vídeos
-                %li
-                  = link_to url_for([role, :critics]) do
+                = link_to url_for([role, :critics]) do
+                  %li
                     Críticas
-                %li
-                  = link_to url_for([role, :broadcasts]) do
+                = link_to url_for([role, :broadcasts]) do
+                  %li
                     Notícias
-                %li
-                  = link_to url_for([role, :questions]) do
+                = link_to url_for([role, :questions]) do
+                  %li
                     Debate Ciner
 
         .col-xs-3{ style: "font-size: 22px;" }
@@ -63,7 +63,7 @@
               .col-xs-offset-1.col-xs-1{ style: 'padding-left: 15px; margin-top: -3px' }
                 %i.fa.fa-envelope
 
-        .col-xs-2.text-center{ style: "overflow: hidden;" }
+        .col-xs-3.text-center{ style: "overflow: hidden;" }
           - if current_user
             = render 'shared/user_menu', user: current_user
           - else
