@@ -7,7 +7,9 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       broadcasts.title LIKE :search OR
-      broadcasts.content LIKE :search
+      broadcasts.content LIKE :search OR
+      broadcasts.source LIKE :search OR
+      broadcasts.more LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = [
