@@ -5,8 +5,15 @@ $(function() {
     var textArea = $('[data-limited] textarea'),
         input = $('[data-limited] input');
 
-    _calculateRemaining(textArea);
-    _calculateRemaining(input);
+    var arrayLength = textArea.length;
+    for (var i = 0; i < arrayLength; i++) {
+      _calculateRemaining($(textArea[i]));
+    }
+
+    arrayLength = input.length;
+    for (var i = 0; i < arrayLength; i++) {
+      _calculateRemaining($(input[i]));
+    }
 
     $('[data-limited]').on('input', 'textarea', function() {
       var input = $(this);

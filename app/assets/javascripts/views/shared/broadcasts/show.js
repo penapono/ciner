@@ -1,8 +1,13 @@
 //= require views/shared/reactions
-//= require views/api/v1/comments/index
 
 $(function() {
   'use strict';
 
-  (new Reactions()).bindReactions($("#broadcast-reaction"));
+  var broadcastReactions = $(".broadcast-reaction");
+
+  var arrayLength = broadcastReactions.length;
+  for (var i = 0; i < arrayLength; i++) {
+    alert(i);
+    (new Reactions()).bindReactions($(broadcastReactions[i]));
+  }
 });
