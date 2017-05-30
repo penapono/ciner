@@ -67,10 +67,10 @@ class Broadcast < ActiveRecord::Base
     broadcasts = []
 
     featured.first(2).each { |q| broadcasts << q }
-    two_last_created = last_created.all_but(broadcasts).first(2)
+    two_last_created = last_created.all_but(broadcasts)
     two_last_created.each { |q| broadcasts << q }
 
-    Broadcast.where(id: broadcasts.pluck(:id))
+    Broadcast.where(id: broadcasts.pluck(:id)).order(featured: :desc)
   end
 
   # Methods
@@ -110,11 +110,11 @@ class Broadcast < ActiveRecord::Base
 
   def self.by_year(year)
     broadcast_ids = []
-    BroadcastBroadcastable.each do |bb|
+    BroadcastBroadcastable.all.each do |bb|
       broadcast_ids << bb.broadcast_id if bb.filmable_year == year
     end
 
-    where(id: brodcast_ids)
+    where(id: broadcast_ids)
   end
 
   def self.filter_by(collection, params)
