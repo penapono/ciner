@@ -24,8 +24,9 @@
             .media-heading.title-section Notícias em destaque
       .row
         - broadcasts.first(2).each do |object|
-          - like_path = url_for([:like, role, object])
-          - dislike_path = url_for([:dislike, role, object])
+          - if role
+            - like_path = url_for([:like, role, object])
+            - dislike_path = url_for([:dislike, role, object])
           - cover = object.cover.url
           - cover ||= image_path("default/movie/image.png")
 
@@ -46,17 +47,19 @@
               .col-xs-6.pull-left
                 %span.bold.wine
                   = object.date_str
-            .row
-              .broadcast-reaction
-                = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+            - if role
+              .row
+                .broadcast-reaction
+                  = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
 
 .container.noticias
   .row
     .col-xs-12
       - broadcasts.each_with_index do |object, index|
         - if index > 1
-          - like_path = url_for([:like, role, object])
-          - dislike_path = url_for([:dislike, role, object])
+          - if role
+            - like_path = url_for([:like, role, object])
+            - dislike_path = url_for([:dislike, role, object])
           - cover = object.cover.url
           - cover ||= image_path("default/movie/image.png")
 
@@ -79,8 +82,9 @@
                   .col-xs-6
                     %span.bold.wine
                       = object.date_str
-                .row
-                  .broadcast-reaction
-                    = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                - if role
+                  .row
+                    .broadcast-reaction
+                      = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
 
   = render 'shared/pagination', resources: broadcasts
