@@ -7,7 +7,8 @@ module Admin
     PER_PAGE = 20
 
     PERMITTED_PARAMS = %i[
-      title description event_date end_date start_time end_time featured
+      title subtitle description event_date end_date
+      start_time end_time featured
       place more cover
     ].freeze
 
