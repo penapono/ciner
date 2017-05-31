@@ -19,6 +19,8 @@ gem 'rails_autolink'
 gem 'rmagick'
 gem 'jquery_mask_rails'
 
+gem 'social-share-button'
+
 gem 'nokogiri'
 gem 'httparty'
 

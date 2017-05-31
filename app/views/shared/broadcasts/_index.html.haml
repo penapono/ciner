@@ -30,28 +30,35 @@
           - cover = object.cover.url
           - cover ||= image_path("default/movie/image.png")
 
-          .col-xs-2{ id: object.id, style: 'padding: 0px;' }
-            %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
-          .col-xs-4
-            %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 23px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 10px; height: 50px' }
-              = object.title
-            .wine{ style: 'height: 20px;' }
-              = object.spoiler_str
-            .desc{ data: { tipsy: '' }, style: 'height: 218px; overflow: hidden;', title: "#{object.content_str}"}
-              = object.content.html_safe
+          .col-xs-6
             .row
-              .col-xs-6.pull-right
-                .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 13px;' }
+              .col-xs-4{ id: object.id, style: 'padding: 0px;' }
+                %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
+              .col-xs-8
+                %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; min-height: 25px; max-height: 50px' }
+                  = object.title
+                .wine{ style: 'height: 20px;' }
+                  = object.spoiler_str
+                .desc{ data: { tipsy: '' }, style: 'height: 220px; overflow: hidden; font-size: 14px; ', title: "#{object.content_str}"}
+                  = object.content.html_safe
+            .row{ style: 'font-size: 12px;' }
+              .col-xs-6.pull-left{ style: 'padding-left: 0px;'}
+                .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
                   Fonte:
                   = object.more
               .col-xs-6.pull-right
-                %span.bold.wine
+                %span.bold.wine{ style: 'float: right' }
                   = object.date_str
             - if role
               .row
-                .broadcast-reaction
-                  = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                .col-xs-4{ style: 'padding-left: 0px;' }
+                  .row
+                    .broadcast-reaction
+                      = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                .col-xs-4
 
+                .col-xs-4
+                  = social_share_button_tag(object.title, :allow_sites => %w(facebook))
 .container.noticias
   .row
     .col-xs-12
@@ -68,15 +75,15 @@
               .col-xs-3{ id: object.id }
                 %img.img-responsive{ src: cover, style: 'height: 171px; width: 261px;' }
               .col-xs-9
-                %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 24px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
+                %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
                   = object.title
                 .wine{ style: 'height: 20px;' }
                   = object.spoiler_str
-                .desc{ data: { tipsy: '' }, style: 'height: 79px; overflow: hidden;', title: "#{object.content_str}"}
+                .desc{ data: { tipsy: '' }, style: 'height: 79px; overflow: hidden; font-size: 14px;', title: "#{object.content_str}"}
                   = object.content.html_safe
-                .row
+                .row{ style: 'font-size: 12px;' }
                   .col-xs-6
-                    .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 13px;' }
+                    .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
                       Fonte:
                       = object.more
                   .col-xs-6
@@ -84,7 +91,13 @@
                       = object.date_str
                 - if role
                   .row
-                    .broadcast-reaction
-                      = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                    .col-xs-4
+                      .row
+                        .broadcast-reaction
+                          = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                    .col-xs-4
+
+                    .col-xs-4
+                      = social_share_button_tag(object.title, :allow_sites => %w(facebook))
 
   = render 'shared/pagination', resources: broadcasts

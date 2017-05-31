@@ -9,4 +9,5 @@
 //= require ckeditor/init
 //= require modules/visits
 //= require cocoon
+//= require social-share-button
 //= require_tree .
