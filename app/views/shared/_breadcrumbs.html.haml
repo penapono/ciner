@@ -1,18 +1,20 @@
 - content_for :stylesheet, stylesheet_link_tag('views/shared/breadcrumb')
 
-%ol.breadcrumb
-  - if breadcrumbs.present?
+.row
+  .col-xs-12
+    %ol.breadcrumb{ style: 'float: right' }
+      - if breadcrumbs.present?
 
-    - truncate_length = 70
+        - truncate_length = 70
 
-    - truncate_length = 140 if breadcrumbs.count < 3
+        - truncate_length = 140 if breadcrumbs.count < 3
 
-    - last_breadcrumb = breadcrumbs.last
+        - last_breadcrumb = breadcrumbs.last
 
-    - breadcrumbs.each do |breadcrumb|
-      - next if breadcrumbs.last == breadcrumb
+        - breadcrumbs.each do |breadcrumb|
+          - next if breadcrumbs.last == breadcrumb
 
-      %li
-        = link_to truncate(breadcrumb[:title], length: truncate_length), breadcrumb[:url], title: breadcrumb[:title]
+          %li
+            = link_to truncate(breadcrumb[:title], length: truncate_length), breadcrumb[:url], title: breadcrumb[:title]
 
-    %li.active{ title: last_breadcrumb[:title] }= truncate(last_breadcrumb[:title], length: truncate_length)
+        %li.active{ title: last_breadcrumb[:title] }= truncate(last_breadcrumb[:title], length: truncate_length)

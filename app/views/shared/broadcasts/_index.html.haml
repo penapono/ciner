@@ -3,16 +3,6 @@
 - role ||= nil
 
 .container
-  .row
-    .col-xs-12
-      .title-separator
-        .media
-          .media-left.media-middle
-            .icon-title
-              %img.img-responsive{ src: image_path("icons/ico_broadcasts.png"), style: 'width: 30px; height: 30px;' }
-          .media-body.media-bottom
-            .media-heading.title-section Notícias
-
   = render 'shared/broadcasts/toolbar'
 
 .container.noticias-destaques
