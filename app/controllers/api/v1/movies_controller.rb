@@ -17,6 +17,6 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def resources
-    Movie.search(nil, fetch_term).limit(LIMIT)
+    Movie.where("original_title = '#{fetch_term}' OR title = '#{fetch_term}'").limit(LIMIT)
   end
 end
