@@ -57,8 +57,8 @@ class Broadcast < ActiveRecord::Base
     broadcasts = []
 
     featured.first(2).each { |q| broadcasts << q }
-    two_last_created = last_created.all_but(broadcasts).first(2)
-    two_last_created.each { |q| broadcasts << q }
+    some_last_created = last_created.all_but(broadcasts).first(10)
+    some_last_created.each { |q| broadcasts << q }
 
     broadcasts.first(10)
   end
