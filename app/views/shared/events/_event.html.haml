@@ -2,59 +2,6 @@
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil
 
-/ .container.content{ id: "#{event.id}", style: 'padding-top: 15px; border-top: 1px solid #ccc;' }
-/   - place = event.place
-/   - unless place.blank?
-/     .row
-/       .col-xs-12
-/         %h5
-/           Local:
-/           = place
-
-/   - status = event.status_str
-/   - datetime_str = event.datetime_str
-/   - unless status.blank? && datetime_str.blank?
-/     .row
-/       .col-xs-12
-/         .highlight
-/           - unless status.blank?
-/             .button
-/               = status
-/           - unless datetime_str.blank?
-/             .info
-/               = datetime_str
-
-
-/   .row
-/     .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
-/       %h4.wine
-/         = event.title
-
-/   .row
-/     .col-xs-12{ style: 'overflow: hidden' }
-/       .event-description{ data: { tipsy: '' }, title: "#{event.description_str}" }
-/         = event.description.html_safe
-
-/   - more = event.more
-/   - cover = event.cover
-/   - unless more.blank? && cover.blank?
-/     .row{ data: { collapsed_area: '' } }
-/       .col-xs-12
-/         .row
-/           .col-xs-12
-/             %a{ data: { collapse_control: '' } }
-/               ver mais
-/         .row.collapse{ data: { collapse_content: '' } }
-/           - if cover.blank?
-/             .col-xs-12
-/               = event.more
-/           - else
-/             .col-xs-2
-/               = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')
-
-/             .col-xs-10
-/               = event.more
-
 - object = event
 - cover = object.cover.url
 - cover ||= image_path("default/movie/image.png")
@@ -87,6 +34,19 @@
         = object.title
       .desc{ style: 'min-height: 90px; max-height: 113px; overflow: hidden; font-size: 13px;' }
         = object.description.html_safe
+
+        - unless object.video.blank?
+          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
+            \.
+            Assista ao vídeo
+        - if object.event_images.any?
+          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
+            \.
+            Veja a galeria
+        - unless object.more.blank?
+          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
+            \.
+            Informações completas aqui
 
         - unless object.more.blank?
           %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
