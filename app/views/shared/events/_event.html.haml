@@ -43,10 +43,6 @@
           %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
             \.
             Veja a galeria
-        - unless object.more.blank?
-          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
-            \.
-            Informações completas aqui
 
         - unless object.more.blank?
           %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }

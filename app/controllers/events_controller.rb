@@ -3,6 +3,8 @@
 class EventsController < ApplicationController
   include EventsBreadcrumb
 
+  respond_to :html, :js
+
   # exposes
   expose(:events) { Event.order(event_date: :asc) }
   expose(:event, attributes: :event_attributes)
@@ -11,6 +13,10 @@ class EventsController < ApplicationController
 
   def index
     self.events = paginated_events
+  end
+
+  def show
+    render layout: false
   end
 
   private

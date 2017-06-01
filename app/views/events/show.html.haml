@@ -1,6 +1,38 @@
-- content_for :stylesheet, stylesheet_link_tag(stylesheet)
-- content_for :javascript, javascript_include_tag(javascript)
+/ Modal content
+.modal-content
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h4.modal-title
+      = event.title
+      \-
+      = "Vídeo" if params[:view] == "video"
+      = "Galeria" if params[:view] == "gallery"
+      = "Mais informações" if params[:view] == "info"
+  .modal-body
+    - if params[:view] == "video"
+      - if event.video && !event.video.to_s.blank?
+        .row
+          .col-xs-12
+            %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: event.video.to_s, width: "100%"}
+      - else
+        Não há vídeos disponíveis para esse evento
+    - elsif params[:view] == "gallery"
+      - if event.event_images.any?
+        .row
+          - event.event_images.each do |ei|
+            .col-xs-4{ style: 'margin-bottom: 15px;' }
+              = link_to ei.media.url, target: '_blank' do
+                %img.img-responsive{ src: ei.media, style: "width: 240px; height: 160px;" }
+      - else
+        Não há fotos na galeria deste evento
+    - else
+      = event.more
 
-= render 'shared/breadcrumbs'
+  .modal-footer.user-collection-actions
+    %ul{ style: 'padding: 0px' }
+      %li
+        %button.btn.btn-default{style: 'float: right;', "data-dismiss" => "modal", :type => "button"}
+          Fechar
 
-= render 'shared/events/show', event: event
+
+

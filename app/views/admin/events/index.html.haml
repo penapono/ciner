@@ -57,3 +57,6 @@
   = render 'shared/pagination', resources: events
 - else
   = render 'shared/alerts/info', message: (t('empty', klass: Event.model_name.human(count: 2)))
+
+#contentModal.modal.fade{:role => "dialog"}
+  .modal-dialog

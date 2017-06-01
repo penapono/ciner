@@ -10,10 +10,10 @@
       = f.input :place
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 35 } }
-      = f.input :title, input_html: { rows: 1 }, maxlength: 35
+    .col-xs-12{ data: { limited: '', limit: 40 } }
+      = f.input :title, input_html: { rows: 1 }, maxlength: 40
       %span.char-counter
-        = t('remaining_chars', chars: 35)
+        = t('remaining_chars', chars: 40)
 
   .row
     .col-xs-12{ data: { limited: '', limit: 100 } }
@@ -22,8 +22,10 @@
         = t('remaining_chars', chars: 100)
 
   .row
-    .col-xs-12
-      = f.input :description, as: :ckeditor, input_html: { rows: 5 }
+    .col-xs-12{ data: { limited: '', limit: 450 } }
+      = f.input :description, input_html: { rows: 5 }, maxlength: 450
+      %span.char-counter
+        = t('remaining_chars', chars: 450)
 
   .row
     .col-xs-3
@@ -45,15 +47,24 @@
       = f.input :cover, label: false
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 500 } }
-      = f.input :more, input_html: { rows: 5 }, maxlength: 500
+    .col-xs-4
+      = f.input :video
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 50000 } }
+      = f.input :more, input_html: { rows: 5 }, maxlength: 50000
       %span.char-counter
-        = t('remaining_chars', chars: 500)
+        = t('remaining_chars', chars: 50000)
 
   .row
     - if admin
       .col-xs-4
         = checkbox_item(f, :featured)
+
+  .row
+    .col-xs-6
+      %h3.wine
+        Imagens
 
   .row
     .col-xs-6
