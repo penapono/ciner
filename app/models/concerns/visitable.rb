@@ -7,7 +7,7 @@ module Visitable
     def visits_count_str
       id = self.id
       visits = Visit.resource_count(current_model, id)
-      return "+ 99999" if visits > 99999
+      return "+ 99999" if visits > 99_999
       visits
     end
 

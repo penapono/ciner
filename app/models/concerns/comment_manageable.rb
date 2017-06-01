@@ -18,7 +18,7 @@ module CommentManageable
     end
 
     def comments_count_str
-      return "+ 99999" if comments_count > 99999
+      return "+ 99999" if comments_count > 99_999
       comments_count
     end
   end
