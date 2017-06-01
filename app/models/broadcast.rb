@@ -108,13 +108,8 @@ class Broadcast < ActiveRecord::Base
     where(id: broadcast_ids)
   end
 
-  def self.by_year(year)
-    broadcast_ids = []
-    BroadcastBroadcastable.all.each do |bb|
-      broadcast_ids << bb.broadcast_id if bb.filmable_year == year
-    end
-
-    where(id: broadcast_ids)
+  def self.by_date(date)
+    where(broadcast_date: Date.parse(date))
   end
 
   def self.filter_by(collection, params)
@@ -122,7 +117,7 @@ class Broadcast < ActiveRecord::Base
 
     result = collection
     result = result.by_broadcastable_type(params[:broadcastable_type]) unless params[:broadcastable_type].blank?
-    result = result.by_year(params[:year]) unless params[:year].blank?
+    result = result.by_date(params[:date]) unless params[:date].blank?
 
     result
   end

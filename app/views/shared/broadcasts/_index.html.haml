@@ -27,18 +27,18 @@
               .col-xs-8
                 %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; min-height: 25px; max-height: 50px' }
                   = object.title
-                .wine{ style: 'height: 20px;' }
+                .wine{ style: 'height: 20px; margin-bottom: 10px;' }
                   = object.spoiler_str
-                .desc{ data: { tipsy: '' }, style: 'height: 220px; overflow: hidden; font-size: 14px; ', title: "#{object.content_str}"}
+                .desc{ style: 'height: 200px; overflow: hidden; font-size: 13px; ' }
                   = object.content.html_safe
-            .row{ style: 'font-size: 12px;' }
-              .col-xs-6.pull-left{ style: 'padding-left: 0px;'}
-                .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
-                  Fonte:
-                  = object.more
-              .col-xs-6.pull-right
-                %span.bold.wine{ style: 'float: right' }
-                  = object.date_str
+                .pull-left{ style: 'padding-left: 0px;'}
+                  .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
+                    Fonte:
+                    = object.more
+                .pull-right
+                  %span.bold.wine{ style: 'float: right; font-size: 12px;' }
+                    = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
+
             - if role
               .row
                 .col-xs-4{ style: 'padding-left: 0px;' }

@@ -44,6 +44,6 @@
                 = f.input :broadcastable_type, label: false, collection: [["Filmes", "Movie"], ["Séries", "Serie"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filme / Série', selected: params.fetch(:filter, {}).fetch(:broadcastable_type, '')
 
               .col-xs-6
-                = f.input :year, collection: (1839..2021), label: false, include_blank: "Ano", input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:year, '')
+                = f.input :date, as: :string, label: false, input_html: { class: 'datepicker', value: params.fetch(:filter, {}).fetch(:date, '') }
 
 
