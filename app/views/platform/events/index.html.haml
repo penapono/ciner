@@ -17,6 +17,5 @@
 
   = render 'shared/events/toolbar', path: platform_events_path
 
-  .row
-    - events.each do |event|
-      = render 'shared/events/event', event: event, path: platform_event_path(event), like_path: like_platform_event_path(event), dislike_path: dislike_platform_event_path(event)
+  - events.each do |event|
+    = render 'shared/events/event', event: event, path: platform_event_path(event)

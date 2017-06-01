@@ -2,59 +2,91 @@
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil
 
-- like_path ||= nil
-- dislike_path ||= nil
+/ .container.content{ id: "#{event.id}", style: 'padding-top: 15px; border-top: 1px solid #ccc;' }
+/   - place = event.place
+/   - unless place.blank?
+/     .row
+/       .col-xs-12
+/         %h5
+/           Local:
+/           = place
 
-.container.content{ id: "#{event.id}", style: 'padding-top: 15px; border-top: 1px solid #ccc;' }
-  - place = event.place
-  - unless place.blank?
-    .row
-      .col-xs-12
-        %h5
-          Local:
-          = place
-
-  - status = event.status_str
-  - datetime_str = event.datetime_str
-  - unless status.blank? && datetime_str.blank?
-    .row
-      .col-xs-12
-        .highlight
-          - unless status.blank?
-            .button
-              = status
-          - unless datetime_str.blank?
-            .info
-              = datetime_str
+/   - status = event.status_str
+/   - datetime_str = event.datetime_str
+/   - unless status.blank? && datetime_str.blank?
+/     .row
+/       .col-xs-12
+/         .highlight
+/           - unless status.blank?
+/             .button
+/               = status
+/           - unless datetime_str.blank?
+/             .info
+/               = datetime_str
 
 
+/   .row
+/     .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
+/       %h4.wine
+/         = event.title
+
+/   .row
+/     .col-xs-12{ style: 'overflow: hidden' }
+/       .event-description{ data: { tipsy: '' }, title: "#{event.description_str}" }
+/         = event.description.html_safe
+
+/   - more = event.more
+/   - cover = event.cover
+/   - unless more.blank? && cover.blank?
+/     .row{ data: { collapsed_area: '' } }
+/       .col-xs-12
+/         .row
+/           .col-xs-12
+/             %a{ data: { collapse_control: '' } }
+/               ver mais
+/         .row.collapse{ data: { collapse_content: '' } }
+/           - if cover.blank?
+/             .col-xs-12
+/               = event.more
+/           - else
+/             .col-xs-2
+/               = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')
+
+/             .col-xs-10
+/               = event.more
+
+- object = event
+- cover = object.cover.url
+- cover ||= image_path("default/movie/image.png")
+
+.noticia-item
   .row
-    .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
-      %h4.wine
-        = event.title
+    .col-xs-3{ id: object.id }
+      %img.img-responsive{ src: cover, style: 'height: 171px; width: 261px;' }
+    .col-xs-9
+      %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
+        = object.title
+      .wine{ style: 'height: 20px;' }
+        = object.place
+      .highlight{ style: 'width: 100%' }
+        - status = event.status_str
+        - datetime_str = event.datetime_str
+        - unless status.blank?
+          .button
+            = status
 
-  .row
-    .col-xs-12{ style: 'overflow: hidden' }
-      .event-description{ data: { tipsy: '' }, title: "#{event.description_str}" }
-        = event.description.html_safe
+        - unless datetime_str.blank?
+          .info
+            = datetime_str
+      .desc{ style: 'min-height: 90px; max-height: 113px; overflow: hidden; font-size: 13px;' }
+        = object.description.html_safe
 
-  - more = event.more
-  - cover = event.cover
-  - unless more.blank? && cover.blank?
-    .row{ data: { collapsed_area: '' } }
-      .col-xs-12
-        .row
-          .col-xs-12
-            %a{ data: { collapse_control: '' } }
-              ver mais
-        .row.collapse{ data: { collapse_content: '' } }
-          - if cover.blank?
-            .col-xs-12
-              = event.more
-          - else
-            .col-xs-2
-              = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')
+        - unless object.more.blank?
+          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
+            \.
+            Informações completas aqui
 
-            .col-xs-10
-              = event.more
-
+      .row{ style: 'margin-top: 20px;' }
+        .col-xs-4
+          .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+            %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
