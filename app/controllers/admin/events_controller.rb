@@ -9,7 +9,7 @@ module Admin
     PERMITTED_PARAMS = %i[
       title subtitle description event_date end_date
       start_time end_time featured
-      place more cover
+      place more cover state_id
       event_images_attributes: %i[
         media
         event_id

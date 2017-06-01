@@ -17,6 +17,8 @@ class Event < ActiveRecord::Base
             :event_date,
             presence: true
 
+  belongs_to :state
+
   # Associations
   has_many :comments, as: :commentable
   has_many :event_images, dependent: :destroy
@@ -32,10 +34,25 @@ class Event < ActiveRecord::Base
     where("event_date >= ?", DateTime.now).order(event_date: :asc)
   end
 
+  def self.by_date(date)
+    date_formatted = Date.parse(date)
+    ids = where(event_date: date_formatted).pluck(:id) +
+          where(end_date: date_formatted).pluck(:id) +
+          where("event_date <= ?", date_formatted)
+          .where("end_date >= ?", date_formatted).pluck(:id)
+    where(id: ids.uniq)
+  end
+
+  def self.by_state(state)
+    where(state_id: state)
+  end
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
+    result = result.by_date(params[:date]) unless params[:date].blank?
+    result = result.by_state(params[:state]) unless params[:state].blank?
 
     result
   end

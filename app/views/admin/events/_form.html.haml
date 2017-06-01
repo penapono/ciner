@@ -6,7 +6,9 @@
     = t('.general')
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 40 } }
+    .col-xs-4
+      = f.input :state_id, collection: State.all, input_html: { class: 'select2' }
+    .col-xs-8{ data: { limited: '', limit: 40 } }
       = f.input :place, input_html: { rows: 1 }, maxlength: 40
       %span.char-counter
         = t('remaining_chars', chars: 40)

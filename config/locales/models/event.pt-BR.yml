@@ -12,6 +12,7 @@ pt-BR:
         place: Local
         more: Mais informações
         cover: Capa
+        state_id: Estado
         video: Vídeo
         description: Descrição
         event_date: Data de Início

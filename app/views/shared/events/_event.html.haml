@@ -17,7 +17,7 @@
         .highlight{ style: 'width: 100%; height: 20px;' }
           - datetime_str = event.datetime_str
           - unless datetime_str.blank?
-            .info
+            .info{ style: 'font-size: 12px; margin-bottom: 15px;'}
               = datetime_str
       - else
         .highlight{ style: 'width: 100%;' }
@@ -28,11 +28,11 @@
               = status
 
           - unless datetime_str.blank?
-            .info
+            .info{ style: 'font-size: 12px; margin-bottom: 15px;'}
               = datetime_str
-      %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
+      %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 10px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
         = object.title
-      .desc{ style: 'min-height: 90px; max-height: 113px; overflow: hidden; font-size: 13px;' }
+      .desc{ style: 'height: 77px; font-size: 13px;' }
         = object.description.html_safe
 
         - unless object.video.blank?
@@ -49,7 +49,5 @@
             \.
             Informações completas aqui
 
-      .row{ style: 'margin-top: 20px;' }
-        .col-xs-4
-          .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
-            %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
+      .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+        %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar

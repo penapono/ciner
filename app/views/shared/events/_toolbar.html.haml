@@ -39,7 +39,7 @@
               = hidden_field_tag :search, params[:search]
 
               .col-xs-6
-                = f.input :broadcast_content_type, label: false, collection: [["Filmes", "movie"], ["Séries", "serie"], ["Celebridades", "celebrities"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Busque por estado', selected: params.fetch(:filter, {}).fetch(:broadcast_content_type, '')
+                = f.input :state, label: false, collection: State.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Busque por estado', selected: params.fetch(:filter, {}).fetch(:state, '')
 
               .col-xs-6
                 = f.input :date, as: :string, label: false, input_html: { class: 'datepicker', value: params.fetch(:filter, {}).fetch(:date, ''), placeholder: 'Busque por data do evento' }
