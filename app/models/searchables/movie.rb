@@ -7,8 +7,7 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       movies.original_title LIKE :search OR
-      movies.title LIKE :search OR
-      movies.countries LIKE :search
+      movies.title LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = [

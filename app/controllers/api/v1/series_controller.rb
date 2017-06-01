@@ -12,7 +12,8 @@ class Api::V1::SeriesController < ApplicationController
   private
 
   def fetch_term
-    params.fetch(:search, {}).fetch(:term, '')
+    return params[:search].fetch(:term, '') unless params[:search].blank?
+    params.fetch(:term, '')
   end
 
   def resources

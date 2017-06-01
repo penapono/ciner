@@ -12,6 +12,7 @@ class Api::V1::MoviesController < ApplicationController
   private
 
   def fetch_term
+    return params[:search].fetch(:term, '') unless params[:search].blank?
     params.fetch(:term, '')
   end
 
