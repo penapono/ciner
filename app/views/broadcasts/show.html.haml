@@ -20,7 +20,7 @@
       - if broadcast.broadcast_images.any?
         .row
           - broadcast.broadcast_images.each do |bi|
-            .col-xs-4
+            .col-xs-4{ style: 'margin-bottom: 15px;' }
               = link_to bi.media.url, target: '_blank' do
                 %img.img-responsive{ src: bi.media, style: "width: 240px; height: 160px;" }
       - else

@@ -66,7 +66,8 @@
                       .broadcast-reaction
                         = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
                   .col-xs-4
-                    = social_share_button_tag(object.title, :allow_sites => %w(facebook))
+                    .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+                      %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
                   .col-xs-4
                     %button.btn.btn-login{:type => "submit"}
                       Debater
@@ -126,7 +127,8 @@
                       .broadcast-reaction
                         = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
                   .col-xs-4
-                    = social_share_button_tag(object.title, :allow_sites => %w(facebook))
+                    .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+                      %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
                   .col-xs-4
                     %button.btn.btn-login{:type => "submit"}
                       Debater
