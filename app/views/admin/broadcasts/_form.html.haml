@@ -57,10 +57,10 @@
       = f.input :video
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 100 } }
-      = f.input :more, input_html: { rows: 1 }, maxlength: 100
+    .col-xs-12{ data: { limited: '', limit: 50000 } }
+      = f.input :more, input_html: { rows: 5 }, maxlength: 50000
       %span.char-counter
-        = t('remaining_chars', chars: 100)
+        = t('remaining_chars', chars: 50000)
 
   .row
     .col-xs-6
