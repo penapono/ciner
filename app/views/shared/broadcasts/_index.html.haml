@@ -31,7 +31,7 @@
                       = object.title
                     .wine{ style: 'height: 20px; margin-bottom: 10px;' }
                       = object.spoiler_str
-                    .desc{ style: 'min-height: 200px; overflow: hidden; font-size: 13px; ' }
+                    .desc{ style: 'min-height: 168px; max-height: 190px; overflow: hidden; font-size: 13px; ' }
                       = object.content.html_safe
 
                       - unless object.video.blank?
@@ -47,32 +47,25 @@
                           \.
                           Informações completas aqui
 
-            .row{ style: 'margin-top: -30px; ' }
-              .col-xs-4
-              .col-xs-8
-                .pull-left{ style: 'padding-left: 0px;'}
-                  .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
-                    Fonte:
-                    = object.source
-                .pull-right
-                  %span.bold.wine{ style: 'float: right; font-size: 12px;' }
-                    = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
-            .row
-              .col-xs-4
-              .col-xs-8
-                .row
-                  .col-xs-4
-                    .row
-                      .broadcast-reaction
-                        = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
-                  .col-xs-4
-                    .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
-                      %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
-                  .col-xs-4
-                    %button.btn.btn-login{:type => "submit"}
-                      Debater
-                      %span.icon.icon-button
-
+                    .pull-left{ style: 'padding-left: 0px;'}
+                      .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
+                        Fonte:
+                        = object.source
+                    .pull-right
+                      %span.bold.wine{ style: 'float: right; font-size: 12px;' }
+                        = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
+                    .row{ style: 'margin-top: 20px;' }
+                      .col-xs-4
+                        .row{ style: 'margin-left: -10px; height: 25px;' }
+                          .broadcast-reaction
+                            = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                      .col-xs-4
+                        .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+                          %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
+                      .col-xs-4
+                        %button.btn.btn-login{:type => "submit"}
+                          Debater
+                          %span.icon.icon-button
 
 .container.noticias
   .row
@@ -97,7 +90,7 @@
                   = object.title
                 .wine{ style: 'height: 20px;' }
                   = object.spoiler_str
-                .desc{ style: 'height: 113px; overflow: hidden; font-size: 13px;' }
+                .desc{ style: 'min-height: 90px; max-height: 113px; overflow: hidden; font-size: 13px;' }
                   = object.content.html_safe
 
                   - unless object.video.blank?
@@ -113,17 +106,16 @@
                       \.
                       Informações completas aqui
 
-                .row{ style: 'font-size: 12px;' }
-                  .col-xs-6
-                    .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
-                      Fonte:
-                      = object.source
-                  .col-xs-6
-                    %span.bold.wine{ style: 'float: right' }
-                      = object.date_str
-                .row
+                .pull-left{ style: 'padding-left: 0px;'}
+                  .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
+                    Fonte:
+                    = object.source
+                .pull-right
+                  %span.bold.wine{ style: 'float: right; font-size: 12px;' }
+                    = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
+                .row{ style: 'margin-top: 20px;' }
                   .col-xs-4
-                    .row{ style: 'height: 25px;' }
+                    .row{ style: 'margin-left: -10px; height: 25px;' }
                       .broadcast-reaction
                         = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
                   .col-xs-4
