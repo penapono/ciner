@@ -3,6 +3,8 @@
 class BroadcastsController < ApplicationController
   include BroadcastsBreadcrumb
 
+  respond_to :html, :js
+
   PER_PAGE = 10
 
   # exposes
@@ -11,6 +13,10 @@ class BroadcastsController < ApplicationController
 
   def index
     self.broadcasts = paginated_broadcasts
+  end
+
+  def show
+    render layout: false
   end
 
   private

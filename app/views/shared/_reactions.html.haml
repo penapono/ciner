@@ -5,17 +5,27 @@
   - user = current_user || nil
   - clickable_class = user ? 'clickable' : ''
 
-  .row
-    .col-xs-12{ data: { reactions: '' } }
-      %div.reactionable{ class: clickable_class, data: { vote: '', url: like_path } }
-        %span{ data: { like_counter: '' } }
-          = resource.likes_count
-        %i.fa{ class: resource.like_icon_class(user), data: { like_icon: '' } }
+  - if user
+    .row
+      .col-xs-12{ data: { reactions: '' } }
+        %div.reactionable{ class: clickable_class, data: { vote: '', url: like_path } }
+          %span{ data: { like_counter: '' } }
+            = resource.likes_count
+          %i.fa{ class: resource.like_icon_class(user), data: { like_icon: '' } }
 
-      %div.reactionable{ class: clickable_class, data: { vote: '', url: dislike_path } }
-        %span{ data: { dislike_counter: '' } }
-          = resource.dislikes_count
-        %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
+        %div.reactionable{ class: clickable_class, data: { vote: '', url: dislike_path } }
+          %span{ data: { dislike_counter: '' } }
+            = resource.dislikes_count
+          %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
+  - else
+    .row{ title: t('unauthorized.login_for_reactions'), data: { tipsy: '' } }
+      .col-xs-12
+        %div.reactionable
+          %span
+            = resource.likes_count
+          %i.fa.fa-thumbs-o-up
 
-  - unless like_path
-    = render 'shared/alerts/info', message: t('unauthorized.login_for_reactions')
+        %div.reactionable
+          %span
+            = resource.dislikes_count
+          %i.fa.fa-thumbs-o-down

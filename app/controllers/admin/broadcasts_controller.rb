@@ -9,7 +9,8 @@ module Admin
     PERMITTED_PARAMS = [
       :title, :content, :spoiler, :featured,
       :cover, :more, :video, :broadcast_date,
-      :subtitle,
+      :subtitle, :source,
+      :movie_content, :serie_content, :celebrity_content,
       broadcast_broadcastables_attributes: %i[
         broadcastable_id
         broadcastable_type

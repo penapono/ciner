@@ -10,7 +10,8 @@ pt-BR:
         title: Título
         subtitle: Subtítulo
         content: Conteúdo
-        more: Fonte
+        more: Informações Complementares
+        source: Fonte
         cover: Capa
         user: Autor
         user_id: Autor
@@ -18,6 +19,9 @@ pt-BR:
         spoiler: Contém spoiler
         video: Vídeo
         broadcast_date: Data
+        movie_content: Filme?
+        serie_content: Série?
+        celebrity_content: Celebridade?
       broadcast/spoiler:
         has_spoiler: Contém spoilers
         spoiler_free: Não contém spoilers

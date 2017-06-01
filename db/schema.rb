@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527155941) do
+ActiveRecord::Schema.define(version: 20170601104716) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -37,20 +37,23 @@ ActiveRecord::Schema.define(version: 20170527155941) do
   create_table "broadcasts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "content",        limit: 65535
-    t.boolean  "spoiler",                      default: false
-    t.boolean  "featured",                     default: false
-    t.integer  "likes_count",                  default: 0
-    t.integer  "dislikes_count",               default: 0
-    t.integer  "comments_count",               default: 0
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.text     "content",           limit: 65535
+    t.boolean  "spoiler",                         default: false
+    t.boolean  "featured",                        default: false
+    t.integer  "likes_count",                     default: 0
+    t.integer  "dislikes_count",                  default: 0
+    t.integer  "comments_count",                  default: 0
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "cover"
     t.string   "more"
     t.string   "video"
     t.date     "broadcast_date"
     t.string   "source"
     t.string   "subtitle"
+    t.boolean  "movie_content",                   default: false
+    t.boolean  "serie_content",                   default: false
+    t.boolean  "celebrity_content",               default: false
     t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
   end
 

@@ -9,14 +9,14 @@
   .row
     .col-xs-12
       .title-separator
-        .media
-          .media-body.media-bottom
-            .media-heading.title-section Notícias em destaque
       .row
         - broadcasts.first(2).each do |object|
           - if role
             - like_path = url_for([:like, role, object])
             - dislike_path = url_for([:dislike, role, object])
+          - else
+            - like_path = nil
+            - dislike_path = nil
           - cover = object.cover.url
           - cover ||= image_path("default/movie/image.png")
 
@@ -25,12 +25,31 @@
               .col-xs-4{ id: object.id, style: 'padding: 0px;' }
                 %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
               .col-xs-8
-                %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; min-height: 25px; max-height: 50px' }
-                  = object.title
-                .wine{ style: 'height: 20px; margin-bottom: 10px;' }
-                  = object.spoiler_str
-                .desc{ style: 'height: 200px; overflow: hidden; font-size: 13px; ' }
-                  = object.content.html_safe
+                .row
+                  .col-xs-12{ style: 'height: 275px;' }
+                    %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; min-height: 25px; max-height: 50px' }
+                      = object.title
+                    .wine{ style: 'height: 20px; margin-bottom: 10px;' }
+                      = object.spoiler_str
+                    .desc{ style: 'min-height: 200px; overflow: hidden; font-size: 13px; ' }
+                      = object.content.html_safe
+
+                      - unless object.video.blank?
+                        %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
+                          \.
+                          Assista ao vídeo
+                      - if broadcast.broadcast_images.any?
+                        %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
+                          \.
+                          Veja a galeria
+                      - unless object.more.blank?
+                        %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
+                          \.
+                          Informações completas aqui
+
+            .row{ style: 'margin-top: -30px; ' }
+              .col-xs-4
+              .col-xs-8
                 .pull-left{ style: 'padding-left: 0px;'}
                   .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
                     Fonte:
@@ -38,17 +57,22 @@
                 .pull-right
                   %span.bold.wine{ style: 'float: right; font-size: 12px;' }
                     = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
+            .row
+              .col-xs-4
+              .col-xs-8
+                .row
+                  .col-xs-4
+                    .row
+                      .broadcast-reaction
+                        = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                  .col-xs-4
+                    = social_share_button_tag(object.title, :allow_sites => %w(facebook))
+                  .col-xs-4
+                    %button.btn.btn-login{:type => "submit"}
+                      Debater
+                      %span.icon.icon-button
 
-            - if role
-              .row
-                .col-xs-4{ style: 'padding-left: 0px;' }
-                  .row
-                    .broadcast-reaction
-                      = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
-                .col-xs-4
 
-                .col-xs-4
-                  = social_share_button_tag(object.title, :allow_sites => %w(facebook))
 .container.noticias
   .row
     .col-xs-12
@@ -57,6 +81,9 @@
           - if role
             - like_path = url_for([:like, role, object])
             - dislike_path = url_for([:dislike, role, object])
+          - else
+            - like_path = nil
+            - dislike_path = nil
           - cover = object.cover.url
           - cover ||= image_path("default/movie/image.png")
 
@@ -69,8 +96,22 @@
                   = object.title
                 .wine{ style: 'height: 20px;' }
                   = object.spoiler_str
-                .desc{ data: { tipsy: '' }, style: 'height: 79px; overflow: hidden; font-size: 14px;', title: "#{object.content_str}"}
+                .desc{ style: 'height: 113px; overflow: hidden; font-size: 13px;' }
                   = object.content.html_safe
+
+                  - unless object.video.blank?
+                    %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
+                      \.
+                      Assista ao vídeo
+                  - if broadcast.broadcast_images.any?
+                    %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
+                      \.
+                      Veja a galeria
+                  - unless object.more.blank?
+                    %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
+                      \.
+                      Informações completas aqui
+
                 .row{ style: 'font-size: 12px;' }
                   .col-xs-6
                     .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
@@ -79,15 +120,19 @@
                   .col-xs-6
                     %span.bold.wine{ style: 'float: right' }
                       = object.date_str
-                - if role
-                  .row
-                    .col-xs-4
-                      .row
-                        .broadcast-reaction
-                          = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
-                    .col-xs-4
-
-                    .col-xs-4
-                      = social_share_button_tag(object.title, :allow_sites => %w(facebook))
+                .row
+                  .col-xs-4
+                    .row{ style: 'height: 25px;' }
+                      .broadcast-reaction
+                        = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                  .col-xs-4
+                    = social_share_button_tag(object.title, :allow_sites => %w(facebook))
+                  .col-xs-4
+                    %button.btn.btn-login{:type => "submit"}
+                      Debater
+                      %span.icon.icon-button
 
   = render 'shared/pagination', resources: broadcasts
+
+#broadcastModal.modal.fade{:role => "dialog"}
+  .modal-dialog

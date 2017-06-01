@@ -21,11 +21,11 @@
         = t('remaining_chars', chars: 450)
 
   .row
-    .col-xs-6{ data: { limited: '', limit: 30 } }
-      = f.input :more, input_html: { rows: 5 }, maxlength: 30
+    .col-xs-4{ data: { limited: '', limit: 30 } }
+      = f.input :source, input_html: { rows: 5 }, maxlength: 30
       %span.char-counter
         = t('remaining_chars', chars: 30)
-    .col-xs-6
+    .col-xs-4
       = f.input :broadcast_date, as: :string, input_html: { value: (localize(f.object.broadcast_date) if f.object.broadcast_date), class: 'datepicker' }
 
   .row
@@ -46,7 +46,21 @@
 
   .row
     .col-xs-4
+      = checkbox_item(f, :movie_content)
+    .col-xs-4
+      = checkbox_item(f, :serie_content)
+    .col-xs-4
+      = checkbox_item(f, :celebrity_content)
+
+  .row
+    .col-xs-4
       = f.input :video
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 100 } }
+      = f.input :more, input_html: { rows: 1 }, maxlength: 100
+      %span.char-counter
+        = t('remaining_chars', chars: 100)
 
   .row
     .col-xs-6

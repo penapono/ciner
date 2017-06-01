@@ -1,0 +1,42 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+/ Modal content
+.modal-content
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h4.modal-title
+      = broadcast.title
+      \-
+      = "Vídeo" if params[:view] == "video"
+      = "Galeria" if params[:view] == "gallery"
+      = "Mais informações" if params[:view] == "info"
+  .modal-body
+    - if params[:view] == "video"
+      - if broadcast.video && !broadcast.video.to_s.blank?
+        .row
+          .col-xs-12
+            %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: broadcast.video.to_s, width: "100%"}
+      - else
+        Não há vídeos disponíveis para essa notícia
+    - elsif params[:view] == "gallery"
+      - if broadcast.broadcast_images.any?
+        .row
+          - broadcast.broadcast_images.each do |bi|
+            .col-xs-4
+              = link_to bi.media.url, target: '_blank' do
+                %img.img-responsive{ src: bi.media, style: "width: 240px; height: 160px;" }
+      - else
+        Não há fotos na galeria desta notícia
+    - else
+      = broadcast.more
+
+  .modal-footer.user-collection-actions
+    %ul{ style: 'padding: 0px' }
+      %li
+        %button.btn.btn-default{style: 'float: right;', "data-dismiss" => "modal", :type => "button"}
+          Fechar
+
+
+

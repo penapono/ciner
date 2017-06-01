@@ -103,9 +103,13 @@ class Broadcast < ActiveRecord::Base
 
   # Filter
 
-  def self.by_broadcastable_type(broadcastable_type)
-    broadcast_ids = BroadcastBroadcastable.where(broadcastable_type: broadcastable_type).pluck(:broadcast_id)
-    where(id: broadcast_ids)
+  def self.by_broadcast_content_type(broadcast_content_type)
+    return where(movie_content: true) if broadcast_content_type == "movie"
+
+    return where(serie_content: true) if broadcast_content_type == "serie"
+
+    return where(celebrity_content: true) if broadcast_content_type == "celebrities"
+    all
   end
 
   def self.by_date(date)
@@ -116,7 +120,7 @@ class Broadcast < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    result = result.by_broadcastable_type(params[:broadcastable_type]) unless params[:broadcastable_type].blank?
+    result = result.by_broadcast_content_type(params[:broadcast_content_type]) unless params[:broadcast_content_type].blank?
     result = result.by_date(params[:date]) unless params[:date].blank?
 
     result
