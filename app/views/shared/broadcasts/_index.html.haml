@@ -53,7 +53,7 @@
                 .pull-left{ style: 'padding-left: 0px;'}
                   .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
                     Fonte:
-                    = object.more
+                    = object.source
                 .pull-right
                   %span.bold.wine{ style: 'float: right; font-size: 12px;' }
                     = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
@@ -116,7 +116,7 @@
                   .col-xs-6
                     .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
                       Fonte:
-                      = object.more
+                      = object.source
                   .col-xs-6
                     %span.bold.wine{ style: 'float: right' }
                       = object.date_str
