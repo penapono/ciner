@@ -19,6 +19,12 @@ class Event < ActiveRecord::Base
 
   # Associations
   has_many :comments, as: :commentable
+  has_many :event_images, dependent: :destroy
+
+  # Nested
+  accepts_nested_attributes_for :event_images,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
   # Filter
 

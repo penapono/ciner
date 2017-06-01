@@ -55,4 +55,8 @@
       .col-xs-4
         = checkbox_item(f, :featured)
 
+  .row
+    .col-xs-6
+      = render 'admin/events/event_images/nested', f: f
+
   = render 'shared/form_actions', f: f

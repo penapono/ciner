@@ -1,0 +1,7 @@
+.nested-fields
+  .row
+    .col-xs-10.formatted-error-field
+      = f.input :media
+
+    .col-xs-2
+      = link_to_remove_association '', f, class: 'fa fa-trash-o delete-icon', title: t('remove'), data: { confirm: t('confirm_destroy') }

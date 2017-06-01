@@ -10,6 +10,12 @@ module Admin
       title subtitle description event_date end_date
       start_time end_time featured
       place more cover
+      event_images_attributes: %i[
+        media
+        event_id
+        id
+        _destroy
+      ]
     ].freeze
 
     # exposes
