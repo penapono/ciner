@@ -9,4 +9,6 @@ class BroadcastImage < ActiveRecord::Base
   # Validations
   validates :media,
             presence: true
+
+  validates :media, file_size: { less_than: 2.gigabytes }
 end
