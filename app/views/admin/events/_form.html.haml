@@ -6,8 +6,10 @@
     = t('.general')
 
   .row
-    .col-xs-12
-      = f.input :place
+    .col-xs-12{ data: { limited: '', limit: 40 } }
+      = f.input :place, input_html: { rows: 1 }, maxlength: 40
+      %span.char-counter
+        = t('remaining_chars', chars: 40)
 
   .row
     .col-xs-12{ data: { limited: '', limit: 40 } }
