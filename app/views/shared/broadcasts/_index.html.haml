@@ -38,7 +38,7 @@
                         %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
                           \.
                           Assista ao vídeo
-                      - if broadcast.broadcast_images.any?
+                      - if object.broadcast_images.any?
                         %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
                           \.
                           Veja a galeria
@@ -103,7 +103,7 @@
                     %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
                       \.
                       Assista ao vídeo
-                  - if broadcast.broadcast_images.any?
+                  - if object.broadcast_images.any?
                     %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
                       \.
                       Veja a galeria

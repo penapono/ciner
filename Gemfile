@@ -20,6 +20,7 @@ gem 'rmagick'
 gem 'jquery_mask_rails'
 
 gem 'social-share-button'
+gem 'file_validators'
 
 gem 'nokogiri'
 gem 'httparty'
