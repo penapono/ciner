@@ -3,22 +3,4 @@
 
 = render 'shared/breadcrumbs'
 
-.container.content
-  .row
-    .col-xs-12
-      .title-separator
-        .media
-          .media-left.media-middle
-            .icon-title
-              %img.img-responsive{ src: image_path("icons/ico_events.png"), style: 'width: 30px; height: 30px;' }
-          .media-body.media-bottom
-            .media-heading.title-section
-              Agenda Ciner
-
-  = render 'shared/events/toolbar', path: events_path
-
-  - events.each do |event|
-    = render 'shared/events/event', event: event, path: event_path(event)
-
-#contentModal.modal.fade{:role => "dialog"}
-  .modal-dialog
+= render 'shared/events/index'

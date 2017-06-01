@@ -2,5 +2,46 @@
 
 .toolbar
   .row.searchbar
-    .col-xs-12
-      = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
+    .col-xs-2
+      .media-left.media-middle
+        .icon-title
+          %img.img-responsive{ src: image_path("icons/ico_events.png"), style: 'width: 30px; height: 30px;' }
+      .media-body.media-bottom
+        .media-heading.title-section
+          Agenda Ciner
+    .col-xs-10
+      .row
+        .col-xs-4
+          - content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
+
+          - form_url ||= root_path
+          - filter_params = params.fetch(:filter, nil)
+          - filter_params ||= []
+          - placeholder ||= t('search')
+
+          = simple_form_for :searches, url: form_url, method: :get, class: 'navbar-form', role: :search do |f|
+            = text_field_tag :search, params[:search], placeholder: 'Busce eventos aqui'
+            .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
+            = hidden_field_tag :tool, params[:tool] if params[:tool].present?
+
+            = fields_for :filter do |ff|
+              - filter_params.each do |param|
+                = ff.hidden_field param[0], value: param[1] if param[1].present?
+
+        .col-xs-8
+          - content_for :javascript, javascript_include_tag('components/filters')
+          - content_for :stylesheet, stylesheet_link_tag('components/filters')
+
+          = hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
+
+          #filters.row.filters{ data: { dynamic_filter: '' } }
+            = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
+              = hidden_field_tag :search, params[:search]
+
+              .col-xs-6
+                = f.input :broadcast_content_type, label: false, collection: [["Filmes", "movie"], ["Séries", "serie"], ["Celebridades", "celebrities"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Busque por estado', selected: params.fetch(:filter, {}).fetch(:broadcast_content_type, '')
+
+              .col-xs-6
+                = f.input :date, as: :string, label: false, input_html: { class: 'datepicker', value: params.fetch(:filter, {}).fetch(:date, ''), placeholder: 'Busque por data do evento' }
+
+
