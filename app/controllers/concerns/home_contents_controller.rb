@@ -8,7 +8,7 @@ module HomeContentsController
     expose(:events) { Event.all_next.first(4) }
     expose(:critics) { Critic.home }
     expose(:questions) { Question.top_questions }
-    expose(:broadcasts) { Broadcast.top_broadcasts.last(7) }
+    expose(:broadcasts) { Broadcast.top_broadcasts.last(4) }
 
     expose(:playing_movies) { Movie.current_playing }
     expose(:featured_movies) { Movie.most_viewed.first(5) }
