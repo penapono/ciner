@@ -6,44 +6,33 @@
 - cover = object.cover.url
 - cover ||= image_path("default/movie/image.png")
 
-.noticia-item
+.noticia-item{ style: 'padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #CCCCCC;' }
   .row
     .col-xs-3{ id: object.id }
       %img.img-responsive{ src: cover, style: 'height: 171px; width: 261px;' }
     .col-xs-9
       .wine{ style: 'height: 20px;' }
+        - if object.state
+          = object.state.name
+          \-
         = object.place
-      - if event.status_str.blank?
-        .highlight{ style: 'width: 100%; height: 20px;' }
-          - datetime_str = event.datetime_str
-          - unless datetime_str.blank?
-            .info{ style: 'font-size: 12px; margin-bottom: 15px;'}
-              = datetime_str
-      - else
-        .highlight{ style: 'width: 100%;' }
-          - status = event.status_str
-          - datetime_str = event.datetime_str
-          - unless status.blank?
-            .button
-              = status
+        %span{ style: 'font-size: 12px; color: #ccc' }
+          = event.datetime_str
 
-          - unless datetime_str.blank?
-            .info{ style: 'font-size: 12px; margin-bottom: 15px;'}
-              = datetime_str
+      - unless event.status_str.blank?
+        .highlight{ style: 'width: 100%;' }
+          - unless event.status_str.blank?
+            .button
+              = event.status_str
       %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 10px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
         = object.title
-      .desc{ style: 'height: 77px; font-size: 13px; overflow: hidden' }
+      .desc{ style: 'max-height: 77px; font-size: 13px; overflow: hidden' }
         = object.description.html_safe
-
-
-        = object.video
 
         - unless object.video.blank?
           %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
             \.
             Assista ao vídeo
-
-        = object.event_images.count
 
         - if object.event_images.any?
           %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
@@ -55,5 +44,5 @@
             \.
             Informações completas aqui
 
-      .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+      .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small", style: 'margin-top: 20px;'}
         %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar

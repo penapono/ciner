@@ -20,7 +20,7 @@
           - placeholder ||= t('search')
 
           = simple_form_for :searches, url: form_url, method: :get, class: 'navbar-form', role: :search do |f|
-            = text_field_tag :search, params[:search], placeholder: 'Busce eventos aqui'
+            = text_field_tag :search, params[:search], placeholder: 'Busque eventos aqui'
             .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
             = hidden_field_tag :tool, params[:tool] if params[:tool].present?
 
