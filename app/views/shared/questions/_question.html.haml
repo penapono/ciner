@@ -33,7 +33,7 @@
           = object.user_name.split(' ').first
         em
         = object.date_str
-  - if question.user == current_user || current_user.admin?
+  - if current_user && (question.user == current_user || current_user.admin?)
     .col-xs-1
       = link_to edit_platform_question_path(question) do
         %i.fa.fa-pencil
