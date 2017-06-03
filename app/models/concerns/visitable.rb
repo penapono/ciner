@@ -11,6 +11,11 @@ module Visitable
       visits
     end
 
+    def visits_count
+      id = self.id
+      Visit.resource_count(current_model, id)
+    end
+
     def current_model
       self.class.to_s.pluralize.downcase
     end

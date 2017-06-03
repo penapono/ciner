@@ -99,7 +99,6 @@ class Question < ActiveRecord::Base
 
     result = collection
     result = result.by_area(params[:area]) if params[:area].present?
-    result = result.by_like_count(params[:like_count]) if params[:like_count].present?
     result = result.by_time(params[:time]) if params[:time].present?
 
     result
@@ -115,20 +114,24 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def self.by_like_count(like_count)
-    if like_count == "more_like"
-      order(likes_count: :desc)
-    elsif like_count = "more_comment"
-      order(comments_count: :desc)
-    end
+  def self.by_time(time)
+    return order(comments_count: :desc) if time == "more_comment"
+    return order(likes_count: :desc) if time == "more_like"
+    return most_viewed if time == "more_views"
+    return order(created_at: :desc) if time == "recent"
+    return order(created_at: :asc) if time == "oldest"
   end
 
-  def self.by_time(time)
-    if time == "recent"
-      order(updated_at: :desc)
-    elsif time == "oldest"
-      order(updated_at: :asc)
+  def self.most_viewed
+    result = Hash.new(0)
+
+    Question.all.each do |object|
+      result[object.id] = object.visits_count
     end
+
+    result = result.sort_by { |_k, v| v }.to_h
+
+    where(id: result.keys)
   end
 
   def self.localized_statuses

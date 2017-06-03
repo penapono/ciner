@@ -1,12 +1,48 @@
-- questionable_type = params.fetch(:filter, {}).fetch(:questionable_type, '')
-- role = '' unless current_user
-- role ||= current_user.admin? ? "admin/" : "platform/"
-
 = render 'shared/toolbar'
 
 .toolbar
   .row.searchbar
-    .col-xs-12
-      = render 'shared/searchbar', form_url: request.url, filter_params: params.fetch(:filter, nil)
+    .col-xs-2
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#debate"}
+      .media-body.media-bottom
+        .media-heading.title-section
+          = t('shared.questions.index.title')
+    .col-xs-9
+      .row
+        .col-xs-4
+          - content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
 
-  = render "shared/questions/filters"
+          - form_url ||= root_path
+          - filter_params ||= []
+          - placeholder ||= t('search')
+
+          = simple_form_for :searches, url: form_url, method: :get, class: 'navbar-form', role: :search do |f|
+            = text_field_tag :search, params[:search], placeholder: placeholder
+            .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
+            = hidden_field_tag :tool, params[:tool] if params[:tool].present?
+
+            = fields_for :filter do |ff|
+              - filter_params.each do |param|
+                = ff.hidden_field param[0], value: param[1] if param[1].present?
+
+        .col-xs-8
+          - content_for :javascript, javascript_include_tag('components/filters')
+          - content_for :stylesheet, stylesheet_link_tag('components/filters')
+
+          = hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
+
+          #filters.row.filters{ data: { dynamic_filter: '' } }
+            = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
+              = hidden_field_tag :search, params[:search]
+
+              .col-xs-6
+                = f.input :area, label: false, collection: [["Filmes", :movies], ["Séries", :series], ["Geral", :general]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:area, '')
+              .col-xs-6
+                = f.input :time, label: false, collection: [["Mais comentados", :more_comment], ["Mais curtidos", :more_like], ["Mais visualizados", :more_views], ["Tópico mais recente", :recent], ["Tópico mais antigo", :oldest]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:time, '')
+
+    .col-xs-1
+      = link_to new_platform_question_path, class: 'pull-right' do
+        %i.fa.fa-plus
+          = t('new')

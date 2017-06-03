@@ -1,0 +1,24 @@
+= render 'shared/questions/toolbar', path: platform_questions_path
+
+.container.debates
+  .row.cabecalho
+    .col-xs-2.col-sm-1
+      %h4.wine
+        = t('shared.questions.header.area')
+    .col-xs-8.col-sm-5
+      %h4.wine
+        = t('shared.questions.header.topic')
+    .col-sm-2.hidden-xs
+      %h4.wine
+        = t('shared.questions.header.comments')
+    .col-sm-2.hidden-xs
+      %h4.wine
+        = t('shared.questions.header.activity')
+
+  - if questions.any?
+    - questions.each do |question|
+      = render question
+
+    = render 'shared/pagination', resources: questions
+  - else
+    = render 'shared/alerts/info', message: (t('empty', klass: Question.model_name.human(count: 2)))

@@ -57,7 +57,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.most_viewed
-    ids = Visit.where(action: 'show').where("controller like ?", "%movies%").pluck(:resource_id)
+    ids = Visit.where(action: 'show').where("controller like ?", "%questions%").pluck(:resource_id)
 
     result = Hash.new(0)
 

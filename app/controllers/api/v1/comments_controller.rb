@@ -21,6 +21,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def create
+    comment.commentable.touch
     render_json_object_result(comment.save)
   end
 
