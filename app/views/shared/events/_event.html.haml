@@ -28,17 +28,17 @@
         = object.description.html_safe
 
         - unless object.video.blank?
-          \/
+          \|
           %span.more.wine.bold{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
             Assista ao vídeo
 
         - if object.event_images.any?
-          \/
+          \|
           %span.more.wine.bold{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
             Veja a galeria
 
         - unless object.more.blank?
-          \/
+          \|
           %span.more.wine.bold{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
             Informações completas aqui
 
