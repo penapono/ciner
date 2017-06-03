@@ -63,7 +63,7 @@ module Tmdb
     def api_transform
       object = self
 
-      unless object.lock_updates?
+      unless object.lock_updates? && !Rails.env.development?
 
         tmdb_result = start_tmdb(object)
 
