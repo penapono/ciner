@@ -10,8 +10,8 @@ pt-BR:
         title: Título do Tópico
         content: Texto de Debate
         broadcast: Notícia
-        questionable: Filme / Série / Celebridade
-        questionable_id: Filme / Série / Celebridade
+        questionable: Tema
+        questionable_id: Tema
         questionable_type: Referente à
         updated_at: Data de Publicação
         user: Autor
