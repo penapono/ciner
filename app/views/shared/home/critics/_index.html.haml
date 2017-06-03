@@ -13,4 +13,5 @@
           = t('see_more')
   .reviews
     - critics.each do |critic|
-      = render 'shared/home/critics/item', critic: critic, role: role
+      - if critic
+        = render 'shared/home/critics/item', critic: critic, role: role
