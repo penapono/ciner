@@ -16,7 +16,7 @@
           = object.state.name
           \-
         = object.place
-        %span{ style: 'font-size: 12px; color: #ccc' }
+        %span{ style: 'margin-left: 15px; font-size: 12px; color: #ccc' }
           = event.datetime_str
       %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 10px; height: 37px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
         - unless event.status_str.blank?
@@ -28,21 +28,21 @@
         = object.description.html_safe
 
         - unless object.video.blank?
-          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
-            \.
+          \/
+          %span.more.wine.bold{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
             Assista ao vídeo
 
         - if object.event_images.any?
-          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
-            \.
+          \/
+          %span.more.wine.bold{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
             Veja a galeria
 
         - unless object.more.blank?
-          %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
-            \.
+          \/
+          %span.more.wine.bold{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
             Informações completas aqui
 
-      .row
+      .row{ style: 'margin-top: 10px' }
         .col-xs-12
           .fb-share-button{ "data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small" }
             %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
