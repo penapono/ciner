@@ -19,7 +19,7 @@
     %span= question.visits_count_str
     visualizações
 
-  .col-xs-4.col-sm-2.hidden-xs.last-comment
+  .col-xs-4.col-sm-3.hidden-xs.last-comment
     - if question.last_comment
       - object = question.last_comment
       = link_to url_for([role, object.user]) do
@@ -33,10 +33,9 @@
           = object.user_name.split(' ').first
         em
         = object.date_str
-  - if question.user == current_user
+  - if question.user == current_user || current_user.admin?
     .col-xs-1
       = link_to edit_platform_question_path(question) do
         %i.fa.fa-pencil
-    .col-xs-1
       = link_to platform_question_path(question), method: 'delete' do
         %i.fa.fa-trash

@@ -32,6 +32,9 @@ class Broadcast < ActiveRecord::Base
                                 allow_destroy: true,
                                 reject_if: :all_blank
 
+  # Aliases
+  alias_attribute :title_str, :title
+
   # Scopes
 
   def self.more_commented

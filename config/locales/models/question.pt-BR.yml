@@ -9,8 +9,9 @@ pt-BR:
       question:
         title: Título do Tópico
         content: Texto de Debate
-        questionable: Filme / Série / Profissional
-        questionable_id: Filme / Série / Profissional
+        broadcast: Notícia
+        questionable: Filme / Série / Celebridade
+        questionable_id: Filme / Série / Celebridade
         questionable_type: Referente à
         updated_at: Data de Publicação
         user: Autor
@@ -22,7 +23,7 @@ pt-BR:
       question/questionable_type:
         movie: Filme
         serie: Série
-        professional: Geral
+        professional: Celebridade
       question/status:
         pending: Aguardando Aprovação
         approved: Aprovado
