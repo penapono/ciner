@@ -8,9 +8,9 @@
     = hidden_field_tag :search, params[:search]
     .row
       .col-xs-4
-        = f.input :area, label: false, collection: [["Filmes", :movies], ["Séries", :series], ["Geral", :general]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tópico', selected: params.fetch(:filter, {}).fetch(:area, '')
+        = f.input :area, label: false, collection: [["Filmes", :movies], ["Séries", :series], ["Geral", :general]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:area, '')
       .col-xs-4
-        = f.input :like_count, label: false, collection: [["Mais curtidas", :more_like], ["Mais comentadas", :more_comment]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Classificar por', selected: params.fetch(:filter, {}).fetch(:like_count, '')
+        = f.input :like_count, label: false, collection: [["Mais curtidos", :more_like], ["Mais visualizados", :more_visited], ["Mais comentados", :more_comment]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:like_count, '')
       .col-xs-4
         = f.input :time, label: false, collection: [["Mais recente", :recent], ["Mais antigas", :oldest]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Data de publicação', selected: params.fetch(:filter, {}).fetch(:time, '')
 

@@ -12,10 +12,6 @@
   %h3
     = t('.general')
 
-  .row
-    .col-xs-12
-      = f.input :title
-
   .row{ data: { questionable: '' } }
     .col-xs-6{ data: { questionable_select: '' } }
       = f.input :questionable_type, collection: Question.localized_questionable_types, selected: questionable_type, include_blank: t('.select_questionable')
@@ -29,24 +25,18 @@
 
   .row
     .col-xs-12
+      = f.input :title
+
+  .row
+    .col-xs-12
       = f.input :content, as: :ckeditor, input_html: { rows: 5 }
 
   .row
     .col-xs-4
       = checkbox_item(f, :spoiler)
-    - if current_user.admin?
-      .col-xs-4
-        = checkbox_item(f, :featured)
 
-  - if current_user.admin?
-    .row
-      .col-xs-6
-        = f.input :user_id, collection: users, input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
-      .col-xs-6
-        = f.input :status, collection: Question.localized_detailed_statuses, include_blank: t('.select_status')
-    = f.hidden_field :origin, value: origin
-  - else
-    = f.hidden_field :user_id, value: current_user.id
-    = f.hidden_field :status, value: :approved
+  = f.hidden_field :origin, value: origin
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :status, value: :approved
 
   = render 'shared/form_actions', f: f
