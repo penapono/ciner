@@ -26,17 +26,19 @@ class User < ActiveRecord::Base
             :name,
             :birthday,
             :cpf,
-            :cep,
-            :address,
-            :number,
-            :neighbourhood,
-            :state_id,
-            :city_id,
             :gender,
             :role,
             :nickname,
             :terms_of_use,
             presence: true
+
+  validates :cep,
+            :address,
+            :number,
+            :neighbourhood,
+            :state_id,
+            :city_id,
+            presence: true, unless: :free?
 
   validates_uniqueness_of :nickname, :email, :cpf
 

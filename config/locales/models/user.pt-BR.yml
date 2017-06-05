@@ -32,6 +32,7 @@ pt-BR:
         avatar: Foto de Perfil
         registered_at: Ciner desde
         required: Obrigatório
+        terms: Termos
       user/role:
         admin: Administrador
         free: Ciner

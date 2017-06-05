@@ -24,6 +24,8 @@
         = User.human_attribute_name(:role)
       %th
         = User.human_attribute_name(:registered_at)
+      %th
+        = User.human_attribute_name(:terms)
 
       / Actions
       %th{ colspan: 2 }
@@ -45,6 +47,8 @@
           = user.role_str
         %td
           = user.registered_at_str
+        %td
+          = user.terms_of_use? ? 'Aceito' : 'Não aceito'
 
         / Actions
         %td
