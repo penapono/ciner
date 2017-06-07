@@ -14,6 +14,7 @@ class CinerVideo < ActiveRecord::Base
   # Uploaders
   mount_uploader :trailer, CinerVideoTrailerUploader
   mount_uploader :media, CinerVideoMediaUploader
+  mount_uploader :cover, CinerVideoCoverUploader
 
   # Validations
   validates :original_title,

@@ -1,0 +1,69 @@
+%h3
+  = t('.general')
+
+.row
+  .col-xs-6
+    = f.input :ciner_video_genre
+.row
+  .col-xs-6
+    = f.input :ciner_video_rated
+.row
+  .col-xs-6
+    = f.input :length
+
+.row
+  .col-xs-6
+    .row
+      .col-xs-12
+        = f.input :original_title, required: true, autofocus: true
+    .row
+      .col-xs-12
+        = f.input :title, required: true, autofocus: true
+    .row
+      .col-xs-3
+        = f.input :year
+      .col-xs-9
+        = f.input :countries
+
+  .col-xs-6
+    .row
+      .col-xs-12
+        = f.input :cover
+
+.row
+  .col-xs-12{ data: { limited: '', limit: 1000 } }
+    = f.input :synopsis, input_html: { rows: 5 }, maxlength: 1000
+    %span.char-counter
+      = t('remaining_chars', chars: 1000)
+
+.row
+  .col-xs-12
+    = f.input :ciner_video_directors
+
+.row
+  .col-xs-12
+    = f.input :ciner_video_writers
+
+.row
+  .col-xs-12
+    = f.input :ciner_video_actors
+
+.row
+  .col-xs-3
+    = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
+  / .col-xs-3
+  /   = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
+
+.row
+  .col-xs-4
+    = checkbox_item(f, :playing)
+
+.row
+  .col-xs-12
+    = f.input :trailer
+
+.row
+  .col-xs-12
+    = f.input :media
+
+= render 'shared/form_actions', f: f

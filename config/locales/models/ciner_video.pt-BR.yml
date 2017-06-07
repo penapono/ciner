@@ -2,8 +2,8 @@ pt-BR:
   activerecord:
     models:
       ciner_video:
-        one: Filme
-        other: Filmes
+        one: Ciner Vídeo
+        other: Ciner Vídeos
 
     attributes:
       ciner_video:
@@ -12,7 +12,7 @@ pt-BR:
         year: Ano
         length: Duração em minutos
         synopsis: Sinopse
-        release: Lançamento Mundial
+        release: Lançamento
         brazilian_release: Lançamento Nacional
         country_id: País
         age_range_id: Classificação Indicativa
@@ -30,24 +30,23 @@ pt-BR:
         cover: Capa
 
         trailer: Trailer
+        media: Vídeo
 
         studio: Estúdio
 
-        omdb_genre: Gênero
+        ciner_video_genre: Gênero
 
-        omdb_rated: Classificação Indicativa
+        ciner_video_rated: Classificação Indicativa
 
-        omdb_directors: Diretor(es)
+        ciner_video_directors: Diretor(es)
 
-        omdb_writers: Roteiro
+        ciner_video_writers: Roteiro
 
-        omdb_actors: Elenco
+        ciner_video_actors: Elenco
 
-        omdb_trailer: Trailer
+        ciner_video_trailer: Trailer
 
         playing: Em cartaz
-
-        lock_updates: Bloquear atualização automática
 
         countries: País(es) de Origem
     errors:

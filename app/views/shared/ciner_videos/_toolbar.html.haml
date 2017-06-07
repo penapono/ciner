@@ -1,0 +1,49 @@
+= render 'shared/toolbar'
+
+.toolbar
+  .row.searchbar
+    .col-xs-2
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#video"}
+      .media-body.media-bottom
+        .media-heading.title-section
+          = CinerVideo.model_name.human(count: 2)
+    .col-xs-9
+      .row
+        .col-xs-4
+          - content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
+
+          - form_url ||= root_path
+          - filter_params ||= []
+          - placeholder ||= t('search')
+
+          = simple_form_for :searches, url: form_url, method: :get, class: 'navbar-form', role: :search do |f|
+            = text_field_tag :search, params[:search], placeholder: placeholder
+            .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();" }
+            = hidden_field_tag :tool, params[:tool] if params[:tool].present?
+
+            = fields_for :filter do |ff|
+              - filter_params.each do |param|
+                = ff.hidden_field param[0], value: param[1] if param[1].present?
+
+        .col-xs-8
+          - content_for :javascript, javascript_include_tag('components/filters')
+          - content_for :stylesheet, stylesheet_link_tag('components/filters')
+
+          = hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
+
+          #filters.row.filters{ data: { dynamic_filter: '' } }
+            = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
+              = hidden_field_tag :search, params[:search]
+
+              .col-xs-6
+                = f.input :filter_by, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:filter_by, '')
+              .col-xs-6
+                = f.input :organize, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:organize, '')
+
+    .col-xs-1
+      - if current_user
+        = link_to url_for([:new, role, :ciner_video]), class: 'pull-right' do
+          %i.fa.fa-plus
+            = t('new')
