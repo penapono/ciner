@@ -36,7 +36,8 @@
       .row
         .col-xs-12.col-sm-2
           .usuario-avatar
-            %img.img-responsive{:src => "http://placehold.it/120x170"}/
+            - user_avatar ||= image_path("default/user/image.png")
+            %img.img-responsive{:src => user_avatar, style: 'height: 120px; width: 170px'}/
           Chris Evans
           %br/
           Seguir
@@ -73,7 +74,8 @@
       .row
         .col-xs-12.col-sm-2
           .usuario-avatar
-            %img.img-responsive{:src => "http://placehold.it/120x170"}/
+            - user_avatar ||= image_path("default/user/image.png")
+            %img.img-responsive{:src => user_avatar, style: 'height: 120px; width: 170px'}/
           Chris Evans
           %br/
           Seguir

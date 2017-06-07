@@ -57,8 +57,9 @@
           .row
             .col-xs-12
               .title
-                .synopsis{ style: "" }
-                  = object.synopsis
+                = object.synopsis
+
+                %br
                 %br
 
                 = CinerVideo.human_attribute_name(:directors_str)
