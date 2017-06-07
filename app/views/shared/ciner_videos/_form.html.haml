@@ -66,4 +66,7 @@
   .col-xs-12
     = f.input :media
 
+- if current_user
+  = f.hidden_field :user_id, value: current_user.id
+
 = render 'shared/form_actions', f: f

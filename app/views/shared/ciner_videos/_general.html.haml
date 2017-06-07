@@ -1,0 +1,91 @@
+- role = role
+- object = ciner_video
+- cover = object.cover
+- cover ||= image_path("default/ciner_video/image.png")
+
+.internal-section-detail-filmable
+  .filmable
+    .container
+      .row
+        .col-xs-12.col-sm-12.col-md-3.col-lg-3
+          %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
+        .col-xs-12.col-sm-12.col-md-9.col-lg-9
+          .row
+            .col-xs-12.col-sm-8.col-md-8.col-lg-8
+              Gênero
+              %a.wine.bold
+                = object.ciner_video_genre
+              %br
+
+              = CinerVideo.human_attribute_name(:age_range_id)
+              %span.wine.bold
+                = object.ciner_video_rated
+
+              \|
+
+              Duração
+              %span.wine.bold
+                = object.length_str
+
+              %br
+              %br
+
+              .title
+                %h3.bold.wine
+                  = object.title_str
+                %h4.light.cinza
+                  = "#{object.original_title_str} (#{object.year})"
+
+              %br
+
+            .col-xs-12.col-sm-4.col-md-4.col-lg-4
+              .row
+                .col-xs-6
+                  .nota
+                    = CinerVideo.human_attribute_name(:users_rating)
+                    %span.valor
+                      = object.users_rating
+                    = t('votes', count: object.users_rating_count)
+
+                - if object.ciner_official_critic
+                  .col-xs-6
+                    .nota.ciner-rating
+                      = CinerVideo.human_attribute_name(:ciner_rating)
+                      %span.valor
+                        = object.ciner_official_critic.rating
+                      = object.ciner_official_critic.user_name
+          .row
+            .col-xs-12
+              .title
+                .synopsis{ style: "" }
+                  = object.synopsis
+                %br
+
+                = CinerVideo.human_attribute_name(:directors_str)
+                %a.bold.wine
+                  = object.ciner_video_directors
+                %br
+
+                Roteiro
+                %a.bold.wine
+                  = object.ciner_video_writers
+                %br
+
+                = CinerVideo.human_attribute_name(:cast_str)
+                %a.bold.wine
+                  = object.ciner_video_actors
+                %a.bold.preto{:href => "#ficha-tecnica"}
+                  = t('more')
+                %br
+
+                %br
+                País(es) de Produção
+                %a.bold.wine
+                  = object.countries_str
+                %br
+
+                Lançamento
+                %span.wine.bold
+                  = object.release_str
+
+          / = render 'shared/ciner_videos/user_actions', object: object, role: role

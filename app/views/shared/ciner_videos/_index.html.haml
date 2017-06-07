@@ -12,20 +12,30 @@
 .container.content
   .row
     - if ciner_videos.any?
-      - 12.times do
+      - ciner_videos.each do |ciner_video|
+        - cover = ciner_video.cover
         - cover ||= image_path("default/movie/image.png")
         .col-xs-12.col-sm-3.video-item
           %a{"data-target" => "#myModal1", "data-toggle" => "modal"}
             %img.img-responsive{src: cover, style: 'width: 255px; height: 220px;'}/
           .info
             %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
-          %h5.wine.title Título do vídeo
-          %span.nome Nome do usuário
-          %span.genero Gênero
-          |
-          %span.tempo 1m30s
+          %h5.wine.title
+            = link_to url_for([role, ciner_video]) do
+              = ciner_video.title_str
+          %span.nome
+            = ciner_video.user.nickname
+          %span.genero
+            Gênero
+          = ciner_video.ciner_video_genre
+          %span{ style: 'margin-right: 10px; margin-left: 10px;'}
+            |
+          %span.tempo
+            = ciner_video.length_str
 
-    = render 'shared/pagination', resources: ciner_videos
+  .row
+    .col-xs-12
+      = render 'shared/pagination', resources: ciner_videos
 / Modal
 #myModal1.modal.fade.videoModal{:role => "dialog"}
   .modal-dialog

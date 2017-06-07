@@ -48,26 +48,29 @@ module Platform
         :synopsis,
         :release,
         :brazilian_release,
+        :city_id,
+        :state_id,
         :country_id,
         :age_range_id,
-
         :cover,
-
-        # CinerVideo
-
-        :studio,
-
-        # Ciner CinerVideo
-
-        :approval,
-        :approver,
-        :owner,
-
-        # Serie
-
-        :season,
-        :number_episodes,
-        :aired_episodes
+        :studio_id,
+        :created_at,
+        :updated_at,
+        :ciner_video_directors,
+        :ciner_video_writers,
+        :ciner_video_actors,
+        :ciner_video_genre,
+        :ciner_video_rated,
+        :ciner_video_id,
+        :ciner_video_trailer,
+        :trailer,
+        :media,
+        :tmdb_id,
+        :playing,
+        :user_id,
+        :lock_updates,
+        :countries,
+        :media
       )
     end
 

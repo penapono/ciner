@@ -1,0 +1,9 @@
+- partial = 'admin/broadcasts/ciner_video_professional_users/fields'
+
+.row{'data-cocoon-container': ''}
+  .col-xs-12
+    %h2.title.pull-right
+      = link_to_add_association '+', f, :ciner_video_professional_users, data: { association_insertion_method: 'before' }, class: 'action-button add', partial: partial
+
+    = f.simple_fields_for :ciner_video_professional_users do |ep|
+      = render partial, f: ep

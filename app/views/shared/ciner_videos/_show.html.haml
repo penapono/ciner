@@ -1,0 +1,27 @@
+/ - current_critics_path ||= platform_critics_path
+/ - current_new_critic_path ||= new_platform_critic_path
+
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+= render 'shared/ciner_videos/general', ciner_video: ciner_video, role: role
+
+.container
+  .row
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#ficha-tecnica"} Trailer
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#criticas"} Críticas
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#comentarios"} Comentários
+    .col-xs-12.col-sm-3
+      %a.btn.btn-block.btn-ancora{:href => "#noticias"} Notícias
+    .col-xs-12.col-sm-8
+      = render 'shared/ciner_videos/info', ciner_video: ciner_video, role: role
+      / = render 'shared/ciner_videos/critics', ciner_video: ciner_video, role: role
+    .col-xs-12.col-sm-4
+      = render 'shared/ciner_videos/statistics', ciner_video: ciner_video
+  .row
+    = render 'shared/ciner_videos/comments', ciner_video: ciner_video
+    = render 'shared/ciner_videos/broadcasts', ciner_video: ciner_video
