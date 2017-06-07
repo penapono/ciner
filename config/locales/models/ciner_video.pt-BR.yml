@@ -1,0 +1,60 @@
+pt-BR:
+  activerecord:
+    models:
+      ciner_video:
+        one: Filme
+        other: Filmes
+
+    attributes:
+      ciner_video:
+        original_title: Título Original
+        title: Título em Português
+        year: Ano
+        length: Duração em minutos
+        synopsis: Sinopse
+        release: Lançamento Mundial
+        brazilian_release: Lançamento Nacional
+        country_id: País
+        age_range_id: Classificação Indicativa
+
+        ciner_rating: Nota Ciner
+        users_rating: Média Geral
+
+        # Filmable
+
+        genders_str: Categoria
+        directors_str: Direção
+        cast_str: Elenco
+        writers_str: Roteiro
+
+        cover: Capa
+
+        trailer: Trailer
+
+        studio: Estúdio
+
+        omdb_genre: Gênero
+
+        omdb_rated: Classificação Indicativa
+
+        omdb_directors: Diretor(es)
+
+        omdb_writers: Roteiro
+
+        omdb_actors: Elenco
+
+        omdb_trailer: Trailer
+
+        playing: Em cartaz
+
+        lock_updates: Bloquear atualização automática
+
+        countries: País(es) de Origem
+    errors:
+      models:
+        ciner_video:
+          attributes:
+            original_title:
+              blank: "%{attribute} deve ser preenchido"
+            title:
+              blank: "%{attribute} deve ser preenchido"

@@ -1,0 +1,182 @@
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#video"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              Ciner Vídeos
+    .col-xs-12
+      %form.form-criticas{:action => "#", :method => "POST"}
+        .form-group.col-xs-12.col-sm-4.col-md-3
+          Organizar por
+          %select#filtrar-por.form-control{:name => "filtrar-por"}
+            %option{:selected => "selected"} Criticas ...
+            %option Criticas ...
+            %option Criticas ...
+        .form-group.col-xs-12.col-sm-4.col-md-3
+          Filtrar por
+          %select#filtrar-por.form-control{:name => "filtrar-por"}
+            %option{:selected => "selected"} Criticas ...
+            %option Criticas ...
+            %option Criticas ...
+        .form-group.col-xs-12.col-sm-2
+           
+          %button.form-control.btn.btn-filter{:type => "submit"}
+            filtrar
+            %svg.icon-botao
+              %use{"xlink:href" => "#ico-botao", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+  .row
+    .col-xs-12.col-sm-3.video-item
+      %a{"data-target" => "#myModal1", "data-toggle" => "modal"}
+        %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %a{"data-target" => "#myModal2", "data-toggle" => "modal"}
+        %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-12.col-sm-3.video-item
+      %img.img-responsive{:src => "http://placehold.it/255x220"}/
+      .info
+        %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
+      %h5.wine.title Título do vídeo
+      %span.nome Nome do usuário
+      %span.genero Gênero
+      |
+      %span.tempo 1m30s
+    .col-xs-offset-4.col-xs-4.margin-top-20
+      .text-center
+        %ul.pagination
+          %li.active
+            %a{:href => "#"} 1
+          %li
+            %a{:href => "#"} 2
+          %li
+            %a{:href => "#"} 3
+          %li
+            %a{:href => "#"} 4
+          %li
+            %a{:href => "#"} 5
+/ Modal
+#myModal1.modal.fade.videoModal{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title.bold.wine Título do vídeo
+      .modal-body
+        .embed-responsive.embed-responsive-16by9{:align => "center"}
+          %video.embed-responsive-item{:controls => "", :preload => "none", :src => "http://techslides.com/demos/sample-videos/small.mp4"}
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+/ Modal
+/ Modal
+#myModal2.modal.fade.videoModal{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title.bold.wine Título do vídeo
+      .modal-body
+        .embed-responsive.embed-responsive-16by9{:align => "center"}
+          %video.embed-responsive-item{:controls => "", :preload => "none", :src => "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"}
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601224743) do
+ActiveRecord::Schema.define(version: 20170607045543) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -55,6 +55,32 @@ ActiveRecord::Schema.define(version: 20170601224743) do
     t.boolean  "serie_content",                   default: false
     t.boolean  "celebrity_content",               default: false
     t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
+  end
+
+  create_table "ciner_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "original_title"
+    t.string   "title"
+    t.integer  "year"
+    t.string   "length"
+    t.text     "synopsis",              limit: 65535
+    t.date     "release"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "age_range_id"
+    t.string   "cover"
+    t.text     "ciner_video_directors", limit: 65535
+    t.text     "ciner_video_writers",   limit: 65535
+    t.text     "ciner_video_actors",    limit: 65535
+    t.text     "ciner_video_genre",     limit: 65535
+    t.text     "ciner_video_rated",     limit: 65535
+    t.string   "trailer"
+    t.string   "media"
+    t.boolean  "playing"
+    t.string   "countries"
+    t.integer  "user_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["user_id"], name: "index_ciner_videos_on_user_id", using: :btree
   end
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

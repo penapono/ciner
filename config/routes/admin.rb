@@ -29,6 +29,14 @@ Rails.application.routes.draw do
     end
     match 'movies/bulk_destroy' => 'movies#bulk_destroy', via: :post
 
+    resources :ciner_videos do
+      member do
+        put "like", to: "ciner_videos#upvote"
+        put "dislike", to: "ciner_videos#downvote"
+        put "user_action", to: "ciner_videos#user_action"
+      end
+    end
+
     resources :series do
       member do
         put "like", to: "series#upvote"

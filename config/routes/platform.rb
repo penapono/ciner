@@ -25,6 +25,14 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :ciner_videos, only: [:index, :show] do
+      member do
+        put "like", to: "ciner_videos#upvote"
+        put "dislike", to: "ciner_videos#downvote"
+        put "user_action", to: "ciner_videos#user_action"
+      end
+    end
+
     resources :series, only: [:index, :show] do
       member do
         put "like", to: "series#upvote"
