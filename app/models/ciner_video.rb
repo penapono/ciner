@@ -10,6 +10,7 @@ class CinerVideo < ActiveRecord::Base
   belongs_to :user
 
   has_many :critics, as: :filmable
+  has_many :ciner_video_users, dependent: :destroy
 
   # Uploaders
   mount_uploader :trailer, CinerVideoTrailerUploader
@@ -20,6 +21,11 @@ class CinerVideo < ActiveRecord::Base
   validates :original_title,
             :year,
             presence: true
+
+  # Nested
+  accepts_nested_attributes_for :ciner_video_users,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
   # Aliases
   alias_attribute :text, :title_str

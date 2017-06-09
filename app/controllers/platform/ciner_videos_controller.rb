@@ -70,7 +70,14 @@ module Platform
         :user_id,
         :lock_updates,
         :countries,
-        :media
+        :media,
+        ciner_video_users_attributes: [
+          :set_function_id,
+          :user_id,
+          :ciner_video_id,
+          :id,
+          :_destroy
+        ]
       )
     end
 

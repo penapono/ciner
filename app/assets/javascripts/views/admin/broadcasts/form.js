@@ -42,7 +42,7 @@ $('form').on('cocoon:after-insert', function(e, insertedItem) {
     var self = $(this),
         value = self.val();
 
-    _changeSelect(value);1
+    _changeSelect(value);
   });
 
   $('[data-filmable]').on("change", "[data-filmable-type] select", function(event) {

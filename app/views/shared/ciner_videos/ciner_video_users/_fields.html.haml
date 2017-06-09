@@ -1,0 +1,12 @@
+.nested-fields
+  .row
+    .col-xs-10.formatted-error-field
+      .row
+        .col-xs-4
+          = f.input :set_function_id, label: false, collection: SetFunction.all, input_html: { include_blank: 'Profissão' }
+        .col-xs-8
+          .div
+            = f.input :user_id, label: false, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_users_path }, include_blank: 'Profissional' }
+
+    .col-xs-2
+      = link_to_remove_association '', f, class: 'fa fa-trash-o delete-icon', title: t('remove'), data: { confirm: t('confirm_destroy') }

@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    attributes:
+      ciner_video_user:
+        set_function_id: Profissão
+        user_id: Profissional
