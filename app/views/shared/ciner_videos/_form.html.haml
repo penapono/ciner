@@ -59,12 +59,20 @@
     = checkbox_item(f, :playing)
 
 .row
-  .col-xs-12
-    = f.input :trailer
+  .col-xs-6
+    %h3.wine
+      Vídeo e Trailer
 
-.row
-  .col-xs-12
-    = f.input :media
+- if f.object.persisted?
+  .row
+    .col-xs-6
+      = f.input :trailer
+
+  .row
+    .col-xs-6
+      = f.input :media
+- else
+  Salve as informações básicas para então realizar o upload dos vídeos
 
 - if current_user
   = f.hidden_field :user_id, value: current_user.id
@@ -78,4 +86,4 @@
   .col-xs-6
     = render 'shared/ciner_videos/ciner_video_users/nested', f: f
 
-= render 'shared/form_actions', f: f
+= render 'shared/ciner_videos/form_actions', f: f

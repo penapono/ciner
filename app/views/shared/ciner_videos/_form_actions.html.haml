@@ -1,0 +1,10 @@
+.row.actions
+  .col-xs-12.col-sm-3.pull-right
+    - if f.object.persisted?
+      = f.button :submit, 'Salvar e fazer upload', data: { disable_with: 'Fazendo upload...' }
+    - else
+      = f.button :submit, 'Salvar informações básicas', data: { disable_with: 'Salvando...' }
+  .col-xs-12.col-sm-3.pull-right
+    = link_to :back do
+      .btn.submit{ input: { type: 'submit' } }
+        = t('cancel')

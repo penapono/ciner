@@ -21,6 +21,14 @@ module Platform
       self.ciner_videos = paginated_ciner_videos
     end
 
+    def create
+      if created?
+        redirect_to edit_platform_ciner_video_path(resource)
+      else
+        render_new_with_error
+      end
+    end
+
     private
 
     def resource
