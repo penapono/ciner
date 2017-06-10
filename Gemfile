@@ -20,6 +20,10 @@ gem 'rmagick'
 gem 'jquery_mask_rails'
 
 gem 'social-share-button'
+
+gem 'streamio-ffmpeg'
+gem 'carrierwave-ffmpeg'
+
 gem 'file_validators'
 
 gem 'nokogiri'

@@ -108,6 +108,9 @@ GEM
       carrierwave (>= 0.10.0)
       ruby-sox (>= 0.0.3)
       soxi-wrapper (>= 0.0.1)
+    carrierwave-ffmpeg (1.0.0)
+      carrierwave
+      streamio-ffmpeg
     carrierwave-video (0.5.6)
       carrierwave
       streamio-ffmpeg
@@ -470,6 +473,7 @@ DEPENDENCIES
   capybara
   carrierwave
   carrierwave-audio
+  carrierwave-ffmpeg
   carrierwave-video
   ci_reporter_rspec
   ckeditor
@@ -529,6 +533,7 @@ DEPENDENCIES
   spring-commands-rspec
   sprockets-es6
   sprockets-rails (= 2.3.3)
+  streamio-ffmpeg
   terminal-notifier-guard
   thin
   timecop
