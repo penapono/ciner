@@ -18,12 +18,12 @@ class CinerVideo < ActiveRecord::Base
   mount_uploader :media, CinerVideoMediaUploader
 
   has_attached_file :trailer
-  validates_attachment :trailer, presence: true,
+  validates_attachment :trailer,
                         content_type: { content_type: ["video/mp4", "video/avi", "video/mov", "video/3gp"] },
                         size: { in: 0..10.gigabytes }
 
   has_attached_file :media
-  validates_attachment :media, presence: true,
+  validates_attachment :media,
                         content_type: { content_type: ["video/mp4", "video/avi", "video/mov", "video/3gp"] },
                         size: { in: 0..10.gigabytes }
 
