@@ -19,12 +19,12 @@ class CinerVideo < ActiveRecord::Base
 
   has_attached_file :trailer
   validates_attachment :trailer,
-                        content_type: { content_type: ["video/mp4", "video/avi", "video/mov", "video/3gp"] },
+                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
                         size: { in: 0..10.gigabytes }
 
   has_attached_file :media
   validates_attachment :media,
-                        content_type: { content_type: ["video/mp4", "video/avi", "video/mov", "video/3gp"] },
+                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
                         size: { in: 0..10.gigabytes }
 
   mount_uploader :cover, CinerVideoCoverUploader
