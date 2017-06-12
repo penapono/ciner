@@ -13,8 +13,20 @@ class CinerVideo < ActiveRecord::Base
   has_many :ciner_video_users, dependent: :destroy
 
   # Uploaders
-  mount_uploader :trailer, CinerVideoTrailerUploader
+  # mount_uploader :trailer, CinerVideoTrailerUploader
+
   mount_uploader :media, CinerVideoMediaUploader
+
+  has_attached_file :trailer
+  validates_attachment :trailer, presence: true,
+                        content_type: { content_type: ["video/mp4", "video/avi", "video/mov", "video/3gp"] },
+                        size: { in: 0..10.gigabytes }
+
+  has_attached_file :media
+  validates_attachment :media, presence: true,
+                        content_type: { content_type: ["video/mp4", "video/avi", "video/mov", "video/3gp"] },
+                        size: { in: 0..10.gigabytes }
+
   mount_uploader :cover, CinerVideoCoverUploader
 
   # Validations

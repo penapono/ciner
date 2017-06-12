@@ -3,39 +3,43 @@
 
 - if object.trailer
   #ficha-tecnica
-    .title-separator
-      .media
-        .media-left.media-middle
-          %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-            %use{"xlink:href" => "#video"}
-        .media-body.media-bottom
-          .media-heading.title-section
-            = CinerVideo.human_attribute_name(:trailer)
+    .row
+      .col-xs-12
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+                %use{"xlink:href" => "#video"}
+            .media-body.media-bottom
+              .media-heading.title-section
+                = CinerVideo.human_attribute_name(:trailer)
 
-    .ficha
-      .info
-        - if ciner_video.trailer.url
-          .col-xs-4
-            %video{:controls => "", :height => "240", :width => "100%"}
-              %source{:src => ciner_video.trailer, :type => "video/mp4"}
-                Your browser does not support the video tag.
+        .ficha
+          .info
+            - if ciner_video.trailer.url
+              .col-xs-4
+                %video{:controls => "", :height => "240", :width => "100%"}
+                  %source{:src => ciner_video.trailer, :type => "video/mp4"}
+                    Your browser does not support the video tag.
 
-    .title-separator
-      .media
-        .media-left.media-middle
-          %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-            %use{"xlink:href" => "#video"}
-        .media-body.media-bottom
-          .media-heading.title-section
-            = CinerVideo.human_attribute_name(:media)
+    .row
+      .col-xs-12
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+                %use{"xlink:href" => "#video"}
+            .media-body.media-bottom
+              .media-heading.title-section
+                = CinerVideo.human_attribute_name(:media)
 
-    .ficha
-      .info
-        - if ciner_video.media.url
-          .col-xs-4
-            %video{:controls => "", :height => "240", :width => "100%"}
-              %source{:src => ciner_video.media, :type => "video/mp4"}
-                Your browser does not support the video tag.
+        .ficha
+          .info
+            - if ciner_video.media.url
+              .col-xs-4
+                %video{:controls => "", :height => "240", :width => "100%"}
+                  %source{:src => ciner_video.media, :type => "video/mp4"}
+                    Your browser does not support the video tag.
 
 /   .row
 /     .col-xs-6

@@ -29,6 +29,8 @@ gem 'file_validators'
 gem 'nokogiri'
 gem 'httparty'
 
+gem 'paperclip'
+
 gem "recaptcha", require: "recaptcha/rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

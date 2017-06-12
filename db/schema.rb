@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609123641) do
+ActiveRecord::Schema.define(version: 20170612061336) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -81,13 +81,19 @@ ActiveRecord::Schema.define(version: 20170609123641) do
     t.text     "ciner_video_actors",    limit: 65535
     t.text     "ciner_video_genre",     limit: 65535
     t.text     "ciner_video_rated",     limit: 65535
-    t.string   "trailer"
-    t.string   "media"
     t.boolean  "playing"
     t.string   "countries"
     t.integer  "user_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "trailer_file_name"
+    t.string   "trailer_content_type"
+    t.integer  "trailer_file_size"
+    t.datetime "trailer_updated_at"
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
     t.index ["user_id"], name: "index_ciner_videos_on_user_id", using: :btree
   end
 
