@@ -2,6 +2,11 @@
   - role = current_user.admin? ? :admin : :platform
 - role ||= nil
 
+.row
+  .col-xs-12
+    %h3
+      = "Resultados de busca para \"#{params[:search]}\""
+
 .row.searchbar
   .col-xs-12
     .title-separator.ciner-news
