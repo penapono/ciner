@@ -1,0 +1,130 @@
+- if current_user
+  - role = current_user.admin? ? :admin : :platform
+- role ||= nil
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Filmes
+.row
+  - if movies.any?
+    - movies.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Series
+.row
+  - if series.any?
+    - series.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Notícias
+.row
+  - if broadcasts.any?
+    - broadcasts.each do |object|
+      .col-xs-12
+        = link_to url_for([role, :broadcasts]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Agenda Ciner
+.row
+  - if events.any?
+    - events.each do |object|
+      .col-xs-12
+        = link_to url_for([role, :events]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Críticas
+.row
+  - if critics.any?
+    - critics.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Debate
+.row
+  - if questions.any?
+    - questions.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+
+.row.searchbar
+  .col-xs-2
+    / .media-left.media-middle
+    /   %svg.icon-title
+    /     %use{"xlink:href" => "#video"}
+    .media-body.media-bottom
+      .media-heading.title-section
+        Ciner Vídeos
+.row
+  - if ciner_videos.any?
+    - ciner_videos.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria
+

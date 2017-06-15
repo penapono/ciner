@@ -102,7 +102,7 @@
       / MENU
     .search-field{ :style => "margin-top: 5px;" }
       .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8
-        %form.form-horizontal.form-search{"accept-charset" => "utf-8", :action => "#", :method => "GET"}
+        = simple_form_for :searches, url: searches_path, method: :get do |f|
           .form-group.row{ style: 'margin-left: 30px;' }
             .col-xs-offset-2.col-xs-6
               %input#search.form-control{:name => "search", :placeholder => "digite sua busca aqui...", :type => "text"}/

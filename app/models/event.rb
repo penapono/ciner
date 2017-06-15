@@ -28,6 +28,9 @@ class Event < ActiveRecord::Base
                                 allow_destroy: true,
                                 reject_if: :all_blank
 
+  # Aliases
+  alias_attribute :title_str, :title
+
   # Filter
 
   def self.all_next

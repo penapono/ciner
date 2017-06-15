@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :broadcasts, only: [:index, :show]
   resources :featured_filmables, only: :index
   resources :playing_filmables, only: :index
+  resources :searches, only: :index
 
   resources :movies, only: [:index, :show] do
     member do

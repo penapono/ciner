@@ -32,6 +32,9 @@ class Critic < ActiveRecord::Base
   # Callbacks
   before_save :update_year
 
+  # Aliases
+  alias_attribute :title_str, :name
+
   # Scopes
 
   def self.highlight

@@ -30,6 +30,9 @@ class Question < ActiveRecord::Base
   delegate :name, to: :user, allow_nil: true, prefix: true
   delegate :title_str, to: :questionable, allow_nil: true, prefix: true
 
+  # Aliases
+  alias_attribute :title_str, :title
+
   # Scopes
 
   def self.ordered_by_status
