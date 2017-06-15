@@ -3,13 +3,18 @@
 - role ||= nil
 
 .row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Filmes
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#filme"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Filmes
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :movies], params: { search: params[:search] }) do
+            = t('see_more')
 .row
   - if movies.any?
     - movies.each do |object|
@@ -18,16 +23,21 @@
           =  object.title_str
   - else
     .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
+      Não há resultados para essa pesquisa nessa categoria.
 
 .row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Series
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#filme"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Séries
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :series_index], params: { search: params[:search] }) do
+            = t('see_more')
 .row
   - if series.any?
     - series.each do |object|
@@ -36,88 +46,67 @@
           =  object.title_str
   - else
     .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
+      Não há resultados para essa pesquisa nessa categoria.
 
 .row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Notícias
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#perfil"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Celebridades
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :professionals], params: { search: params[:search] }) do
+            = t('see_more')
 .row
-  - if broadcasts.any?
-    - broadcasts.each do |object|
-      .col-xs-12
-        = link_to url_for([role, :broadcasts]) do
-          =  object.title_str
-  - else
-    .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
-
-.row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Agenda Ciner
-.row
-  - if events.any?
-    - events.each do |object|
-      .col-xs-12
-        = link_to url_for([role, :events]) do
-          =  object.title_str
-  - else
-    .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
-
-.row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Críticas
-.row
-  - if critics.any?
-    - critics.each do |object|
+  - if professionals.any?
+    - professionals.each do |object|
       .col-xs-12
         = link_to url_for([role, object]) do
           =  object.title_str
   - else
     .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
+      Não há resultados para essa pesquisa nessa categoria.
 
 .row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Debate
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#perfil"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Profissionais
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :curriculums], params: { search: params[:search] }) do
+            = t('see_more')
 .row
-  - if questions.any?
-    - questions.each do |object|
+  - if curriculums.any?
+    - curriculums.each do |object|
       .col-xs-12
         = link_to url_for([role, object]) do
           =  object.title_str
   - else
     .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
+      Não há resultados para essa pesquisa nessa categoria.
 
 .row.searchbar
-  .col-xs-2
-    / .media-left.media-middle
-    /   %svg.icon-title
-    /     %use{"xlink:href" => "#video"}
-    .media-body.media-bottom
-      .media-heading.title-section
-        Ciner Vídeos
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#video"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Ciner Vídeos
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
+            = t('see_more')
 .row
   - if ciner_videos.any?
     - ciner_videos.each do |object|
@@ -126,5 +115,96 @@
           =  object.title_str
   - else
     .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria
+      Não há resultados para essa pesquisa nessa categoria.
 
+.row.searchbar
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#critica"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Críticas
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :critics], params: { search: params[:search] }) do
+            = t('see_more')
+.row
+  - if critics.any?
+    - critics.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria.
+
+.row.searchbar
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          .icon-title
+            %img.img-responsive{ src: image_path("icons/ico_events.png"), style: 'width: 30px; height: 30px;' }
+        .media-body.media-bottom
+          .media-heading.title-section
+            Agenda Ciner
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :broadcasts], params: { search: params[:search] }) do
+            = t('see_more')
+.row
+  - if events.any?
+    - events.each do |object|
+      .col-xs-12
+        = link_to url_for([role, :events]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria.
+
+.row.searchbar
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          .icon-title{ style: 'margin-top: 10px;' }
+            %img.img-responsive{ src: image_path("icons/ico_broadcasts.png"), style: 'width: 30px; height: 30px;' }
+        .media-body.media-bottom
+          .media-heading.title-section
+            Notícias
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :broadcasts], params: { search: params[:search] }) do
+            = t('see_more')
+.row
+  - if broadcasts.any?
+    - broadcasts.each do |object|
+      .col-xs-12
+        = link_to url_for([role, :broadcasts]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria.
+
+.row.searchbar
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#debate"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Debate
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
+            = t('see_more')
+.row
+  - if questions.any?
+    - questions.each do |object|
+      .col-xs-12
+        = link_to url_for([role, object]) do
+          =  object.title_str
+  - else
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria.
