@@ -34,6 +34,7 @@ class Critic < ActiveRecord::Base
 
   # Aliases
   alias_attribute :title_str, :name
+  alias_attribute :cover, :filmable_cover
 
   # Scopes
 

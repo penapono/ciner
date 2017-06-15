@@ -53,15 +53,8 @@ class Curriculum < ActiveRecord::Base
   mount_uploader :audio2, CurriculumAudioUploader
   mount_uploader :audio3, CurriculumAudioUploader
 
-  # Filters
-  # filter[set_function_id]=1&
-  # filter[age]=22&
-  # filter[gender]=men&
-  # filter[state_id]=27&
-  # filter[state_id]=8&
-  # filter[ethnicity]=white&
-  # filter[drt]=true&
-  # filter[mannequin]=
+  # Aliases
+  alias_attribute :cover, :avatar
 
   def self.by_set_function(set_function_id)
     where(set_function: set_function_id)

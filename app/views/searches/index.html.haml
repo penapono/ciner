@@ -15,13 +15,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :movies], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if movies.any?
-    - movies.each do |object|
-      .col-xs-12
+
+- if movies.any?
+  - movies.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -38,13 +44,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :series_index], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if series.any?
-    - series.each do |object|
-      .col-xs-12
+
+- if series.any?
+  - series.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -61,13 +73,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :professionals], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if professionals.any?
-    - professionals.each do |object|
-      .col-xs-12
+
+- if professionals.any?
+  - professionals.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -84,13 +102,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :curriculums], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if curriculums.any?
-    - curriculums.each do |object|
-      .col-xs-12
+
+- if curriculums.any?
+  - curriculums.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -107,13 +131,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if ciner_videos.any?
-    - ciner_videos.each do |object|
-      .col-xs-12
+
+- if ciner_videos.any?
+  - ciner_videos.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -130,13 +160,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :critics], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if critics.any?
-    - critics.each do |object|
-      .col-xs-12
+
+- if critics.any?
+  - critics.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -153,13 +189,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :broadcasts], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if events.any?
-    - events.each do |object|
-      .col-xs-12
-        = link_to url_for([role, :events]) do
+
+- if events.any?
+  - events.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
+        = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -176,13 +218,19 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :broadcasts], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if broadcasts.any?
-    - broadcasts.each do |object|
-      .col-xs-12
-        = link_to url_for([role, :broadcasts]) do
+
+- if broadcasts.any?
+  - broadcasts.each do |object|
+    .row
+      .col-xs-1
+        - cover = object.cover
+        - cover ||= image_path("default/movie/image.png")
+        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
+      .col-xs-11
+        = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
 
@@ -199,12 +247,17 @@
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
             = t('see_more')
-.row
-  - if questions.any?
-    - questions.each do |object|
-      .col-xs-12
+
+- if questions.any?
+  - questions.each do |object|
+    .row
+      .col-xs-1.col-sm-1.icone
+        %svg.icon-debate
+          %use{ "xlink:href": question_icon(object) }
+      .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
-  - else
+- else
+  .row
     .col-xs-12
       Não há resultados para essa pesquisa nessa categoria.
