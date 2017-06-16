@@ -13,7 +13,7 @@
 
 .row
   .col-xs-12.col-sm-3
-    = f.input :year
+    = f.input :year, as: :string, input_html: { class: 'year', placeholder: 'aaaa' }, maxlength: 4
   .col-xs-12.col-sm-3
     = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker', placeholder: 'dd/mm/aaaa' }
 
@@ -39,10 +39,21 @@
   .col-xs-6
     = f.input :cover
 
+- if current_user
+  = f.hidden_field :user_id, value: current_user.id
+
+.row
+  .col-xs-6
+    %h3.wine
+      Equipe de Produção
+
 .row
   .col-xs-6
     %h3.wine
       Vídeo e Trailer
+.row
+  .col-xs-6
+    = render 'shared/ciner_videos/ciner_video_users/nested', f: f
 
 - if f.object.persisted?
   .row
@@ -54,17 +65,5 @@
       = f.input :media
 - else
   Salve as informações básicas para então realizar o upload dos vídeos
-
-- if current_user
-  = f.hidden_field :user_id, value: current_user.id
-
-.row
-  .col-xs-6
-    %h3.wine
-      Equipe de Produção
-
-.row
-  .col-xs-6
-    = render 'shared/ciner_videos/ciner_video_users/nested', f: f
 
 = render 'shared/ciner_videos/form_actions', f: f
