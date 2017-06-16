@@ -9,12 +9,12 @@ pt-BR:
       ciner_video:
         original_title: Título Original
         title: Título em Português
-        year: Ano
+        year: Ano de Produção
         length: Duração em minutos
         synopsis: Sinopse
-        release: Lançamento
+        release: Data de Lançamento
         brazilian_release: Lançamento Nacional
-        country_id: País
+        country_id: País de Origem
         age_range_id: Classificação Indicativa
 
         ciner_rating: Nota Ciner
@@ -48,7 +48,7 @@ pt-BR:
 
         playing: Em cartaz
 
-        countries: País(es) de Origem
+        countries: País de Origem
     errors:
       models:
         ciner_video:

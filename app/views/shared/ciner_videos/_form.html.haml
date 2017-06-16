@@ -1,6 +1,6 @@
 - content_for :javascript, javascript_include_tag('')
 
-%h3
+%h3.wine
   = t('.general')
 
 .row
@@ -15,7 +15,7 @@
   .col-xs-12.col-sm-3
     = f.input :year
   .col-xs-12.col-sm-3
-    = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
+    = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker', placeholder: 'dd/mm/aaaa' }
 
 .row
   .col-xs-12.com-sm-3
