@@ -8,7 +8,17 @@
     .container
       .row
         .col-xs-12.col-sm-12.col-md-3.col-lg-3
-          %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
+          .row
+            .col-xs-12
+              %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
+          - if current_user
+            - if current_user == object.user || current_user.admin?
+              .row
+                .col-xs-12
+                  = link_to polymorphic_path([:edit, role, object]) do
+                    %button.btn.btn-login
+                      Editar
+                      %span.icon.icon-button
         .col-xs-12.col-sm-12.col-md-9.col-lg-9
           .row
             .col-xs-12.col-sm-8.col-md-8.col-lg-8

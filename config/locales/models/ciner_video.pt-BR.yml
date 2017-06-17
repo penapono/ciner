@@ -12,6 +12,7 @@ pt-BR:
         year: Ano de Produção
         length: Duração em minutos
         synopsis: Sinopse
+        status: Situação
         release: Data de Lançamento
         brazilian_release: Lançamento Nacional
         country_id: País de Origem
@@ -49,6 +50,11 @@ pt-BR:
         playing: Em cartaz
 
         countries: País de Origem
+
+      ciner_video/status:
+        pending: Aguardando Aprovação
+        approved: Aprovado
+        reproved: Reprovado
     errors:
       models:
         ciner_video:

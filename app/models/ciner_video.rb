@@ -5,6 +5,9 @@ class CinerVideo < ActiveRecord::Base
   include FilmProfitable
   include UserActionable
 
+  # Enums
+  enum status: { pending: 1, approved: 2, reproved: 3 }
+
   # Associations
   belongs_to :age_range
   belongs_to :user
@@ -55,8 +58,13 @@ class CinerVideo < ActiveRecord::Base
 
     result = collection
     result = result.by_year(params[:year]) if params[:year].present?
+    result = result.by_status(params[:status]) if params[:status].present?
 
     result
+  end
+
+  def self.by_status(status)
+    where(status: status)
   end
 
   def original_title_str
@@ -66,5 +74,13 @@ class CinerVideo < ActiveRecord::Base
 
   def filmable_year
     year
+  end
+
+  def self.localized_statuses
+    statuses.map { |k, w| [human_attribute_name("status.#{k}"), w] }
+  end
+
+  def self.localized_detailed_statuses
+    statuses.keys.map { |w| [human_attribute_name("status.#{w}"), w] }
   end
 end

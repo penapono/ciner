@@ -37,10 +37,18 @@
             = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
               = hidden_field_tag :search, params[:search]
 
-              .col-xs-6
-                = f.input :filter_by, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:filter_by, '')
-              .col-xs-6
-                = f.input :organize, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:organize, '')
+              - if current_user && current_user.admin?
+                .col-xs-4
+                  = f.input :status, collection: CinerVideo.localized_statuses, label: false, include_blank: t('shared.critics.toolbar.filters.status'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:status, '')
+                .col-xs-4
+                  = f.input :filter_by, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:filter_by, '')
+                .col-xs-4
+                  = f.input :organize, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:organize, '')
+              - else
+                .col-xs-6
+                  = f.input :filter_by, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:filter_by, '')
+                .col-xs-6
+                  = f.input :organize, label: false, collection: [], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:organize, '')
 
     .col-xs-1
       - if current_user

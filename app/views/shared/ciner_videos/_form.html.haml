@@ -6,6 +6,10 @@
 .row
   .col-xs-12.col-sm-6
     = f.input :title, required: true, autofocus: true
+  - if current_user
+    - if current_user.admin?
+      .col-xs-12.col-sm-3
+        = f.input :status, collection: CinerVideo.localized_detailed_statuses, include_blank: "Aguardando / Aprovado / Recusado"
 
 .row
   .col-xs-12.col-sm-6
