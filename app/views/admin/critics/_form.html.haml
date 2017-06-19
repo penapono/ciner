@@ -1,5 +1,5 @@
 = javascript_include_tag Ckeditor.cdn_url
-- admin = current_user.admin?
+- role = current_role(current_user, request.url)
 
 = simple_form_for [:admin, critic] do |f|
   - filmable_type = f.object.filmable_type || Movie
@@ -29,7 +29,7 @@
   .row
     .col-xs-4
       = checkbox_item(f, :spoiler)
-    - if admin
+    - if role == :admin
       .col-xs-4
         = checkbox_item(f, :featured)
       .col-xs-4

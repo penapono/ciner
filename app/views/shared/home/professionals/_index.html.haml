@@ -1,6 +1,4 @@
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 .col-xs-12.col-sm-12.col-md-5.col-lg-4
   .title-separator.ciner-search

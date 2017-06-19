@@ -37,7 +37,7 @@
             = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
               = hidden_field_tag :search, params[:search]
 
-              - if current_user && current_user.admin?
+              - if role == :admin
                 .col-xs-4
                   = f.input :status, collection: CinerVideo.localized_statuses, label: false, include_blank: t('shared.critics.toolbar.filters.status'), input_html: { data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:status, '')
                 .col-xs-4

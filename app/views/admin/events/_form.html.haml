@@ -1,5 +1,5 @@
 = javascript_include_tag Ckeditor.cdn_url
-- admin = current_user.admin?
+- role = current_role(current_user, request.url)
 
 = simple_form_for [:admin, event] do |f|
   %h3
@@ -61,7 +61,7 @@
         = t('remaining_chars', chars: 50000)
 
   .row
-    - if admin
+    - if role == :admin
       .col-xs-4
         = checkbox_item(f, :featured)
 

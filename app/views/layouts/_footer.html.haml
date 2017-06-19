@@ -1,6 +1,4 @@
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 %footer
   .container{ style: 'width: 100%' }
@@ -52,7 +50,7 @@
               = link_to "Missão", '#'
             %li
               = link_to "Contato", '#'
-            - if role == :admin
+            - if current_user && current_user.admin?
               %li
                 = link_to "Configurações", admin_settings_path
 

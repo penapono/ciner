@@ -1,3 +1,5 @@
+- role = current_role(current_user, request.url)
+
 = simple_form_for [:admin, broadcast] do |f|
   %h3
     = t('.general')
@@ -40,7 +42,7 @@
   .row
     .col-xs-4
       = checkbox_item(f, :spoiler)
-    - if current_user.admin?
+    - if role == :admin
       .col-xs-4
         = checkbox_item(f, :featured)
 

@@ -1,8 +1,6 @@
 - content_for :javascript, javascript_include_tag('components/header')
 
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 .banner
   / ACTIONBAR
@@ -23,7 +21,7 @@
     .container.collapse{ data: { container: { fixed: '' } } }
       .row{ style: 'margin-bottom: 0px;' }
         .col-xs-2
-          = link_to root_path do
+          = link_to url_for([role, :root]) do
             .logo
               %figure
                 = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 40px; width: 120px; margin: auto; margin-bottom: 10px;')
@@ -74,7 +72,7 @@
     .container
       / SECTION LOGIN
       .row.section-login
-        = link_to root_path do
+        = link_to url_for([role, :root]) do
           .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
             %figure
               = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'width: 62%; height: 62%; margin-top: 10px;')

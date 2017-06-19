@@ -1,6 +1,4 @@
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 .container.content
   / SECTION 01 CONTENT

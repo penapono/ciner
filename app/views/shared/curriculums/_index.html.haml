@@ -1,6 +1,4 @@
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 - content_for :stylesheet, stylesheet_link_tag('views/shared/toolbar')
 - content_for :javascript, javascript_include_tag('views/shared/toolbar')

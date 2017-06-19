@@ -27,4 +27,10 @@ module ApplicationHelper
     user_id = current_user ? current_user.id : ""
     raw("addVisit('#{params[:controller]}','#{params[:action]}', '#{params[:id]}' ,'#{path}', '#{user_id}');")
   end
+
+  def current_role(current_user = nil, url)
+    return nil unless current_user
+    return :admin if url.include? '/admin'
+    :platform
+  end
 end

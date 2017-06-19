@@ -1,9 +1,7 @@
 / - current_critics_path ||= platform_critics_path
 / - current_new_critic_path ||= new_platform_critic_path
 
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 = render 'shared/ciner_videos/general', ciner_video: ciner_video, role: role
 

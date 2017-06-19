@@ -1,8 +1,6 @@
 / - content_for :javascript, javascript_include_tag('components/collapser')
 
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 = render 'shared/curriculums/general', curriculum: curriculum, role: role
 

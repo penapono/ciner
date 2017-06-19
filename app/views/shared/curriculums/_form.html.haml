@@ -1,9 +1,7 @@
 - content_for :javascript, javascript_include_tag('views/shared/curriculums/form')
 - content_for :stylesheet, stylesheet_link_tag('views/shared/curriculums/form')
 
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 %h3.wine
   = t('.general')

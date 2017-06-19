@@ -1,5 +1,7 @@
+- role = current_role(current_user, request.url)
+
 - if current_user
-  - if current_user.admin?
+  - if role == :admin
     .post-item
       = link_to admin_broadcasts_path(anchor: "#{broadcast.id}") do
         %h4

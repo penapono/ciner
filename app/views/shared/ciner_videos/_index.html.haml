@@ -1,6 +1,4 @@
-- if current_user
-  - role = current_user.admin? ? :admin : :platform
-- role ||= nil
+- role = current_role(current_user, request.url)
 
 / - if current_user
 /   = render 'shared/index_title', title: CinerVideo.model_name.human(count: 2), path: url_for([:new, role, :ciner_video])
