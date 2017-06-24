@@ -1,10 +1,5 @@
 - role = current_role(current_user, request.url)
 
-/ - if current_user
-/   = render 'shared/index_title', title: CinerVideo.model_name.human(count: 2), path: url_for([:new, role, :ciner_video])
-/ - else
-/   = render 'shared/index_title', title: CinerVideo.model_name.human(count: 2)
-
 = render 'shared/ciner_videos/toolbar', role: role
 
 .container.content
@@ -14,7 +9,7 @@
         - cover = ciner_video.cover
         - cover ||= image_path("default/movie/image.png")
         .col-xs-12.col-sm-3.video-item
-          %a{"data-target" => "#myModal1", "data-toggle" => "modal"}
+          %a{"data-target" => "#myModal#{ciner_video.id}", "data-toggle" => "modal"}
             %img.img-responsive{src: cover, style: 'width: 255px; height: 220px;'}/
           .info
             %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "true", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}/
@@ -31,23 +26,28 @@
           %span.tempo
             = ciner_video.length_str
 
+        / Modal
+        .modal.fade.videoModal{:role => "dialog", id: "myModal#{ciner_video.id}"}
+          .modal-dialog
+            / Modal content
+            .modal-content
+              .modal-header
+                %button.close{"data-dismiss" => "modal", :type => "button"} ×
+                %h4.modal-title.bold.wine
+                  = ciner_video.title_str
+              .modal-body
+                .embed-responsive.embed-responsive-16by9{:align => "center"}
+                  %video{:controls => "", :height => "240", :width => "100%"}
+                    %source{:src => ciner_video.media, :type => "video/mp4"}
+                      Your browser does not support the video tag.
+              .modal-footer
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+
   .row
     .col-xs-12
       = render 'shared/pagination', resources: ciner_videos
 
-/ Modal
-#myModal1.modal.fade.videoModal{:role => "dialog"}
-  .modal-dialog
-    / Modal content
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title.bold.wine Título do vídeo
-      .modal-body
-        .embed-responsive.embed-responsive-16by9{:align => "center"}
-          %video.embed-responsive-item{:controls => "", :preload => "none", :src => "http://techslides.com/demos/sample-videos/small.mp4"}
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+
 / Modal
 / Modal
 #myModal2.modal.fade.videoModal{:role => "dialog"}
