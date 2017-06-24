@@ -55,9 +55,9 @@ $('form').on('cocoon:after-insert', function(e, insertedItem) {
     }
   }
 
-  var selectUser = insertedItem.find('[data-user-id-select]');
+  // Cria um próximo quando o anterior foi selecionado
 
-  // cria um próximo quando o anterior foi selecionado
+  var selectUser = insertedItem.find('[data-user-id-select]');
   $(selectUser).on("select2:select", function(e) {
     var self = $(this),
         parent = self.closest('[data-selection]'),
