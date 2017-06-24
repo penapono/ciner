@@ -20,10 +20,10 @@ function CinerSlider() {
     var sliderCount = videoCount / showCount;
     var controlsWidth = 40;
     var scollWidth = 0;
-    var slideWidth = 150;
+    var slideWidth = 140;
     var maxLeft = 0;
     var minLeft = 0;
-    var marginTotal = 20;
+    var marginTotal = 10;
 
     // elements
     var win = $(window);
@@ -63,7 +63,7 @@ function CinerSlider() {
     sliderContainer.height(videoHeight);
     sliderContainer.width((videoWidth * videoCount) + videoWidthDiff);
     sliderContainer.css("top", (videoHeightDiff / 2));
-    sliderContainer.css("margin-left", (controlsWidth));
+    sliderContainer.css("margin-left", -15);
 
     slide.height("195px");
     slide.width("130px");
