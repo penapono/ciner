@@ -20,16 +20,16 @@ class CinerVideo < ActiveRecord::Base
 
   mount_uploader :media, CinerVideoMediaUploader
 
-  has_attached_file :trailer, :styles => {
-      :thumb => { :geometry => "200x200#", :format => 'mp4', :time => 30 }
-    }
+  has_attached_file :trailer, styles: {
+    thumb: { geometry: "200x200#", format: 'mp4', time: 30 }
+  }
   validates_attachment :trailer,
                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
                        size: { in: 0..10.gigabytes }
 
-  has_attached_file :media, :styles => {
-      :thumb => { :geometry => "200x200#", :format => 'mp4', :time => 30 }
-    }
+  has_attached_file :media, styles: {
+    thumb: { geometry: "200x200#", format: 'mp4', time: 30 }
+  }
   validates_attachment :media,
                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
                        size: { in: 0..10.gigabytes }
