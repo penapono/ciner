@@ -23,6 +23,7 @@ gem 'social-share-button'
 
 gem 'streamio-ffmpeg'
 gem 'carrierwave-ffmpeg'
+gem "jquery-fileupload-rails"
 
 gem 'file_validators'
 

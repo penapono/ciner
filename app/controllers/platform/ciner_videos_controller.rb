@@ -4,6 +4,8 @@ module Platform
   class CinerVideosController < PlatformController
     include Platform::CinerVideosBreadcrumb
 
+    respond_to :html, :js
+
     # exposes
     expose(:ciner_videos) { CinerVideo.all }
     expose(:ciner_video, attributes: :ciner_video_attributes)
@@ -21,11 +23,35 @@ module Platform
       self.ciner_videos = paginated_ciner_videos
     end
 
+    def upload_video; end
+
+    def upload_trailer; end
+
     def create
       if created?
-        redirect_to edit_platform_ciner_video_path(resource)
+        redirect_to upload_trailer_platform_ciner_video_path(resource)
       else
         render_new_with_error
+      end
+    end
+
+    def update
+      respond_to do |format|
+        format.json do
+          if updated?
+            if !params[:ciner_video].blank? && !params[:ciner_video][:trailer].blank?
+              render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }
+            end
+            if !params[:ciner_video].blank? && !params[:ciner_video][:media].blank?
+              render json: { status: 'OK', to: platform_ciner_video_path(resource) }
+            end
+          else
+            render json: { status: 'error' }
+          end
+        end
+        format.html do
+          super
+        end
       end
     end
 
@@ -79,12 +105,12 @@ module Platform
         :lock_updates,
         :countries,
         :media,
-        ciner_video_users_attributes: [
-          :set_function_id,
-          :user_id,
-          :ciner_video_id,
-          :id,
-          :_destroy
+        ciner_video_users_attributes: %i[
+          set_function_id
+          user_id
+          ciner_video_id
+          id
+          _destroy
         ]
       )
     end

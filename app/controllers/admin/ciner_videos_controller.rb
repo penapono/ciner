@@ -23,9 +23,33 @@ module Admin
 
     def create
       if created?
-        redirect_to edit_admin_ciner_video_path(resource)
+        redirect_to upload_trailer_admin_ciner_video_path(resource)
       else
         render_new_with_error
+      end
+    end
+
+    def upload_video; end
+
+    def upload_trailer; end
+
+    def update
+      respond_to do |format|
+        format.json do
+          if updated?
+            if !params[:ciner_video].blank? && !params[:ciner_video][:trailer].blank?
+              render json: { status: 'OK', to: upload_video_admin_ciner_video_path(resource) }
+            end
+            if !params[:ciner_video].blank? && !params[:ciner_video][:media].blank?
+              render json: { status: 'OK', to: admin_ciner_video_path(resource) }
+            end
+          else
+            render json: { status: 'error' }
+          end
+        end
+        format.html do
+          super
+        end
       end
     end
 
@@ -79,12 +103,12 @@ module Admin
         :lock_updates,
         :countries,
         :media,
-        ciner_video_users_attributes: [
-          :set_function_id,
-          :user_id,
-          :ciner_video_id,
-          :id,
-          :_destroy
+        ciner_video_users_attributes: %i[
+          set_function_id
+          user_id
+          ciner_video_id
+          id
+          _destroy
         ]
       )
     end
