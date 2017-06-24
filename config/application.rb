@@ -23,6 +23,8 @@ module Ciner
     config.assets.version = '1.0'
     config.active_record.time_zone_aware_types = [:datetime, :time]
 
+    Paperclip.options[:command_path] = "/usr/bin/identify"
+
     # Destivar wrap de campos com erros
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       "#{html_tag}".html_safe
