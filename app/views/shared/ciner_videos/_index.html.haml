@@ -26,39 +26,8 @@
           %span.tempo
             = ciner_video.length_str
 
-        / Modal
-        .modal.fade.videoModal{:role => "dialog", id: "myModal#{ciner_video.id}"}
-          .modal-dialog
-            / Modal content
-            .modal-content
-              .modal-header
-                %button.close{"data-dismiss" => "modal", :type => "button"} ×
-                %h4.modal-title.bold.wine
-                  = ciner_video.title_str
-              .modal-body
-                .embed-responsive.embed-responsive-16by9{:align => "center"}
-                  %video{:controls => "", :height => "240", :width => "100%"}
-                    %source{:src => ciner_video.media, :type => "video/mp4"}
-                      Your browser does not support the video tag.
-              .modal-footer
-                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+        = render 'shared/ciner_videos/modal_view', ciner_video: ciner_video
 
   .row
     .col-xs-12
       = render 'shared/pagination', resources: ciner_videos
-
-
-/ Modal
-/ Modal
-#myModal2.modal.fade.videoModal{:role => "dialog"}
-  .modal-dialog
-    / Modal content
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title.bold.wine Título do vídeo
-      .modal-body
-        .embed-responsive.embed-responsive-16by9{:align => "center"}
-          %video.embed-responsive-item{:controls => "", :preload => "none", :src => "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"}
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar

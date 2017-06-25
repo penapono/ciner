@@ -27,6 +27,8 @@ module Platform
 
     def upload_trailer; end
 
+    def change_status; end
+
     def create
       if created?
         redirect_to upload_trailer_platform_ciner_video_path(resource)

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     resources :ciner_videos do
       member do
+        put 'change_status', to: 'ciner_videos#change_status'
         get 'upload_video', to: 'ciner_videos#upload_video'
         get 'upload_trailer', to: 'ciner_videos#upload_trailer'
         put "like", to: "ciner_videos#upvote"

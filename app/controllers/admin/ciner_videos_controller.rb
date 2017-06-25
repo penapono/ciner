@@ -33,6 +33,8 @@ module Admin
 
     def upload_trailer; end
 
+    def change_status; end
+
     def update
       respond_to do |format|
         format.json do
