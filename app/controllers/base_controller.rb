@@ -197,12 +197,12 @@ module ::BaseController
     end
 
     def full_success_flash
-      (t(".done") % { title: resource_title })
+      format(t(".done"), title: resource_title)
     end
 
     def full_error_flash
       error = resource.errors.full_messages.join(", ")
-      (t(".fail") % { title: resource_title, error: error })
+      format(t(".fail"), title: resource_title, error: error)
     end
 
     # Reacting

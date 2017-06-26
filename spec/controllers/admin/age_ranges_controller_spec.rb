@@ -184,8 +184,7 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
       before { post :create, params: valid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.age_ranges.create.done') %
-          { title: valid_params[:name] }
+        format(I18n.t('admin.age_ranges.create.done'), title: valid_params[:name])
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -196,8 +195,7 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
       before { post :create, params: invalid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.age_ranges.create.fail') %
-          { title: invalid_params[:name] }
+        format(I18n.t('admin.age_ranges.create.fail'), title: invalid_params[:name])
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -290,8 +288,7 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
       before { patch :update, params: valid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.age_ranges.update.done') %
-          { title: valid_params[:name] }
+        format(I18n.t('admin.age_ranges.update.done'), title: valid_params[:name])
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -302,8 +299,7 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
       before { patch :update, params: invalid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.age_ranges.update.fail') %
-          { title: invalid_params[:name] }
+        format(I18n.t('admin.age_ranges.update.fail'), title: invalid_params[:name])
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -319,8 +315,7 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
       before { delete :destroy, params: { id: age_range } }
 
       let(:expected_flash) do
-        I18n.t('admin.age_ranges.destroy.done') %
-          { title: age_range.name }
+        format(I18n.t('admin.age_ranges.destroy.done'), title: age_range.name)
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -329,8 +324,7 @@ RSpec.describe Admin::AgeRangesController, type: :controller do
 
     context 'on failure' do
       let(:expected_flash) do
-        I18n.t('admin.age_ranges.destroy.fail') %
-          { title: age_range.name, error: error_msg }
+        format(I18n.t('admin.age_ranges.destroy.fail'), title: age_range.name, error: error_msg)
       end
 
       before do

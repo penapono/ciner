@@ -16,7 +16,7 @@
         %ul{ style: 'padding: 0px; list-style-type: none;' }
           %li{ style: 'float: left;', data: { change_status: '' } }
             %button.btn.btn-default{ style: 'float: left; margin-right: 5px;', data: { ciner_video_id: ciner_video.id } }
-              Aprovar
+              = ciner_video.approved? ? 'Reprovar' : 'Aprovar'
           %li
             %button.btn.btn-default{style: 'float: right;', "data-dismiss" => "modal", :type => "button"}
               Fechar

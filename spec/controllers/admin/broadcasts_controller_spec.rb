@@ -183,8 +183,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
       before { post :create, params: valid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.broadcasts.create.done') %
-          { title: valid_params[:name] }
+        format(I18n.t('admin.broadcasts.create.done'), title: valid_params[:name])
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -195,8 +194,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
       before { post :create, params: invalid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.broadcasts.create.fail') %
-          { title: invalid_params[:name] }
+        format(I18n.t('admin.broadcasts.create.fail'), title: invalid_params[:name])
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -288,8 +286,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
       before { patch :update, params: valid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.broadcasts.update.done') %
-          { title: valid_params[:name] }
+        format(I18n.t('admin.broadcasts.update.done'), title: valid_params[:name])
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -300,8 +297,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
       before { patch :update, params: invalid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.broadcasts.update.fail') %
-          { title: invalid_params[:name] }
+        format(I18n.t('admin.broadcasts.update.fail'), title: invalid_params[:name])
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -317,8 +313,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
       before { delete :destroy, params: { id: broadcast } }
 
       let(:expected_flash) do
-        I18n.t('admin.broadcasts.destroy.done') %
-          { title: broadcast.title }
+        format(I18n.t('admin.broadcasts.destroy.done'), title: broadcast.title)
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -327,8 +322,7 @@ RSpec.describe Admin::BroadcastsController, type: :controller do
 
     context 'on failure' do
       let(:expected_flash) do
-        I18n.t('admin.broadcasts.destroy.fail') %
-          { title: broadcast.title, error: error_msg }
+        format(I18n.t('admin.broadcasts.destroy.fail'), title: broadcast.title, error: error_msg)
       end
 
       before do

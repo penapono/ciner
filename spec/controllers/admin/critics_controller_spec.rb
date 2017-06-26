@@ -185,8 +185,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
       before { post :create, params: valid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.critics.create.done') %
-          { title: valid_params[:name] }
+        format(I18n.t('admin.critics.create.done'), title: valid_params[:name])
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -197,8 +196,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
       before { post :create, params: invalid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.critics.create.fail') %
-          { title: invalid_params[:name] }
+        format(I18n.t('admin.critics.create.fail'), title: invalid_params[:name])
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -290,8 +288,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
       before { patch :update, params: valid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.critics.update.done') %
-          { title: valid_params[:name] }
+        format(I18n.t('admin.critics.update.done'), title: valid_params[:name])
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -302,8 +299,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
       before { patch :update, params: invalid_params }
 
       let(:expected_flash) do
-        I18n.t('admin.critics.update.fail') %
-          { title: invalid_params[:name] }
+        format(I18n.t('admin.critics.update.fail'), title: invalid_params[:name])
       end
 
       it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
@@ -319,8 +315,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
       before { delete :destroy, params: { id: critic } }
 
       let(:expected_flash) do
-        I18n.t('admin.critics.destroy.done') %
-          { title: critic.name }
+        format(I18n.t('admin.critics.destroy.done'), title: critic.name)
       end
 
       it { expect(controller).to set_flash[:notice].to(expected_flash) }
@@ -329,8 +324,7 @@ RSpec.describe Admin::CriticsController, type: :controller do
 
     context 'on failure' do
       let(:expected_flash) do
-        I18n.t('admin.critics.destroy.fail') %
-          { title: critic.name, error: error_msg }
+        format(I18n.t('admin.critics.destroy.fail'), title: critic.name, error: error_msg)
       end
 
       before do

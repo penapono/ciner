@@ -35,7 +35,20 @@ module Admin
 
     def upload_trailer; end
 
-    def change_status; end
+    def change_status
+      current_status = resource.status
+      if !current_status.blank? && current_status == "approved"
+        byebug
+        resource.status = :reproved
+        resource.save
+        render json: { status: 'OK', text: 'Aprovar' }
+      else
+        byebug
+        resource.status = :approved
+        resource.save
+        render json: { status: 'OK', text: 'Reprovar' }
+      end
+    end
 
     def update
       respond_to do |format|

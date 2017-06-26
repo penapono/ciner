@@ -14,5 +14,5 @@
         = link_to url_for([role, :playing_filmables]) do
           = t('see_more')
 
-  .row
+  .row{ style: 'margin-right: 0px; margin-left: 0px;' }
     = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: slider_movies
