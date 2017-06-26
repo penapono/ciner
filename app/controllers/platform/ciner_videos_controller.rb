@@ -4,6 +4,8 @@ module Platform
   class CinerVideosController < PlatformController
     include Platform::CinerVideosBreadcrumb
 
+    protect_from_forgery with: :null_session
+
     respond_to :html, :js
 
     # exposes

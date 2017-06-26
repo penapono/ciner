@@ -6,8 +6,8 @@
 
 .row
   .col-xs-12.col-sm-6
-    = f.input :title, disabled: true
-    = f.hidden_field :title, value: f.object.title_str
+    = f.input :title, disabled: true, input_html: { value: f.object.title_str }
+    = f.hidden_field :title, value: f.object.title
 .row
   .col-xs-6
     %h3.wine
@@ -25,7 +25,13 @@
       .btn.submit{ input: { type: 'submit' } }
         = t('cancel')
 
+/ .progress-wrapper
+/   .progress
+/     .progress-bar{:role => "progressbar"}
+/       0%
+
 .progress
   .bar
   .percent 0%
 #status
+

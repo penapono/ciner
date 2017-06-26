@@ -31,3 +31,26 @@ $(document).ready(function() {
     }
   });
 });
+
+// $(document).ready(function() {
+//   var multiple_photos_form = $('form.edit_ciner_video');
+//   var wrapper = multiple_photos_form.find('.progress-wrapper');
+//   var progress_bar = wrapper.find('.progress-bar');
+
+//   $('form.edit_ciner_video').on('fileuploadstart', function() {
+//     alert("start");
+//     wrapper.show();
+//   });
+
+//   $('form.edit_ciner_video').on('fileuploaddone', function() {
+//     alert("done");
+//     wrapper.hide();
+//     progress_bar.width(0); // Revert progress bar's width back to 0 for future uploads
+//   });
+
+//   $('form.edit_ciner_video').on('fileuploadprogressall', function(e, data) {
+//     alert("progress");
+//     var progress = parseInt(data.loaded / data.total * 100, 10);
+//     progress_bar.css('width', progress + '%').text(progress + '%');
+//   });
+// });

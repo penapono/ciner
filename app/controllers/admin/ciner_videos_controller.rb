@@ -4,6 +4,8 @@ module Admin
   class CinerVideosController < AdminController
     include Admin::CinerVideosBreadcrumb
 
+    protect_from_forgery with: :null_session
+
     # exposes
     expose(:ciner_videos) { CinerVideo.all }
     expose(:ciner_video, attributes: :ciner_video_attributes)

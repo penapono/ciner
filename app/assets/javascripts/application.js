@@ -12,4 +12,5 @@
 //= require cocoon
 //= require social-share-button
 //= require jquery-fileupload
+//= require jquery.remotipart
 //= require_tree .

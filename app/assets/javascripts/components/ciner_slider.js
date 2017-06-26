@@ -42,8 +42,10 @@ function CinerSlider() {
       showCount = 2;
     } else if (windowWidth >= 414 && windowWidth <= 768) {
       showCount = 3;
-    } else {
+    } else if (windowWidth >= 768 && windowWidth <= 900) {
       showCount = 4;
+    } else {
+      showCount = 5;
     }
 
     sliderCount = videoCount / showCount;
@@ -105,12 +107,12 @@ function CinerSlider() {
       var self = $(this),
         sliderContainer = sliderFrame.find('.slider-container');
 
-      if (scollWidth > 0) {
+      if (scollWidth < 0) {
         scollWidth = minLeft;
       }
 
       sliderContainer.animate({
-        left: scollWidth
+        left: -scollWidth
       }, 300, function() {
         if (currentSliderCount < 2) {
           sliderContainer.css("left", 0);
@@ -118,7 +120,7 @@ function CinerSlider() {
           scollWidth = 0;
         } else {
           currentSliderCount--;
-          sliderContainer.css("left", scollWidth);
+          sliderContainer.css("left", -scollWidth);
         }
       });
     });

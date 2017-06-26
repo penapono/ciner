@@ -4,5 +4,5 @@
 .container
   = render 'shared/breadcrumbs'
 
-= simple_form_for [:admin, ciner_video] do |f|
+= simple_form_for [:admin, ciner_video], remote: true do |f|
   = render 'shared/ciner_videos/form_upload_video', f: f
