@@ -21,6 +21,8 @@
   .col-xs-12.col-sm-3.pull-right
     = f.button :submit, 'Salvar e fazer upload', data: { disable_with: 'Fazendo upload...' }, id: 'fileUpload'
   .col-xs-12.col-sm-3.pull-right
+    = f.button :submit, 'Prosseguir', data: { disable_with: 'Salvando...' }, id: 'fileUpload'
+  .col-xs-12.col-sm-3.pull-right
     = link_to :back do
       .btn.submit{ input: { type: 'submit' } }
         = t('cancel')
