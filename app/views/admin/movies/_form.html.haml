@@ -56,8 +56,14 @@
     /   = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
 
   .row
-    .col-xs-4
+    .col-xs-3
       = checkbox_item(f, :playing)
+    .col-xs-3
+      = checkbox_item(f, :playing_soon)
+    .col-xs-3
+      = checkbox_item(f, :available_netflix)
+    .col-xs-3
+      = checkbox_item(f, :available_amazon)
 
   .row
     .col-xs-12

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617111754) do
+ActiveRecord::Schema.define(version: 20170628014812) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -287,6 +287,9 @@ ActiveRecord::Schema.define(version: 20170617111754) do
     t.integer  "user_id"
     t.boolean  "lock_updates",                    default: false
     t.string   "countries"
+    t.boolean  "playing_soon",                    default: false
+    t.boolean  "available_netflix",               default: false
+    t.boolean  "available_amazon",                default: false
     t.index ["user_id"], name: "index_movies_on_user_id", using: :btree
   end
 
@@ -429,6 +432,10 @@ ActiveRecord::Schema.define(version: 20170617111754) do
     t.integer  "user_id"
     t.boolean  "lock_updates",                    default: false
     t.string   "countries"
+    t.boolean  "last_released",                   default: false
+    t.boolean  "playing_soon",                    default: false
+    t.boolean  "available_netflix",               default: false
+    t.boolean  "available_amazon",                default: false
     t.index ["user_id"], name: "index_series_on_user_id", using: :btree
   end
 

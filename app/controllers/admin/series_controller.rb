@@ -95,7 +95,11 @@ module Admin
         :playing,
         :user_id,
         :lock_updates,
-        :countries
+        :countries,
+        :playing_soon,
+        :available_netflix,
+        :available_amazon,
+        :last_released
       )
     end
 

@@ -46,6 +46,9 @@ pt-BR:
         omdb_trailer: Trailer
 
         playing: Em cartaz
+        playing_soon: Em breve
+        available_netflix: Lançamento Netflix
+        available_amazon: Lançamento Amazon Prime
 
         lock_updates: Bloquear atualização automática
 
