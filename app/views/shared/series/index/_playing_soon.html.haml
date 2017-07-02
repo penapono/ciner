@@ -6,12 +6,12 @@
     .media
       .media-left.media-middle
         %svg.icon-title
-          %use{"xlink:href" => "#filme"}/
+          %use{"xlink:href" => "#serie"}/
       .media-body.media-bottom
         .media-heading.title-section
-          Em Destaque
+          Em Breve
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :movies]) do
+        = link_to url_for([role, :series_index]) do
           = t('see_more')
 
   - if role.blank?
@@ -19,14 +19,14 @@
   - else
     - style = ''
 
-  .row{ data: { slider: { featured: '' } }, style: style }
+  .row{ data: { slider: { playing_soon: '' } }, style: style }
     / MOVIES THUMB
     .col-xs-12.showcase-poster
       .slider-frame
         .btn.prev
         .btn.next
         .slider-container
-          - featured.each do |object|
+          - playing_soon.each do |object|
             - cover = object.try(:cover).try(:url)
             - cover ||= image_path("default/movie/image.png")
 

@@ -5,7 +5,7 @@ module Admin
     include Admin::FeaturedFilmablesBreadcrumb
 
     # exposes
-    expose(:filmables) { Movie.most_viewed.first(100) }
+    expose(:filmables) { Movie.featured.first(100) }
 
     PER_PAGE = 50
 

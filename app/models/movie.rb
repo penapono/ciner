@@ -56,7 +56,11 @@ class Movie < ActiveRecord::Base
     where(playing: true).order('brazilian_release DESC')
   end
 
-  def self.most_viewed
+  def filmable_year
+    year
+  end
+
+  def self.featured
     ids = Visit.where(action: 'show').where("controller like ?", "%questions%").pluck(:resource_id)
 
     result = Hash.new(0)
@@ -66,10 +70,6 @@ class Movie < ActiveRecord::Base
     result = result.sort_by { |_k, v| v }.to_h
 
     where(id: result.keys.first(15))
-  end
-
-  def filmable_year
-    year
   end
 
   def self.playing_soon

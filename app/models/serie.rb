@@ -69,7 +69,11 @@ class Serie < ActiveRecord::Base
     where(playing: true).order(brazilian_release: :desc)
   end
 
-  def self.most_viewed
+  def filmable_year
+    start_year
+  end
+
+  def self.featured
     ids = Visit.where(action: 'show').where("controller like ?", "%series%").pluck(:resource_id)
 
     result = Hash.new(0)
@@ -81,7 +85,19 @@ class Serie < ActiveRecord::Base
     where(id: result.keys.first(15))
   end
 
-  def filmable_year
-    start_year
+  def self.playing
+    where(last_released: true)
+  end
+
+  def self.playing_soon
+    where(playing_soon: true)
+  end
+
+  def self.available_netflix
+    where(available_netflix: true)
+  end
+
+  def self.available_amazon
+    where(available_amazon: true)
   end
 end

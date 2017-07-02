@@ -6,6 +6,12 @@ module Platform
 
     # exposes
     expose(:series) { Serie.all }
+    expose(:playing) { Serie.current_playing }
+    expose(:playing_soon) { Serie.playing_soon }
+    expose(:featured) { Serie.featured.first(5) }
+    expose(:available_netflix) { Serie.available_netflix }
+    expose(:available_amazon) { Serie.available_amazon }
+    expose(:birthday_professionals) { Professional.birthdays }
     expose(:serie, attributes: :serie_attributes)
 
     expose(:age_ranges) { AgeRange.all }

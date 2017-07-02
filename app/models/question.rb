@@ -120,12 +120,12 @@ class Question < ActiveRecord::Base
   def self.by_time(time)
     return order(comments_count: :desc) if time == "more_comment"
     return order(likes_count: :desc) if time == "more_like"
-    return most_viewed if time == "more_views"
+    return featured if time == "more_views"
     return order(created_at: :desc) if time == "recent"
     return order(created_at: :asc) if time == "oldest"
   end
 
-  def self.most_viewed
+  def self.featured
     result = Hash.new(0)
 
     Question.all.each do |object|
