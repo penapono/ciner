@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   expose(:featured) { Movie.most_viewed.first(5) }
   expose(:available_netflix) { Movie.available_netflix }
   expose(:available_amazon) { Movie.available_amazon }
-  expose(:movie, attributes: :movie_attributes)
+  expose(:birthday_professionals) { Professional.birthdays }
   expose(:movie, attributes: :movie_attributes)
 
   expose(:age_ranges) { AgeRange.all }

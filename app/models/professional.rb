@@ -44,6 +44,10 @@ class Professional < ActiveRecord::Base
     name
   end
 
+  def self.birthdays
+    where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day).first(10)
+  end
+
   def self.localized_genders
     genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end
