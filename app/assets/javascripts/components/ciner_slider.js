@@ -65,7 +65,7 @@ function CinerSlider() {
     sliderContainer.height(videoHeight);
     sliderContainer.width((videoWidth * videoCount) + videoWidthDiff);
     sliderContainer.css("top", (videoHeightDiff / 2));
-    sliderContainer.css("margin-left", -15);
+    sliderContainer.css("margin-left", 0);
 
     slide.height("195px");
     slide.width("130px");
