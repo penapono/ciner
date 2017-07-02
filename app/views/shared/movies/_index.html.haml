@@ -1,0 +1,17 @@
+- role = current_role(current_user, request.url)
+
+= render 'shared/breadcrumbs'
+
+.container
+  = render 'shared/movies/toolbar'
+
+.container
+  .row
+    .col-xs-9
+      = render 'shared/movies/index/playing', role: role
+      = render 'shared/movies/index/featured', role: role
+      = render 'shared/movies/index/playing_soon', role: role
+      = render 'shared/movies/index/available_netflix', role: role
+      = render 'shared/movies/index/available_amazon', role: role
+    .col-xs-3
+      = render 'shared/movies/index/birthdays'

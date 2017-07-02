@@ -71,4 +71,16 @@ class Movie < ActiveRecord::Base
   def filmable_year
     year
   end
+
+  def self.playing_soon
+    where(playing_soon: true)
+  end
+
+  def self.available_netflix
+    where(available_netflix: true)
+  end
+
+  def self.available_amazon
+    where(available_amazon: true)
+  end
 end

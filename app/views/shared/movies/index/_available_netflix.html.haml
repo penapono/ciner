@@ -1,0 +1,37 @@
+- role = role
+
+/ SECTION POSTER
+.section-poster
+  .ciner-poster.title-separator
+    .media
+      .media-left.media-middle
+        %svg.icon-title
+          %use{"xlink:href" => "#filme"}/
+      .media-body.media-bottom
+        .media-heading.title-section
+          Últimos lançamentos na Netflix
+      .media-body.text-right.media-middle.see-more.see-more
+        = link_to url_for([role, :movies]) do
+          = t('see_more')
+
+  - if role.blank?
+    - style = 'margin-right: 0px; margin-left: 0px;'
+  - else
+    - style = ''
+
+  .row{ data: { slider: { available_netflix: '' } }, style: style }
+    / MOVIES THUMB
+    .col-xs-12.showcase-poster
+      .slider-frame
+        .btn.prev
+        .btn.next
+        .slider-container
+          - available_netflix.each do |object|
+            - cover = object.try(:cover).try(:url)
+            - cover ||= image_path("default/movie/image.png")
+
+            .slide.movie-poster-item{ style: "width: 133px; height: 200px; float: left; margin-left: 5px; margin-right: 5px;" }
+              = link_to url_for([role, object]) do
+                .thumb
+                  = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')
+

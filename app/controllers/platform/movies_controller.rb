@@ -6,6 +6,11 @@ module Platform
 
     # exposes
     expose(:movies) { Movie.all }
+    expose(:playing) { Movie.current_playing }
+    expose(:playing_soon) { Movie.playing_soon }
+    expose(:featured) { Movie.most_viewed.first(5) }
+    expose(:available_netflix) { Movie.available_netflix }
+    expose(:available_amazon) { Movie.available_amazon }
     expose(:movie, attributes: :movie_attributes)
 
     expose(:age_ranges) { AgeRange.all }
