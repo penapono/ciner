@@ -5,6 +5,13 @@
   padding-left: 0px;
 }
 
+.slider-frame:hover {
+  .btn.prev,
+  .btn.next {
+    opacity: 1 !important;
+  }
+}
+
 .slider-frame {
   position: relative;
   margin: 0 auto;
@@ -31,6 +38,7 @@
 
     &.prev {
       left: 0px;
+      opacity: 0;
 
       &::after {
         content: '\f053';
@@ -39,6 +47,7 @@
 
     &.next {
       right: 0px;
+      opacity: 0;
 
       &::after {
         content: '\f054';
@@ -60,5 +69,7 @@
     }
 
   }
+
+
 
 }
