@@ -8,14 +8,6 @@
 
 .container
   .row
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#ficha-tecnica"} Trailer
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#criticas"} Críticas
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#comentarios"} Comentários
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#noticias"} Notícias
     .col-xs-12.col-sm-8
       = render 'shared/series/info', serie: serie, role: role
       = render 'shared/series/critics', serie: serie, role: role
