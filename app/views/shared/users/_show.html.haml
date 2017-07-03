@@ -88,9 +88,6 @@
               500
       #all-medias.anchors
         %a.btn-anchor{:href => "#movies-series"} Minha Conta
-        %a.btn-anchor{:href => "#all-medias"} Filmes e Séries
-        %a.btn-anchor{:href => "#videos"} Vídeos
-        %a.btn-anchor{:href => "#user-review"} Críticas
         - if user.curriculum
           = link_to url_for([role, user.curriculum]) do
             .btn-anchor
@@ -99,7 +96,6 @@
           = link_to url_for([:new, role, :curriculum]) do
             .btn-anchor
               Currículo
-        %a.btn-anchor{:href => "#friend-list"} Amigos
 
       / Favoritos e Assistidos
       = render 'shared/users/all_medias', role: role
