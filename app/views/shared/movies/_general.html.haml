@@ -67,18 +67,19 @@
                   = object.synopsis
                 %br
 
+
                 = Movie.human_attribute_name(:directors_str)
-                %a.bold.wine
+                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = object.omdb_directors
                 %br
 
                 Roteiro
-                %a.bold.wine
+                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = object.writers_pt
                 %br
 
                 = Movie.human_attribute_name(:cast_str)
-                %a.bold.wine
+                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = object.omdb_actors
                 %a.bold.preto{:href => "#ficha-tecnica"}
                   = t('more')
@@ -86,7 +87,7 @@
 
                 %br
                 País(es) de Produção
-                %a.bold.wine
+                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = object.countries_str
                 %br
 
