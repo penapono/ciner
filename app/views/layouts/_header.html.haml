@@ -1,6 +1,8 @@
 - content_for :javascript, javascript_include_tag('components/header')
 
 - role = current_role(current_user, request.url)
+- if role == :admin
+  = role = :platform
 
 .banner
   / ACTIONBAR
