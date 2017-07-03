@@ -1,3 +1,4 @@
+//= require star-rating.min
 //= require views/shared/user_filmables
 
 $(function() {

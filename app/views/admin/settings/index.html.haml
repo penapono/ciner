@@ -45,7 +45,7 @@
 %p
   Status da base:
   %span.wine
-    = Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 115000
+    = Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count
   \/
   %span.wine
     = Movie.count + Serie.count
