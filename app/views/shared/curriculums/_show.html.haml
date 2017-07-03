@@ -6,14 +6,6 @@
 
 .container
   .row
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#fotos"} Fotos
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#videos"} Vídeos
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#audios"} Áudios
-    .col-xs-12.col-sm-3
-      %a.btn.btn-block.btn-ancora{:href => "#arquivos"} Arquivos
     .col-xs-12.col-sm-8
       = render 'shared/curriculums/gallery', curriculum: curriculum, role: role
       = render 'shared/curriculums/videos', curriculum: curriculum, role: role
