@@ -93,7 +93,16 @@ module Admin
         :countries,
         :playing_soon,
         :available_netflix,
-        :available_amazon
+        :available_amazon,
+        filmable_professionals_attributes: %i[
+          set_function_id
+          professional_id
+          filmable_id
+          filmable_type
+          filmable
+          id
+          _destroy
+        ]
       )
     end
 

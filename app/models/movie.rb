@@ -27,6 +27,11 @@ class Movie < ActiveRecord::Base
   delegate :name, to: :state, allow_nil: true, prefix: true
   delegate :name, to: :age_range, allow_nil: true, prefix: true
 
+  # Nested
+  accepts_nested_attributes_for :filmable_professionals,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+
   # Aliases
   alias_attribute :text, :title_str
 

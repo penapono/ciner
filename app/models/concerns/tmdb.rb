@@ -63,7 +63,7 @@ module Tmdb
     def api_transform
       object = self
 
-      unless object.lock_updates? && !Rails.env.development?
+      unless object.lock_updates? # && !Rails.env.development?
 
         tmdb_result = start_tmdb(object)
 
@@ -198,6 +198,7 @@ module Tmdb
 
         object.save(validate: false)
       end
+
       load_professionals(object, tmdb_id)
 
       load_seasons(object, tmdb_id) if is_serie?(object)
@@ -205,7 +206,7 @@ module Tmdb
       object.lock_updates = true
 
       object.save(validate: false)
-      # rescue
+      rescue
     end
 
     def load_omdb_cover(omdb_poster)
