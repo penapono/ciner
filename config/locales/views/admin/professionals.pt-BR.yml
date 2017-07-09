@@ -4,6 +4,8 @@ pt-BR:
       create:
         title: Novo Profissional
       form:
+        about: Biografia
+        avatar: Foto de Perfil
         general: Dados Gerais
       index:
         title: Profissional

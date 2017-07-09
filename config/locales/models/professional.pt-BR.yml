@@ -9,6 +9,8 @@ pt-BR:
       professional:
         name: Nome
         birth: Data de Nascimento
+        birthday: Data de Nascimento
+        gender: Gênero
         country: País
         country_id: País
         set_function: Função no Set

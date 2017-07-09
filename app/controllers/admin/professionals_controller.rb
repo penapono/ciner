@@ -18,11 +18,11 @@ module Admin
     PER_PAGE = 10
 
     def index
-      self.professionals = professionals.page(params[:page]).per(PER_PAGE)
+      self.professionals = paginated_professionals
     end
 
     def show
-      professional.api_transform
+      # professional.api_transform
     end
 
     private
@@ -45,8 +45,8 @@ module Admin
 
     def professional_params
       params.require(:professional).permit(
-        :name, :birth, :country_id, :user, :set_function_id,
-        :lock_updates
+        :name, :birthday, :country_id, :user, :set_function_id,
+        :gender, :avatar, :biography, :lock_updates
       )
     end
 

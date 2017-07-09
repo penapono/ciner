@@ -18,11 +18,11 @@ module Platform
     PER_PAGE = 10
 
     def index
-      self.professionals = professionals.page(params[:page]).per(PER_PAGE)
+      self.professionals = paginated_professionals
     end
 
     def show
-      professional.api_transform
+      # professional.api_transform
     end
 
     private
