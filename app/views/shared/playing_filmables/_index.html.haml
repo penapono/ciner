@@ -1,19 +1,24 @@
 - role = current_role(current_user, request.url)
 
 .container.content
-  .row
+  .row{ style: 'padding: 2.5px;' }
     .col-xs-12
       .title-separator
         .media
           .media-body.media-bottom
             .media-heading.title-section
               Filmes em Cartaz
-      .row
-        - filmables.each do |filmable|
-          - object = filmable
-          - cover = object.cover
-          - cover ||= image_path("default/movie/image.png")
+  .row
+    - filmables.each do |filmable|
+      - object = filmable
+      - cover = object.cover
+      - cover ||= image_path("default/movie/image.png")
 
-          .col-sm-2.col-xs-3.no-shelf
-            = link_to url_for([role, object]) do
-              = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 195px;' )
+      .col-sm-2.no-shelf{ style: 'margin-bottom: 0px; padding: 2.5px;'}
+        = link_to url_for([role, object]) do
+          = image_tag(cover, class: "img-responsive", style: 'width: 200px; height: 300px;')
+        .title{ style: 'height: 60px; overflow: hidden;'}
+          = link_to url_for([role, object]) do
+            = object.title_str
+          .year{ style: 'height: 20px; overflow: hidden;'}
+            = object.filmable_year
