@@ -1,5 +1,7 @@
 = render 'shared/toolbar'
 
+- role = current_role(current_user, request.url)
+
 .toolbar
   .row.searchbar
     .col-xs-2
@@ -8,7 +10,12 @@
           %img.img-responsive{ src: image_path("icons/ico_broadcasts.png"), style: 'width: 30px; height: 30px;' }
       .media-body.media-bottom
         .media-heading.title-section Notícias
-    .col-xs-10
+
+    - if role == :admin
+      - col_class = "col-xs-9"
+    - col_class ||= "col-xs-10"
+
+    %div{ class: col_class }
       .row
         .col-xs-4
           - content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
@@ -42,5 +49,9 @@
 
               .col-xs-6
                 = f.input :date, as: :string, label: false, input_html: { class: 'datepicker', value: params.fetch(:filter, {}).fetch(:date, ''), placeholder: 'Busque por data da notícia' }
-
+    - if role == :admin
+      .col-xs-1
+        = link_to new_admin_broadcast_path, class: 'pull-right' do
+          %i.fa.fa-plus
+            = t('new')
 

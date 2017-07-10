@@ -4,40 +4,43 @@
   \!
 
 %p
-  = link_to User.model_name.human(count: 2), admin_users_path
+  = link_to User.model_name.human(count: 2), url_for([:admin, :users])
 
 %p
-  = link_to SetFunction.model_name.human(count: 2), admin_set_functions_path
+  = link_to SetFunction.model_name.human(count: 2), url_for([:admin, :set_functions])
 
 %p
-  = link_to Studio.model_name.human(count: 2), admin_studios_path
+  = link_to Studio.model_name.human(count: 2), url_for([:admin, :studios])
 
 %p
-  = link_to Professional.model_name.human(count: 2), admin_professionals_path
+  = link_to Professional.model_name.human(count: 2), url_for([:admin, :professionals])
 
 %p
-  = link_to AgeRange.model_name.human(count: 2), admin_age_ranges_path
+  = link_to AgeRange.model_name.human(count: 2), url_for([:admin, :age_ranges])
 
 %p
-  = link_to FilmProductionCategory.model_name.human(count: 2), admin_film_production_categories_path
+  = link_to FilmProductionCategory.model_name.human(count: 2), url_for([:admin, :film_production_categories])
 
 %p
-  = link_to Movie.model_name.human(count: 2), admin_movies_path
+  = link_to Movie.model_name.human(count: 2), url_for([:admin, :movies])
 
 %p
-  = link_to Serie.model_name.human(count: 2), admin_series_index_path
+  = link_to Serie.model_name.human(count: 2), url_for([:admin, :series_index])
 
 %p
-  = link_to CinerVideo.model_name.human(count: 2), admin_ciner_videos_path
+  = link_to CinerVideo.model_name.human(count: 2), url_for([:admin, :ciner_videos])
 
 %p
-  = link_to Critic.model_name.human(count: 2), admin_critics_path
+  = link_to Critic.model_name.human(count: 2), url_for([:admin, :critics])
 
 %p
-  = link_to Question.model_name.human(count: 2), admin_questions_path
+  = link_to Question.model_name.human(count: 2), url_for([:admin, :questions])
 
 %p
-  = link_to Event.model_name.human(count: 2), admin_events_path
+  = link_to Event.model_name.human(count: 2), url_for([:admin, :events])
+
+%p
+  = link_to Broadcast.model_name.human(count: 2), url_for([:admin, :broadcasts])
 
 %br
 %br

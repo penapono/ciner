@@ -3,8 +3,6 @@
 
 = render 'shared/breadcrumbs'
 
-= render 'shared/index_title', title: Broadcast.model_name.human(count: 2), path: new_admin_broadcast_path
-
 = render 'shared/broadcasts/toolbar', path: admin_broadcasts_path
 
 - if broadcasts.any?

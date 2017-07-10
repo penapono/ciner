@@ -20,5 +20,5 @@
         .title{ style: 'height: 60px; overflow: hidden;'}
           = link_to url_for([role, object]) do
             = object.title_str
-          .year{ style: 'height: 20px; overflow: hidden;'}
+          %span
             = object.filmable_year

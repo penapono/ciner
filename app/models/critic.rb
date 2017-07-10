@@ -17,7 +17,7 @@ class Critic < ActiveRecord::Base
 
   # Validations
   validates :content,
-            :user,
+            :user_id,
             :filmable_type,
             :filmable_id,
             :rating,
@@ -163,6 +163,6 @@ class Critic < ActiveRecord::Base
 
   def update_year
     return unless filmable
-    self.filmable_release_year = filmable.release.year
+    self.filmable_release_year = filmable.brazilian_release.filmable_year if filmable.brazilian_release
   end
 end

@@ -3,8 +3,6 @@
 
 = render 'shared/breadcrumbs'
 
-= render 'shared/index_title', title: Question.model_name.human(count: 2), path: new_admin_question_path
-
 = render 'shared/questions/toolbar', path: admin_questions_path
 
 - if questions.any?

@@ -15,7 +15,6 @@ class Professional < ActiveRecord::Base
 
   # Validations
   validates :name,
-            :set_function,
             presence: true
 
   # gender
