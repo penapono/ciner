@@ -28,6 +28,8 @@ $(function() {
             filter(function() { return $.trim( $(this).text() ) == uf; }).
             attr('selected',true);
 
+          $('#user_state_id').trigger('change.select2');
+
           var city = data.data.cidade;
 
           var state_attrs = {
@@ -42,6 +44,7 @@ $(function() {
               var cities = $("#user_city_id");
 
               cities.html('');
+              console.log(d);
               cities.append(new Option("Município", ""));
               for(var i = 0; i < d.length; i++) {
                 cities.append(new Option(d[i].name, d[i].id));
