@@ -1,0 +1,9 @@
+- partial = 'admin/series/filmable_professionals/fields'
+
+.row{'data-cocoon-container': ''}
+  .col-xs-12
+    %h2.title.pull-right
+      = link_to_add_association '+', f, :filmable_professionals, data: { association_insertion_method: 'before' }, class: 'action-button add', partial: partial
+
+    = f.simple_fields_for :filmable_professionals do |ep|
+      = render partial, f: ep
