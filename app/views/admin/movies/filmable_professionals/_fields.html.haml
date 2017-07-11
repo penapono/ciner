@@ -2,12 +2,14 @@
   .row
     .col-xs-10.formatted-error-field
       .row
-        .col-xs-4{ data: { set_function_select: '' } }
+        .col-xs-3{ data: { set_function_select: '' } }
           = f.hidden_field :filmable, value: Movie
           = f.input :set_function_id, label: false, collection: SetFunction.all, input_html: { include_blank: 'Profissão' }
-        .col-xs-8{ data: { user_id_select: '' } }
+        .col-xs-6{ data: { user_id_select: '' } }
           .div
             = f.input :professional_id, label: false, collection: (f.object.professional_id.blank? ? [] : Professional.where(id: f.object.professional_id)), input_html: { data: { remote_select: '', ajax_url: api_v1_professionals_path }, include_blank: 'Profissional' }
+        .col-xs-3
+          = f.input :observation, as: :string, label: false, input_html: { placeholder: 'Personagem' }
 
     .col-xs-2
       = link_to_remove_association '', f, class: 'fa fa-trash-o delete-icon', title: t('remove'), data: { confirm: t('confirm_destroy') }

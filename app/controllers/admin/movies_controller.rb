@@ -97,6 +97,7 @@ module Admin
         filmable_professionals_attributes: %i[
           set_function_id
           professional_id
+          observation
           filmable_id
           filmable_type
           filmable
