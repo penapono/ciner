@@ -3,7 +3,6 @@
     .col-xs-10.formatted-error-field
       .row
         .col-xs-3{ data: { set_function_select: '' } }
-          = f.hidden_field :filmable, value: Movie
           = f.input :set_function_id, label: false, collection: SetFunction.all, input_html: { include_blank: 'Profissão' }
         .col-xs-6{ data: { user_id_select: '' } }
           .div

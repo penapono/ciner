@@ -111,6 +111,7 @@ module Admin
           _destroy
         ],
         serie_seasons_attributes: %i[
+          serie_id
           name
           overview
           id
