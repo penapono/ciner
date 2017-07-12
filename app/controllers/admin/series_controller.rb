@@ -109,6 +109,12 @@ module Admin
           filmable
           id
           _destroy
+        ],
+        serie_seasons_attributes: %i[
+          name
+          overview
+          id
+          _destroy
         ]
       )
     end

@@ -1,0 +1,11 @@
+.nested-fields
+  .row
+    .col-xs-10.formatted-error-field
+      .row
+        .col-xs-3
+          = f.input :name, label: false, as: :string
+        .col-xs-9
+          = f.input :overview, label: false, as: :string
+
+    .col-xs-2
+      = link_to_remove_association '', f, class: 'fa fa-trash-o delete-icon', title: t('remove'), data: { confirm: t('confirm_destroy') }
