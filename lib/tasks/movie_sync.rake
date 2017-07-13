@@ -5,7 +5,7 @@ namespace :movie_sync do
 
   task update: :environment do
     # Movie.where(lock_updates: false).first(20).each do |movie|
-    Movie.where("year > 2014 AND year < 2019 AND lock_updates = false").order(year: :desc).first(20).each do |movie|
+    Movie.where("year > 2014 AND year < 2019 AND lock_updates = false").order(year: :desc).first(600).each do |movie|
       movie.api_transform
     end
   end
