@@ -63,145 +63,152 @@ module Tmdb
     def api_transform
       object = self
 
-      unless object.lock_updates? # && !Rails.env.development?
-        tmdb_result = start_tmdb(object)
+      # unless object.lock_updates? # && !Rails.env.development?
+      #   tmdb_result = start_tmdb(object)
 
-        if tmdb_result
-          object.synopsis = tmdb_result["overview"]
+      #   if tmdb_result
+      #     object.synopsis = tmdb_result["overview"]
 
-          object.tmdb_id = tmdb_result["id"]
+      #     object.tmdb_id = tmdb_result["id"]
 
-          object.title = if is_serie?(object)
-                           tmdb_result["name"]
-                         else
-                           tmdb_result["title"]
-                         end
+      #     object.title = if is_serie?(object)
+      #                      tmdb_result["name"]
+      #                    else
+      #                      tmdb_result["title"]
+      #                    end
 
-          object.original_title = if is_serie?(object)
-                                    tmdb_result["original_name"]
-                                  else
-                                    tmdb_result["original_title"]
-                                  end
+      #     object.original_title = if is_serie?(object)
+      #                               tmdb_result["original_name"]
+      #                             else
+      #                               tmdb_result["original_title"]
+      #                             end
 
+      #   end
+
+      #   tmdb_id = object.tmdb_id
+
+      #   tmdb_object = load_tmdb_object(tmdb_id)
+
+      #   begin
+      #     object.cover = load_poster(tmdb_object)
+      #   rescue
+      #     object.cover = ""
+      #   end
+
+      #   if is_serie?(object)
+      #     object.number_of_seasons = tmdb_object["number_of_seasons"]
+      #     tmdb_url = "#{object_base_url}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
+
+      #     tmdb_response = HTTParty.get(tmdb_url)
+
+      #     tmdb_result = tmdb_response.parsed_response
+
+      #     imdb_id = tmdb_result["imdb_id"]
+      #   else
+      #     imdb_id = tmdb_object["imdb_id"]
+      #   end
+
+      #   # OMDB
+
+      #   imdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
+
+      #   url = "http://www.omdbapi.com/?i=#{imdb_id}"
+
+      #   uri = URI.parse(url)
+
+      #   if uri.is_a?(URI::HTTP)
+      #     response = HTTParty.get(url)
+
+      #     response = response.parsed_response
+
+      #     response_status = response["Response"]
+
+      #     if response_status == "True"
+      #       omdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
+
+      #       object.omdb_id = omdb_id
+
+      #       object.release = begin
+      #                         Date.parse(response["Released"])
+      #                       rescue
+      #                         nil
+      #                       end
+
+      #       object.length = response["Runtime"]
+
+      #       object.omdb_directors = response["Director"]
+
+      #       object.omdb_writers = response["Writer"]
+
+      #       object.omdb_actors = response["Actors"]
+
+      #       object.omdb_genre = response["Genre"]
+
+      #       countries = tmdb_object["production_countries"]
+
+      #       countries_str = []
+
+      #       unless countries.blank?
+      #         countries.each do |country|
+      #           country_name = country["name"]
+      #           countries_str << country_name
+      #         end
+      #       end
+
+      #       countries_str = countries_str.join(", ")
+
+      #       object.countries = countries_str
+
+      #       if is_serie?(object)
+      #         object.start_year = response["Year"]
+      #       else
+      #         object.year = response["Year"]
+      #       end
+
+      #       if object.cover.blank?
+      #         begin
+      #           object.cover = load_omdb_cover(response["Poster"])
+      #         rescue
+      #           object.cover = ""
+      #         end
+      #       end
+      #     end
+      #   end
+
+      #   imdb_brazilian_page = load_imdb_brazilian_page(imdb_id)
+
+      #   object.brazilian_release = load_brazilian_release(imdb_brazilian_page)
+
+      #   imdb_title = load_brazilian_title(imdb_brazilian_page)
+
+      #   object.title = imdb_title unless imdb_title.blank?
+
+      #   object.title = object.title.delete("\"") if object.title
+
+      #   if object.original_title
+      #     object.original_title = object.original_title.delete("\"")
+      #   end
+
+      #   object.trailer = load_trailer
+
+      #   object.omdb_rated = load_rating
+
+      #   omdb_country = response["Country"]
+
+      #   object.lock_updates = true
+
+      #   object.save(validate: false)
+
+      # end
+
+      tmdb_id = object.tmdb_id
+
+      unless object.lock_updates?
+        unless tmdb_id.blank?
+          load_professionals(object, tmdb_id)
+
+          load_seasons(object, tmdb_id) if is_serie?(object)
         end
-
-        tmdb_id = object.tmdb_id
-
-        tmdb_object = load_tmdb_object(tmdb_id)
-
-        begin
-          object.cover = load_poster(tmdb_object)
-        rescue
-          object.cover = ""
-        end
-
-        if is_serie?(object)
-          object.number_of_seasons = tmdb_object["number_of_seasons"]
-          tmdb_url = "#{object_base_url}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
-
-          tmdb_response = HTTParty.get(tmdb_url)
-
-          tmdb_result = tmdb_response.parsed_response
-
-          imdb_id = tmdb_result["imdb_id"]
-        else
-          imdb_id = tmdb_object["imdb_id"]
-        end
-
-        # OMDB
-
-        imdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
-
-        url = "http://www.omdbapi.com/?i=#{imdb_id}"
-
-        uri = URI.parse(url)
-
-        if uri.is_a?(URI::HTTP)
-          response = HTTParty.get(url)
-
-          response = response.parsed_response
-
-          response_status = response["Response"]
-
-          if response_status == "True"
-            omdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
-
-            object.omdb_id = omdb_id
-
-            object.release = begin
-                              Date.parse(response["Released"])
-                            rescue
-                              nil
-                            end
-
-            object.length = response["Runtime"]
-
-            object.omdb_directors = response["Director"]
-
-            object.omdb_writers = response["Writer"]
-
-            object.omdb_actors = response["Actors"]
-
-            object.omdb_genre = response["Genre"]
-
-            countries = tmdb_object["production_countries"]
-
-            countries_str = []
-
-            unless countries.blank?
-              countries.each do |country|
-                country_name = country["name"]
-                countries_str << country_name
-              end
-            end
-
-            countries_str = countries_str.join(", ")
-
-            object.countries = countries_str
-
-            if is_serie?(object)
-              object.start_year = response["Year"]
-            else
-              object.year = response["Year"]
-            end
-
-            if object.cover.blank?
-              begin
-                object.cover = load_omdb_cover(response["Poster"])
-              rescue
-                object.cover = ""
-              end
-            end
-          end
-        end
-
-        imdb_brazilian_page = load_imdb_brazilian_page(imdb_id)
-
-        object.brazilian_release = load_brazilian_release(imdb_brazilian_page)
-
-        imdb_title = load_brazilian_title(imdb_brazilian_page)
-
-        object.title = imdb_title unless imdb_title.blank?
-
-        object.title = object.title.delete("\"") if object.title
-
-        if object.original_title
-          object.original_title = object.original_title.delete("\"")
-        end
-
-        object.trailer = load_trailer
-
-        object.omdb_rated = load_rating
-
-        omdb_country = response["Country"]
-
-        object.lock_updates = true
-
-        object.save(validate: false)
-
-        load_professionals(object, tmdb_id)
-
-        load_seasons(object, tmdb_id) if is_serie?(object)
       end
     rescue
     end
@@ -443,50 +450,40 @@ module Tmdb
     def load_crew(object, crew)
       return unless crew
 
-      set_function_director = SetFunction.find_by(name: "Direção")
-      set_function_writer = SetFunction.find_by(name: "Roteiro")
-
       crew.each do |person|
         job = person["job"]
 
-        if %w[Director Writer].include? job
+        set_function = SetFunction.find_or_create_by(name: job)
 
-          name = person["name"]
+        name = person["name"]
 
-          tmdb_id = person["id"]
+        tmdb_id = person["id"]
 
-          if job == "Director"
-            set_function = set_function_director
-          elsif job == "Writer"
-            set_function = set_function_writer
+        professional = Professional.find_or_initialize_by(
+          name: name,
+          tmdb_id: tmdb_id
+        )
+
+        avatar_url = person["profile_path"]
+
+        if avatar_url && !avatar_url.empty? && avatar_url != "N/A" && avatar_url
+          begin
+            avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
+            professional.avatar = avatar if avatar
+          rescue
           end
-
-          professional = Professional.find_or_initialize_by(
-            name: name,
-            tmdb_id: tmdb_id
-          )
-
-          avatar_url = person["profile_path"]
-
-          if avatar_url && !avatar_url.empty? && avatar_url != "N/A" && avatar_url
-            begin
-              avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
-              professional.avatar = avatar if avatar
-            rescue
-            end
-          end
-
-          professional.save(validate: false)
-
-          filmable_professional = FilmableProfessional.find_or_initialize_by(
-            filmable_type: object.class.to_s,
-            filmable_id: object.id,
-            professional_id: professional.id,
-            set_function_id: set_function.id
-          )
-
-          filmable_professional.save(validate: false)
         end
+
+        professional.save(validate: false)
+
+        filmable_professional = FilmableProfessional.find_or_initialize_by(
+          filmable_type: object.class.to_s,
+          filmable_id: object.id,
+          professional_id: professional.id,
+          set_function_id: set_function.id
+        )
+
+        filmable_professional.save(validate: false)
       end
       # rescue
     end
