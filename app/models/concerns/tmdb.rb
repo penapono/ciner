@@ -209,6 +209,10 @@ module Tmdb
 
           load_seasons(object, tmdb_id) if is_serie?(object)
         end
+
+        object.lock_updates = true
+
+        object.save(validate: false)
       end
     rescue
     end
