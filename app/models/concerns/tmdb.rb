@@ -275,7 +275,7 @@ module Tmdb
 
       crew = tmdb_response["crew"]
 
-      load_actors(object, cast) if cast
+      # load_actors(object, cast) if cast
 
       load_crew(object, crew) if crew
       # rescue
