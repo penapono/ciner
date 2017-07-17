@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628014812) do
+ActiveRecord::Schema.define(version: 20170717123407) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -291,6 +291,15 @@ ActiveRecord::Schema.define(version: 20170628014812) do
     t.boolean  "available_netflix",               default: false
     t.boolean  "available_amazon",                default: false
     t.index ["user_id"], name: "index_movies_on_user_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text    "message",     limit: 65535
+    t.integer "answer"
+    t.integer "status"
+    t.integer "type"
+    t.integer "sender_id"
+    t.integer "receiver_id"
   end
 
   create_table "professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
