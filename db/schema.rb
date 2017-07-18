@@ -295,8 +295,8 @@ ActiveRecord::Schema.define(version: 20170717123407) do
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text    "message",     limit: 65535
-    t.integer "answer"
-    t.integer "status"
+    t.integer "answer",                    default: 0
+    t.integer "status",                    default: 0
     t.integer "type"
     t.integer "sender_id"
     t.integer "receiver_id"
