@@ -8,7 +8,7 @@ class Notification < ActiveRecord::Base
 
   # Enums
   enum status: { pending: 0, read: 1 }
-  enum answer: { none: 0, waiting: 1, approved: 2, declined: 3 }
+  enum answer: { no_answer: 0, waiting: 1, approved: 2, declined: 3 }
   enum type: { friend_request: 0, accept_friend_request: 1, decline_friend_request: 2 }
 
   def sender
