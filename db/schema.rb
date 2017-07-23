@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717123407) do
+ActiveRecord::Schema.define(version: 20170723131403) do
 
   create_table "age_ranges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -294,10 +294,10 @@ ActiveRecord::Schema.define(version: 20170717123407) do
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text    "message",     limit: 65535
-    t.integer "answer",                    default: 0
-    t.integer "status",                    default: 0
-    t.integer "type"
+    t.text    "message",           limit: 65535
+    t.integer "answer",                          default: 0
+    t.integer "status",                          default: 0
+    t.integer "notification_type"
     t.integer "sender_id"
     t.integer "receiver_id"
   end

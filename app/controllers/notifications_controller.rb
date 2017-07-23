@@ -23,64 +23,54 @@ class NotificationsController < ApplicationController
     notification_sender_id = params[:sender_id]
     notification_receiver_id = params[:receiver_id]
 
-    if notification_type == 'friend_request'
-      on_add_friend(notification_sender_id, notification_receiver_id)
-    elsif notification_type == 'cancel_friend_request'
-      on_accept_friend(notification_sender_id, notification_receiver_id)
-      elsif notification_type == 'remove_friend'
-        on_decline_friend(notification_sender_id, notification_receiver_id)
-      end
-    end
+    on_add_friend(notification_sender_id, notification_receiver_id) if notification_type == 'friend_request'
+
+    on_cancel_friend_request(notification_sender_id, notification_receiver_id) if notification_type == 'cancel_friend_request'
+
+    on_decline_friend(notification_sender_id, notification_receiver_id) if notification_type == 'remove_friend'
   end
 
   # Friendship
   def on_add_friend(sender_id, receiver_id)
     notification_sender = User.find(sender_id)
 
-    notification = Notification.create(
-      sender_id: sender_id,
-      receiver_id: receiver_id,
-      type: :friend_request,
-      answer: :waiting,
-      message: "#{link_to notification_sender, notification_sender.name} te enviou um pedido de amizade"
-    )
-
-    render json: { text: 'Aguardando',
-                   action: 'cancel_friend_request' }
+    if Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request, answer: :waiting)
+      render json: { text: 'Aguardando',
+                     next_action: 'cancel_friend_request' }
+    end
   end
 
   def on_cancel_friend_request(sender_id, receiver_id)
-    notification = Notification.find_by(sender_id: sender_id, receiver_id: receiver_id, type: :friend_request)
+    notification = Notification.find_by(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request)
     notification.destroy
 
     render json: { text: 'Adicionar amigo',
-                   action: 'friend_request' }
+                   next_action: 'friend_request' }
   end
 
   def on_remove_friend(sender_id, receiver_id)
-    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, type: :friend_request)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :friend_request)
     notification.destroy
 
     render json: { text: 'Adicionar amigo',
-                   action: 'friend_request' }
+                   next_action: 'friend_request' }
   end
 
   def on_accept_friend(sender_id, receiver_id)
     notification_sender = User.find(sender_id)
-    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, type: :friend_request)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :friend_request)
     notification.update_attributes(answer: :approved)
 
     Notification.create(
       sender_id: sender_id,
       receiver_id: receiver_id,
-      type: :accept_friend_request,
-      message: "#{link_to notification_sender, notification_sender.name} aceitou seu pedido de amizade"
+      notification_type: :accept_friend_request
     )
   end
 
   def on_decline_friend(sender_id, receiver_id)
     notification_sender = User.find(sender_id)
-    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, type: friend_request)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: friend_request)
     notification.update_attributes(answer: :declined)
   end
 

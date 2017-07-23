@@ -6,7 +6,7 @@ $(document).ready(function() {
         friendship = self.closest('[data-friendship-action]'),
         sender_id = friendship.data('friendshipSenderId'),
         receiver_id = friendship.data('friendshipReceiverId'),
-        notification_type = friendship.data('friendshipAction'),
+        notification_type = friendship.attr('data-friendship-action'),
         url = friendship.data('friendshipUrl'),
         button = friendship.find('span.text');
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
       beforeSend: function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) },
       success: function(data) {
         aButton.html(data.text);
-        aParent.data('action', data.action);
+        aParent.attr('data-friendship-action', data.next_action);
       }
     });
   }
