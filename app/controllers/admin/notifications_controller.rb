@@ -5,7 +5,7 @@ module Admin
     include Admin::NotificationsBreadcrumb
 
     # exposes
-    expose(:notifications) { Notification.where(receiver_id: current_user.id) }
+    expose(:notifications) { Notification.for_user(current_user) }
 
     PER_PAGE = 50
 

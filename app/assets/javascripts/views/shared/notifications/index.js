@@ -25,8 +25,9 @@ $(document).ready(function() {
       url: aUrl,
       beforeSend: function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) },
       success: function(data) {
-        aButton.html(data.text);
-        aParent.attr('data-friendship-action', data.next_action);
+        var notificationBox = aParent.closest('.notification-box');
+
+        notificationBox.fadeOut(500, function(){ $(this).remove();});
       }
     });
   }
