@@ -6,36 +6,32 @@ $(document).ready(function() {
         friendship = self.closest('[data-friendship-action]'),
         sender_id = friendship.data('friendshipSenderId'),
         receiver_id = friendship.data('friendshipReceiverId'),
-        add = friendship.data('friendshipAdd'),
-        pending = friendship.data('friendshipPending'),
-        remove = friendship.data('friendshipRemove'),
+        notification_type = friendship.data('friendshipAction'),
         url = friendship.data('friendshipUrl'),
-        text = friendship.find('span.text');
+        button = friendship.find('span.text');
 
-    if (add) {
-      text.html("Aguardando");
-      friendship.data("friendshipAdd", false);
-      friendship.data("friendshipPending", true);
-      friendship.data("friendshipRemove", false);
-    }
-    else {
-      if (pending) {
-        text.html('Desfazer amizade');
-        friendship.data("friendshipAdd", false);
-        friendship.data("friendshipPending", false);
-        friendship.data("friendshipRemove", true);
-      }
-      else {
-        if (remove) {
-          text.html('Adicionar amigo');
-          friendship.data("friendshipAdd", true);
-          friendship.data("friendshipPending", false);
-          friendship.data("friendshipRemove", false);
-        }
-      }
+    data = {
+      sender_id: sender_id,
+      receiver_id: receiver_id,
+      notification_type: notification_type
     }
 
+    _action(friendship, url, data, button);
   });
+
+  function _action(aParent, aUrl, aData, aButton) {
+    $.ajax({
+      type: 'POST',
+      dataType: 'JSON',
+      data: aData,
+      url: aUrl,
+      beforeSend: function(xhr) { xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) },
+      success: function(data) {
+        aButton.html(data.text);
+        aParent.data('action', data.action);
+      }
+    });
+  }
 
   $(document).on('click', '.shelf', function() {
     var self = $(this),
