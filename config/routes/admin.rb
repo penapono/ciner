@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'home#index'
 
-    get '/profile', to: 'users#show'
-    get 'profile/edit', to: 'users#edit'
-
     resources :users do
       resources :collection, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'

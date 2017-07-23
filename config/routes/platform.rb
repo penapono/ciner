@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   namespace :platform do
     root 'home#index'
 
-    resources :users, only: [:update] do
+    resources :users, only: [:update, :show, :edit] do
       resources :collection, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'
       resources :watched, only: :index, module: 'users'
     end
-
-    get '/profile', to: 'users#show'
-    get 'profile/edit', to: 'users#edit'
 
     resources :studios, only: [:index, :show]
     resources :professionals, only: [:index, :show]
