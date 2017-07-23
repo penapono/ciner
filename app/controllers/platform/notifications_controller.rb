@@ -5,7 +5,7 @@ module Platform
     include Platform::NotificationsBreadcrumb
 
     # exposes
-    expose(:notifications) { Notification.find_by(receiver_id: current_user.id) }
+    expose(:notifications) { Notification.where(receiver_id: current_user.id) }
 
     PER_PAGE = 50
 

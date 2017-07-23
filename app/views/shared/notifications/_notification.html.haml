@@ -1,0 +1,21 @@
+- role = current_role(current_user, request.url)
+
+.row.notification-box{ data: { notification: '' } }
+  .col-xs-1
+    = link_to url_for([role, notification.sender]) do
+      = image_tag(notification.sender_avatar, style: 'width: 65px; height: 65px;')
+  .col-xs-10{ data: { sender_id: notification.receiver_id, receiver_id: notification.sender_id } }
+    .row
+      .col-xs-12
+        = notification_message_str(notification, role)
+    - unless notification.no_answer?
+      .row
+        .col-xs-12.pull-right
+          .friendship.accept{ data: { friendship: { action: 'accept_friend_request', sender_id: notification.receiver_id, receiver_id: notification.sender_id, url: notifications_path } } }
+            %button.btn.btn-login
+              %span.text
+                Aceitar
+          .friendship.decline{ data: { friendship: { action: 'decline_friend_request', sender_id: notification.receiver_id, receiver_id: notification.sender_id, url: notifications_path } } }
+            %button.btn.btn-login
+              %span.text
+                Recusar

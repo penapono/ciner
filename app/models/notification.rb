@@ -20,7 +20,10 @@ class Notification < ActiveRecord::Base
     User.find(receiver_id)
   end
 
-
+  def sender_avatar
+    return image_path("default/user/image.png") if sender == :system
+    sender.avatar.url
+  end
 end
 
 # 1.2. Quando alguém aceita a solicitação de amizade, o usuário que enviou o pedido recebe a informação que tal pessoa aceitou o pedido de amizade.

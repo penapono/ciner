@@ -1,5 +1,3 @@
-- action = 'friend_request'
-
 - notifications = Notification.where(sender_id: current_user.id, receiver_id: user.id, notification_type: :friend_request)
 - unless notifications.blank?
   - notification = notifications.first
@@ -11,7 +9,7 @@
       - action = 'remove_friend'
       - content = 'Desfazer amizade'
 
-- action ||= 'friend_request'
+- action ||= 'create_friend_request'
 - content ||= 'Adicionar amigo'
 
 - unless current_user == user
