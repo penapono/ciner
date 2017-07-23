@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:index, :show]
   resources :broadcasts, only: [:index, :show]
   resources :featured_filmables, only: :index
+  resources :notifications, only: [:index]
   resources :playing_filmables, only: :index
   resources :searches, only: :index
 
