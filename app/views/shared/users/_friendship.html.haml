@@ -1,4 +1,7 @@
 - unless current_user == user
-  %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
-    Adicionar amigo
-    %span.icon.icon-button
+  .friendship{ data: { friendship: { action: '', sender_id: current_user.id, receiver_id: user.id, add: "true", pending: "false", remove: "false", url: notifications_path } } }
+    %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
+      %span.text
+        Adicionar amigo
+      %span.icon.icon-button
+

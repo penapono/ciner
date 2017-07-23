@@ -27,7 +27,7 @@
             %img.img-responsive{:src => avatar, style: "width: 200px; height: 200px;" }
             %div
               - if current_user != user
-                = render 'shared/users/friendship', role: role
+                = render 'shared/users/friendship', role: role, user: user
 
           .col-xs-12.col-sm-8.user-info
             Nome:
