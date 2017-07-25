@@ -1,0 +1,3 @@
+- unless notifications.blank?
+  - notifications.each do |notification|
+    = render 'shared/notifications/notification', notification: notification

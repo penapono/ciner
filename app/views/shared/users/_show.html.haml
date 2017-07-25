@@ -18,13 +18,18 @@
             .media-body.media-middle
               .media-heading.title-section
                 = t('.general')
-            - if (current_user && current_user == user) || (current_user.admin?)
+            - if (current_user && current_user == user)
               .media-body.text-right.media-middle.see-more
-                = link_to path do
+                = link_to url_for([:edit, role, user]) do
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
-        .user-profile
-          .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 200px;" }
+        .row.user-profile
+          .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 230px;" }
             %img.img-responsive{:src => avatar, style: "width: 200px; height: 200px;" }
+            - unless current_user.blank?
+              %div
+                - if current_user != user
+                  = render 'shared/users/friendship', role: role, user: user
+
           .col-xs-12.col-sm-8.user-info
             Nome:
             %span.user-name
@@ -54,7 +59,7 @@
                   %use{"xlink:href" => "#ficha"}
               .media-body.media-middle
                 .media-heading.title-section Teste sinopse
-          .box-sinopse
+          .row.box-sinopse
             Vídeos:
             %strong
               2
@@ -86,16 +91,18 @@
             Amigos:
             %strong
               500
-      #all-medias.anchors
-        %a.btn-anchor{:href => "#movies-series"} Minha Conta
-        - if user.curriculum
-          = link_to url_for([role, user.curriculum]) do
-            .btn-anchor
-              Currículo
-        - else
-          = link_to url_for([:new, role, :curriculum]) do
-            .btn-anchor
-              Currículo
+      #all-medias.anchors.row
+        .col-xs-12
+          %a.btn-anchor{:href => "#movies-series"}
+            Minha Conta
+          - if user.curriculum
+            = link_to url_for([role, user.curriculum]) do
+              .btn-anchor
+                Currículo
+          - else
+            = link_to url_for([:new, role, :curriculum]) do
+              .btn-anchor
+                Currículo
 
       / Favoritos e Assistidos
       = render 'shared/users/all_medias', role: role

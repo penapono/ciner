@@ -220,7 +220,7 @@ module Tmdb
 
         object.save(validate: false)
       end
-      rescue
+    rescue
     end
 
     def load_omdb_cover(omdb_poster)

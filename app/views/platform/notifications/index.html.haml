@@ -1,6 +1,7 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
 
-- role = current_role(current_user, request.url)
+.container
+  = render 'shared/breadcrumbs'
 
-= render 'shared/users/show', path: url_for([:edit, role, current_user])
+= render 'shared/notifications/index', notifications: notifications

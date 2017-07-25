@@ -4,7 +4,7 @@
   .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 130px; margin-top: 20px;' }
     .welcome
       Olá,
-      = link_to url_for([role, "profile"]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
+      = link_to url_for([:edit, role, current_user]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
         = current_user.name.split(' ').first
     .logout
       = link_to 'Sair', destroy_user_session_path, method: :delete

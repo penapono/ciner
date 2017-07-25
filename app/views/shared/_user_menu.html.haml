@@ -5,11 +5,11 @@
 .row{ style: 'margin-left: -75px;' }
   .col-xs-offset-4.col-xs-2{ style: 'margin-top: -5px;' }
     - if current_user
-      = link_to url_for([role, "profile"]) do
+      = link_to url_for([:edit, role, current_user]) do
         %img.img-responsive{ src: avatar, style: "width: 45px; height: 45px; margin: auto" }
   .col-xs-5{ style: 'overflow: hidden; height: 45px; text-align: left; margin-left: 10px;' }
     .name{ style: 'height: 20px; margin-top: -10px; font-size: 16px; font-weight: bold;' }
-      = link_to url_for([role, "profile"]) do
+      = link_to url_for([:edit, role, current_user]) do
         = current_user.name.split(' ').first
     .logout{ style: 'height: 20px;' }
       = link_to 'Sair', destroy_user_session_path, method: :delete
