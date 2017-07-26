@@ -46,7 +46,7 @@ module Admin
     def professional_params
       params.require(:professional).permit(
         :name, :birthday, :country_id, :user, :set_function_id,
-        :gender, :avatar, :biography, :lock_updates
+        :gender, :avatar, :biography, :lock_updates, :place_of_birth
       )
     end
 

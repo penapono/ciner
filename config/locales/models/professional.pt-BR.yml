@@ -16,6 +16,7 @@ pt-BR:
         set_function: Função no Set
         set_function_id: Função no Set
         lock_updates: Bloquear atualização automática
+        place_of_birth: Origem (Local de Nascimento)
     errors:
       models:
         professional:

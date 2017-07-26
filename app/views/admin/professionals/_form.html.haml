@@ -13,6 +13,9 @@
       = f.input :name, required: true, autofocus: true
     .col-xs-3
       = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
+  .row
+    .col-xs-6
+      = f.input :place_of_birth
     .col-xs-3
       = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
 
