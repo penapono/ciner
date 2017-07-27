@@ -35,3 +35,32 @@
             %span.user-city
               = professional.place_of_birth
             %br
+
+  .row{ data: { slider: { playing: '' } } }
+    .col-xs-12.col-sm-8.col-md-8
+      .section-pessoal
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.media-object.icon-title
+                %use{"xlink:href" => "#filme"}
+            .media-body.media-middle
+              .media-heading.title-section
+                Filmografia
+
+      .row
+        - role = current_role(current_user, request.url)
+        - showcase_class ||= 'showcase-poster'
+        - background_color ||= 'parent'
+        - slider_movies = movies
+
+        / MOVIES THUMB
+        .col-xs-12{ class: showcase_class }
+          .slider-frame{ style: "background-color: #{background_color}" }
+            .btn.prev
+            .btn.next
+            .slider-container
+              - slider_movies.each do |pm|
+                = render 'shared/home/showcase/item', role: role, pm: pm
+
+        / MOVIES THUMB
