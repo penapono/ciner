@@ -7,7 +7,9 @@
 
   = link_to url_for([role, object]) do
     .row
-      .col-xs-6.personagem{ "data-mh": data_mh }
-        = observation
       .col-xs-6.ator{ "data-mh": data_mh }
-        = object.name
+        %h5
+          = object.name
+      .col-xs-6.personagem{ "data-mh": data_mh }
+        %h5{ style: 'font-weight: inherit;' }
+          = observation
