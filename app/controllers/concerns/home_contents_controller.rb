@@ -12,6 +12,6 @@ module HomeContentsController
     expose(:ciner_videos) { CinerVideo.approved.order(updated_at: :desc).last(4) }
 
     expose(:playing_movies) { Movie.current_playing }
-    expose(:featured_movies) { Movie.featured.first(5) }
+    expose(:featured_movies) { Movie.featured.first(10) }
   end
 end

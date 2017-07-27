@@ -8,7 +8,7 @@ module Platform
     expose(:series) { Serie.all }
     expose(:playing) { Serie.current_playing }
     expose(:playing_soon) { Serie.playing_soon }
-    expose(:featured) { Serie.featured.first(5) }
+    expose(:featured) { Serie.featured.first(10) }
     expose(:available_netflix) { Serie.available_netflix }
     expose(:available_amazon) { Serie.available_amazon }
     expose(:birthday_professionals) { Professional.birthdays }
