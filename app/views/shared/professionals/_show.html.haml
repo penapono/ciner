@@ -36,31 +36,41 @@
               = professional.place_of_birth
             %br
 
-  .row{ data: { slider: { playing: '' } } }
-    .col-xs-12.col-sm-8.col-md-8
-      .section-pessoal
-        .title-separator
-          .media
-            .media-left.media-middle
-              %svg.media-object.icon-title
-                %use{"xlink:href" => "#filme"}
-            .media-body.media-middle
-              .media-heading.title-section
-                Filmografia
+  - set_functions = SetFunction.all
+  - set_functions.each do |sf|
+    - all = []
+    - Movie.where(id: FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).each do |m|
+      - all << m
+    - Serie.where(id: FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).each do |s|
+      - all << s
 
-      .row
-        - role = current_role(current_user, request.url)
-        - showcase_class ||= 'showcase-poster'
-        - background_color ||= 'parent'
-        - slider_movies = movies
 
-        / MOVIES THUMB
-        .col-xs-12{ class: showcase_class }
-          .slider-frame{ style: "background-color: #{background_color}" }
-            .btn.prev
-            .btn.next
-            .slider-container
-              - slider_movies.each do |pm|
-                = render 'shared/home/showcase/item', role: role, pm: pm
+    - if all.any?
+      .row{ data: { slider: { playing: '' } } }
+        .col-xs-12.col-sm-8.col-md-8
+          .section-pessoal
+            .title-separator
+              .media
+                .media-left.media-middle
+                  %svg.media-object.icon-title
+                    %use{"xlink:href" => "#filme"}
+                .media-body.media-middle
+                  .media-heading.title-section
+                    = sf.name
 
-        / MOVIES THUMB
+          .row
+            - role = current_role(current_user, request.url)
+            - showcase_class ||= 'showcase-poster'
+            - background_color ||= 'parent'
+            - slider_movies = all
+
+            / MOVIES THUMB
+            .col-xs-12{ class: showcase_class }
+              .slider-frame{ style: "background-color: #{background_color}" }
+                .btn.prev
+                .btn.next
+                .slider-container
+                  - slider_movies.each do |pm|
+                    = render 'shared/home/showcase/item', role: role, pm: pm
+
+            / MOVIES THUMB
