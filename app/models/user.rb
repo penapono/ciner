@@ -75,6 +75,17 @@ class User < ActiveRecord::Base
     genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end
 
+  def friends
+    ids = []
+    Notification.where(sender_id: self.id, notification_type: :friend_request, answer: :approved).pluck(:receiver_id).each do |friend_id|
+      ids << friend_id
+    end
+    Notification.where(receiver_id: self.id, notification_type: :friend_request, answer: :approved).pluck(:sender_id).each do |friend_id|
+      ids << friend_id
+    end
+    User.where(id: ids.uniq)
+  end
+
   def registered_at_str
     return "Não informado" unless registered_at
     I18n.localize(registered_at)

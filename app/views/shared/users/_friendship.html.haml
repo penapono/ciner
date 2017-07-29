@@ -1,13 +1,18 @@
-- notifications = Notification.where(sender_id: current_user.id, receiver_id: user.id, notification_type: :friend_request)
-- unless notifications.blank?
-  - notification = notifications.first
-  - if notification.friend_request?
-    - if notification.waiting?
-      - action = 'cancel_friend_request'
-      - content = 'Aguardando'
-    - if notification.approved?
-      - action = 'remove_friend'
-      - content = 'Desfazer amizade'
+- friends = current_user.friends
+- if friends.pluck(:id).include?(user.id)
+  - action = 'remove_friend'
+  - content = 'Desfazer amizade'
+- else
+  - notifications = Notification.where(sender_id: current_user.id, receiver_id: user.id, notification_type: :friend_request)
+  - unless notifications.blank?
+    - notification = notifications.first
+    - if notification.friend_request?
+      - if notification.waiting?
+        - action = 'cancel_friend_request'
+        - content = 'Aguardando'
+      - if notification.approved?
+        - action = 'remove_friend'
+        - content = 'Desfazer amizade'
 
 - action ||= 'create_friend_request'
 - content ||= 'Adicionar amigo'
