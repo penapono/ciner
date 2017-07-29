@@ -63,16 +63,17 @@
                         .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
                           %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
                       .col-xs-4
-                        - if !question.blank?
-                          = link_to polymorphic_path([role, question]) do
-                            %button.btn.btn-login
-                              Debater
-                              %span.icon.icon-button
-                        - else
-                          = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: object.id) do
-                            %button.btn.btn-login
-                              Debater
-                              %span.icon.icon-button
+                        - if current_user
+                          - if !question.blank?
+                            = link_to polymorphic_path([role, question]) do
+                              %button.btn.btn-login
+                                Debater
+                                %span.icon.icon-button
+                          - else
+                            = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: object.id) do
+                              %button.btn.btn-login
+                                Debater
+                                %span.icon.icon-button
 
 .container.noticias
   .row
@@ -130,16 +131,17 @@
                     .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
                       %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
                   .col-xs-4
-                    - if !question.blank?
-                      = link_to polymorphic_path([role, question]) do
-                        %button.btn.btn-login
-                          Debater
-                          %span.icon.icon-button
-                    - else
-                      = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: object.id) do
-                        %button.btn.btn-login
-                          Debater
-                          %span.icon.icon-button
+                    - if current_user
+                      - if !question.blank?
+                        = link_to polymorphic_path([role, question]) do
+                          %button.btn.btn-login
+                            Debater
+                            %span.icon.icon-button
+                      - else
+                        = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: object.id) do
+                          %button.btn.btn-login
+                            Debater
+                            %span.icon.icon-button
 
   = render 'shared/pagination', resources: broadcasts
 
