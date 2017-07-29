@@ -4,7 +4,7 @@ class CriticsController < ApplicationController
   include CriticsBreadcrumb
 
   # exposes
-  expose(:highlight) { Critic.all.highlight }
+  expose(:highlight) { Critic.highlight }
   expose(:critics) { Critic.all_but([highlight]) }
   expose(:critic, attributes: :critic_attributes)
   expose(:users) { User.all }

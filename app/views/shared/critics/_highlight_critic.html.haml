@@ -48,9 +48,9 @@
           %a.wine.bold{href: "#"} Harrison Ford
         %a.wine.bold{href: "#"} Robert Downey Jr.
 
-      .content
-        %p
-          = critic.collapsed_content
+      .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis;' }
+        = critic.collapsed_content
+
       = link_to path do
         .btn.btn-saiba-mais
           Saiba mais
