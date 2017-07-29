@@ -19,7 +19,7 @@
           .col-xs-12
             = Critic.human_attribute_name(:release)
             %span.bold.wine
-              = l(filmable.release, format: :long_date)
+              = l(filmable.release, format: :long_date) if filmable.release
 
             .pull-right
               = render 'shared/critics/rating', critic: critic
