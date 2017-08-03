@@ -77,10 +77,10 @@ class User < ActiveRecord::Base
 
   def friends
     ids = []
-    Notification.where(sender_id: self.id, notification_type: :friend_request, answer: :approved).pluck(:receiver_id).each do |friend_id|
+    Notification.where(sender_id: id, notification_type: :friend_request, answer: :approved).pluck(:receiver_id).each do |friend_id|
       ids << friend_id
     end
-    Notification.where(receiver_id: self.id, notification_type: :friend_request, answer: :approved).pluck(:sender_id).each do |friend_id|
+    Notification.where(receiver_id: id, notification_type: :friend_request, answer: :approved).pluck(:sender_id).each do |friend_id|
       ids << friend_id
     end
     User.where(id: ids.uniq)

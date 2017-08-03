@@ -163,6 +163,6 @@ class Critic < ActiveRecord::Base
 
   def update_year
     return unless filmable
-    self.filmable_release_year = filmable.brazilian_release.filmable_year if filmable.brazilian_release
+    self.filmable_release_year = filmable.filmable_year if filmable.brazilian_release
   end
 end
