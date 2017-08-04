@@ -7,7 +7,7 @@ ruby '2.4.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'rake'
-gem 'rails', '= 5.0.2'
+gem 'rails'
 gem 'mini_magick'
 gem 'json'
 gem 'jbuilder'
@@ -48,7 +48,7 @@ gem 'carrierwave-audio'
 
 # session
 gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'
-gem 'erubis'
+# gem 'erubis'
 
 # database
 gem 'mysql2', '= 0.3.20'

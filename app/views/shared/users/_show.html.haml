@@ -23,33 +23,59 @@
                 = link_to url_for([:edit, role, user]) do
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
         .row.user-profile
-          .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 230px;" }
-            %img.img-responsive{:src => avatar, style: "width: 200px; height: 200px;" }
+          .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 200px;" }
+            %img.img-responsive{:src => avatar, style: "width: 170px; height: 170px;" }
             - unless current_user.blank?
               %div
-                - if current_user != user
+                - if current_user == user
+                  %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
+                    %span.text
+                      Minha Conta
+                    %span.icon.icon-button
+                - else
                   = render 'shared/users/friendship', role: role, user: user
 
+
           .col-xs-12.col-sm-8.user-info
-            Nome:
-            %span.user-name
-              = user.name
-            %br
-            Idade:
-            %span.user-age
-              = user.age
-            %br
-            Cidade:
-            %span.user-city
-              = user.city_name
-            %br
-            Ciner desde:
-            %span.user-birth-ciner
-              = user.registered_at_str
-            %hr
-            .user-bio
-              %span.user-bio Biografia:
-              = user.biography
+            .row
+              .col-xs-9
+                Nome:
+                %span.user-name
+                  = user.name
+                %br
+                Idade:
+                %span.user-age
+                  = user.age
+                %br
+                Cidade:
+                %span.user-city
+                  = user.city_name
+                %br
+                Ciner desde:
+                %span.user-birth-ciner
+                  = user.registered_at_str
+              .col-xs-3
+                - if user.curriculum
+                  = link_to url_for([role, user.curriculum]) do
+                    %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
+                      %span.text
+                        Currículo
+                      %span.icon.icon-button
+                - else
+                  - if current_user == user
+                    = link_to url_for([:new, role, :curriculum]) do
+                      %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
+                        %span.text
+                          Currículo
+                        %span.icon.icon-button
+            .row
+              .col-xs-12
+                %hr
+                .user-bio
+                  %span.user-bio
+                    Biografia:
+                  = user.biography
+
       .visible-xs
         .section-sinopse
           .title-separator
@@ -60,49 +86,38 @@
               .media-body.media-middle
                 .media-heading.title-section Teste sinopse
           .row.box-sinopse
-            Vídeos:
-            %strong
-              2
-            %br
-            Críticas:
-            %strong
-              = user.critics.approved.count
-            %br
-            Assistidos:
-            %strong
-              = watched_count_for_user(user)
-            %br
-            Quer Ver:
-            %strong
-              = want_to_see_count_for_user(user)
-            %br
-            Coleção:
-            %strong
-              = collection_count_for_user(user)
-            %br
-            Favoritos:
-            %strong
-              = favorite_count_for_user(user)
-            %br
-            Indicados:
-            %strong
-              = favorite_count_for_user(user)
-            %br
-            Amigos:
-            %strong
-              500
-      #all-medias.anchors.row
-        .col-xs-12
-          %a.btn-anchor{:href => "#movies-series"}
-            Minha Conta
-          - if user.curriculum
-            = link_to url_for([role, user.curriculum]) do
-              .btn-anchor
-                Currículo
-          - else
-            = link_to url_for([:new, role, :curriculum]) do
-              .btn-anchor
-                Currículo
+            .col-xs-12.col-sm-6
+              Vídeos:
+              %strong
+                2
+              %br
+              Críticas:
+              %strong
+                = user.critics.approved.count
+              %br
+              Assistidos:
+              %strong
+                = watched_count_for_user(user)
+              %br
+              Quer Ver:
+              %strong
+                = want_to_see_count_for_user(user)
+            .col-xs-12.col-sm-6
+              Coleção:
+              %strong
+                = collection_count_for_user(user)
+              %br
+              Favoritos:
+              %strong
+                = favorite_count_for_user(user)
+              %br
+              Indicados:
+              %strong
+                = favorite_count_for_user(user)
+              %br
+              Amigos:
+              %strong
+                500
 
       / Favoritos e Assistidos
       = render 'shared/users/all_medias', role: role
@@ -118,38 +133,39 @@
                 %use{"xlink:href" => "#ficha"}
             .media-body.media-middle
               .media-heading.title-section Minha sinopse
-        .box-sinopse
-          Vídeos:
-          %strong
-            2
-          %br
-          Críticas:
-          %strong
-            = user.critics.approved.count
-          %br
-          Assistidos:
-          %strong
-            = watched_count_for_user(user)
-          %br
-          Quer Ver:
-          %strong
-            = want_to_see_count_for_user(user)
-          %br
-          Coleção:
-          %strong
-            = collection_count_for_user(user)
-          %br
-          Favoritos:
-          %strong
-            = favorite_count_for_user(user)
-          %br
-          Indicados:
-          %strong
-            = favorite_count_for_user(user)
-          %br
-          Amigos:
-          %strong
-            500
+        .row.box-sinopse
+          .col-xs-12.col-sm-6
+            Vídeos:
+            %strong
+              2
+            %br
+            Críticas:
+            %strong
+              = user.critics.approved.count
+            %br
+            Assistidos:
+            %strong
+              = watched_count_for_user(user)
+            %br
+            Quer Ver:
+            %strong
+              = want_to_see_count_for_user(user)
+          .col-xs-12.col-sm-6
+            Coleção:
+            %strong
+              = collection_count_for_user(user)
+            %br
+            Favoritos:
+            %strong
+              = favorite_count_for_user(user)
+            %br
+            Indicados:
+            %strong
+              = favorite_count_for_user(user)
+            %br
+            Amigos:
+            %strong
+              500
 
       = render 'shared/users/collection', role: role
 

@@ -13,9 +13,10 @@
 
 .row{ style: 'margin-bottom: 20px;', data: { slider: { favorites: '' } } }
   - if favorites.any?
-    = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: favorites, background_color: "#ccc"
+    = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: favorites
   - else
-    = render 'shared/alerts/info', message: "Você ainda não marcou nenhum filme / série como favorito, para isso, acesse um dos títulos disponíveis e clique em 'Adicionar aos favoritos'"
+    .col-xs-12
+      = render 'shared/alerts/info', message: "Você ainda não marcou nenhum filme / série como favorito, para isso, acesse um dos títulos disponíveis e clique em 'Adicionar aos favoritos'"
 
 .title-separator
   .media
@@ -31,4 +32,5 @@
   - if watched.any?
     = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: watched
   - else
-    = render 'shared/alerts/info', message: "Você ainda não adicionou nenhum filme / série à sua lista de assistidos, para isso, acesse um dos títulos disponíveis e clique em 'Já assisti'"
+    .col-xs-12
+      = render 'shared/alerts/info', message: "Você ainda não adicionou nenhum filme / série à sua lista de assistidos, para isso, acesse um dos títulos disponíveis e clique em 'Já assisti'"
