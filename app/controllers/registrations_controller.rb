@@ -4,7 +4,7 @@
 class RegistrationsController < Devise::RegistrationsController
   layout 'application'
   skip_before_action :require_no_authentication
-  before_filter :resource_name
+  before_action :resource_name
 
   # exposes
   expose(:user, attributes: :user_params)
