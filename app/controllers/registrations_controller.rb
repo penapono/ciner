@@ -3,7 +3,7 @@
 # customize registration controller
 class RegistrationsController < Devise::RegistrationsController
   layout 'application'
-  skip_before_filter :require_no_authentication
+  skip_before_action :require_no_authentication
   before_filter :resource_name
 
   # exposes
