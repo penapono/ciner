@@ -9,8 +9,10 @@
       .media-body.text-right.media-middle.see-more
         = link_to platform_critics_path(filter: { user_id: user.id }) do
           = t('more')
-  - if critics.any?
-    - critics.each do |critic|
-      = render 'shared/users/critics/critic', critic: critic, user_critic_path: platform_critic_path(critic)
-  - else
-    = render 'shared/alerts/info', message: (t('empty', klass: Critic.model_name.human(count: 2)))
+  .row
+    - if critics.any?
+      - critics.each do |critic|
+        = render 'shared/users/critics/critic', critic: critic, user_critic_path: platform_critic_path(critic)
+    - else
+      .col-xs-12
+        = render 'shared/alerts/info', message: (t('empty', klass: Critic.model_name.human(count: 2)))
