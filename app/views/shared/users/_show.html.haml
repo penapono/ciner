@@ -8,7 +8,7 @@
 
 .container
   .row
-    .col-xs-12.col-sm-8.col-md-8
+    .col-xs-12.col-md-8
       .section-pessoal
         .title-separator
           .media
@@ -23,7 +23,7 @@
                 = link_to url_for([:edit, role, user]) do
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
         .row.user-profile
-          .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 200px;" }
+          .col-xs-12.col-md-4.user-avatar{ style: "width: 200px; height: 200px;" }
             %img.img-responsive{:src => avatar, style: "width: 170px; height: 170px;" }
             - unless current_user.blank?
               %div
@@ -76,55 +76,12 @@
                     Biografia:
                   = user.biography
 
-      .visible-xs
-        .section-sinopse
-          .title-separator
-            .media
-              .media-left.media-middle
-                %svg.media-object.icon-title
-                  %use{"xlink:href" => "#ficha"}
-              .media-body.media-middle
-                .media-heading.title-section Teste sinopse
-          .row.box-sinopse
-            .col-xs-12.col-sm-6
-              Vídeos:
-              %strong
-                2
-              %br
-              Críticas:
-              %strong
-                = user.critics.approved.count
-              %br
-              Assistidos:
-              %strong
-                = watched_count_for_user(user)
-              %br
-              Quer Ver:
-              %strong
-                = want_to_see_count_for_user(user)
-            .col-xs-12.col-sm-6
-              Coleção:
-              %strong
-                = collection_count_for_user(user)
-              %br
-              Favoritos:
-              %strong
-                = favorite_count_for_user(user)
-              %br
-              Indicados:
-              %strong
-                = favorite_count_for_user(user)
-              %br
-              Amigos:
-              %strong
-                500
-
       / Favoritos e Assistidos
       = render 'shared/users/all_medias', role: role
 
       = render 'shared/users/user_videos', role: role
 
-    .col-xs-12.col-sm-4.col-md-4.hidden-xs
+    .col-xs-12.col-sm-6.col-md-4
       .section-sinopse
         .title-separator
           .media
@@ -134,7 +91,7 @@
             .media-body.media-middle
               .media-heading.title-section Minha sinopse
         .row.box-sinopse
-          .col-xs-12.col-sm-6
+          .col-xs-12.col-md-6
             Vídeos:
             %strong
               2

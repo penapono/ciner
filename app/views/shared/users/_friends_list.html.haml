@@ -11,17 +11,24 @@
       .media-body.text-right.media-middle.see-more
         %a{:href => "#"} ver todos
 
-  - friends.each do |friend|
-    .col-xs-6.col-sm-6.col-md-4.no-padding.friend-info
-      .media
-        .media-left.media-middle
-          - avatar = friend.avatar
-          - avatar ||= image_path("default/user/image.jpg")
-          = image_tag(avatar, class: "media-object", style: 'width: 75px; height: 86px;')
-        .media-body.media-bottom
-          .friend-name{:style => "font-size: 13px; line-height: 13px; color: #524b4b; font-weight: bold; text-overflow: ellipsis; overflow: hidden; width: 100%"}
-            = friend.name
-          %a{:href => url_for([role, friend]), :style => "display: inline-block; font-size: 11px; font-weight: lighter; border: 1px solid; border-radius: 3px; padding: 5px; margin-top: 10px; text-decoration: none;"} ver mais...
+  - friends.each do |object|
+    = link_to url_for([role, object]) do
+      .col-xs-4.col-sm-4.col-md-2.no-padding.friend-info{ style: 'padding: 0px;' }
+        - avatar = object.avatar
+        - avatar ||= image_path("default/user/image.jpg")
+        %img.img-responsive{ src: avatar, style: "width: 75px; height: 75px;" }
+        %h5
+          = object.name
+
+      / .media
+      /   .media-left.media-middle
+      /     - avatar = friend.avatar
+      /     - avatar ||= image_path("default/user/image.jpg")
+      /     = image_tag(avatar, class: "media-object", style: 'width: 75px; height: 86px;')
+      /   .media-body.media-bottom
+      /     .friend-name{:style => "display: block; font-size: 11px; line-height: 13px; color: #524b4b; font-weight: bold; text-overflow: ellipsis; overflow: hidden; width: 100%"}
+      /       = link_to url_for([role, friend]) do
+      /         = friend.name
 
 / .col-xs-12.visible-xs.hidden-sm
 /   .section-collection
