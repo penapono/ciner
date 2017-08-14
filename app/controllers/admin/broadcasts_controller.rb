@@ -27,7 +27,7 @@ module Admin
     ].freeze
 
     # exposes
-    expose(:broadcasts) { Broadcast.last_created }
+    expose(:broadcasts) { Broadcast.all_creation }
     expose(:broadcast, attributes: :broadcast_attributes)
 
     def index
