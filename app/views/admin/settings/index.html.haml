@@ -10,6 +10,9 @@
   = link_to SetFunction.model_name.human(count: 2), url_for([:admin, :set_functions])
 
 %p
+  = link_to CurriculumFunction.model_name.human(count: 2), url_for([:admin, :curriculum_functions])
+
+%p
   = link_to Studio.model_name.human(count: 2), url_for([:admin, :studios])
 
 %p
@@ -48,7 +51,10 @@
 %p
   Status da base:
   %span.wine
-    = Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 334789
+    - if (Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 334789) < (Movie.count + Serie.count)
+      = Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 334789
+    - else
+      = Movie.count + Serie.count
   \/
   %span.wine
     = Movie.count + Serie.count

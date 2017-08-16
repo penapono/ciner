@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
 
     resources :set_functions
+    resources :curriculum_functions
     resources :studios
     resources :professionals
     resources :curriculums

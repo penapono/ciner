@@ -1,0 +1,11 @@
+pt-BR:
+  admin:
+    curriculum_functions:
+      create:
+        title: Nova Função no Currículo
+      form:
+        general: Dados Gerais
+      index:
+        title: Função no Currículo
+      new:
+        title: Nova Função no Currículo

@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      curriculum_function:
+        one: Função no Currículo
+        other: Funções no Currículo
+    attributes:
+      curriculum_function:
+        name: Nome
+        description: Descrição
+    errors:
+      models:
+        curriculum_function:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"

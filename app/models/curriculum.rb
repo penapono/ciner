@@ -5,11 +5,11 @@ class Curriculum < ActiveRecord::Base
 
   # Associations
   belongs_to :user
-  belongs_to :set_function
+  belongs_to :curriculum_function
 
   # Validations
   validates :user_id,
-            :set_function_id,
+            :curriculum_function_id,
             :play_name,
             presence: true
 
@@ -27,7 +27,7 @@ class Curriculum < ActiveRecord::Base
   delegate :gender_str, to: :user, allow_nil: true, prefix: true
   delegate :simple_address, to: :user, allow_nil: true, prefix: true
   delegate :avatar, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :set_function, allow_nil: true, prefix: true
+  delegate :name, to: :curriculum_function, allow_nil: true, prefix: true
 
   # Uploaders
   mount_uploader :photo1, CurriculumAvatarUploader
@@ -56,8 +56,8 @@ class Curriculum < ActiveRecord::Base
   # Aliases
   alias_attribute :cover, :avatar
 
-  def self.by_set_function(set_function_id)
-    where(set_function: set_function_id)
+  def self.by_curriculum_function(curriculum_function_id)
+    where(curriculum_function: curriculum_function_id)
   end
 
   def self.by_age(age)
@@ -92,7 +92,7 @@ class Curriculum < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    result = result.by_set_function(params[:set_function_id]) unless params[:set_function_id].blank?
+    result = result.by_curriculum_function(params[:curriculum_function_id]) unless params[:curriculum_function_id].blank?
     result = result.by_age(params[:age]) unless params[:age].blank?
     result = result.by_gender(params[:gender]) unless params[:gender].blank?
     result = result.by_state(params[:state_id]) unless params[:state_id].blank?

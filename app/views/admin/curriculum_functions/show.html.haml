@@ -1,0 +1,11 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+.row
+  .col-xs-12
+    = curriculum_function.name
+.row
+  .col-xs-12
+    = curriculum_function.description

@@ -8,7 +8,7 @@
     = hidden_field_tag :search, params[:search]
     .row
       .col-xs-3
-        = f.input :set_function_id, label: false, collection: SetFunction.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tipo do Profissional', selected: params.fetch(:filter, {}).fetch(:set_function_id, '')
+        = f.input :curriculum_function_id, label: false, collection: CurriculumFunction.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tipo do Profissional', selected: params.fetch(:filter, {}).fetch(:curriculum_function_id, '')
       .col-xs-1
         = f.input :age, label: false, collection: (1..99), input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Idade', selected: params.fetch(:filter, {}).fetch(:age, '')
       .col-xs-2
