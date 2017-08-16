@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
   expose(:available_amazon) { Movie.available_amazon }
   expose(:birthday_professionals) { Professional.birthdays }
   expose(:movie, attributes: :movie_attributes)
+  expose(:broadcasts) { movie.broadcasts }
 
   expose(:age_ranges) { AgeRange.all }
 

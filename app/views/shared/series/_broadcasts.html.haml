@@ -1,30 +1,68 @@
-#noticias.col-xs-12.noticias-interna
-  .title-separator
-    .media
-      .media-left.media-middle
-        %svg.icon-title
-          %use{"xlink:href" => "#noticia"}
-      .media-body.media-bottom
-        .media-heading.title-section Notícias
-      .media-body.text-right.media-middle.see-more
-        %a{:href => "#"} ver mais
-  .noticia-item
-    .row
-      .col-xs-12.col-sm-3
-        %img.img-responsive{:src => "http://placehold.it/250x260"}/
-      .col-xs-12.col-sm-9
-        .data 07/04/2016
-        .titulo The Year of Responsive Design
-        .resumo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
-        .text-right
-          %a.button-default{:href => "#"} saiba mais
-  .noticia-item
-    .row
-      .col-xs-12.col-sm-3
-        %img.img-responsive{:src => "http://placehold.it/250x260"}/
-      .col-xs-12.col-sm-9
-        .data 07/04/2016
-        .titulo The Year of Responsive Design
-        .resumo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
-        .text-right
-          %a.button-default{:href => "#"} saiba mais
+- unless broadcasts.blank?
+  #noticias.col-xs-12.noticias-interna
+    .container.noticias
+      .row
+        .col-xs-12
+          - broadcasts.first(2).each do |object|
+            - if role
+              - like_path = url_for([:like, role, object])
+              - dislike_path = url_for([:dislike, role, object])
+            - else
+              - like_path = nil
+              - dislike_path = nil
+            - question = Question.where(questionable: object).first
+            - cover = object.cover.url
+            - cover ||= image_path("default/movie/image.png")
+
+            .noticia-item
+              .row
+                .col-xs-3{ id: object.id }
+                  %img.img-responsive{ src: cover, style: 'height: 171px; width: 261px;' }
+                .col-xs-9
+                  %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
+                    = object.title
+                  .wine{ style: 'height: 20px;' }
+                    = object.spoiler_str
+                  .desc{ style: 'min-height: 90px; max-height: 113px; overflow: hidden; font-size: 13px;' }
+                    = object.content.html_safe
+
+                    - unless object.video.blank?
+                      %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
+                        \.
+                        Assista ao vídeo
+                    - if object.broadcast_images.any?
+                      %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'gallery') }, style: 'cursor: pointer;' }
+                        \.
+                        Veja a galeria
+                    - unless object.more.blank?
+                      %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'info') }, style: 'cursor: pointer;' }
+                        \.
+                        Informações completas aqui
+
+                  .pull-left{ style: 'padding-left: 0px;'}
+                    .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
+                      Fonte:
+                      = object.source
+                  .pull-right
+                    %span.bold.wine{ style: 'float: right; font-size: 12px;' }
+                      = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
+                  .row{ style: 'margin-top: 20px;' }
+                    .col-xs-4
+                      .row{ style: 'margin-left: -10px; height: 25px;' }
+                        .broadcast-reaction
+                          = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                    .col-xs-4
+                      .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
+                        %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
+                    .col-xs-4
+                      - if current_user
+                        - if !question.blank?
+                          = link_to polymorphic_path([role, question]) do
+                            %button.btn.btn-login
+                              Debater
+                              %span.icon.icon-button
+                        - else
+                          = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: object.id) do
+                            %button.btn.btn-login
+                              Debater
+                              %span.icon.icon-button

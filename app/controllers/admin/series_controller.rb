@@ -7,6 +7,7 @@ module Admin
     # exposes
     expose(:series) { Serie.all }
     expose(:serie, attributes: :serie_attributes)
+    expose(:broadcasts) { serie.broadcasts }
 
     expose(:countries) { Country.all }
     expose(:age_ranges) { AgeRange.all }

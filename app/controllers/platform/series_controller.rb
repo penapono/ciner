@@ -13,6 +13,7 @@ module Platform
     expose(:available_amazon) { Serie.available_amazon }
     expose(:birthday_professionals) { Professional.birthdays }
     expose(:serie, attributes: :serie_attributes)
+    expose(:broadcasts) { serie.broadcasts }
 
     expose(:age_ranges) { AgeRange.all }
 

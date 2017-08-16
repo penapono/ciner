@@ -8,6 +8,7 @@ module Admin
     expose(:professionals) { Professional.all }
     expose(:movies) { Movie.where(id: FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: SetFunction.find_by(name: 'Elenco')).pluck(:filmable_id)) }
     expose(:professional, attributes: :professional_attributes)
+    expose(:broadcasts) { professional.broadcasts }
 
     expose(:set_functions) { SetFunction.all }
 

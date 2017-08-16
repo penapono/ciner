@@ -7,6 +7,7 @@ module Admin
     # exposes
     expose(:movies) { Movie.all }
     expose(:movie, attributes: :movie_attributes)
+    expose(:broadcasts) { movie.broadcasts }
 
     expose(:age_ranges) { AgeRange.all }
 
