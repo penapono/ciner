@@ -17,11 +17,12 @@
 
   = render 'shared/critics/toolbar', path: platform_critics_path
 
-  - unless critics.blank?
-    = render 'shared/critics/highlight_critic', critic: highlight, path: platform_critic_path(highlight)
+  - if highlight.blank? && critics.blank?
+    = render 'shared/alerts/info', message: t('empty', klass: Critic.model_name.human(count: 2))
+  - else
+    - unless highlight.blank?
+      = render 'shared/critics/highlight_critic', critic: highlight, path: platform_critic_path(highlight)
 
     .row
       - critics.each do |critic|
         = render 'shared/critics/critic', critic: critic, path: platform_critic_path(critic)
-  - else
-    = render 'shared/alerts/info', message: t('empty', klass: Critic.model_name.human(count: 2))
