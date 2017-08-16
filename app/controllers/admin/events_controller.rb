@@ -18,6 +18,7 @@ module Admin
       :end_time,
       :video,
       :more,
+      :cover,
       :featured,
       :event_images_attributes,
       event_images_attributes: %i[
