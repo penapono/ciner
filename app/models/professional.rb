@@ -13,6 +13,9 @@ class Professional < ActiveRecord::Base
   belongs_to :country
   belongs_to :set_function
 
+  has_many :broadcast_professionals, dependent: :destroy
+  has_many :broadcasts, through: :broadcast_professionals
+
   # Validations
   validates :name,
             presence: true
