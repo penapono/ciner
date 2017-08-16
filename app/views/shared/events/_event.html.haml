@@ -22,7 +22,7 @@
             .button{ style: 'cursor: normal; float: left; border: 1px solid $light-orange; border-radius: 8px; padding: 4px 10px; text-decoration: none; background: transparent; margin-right: 10px; margin-bottom: 5px;' }
               = event.status_str
         = object.title
-      .desc{ style: 'max-height: 77px; font-size: 13px; overflow: hidden' }
+      .desc{ style: 'height: 74px; font-size: 13px; overflow: hidden' }
         = object.description.html_safe
 
         - unless object.video.blank?
