@@ -23,6 +23,13 @@ module Admin
         broadcast_id
         id
         _destroy
+      ],
+      broadcast_professionals_attributes: %i[
+        professional_id
+        professional
+        broadcast_id
+        id
+        _destroy
       ]
     ].freeze
 

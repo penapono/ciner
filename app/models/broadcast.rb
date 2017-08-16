@@ -14,6 +14,7 @@ class Broadcast < ActiveRecord::Base
   # Associations
   has_many :comments, as: :commentable
   has_many :broadcast_images, dependent: :destroy
+  has_many :broadcast_professionals, dependent: :destroy
   has_many :broadcast_broadcastables, dependent: :destroy
 
   # Validations
@@ -29,6 +30,10 @@ class Broadcast < ActiveRecord::Base
                                 reject_if: :all_blank
 
   accepts_nested_attributes_for :broadcast_images,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+
+  accepts_nested_attributes_for :broadcast_professionals,
                                 allow_destroy: true,
                                 reject_if: :all_blank
 
