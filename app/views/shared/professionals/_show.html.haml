@@ -13,30 +13,31 @@
               .media-heading.title-section
                 Dados Gerais
         .user-profile
-          .col-xs-12.col-sm-3.user-avatar
-            %img.img-responsive{:src => professional.avatar}
-          .col-xs-12.col-sm-9.user-info
-            Nome:
-            %span.user-name
-              = professional.name
-            %br
-            %br
-            Idade:
-            %span.user-age
-              = professional.age
-              - if professional.birthday
-                \(
-                = l professional.birthday
-                - if professional.deathday
-                  \-
-                  = l professional.deathday
-                \)
-            %br
-            %br
-            Origem:
-            %span.user-city
-              = professional.place_of_birth
-            %br
+          .row
+            .col-xs-12.col-sm-3.user-avatar
+              %img.img-responsive{:src => professional.avatar}
+            .col-xs-12.col-sm-9.user-info
+              Nome:
+              %span.user-name
+                = professional.name
+              %br
+              %br
+              Idade:
+              %span.user-age
+                = professional.age
+                - if professional.birthday
+                  \(
+                  = l professional.birthday
+                  - if professional.deathday
+                    \-
+                    = l professional.deathday
+                  \)
+              %br
+              %br
+              Origem:
+              %span.user-city
+                = professional.place_of_birth
+              %br
 
   - set_functions = SetFunction.all
   - set_functions.each do |sf|
