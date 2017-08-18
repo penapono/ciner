@@ -11,7 +11,8 @@ class Serie < ActiveRecord::Base
   belongs_to :user
 
   has_many :critics, as: :filmable
-  has_many :broadcasts, as: :broadcastable
+  has_many :broadcast_broadcastables, as: :broadcastable
+  has_many :broadcasts, through: :broadcast_broadcastables
   has_many :filmable_professionals, as: :filmable
   has_many :professionals, through: :filmable_professionals
 

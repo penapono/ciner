@@ -81,36 +81,7 @@ module Platform
         :height,
         :ethnicity,
 
-        :drt,
-        :winnings1,
-        :winnings2,
-        :winnings3,
-        :winnings4,
-        :winnings5,
-        :jobs1,
-        :jobs2,
-        :jobs3,
-        :jobs4,
-        :jobs5,
-        :photo1,
-        :photo2,
-        :photo3,
-        :photo4,
-        :photo5,
-        :photo6,
-        :photo7,
-        :photo8,
-        :photo9,
-        :photo10,
-        :video1,
-        :video2,
-        :video3,
-        :audio1,
-        :audio2,
-        :audio3,
-        :file1,
-        :file2,
-        :file3
+        :drt
       )
     end
   end

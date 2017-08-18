@@ -10,6 +10,8 @@ class Curriculum < ActiveRecord::Base
   has_many :curriculum_files
   has_many :curriculum_videos
   has_many :curriculum_audios
+  has_many :curriculum_jobs
+  has_many :curriculum_awards
 
   # Validations
   validates :user_id,
@@ -32,30 +34,6 @@ class Curriculum < ActiveRecord::Base
   delegate :simple_address, to: :user, allow_nil: true, prefix: true
   delegate :avatar, to: :user, allow_nil: true, prefix: true
   delegate :name, to: :curriculum_function, allow_nil: true, prefix: true
-
-  # Uploaders
-  # mount_uploader :photo1, CurriculumAvatarUploader
-  # mount_uploader :photo2, CurriculumAvatarUploader
-  # mount_uploader :photo3, CurriculumAvatarUploader
-  # mount_uploader :photo4, CurriculumAvatarUploader
-  # mount_uploader :photo5, CurriculumAvatarUploader
-  # mount_uploader :photo6, CurriculumAvatarUploader
-  # mount_uploader :photo7, CurriculumAvatarUploader
-  # mount_uploader :photo8, CurriculumAvatarUploader
-  # mount_uploader :photo9, CurriculumAvatarUploader
-  # mount_uploader :photo10, CurriculumAvatarUploader
-
-  # mount_uploader :file1, CurriculumFileUploader
-  # mount_uploader :file2, CurriculumFileUploader
-  # mount_uploader :file3, CurriculumFileUploader
-
-  # mount_uploader :video1, CurriculumVideoUploader
-  # mount_uploader :video2, CurriculumVideoUploader
-  # mount_uploader :video3, CurriculumVideoUploader
-
-  # mount_uploader :audio1, CurriculumAudioUploader
-  # mount_uploader :audio2, CurriculumAudioUploader
-  # mount_uploader :audio3, CurriculumAudioUploader
 
   # Aliases
   alias_attribute :cover, :avatar
