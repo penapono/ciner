@@ -33,4 +33,9 @@ module ApplicationHelper
     return :admin if url.include? '/admin'
     :platform
   end
+
+  def never_empty(str_object)
+    return "-" if str_object.blank?
+    str_object
+  end
 end

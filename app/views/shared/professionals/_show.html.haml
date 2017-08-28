@@ -24,27 +24,32 @@
               %br
               Idade:
               %span.user-age
-                = professional.age
                 - if professional.birthday
+                  = professional.age
                   \(
                   = l professional.birthday
                   - if professional.deathday
                     \-
                     = l professional.deathday
                   \)
+                - else
+                 \- 
               %br
               %br
               Origem:
               %span.user-city
-                = professional.place_of_birth
+                - if professional.place_of_birth.blank?
+                  \-
+                - else
+                  = professional.place_of_birth
               %br
 
   - set_functions = SetFunction.all
   - set_functions.each do |sf|
     - all = []
-    - Movie.where(id: FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).each do |m|
+    - Movie.where(id: FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).order(brazilian_release: :desc).each do |m|
       - all << m
-    - Serie.where(id: FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).each do |s|
+    - Serie.where(id: FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).order(brazilian_release: :desc).each do |s|
       - all << s
 
 

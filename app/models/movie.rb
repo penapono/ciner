@@ -80,14 +80,14 @@ class Movie < ActiveRecord::Base
   end
 
   def self.playing_soon
-    where(playing_soon: true)
+    where(playing_soon: true).order(brazilian_release: :asc)
   end
 
   def self.available_netflix
-    where(available_netflix: true)
+    where(available_netflix: true).order(brazilian_release: :desc)
   end
 
   def self.available_amazon
-    where(available_amazon: true)
+    where(available_amazon: true).order(brazilian_release: :desc)
   end
 end
