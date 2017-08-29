@@ -437,6 +437,18 @@ module FilmProfitable
       return unless critics.any?
       critics.find_by(quick: true)
     end
+
+    def self.playing_soon
+      where(playing_soon: true).order(brazilian_release: :asc)
+    end
+
+    def self.available_netflix
+      where(available_netflix: true).order(brazilian_release: :desc)
+    end
+
+    def self.available_amazon
+      where(available_amazon: true).order(brazilian_release: :desc)
+    end
   end
 
   def self.filmables_by_type(type)
@@ -453,17 +465,5 @@ module FilmProfitable
     years = []
     (1895..limit_year).each { |year| years << year }
     years
-  end
-
-  def self.playing_soon
-    where(playing_soon: true).order(brazilian_release: :asc)
-  end
-
-  def self.available_netflix
-    where(available_netflix: true).order(brazilian_release: :desc)
-  end
-
-  def self.available_amazon
-    where(available_amazon: true).order(brazilian_release: :desc)
   end
 end
