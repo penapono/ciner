@@ -25,11 +25,11 @@ module FilmProfitable
     def rated_pt
       return omdb_rated if !omdb_rated.blank? && omdb_rated == "Livre"
       return omdb_rated[0..1] + " anos" unless omdb_rated.blank?
-      " - "
+      ""
     end
 
     def writers_pt
-      return "Não disponível" unless omdb_writers
+      return "" unless omdb_writers
       omdb_writers.gsub("(as)", "(como)")
                   .gsub("(author)", "(autor)")
                   .gsub("(book)", "(livro)")
@@ -73,7 +73,7 @@ module FilmProfitable
 
     def countries_str
       countries = self.countries
-      return "Não disponível" unless countries
+      return "" unless countries
 
       countries =
         countries.gsub("Argentina", "Argentina")
@@ -352,7 +352,7 @@ module FilmProfitable
 
     def length_str
       length = self.length
-      return "Não disponível" unless length
+      return "" unless length
       length = begin
                  Integer(length.gsub("min", "").strip)
                rescue
@@ -367,7 +367,7 @@ module FilmProfitable
       return "#{hours}h" if length == 0 && hours > 0
       return "#{length}min" if length > 0 && hours == 0
       return "#{hours}h#{length}min" if length > 0 && hours > 0
-      " - "
+      ""
     end
 
     def genders_str
@@ -453,5 +453,17 @@ module FilmProfitable
     years = []
     (1895..limit_year).each { |year| years << year }
     years
+  end
+
+  def self.playing_soon
+    where(playing_soon: true).order(brazilian_release: :asc)
+  end
+
+  def self.available_netflix
+    where(available_netflix: true).order(brazilian_release: :desc)
+  end
+
+  def self.available_amazon
+    where(available_amazon: true).order(brazilian_release: :desc)
   end
 end

@@ -25,8 +25,6 @@ class Movie < ActiveRecord::Base
             presence: true
 
   # Delegations
-  delegate :name, to: :city, allow_nil: true, prefix: true
-  delegate :name, to: :state, allow_nil: true, prefix: true
   delegate :name, to: :age_range, allow_nil: true, prefix: true
 
   # Nested
@@ -68,7 +66,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.featured
-    ids = Visit.where(action: 'show').where("controller like ?", "%questions%").pluck(:resource_id)
+    ids = Visit.where(action: 'show').where("controller like ?", "%movies%").pluck(:resource_id)
 
     result = Hash.new(0)
 
@@ -77,17 +75,5 @@ class Movie < ActiveRecord::Base
     result = result.sort_by { |_k, v| v }.to_h
 
     where(id: result.keys.first(15))
-  end
-
-  def self.playing_soon
-    where(playing_soon: true).order(brazilian_release: :asc)
-  end
-
-  def self.available_netflix
-    where(available_netflix: true).order(brazilian_release: :desc)
-  end
-
-  def self.available_amazon
-    where(available_amazon: true).order(brazilian_release: :desc)
   end
 end

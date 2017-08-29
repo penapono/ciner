@@ -28,9 +28,6 @@ class Serie < ActiveRecord::Base
             presence: true
 
   # Delegations
-  delegate :name, to: :city, allow_nil: true, prefix: true
-  delegate :name, to: :state, allow_nil: true, prefix: true
-  delegate :name, to: :country, allow_nil: true, prefix: true
   delegate :name, to: :age_range, allow_nil: true, prefix: true
 
   # Nested
@@ -45,16 +42,9 @@ class Serie < ActiveRecord::Base
   alias_attribute :text, :title_str
 
   # Scopes
-  def self.by_city(city)
-    where(city: city)
-  end
 
-  def self.by_state(id)
-    where(state_id: id)
-  end
-
-  def self.by_country(id)
-    where(country_id: id)
+  def self.by_year(year)
+    where(start_year: year)
   end
 
   # Filter
@@ -63,9 +53,7 @@ class Serie < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    result = result.by_country(params[:country]) if params[:country].present?
-    result = result.by_state(params[:state]) if params[:state].present?
-    result = result.by_city(params[:city]) if params[:city].present?
+    result = result.by_year(params[:year]) if params[:year].present?
 
     result
   end
@@ -97,17 +85,5 @@ class Serie < ActiveRecord::Base
 
   def self.playing
     where(last_released: true)
-  end
-
-  def self.playing_soon
-    where(playing_soon: true).order(brazilian_release: :asc)
-  end
-
-  def self.available_netflix
-    where(available_netflix: true).order(brazilian_release: :desc)
-  end
-
-  def self.available_amazon
-    where(available_netflix: true).order(brazilian_release: :desc)
   end
 end
