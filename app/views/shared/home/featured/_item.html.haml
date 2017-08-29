@@ -1,8 +1,0 @@
-- role = role
-- cover = pm.try(:cover).try(:url)
-- cover ||= "default/movie/image.png"
-
-.movie-poster-item
-  = link_to url_for([role, pm]) do
-    .thumb
-      = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')

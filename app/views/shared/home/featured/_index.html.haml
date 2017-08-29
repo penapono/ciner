@@ -1,15 +1,23 @@
-.section-featured
-  .ciner-featured.title-separator
+- role = role
+
+/ SECTION POSTER
+.section-poster
+  .ciner-poster.title-separator
     .media
       .media-left.media-middle
         %svg.icon-title
-          %use{"xlink:href" => "#destaque"}
+          %use{"xlink:href" => "#destaque"}/
       .media-body.media-bottom
         .media-heading.title-section
           Em Destaque
-      .media-body.text-right.media-middle.see-more
+      .media-body.text-right.media-middle.see-more.see-more
         = link_to url_for([role, :featured_filmables]) do
           = t('see_more')
 
-  .row
-    = render 'shared/home/featured/showcase', role: role, showcase_class: 'showcase-featured', slider_movies: slider_movies
+  - if role.blank?
+    - style = 'margin-right: 0px; margin-left: 0px;'
+  - else
+    - style = ''
+
+  .row{ style: style }
+    = render 'shared/home/showcase/showcase', role: role, slider_movies: slider_movies
