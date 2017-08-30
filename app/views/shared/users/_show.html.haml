@@ -93,35 +93,35 @@
         .row.box-sinopse
           .col-xs-12.col-md-6
             Vídeos:
-            %strong
+            %strong.wine
               2
             %br
             Críticas:
-            %strong
+            %strong.wine
               = user.critics.approved.count
             %br
             Assistidos:
-            %strong
+            %strong.wine
               = watched_count_for_user(user)
             %br
             Quer Ver:
-            %strong
+            %strong.wine
               = want_to_see_count_for_user(user)
           .col-xs-12.col-sm-6
             Coleção:
-            %strong
+            %strong.wine
               = collection_count_for_user(user)
             %br
             Favoritos:
-            %strong
+            %strong.wine
               = favorite_count_for_user(user)
             %br
             Indicados:
-            %strong
+            %strong.wine
               = favorite_count_for_user(user)
             %br
             Amigos:
-            %strong
+            %strong.wine
               500
 
       = render 'shared/users/collection', role: role
