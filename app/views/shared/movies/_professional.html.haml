@@ -3,7 +3,7 @@
 
 - if object
   - avatar = object.avatar
-  - avatar ||= image_path("default/professional/image.jpg")
+  - avatar = image_path("default/professional/image.jpg") if object.avatar.url.blank?
   - professional_class ||= ""
   - data_mh ||= ""
   - observation ||= nil
