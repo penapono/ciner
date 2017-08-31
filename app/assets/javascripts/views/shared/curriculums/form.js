@@ -2,7 +2,7 @@
 
 $('form').on('cocoon:after-insert', function(e, insertedItem) {
   $('.datepicker').mask('99/99/9999');
-  $('.money').mask('000.000.000.000.000,00', {reverse: true});
+  $('.money').mask('000.000.000.000.000,00', { reverse: true });
   $('select').select2({
     theme: "bootstrap",
     minimumResultsForSearch: 50
