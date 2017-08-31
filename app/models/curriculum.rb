@@ -19,6 +19,26 @@ class Curriculum < ActiveRecord::Base
             :play_name,
             presence: true
 
+  # Nested
+  accepts_nested_attributes_for :curriculum_photos,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+  accepts_nested_attributes_for :curriculum_files,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+  accepts_nested_attributes_for :curriculum_videos,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+  accepts_nested_attributes_for :curriculum_audios,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+  accepts_nested_attributes_for :curriculum_jobs,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+  accepts_nested_attributes_for :curriculum_awards,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+
   # gender
   # 0: Men, 1: Women, 2: Other
   enum gender: { men: 0, women: 1, other: 2 }

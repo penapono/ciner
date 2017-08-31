@@ -81,7 +81,44 @@ module Platform
         :height,
         :ethnicity,
 
-        :drt
+        :drt,
+        curriculum_photos_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_audios_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_videos_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_files_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_jobs_attributes: %i[
+          description
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_awards_attributes: %i[
+          category
+          title
+          curriculum_id
+          id
+          _destroy
+        ]
       )
     end
   end

@@ -66,119 +66,54 @@
   .col-xs-4
     = f.input :mannequin, input_html: { type: "number", min: 1,  max: 99, step: 1 }
 
+
 .row
-  .col-xs-12
+  .col-xs-6
     %h3.wine
-      = t('.winnings')
+      Imagens
+.row
+  .col-xs-6
+    = render 'shared/curriculums/curriculum_photos/nested', f: f
 
 .row
-  .col-xs-4
-    = f.input :winnings1, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
-
-  .col-xs-4
-    = f.input :winnings2, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
-
-  .col-xs-4
-    = f.input :winnings3, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
-
-.row
-  .col-xs-4
-    = f.input :winnings4, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
-
-  .col-xs-4
-    = f.input :winnings5, label: false, input_html: { placeholder: 'Informe o prêmio ganho' }, maxlength: 100
-
-.row
-  .col-xs-12
+  .col-xs-6
     %h3.wine
-      = t('.jobs')
+      Áudios
+.row
+  .col-xs-6
+    = render 'shared/curriculums/curriculum_audios/nested', f: f
 
 .row
-  .col-xs-4
-    = f.input :jobs1, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
-
-  .col-xs-4
-    = f.input :jobs2, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
-
-  .col-xs-4
-    = f.input :jobs3, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
-
-.row
-  .col-xs-4
-    = f.input :jobs4, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
-
-  .col-xs-4
-    = f.input :jobs5, label: false, input_html: { placeholder: 'Informe qual foi o trabalho participado' }, maxlength: 100
-
-
-.row
-  .col-xs-12
+  .col-xs-6
     %h3.wine
-      = t('.gallery')
+      Vídeos
+.row
+  .col-xs-6
+    = render 'shared/curriculums/curriculum_videos/nested', f: f
 
 .row
-  .col-xs-4
-    = f.input :photo1, label: false
-  .col-xs-4
-    = f.input :photo2, label: false
-  .col-xs-4
-    = f.input :photo3, label: false
-.row
-  .col-xs-4
-    = f.input :photo4, label: false
-  .col-xs-4
-    = f.input :photo5, label: false
-  .col-xs-4
-    = f.input :photo6, label: false
-.row
-  .col-xs-4
-    = f.input :photo7, label: false
-  .col-xs-4
-    = f.input :photo8, label: false
-  .col-xs-4
-    = f.input :photo9, label: false
-.row
-  .col-xs-4
-    = f.input :photo10, label: false
-
-.row
-  .col-xs-12
+  .col-xs-6
     %h3.wine
-      = t('.videos')
+      Arquivos
+.row
+  .col-xs-6
+    = render 'shared/curriculums/curriculum_files/nested', f: f
 
 .row
-  .col-xs-4
-    = f.input :video1, label: false
-  .col-xs-4
-    = f.input :video2, label: false
-  .col-xs-4
-    = f.input :video3, label: false
-
-.row
-  .col-xs-12
+  .col-xs-6
     %h3.wine
-      = t('.audios')
+      Trabalhos Realizados
+.row
+  .col-xs-6
+    = render 'shared/curriculums/curriculum_jobs/nested', f: f
 
 .row
-  .col-xs-4
-    = f.input :audio1, label: false
-  .col-xs-4
-    = f.input :audio2, label: false
-  .col-xs-4
-    = f.input :audio3, label: false
-
-.row
-  .col-xs-12
+  .col-xs-6
     %h3.wine
-      = t('.files')
-
+      Premiações
 .row
-  .col-xs-4
-    = f.input :file1, label: false
-  .col-xs-4
-    = f.input :file2, label: false
-  .col-xs-4
-    = f.input :file3, label: false
+  .col-xs-6
+    = render 'shared/curriculums/curriculum_awards/nested', f: f
 
 .row.actions
   - if f.object.persisted?

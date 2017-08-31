@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    attributes:
+      curriculum_award:
+        category: Categoria
+        title: Prêmio
