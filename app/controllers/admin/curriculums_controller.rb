@@ -70,11 +70,10 @@ module Admin
         :avatar,
         :biography,
 
-        # Professional Attributes
-        :set_function_id,
+        :curriculum_function_id,
 
         # If Professional is an User
-        :user_id,
+        :user,
 
         # Measures
         :mannequin,
@@ -82,35 +81,43 @@ module Admin
         :ethnicity,
 
         :drt,
-        :winnings1,
-        :winnings2,
-        :winnings3,
-        :winnings4,
-        :winnings5,
-        :jobs1,
-        :jobs2,
-        :jobs3,
-        :jobs4,
-        :jobs5,
-        :photo1,
-        :photo2,
-        :photo3,
-        :photo4,
-        :photo5,
-        :photo6,
-        :photo7,
-        :photo8,
-        :photo9,
-        :photo10,
-        :video1,
-        :video2,
-        :video3,
-        :audio1,
-        :audio2,
-        :audio3,
-        :file1,
-        :file2,
-        :file3
+        curriculum_photos_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_audios_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_videos_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_files_attributes: %i[
+          media
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_jobs_attributes: %i[
+          description
+          curriculum_id
+          id
+          _destroy
+        ],
+        curriculum_awards_attributes: %i[
+          category
+          title
+          curriculum_id
+          id
+          _destroy
+        ]
       )
     end
   end

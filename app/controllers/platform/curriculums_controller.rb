@@ -70,8 +70,7 @@ module Platform
         :avatar,
         :biography,
 
-        # Professional Attributes
-        :set_function,
+        :curriculum_function_id,
 
         # If Professional is an User
         :user,
