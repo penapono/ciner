@@ -6,6 +6,8 @@
 - avatar = user.avatar
 - avatar ||= image_path("default/user/image.jpg")
 
+- friends = user.friends
+
 .container
   .row{ style: 'margin-top: 15px;' }
     .col-xs-12.col-md-8
@@ -122,10 +124,10 @@
             %br
             Amigos:
             %strong.wine
-              500
+              = friends.count
 
       = render 'shared/users/collection', role: role
 
     = render 'shared/users/critics/critics', role: role
 
-    = render 'shared/users/friends_list', role: role
+    = render 'shared/users/friends_list', role: role, friends: friends

@@ -1,4 +1,6 @@
 - role = current_role(current_user, request.url)
+- professional_avatar = professional.avatar
+- professional_avatar ||= image_path("default/professional/image.jpg")
 
 .container
   .row
@@ -15,7 +17,7 @@
         .user-profile
           .row
             .col-xs-12.col-sm-3.user-avatar
-              %img.img-responsive{:src => professional.avatar}
+              %img.img-responsive{:src => professional_avatar}
             .col-xs-12.col-sm-9.user-info
               Nome:
               %span.user-name
@@ -33,7 +35,7 @@
                     = l professional.deathday
                   \)
                 - else
-                  \- 
+                  \-
               %br
               %br
               Origem:
