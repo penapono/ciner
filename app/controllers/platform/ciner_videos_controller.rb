@@ -49,6 +49,7 @@ module Platform
             if !params[:ciner_video].blank? && !params[:ciner_video][:media].blank?
               render json: { status: 'OK', to: platform_ciner_video_path(resource) }
             end
+            render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }
           else
             render json: { status: 'error' }
           end

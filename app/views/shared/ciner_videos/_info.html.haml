@@ -1,8 +1,8 @@
 - object = ciner_video
 - role = role
 
-- if object.trailer
-  #ficha-tecnica
+#ficha-tecnica
+  - if object.trailer
     .row
       .col-xs-12
         .title-separator
@@ -14,14 +14,16 @@
               .media-heading.title-section
                 = CinerVideo.human_attribute_name(:trailer)
 
+    .row  
+      .col-xs-12
         .ficha
           .info
             - if ciner_video.trailer.url
-              .col-xs-4
-                %video{:controls => "", :height => "240", :width => "100%"}
-                  %source{:src => ciner_video.trailer, :type => "video/mp4"}
-                    Your browser does not support the video tag.
+              %video{:controls => "", :height => "480", :width => "720"}
+                %source{:src => ciner_video.trailer, :type => "video/mp4"}
+                  Your browser does not support the video tag.
 
+  - if object.media
     .row
       .col-xs-12
         .title-separator
@@ -33,56 +35,11 @@
               .media-heading.title-section
                 = CinerVideo.human_attribute_name(:media)
 
+    .row
+      .col-xs-12
         .ficha
           .info
             - if ciner_video.media.url
-              .col-xs-4
-                %video{:controls => "", :height => "240", :width => "100%"}
-                  %source{:src => ciner_video.media, :type => "video/mp4"}
-                    Your browser does not support the video tag.
-
-/   .row
-/     .col-xs-6
-/       #direcao.direcao
-/         .title-separator
-/           .media
-/             .media-body.media-bottom
-/               .media-heading.title-section
-/                 Direção
-/         .diretores
-/           .row
-/             - if object.directors.any?
-/               - object.directors.first(3).each do |filmable_professional|
-/                 = render 'shared/ciner_videos/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
-/     .col-xs-6
-/       #direcao.direcao
-/         .title-separator
-/           .media
-/             .media-body.media-bottom
-/               .media-heading.title-section
-/                 Roteiro
-/         .diretores
-/           .row
-/             - if object.writers.any?
-/               - object.writers.first(3).each do |filmable_professional|
-/                 = render 'shared/ciner_videos/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
-
-/ - if object.actors.any?
-/   #elenco.elenco
-/     .title-separator
-/       .media
-/         .media-body.media-bottom
-/           .media-heading.title-section
-/             = Movie.human_attribute_name(:cast_str)
-/     .atores-principais
-/       .row
-/         - object.actors.first(6).each do |filmable_professional|
-/           = render 'shared/ciner_videos/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation, role: role
-/     .collapsed-area{ data: { collapsed_area: '' } }
-/       .media-body.text-right.media-middle.see-more
-/         %a{ data: { collapse_control: '' } }
-/           ver mais
-/       .atores.collapse{ data: { collapse_content: '' } }
-/         - object.actors.each_with_index do |filmable_professional, index|
-/           - if index > 5
-/             =  render 'shared/ciner_videos/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation, role: role
+              %video{:controls => "", :height => "480", :width => "720"}
+                %source{:src => ciner_video.media, :type => "video/mp4"}
+                  Your browser does not support the video tag.

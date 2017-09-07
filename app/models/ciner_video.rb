@@ -23,7 +23,7 @@ class CinerVideo < ActiveRecord::Base
   has_attached_file :trailer
   validates_attachment :trailer,
                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
-                       size: { in: 0..10.gigabytes }
+                       size: { in: 0..10.gigabytes }, if: Proc.new { |a| a.trailer.present? }
 
   has_attached_file :media
   validates_attachment :media,
@@ -34,7 +34,6 @@ class CinerVideo < ActiveRecord::Base
 
   # Validations
   validates :original_title,
-            :year,
             presence: true
 
   # Nested
