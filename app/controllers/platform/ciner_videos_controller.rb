@@ -44,14 +44,14 @@ module Platform
         format.json do
           if updated?
             if !params[:ciner_video].blank? && !params[:ciner_video][:trailer].blank?
-              render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }
+              render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }; return
             end
             if !params[:ciner_video].blank? && !params[:ciner_video][:media].blank?
-              render json: { status: 'OK', to: platform_ciner_video_path(resource) }
+              render json: { status: 'OK', to: platform_ciner_video_path(resource) }; return
             end
-            render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }
+            render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }; return
           else
-            render json: { status: 'error' }
+            render json: { status: 'error' }; return
           end
         end
         format.html do
