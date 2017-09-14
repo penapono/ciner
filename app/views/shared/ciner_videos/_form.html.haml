@@ -51,20 +51,4 @@
   .col-xs-6
     = render 'shared/ciner_videos/ciner_video_users/nested', f: f
 
-.row
-  .col-xs-6
-    %h3.wine
-      Vídeo e Trailer
-
-- if f.object.persisted?
-  .row
-    .col-xs-6
-      = f.input :trailer
-
-  .row
-    .col-xs-6
-      = f.input :media
-- else
-  Salve as informações básicas para então realizar o upload dos vídeos
-
-= render 'shared/ciner_videos/form_actions', f: f
+= render 'shared/ciner_videos/form_actions', f: f, submit_msg: 'Salvar informações e prosseguir para upload'
