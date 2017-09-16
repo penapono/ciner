@@ -108,9 +108,6 @@ module Admin
         :ciner_video_directors,
         :ciner_video_writers,
         :ciner_video_actors,
-        :ciner_video_genre,
-        :ciner_video_rated,
-        :ciner_video_id,
         :ciner_video_trailer,
         :trailer,
         :media,
@@ -118,8 +115,10 @@ module Admin
         :playing,
         :user_id,
         :lock_updates,
-        :countries,
         :media,
+        countries: %i[],
+        film_production_categories: %i[],
+        ciner_video_ratings: %i[],
         ciner_video_users_attributes: %i[
           set_function_id
           user_id

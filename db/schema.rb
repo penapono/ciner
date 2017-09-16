@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817180629) do
+ActiveRecord::Schema.define(version: 20170916162856) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -86,10 +86,8 @@ ActiveRecord::Schema.define(version: 20170817180629) do
     t.text "ciner_video_directors"
     t.text "ciner_video_writers"
     t.text "ciner_video_actors"
-    t.text "ciner_video_genre"
-    t.text "ciner_video_rated"
     t.boolean "playing"
-    t.string "countries"
+    t.text "countries"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,6 +100,8 @@ ActiveRecord::Schema.define(version: 20170817180629) do
     t.integer "media_file_size"
     t.datetime "media_updated_at"
     t.integer "status", default: 0
+    t.text "film_production_categories"
+    t.text "ciner_video_ratings"
     t.index ["user_id"], name: "index_ciner_videos_on_user_id"
   end
 

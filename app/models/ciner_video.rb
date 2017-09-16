@@ -5,6 +5,10 @@ class CinerVideo < ActiveRecord::Base
   include FilmProfitable
   include UserActionable
 
+  serialize :countries
+  serialize :film_production_categories
+  serialize :ciner_video_ratings
+
   # Enums
   enum status: { pending: 1, approved: 2, reproved: 3 }
 

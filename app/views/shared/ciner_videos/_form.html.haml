@@ -20,15 +20,15 @@
   .col-xs-12.col-sm-4
     = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker', placeholder: 'dd/mm/aaaa' }
   .col-xs-12.col-sm-4
-    = f.input :countries
+    = f.input :countries, collection: Country.all, input_html: { multiple: true }
 
 .row
   .col-xs-12.col-sm-4
     = f.input :length
   .col-xs-12.col-sm-4
-    = f.input :ciner_video_genre
+    = f.input :film_production_categories, collection: FilmProductionCategory.all, input_html: { multiple: true }
   .col-xs-12.col-sm-4
-    = f.input :ciner_video_rated
+    = f.input :ciner_video_ratings, collection: AgeRange.all, input_html: { multiple: true }
 
 .row
   .col-xs-12{ data: { limited: '', limit: 1000 } }
