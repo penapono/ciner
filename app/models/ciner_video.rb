@@ -50,6 +50,18 @@ class CinerVideo < ActiveRecord::Base
 
   # Scopes
 
+  def countries_str
+    Country.where(id: self.countries).pluck(:name).to_sentence
+  end
+
+  def ciner_video_ratings_str
+    AgeRange.where(id: self.ciner_video_ratings).pluck(:name).to_sentence
+  end
+
+  def film_production_categories_str
+    FilmProductionCategory.where(id: self.film_production_categories).pluck(:name).to_sentence
+  end
+
   def self.by_year(year)
     where(year: year)
   end

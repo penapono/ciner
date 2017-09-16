@@ -24,12 +24,12 @@
             .col-xs-12.col-sm-8.col-md-8.col-lg-8
               Gênero
               %a.wine.bold
-                = object.ciner_video_genre
+                = object.ciner_video_ratings_str
               %br
 
               = CinerVideo.human_attribute_name(:age_range_id)
               %span.wine.bold
-                = object.ciner_video_rated
+                = object.film_production_categories_str
 
               \|
 
@@ -44,7 +44,9 @@
                 %h3.bold.wine
                   = object.title_str
                 %h4.light.cinza
-                  = "#{object.original_title_str} (#{object.year})"
+                  = "#{object.original_title_str}"
+                  - unless object.year.blank?
+                    = "(#{object.year})"
 
               %br
 
