@@ -49,11 +49,14 @@
   - set_functions = SetFunction.all
   - set_functions.each do |sf|
     - all = []
-    - Movie.where(id: FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).order(brazilian_release: :desc).each do |m|
+    
+    - movies_ids = FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
+    - Movie.where(id: movies_ids.uniq).order(brazilian_release: :desc).each do |m|
       - all << m
-    - Serie.where(id: FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)).order(brazilian_release: :desc).each do |s|
-      - all << s
 
+    - series_ids = FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
+    - Serie.where(id: series_ids.uniq).order(brazilian_release: :desc).each do |s|
+      - all << s
 
     - if all.any?
       .row{ data: { slider: { playing: '' } } }
