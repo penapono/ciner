@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916162856) do
+ActiveRecord::Schema.define(version: 20170916211233) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -102,6 +102,10 @@ ActiveRecord::Schema.define(version: 20170916162856) do
     t.integer "status", default: 0
     t.text "film_production_categories"
     t.text "ciner_video_ratings"
+    t.boolean "media_processing", default: false, null: false
+    t.boolean "trailer_processing", default: false, null: false
+    t.string "media"
+    t.string "trailer"
     t.index ["user_id"], name: "index_ciner_videos_on_user_id"
   end
 
@@ -268,6 +272,21 @@ ActiveRecord::Schema.define(version: 20170916162856) do
     t.bigint "curriculum_function_id"
     t.index ["curriculum_function_id"], name: "index_curriculums_on_curriculum_function_id"
     t.index ["user_id"], name: "index_curriculums_on_user_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "event_images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

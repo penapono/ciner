@@ -21,9 +21,6 @@ gem 'jquery_mask_rails'
 
 gem 'social-share-button'
 
-gem 'streamio-ffmpeg'
-gem 'carrierwave-ffmpeg'
-gem 'jquery-fileupload-rails' #, github: 'Springest/jquery-fileupload-rails'
 
 gem 'file_validators'
 
@@ -31,6 +28,8 @@ gem 'nokogiri'
 gem 'httparty'
 
 gem 'paperclip'
+gem 'delayed_job_active_record'
+gem 'delayed_paperclip'
 
 gem "recaptcha", require: "recaptcha/rails"
 
@@ -41,10 +40,12 @@ gem 'kaminari'
 
 # file upload
 gem 'carrierwave'
-# video uploader
 gem 'carrierwave-video'
-# audio uploader
+gem 'carrierwave_backgrounder'
 gem 'carrierwave-audio'
+gem 'streamio-ffmpeg'
+gem 'carrierwave-ffmpeg'
+gem 'jquery-fileupload-rails' #, github: 'Springest/jquery-fileupload-rails'
 
 # session
 gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'

@@ -20,8 +20,7 @@ class CinerVideo < ActiveRecord::Base
   has_many :ciner_video_users, dependent: :destroy
 
   # Uploaders
-  # mount_uploader :trailer, CinerVideoTrailerUploader
-
+  mount_uploader :trailer, CinerVideoTrailerUploader
   mount_uploader :media, CinerVideoMediaUploader
 
   has_attached_file :trailer
@@ -29,10 +28,25 @@ class CinerVideo < ActiveRecord::Base
                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
                        size: { in: 0..10.gigabytes }, if: Proc.new { |a| a.trailer.present? }
 
+
   has_attached_file :media
   validates_attachment :media,
                        content_type: { content_type: [/\Aimage\/.*\Z/, /\Avideo\/.*\Z/] },
                        size: { in: 0..10.gigabytes }
+
+  process_in_background :media
+  process_in_background :trailer
+
+  before_validation(on: [:save, :update]) do
+    byebug
+    if self.trailer_processing?
+      Delayed::Worker.new.run(Delayed::Job.last)
+    end
+
+    if self.media_processing?
+      Delayed::Worker.new.run(Delayed::Job.last)
+    end
+  end
 
   mount_uploader :cover, CinerVideoCoverUploader
 

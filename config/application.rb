@@ -23,6 +23,8 @@ module Ciner
     config.assets.version = '1.0'
     config.active_record.time_zone_aware_types = [:datetime, :time]
 
+    config.active_job.queue_adapter = :delayed_job
+
     Paperclip.options[:command_path] = "/usr/bin/identify"
 
     # Destivar wrap de campos com erros

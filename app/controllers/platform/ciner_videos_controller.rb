@@ -40,9 +40,13 @@ module Platform
     end
 
     def update
+      byebug
       respond_to do |format|
+        byebug
         format.json do
+          byebug
           if updated?
+            byebug
             if !params[:ciner_video].blank? && !params[:ciner_video][:trailer].blank?
               render json: { status: 'OK', to: upload_video_platform_ciner_video_path(resource) }; return
             end
