@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.minute do
-  rake 'movie_sync:update'
-  rake 'serie_sync:update'
+every 1.hour do
+  rake 'professionals_clean:unify_duplicates'
+  rake 'professionals_clean:remove_duplicates'
 end
