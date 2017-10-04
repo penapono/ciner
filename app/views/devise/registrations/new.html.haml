@@ -15,7 +15,12 @@
   .plans{ data: { plans: '' } }
     = render 'plans'
 
-  .form.hidden{ data: { form: '' } }
+  - if params[:user] && !params[:user][:role].blank?
+    - class_hidden = ''
+  - else
+    - class_hidden = 'hidden'
+
+  .form{ class: class_hidden, data: { form: '' } }
     = render 'form'
 
 = render 'modal'

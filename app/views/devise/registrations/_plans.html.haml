@@ -1,3 +1,8 @@
+- if params[:user] && !params[:user][:role].blank?
+  - chosen_plan = params[:user][:role]
+- else
+  - chosen_plan = ''
+
 .row
   .col-xs-12.col-sm-4.col-table{"data-mh" => "seja-ciner"}
     .col-table-cell.text-center
@@ -48,7 +53,7 @@
             %span . Participar de promoções do site
           .assine{ data: { choose_plan: '', plan: 'Ciner' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'free' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "free"), :class => "btn btn-assine"
         .col-xs-12.col-sm-6.col-md-3.promo-item
           .promo-top
@@ -81,7 +86,7 @@
             %span . Participar de promoções exclusivas
           .assine{ data: { choose_plan: '', plan: 'Ciner Pro' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'pro' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "monthlypro"), :class => "btn btn-assine"
         .col-xs-12.col-sm-6.col-md-3.promo-item
           .promo-top
@@ -115,7 +120,7 @@
             %span . Coleção virtual de DVD/Blu-ray
           .assine{ data: { choose_plan: '', plan: 'Ciner Clássico' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'classic' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "monthlyclass"), :class => "btn btn-assine"
         .col-xs-12.col-sm-6.col-md-3.promo-item
           .promo-top
@@ -150,7 +155,7 @@
             %span . Upload de vídeos cinematográficos ilimitados
           .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "monthlycult"), :class => "btn btn-assine"
     #anual.tab-pane
       .row
@@ -171,7 +176,7 @@
             %span . Participar de promoções do site
           .assine{ data: { choose_plan: '', plan: 'Ciner' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'free' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "free"), :class => "btn btn-assine"
         .col-xs-12.col-sm-6.col-md-3.promo-item
           .promo-top
@@ -202,7 +207,7 @@
             %span . Participar de promoções exclusivas
           .assine{ data: { choose_plan: '', plan: 'Ciner Pro' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'pro' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "annuallypro"), :class => "btn btn-assine"
         .col-xs-12.col-sm-6.col-md-3.promo-item
           .promo-top
@@ -234,7 +239,7 @@
             %span . Coleção virtual de DVD/Blu-ray
           .assine{ data: { choose_plan: '', plan: 'Ciner Clássico' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'classic' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "annuallyclass"), :class => "btn btn-assine"
         .col-xs-12.col-sm-6.col-md-3.promo-item
           .promo-top
@@ -267,5 +272,5 @@
             %span . Upload de vídeos cinematográficos ilimitados
           .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
             .btn.btn-assine
-              ASSINE JÁ
+              = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
             / = link_to "ASSINE JÁ", new_user_registration_path(plan: "annuallycult"), :class => "btn btn-assine"

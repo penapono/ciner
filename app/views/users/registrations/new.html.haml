@@ -25,11 +25,6 @@
     .col-xs-12.col-sm-6
       = f.input :password_confirmation, required: true
 
- / .row
- /   .col-xs-12
- /     %input{:name => "terms", :type => "checkbox", :value => "terms"}/ 
- /     Eu li e concordo com os termos de uso
-
   .row
     .col-xs-12
       = f.button :submit, t('confirm')

@@ -17,28 +17,29 @@
         %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
   .row
-    .col-xs-6
-      #direcao.direcao
-        .title-separator
-          .media
-            .media-body.media-bottom
-              .media-heading.title-section
-                Direção
-        .diretores
-          .row
-            - if object.directors.any?
+    - if object.directors.any?
+      .col-xs-6
+        #direcao.direcao
+          .title-separator
+            .media
+              .media-body.media-bottom
+                .media-heading.title-section
+                  Direção
+          .diretores
+            .row
               - object.directors.first(3).each do |filmable_professional|
                 = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
-    .col-xs-6
-      #direcao.direcao
-        .title-separator
-          .media
-            .media-body.media-bottom
-              .media-heading.title-section
-                Roteiro
-        .diretores
-          .row
-            - if object.writers.any?
+
+    - if object.writers.any?
+      .col-xs-6
+        #direcao.direcao
+          .title-separator
+            .media
+              .media-body.media-bottom
+                .media-heading.title-section
+                  Roteiro
+          .diretores
+            .row
               - object.writers.first(3).each do |filmable_professional|
                 = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
 
