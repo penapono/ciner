@@ -37,6 +37,8 @@ module Ciner
       g.test_framework :rspec
     end
 
+    config.log_level = :info
+
     # This will route any exceptions caught to your router Rack app
     config.exceptions_app = self.routes
   end
