@@ -9,7 +9,6 @@ class State < ActiveRecord::Base
   # Validations
   validates :acronym,
             :name,
-            :country,
             presence: true
 
   validates_uniqueness_of :name, scope: :country_id
