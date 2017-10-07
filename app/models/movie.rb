@@ -5,6 +5,7 @@ class Movie < ActiveRecord::Base
   include FilmProfitable
   include Tmdb
   include UserActionable
+  include CommentManageable
 
   # Associations
   belongs_to :age_range
@@ -15,6 +16,8 @@ class Movie < ActiveRecord::Base
   has_many :broadcasts, through: :broadcast_broadcastables
   has_many :filmable_professionals, as: :filmable
   has_many :professionals, through: :filmable_professionals
+
+  has_many :comments, as: :commentable
 
   # Uploaders
   mount_uploader :cover, CoverUploader

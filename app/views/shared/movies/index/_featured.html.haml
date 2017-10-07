@@ -28,7 +28,7 @@
         .slider-container
           - featured.each do |object|
             - cover = object.try(:cover).try(:url)
-            - cover ||= image_path("default/movie/image.png")
+            - cover ||= image_path("/default/movie/image.png")
 
             .slide.movie-poster-item{ style: "width: 133px; height: 200px; float: left; margin-left: 5px; margin-right: 5px;" }
               = link_to url_for([role, object]) do

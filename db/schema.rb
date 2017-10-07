@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916162856) do
+ActiveRecord::Schema.define(version: 20171007071939) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -353,6 +353,7 @@ ActiveRecord::Schema.define(version: 20170916162856) do
     t.boolean "playing_soon", default: false
     t.boolean "available_netflix", default: false
     t.boolean "available_amazon", default: false
+    t.integer "comments_count", default: 0
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
@@ -508,6 +509,7 @@ ActiveRecord::Schema.define(version: 20170916162856) do
     t.boolean "playing_soon", default: false
     t.boolean "available_netflix", default: false
     t.boolean "available_amazon", default: false
+    t.integer "comments_count", default: 0
     t.index ["user_id"], name: "index_series_on_user_id"
   end
 
