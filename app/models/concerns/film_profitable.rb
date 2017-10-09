@@ -117,6 +117,8 @@ module FilmProfitable
                  .gsub("Thailand", "Tailândia")
                  .gsub("UK", "Reino Unido")
                  .gsub("United Kingdom", "Reino Unido")
+                 .gsub("United States of America", "EUA")
+                 .gsub("EUA of America", "EUA")
                  .gsub("United States", "EUA")
                  .gsub("USA", "EUA")
                  .gsub("Afghanistan", "Afeganistão")
