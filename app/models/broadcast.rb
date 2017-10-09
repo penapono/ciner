@@ -124,10 +124,22 @@ class Broadcast < ActiveRecord::Base
     where(broadcast_date: Date.parse(date))
   end
 
+  def self.by_filmable_type(filmable_type)
+    broadcast_ids = BroadcastBroadcastable.where(broadcastable_type: filmable_type).pluck(:broadcast_id)
+    where(id: broadcast_ids.uniq)
+  end
+
+  def self.by_filmable_id(filmable_id)
+    broadcast_ids = BroadcastBroadcastable.where(broadcastable_id: filmable_id).pluck(:broadcast_id)
+    where(id: broadcast_ids.uniq)
+  end
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
+    result = result.by_filmable_type(params[:filmable_type]) unless params[:filmable_type].blank?
+    result = result.by_filmable_id(params[:filmable_id]) unless params[:filmable_id].blank?
     result = result.by_broadcast_content_type(params[:broadcast_content_type]) unless params[:broadcast_content_type].blank?
     result = result.by_date(params[:date]) unless params[:date].blank?
 
