@@ -28,4 +28,4 @@
   #broadcast-reaction
     = render 'shared/reactions', resource: broadcast, like_path: like_path, dislike_path: dislike_path
 
-= render 'shared/comments/index', resource: broadcast, commentable_type: Broadcast, commentable_id: broadcast.id
+= render 'shared/comments/index', object: broadcast

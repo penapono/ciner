@@ -1,19 +1,20 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 
-#comentarios.col-xs-12.comentarios
-  .input-comentario
-    .title-separator
-      .media
-        .media-left.media-middle
-          %svg.icon-title
-            %use{"xlink:href" => "#comentario"}
-        .media-body.media-bottom
-          .media-heading.title-section
-            = comments.count
-            = Comment.model_name.human(count: comments.count)
-    - if current_user
-      = render 'api/v1/comments/form'
+.row
+  #comentarios.col-xs-12.comentarios
+    .input-comentario
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#comentario"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              = comments.count
+              = Comment.model_name.human(count: comments.count)
+      - if current_user
+        = render 'api/v1/comments/form'
 
-  .lista-comentarios
-    - comments.each do |comment|
-      = render 'api/v1/comments/show', comment: comment
+    .lista-comentarios
+      - comments.each do |comment|
+        = render 'api/v1/comments/show', comment: comment

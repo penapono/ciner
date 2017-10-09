@@ -46,10 +46,15 @@
                   = professional.place_of_birth
               %br
 
+  .row
+    .col-xs-12
+      = render 'shared/integrations/critics', object: professional
+      = render 'shared/integrations/broadcasts', object: professional
+
   - set_functions = SetFunction.all
   - set_functions.each do |sf|
     - all = []
-    
+
     - movies_ids = FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
     - Movie.where(id: movies_ids.uniq).order(brazilian_release: :desc).each do |m|
       - all << m

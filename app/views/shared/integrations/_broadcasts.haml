@@ -1,6 +1,23 @@
-- unless broadcasts.blank?
-  #noticias.col-xs-12.noticias-interna
-    .container.noticias
+- role = current_role(current_user, request.url)
+- filmable_type = object.class
+- filmable_id = object.id
+
+- unless object.broadcasts.blank?
+  .row
+    #noticias.col-xs-12.noticias
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#noticia"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              = Broadcast.model_name.human(count: 2)
+          .media-body.text-right.media-middle.see-more
+            %a
+              = link_to t('more'), url_for([role, :broadcasts, filter: { filmable_type: filmable_type, filmable_id: filmable_id }])
+  .row
+    #noticias.col-xs-12.noticias-interna
       .row
         .col-xs-12
           - broadcasts.first(2).each do |object|

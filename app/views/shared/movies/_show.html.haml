@@ -1,5 +1,3 @@
-/ - content_for :javascript, javascript_include_tag('components/collapser')
-
 - current_critics_path ||= platform_critics_path
 - current_new_critic_path ||= new_platform_critic_path
 - role = current_role(current_user, request.url)
@@ -10,9 +8,9 @@
   .row
     .col-xs-12.col-sm-8
       = render 'shared/movies/info', movie: movie, role: role
-      = render 'shared/movies/critics', movie: movie, role: role
     .col-xs-12.col-sm-4
       = render 'shared/movies/statistics', movie: movie
-  .row
-    = render 'shared/movies/comments', movie: movie
-    = render 'shared/movies/broadcasts', movie: movie, role: role
+
+  = render 'shared/integrations/critics', object: movie
+  = render 'shared/integrations/broadcasts', object: movie
+  = render 'shared/integrations/comments', object: movie

@@ -23,4 +23,4 @@
   #event-reaction
     = render 'shared/reactions', resource: event, like_path: like_path, dislike_path: dislike_path
 
-= render 'shared/comments/index', resource: event, commentable_type: Event, commentable_id: event.id
+= render 'shared/comments/index', object: event
