@@ -46,10 +46,10 @@
                   = professional.place_of_birth
               %br
 
-  .row
-    .col-xs-12
-      = render 'shared/integrations/critics', object: professional
-      = render 'shared/integrations/broadcasts', object: professional
+  / .row
+  /   .col-xs-12
+  /     = render 'shared/integrations/critics', object: professional
+  /     = render 'shared/integrations/broadcasts', object: professional
 
   - set_functions = SetFunction.all
   - set_functions.each do |sf|
