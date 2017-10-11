@@ -3,6 +3,7 @@
 - cover ||= image_path("default/movie/image.png")
 - like_path ||= nil
 - dislike_path ||= nil
+- role = current_role(current_user, request.url)
 
 .container.content
   .row
@@ -18,14 +19,15 @@
   .row
     .col-xs-12.critica-mais-recente
       .col-xs-12.col-sm-4.col-md-2
-        %img.img-responsive{ src: cover }
+        = link_to url_for([role, critic.filmable]) do
+          %img.img-responsive{ src: cover }
       .col-xs-12.col-sm-8.col-md-10.critica-recente
         .info
           .row
             .col-xs-12
               = Critic.human_attribute_name(:release)
               %span.bold.wine
-                = l(filmable.release, format: :long_date)
+                = l(filmable.release, format: :long_date) unless filmable.release.blank?
 
               .pull-right
                 = render 'shared/critics/rating', critic: critic
@@ -37,7 +39,8 @@
                 = filmable.genders_str
 
         %h4.title
-          = critic.filmable_title_str
+          = link_to url_for([role, critic.filmable]) do
+            = critic.filmable_title_str
         %span.original-title
           = critic.filmable_original_title
 

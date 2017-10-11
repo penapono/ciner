@@ -21,7 +21,7 @@
           .row
             .col-xs-12.col-sm-8.col-md-8.col-lg-8
               Gênero
-              %a.wine.bold
+              %span.wine.bold
                 = never_empty(object.genre_pt)
               %br
 
@@ -70,25 +70,24 @@
                 %br
 
                 = Movie.human_attribute_name(:directors_str)
-                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+                %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = never_empty(object.omdb_directors)
                 %br
 
                 Roteiro
-                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+                %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = never_empty(object.writers_pt)
                 %br
 
                 = Movie.human_attribute_name(:cast_str)
-                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+                %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = never_empty(object.omdb_actors)
-                %a.bold.preto{:href => "#ficha-tecnica"}
-                  = t('more')
+
                 %br
 
                 %br
                 País(es) de Produção
-                %a.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+                %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
                   = never_empty(object.countries_str)
                 %br
 
