@@ -18,6 +18,8 @@
       = f.input :place_of_birth
     .col-xs-3
       = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
+    .col-xs-3
+      = f.input :deathday, as: :string, input_html: { value: (localize(f.object.deathday) if f.object.deathday), class: 'datepicker' }
 
   %h3
     = t('.avatar')

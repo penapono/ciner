@@ -10,6 +10,7 @@ pt-BR:
         name: Nome
         birth: Data de Nascimento
         birthday: Data de Nascimento
+        deathday: Data de Óbito
         gender: Gênero
         country: País
         country_id: País
