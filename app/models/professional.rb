@@ -13,6 +13,7 @@ class Professional < ActiveRecord::Base
   belongs_to :country
   belongs_to :set_function
 
+  has_many :critics, as: :filmable
   has_many :broadcast_professionals, dependent: :destroy
   has_many :broadcasts, through: :broadcast_professionals
 
@@ -41,6 +42,23 @@ class Professional < ActiveRecord::Base
 
   # Uploaders
   mount_uploader :avatar, ProfessionalAvatarUploader
+
+  def original_title
+    original = String.new("")
+
+    if self.birthday
+      original << self.age.to_s
+      original << " ("
+      original << (I18n.l self.birthday)
+      if self.deathday
+        original << "-"
+        original << (I18n.l self.deathday)
+        original << ")"
+      end
+    end
+
+    original
+  end
 
   def title_str
     name
