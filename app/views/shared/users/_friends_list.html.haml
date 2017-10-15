@@ -9,7 +9,7 @@
       .media-body.text-right.media-middle.see-more
         %a{:href => "#"} ver todos
 
-  - friends.each do |object|
+  - friends.first(18).each do |object|
     = link_to url_for([role, object]) do
       .col-xs-4.col-sm-4.col-md-2.no-padding.friend-info{ style: 'padding: 0px;' }
         - avatar = object.avatar
