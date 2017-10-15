@@ -60,6 +60,18 @@ class Professional < ActiveRecord::Base
     original
   end
 
+  def release
+    DateTime.now
+  end
+
+  def genders_str
+    ""
+  end
+
+  def directors_str
+    ""
+  end
+
   def title_str
     name
   end
