@@ -11,8 +11,7 @@
       .col-xs-4
         - cover = user_filmable.cover unless user_filmable.cover.url.blank?
         - object = user_filmable.filmable
-        - cover ||= object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
 
         = link_to [role, object] do
           = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')

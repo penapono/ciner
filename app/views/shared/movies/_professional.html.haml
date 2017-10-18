@@ -2,8 +2,7 @@
 - role = role
 
 - if object
-  - avatar = object.avatar
-  - avatar = image_path("default/professional/image.jpg") if object.avatar.url.blank?
+  - avatar = image_default_path(object.avatar.path, "professional")
   - professional_class ||= ""
   - data_mh ||= ""
   - observation ||= nil

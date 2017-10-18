@@ -298,7 +298,7 @@ module Tmdb
 
       ratings = parsed_page.css('.info-content')
 
-      return "" unless ratings && ratings.text
+      return "" unless ratings&.text
 
       array = ratings.text.split("\n")
 
@@ -476,7 +476,7 @@ module Tmdb
 
         avatar_url = person["profile_path"]
 
-        if avatar_url && !avatar_url.empty? && avatar_url != "N/A" && avatar_url
+        if !avatar_url&.empty? && avatar_url != "N/A" && avatar_url
           begin
             avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
             professional.avatar = avatar if avatar
@@ -516,7 +516,7 @@ module Tmdb
 
         avatar_url = actor["profile_path"]
 
-        if avatar_url && !avatar_url.empty? && avatar_url != "N/A" && avatar_url
+        if !avatar_url&.empty? && avatar_url != "N/A" && avatar_url
           begin
             avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
             professional.avatar = avatar if avatar

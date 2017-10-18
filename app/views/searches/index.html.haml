@@ -23,8 +23,7 @@
   - movies.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -52,8 +51,7 @@
   - series.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -81,8 +79,7 @@
   - professionals.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -110,8 +107,7 @@
   - curriculums.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -139,8 +135,7 @@
   - ciner_videos.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -168,8 +163,7 @@
   - critics.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -197,8 +191,7 @@
   - events.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -226,8 +219,7 @@
   - broadcasts.each do |object|
     .row
       .col-xs-1
-        - cover = object.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(object.cover.path, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
         = link_to url_for([role, object]) do

@@ -1,8 +1,8 @@
 - role = current_role(current_user, request.url)
 
 - object = event
-- cover = object.cover.url
-- cover ||= image_path("default/movie/image.png")
+- cover = image_default_path(object.cover.path, "movie")
+
 
 .noticia-item{ style: 'padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #CCCCCC;' }
   .row

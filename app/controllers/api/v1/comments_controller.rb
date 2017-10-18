@@ -16,7 +16,6 @@ class Api::V1::CommentsController < ApplicationController
   # actions
 
   def index
-    # self.comments = filter_comments
     render partial: 'index', layout: false
   end
 

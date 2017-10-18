@@ -1,5 +1,4 @@
-- avatar = user.avatar
-- avatar ||= image_path("default/user/image.jpg")
+- avatar = image_default_path(user.avatar.path, "user")
 - role = current_role(current_user, request.url)
 
 .row{ style: 'margin-left: -75px;' }

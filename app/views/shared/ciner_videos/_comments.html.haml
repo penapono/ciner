@@ -36,7 +36,7 @@
       .row
         .col-xs-12.col-sm-2
           .usuario-avatar
-            - user_avatar ||= image_path("default/user/image.jpg")
+            - user_avatar = image_default_path(nil, "user")
             %img.img-responsive{:src => user_avatar, style: 'height: 120px; width: 170px'}/
           Chris Evans
           %br/
@@ -74,7 +74,7 @@
       .row
         .col-xs-12.col-sm-2
           .usuario-avatar
-            - user_avatar ||= image_path("default/user/image.jpg")
+            - user_avatar = image_default_path(nil, "user")
             %img.img-responsive{:src => user_avatar, style: 'height: 120px; width: 170px'}/
           Chris Evans
           %br/

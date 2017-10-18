@@ -1,5 +1,4 @@
-- cover = critic.filmable_cover
-- cover ||= image_path("default/movie/image.png")
+- cover = image_default_path(critic.filmable.cover.path, "movie")
 
 = link_to path do
   .col-xs-12.col-sm-4.col-md-2.critica-item

@@ -1,7 +1,6 @@
 - role = role
 - object = movie
-- cover = object.cover
-- cover ||= image_path("default/movie/image.png")
+- cover = image_default_path(object.cover.path, "movie")
 
 .internal-section-detail-filmable
   .filmable

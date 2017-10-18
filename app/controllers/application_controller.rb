@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  helper :all
   include ::BaseController
 
   # Prevent CSRF attacks by raising an exception.

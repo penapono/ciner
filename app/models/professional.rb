@@ -46,13 +46,13 @@ class Professional < ActiveRecord::Base
   def original_title
     original = String.new("")
 
-    if self.birthday
-      original << self.age.to_s
+    if birthday
+      original << age.to_s
       original << " ("
-      original << (I18n.l self.birthday)
-      if self.deathday
+      original << (I18n.l birthday)
+      if deathday
         original << "-"
-        original << (I18n.l self.deathday)
+        original << (I18n.l deathday)
         original << ")"
       end
     end

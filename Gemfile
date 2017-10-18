@@ -47,7 +47,7 @@ gem 'carrierwave-video'
 gem 'carrierwave-audio'
 
 # session
-gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'
+gem 'devise'
 # gem 'erubis'
 
 # database

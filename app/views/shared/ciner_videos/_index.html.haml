@@ -6,8 +6,8 @@
   .row
     - if ciner_videos.any?
       - ciner_videos.each do |ciner_video|
-        - cover = ciner_video.cover
-        - cover ||= image_path("default/movie/image.png")
+        - cover = image_default_path(ciner_video.cover.path, "user")
+
         .col-xs-12.col-sm-3.video-item
           %a{"data-target" => "#myModal#{ciner_video.id}", "data-toggle" => "modal"}
             %img.img-responsive{src: cover, style: 'width: 255px; height: 220px;'}/

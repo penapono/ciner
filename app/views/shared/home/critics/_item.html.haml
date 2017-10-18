@@ -1,6 +1,5 @@
 - filmable = critic.filmable
-- cover = filmable.cover
-- cover ||= image_path("default/movie/image.png")
+- cover = image_default_path(filmable.cover.path, "movie")
 
 .row
   .review-item.col-xs-12.col-sm-12

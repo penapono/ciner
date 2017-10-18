@@ -1,7 +1,6 @@
 - role = role
 - object = ciner_video
-- cover = object.cover
-- cover ||= image_path("default/ciner_video/image.png")
+- cover = image_default_path(object.cover.path, "ciner_video")
 
 .internal-section-detail-filmable
   .filmable

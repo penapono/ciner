@@ -1,6 +1,5 @@
 - role = current_role(current_user, request.url)
-- professional_avatar = professional.avatar
-- professional_avatar ||= image_path("default/professional/image.jpg")
+- avatar = image_default_path(professional.avatar.path, "professional")
 
 .container
   .row
@@ -17,7 +16,7 @@
         .user-profile
           .row
             .col-xs-12.col-sm-3.user-avatar
-              %img.img-responsive{:src => professional_avatar}
+              %img.img-responsive{:src => avatar}
             .col-xs-12.col-sm-9.user-info
               Nome:
               %span.user-name
@@ -104,8 +103,7 @@
               - like_path = nil
               - dislike_path = nil
             - question = Question.where(questionable: object).first
-            - cover = object.cover.url
-            - cover ||= image_path("default/movie/image.png")
+            - cover = image_default_path(object.cover.path, "movie")
 
             .noticia-item
               .row

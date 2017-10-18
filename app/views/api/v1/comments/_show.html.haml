@@ -1,13 +1,12 @@
 - like_path = like_api_v1_comment_path(comment)
 - dislike_path = dislike_api_v1_comment_path(comment)
-- user_avatar = comment.user.avatar
-- user_avatar ||= image_path("default/user/image.jpg")
+- avatar = image_default_path(comment.user.avatar.path, "user")
 
 .comentario-item
   .row
     .col-xs-2.col-sm-1
       .usuario-avatar
-        %img.img-responsive{ src: user_avatar }
+        %img.img-responsive{ src: avatar }
       = comment.user_name
       %br
     .col-xs-7.col-sm-8{ style: "margin-left: 30px;" }
