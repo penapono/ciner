@@ -2,22 +2,23 @@
 - filmable_type = object.class
 - filmable_id = object.id
 
-- unless object.critics.blank?
-  .row
-    #criticas.col-xs-12.criticas
-      .title-separator
-        .media
-          .media-left.media-middle
-            %svg.icon-title
-              %use{"xlink:href" => "#critica"}
-          .media-body.media-bottom
-            .media-heading.title-section
-              = Critic.model_name.human(count: 2)
-          .media-body.text-right.media-middle.see-more
-            %a
-              = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }])
-  .row
-    .col-xs-12.reviews
+.row
+  #criticas.col-xs-12.criticas
+    .title-separator
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#critica"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            = Critic.model_name.human(count: 2)
+        .media-body.text-right.media-middle.see-more
+          %a
+            = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }])
+
+.row
+  .col-xs-12.reviews
+    - unless object.critics.blank?
       .row
         - object.critics.only_two.each do |critic|
           - filmable = critic.filmable

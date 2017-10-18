@@ -33,6 +33,7 @@ $(function() {
     aContainer.empty().append(aData);
 
     _formAction();
+    _deleteComment();
     (new Reactions()).bindReactions(gContainer);
   }
 
@@ -46,6 +47,21 @@ $(function() {
         url : '/api/v1/comments',
         data : form.serialize(),
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        success: function(data) {
+          _loadComments(gContainer);
+        }
+      });
+    });
+  }
+
+  function _deleteComment() {
+    $("[data-remove]").click(function(e) {
+      var self = $(this),
+          id = $(this).data('comment-id');
+
+      $.ajax({
+        type: "DELETE",
+        url : '/api/v1/comments/' + id,
         success: function(data) {
           _loadComments(gContainer);
         }
