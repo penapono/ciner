@@ -1,5 +1,5 @@
 - role = current_role(current_user, request.url)
-- avatar = image_default_path(professional.avatar.path, "professional")
+- avatar = image_default_path(professional.avatar, "professional")
 
 .container
   .row
@@ -103,7 +103,7 @@
               - like_path = nil
               - dislike_path = nil
             - question = Question.where(questionable: object).first
-            - cover = image_default_path(object.cover.path, "movie")
+            - cover = image_default_path(object.cover, "movie")
 
             .noticia-item
               .row

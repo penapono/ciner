@@ -17,7 +17,7 @@
             - dislike_path = nil
 
           - question = Question.where(questionable: object).first
-          - cover = image_default_path(object.cover.path, "movie")
+          - cover = image_default_path(object.cover, "movie")
 
           .col-xs-6
             .row
@@ -86,7 +86,7 @@
             - like_path = nil
             - dislike_path = nil
           - question = Question.where(questionable: object).first
-          - cover = image_default_path(object.cover.path, "movie")
+          - cover = image_default_path(object.cover, "movie")
 
           .noticia-item
             .row

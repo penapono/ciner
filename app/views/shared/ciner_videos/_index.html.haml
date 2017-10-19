@@ -6,7 +6,7 @@
   .row
     - if ciner_videos.any?
       - ciner_videos.each do |ciner_video|
-        - cover = image_default_path(ciner_video.cover.path, "user")
+        - cover = image_default_path(ciner_video.cover, "user")
 
         .col-xs-12.col-sm-3.video-item
           %a{"data-target" => "#myModal#{ciner_video.id}", "data-toggle" => "modal"}

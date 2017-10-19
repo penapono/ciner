@@ -13,7 +13,7 @@
   - user_collection.first(24).each do |user_filmable|
     - cover = user_filmable.cover unless user_filmable.cover.url.blank?
     - object = user_filmable.filmable
-    - cover = image_default_path(object.cover.path, "movie")
+    - cover = image_default_path(object.cover, "movie")
 
     .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
       = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')

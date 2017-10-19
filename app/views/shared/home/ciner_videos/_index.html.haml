@@ -31,7 +31,7 @@
             %source{:src => object.trailer, :type => "video/mp4"}
               Your browser does not support the video tag.
         - else
-          - cover = image_default_path(object.cover.path, "ciner_video")
+          - cover = image_default_path(object.cover, "ciner_video")
 
           %img.img-responsive{ src: cover, style: 'height: 172px; width: 100%;' }
 
@@ -62,7 +62,7 @@
             %source{:src => object.trailer, :type => "video/mp4"}
               Your browser does not support the video tag.
         - else
-          - cover = image_default_path(object.cover.path, "ciner_video")
+          - cover = image_default_path(object.cover, "ciner_video")
 
           %img.img-responsive{ src: cover, style: 'height: 172px; width: 100%;' }
       .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
@@ -92,7 +92,7 @@
             %source{:src => object.trailer, :type => "video/mp4"}
               Your browser does not support the video tag.
         - else
-          - cover = image_default_path(object.cover.path, "ciner_video")
+          - cover = image_default_path(object.cover, "ciner_video")
 
           %img.img-responsive{ src: cover, style: 'height: 172px; width: 100%;' }
       .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
@@ -122,7 +122,7 @@
             %source{:src => object.trailer, :type => "video/mp4"}
               Your browser does not support the video tag.
         - else
-          - cover = image_default_path(object.cover.path, "ciner_video")
+          - cover = image_default_path(object.cover, "ciner_video")
 
           %img.img-responsive{ src: cover, style: 'height: 172px; width: 100%;' }
       .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
