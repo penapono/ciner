@@ -40,9 +40,9 @@
                 = link_to url_for([role, :series_index]) do
                   %li
                     Séries
-                = link_to url_for([role, :ciner_videos]) do
+                = link_to url_for([role, :events]) do
                   %li
-                    Ciner Vídeos
+                    Agenda
                 = link_to url_for([role, :critics]) do
                   %li
                     Críticas
@@ -92,8 +92,8 @@
                   = link_to "FILMES", url_for([role, :movies])
                 %li.col-xs-2{ class: active_menu_class("series") }
                   = link_to "SÉRIES", url_for([role, :series_index])
-                %li.col-xs-2{ class: active_menu_class("ciner_videos") }
-                  = link_to "CINER VÍDEOS", url_for([role, :ciner_videos])
+                %li.col-xs-2{ class: active_menu_class("events") }
+                  = link_to "AGENDA", url_for([role, :events])
                 %li.col-xs-2{ class: active_menu_class("critics") }
                   = link_to "CRÍTICAS", url_for([role, :critics])
                 %li.col-xs-2{ class: active_menu_class("broadcasts") }

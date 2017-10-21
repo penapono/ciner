@@ -65,7 +65,7 @@ end
 # NOME DO FILME é um link pra o filme.
 # NOME DA SÉRIE é um link para a série.
 
-# 4. Lembrete de Evento da Agenda Ciner:
+# 4. Lembrete de Evento da Agenda do Cinema:
 # 4.1 Quando o usuário pediu para ser lembrado de um evento.
 # Serão 3 notificações: faltando 15 dias, faltando 1 semana e faltando 1 dia.
 

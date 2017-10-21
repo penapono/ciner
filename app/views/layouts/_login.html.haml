@@ -5,7 +5,8 @@
     .row
       .col-xs-4
         - avatar = image_default_path(current_user.avatar, "user")
-        %img.img-responsive{ src: avatar, style: "width: 60px; height: 60px; margin: auto; margin-top: 20px" }
+        = link_to url_for([role, current_user]) do
+          %img.img-responsive{ src: avatar, style: "width: 60px; height: 60px; margin: auto; margin-top: 20px" }
       .col-xs-8
         .welcome
           Olá,
