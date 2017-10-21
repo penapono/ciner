@@ -1,0 +1,11 @@
+= simple_form_for [:admin, trending_trailer] do |f|
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-6
+      = f.input :title
+    .col-xs-3
+      = f.input :trailer
+
+  = render 'shared/form_actions', f: f

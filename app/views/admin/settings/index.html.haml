@@ -45,16 +45,7 @@
 %p
   = link_to Broadcast.model_name.human(count: 2), url_for([:admin, :broadcasts])
 
-%br
-%br
-
 %p
-  Status da base:
-  %span.wine
-    - if (Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 334789) < (Movie.count + Serie.count)
-      = Movie.where(lock_updates: true).count + Serie.where(lock_updates: true).count + 334789
-    - else
-      = Movie.count + Serie.count
-  \/
-  %span.wine
-    = Movie.count + Serie.count
+  = link_to TrendingTrailer.model_name.human(count: 2), url_for([:admin, :trending_trailers])
+
+%br

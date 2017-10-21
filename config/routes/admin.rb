@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :curriculums
     resources :notifications
     resources :age_ranges
+    resources :trending_trailers
     resources :film_production_categories
     resources :featured_filmables, only: :index
     resources :playing_filmables, only: :index

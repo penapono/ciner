@@ -1,0 +1,11 @@
+pt-BR:
+  admin:
+    trending_trailers:
+      create:
+        title: Novo Trailer mais recente
+      form:
+        general: Dados Gerais
+      index:
+        title: Trailer mais recente
+      new:
+        title: Novo trailer mais recente

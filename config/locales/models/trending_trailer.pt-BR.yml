@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      trending_trailer:
+        one: Trailer mais recente
+        other: Trailers mais recentes
+
+    attributes:
+      trending_trailer:
+        title: Título
+        trailer: Trailer
+    errors:
+      models:
+        trending_trailer:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"
+            age:
+              blank: "%{attribute} deve ser preenchido"
