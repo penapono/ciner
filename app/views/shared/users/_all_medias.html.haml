@@ -7,7 +7,8 @@
       %svg.media-object.icon-title
         %use{"xlink:href" => "#filme"}
     .media-body.media-middle
-      .media-heading.title-section Meus Favoritos
+      .media-heading.title-section
+        Meus Favoritos
     .media-body.text-right.media-middle.see-more
       = link_to 'ver mais', url_for([role, user, :favorite_index])
 
@@ -16,7 +17,7 @@
     = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: favorites
   - else
     .col-xs-12
-      = render 'shared/alerts/info', message: "Você ainda não marcou nenhum filme / série como favorito, para isso, acesse um dos títulos disponíveis e clique em 'Adicionar aos favoritos'"
+      = render 'shared/alerts/info', message: "Você ainda não marcou nenhum filme / série como favorito. Para isso, acesse um dos títulos disponíveis e clique em 'Adicionar aos favoritos'."
 
 .title-separator
   .media
@@ -24,7 +25,8 @@
       %svg.media-object.icon-title
         %use{"xlink:href" => "#filme"}
     .media-body.media-middle
-      .media-heading.title-section Assistidos
+      .media-heading.title-section
+        Assistidos
     .media-body.text-right.media-middle.see-more
       = link_to 'ver mais', url_for([role, user, :watched_index])
 
@@ -33,4 +35,4 @@
     = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: watched
   - else
     .col-xs-12
-      = render 'shared/alerts/info', message: "Você ainda não adicionou nenhum filme / série à sua lista de assistidos, para isso, acesse um dos títulos disponíveis e clique em 'Já assisti'"
+      = render 'shared/alerts/info', message: "Você ainda não adicionou nenhum filme / série à sua lista de assistidos. Para isso, acesse um dos títulos disponíveis e clique em 'Já assisti'."
