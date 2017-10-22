@@ -4,6 +4,8 @@ module Admin
   class TrendingTrailersController < AdminController
     include Admin::TrendingTrailersBreadcrumb
 
+    PER_PAGE = 10
+
     PERMITTED_PARAMS = %i[
       title trailer
     ].freeze
@@ -13,6 +15,7 @@ module Admin
     expose(:trending_trailer, attributes: :trending_trailer_attributes)
 
     def index
+      self.trending_trailers = paginated_trending_trailers
     end
 
     private
@@ -39,6 +42,12 @@ module Admin
 
     def resource_params
       trending_trailer_params
+    end
+
+    # Filtering
+
+    def paginated_trending_trailers
+      trending_trailers.page(params[:page]).per(PER_PAGE)
     end
   end
 end
