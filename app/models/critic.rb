@@ -87,7 +87,7 @@ class Critic < ActiveRecord::Base
   end
 
   def collapsed_content
-    ActionView::Base.full_sanitizer.sanitize(content).truncate(155)
+    ActionView::Base.full_sanitizer.sanitize(content).truncate(185)
   end
 
   def name

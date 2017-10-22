@@ -11,14 +11,6 @@
       /   = link_to url_for([role, :ciner_videos]) do
       /     = t('see_more')
 
-  / - trending_trailers.each do |object|
-  /   .ciner-movie.col-xs-12.col-sm-6.col-md-3{ style: 'margin-left: 0px' }
-  /     .thumb
-  /       %iframe{:allowfullscreen => "", :frameborder => "0", :height => "172px", :src => "https://www.youtube.com/embed/eX_iASz1Si8?rel=0", :width => "100%"}
-
-  /     .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
-  /       = object.title_str
-
   .row{ style: 'margin-right: 15px; margin-left: 15px;' }
     - trending_trailers.each do |object|
       .ciner-movie.col-xs-12.col-sm-6.col-md-4

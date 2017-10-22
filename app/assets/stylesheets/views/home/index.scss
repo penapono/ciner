@@ -599,7 +599,7 @@
     .resume {
       p {
         box-sizing: border-box;
-        color: rgb(51, 51, 51);
+        color: #333333;
         font-family: "Montserrat";
         font-size: 14px;
         font-weight: 200;
@@ -607,11 +607,13 @@
         margin-bottom: 10px;
         margin-left: 0px;
         margin-right: 0px;
-        margin-top: 10px;
+        margin-top: 15px;
         word-wrap: break-word;
-        height: 110px;
+        height: 105px;
         margin-bottom: 15px;
         width: 315px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
