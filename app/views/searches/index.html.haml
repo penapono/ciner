@@ -123,34 +123,6 @@
       .media
         .media-left.media-middle
           %svg.icon-title
-            %use{"xlink:href" => "#video"}
-        .media-body.media-bottom
-          .media-heading.title-section
-            Ciner Vídeos
-        .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
-            = t('see_more')
-
-- if ciner_videos.any?
-  - ciner_videos.each do |object|
-    .row
-      .col-xs-1
-        - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
-      .col-xs-11
-        = link_to url_for([role, object]) do
-          =  object.title_str
-- else
-  .row
-    .col-xs-12
-      Não há resultados para essa pesquisa nessa categoria.
-
-.row.searchbar
-  .col-xs-12
-    .title-separator.ciner-news
-      .media
-        .media-left.media-middle
-          %svg.icon-title
             %use{"xlink:href" => "#critica"}
         .media-body.media-bottom
           .media-heading.title-section
@@ -238,7 +210,7 @@
             %use{"xlink:href" => "#debate"}
         .media-body.media-bottom
           .media-heading.title-section
-            Debate
+            Debate Ciner
         .media-body.text-right.media-middle.see-more
           = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
             = t('see_more')
