@@ -20,7 +20,8 @@
 
             .col-sm-2.shelf
               = link_to url_for([role, object]) do
-                = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 195px;' )
+                / = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 195px;' )
+                %img.img-responsive{ src: cover, style: 'width: 133px; height: 195px;' }
 
           - if slice.count < 6
             - (6 - slice.count).times do
