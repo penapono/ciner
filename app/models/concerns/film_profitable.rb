@@ -376,36 +376,43 @@ module FilmProfitable
       %w[Ação Aventura].to_sentence
     end
 
-    def first_actors_str
-      actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco')).first(3)
-      actors.map(&:name).to_sentence
-    end
-
     def actors_str
-      actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco'))
-      actors.map(&:name).to_sentence
+      actors.first(3).map(&:name).to_sentence
+    rescue
     end
 
     def directors_str
-      directors = professionals.where(set_function: SetFunction.find_by(name: 'Direção'))
-      directors.map(&:name).to_sentence
+      directors.first(3).map(&:name).to_sentence
+    rescue
     end
 
-    def first_actors
-      actors = professionals.where(set_function: SetFunction.find_by(name: 'Elenco')).first(3)
-      actors.map(&:name).to_sentence
-    end
+    def writers_str
+      writers.first(3).map(&:name).to_sentence
+   rescue
+   end
 
-    def actors
+    def filmable_actors
       filmable_professionals.where(set_function: SetFunction.find_by(name: 'Elenco'))
     end
 
-    def directors
+    def filmable_directors
       filmable_professionals.where(set_function: SetFunction.find_by(name: 'Direção'))
     end
 
-    def writers
+    def filmable_writers
       filmable_professionals.where(set_function: SetFunction.find_by(name: 'Roteiro'))
+    end
+
+    def actors
+      Professional.where(id: filmable_actors.pluck(:professional_id))
+    end
+
+    def directors
+      Professional.where(id: filmable_directors.pluck(:professional_id))
+    end
+
+    def writers
+      Professional.where(id: filmable_writers.pluck(:professional_id))
     end
 
     def release_str

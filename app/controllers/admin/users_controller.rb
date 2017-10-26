@@ -10,7 +10,7 @@ module Admin
     expose(:user, attributes: :user_params)
     expose(:users) { User.all }
     expose(:states) { State.order(:acronym).collect(&:acronym) }
-    expose(:cities) { user.city.state.cities if user.city }
+    expose(:cities) { user.city&.state&.cities }
     expose(:critics) { user.critics }
     expose(:user_collection) { user.user_collection }
 
