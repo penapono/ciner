@@ -70,17 +70,17 @@
 
                 = Movie.human_attribute_name(:directors_str)
                 %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
-                  = never_empty(object.omdb_directors)
+                  = never_empty(object.directors_str)
                 %br
 
                 Roteiro
                 %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
-                  = never_empty(object.writers_pt)
+                  = never_empty(object.writers_str)
                 %br
 
                 = Movie.human_attribute_name(:cast_str)
                 %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
-                  = never_empty(object.omdb_actors)
+                  = never_empty(object.actors_str)
 
                 %br
 

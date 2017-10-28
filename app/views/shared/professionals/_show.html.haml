@@ -51,11 +51,11 @@
     - all = []
 
     - movies_ids = FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
-    - Movie.where(id: movies_ids.uniq).order(brazilian_release: :desc).each do |m|
+    - Movie.where(id: movies_ids.uniq).order(year: :desc).each do |m|
       - all << m
 
     - series_ids = FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
-    - Serie.where(id: series_ids.uniq).order(brazilian_release: :desc).each do |s|
+    - Serie.where(id: series_ids.uniq).order(start_year: :desc).each do |s|
       - all << s
 
     - if all.any?

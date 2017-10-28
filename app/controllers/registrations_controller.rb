@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
   # exposes
   expose(:user, attributes: :user_params)
   expose(:states) { State.order(:acronym).map(&:acronym) }
-  expose(:cities) { user.city.state.cities if user.city }
+  expose(:cities) { user.city&.state&.cities }
 
   def resource_name
     :user

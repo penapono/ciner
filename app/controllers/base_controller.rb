@@ -257,7 +257,7 @@ module ::BaseController
     end
 
     def has_resource?
-      resource && resource.id
+      resource&.id
     end
 
     def load_resource(resource, params)
