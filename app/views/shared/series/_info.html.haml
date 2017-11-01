@@ -1,8 +1,8 @@
+- object = object
 - role = role
-- object = serie
 
-- if object.trailer
-  #ficha-tecnica
+#ficha-tecnica
+  - unless object.trailer.blank?
     .title-separator
       .media
         .media-left.media-middle
@@ -16,20 +16,32 @@
       .info
         %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
-  #direcao.direcao
-    .title-separator
-      .media
-        .media-body.media-bottom
-          .media-heading.title-section
-            Direção e Roteiro
-    .diretores
-      .row
-        - if object.filmable_directors.any?
-          - object.filmable_directors.first(3).each do |filmable_professional|
-            = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
-        - if object.filmable_writers.any?
-          - object.filmable_writers.first(3).each do |filmable_professional|
-            = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
+  .row
+    - if object.filmable_directors.any?
+      .col-xs-6
+        #direcao.direcao
+          .title-separator
+            .media
+              .media-body.media-bottom
+                .media-heading.title-section
+                  Direção
+          .diretores
+            .row
+              - object.filmable_directors.first(3).each do |filmable_professional|
+                = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
+
+    - if object.filmable_writers.any?
+      .col-xs-6
+        #direcao.direcao
+          .title-separator
+            .media
+              .media-body.media-bottom
+                .media-heading.title-section
+                  Roteiro
+          .diretores
+            .row
+              - object.filmable_writers.first(3).each do |filmable_professional|
+                = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
 
 - if object.filmable_actors.any?
   #elenco.row.elenco{ data: { collapsed_area: '' }, style: 'margin-top: -20px;' }
@@ -44,9 +56,9 @@
       .atores-principais
         .row
           - object.filmable_actors.first(6).each do |filmable_professional|
-            = render 'shared/series/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation, role: role
+            = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation, role: role
       .collapsed-area
         .atores.collapse{ data: { collapse_content: '' } }
-          - object.actors.each_with_index do |filmable_professional, index|
+          - object.filmable_actors.each_with_index do |filmable_professional, index|
             - if index > 5
-              =  render 'shared/series/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation, role: role
+              =  render 'shared/movies/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation, role: role
