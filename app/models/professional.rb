@@ -51,10 +51,10 @@ class Professional < ActiveRecord::Base
       original << " ("
       original << (I18n.l birthday)
       if deathday
-        original << "-"
+        original << " - "
         original << (I18n.l deathday)
-        original << ")"
       end
+      original << ")"
     end
 
     original
