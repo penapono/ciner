@@ -169,6 +169,10 @@ class User < ActiveRecord::Base
     state_name if state
   end
 
+  def trophy_count
+    1
+  end
+
   private
 
   def update_address
@@ -181,9 +185,5 @@ class User < ActiveRecord::Base
     self.age = 0 unless birthday
     now = Time.now.utc.to_date
     self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
-  end
-
-  def trophy_count
-    1
   end
 end
