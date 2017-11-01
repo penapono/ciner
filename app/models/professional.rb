@@ -61,7 +61,7 @@ class Professional < ActiveRecord::Base
   end
 
   def release
-    DateTime.now
+    Date.now
   end
 
   def genders_str

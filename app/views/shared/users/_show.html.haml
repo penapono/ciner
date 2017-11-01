@@ -102,13 +102,25 @@
               .media-heading.title-section Minha sinopse
         .row.box-sinopse
           .col-xs-12.col-md-6
-            Vídeos:
+            Coleção:
             %strong.wine
-              2
+              = collection_count_for_user(user)
             %br
             Críticas:
             %strong.wine
               = user.critics.approved.count
+            %br
+            Amigos:
+            %strong.wine
+              = friends.count
+            Troféus:
+            %strong.wine
+              = user.trophy_count
+
+          .col-xs-12.col-sm-6
+            Favoritos:
+            %strong.wine
+              = favorite_count_for_user(user)
             %br
             Assistidos:
             %strong.wine
@@ -117,22 +129,11 @@
             Quer Ver:
             %strong.wine
               = want_to_see_count_for_user(user)
-          .col-xs-12.col-sm-6
-            Coleção:
-            %strong.wine
-              = collection_count_for_user(user)
-            %br
-            Favoritos:
-            %strong.wine
-              = favorite_count_for_user(user)
-            %br
             Indicados:
             %strong.wine
               = favorite_count_for_user(user)
             %br
-            Amigos:
-            %strong.wine
-              = friends.count
+
 
       = render 'shared/users/collection', role: role
 
