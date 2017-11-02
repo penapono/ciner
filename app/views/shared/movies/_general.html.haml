@@ -1,5 +1,5 @@
 - role = role
-- object = movie
+- object = object
 - cover = image_default_path(object.cover, "movie")
 
 .internal-section-detail-filmable
@@ -10,12 +10,12 @@
           .row
             .col-xs-12
               %img.img-responsive{ src: cover, style: 'height: 330px; width: 220px;' }
-          .row{ data: { star_rating: { object: Movie, id: object.id } } }
+          .row{ data: { star_rating: { object: object.class, id: object.id } } }
             .col-xs-12{ style: 'margin-left: -30px;' }
               .info{ style: 'margin-top: 10px; text-align: center; font-size: 18px;' }
                 %input#input-2.rating.hide{"data-max" => "5", "data-min" => "0", "data-readonly" => "false", "data-show-caption" => "false", "data-show-clear" => "false", "data-size" => "xss", "data-step" => "0.5", :name => "input-2", :type => "number", :value => "4"}
                 .rate{ style: 'font-size: 13px;' }
-                  Avalie este filme
+                  Avalie esta mídia
         .col-xs-12.col-sm-12.col-md-9.col-lg-9{ style: 'margin-left: -45px;' }
           .row
             .col-xs-12.col-sm-8.col-md-8.col-lg-8
@@ -41,7 +41,7 @@
                 %h3.bold.wine
                   = object.title_str
                 %h4.light.cinza
-                  = "#{object.original_title_str} (#{object.year})"
+                  = "#{object.original_title_str} (#{object.filmable_year})"
 
               %br
 
@@ -52,12 +52,11 @@
                     = Movie.human_attribute_name(:users_rating)
                     %span.valor
                       = object.users_rating
-                    = t('votes', count: object.users_rating_count)
 
                 - if object.ciner_official_critic
                   .col-xs-6
                     .nota.ciner-rating
-                      = Movie.human_attribute_name(:ciner_rating)
+                      Nota Ciner
                       %span.valor
                         = object.ciner_official_critic.rating
                       = object.ciner_official_critic.user_name

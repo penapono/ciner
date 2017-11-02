@@ -42,3 +42,6 @@ Metrics/ParameterLists:
 Metrics/ClassLength:
   CountComments: false
   Max: 500
+
+Metrics/LineLength:
+  Max: 120

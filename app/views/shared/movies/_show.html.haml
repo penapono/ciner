@@ -1,16 +1,17 @@
 - current_critics_path ||= platform_critics_path
 - current_new_critic_path ||= new_platform_critic_path
 - role = current_role(current_user, request.url)
+- object = movie
 
-= render 'shared/movies/general', movie: movie, role: role
+= render 'shared/movies/general', object: object, role: role
 
 .container
   .row
     .col-xs-12.col-sm-8
-      = render 'shared/movies/info', movie: movie, role: role
+      = render 'shared/movies/info', object: object, role: role
     .col-xs-12.col-sm-4
-      = render 'shared/movies/statistics', movie: movie
+      = render 'shared/movies/statistics', object: object
 
-  = render 'shared/integrations/critics', object: movie
-  = render 'shared/integrations/broadcasts', object: movie
-  = render 'shared/integrations/comments', object: movie
+  = render 'shared/integrations/critics', object: object
+  = render 'shared/integrations/broadcasts', object: object
+  = render 'shared/integrations/comments', object: object

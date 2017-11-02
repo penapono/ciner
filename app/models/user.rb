@@ -169,6 +169,10 @@ class User < ActiveRecord::Base
     state_name if state
   end
 
+  def trophy_count
+    1
+  end
+
   private
 
   def update_address

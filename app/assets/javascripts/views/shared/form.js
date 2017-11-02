@@ -107,7 +107,6 @@ $(function() {
         var cities = $("#user_city_id");
 
         cities.html('');
-        cities.append(new Option("Município", ""));
         for(var i = 0; i < d.length; i++) {
           cities.append(new Option(d[i].name, d[i].id));
         }
