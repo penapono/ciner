@@ -2,10 +2,10 @@
 - role = current_role(current_user, request.url)
 
 .row{ style: 'margin-left: -75px;' }
-  .col-xs-offset-4.col-xs-2{ style: 'margin-right: -20px; margin-top: -5px;' }
+  .col-xs-offset-4.col-xs-2{ style: 'margin-top: -5px;' }
     - if current_user
       = link_to url_for([role, current_user]) do
-        %img.img-responsive{ src: avatar, style: "width: 45px; height: 45px; margin: auto; margin-top: 20px" }
+        %img.img-responsive{ src: avatar, style: "width: 45px; height: 45px; margin: auto" }
   .col-xs-5{ style: 'overflow: hidden; height: 45px; text-align: left; margin-left: 10px;' }
     .name{ style: 'height: 20px; margin-top: -10px; font-size: 16px; font-weight: bold;' }
       = link_to url_for([role, current_user]) do
