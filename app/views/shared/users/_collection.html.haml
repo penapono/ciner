@@ -17,7 +17,7 @@
 
     .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
       / = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
-      %img.img-responsive{ src: cover, style: 'width: 90px; height: 60px;' }
+      %img.img-responsive{ src: cover, style: 'width: 60px; height: 90px;' }
 
   - count = 24 - user_collection.count
   - if count > 0
