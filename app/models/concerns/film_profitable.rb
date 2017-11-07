@@ -470,7 +470,7 @@ module FilmProfitable
   end
 
   def self.localized_years
-    limit_year = (Date.now + 5.years).year
+    limit_year = (DateTime.now + 5.years).year
     years = []
     (1895..limit_year).each { |year| years << year }
     years

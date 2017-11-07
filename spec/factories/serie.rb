@@ -7,8 +7,8 @@ FactoryGirl.define do
     start_year 2016
     length 90
     synopsis "Synopsis"
-    release Date.now
-    brazilian_release Date.now
+    release DateTime.now
+    brazilian_release DateTime.now
     age_range
 
     trait :invalid do
