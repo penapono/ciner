@@ -3,11 +3,9 @@
 = render 'shared/breadcrumbs'
 
 .container
-  = render 'shared/movies/toolbar'
-
-.container
   .row
     .col-xs-9
+      = render 'shared/movies/toolbar'
       = render 'shared/movies/index/playing', role: role
       = render 'shared/movies/index/featured', role: role
       = render 'shared/movies/index/playing_soon', role: role

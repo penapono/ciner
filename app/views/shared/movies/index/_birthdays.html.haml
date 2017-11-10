@@ -1,17 +1,14 @@
 - role = role
 
-.section-poster
-  .ciner-poster.title-separator
-    .media
+.toolbar
+  .row.searchbar
+    .col-xs-2
       .media-left.media-middle
         %svg.icon-title
           %use{"xlink:href" => "#perfil"}/
       .media-body.media-bottom
         .media-heading.title-section
           Aniversariantes
-      .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :professionals]) do
-          = t('see_more')
 
 .row
   - birthday_professionals.each do |object|
