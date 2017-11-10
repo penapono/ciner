@@ -13,10 +13,10 @@
           = link_to 'Sobre Ser Ciner', new_user_registration_path
           %span{ style: 'margin-right: 5px; margin-left: 5px;'}
             \|
-          = link_to 'Anuncie aqui', '#'
+          = link_to 'Anuncie aqui', url_for([:merchant])
           %span{ style: 'margin-right: 5px; margin-left: 5px;'}
             \|
-          = link_to 'Entre em contato', '#'
+          = link_to 'Entre em contato', url_for([:contact])
         .col-xs-12.col-sm-1.col-md-2.social
           = link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#'
           = link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#'
