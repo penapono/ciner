@@ -16,7 +16,7 @@
             %li
               = link_to "Séries", url_for([role, :series_index])
             %li
-              = link_to "Ciner Vídeos", url_for([:cinervideos])
+              = link_to "Agenda do Cinema", url_for([role, :events])
             %li
               = link_to "Críticas", url_for([role, :critics])
       .col-xs-12.col-md-3
@@ -27,30 +27,24 @@
             %li
               = link_to "Debate Ciner", url_for([role, :questions])
             %li
-              = link_to "Agenda do Cinema", url_for([role, :events])
+              = link_to "Contrato e Termos de Uso", url_for([:contract])
             %li
-              = link_to "Contrato e Termos de Uso", '#'
+              = link_to "Pol[itica de Privacidade", url_for([:privacy])
       .col-xs-12.col-md-3
         .sitemap
           %ul
             %li
-              = link_to "Política de Privacidade", '#'
+              = link_to "Missão", url_for([:mission])
             %li
-              = link_to "Adendo de Aplicativo Móvel", '#'
+              = link_to "Sobre Ser Ciner", new_user_registration_path
             %li
-              = link_to "Perguntas Frequentes", '#'
+              = link_to "Anuncie Aqui", url_for([:merchant])
             %li
-              = link_to "Ser Ciner", new_user_registration_path
-      .col-xs-12.col-md-3
-        .sitemap
-          %ul
-            %li
-              = link_to "Anuncie Aqui", '#'
-            %li
-              = link_to "Missão", '#'
-            %li
-              = link_to "Contato", '#'
-            - if current_user && current_user.admin?
+              = link_to "Entre em contato", url_for([:contact])
+      - if current_user && current_user.admin?
+        .col-xs-12.col-md-3
+          .sitemap
+            %ul
               %li
                 = link_to "Configurações", admin_settings_path
 

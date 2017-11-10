@@ -7,7 +7,7 @@
 
   - if user
     .row
-      .col-xs-12{ data: { reactions: '' } }
+      .col-xs-6{ data: { reactions: '' } }
         %div.reactionable{ class: clickable_class, data: { vote: '', url: like_path } }
           %span{ data: { like_counter: '' } }
             = resource.likes_count
@@ -17,9 +17,10 @@
           %span{ data: { dislike_counter: '' } }
             = resource.dislikes_count
           %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
+
   - else
     .row{ title: t('unauthorized.login_for_reactions'), data: { tipsy: '' } }
-      .col-xs-12
+      .col-xs-6
         %div.reactionable
           %span
             = resource.likes_count

@@ -1,0 +1,33 @@
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %i.fa.fa-id-card-o.fa-2x.wine
+          .media-body.media-bottom
+            .media-heading.title-section Entre em contato
+
+  .row
+    .col-xs-12
+      .row
+        .col-xs-12.col-sm-4
+          = text_field_tag :name, "", placeholder: 'Informe aqui seu nome'
+        .col-xs-12.col-sm-4
+          = text_field_tag :email, "", placeholder: 'Informe aqui seu email'
+        .col-xs-12.col-sm-4
+          = text_field_tag :phone, "", placeholder: 'Informe aqui seu telefone'
+
+      .row
+        .col-xs-12.col-sm-6
+          = select_tag :media, options_for_select([["Elogio", :dvd], ["Sugestão", :digital], ["Reclamação", :vhs], ["Financeiro", :vhs], ["Outro", :other_media]])
+
+      .row
+        .col-xs-12
+          = text_field_tag :content, "", placeholder: 'Informe aqui os detalhes do seu contato', input_html: { rows: 4 }
+
+      .row
+        .col-xs-4.pull-right
+          = submit_tag "Enviar"
+
+
