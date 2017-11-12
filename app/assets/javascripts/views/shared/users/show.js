@@ -107,6 +107,9 @@ $(document).ready(function() {
 
   var container_watched = $('[data-slider-watched]');
   _sliderize(container_watched);
+
+  var container_want_to_see = $('[data-slider-want-to-see]');
+  _sliderize(container_want_to_see);
 });
 
 $(window).resize(function() {

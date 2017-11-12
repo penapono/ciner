@@ -82,13 +82,12 @@
 
             .row
               .col-xs-12
-                %hr
                 .user-bio
                   %span.user-bio
                     Biografia:
                   = user.biography
 
-      / Favoritos e Assistidos
+      / Favoritos, Assistidos e Quero ver
       = render 'shared/users/all_medias', role: role
 
     .col-xs-12.col-sm-6.col-md-4
@@ -113,6 +112,7 @@
             Amigos:
             %strong.wine
               = friends.count
+            %br
             Troféus:
             %strong.wine
               = user.trophy_count

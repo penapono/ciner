@@ -162,6 +162,16 @@ class User < ActiveRecord::Base
     filmables
   end
 
+  def user_want_to_see
+    filmables = []
+
+    UserFilmable.want_to_see.where(user: self).each do |user_filmable|
+      filmables << user_filmable.filmable
+    end
+
+    filmables
+  end
+
   def simple_address
     return "" unless city || state
     return "#{city_name} - #{state_name}" if city && state

@@ -1,5 +1,6 @@
 - favorites = current_user.user_favorite
 - watched = current_user.user_watched
+- want_to_see = current_user.user_want_to_see
 
 .title-separator
   .media
@@ -28,3 +29,17 @@
 
 .row{ style: 'margin-top: 20px;', data: { slider: { watched: '' } } }
   = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: watched
+
+.title-separator
+  .media
+    .media-left.media-middle
+      %svg.media-object.icon-title
+        %use{"xlink:href" => "#filme"}
+    .media-body.media-middle
+      .media-heading.title-section
+        Quero Ver
+    .media-body.text-right.media-middle.see-more
+      = link_to 'ver mais', url_for([role, user, :watched_index])
+
+.row{ style: 'margin-top: 20px;', data: { slider: { want_to_see: '' } } }
+  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: want_to_see
