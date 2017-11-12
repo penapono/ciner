@@ -1,0 +1,10 @@
+.section-collection
+  .title-separator
+    .media
+      .media-left.media-middle
+        %i.fa.fa-trophy.fa-2x.wine
+      .media-body.media-middle
+        .media-heading.title-section
+          Meus Troféus
+      .media-body.text-right.media-middle.see-more
+        = link_to 'ver mais', url_for([role, user, :collection_index])

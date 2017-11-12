@@ -1,3 +1,5 @@
+- size = 20
+
 .section-collection
   .title-separator
     .media
@@ -9,8 +11,7 @@
       .media-body.text-right.media-middle.see-more
         = link_to 'ver mais', url_for([role, user, :collection_index])
 
-
-  - user_collection.first(24).each do |user_filmable|
+  - user_collection.first(size).each do |user_filmable|
     - cover = user_filmable.cover unless user_filmable.cover.url.blank?
     - object = user_filmable.filmable
     - cover = image_default_path(object.cover, "movie")
@@ -19,19 +20,11 @@
       / = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
       %img.img-responsive{ src: cover, style: 'width: 60px; height: 90px;' }
 
-  - count = 24 - user_collection.count
+  - count = size - user_collection.count
   - if count > 0
     - count.times do
       .col-md-3.col-sm-6.col-xs-6.shelf
-        / pontilhado
         .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
-
-        / opção vazia
-        / .div{ style: 'height: 90px; width: 60px;' }
-
-        / opção placeholder
-        / - cover = "http://placehold.it/550x700"
-        / = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
 
 #collectionModal.modal.fade{:role => "dialog"}
   .modal-dialog
