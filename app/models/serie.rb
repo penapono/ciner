@@ -79,7 +79,7 @@ class Serie < ActiveRecord::Base
 
   def filmable_year_str
     return "(#{start_year}-#{finish_year})" unless finish_year.blank?
-    "(#{start_year}-#{DateTime.now.year})"
+    "(#{start_year}-)"
   end
 
   def status_str
