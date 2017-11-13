@@ -33,6 +33,10 @@ class Event < ActiveRecord::Base
 
   # Filter
 
+  def self.all_past
+    where("event_date < ?", DateTime.now).order(event_date: :asc)
+  end
+
   def self.all_next
     where("event_date >= ?", DateTime.now).order(event_date: :asc)
   end
@@ -50,12 +54,18 @@ class Event < ActiveRecord::Base
     where(state_id: state)
   end
 
+  def self.by_event_in_time(event_in_time)
+    return all_past if event_in_time == "past"
+    all_next
+  end
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
     result = result.by_date(params[:date]) unless params[:date].blank?
     result = result.by_state(params[:state]) unless params[:state].blank?
+    result = result.by_event_in_time(params[:event_in_time]) unless params[:event_in_time].blank?
 
     result
   end
@@ -72,7 +82,7 @@ class Event < ActiveRecord::Base
 
   def date_str
     return event_date_str if end_date.blank?
-    return event_date_str if event_date == end_date
+    return event_month_date_str if event_date == end_date
     "#{event_date_str} a #{end_date_str}"
   end
 
@@ -85,6 +95,10 @@ class Event < ActiveRecord::Base
 
   def datetime_str
     "#{date_str} #{time_str}"
+  end
+
+  def event_month_date_str
+    I18n.l(event_date, format: :monthname) if event_date.is_a?(Date)
   end
 
   def event_date_str
@@ -105,6 +119,9 @@ class Event < ActiveRecord::Base
 
   def status_str
     today = Date.today
+    if event_date == end_date && event_date.month == today.month
+      return 'acontecendo'
+    end
     if (end_date.blank? && event_date == today) ||
        (!end_date.blank? && event_date <= today && today <= end_date)
       now = DateTime.now

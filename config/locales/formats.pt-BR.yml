@@ -103,6 +103,7 @@ pt-BR:
       monthname: "%B"
       monthabbrev: "%b"
       daymonthname: "%d de %B"
+      monthname: "%B de %Y"
       weekdaymonthday: '%A, %d de %B, %Y'
       short: '%d/%m/%Y'
       simpledate: '%d/%m/%Y'
