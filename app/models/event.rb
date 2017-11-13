@@ -72,6 +72,7 @@ class Event < ActiveRecord::Base
 
   def date_str
     return event_date_str if end_date.blank?
+    return event_date_str if event_date == end_date
     "#{event_date_str} a #{end_date_str}"
   end
 

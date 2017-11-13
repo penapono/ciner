@@ -357,17 +357,32 @@ module FilmProfitable
     end
 
     def actors_str
-      actors.first(3).map(&:name).to_sentence
+      str = []
+      filmable_actors.first(3).each do |fa|
+        str << fa.professional.name
+      end
+      return "" if str.empty?
+      str.to_sentence
     rescue
     end
 
     def directors_str
-      directors.first(3).map(&:name).to_sentence
+      str = []
+      filmable_directors.first(3).each do |fd|
+        str << fd.professional.name
+      end
+      return "" if str.empty?
+      str.to_sentence
     rescue
     end
 
     def writers_str
-      writers.first(3).map(&:name).to_sentence
+      str = []
+      filmable_writers.first(3).each do |fw|
+        str << fw.professional.name
+      end
+      return "" if str.empty?
+      str.to_sentence
    rescue
    end
 
