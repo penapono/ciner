@@ -69,7 +69,7 @@ gem 'ckeditor'
 gem 'bootstrap-sass'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'sass-rails', '~> 5.0', '>= 5.0.6'
-gem 'remotipart', github: 'spdawson/remotipart', ref: '0df86f117d4ce3ef0d9411caa40ed6b44d317223'
+gem 'remotipart'
 gem 'font-awesome-sass'
 
 # Gem para buscar CEP
