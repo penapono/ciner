@@ -68,6 +68,30 @@ class Movie < ActiveRecord::Base
     year
   end
 
+  def filmable_year_str
+    year.to_s
+  end
+
+  def length_str
+    length = self.length
+    return "" unless length
+    length = begin
+               Integer(length.gsub("min", "").strip)
+             rescue
+               0
+             end
+    hours = 0
+    while length >= 60
+      length -= 60
+      hours += 1
+    end
+
+    return "#{hours}h" if length == 0 && hours > 0
+    return "#{length}min" if length > 0 && hours == 0
+    return "#{hours}h#{length}min" if length > 0 && hours > 0
+    ""
+  end
+
   def self.featured
     ids = Visit.where(action: 'show').where("controller like ?", "%movies%").pluck(:resource_id)
 

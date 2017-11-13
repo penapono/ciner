@@ -352,26 +352,6 @@ module FilmProfitable
       original_title_str
     end
 
-    def length_str
-      length = self.length
-      return "" unless length
-      length = begin
-                 Integer(length.gsub("min", "").strip)
-               rescue
-                 0
-               end
-      hours = 0
-      while length >= 60
-        length -= 60
-        hours += 1
-      end
-
-      return "#{hours}h" if length == 0 && hours > 0
-      return "#{length}min" if length > 0 && hours == 0
-      return "#{hours}h#{length}min" if length > 0 && hours > 0
-      ""
-    end
-
     def genders_str
       %w[Ação Aventura].to_sentence
     end

@@ -77,6 +77,21 @@ class Serie < ActiveRecord::Base
     start_year
   end
 
+  def filmable_year_str
+    return "(#{start_year}-#{finish_year})" unless finish_year.blank?
+    "(#{start_year}-#{DateTime.now.year})"
+  end
+
+  def status_str
+    return nil if status.blank?
+    Serie.human_attribute_name("status.#{status}")
+  end
+
+  def length_str
+    return "#{number_of_seasons} temporadas - #{status_str}" unless status_str.blank?
+    "#{number_of_seasons} temporadas"
+  end
+
   def self.featured
     ids = Visit.where(action: 'show').where("controller like ?", "%series%").pluck(:resource_id)
 
