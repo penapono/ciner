@@ -3,33 +3,33 @@
     = t('.general')
 
   .row
-    .col-xs-6
+    .col-xs-4
       = f.input :omdb_genre
-  .row
-    .col-xs-6
+    .col-xs-4
       = f.input :omdb_rated
-  .row
-    .col-xs-6
+    .col-xs-4
       = f.input :length
 
   .row
     .col-xs-6
-      .row
-        .col-xs-12
-          = f.input :original_title, required: true, autofocus: true
-      .row
-        .col-xs-12
-          = f.input :title, required: true, autofocus: true
-      .row
-        .col-xs-3
-          = f.input :start_year
-        .col-xs-9
-          = f.input :countries
-
+      = f.input :original_title, required: true, autofocus: true
     .col-xs-6
-      .row
-        .col-xs-12
-          = f.input :cover
+      = f.input :title, required: true, autofocus: true
+
+  .row
+    .col-xs-3
+      = f.input :start_year
+    .col-xs-3
+      = f.input :finish_year
+    .col-xs-3
+      = f.input :status, collection: Serie.localized_detailed_statuses, include_blank: t('.select_status')
+    .col-xs-3
+      = f.input :number_of_seasons, as: :string
+  .row
+    .col-xs-6
+      = f.input :countries
+    .col-xs-6
+      = f.input :cover
 
   .row
     .col-xs-12{ data: { limited: '', limit: 1000 } }
@@ -84,13 +84,5 @@
   .row
     .col-xs-12
       = render 'admin/series/filmable_professionals/nested', f: f
-
-  .row
-    .col-xs-6
-      %h3.wine
-        Temporadas
-  .row
-    .col-xs-12
-      = render 'admin/series/serie_seasons/nested', f: f
 
   = render 'shared/form_actions', f: f

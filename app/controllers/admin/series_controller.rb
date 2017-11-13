@@ -101,6 +101,8 @@ module Admin
         :available_netflix,
         :available_amazon,
         :last_released,
+        :finish_year,
+        :status,
         filmable_professionals_attributes: %i[
           set_function_id
           professional_id
@@ -108,13 +110,6 @@ module Admin
           filmable_id
           filmable_type
           filmable
-          id
-          _destroy
-        ],
-        serie_seasons_attributes: %i[
-          serie_id
-          name
-          overview
           id
           _destroy
         ]

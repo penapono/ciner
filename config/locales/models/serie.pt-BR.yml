@@ -9,7 +9,9 @@ pt-BR:
       serie:
         original_title: Título Original
         title: Título em Português
-        year: Ano
+        start_year: Ano de Início
+        finish_year: Ano de Término
+        status: Situação
         length: Duração em minutos
         synopsis: Sinopse
         release: Lançamento Mundial
@@ -48,6 +50,15 @@ pt-BR:
         lock_updates: Bloquear atualização automática
 
         countries: País(es) de Origem
+
+        number_of_seasons: Número de Temporadas
+
+        trailer: Trailer
+      serie/status:
+        running: Em execução
+        renewed: Renovada
+        finished: Finalizada
+        cancelled: Cancelada
     errors:
       models:
         serie:

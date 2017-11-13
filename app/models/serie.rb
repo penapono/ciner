@@ -44,6 +44,9 @@ class Serie < ActiveRecord::Base
   # Aliases
   alias_attribute :text, :title_str
 
+  # Enums
+  enum status: { running: 0, renewed: 1, finished: 2, cancelled: 3 }
+
   # Scopes
 
   def self.by_year(year)
@@ -88,5 +91,13 @@ class Serie < ActiveRecord::Base
 
   def self.playing
     where(last_released: true)
+  end
+
+  def self.localized_statuses
+    statuses.map { |k, w| [human_attribute_name("status.#{k}"), w] }
+  end
+
+  def self.localized_detailed_statuses
+    statuses.keys.map { |w| [human_attribute_name("status.#{w}"), w] }
   end
 end
