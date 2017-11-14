@@ -40,9 +40,11 @@
               .col-xs-6
                 = f.input :area, label: false, collection: [["Filmes", :movies], ["Séries", :series], ["Geral", :general]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Filtrar por', selected: params.fetch(:filter, {}).fetch(:area, '')
               .col-xs-6
-                = f.input :time, label: false, collection: [["Mais comentados", :more_comment], ["Mais curtidos", :more_like], ["Mais visualizados", :more_views], ["Tópico mais recente", :recent], ["Tópico mais antigo", :oldest]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:time, '')
+                = f.input :time, label: false, collection: [["Mais comentados", :more_comment], ["Mais curtidos", :more_like], ["Mais visualizados", :more_views], ["Mais recente", :recent], ["Mais antigo", :oldest]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:time, '')
 
     .col-xs-1
       = link_to new_platform_question_path, class: 'pull-right' do
-        %i.fa.fa-plus
-          = t('new')
+        %button.btn.btn-login{ style: "width: 90px;" }
+          %span.text
+            Novo
+          %span.icon.icon-button

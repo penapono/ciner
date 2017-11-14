@@ -1,7 +1,7 @@
 = render 'shared/questions/toolbar', path: platform_questions_path
 
 .container.debates
-  .row.cabecalho
+  .row.cabecalho{ style: 'margin-right: 15px' }
     .col-xs-2.col-sm-1
       %h4.wine
         Tema
@@ -10,10 +10,10 @@
         = t('shared.questions.header.topic')
     .col-sm-2.hidden-xs
       %h4.wine
-        = t('shared.questions.header.comments')
+        = t('shared.questions.header.activity')
     .col-sm-2.hidden-xs
       %h4.wine
-        = t('shared.questions.header.activity')
+        = t('shared.questions.header.comments')
 
   - if questions.any?
     - questions.each do |question|

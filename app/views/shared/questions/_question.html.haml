@@ -1,6 +1,6 @@
 - role = current_role(current_user, request.url)
 
-.row.discussion-item{ class: question_class(question) }
+.row.discussion-item{ class: question_class(question), style: 'margin-right: 15px;' }
   .col-xs-2.col-sm-1.icone
     %svg.icon-debate
       %use{ "xlink:href": question_icon(question) }
@@ -28,6 +28,19 @@
       .last-user
         %span.vermelho
           Último comentário
+        = link_to url_for([role, object.user]) do
+          = object.user_name.split(' ').first
+        em
+        = object.date_str
+    - else
+      - object = question
+      = link_to url_for([role, object.user]) do
+        .thumb-user
+          %figure
+            %img.img-responsive{ src: object.user.avatar }
+      .last-user
+        %span.vermelho
+          Criador por
         = link_to url_for([role, object.user]) do
           = object.user_name.split(' ').first
         em
