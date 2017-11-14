@@ -12,12 +12,10 @@
     .col-xs-12
       .row
         .col-xs-12.col-sm-4
-          = text_field_tag :name, "", placeholder: 'Guilherme Xavier'
+          = text_field_tag :name, "", placeholder: 'Nome'
         .col-xs-12.col-sm-4
-          = text_field_tag :email, "", placeholder: 'ciner@ciner.com'
-        .col-xs-12.col-sm-2
-          = text_field_tag :phone, "", placeholder: '(19) XXXX-XXXX'
-        .col-xs-12.col-sm-2
+          = text_field_tag :email, "", placeholder: 'E-mail'
+        .col-xs-12.col-sm-4
           = select_tag :media, options_for_select([["Elogio", :dvd], ["Sugestão", :digital], ["Reclamação", :vhs], ["Financeiro", :vhs], ["Outro", :other_media]])
 
       .row
