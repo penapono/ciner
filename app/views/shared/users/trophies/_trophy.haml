@@ -1,4 +1,5 @@
 - source = object.level.to_s + "_inactive" + ".png"
+- source = object.level.to_s + "_active" + ".png" if index.even?
 - trophy = image_path("trophies/#{source}")
 
 .col-xs-3.wine{ style: 'width: 20%;' }
