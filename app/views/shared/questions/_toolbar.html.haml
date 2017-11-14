@@ -9,7 +9,7 @@
       .media-body.media-bottom
         .media-heading.title-section
           = t('shared.questions.index.title')
-    .col-xs-9
+    .col-xs-8
       .row
         .col-xs-4
           - content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
@@ -42,9 +42,11 @@
               .col-xs-6
                 = f.input :time, label: false, collection: [["Mais comentados", :more_comment], ["Mais curtidos", :more_like], ["Mais visualizados", :more_views], ["Mais recente", :recent], ["Mais antigo", :oldest]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar por', selected: params.fetch(:filter, {}).fetch(:time, '')
 
-    .col-xs-1
-      = link_to new_platform_question_path, class: 'pull-right' do
-        %button.btn.btn-login{ style: "width: 90px;" }
-          %span.text
-            Novo
-          %span.icon.icon-button
+    .col-xs-2
+      .row
+        .col-xs-12
+          = link_to new_platform_question_path, class: 'pull-right' do
+            %button.btn.btn-login{ style: "width: 100%;" }
+              %span.text
+                Novo
+              %span.icon.icon-button

@@ -33,3 +33,17 @@
           = object.user_name.split(' ').first
         em
         = object.date_str
+    - else
+      - object = question
+      = link_to url_for([role, object.user]) do
+        - avatar = image_default_path(object.user.avatar, "user")
+        .thumb-user
+          %figure
+            %img.img-responsive{ src: avatar }
+      .last-user
+        %span.vermelho
+          Criado por
+        = link_to url_for([role, object.user]) do
+          = object.user_name.split(' ').first
+        em
+        = object.date_str
