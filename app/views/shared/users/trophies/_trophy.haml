@@ -1,0 +1,13 @@
+- source = object.level.to_s + "_inactive" + ".png"
+- trophy = image_path("trophies/#{source}")
+
+.col-xs-3.wine{ style: 'width: 20%;' }
+  .row
+    .col-xs-12
+      %img.img-responsive{ src: trophy, style: 'width: 84px; height: 200px; margin: auto' }
+  .row
+    .col-xs-12{ style: 'text-align: center' }
+      = object.name
+  .row
+    .col-xs-12{ style: 'text-align: center' }
+      = object.description

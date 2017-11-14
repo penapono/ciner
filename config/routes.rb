@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   resources :curriculums, only: [:index, :show]
   resources :users do
     resources :collection, only: :index, module: 'users'
+    resources :trophies, only: :index, module: 'users'
     resources :favorite, only: :index, module: 'users'
     resources :watched, only: :index, module: 'users'
   end

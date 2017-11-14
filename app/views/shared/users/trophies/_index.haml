@@ -1,0 +1,60 @@
+- role = current_role(current_user, request.url)
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %i.fa.fa-trophy.fa-2x.wine
+          .media-body.media-bottom
+            .media-heading.title-section
+              Troféus
+
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              Top Ciner
+
+  .row
+    - Trophy.top.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy
+
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              Protagonista
+
+  .row
+    - Trophy.leading.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy
+
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              Coadjuvante
+
+  .row
+    - Trophy.supporting.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy
+
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              Figurante
+
+  .row
+    - Trophy.figurant.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy

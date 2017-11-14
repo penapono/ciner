@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:update, :show, :edit] do
       resources :collection, only: :index, module: 'users'
+      resources :trophies, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'
       resources :watched, only: :index, module: 'users'
     end
