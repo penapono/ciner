@@ -42,6 +42,6 @@
                 = f.input :state, label: false, collection: State.all, input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Busque por estado', selected: params.fetch(:filter, {}).fetch(:state, '')
 
               .col-xs-6
-                = f.input :event_in_time, label: false, collection: [["Eventos Futuros", "next"], ["Eventos Passados", "past"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:event_in_time, '')
+                = f.input :event_in_time, label: false, collection: [["Próximos Eventos", "next"], ["Eventos Encerrados", "past"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, selected: params.fetch(:filter, {}).fetch(:event_in_time, '')
 
 

@@ -55,7 +55,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.by_event_in_time(event_in_time)
-    return all_past if event_in_time == "past"
+    return all_past if !event_in_time.blank? && event_in_time == "past"
     all_next
   end
 
@@ -65,7 +65,7 @@ class Event < ActiveRecord::Base
     result = collection
     result = result.by_date(params[:date]) unless params[:date].blank?
     result = result.by_state(params[:state]) unless params[:state].blank?
-    result = result.by_event_in_time(params[:event_in_time]) unless params[:event_in_time].blank?
+    result = result.by_event_in_time(params[:event_in_time])
 
     result
   end
