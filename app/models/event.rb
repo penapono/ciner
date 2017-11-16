@@ -119,6 +119,7 @@ class Event < ActiveRecord::Base
 
   def status_str
     today = Date.today
+    return '' if event_date < today
     if event_date == end_date && event_date.month == today.month
       return 'acontecendo'
     end
