@@ -194,7 +194,7 @@
         - cover = image_default_path(object.cover, "movie")
         %img.img-responsive{ src: cover, style: 'height: 50px; width: 50px;' }
       .col-xs-11
-        = link_to url_for([role, object]) do
+        = link_to url_for([role, :broadcasts]) do
           =  object.title_str
 - else
   .row
