@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113234223) do
+ActiveRecord::Schema.define(version: 20171117223300) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -547,6 +547,9 @@ ActiveRecord::Schema.define(version: 20171113234223) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "filmable_type"
+    t.bigint "filmable_id"
+    t.index ["filmable_type", "filmable_id"], name: "index_trending_trailers_on_filmable_type_and_filmable_id"
   end
 
   create_table "trophies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

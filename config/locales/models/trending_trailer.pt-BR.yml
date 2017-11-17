@@ -9,6 +9,9 @@ pt-BR:
       trending_trailer:
         title: Título
         trailer: Trailer
+        filmable: Filme / Série
+        filmable_id: Filme / Série
+        filmable_type: Referente à
     errors:
       models:
         trending_trailer:
