@@ -22,11 +22,11 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     @accepted = (params[:user][:terms_of_use] == "1")
-    # if verify_recaptcha(model: @user)
-    super
-    # else
-    #   render :new
-    # end
+    if verify_recaptcha(model: @user)
+      super
+    else
+      render :new
+    end
   end
 
   private
