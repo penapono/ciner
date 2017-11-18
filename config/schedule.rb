@@ -20,6 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.hour do
-  rake 'professionals_clean:unify_duplicates'
-  rake 'professionals_clean:remove_duplicates'
+  rake 'professionals_dates:update'
 end

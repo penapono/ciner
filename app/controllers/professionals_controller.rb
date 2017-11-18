@@ -23,7 +23,7 @@ class ProfessionalsController < ApplicationController
   end
 
   def show
-    # professional.api_transform
+    professional.api_transform
   end
 
   private

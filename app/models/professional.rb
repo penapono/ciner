@@ -137,96 +137,102 @@ class Professional < ActiveRecord::Base
 
     result = load_resource(tmdb_person_url)
 
-    object.birthday = begin
-                        Date.parse(result["birthday"])
-                      rescue
-                        nil
-                      end
+    if object.birthday.blank?
+      object.birthday = begin
+                          Date.parse(result["birthday"])
+                        rescue
+                          nil
+                        end
+    end
 
-    object.deathday = begin
-                        Date.parse(result["deathday"])
-                      rescue
-                        nil
-                      end
+    if object.deathday.blank?
+      object.deathday = begin
+                          Date.parse(result["deathday"])
+                        rescue
+                          nil
+                        end
+    end
 
-    object.gender = tmdb_gender(result["gender"])
+    # object.gender = tmdb_gender(result["gender"])
 
-    object.imdb_id = result["imdb_id"]
+    # object.imdb_id = result["imdb_id"]
 
-    object.name = result["name"]
+    # object.name = result["name"]
 
-    object.place_of_birth = result["place_of_birth"]
+    if object.place_of_birth.blank?
+      object.place_of_birth = result["place_of_birth"]
+    end
 
     object.lock_updates = true
 
     object.save(validate: false)
 
-    load_credits(object)
+    # load_credits(object)
   end
 
-  def load_credits(object)
-    tmdb_id = object.tmdb_id
+  # def load_credits(object)
+  #   tmdb_id = object.tmdb_id
 
-    tmdb_person_credits = "#{BASE_URL}/#{tmdb_id}/combined_credits?api_key=#{TMDB_API_KEY}"
+  #   tmdb_person_credits = "#{BASE_URL}/#{tmdb_id}/combined_credits?api_key=#{TMDB_API_KEY}"
 
-    result = load_resource(tmdb_person_credits)
+  #   result = load_resource(tmdb_person_credits)
 
-    result = result["cast"]
+  #   result = result["cast"]
 
-    result.each do |credit|
-      credit_id = credit["id"]
-      media_type = credit["media_type"]
+  #   result.each do |credit|
+  #     credit_id = credit["id"]
+  #     media_type = credit["media_type"]
 
-      load_credit_resource(credit_id, media_type)
-    end
-  end
+  #     load_credit_resource(credit_id, media_type)
+  #   end
+  # end
 
   private
 
-  def load_credit_resource(id, media_type)
-    resource_url = "https://api.themoviedb.org/3/#{media_type}/#{id}?api_key=#{TMDB_API_KEY}"
+  # def load_credit_resource(id, media_type)
+  #   resource_url = "https://api.themoviedb.org/3/#{media_type}/#{id}?api_key=#{TMDB_API_KEY}"
 
-    result = load_resource(resource_url)
+  #   result = load_resource(resource_url)
 
-    original_title = result["original_title"]
+  #   original_title = result["original_title"]
 
-    tmdb_id = result["id"]
+  #   tmdb_id = result["id"]
 
-    release_date = begin
-                     Date.parse(result["release_date"])
-                   rescue
-                     Date.today
-                   end
-    year = release_date.year
+  #   release_date = begin
+  #                    Date.parse(result["release_date"])
+  #                  rescue
+  #                    Date.today
+  #                  end
+  #   year = release_date.year
 
-    if media_type == "movie"
-      by_tmdb_id = Movie.where(tmdb_id: tmdb_id)
-      if by_tmdb_id.any?
-        by_tmdb_id.each(&:api_transform)
-      else
-        ((year - 2)..(year + 2)).each do |ranged_year|
-          on_title = Movie.search(nil, "#{original_title} (#{ranged_year})")
-          on_title.each(&:api_transform) unless on_title.blank?
-        end
+  #   if media_type == "movie"
+  #     by_tmdb_id = Movie.where(tmdb_id: tmdb_id)
+  #     if by_tmdb_id.any?
+  #       by_tmdb_id.each(&:api_transform)
+  #     else
+  #       ((year - 2)..(year + 2)).each do |ranged_year|
+  #         on_title = Movie.search(nil, "#{original_title} (#{ranged_year})")
+  #         on_title.each(&:api_transform) unless on_title.blank?
+  #       end
 
-        any_year = Movie.where(original_title: original_title)
-        any_year.each(&:api_transform) unless any_year.blank?
-      end
-    elsif media_type == "tv"
-      by_tmdb_id = Serie.where(tmdb_id: tmdb_id)
-      if by_tmdb_id.any?
-        by_tmdb_id.each(&:api_transform)
-      else
-        ((year - 2)..(year + 2)).each do |ranged_year|
-          on_title = Serie.search(nil, "#{original_title} (#{ranged_year})")
-          on_title.each(&:api_transform) unless on_title.blank?
-        end
+  #       any_year = Movie.where(original_title: original_title)
+  #       any_year.each(&:api_transform) unless any_year.blank?
+  #     end
+  #   elsif media_type == "tv"
+  #     by_tmdb_id = Serie.where(tmdb_id: tmdb_id)
+  #     if by_tmdb_id.any?
+  #       by_tmdb_id.each(&:api_transform)
+  #     else
+  #       ((year - 2)..(year + 2)).each do |ranged_year|
+  #         on_title = Serie.search(nil, "#{original_title} (#{ranged_year})")
+  #         on_title.each(&:api_transform) unless on_title.blank?
+  #       end
 
-        any_year = Serie.where(original_title: original_title)
-        any_year.each(&:api_transform) unless any_year.blank?
-      end
-    end
-  end
+  #       any_year = Serie.where(original_title: original_title)
+  #       any_year.each(&:api_transform) unless any_year.blank?
+  #     end
+  #   end
+  # end
 
   def load_resource(url)
     url = URI(url)
