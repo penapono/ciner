@@ -36,6 +36,18 @@
                   = professional.place_of_birth
               %br
 
+  .row
+    .col-xs-8
+      .section-pessoal
+        .title-separator
+          .media
+            .media-left.media-middle
+              %svg.media-object.icon-title
+                %use{"xlink:href" => "#filme"}
+            .media-body.media-middle
+              .media-heading.title-section
+                Filmografia
+
 
   - set_functions = SetFunction.all
   - set_functions.each do |sf|
@@ -51,13 +63,10 @@
 
     - if all.any?
       .row{ data: { slider: { playing: '' } } }
-        .col-xs-12.col-sm-8.col-md-8
+        .col-xs-8
           .section-pessoal
             .title-separator
               .media
-                .media-left.media-middle
-                  %svg.media-object.icon-title
-                    %use{"xlink:href" => "#filme"}
                 .media-body.media-middle
                   .media-heading.title-section
                     = sf.name
