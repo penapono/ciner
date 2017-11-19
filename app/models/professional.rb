@@ -77,7 +77,7 @@ class Professional < ActiveRecord::Base
   end
 
   def self.birthdays
-    where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day).first(10)
+    where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day).first(6)
   end
 
   def self.localized_genders
