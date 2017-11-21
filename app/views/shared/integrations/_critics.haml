@@ -13,11 +13,12 @@
           .media-heading.title-section
             = Critic.model_name.human(count: 2)
         .media-body.text-right.media-middle.see-more
-          = link_to url_for([:new, role, :critic, params: { filmable_type: filmable_type, filmable_id: filmable_id }]), class: 'pull-right' do
-            %button.btn.btn-login{ style: "width: 100%;" }
-              %span.text
-                Nova Crítica
-              %span.icon.icon-button
+          - if current_user
+            = link_to url_for([:new, role, :critic, params: { filmable_type: filmable_type, filmable_id: filmable_id }]), class: 'pull-right' do
+              %button.btn.btn-login{ style: "width: 100%;" }
+                %span.text
+                  Nova Crítica
+                %span.icon.icon-button
 
           = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }]), style: 'margin-right: 50px; display: inline-block; margin-bottom: -25px; line-height: 60px; '
 

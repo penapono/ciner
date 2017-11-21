@@ -43,6 +43,14 @@ class Professional < ActiveRecord::Base
   # Uploaders
   mount_uploader :avatar, ProfessionalAvatarUploader
 
+  def ordered_set_functions
+    FilmableProfessional
+      .where(professional_id: id)
+      .group(:set_function_id).distinct.count(:filmable_id)
+      .sort_by { |_k, value| value }
+      .reverse.to_h
+  end
+
   def original_title
     original = String.new("")
 

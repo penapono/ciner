@@ -1,5 +1,6 @@
 - role = current_role(current_user, request.url)
 - avatar = image_default_path(professional.avatar, "professional")
+- object = professional
 
 .container
   .row
@@ -20,20 +21,20 @@
             .col-xs-12.col-sm-9.user-info
               Nome:
               %span.user-name
-                = professional.name
+                = object.name
               %br
               %br
               Idade:
               %span.user-age
-                = professional.original_title
+                = object.original_title
               %br
               %br
               Local de Nascimento:
               %span.user-city
-                - if professional.place_of_birth.blank?
+                - if object.place_of_birth.blank?
                   \-
                 - else
-                  = professional.place_of_birth
+                  = object.place_of_birth
               %br
 
   .row
@@ -49,19 +50,15 @@
                 Filmografia
 
 
-  - set_functions = SetFunction.all
-  - set_functions.each do |sf|
+  - set_functions = object.ordered_set_functions
+  - set_functions.each do |sf, _v|
     - all = []
 
-    - movies_ids = FilmableProfessional.where(filmable_type: 'Movie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
-    - Movie.where(id: movies_ids.uniq).order(year: :desc).each do |m|
-      - all << m
+    - filmables = []
+    - FilmableProfessional.where(professional_id: object.id, set_function_id: sf).each do |filmable_professional|
+      - filmables << filmable_professional.filmable
 
-    - series_ids = FilmableProfessional.where(filmable_type: 'Serie', professional_id: professional.id, set_function_id: sf.id).pluck(:filmable_id)
-    - Serie.where(id: series_ids.uniq).order(start_year: :desc).each do |s|
-      - all << s
-
-    - if all.any?
+    - if filmables.any?
       .row{ data: { slider: { playing: '' } } }
         .col-xs-8
           .section-pessoal
@@ -69,12 +66,12 @@
               .media
                 .media-body.media-middle
                   .media-heading.title-section
-                    = sf.name
+                    = SetFunction.find(sf).name
 
           .row
             - showcase_class ||= 'showcase-poster'
             - background_color ||= 'parent'
-            - slider_movies = all
+            - slider_movies = filmables
 
             / MOVIES THUMB
             .col-xs-12{ class: showcase_class }
@@ -83,7 +80,8 @@
                 .btn.next
                 .slider-container
                   - slider_movies.each do |pm|
-                    = render 'shared/home/showcase/item', role: role, pm: pm
+                    - unless pm.blank?
+                      = render 'shared/home/showcase/item', role: role, pm: pm
 
   .row
     .col-xs-12
