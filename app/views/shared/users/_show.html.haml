@@ -33,7 +33,7 @@
 
           .col-xs-12.col-sm-8.user-info
             .row
-              .col-xs-9
+              .col-xs-8
                 Nome:
                 %span.user-name
                   = user.name
@@ -52,19 +52,19 @@
                 Ciner desde:
                 %span.user-birth-ciner
                   = user.registered_at_str
-              .col-xs-3
+              .col-xs-4
                 .row
                   .col-xs-12
                     - if user.curriculum
                       = link_to url_for([role, user.curriculum]) do
-                        %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
+                        %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
                           %span.text
                             Currículo
                           %span.icon.icon-button
                     - else
                       - if current_user == user
                         = link_to url_for([:new, role, :curriculum]) do
-                          %button.btn.btn-login{ style: "width: 170px; margin-top: 10px;" }
+                          %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
                             %span.text
                               Currículo
                             %span.icon.icon-button
