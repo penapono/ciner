@@ -1,0 +1,23 @@
+= javascript_include_tag Ckeditor.cdn_url
+- role = current_role(current_user, request.url)
+
+= simple_form_for [role, critic] do |f|
+  - rating = f.object.rating || 0
+
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-12.col-sm-9
+      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+
+    .col-xs-4.col-sm-3
+      = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
+      = checkbox_item(f, :spoiler)
+
+  = f.hidden_field :filmable_type, value: params[:filmable_type] || 'Movie'
+  = f.hidden_field :filmable_id, value: params[:filmable_id] || nil
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :status, value: 1
+
+  = render 'shared/form_actions', f: f

@@ -13,32 +13,38 @@
           .media-heading.title-section
             = Critic.model_name.human(count: 2)
         .media-body.text-right.media-middle.see-more
-          %a
-            = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }])
+          = link_to url_for([:new, role, :critic, params: { filmable_type: filmable_type, filmable_id: filmable_id }]), class: 'pull-right' do
+            %button.btn.btn-login{ style: "width: 100%;" }
+              %span.text
+                Nova Crítica
+              %span.icon.icon-button
+
+          = link_to t('more'), url_for([role, :critics, filter: { filmable_type: filmable_type, filmable_id: filmable_id }]), style: 'margin-right: 50px; display: inline-block; margin-bottom: -25px; line-height: 60px; '
 
 .row
   .col-xs-12.reviews
     - unless object.critics.blank?
       .row
         - object.critics.only_two.each do |critic|
-          - filmable = critic.filmable
-          - avatar = critic.user.avatar
-          - avatar ||= image_path("default/user/image.jpg")
+          - unless critic.blank?
+            - filmable = critic.filmable
+            - avatar = critic.user.avatar
+            - avatar ||= image_path("default/user/image.jpg")
 
-          .review-item
-            .col-xs-12.col-sm-3.thumb-user
-              .usuario-avatar
-                %img.img-responsive{ src: avatar }
-            .col-xs-9.col-sm-9.resume
-              %h4.title
-                = filmable.title_str
-              %span.original-title
-                = filmable.original_title
-              = render 'shared/critics/rating', critic: critic
-              %p
-                = critic.collapsed_content
+            .review-item
+              .col-xs-12.col-sm-3.thumb-user
+                .usuario-avatar
+                  %img.img-responsive{ src: avatar }
+              .col-xs-9.col-sm-9.resume
+                %h4.title
+                  = filmable.title_str
+                %span.original-title
+                  = filmable.original_title
+                = render 'shared/critics/rating', critic: critic
+                %p
+                  = critic.collapsed_content
 
-              = link_to url_for([role, critic]) do
-                .btn.btn-saiba-mais
-                  = t('more')
+                = link_to url_for([role, critic]) do
+                  .btn.btn-saiba-mais
+                    = t('more')
 

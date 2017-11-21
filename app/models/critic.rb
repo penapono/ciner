@@ -77,7 +77,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.ciner_official_critic
-    find_by(origin: 1)
+    where(user_id: User.admin.pluck(:id)).average(:rating)
   end
 
   # Methods

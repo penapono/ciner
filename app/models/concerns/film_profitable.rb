@@ -422,7 +422,8 @@ module FilmProfitable
 
     def ciner_official_critic
       return unless critics.any?
-      critics.ciner_official_critic
+      average = critics.ciner_official_critic
+      average.blank? ? "-" : average
     end
 
     def ciner_rating_user
