@@ -2,7 +2,7 @@
 
 - if current_user
   .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 130px; margin-top: 20px;' }
-    .row
+    .row{ style: 'margin-top: 15px;' }
       .col-xs-4{ style: 'margin-right: -20px; margin-top: -5px;' }
         - avatar = image_default_path(current_user.avatar, "user")
         = link_to url_for([role, current_user]) do
