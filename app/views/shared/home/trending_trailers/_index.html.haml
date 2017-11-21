@@ -7,14 +7,12 @@
       .media-body.media-bottom
         .media-heading.title-section
           Trailers mais recentes
-      / .media-body.text-right.media-middle.see-more
-      /   = link_to url_for([role, :ciner_videos]) do
-      /     = t('see_more')
 
-  .row{ style: 'margin-right: 15px; margin-left: 15px;' }
+  .row
     - trending_trailers.each do |object|
       .ciner-movie.col-xs-12.col-sm-6.col-md-4
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
 
         .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
-          = object.title
+          = link_to url_for([role, object.filmable]) do
+            = object.title

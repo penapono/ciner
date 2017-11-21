@@ -7,7 +7,10 @@ module Admin
     PER_PAGE = 10
 
     PERMITTED_PARAMS = %i[
-      title trailer
+      title
+      trailer
+      filmable_type
+      filmable_id
     ].freeze
 
     # exposes

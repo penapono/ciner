@@ -137,14 +137,17 @@
 .ciner-videos {
   .ciner-movie {
     padding: 0px;
+    margin-right: 7px;
+    margin-left: 5px;
+    width: 31%;
   }
 
   .ciner-movie:first-child {
-    margin-left: -15px;
+    margin-left: 15px;
   }
 
   .ciner-movie:last-child {
-    margin-right: -15px;
+    margin-right: 10px;
   }
 
   .ciner-video-user {
