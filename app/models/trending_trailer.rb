@@ -2,8 +2,7 @@
 
 class TrendingTrailer < ActiveRecord::Base
   # Validations
-  validates :title,
-            :trailer,
+  validates :trailer,
             :filmable_type,
             :filmable_id,
             presence: true
