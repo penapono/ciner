@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true
   delegate :name, to: :state, allow_nil: true, prefix: true
+  delegate :acronym, to: :state, allow_nil: true, prefix: true
   delegate :name, to: :country, allow_nil: true, prefix: true
 
   # Callbacks

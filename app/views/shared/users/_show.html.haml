@@ -45,6 +45,9 @@
                 Cidade:
                 %span.user-city
                   = user.city_name
+                  - if user.state
+                    = "-"
+                    = user.state_acronym
                 %br
                 Ciner desde:
                 %span.user-birth-ciner
