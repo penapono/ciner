@@ -426,16 +426,8 @@ module FilmProfitable
       average.blank? ? "-" : average
     end
 
-    def ciner_rating_user
-      "João Bidu"
-    end
-
     def users_rating
       5.0
-    end
-
-    def users_rating_count
-      1000
     end
 
     def incinerator
