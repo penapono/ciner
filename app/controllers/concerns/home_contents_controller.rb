@@ -9,8 +9,7 @@ module HomeContentsController
     expose(:critics) { Critic.home }
     expose(:questions) { Question.top_questions }
     expose(:broadcasts) { Broadcast.top_broadcasts.last(4) }
-    # expose(:ciner_videos) { CinerVideo.approved.order(updated_at: :desc).last(4) }
-    expose(:trending_trailers) { TrendingTrailer.first(4) }
+    expose(:trending_trailers) { TrendingTrailer.first(3) }
 
     expose(:playing_movies) { Movie.current_playing }
     expose(:featured_movies) { Movie.featured.first(10) }
