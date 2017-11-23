@@ -3,8 +3,8 @@
 class Professional < ActiveRecord::Base
   include Searchables::Professional
 
-  TMDB_API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
-  BASE_URL = "https://api.themoviedb.org/3/person"
+  TMDB_API_KEY = "8802a6c6583ac6edc44bea8d577baa97".freeze
+  BASE_URL = "https://api.themoviedb.org/3/person".freeze
 
   # Associations
   belongs_to :user
@@ -43,12 +43,36 @@ class Professional < ActiveRecord::Base
   # Uploaders
   mount_uploader :avatar, ProfessionalAvatarUploader
 
-  def ordered_set_functions
-    FilmableProfessional
+  def set_functions_by_occurrence
+    ordered_set_functions = FilmableProfessional
       .where(professional_id: id)
       .group(:set_function_id).distinct.count(:filmable_id)
       .sort_by { |_k, value| value }
       .reverse.to_h
+
+    ordered_set_functions.keys
+  end
+
+  def filmography_for_set_function(set_function_filmography)
+    filmable_professionals =
+      FilmableProfessional
+      .where(professional_id: id,
+             set_function_id: set_function_filmography)
+
+    filmables = []
+    filmable_professionals.each do |filmable_professional|
+      filmables << filmable_professional.filmable
+    end
+
+    filmables_h = {}
+    filmables.each do |filmable|
+      filmables_h[filmable] = filmable.filmable_year unless filmable.blank?
+    end
+
+    # order by year
+    filmables_h = filmables_h.sort_by { |_k, v| v }.reverse.to_h
+
+    filmables_h.keys
   end
 
   def original_title

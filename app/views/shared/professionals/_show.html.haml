@@ -50,23 +50,11 @@
                 Filmografia
 
 
-  - set_functions = object.ordered_set_functions
-  - set_functions.each do |sf, _v|
-    - all = []
+  - set_functions = object.set_functions_by_occurrence
+  - set_functions.each do |sf|
+    - slider_movies = object.filmography_for_set_function(sf)
 
-    - filmables = []
-    - FilmableProfessional.where(professional_id: object.id, set_function_id: sf).each do |filmable_professional|
-      - filmables << filmable_professional.filmable
-
-    - if filmables.any?
-      - filmables_h = Hash.new
-
-      - filmables.each do |filmable|
-        - unless filmable.blank?
-          - filmables_h[filmable] = filmable.filmable_year
-
-      - filmables_h = filmables_h.sort_by { |k, v| v }.reverse.to_h
-
+    - if slider_movies.any?
       .row{ data: { slider: { playing: '' } } }
         .col-xs-8
           .section-pessoal
@@ -79,7 +67,6 @@
           .row
             - showcase_class ||= 'showcase-poster'
             - background_color ||= 'parent'
-            - slider_movies = filmables_h.keys
 
             / MOVIES THUMB
             .col-xs-12{ class: showcase_class }
