@@ -59,6 +59,14 @@
       - filmables << filmable_professional.filmable
 
     - if filmables.any?
+      - filmables_h = Hash.new
+
+      - filmables.each do |filmable|
+        - unless filmable.blank?
+          - filmables_h[filmable] = filmable.filmable_year
+
+      - filmables_h = filmables_h.sort_by { |k, v| v }.reverse.to_h
+
       .row{ data: { slider: { playing: '' } } }
         .col-xs-8
           .section-pessoal
@@ -71,7 +79,7 @@
           .row
             - showcase_class ||= 'showcase-poster'
             - background_color ||= 'parent'
-            - slider_movies = filmables
+            - slider_movies = filmables_h.keys
 
             / MOVIES THUMB
             .col-xs-12{ class: showcase_class }
