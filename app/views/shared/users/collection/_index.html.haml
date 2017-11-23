@@ -16,7 +16,8 @@
           - slice.each do |user_filmable|
             - cover = user_filmable.cover unless user_filmable.cover.url.blank?
             - object = user_filmable.filmable
-            - cover = image_default_path(object.cover, "movie")
+            - cover = object.cover if cover.blank?
+            - cover = image_default_path(cover, "movie")
 
             .col-sm-2.shelf
               = link_to url_for([role, object]) do
