@@ -11,10 +11,10 @@
       .col-xs-4
         - cover = user_filmable.cover unless user_filmable.cover.url.blank?
         - object = user_filmable.filmable
-        - cover = image_default_path(object.cover, "movie")
+        - cover = object.cover if cover.blank?
+        - cover = image_default_path(cover, "movie")
 
         = link_to [role, object] do
-          / = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')
           %img.img-responsive{ src: cover, style: 'width: 166px; height: 250px;' }
       .col-xs-8
         - unless user_filmable.media.blank?
