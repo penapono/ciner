@@ -18,8 +18,14 @@
             \|
           = link_to 'Entre em contato', url_for([:contact])
         .col-xs-12.col-sm-1.col-md-2.social
-          = link_to image_tag("icons/ico_facebook_branco.png", alt: "Facebook", class: "img-responsive"), '#'
-          = link_to image_tag("icons/ico_twitter_branco.png", alt: "Twitter", class: "img-responsive"), '#'
+          = link_to url_for([role, :notifications]) do
+            %i.fa.fa-film{ style: 'color: white; font-size: 18px; margin-left: -155px' }
+
+          = link_to "https://www.facebook.com/sejaciner/" do
+            %i.fa.fa-facebook{ style: 'font-size: 18px; margin-right: 10px;' }
+
+          = link_to "https://www.instagram.com/sejaciner/" do
+            %i.fa.fa-instagram{ style: 'font-size: 18px; margin-right: 10px;' }
     .container.collapse{ data: { container: { fixed: '' } } }
       .row{ style: 'margin-bottom: 0px;' }
         .col-xs-2

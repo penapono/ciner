@@ -1,13 +1,14 @@
+- content_for :javascript, javascript_include_tag("views/shared/users/show")
+
 - role = current_role(current_user, request.url)
 
 .container.content
   .row
     .col-xs-12
-      .title-separator
-        .media
-          .media-body.media-bottom
-            .media-heading.title-section
-              = "Coleção de #{user.name}"
+      .media
+        .media-body.media-bottom
+          .media-heading.title-section
+            = "Coleção de #{user.name}"
 
       = render 'shared/users/collection/toolbar'
 
@@ -19,9 +20,8 @@
             - cover = object.cover if cover.blank?
             - cover = image_default_path(cover, "movie")
 
-            .col-sm-2.shelf
-              = link_to url_for([role, object]) do
-                %img.img-responsive{ src: cover, style: 'width: 133px; height: 195px;' }
+            .col-sm-2.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
+              %img.img-responsive{ src: cover, style: 'width: 133px; height: 195px;' }
 
           - if slice.count < 6
             - (6 - slice.count).times do
@@ -29,3 +29,6 @@
 
               .col-sm-2.shelf
                 .div{ style: 'width: 133px; height: 195px;' }
+
+#collectionModal.modal.fade{:role => "dialog"}
+  .modal-dialog

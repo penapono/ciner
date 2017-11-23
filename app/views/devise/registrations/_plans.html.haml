@@ -14,263 +14,81 @@
         CINER
   .col-xs-12.col-sm-7{"data-mh" => "seja-ciner"}
     %p
-      Ciner é uma nova forma de se pensar Cinema. Mais do que isso, é um novo conceito para quem admira a Sétima Arte. Todos nós temos um pouco de Ciner. Gostamos de produzir, atuar, fotografar, opinar. Além dos grandes filmes, aqui você divulga seu trabalho e encontra produções de outros usuários, voltadas exclusivamente para o meio cinematográfico.
+      Ciner é uma nova forma de se pensar Cinema. Mais do que isso,
+      é um novo conceito para quem admira a Sétima Arte.
+      Todos nós temos um pouco de Ciner.
+      Gostamos de produzir, atuar, fotografar, opinar.
+      Além dos grandes filmes, aqui você divulga seu trabalho e encontra
+      produções de outros usuários, voltadas exclusivamente
+      para o meio cinematográfico.
     %br/
     %p
-      Para quem coleciona filmes, uma estante para catalogar, gerenciar ou simplesmente compartilhar sua coleção.
+      Para quem coleciona filmes, uma estante para catalogar,
+      gerenciar ou simplesmente compartilhar sua coleção.
       %br/
-      A cada semana novas críticas em destaque: uma análise da equipe CINER e outra dos críticos de plantão. Por que não a sua?
+      A cada semana novas críticas em destaque: uma análise da equipe CINER
+      e outra dos críticos de plantão. Por que não a sua?
     %br/
-    %p Mais do que saber as novidades do mundo do Cinema, aqui você faz parte dele.
+    %p
+      Mais do que saber as novidades do mundo do Cinema,
+      aqui você faz parte dele.
     %br/
-    %span.bold.wine Bem-vindo, CINER!
-.row.plano-ciner
-  .col-xs-12.text-center
-    %h4.wine QUE CINER SOU EU?
-.row
-  %ul.nav.nav-pills.tab-promo.text-center
-    %li.active.col-xs-12.col-sm-offset-1.col-sm-5
-      %a{"data-toggle" => "tab", :href => "#mensal"} Mensal
-    %li.col-xs-12.col-sm-offset-0.col-sm-5
-      %a{"data-toggle" => "tab", :href => "#anual"} Anual
-  .col-xs-12.tab-content
-    #mensal.tab-pane.active
-      .row
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER
-          .promo-bottom.col-table-gratis{"data-mh" => "promo"}
-            .col-table-cell
-              .gratis GRÁTIS
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .assine{ data: { choose_plan: '', plan: 'Ciner' } }
-            .btn.btn-assine
-              = chosen_plan == 'free' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "free"), :class => "btn btn-assine"
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER PRO
-          .promo-bottom{"data-mh" => "promo"}
-            .contrato Assinatura anual
-            .valor
-              %span.col-table-cell.val1 R$
-              %span.col-table-cell.val2 2,
-              %span.col-table-cell.val3
-                90
-                %span.val4 /mês
-            .avulso
-              %span.val1
-                ou R$
-                %span.bold.val2> 3,90
-                \/avulso
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .vantagens-extra
-            %span . Cadastrar currículo profissional
-            %span . Enviar críticas de filmes e séries
-            %span . Participar de promoções exclusivas
-          .assine{ data: { choose_plan: '', plan: 'Ciner Pro' } }
-            .btn.btn-assine
-              = chosen_plan == 'pro' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "monthlypro"), :class => "btn btn-assine"
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER CLÁSSICO
-          .promo-bottom{"data-mh" => "promo"}
-            .contrato Assinatura anual
-            .valor
-              %span.col-table-cell.val1 R$
-              %span.col-table-cell.val2 4,
-              %span.col-table-cell.val3
-                90
-                %span.val4 /mês
-            .avulso
-              %span.val1
-                ou R$
-                %span.bold.val2> 6,90
-                \/avulso
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .vantagens-extra
-            %span . Cadastrar currículo profissional
-            %span . Enviar críticas de filmes e séries
-            %span . Participar de promoções exclusivas
-            %span . Coleção virtual de DVD/Blu-ray
-          .assine{ data: { choose_plan: '', plan: 'Ciner Clássico' } }
-            .btn.btn-assine
-              = chosen_plan == 'classic' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "monthlyclass"), :class => "btn btn-assine"
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER CULT
-          .promo-bottom{"data-mh" => "promo"}
-            .contrato Assinatura anual
-            .valor
-              %span.col-table-cell.val1 R$
-              %span.col-table-cell.val2 9,
-              %span.col-table-cell.val3
-                90
-                %span.val4 /mês
-            .avulso
-              %span.val1
-                ou R$
-                %span.bold.val2> 13,90
-                \/avulso
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .vantagens-extra
-            %span . Cadastrar currículo profissional
-            %span . Enviar críticas de filmes e séries
-            %span . Participar de promoções exclusivas
-            %span . Coleção virtual de DVD/Blu-ray
-            %span . Upload de vídeos cinematográficos ilimitados
-          .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
-            .btn.btn-assine
-              = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "monthlycult"), :class => "btn btn-assine"
-    #anual.tab-pane
-      .row
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER
-          .promo-bottom.col-table-gratis{"data-mh" => "promo"}
-            .col-table-cell
-              .gratis GRÁTIS
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .assine{ data: { choose_plan: '', plan: 'Ciner' } }
-            .btn.btn-assine
-              = chosen_plan == 'free' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "free"), :class => "btn btn-assine"
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER PRO
-          .promo-bottom{"data-mh" => "promo"}
-            .contrato Assinatura anual
-            .valor
-              %span.col-table-cell.val1 R$
-              %span.col-table-cell.val2 29,
-              %span.col-table-cell.val3 90
-            .economize
-              %span.val1
-                Economize até R$
-                %span.bold.val2 16,90*
-              %span.obs * Comparado ao plano Ciner Pro avulso.
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .vantagens-extra
-            %span . Cadastrar currículo profissional
-            %span . Enviar críticas de filmes e séries
-            %span . Participar de promoções exclusivas
-          .assine{ data: { choose_plan: '', plan: 'Ciner Pro' } }
-            .btn.btn-assine
-              = chosen_plan == 'pro' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "annuallypro"), :class => "btn btn-assine"
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER CLÁSSICO
-          .promo-bottom{"data-mh" => "promo"}
-            .contrato Assinatura anual
-            .valor
-              %span.col-table-cell.val1 R$
-              %span.col-table-cell.val2 49,
-              %span.col-table-cell.val3 90
-            .economize
-              %span.val1
-                Economize até R$
-                %span.bold.val2 32,90*
-              %span.obs * Comparado ao plano Ciner Clássico avulso.
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .vantagens-extra
-            %span . Cadastrar currículo profissional
-            %span . Enviar críticas de filmes e séries
-            %span . Participar de promoções exclusivas
-            %span . Coleção virtual de DVD/Blu-ray
-          .assine{ data: { choose_plan: '', plan: 'Ciner Clássico' } }
-            .btn.btn-assine
-              = chosen_plan == 'classic' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "annuallyclass"), :class => "btn btn-assine"
-        .col-xs-12.col-sm-6.col-md-3.promo-item
-          .promo-top
-            %h5.tipo CINER CULT
-          .promo-bottom{"data-mh" => "promo"}
-            .contrato Assinatura anual
-            .valor
-              %span.col-table-cell.val1 R$
-              %span.col-table-cell.val2 99,
-              %span.col-table-cell.val3 90
-            .economize
-              %span.val1
-                Economize até R$
-                %span.bold.val2 66,90*
-              %span.obs * Comparado ao plano Ciner Cult avulso.
-          .vantagem.wine.text-center.bold VANTAGENS
-          .vantagens
-            %span . Criar perfil com foto
-            %span . Avaliar filmes e séries
-            %span . Comentar filmes e séries
-            %span . Participar no Debate Ciner (Fórum)
-            %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-            %span . Assistir aos Ciner Vídeos
-            %span . Participar de promoções do site
-          .vantagens-extra
-            %span . Cadastrar currículo profissional
-            %span . Enviar críticas de filmes e séries
-            %span . Participar de promoções exclusivas
-            %span . Coleção virtual de DVD/Blu-ray
-            %span . Upload de vídeos cinematográficos ilimitados
-          .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
-            .btn.btn-assine
-              = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
-            / = link_to "ASSINE JÁ", new_user_registration_path(plan: "annuallycult"), :class => "btn btn-assine"
+    %span.bold.wine
+      Bem-vindo, CINER!
+  - unless current_user
+    .col-xs-12.tab-content
+      #mensal.tab-pane.active
+        .row
+          .col-xs-offset-2.col-xs-3.promo-item
+            .promo-top
+              %h5.tipo CINER
+            .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+              .col-table-cell
+                .gratis GRÁTIS
+            .vantagem.wine.text-center.bold VANTAGENS
+            .vantagens
+              %span . Criar perfil com foto
+              %span . Avaliar filmes e séries
+              %span . Comentar filmes e séries
+              %span . Participar no Debate Ciner (Fórum)
+              %span . Acessar as críticas da Equipe CINER e críticas dos usuários
+              %span . Assistir aos Ciner Vídeos
+              %span . Participar de promoções do site
+            .vantagem.wine.text-center.bold DIFERENCIAIS CINER
+            .vantagens-extra
+              %span . Cadastrar currículo profissional
+              %span . Enviar críticas de filmes e séries
+              %span . Coleção virtual de DVD/Blu-ray
+            .assine{ data: { choose_plan: '', plan: 'Ciner' } }
+              .btn.btn-assine
+                = chosen_plan == 'classic' ? 'Escolhido' : 'SEJA CINER'
+          .col-xs-offset-1.col-xs-3.promo-item
+            .promo-top
+              %h5.tipo CINER CULT
+            .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+              .col-table-cell
+                .gratis EM BREVE
+            .vantagem.wine.text-center.bold VANTAGENS
+            .vantagens
+              %span . Criar perfil com foto
+              %span . Avaliar filmes e séries
+              %span . Comentar filmes e séries
+              %span . Participar no Debate Ciner (Fórum)
+              %span . Acessar as críticas da Equipe CINER e críticas dos usuários
+              %span . Assistir aos Ciner Vídeos
+              %span . Participar de promoções do site
+            .vantagem.wine.text-center.bold DIFERENCIAIS CINER
+            .vantagens-extra
+              %span . Cadastrar currículo profissional
+              %span . Enviar críticas de filmes e séries
+              %span . Coleção virtual de DVD/Blu-ray
+              / %span . Participar de promoções exclusivas
+              / %span . Upload de vídeos cinematográficos ilimitados
+              %span . Em breve
+              %span . Em breve
+            / .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
+            /   .btn.btn-assine
+            /     = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
+            .assine
+              .btn.btn-assine
+                EM BREVE

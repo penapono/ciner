@@ -3,8 +3,8 @@
 class Professional < ActiveRecord::Base
   include Searchables::Professional
 
-  TMDB_API_KEY = "8802a6c6583ac6edc44bea8d577baa97".freeze
-  BASE_URL = "https://api.themoviedb.org/3/person".freeze
+  TMDB_API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
+  BASE_URL = "https://api.themoviedb.org/3/person"
 
   # Associations
   belongs_to :user
@@ -45,10 +45,10 @@ class Professional < ActiveRecord::Base
 
   def set_functions_by_occurrence
     ordered_set_functions = FilmableProfessional
-      .where(professional_id: id)
-      .group(:set_function_id).distinct.count(:filmable_id)
-      .sort_by { |_k, value| value }
-      .reverse.to_h
+                            .where(professional_id: id)
+                            .group(:set_function_id).distinct.count(:filmable_id)
+                            .sort_by { |_k, value| value }
+                            .reverse.to_h
 
     ordered_set_functions.keys
   end

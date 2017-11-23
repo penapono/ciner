@@ -14,11 +14,4 @@
       .col-xs-3
         = f.input :box, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Faz parte de box?', selected: params.fetch(:filter, {}).fetch(:box, '')
       .col-xs-3
-        = f.input :gift, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Foi presente?', selected: params.fetch(:filter, {}).fetch(:gift, '')
-    .row
-      .col-xs-3
-        = f.input :price, label: false, input_html: { class: 'form-field', data: { dynamic_input: '' } }, value: params.fetch(:filter, {}).fetch(:price, ''), placeholder: 'Preço até'
-      .col-xs-3
-        = f.input :bought, label: false, input_html: { class: 'datepicker form-field', data: { dynamic_input: '' } }, value: params.fetch(:filter, {}).fetch(:bought, ''), placeholder: 'Data da Compra até'
-      .col-xs-offset-3.col-xs-3
         = f.input :order, label: false, collection: [["Posição", :position], ["Alfabética", :alphabet], ["Ano Mais Recente", :newly], ["Ano Mais Antigo", :oldly], ["Compras Recentes", :newly_bought], ["Compras Antigas", :oldly_bought], ["Maior Valor", :expensive], ["Menor Valor", :cheap]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar Por', selected: params.fetch(:filter, {}).fetch(:order, '')
