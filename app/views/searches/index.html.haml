@@ -184,7 +184,7 @@
           .media-heading.title-section
             Agenda do Cinema
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :broadcasts, :query], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :events, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if events.any?

@@ -1,0 +1,24 @@
+- role = current_role(current_user, request.url)
+
+.container.content
+  .row{ style: 'padding: 2.5px;' }
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              Filmes
+  .row
+    .col-xs-12
+      .row
+        - @results.each do |object|
+          - cover = image_default_path(object.cover, "movie")
+
+          .col-sm-2.no-shelf{ style: 'margin-bottom: 0px; width: 20%;' }
+            = link_to url_for([role, object]) do
+              %img.img-responsive{ src: cover, style: 'width: 200px; height: 300px;' }
+            .title{ style: 'height: 60px; overflow: hidden;'}
+              = link_to url_for([role, object]) do
+                = object.title_str
+              %span
+                = object.filmable_year

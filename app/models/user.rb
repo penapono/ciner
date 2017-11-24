@@ -70,6 +70,7 @@ class User < ActiveRecord::Base
   # Aliases
   alias_attribute :text, :name
   alias_attribute :title_str, :name
+  alias_attribute :cover, :avatar
 
   def self.localized_roles
     roles.map { |k, _w| [human_attribute_name("role.#{k}"), k] }

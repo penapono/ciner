@@ -35,7 +35,7 @@ module ::BaseController
     def index; end
 
     def query
-      resource.class.search(nil, params.fetch(:search, ''))
+      @results = resource.class.search(nil, params.fetch(:search, ''))
     end
 
     def new; end

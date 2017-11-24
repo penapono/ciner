@@ -1,0 +1,30 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+- highlight ||= nil
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#critica"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              = Critic.model_name.human(count: 2)
+
+  = render 'shared/critics/toolbar', path: platform_critics_path
+
+  - if highlight.blank? && critics.blank?
+    = render 'shared/alerts/info', message: t('empty', klass: Critic.model_name.human(count: 2))
+  - else
+    - unless highlight.blank?
+      = render 'shared/critics/highlight_critic', critic: highlight, path: platform_critic_path(highlight)
+
+    .row
+      - critics.each do |critic|
+        = render 'shared/critics/critic', critic: critic, path: platform_critic_path(critic)
