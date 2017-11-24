@@ -55,6 +55,8 @@ class User < ActiveRecord::Base
   # 0: Men, 1: Women, 2: Other
   enum gender: { men: 0, women: 1, other: 2 }
 
+  enum collection_privacy: { global: 0, only_friends: 1, only_me: 2 }
+
   # Delegations
   delegate :name, to: :city, allow_nil: true, prefix: true
   delegate :name, to: :state, allow_nil: true, prefix: true
@@ -70,6 +72,10 @@ class User < ActiveRecord::Base
 
   def self.localized_roles
     roles.map { |k, _w| [human_attribute_name("role.#{k}"), k] }
+  end
+
+  def self.localized_collection_privacies
+    collection_privacies.map { |k, _w| [human_attribute_name("collection_privacy.#{k}"), k] }
   end
 
   def self.localized_genders

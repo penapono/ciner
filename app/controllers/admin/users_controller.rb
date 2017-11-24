@@ -56,7 +56,8 @@ module Admin
         :name, :gender, :nickname, :birthday, :email, :cep, :address,
         :number, :neighbourhood, :city_id, :state_id, :country_id,
         :cpf, :phone, :password, :password_confirmation, :role, :avatar,
-        :biography, :mobile, :complement, :registered_at, :terms_of_use, :age
+        :biography, :mobile, :complement, :registered_at, :terms_of_use, :age,
+        :collection_privacy
       )
     end
 

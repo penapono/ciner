@@ -1,3 +1,7 @@
+- friends = current_user.friends
+- is_friend = friends.pluck(:id).include?(user.id) ? true : false
+- show_collection = user.global? || (user.only_friends? && is_friend)
+
 - size = 20
 
 .section-collection
@@ -8,21 +12,27 @@
           %use{"xlink:href" => "#filme"}
       .media-body.media-middle
         .media-heading.title-section Minha coleção
-      .media-body.text-right.media-middle.see-more
-        = link_to 'ver mais', url_for([role, user, :collection_index])
+      - if show_collection
+        .media-body.text-right.media-middle.see-more
+          = link_to 'ver mais', url_for([role, user, :collection_index])
 
-  - user_collection.first(size).each do |user_filmable|
-    - cover = user_filmable.cover unless user_filmable.cover.url.blank?
-    - object = user_filmable.filmable
-    - cover = object.cover if cover.blank?
-    - cover = image_default_path(cover, "movie")
+  - if show_collection
+    - user_collection.first(size).each do |user_filmable|
+      - cover = user_filmable.cover unless user_filmable.cover.url.blank?
+      - object = user_filmable.filmable
+      - cover = object.cover if cover.blank?
+      - cover = image_default_path(cover, "movie")
 
-    .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
-      %img.img-responsive{ src: cover, style: 'width: 60px; height: 90px;' }
+      .col-md-3.col-sm-6.col-xs-6.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
+        %img.img-responsive{ src: cover, style: 'width: 60px; height: 90px;' }
 
-  - count = size - user_collection.count
-  - if count > 0
-    - count.times do
+    - count = size - user_collection.count
+    - if count > 0
+      - count.times do
+        .col-md-3.col-sm-6.col-xs-6.shelf
+          .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
+  - else
+    - size.times do
       .col-md-3.col-sm-6.col-xs-6.shelf
         .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
 

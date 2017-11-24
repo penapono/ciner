@@ -200,6 +200,10 @@ class Professional < ActiveRecord::Base
     object.save(validate: false)
 
     # load_credits(object)
+  rescue
+    object.lock_updates = true
+
+    object.save(validate: false)
   end
 
   # def load_credits(object)

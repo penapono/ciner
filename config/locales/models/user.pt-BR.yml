@@ -15,6 +15,7 @@ pt-BR:
         role: Atribuição
         cpf: CPF
         address: Endereço
+        collection_privacy: Privacidade da Coleção
         neighbourhood: Bairro
         number: Número
         phone: Telefone
@@ -39,6 +40,10 @@ pt-BR:
         pro: Ciner Pro
         classic: Ciner Clássico
         cult: Ciner Cult
+      user/collection_privacy:
+        global: Visível para todos
+        friends: Visível para amigos
+        only_me: Visível somente para mim
       user/gender:
         men: Masculino
         women: Feminino

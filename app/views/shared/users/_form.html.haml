@@ -76,4 +76,11 @@
     %span.char-counter
       = t('remaining_chars', chars: 350)
 
+%h3
+  Privacidade da Coleção
+
+.row
+  .col-xs-3
+    = f.input :collection_privacy, collection: User.localized_collection_privacies, input_html: { class: 'form-field' }
+
 = render 'shared/users/form_actions', f: f
