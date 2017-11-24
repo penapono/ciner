@@ -296,7 +296,7 @@ class Professional < ActiveRecord::Base
   def update_age
     self.age = 0
     return unless birthday
-    now = deathday.blank? ? Time.now.utc.to_date : deathday
+    now = deathday.blank? ? DateTime.now.to_date : deathday
     self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
   end
 end
