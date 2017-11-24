@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users, controllers: { registrations: 'registrations' }
   root 'logo#index'
+
+  match 'critics/query' => 'critics#query', via: :get
+  match 'events/query' => 'events#query', via: :get
+  match 'questions/query' => 'questions#query', via: :get
+  match 'broadcasts/query' => 'broadcasts#query', via: :get
+  match 'movies/query' => 'movies#query', via: :get
+  match 'series/query' => 'series#query', via: :get
+  match 'curriculums/query' => 'curriculums#query', via: :get
+  match 'professionals/query' => 'professionals#query', via: :get
+  match 'users/query' => 'users#query', via: :get
+
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   # admin: rotas de administração - ciner
   # platform: rotas da plataforma - público
@@ -35,14 +46,6 @@ Rails.application.routes.draw do
       put "like", to: "movies#upvote"
       put "dislike", to: "movies#downvote"
       put "user_action", to: "movies#user_action"
-    end
-  end
-
-  resources :ciner_videos, only: [:index, :show] do
-    member do
-      put "like", to: "ciner_videos#upvote"
-      put "dislike", to: "ciner_videos#downvote"
-      put "user_action", to: "ciner_videos#user_action"
     end
   end
 

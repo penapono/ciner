@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'home#index'
 
+    match 'critics/query' => 'critics#query', via: :get
+    match 'events/query' => 'events#query', via: :get
+    match 'questions/query' => 'questions#query', via: :get
+    match 'broadcasts/query' => 'broadcasts#query', via: :get
+    match 'movies/query' => 'movies#query', via: :get
+    match 'series/query' => 'series#query', via: :get
+    match 'curriculums/query' => 'curriculums#query', via: :get
+    match 'professionals/query' => 'professionals#query', via: :get
+    match 'users/query' => 'users#query', via: :get
+
     resources :users do
       resources :collection, only: :index, module: 'users'
       resources :trophies, only: :index, module: 'users'

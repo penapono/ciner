@@ -2,7 +2,17 @@ Rails.application.routes.draw do
   namespace :platform do
     root 'home#index'
 
-    resources :users, only: [:update, :show, :edit] do
+    match 'critics/query' => 'critics#query', via: :get
+    match 'events/query' => 'events#query', via: :get
+    match 'questions/query' => 'questions#query', via: :get
+    match 'broadcasts/query' => 'broadcasts#query', via: :get
+    match 'movies/query' => 'movies#query', via: :get
+    match 'series/query' => 'series#query', via: :get
+    match 'curriculums/query' => 'curriculums#query', via: :get
+    match 'professionals/query' => 'professionals#query', via: :get
+    match 'users/query' => 'users#query', via: :get
+
+    resources :users, only: [:update, :show, :edit, :index] do
       resources :collection, only: :index, module: 'users'
       resources :trophies, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'

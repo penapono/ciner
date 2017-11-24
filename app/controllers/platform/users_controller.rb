@@ -26,6 +26,10 @@ module Platform
 
     private
 
+    def resource
+      user
+    end
+
     def user_params
       params.require(:user).permit(
         :name, :gender, :nickname, :birthday, :email, :cep, :address,

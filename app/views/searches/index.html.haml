@@ -16,7 +16,7 @@
           .media-heading.title-section
             Filmes
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :movies], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :movies, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if movies.any?
@@ -44,7 +44,7 @@
           .media-heading.title-section
             Séries
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :series_index], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :series, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if series.any?
@@ -72,7 +72,7 @@
           .media-heading.title-section
             Celebridades
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :professionals], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :professionals, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if professionals.any?
@@ -98,9 +98,37 @@
             %use{"xlink:href" => "#perfil"}
         .media-body.media-bottom
           .media-heading.title-section
+            Usuários
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :users, :query], params: { search: params[:search] }) do
+            = t('see_more')
+
+- if users.any?
+  - users.each do |object|
+    .row
+      .col-xs-1
+        - cover = image_default_path(object.avatar, "movie")
+        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+      .col-xs-11
+        = link_to url_for([role, object]) do
+          =  object.title_str
+- else
+  .row
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria.
+
+.row.searchbar
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
+            %use{"xlink:href" => "#perfil"}
+        .media-body.media-bottom
+          .media-heading.title-section
             Profissionais
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :curriculums], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :curriculums, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if curriculums.any?
@@ -128,7 +156,7 @@
           .media-heading.title-section
             Críticas
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :critics], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :critics, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if critics.any?
@@ -156,7 +184,7 @@
           .media-heading.title-section
             Agenda do Cinema
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :broadcasts], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :broadcasts, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if events.any?
@@ -184,7 +212,7 @@
           .media-heading.title-section
             Notícias
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :broadcasts], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :broadcasts, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if broadcasts.any?
@@ -212,7 +240,7 @@
           .media-heading.title-section
             Debate Ciner
         .media-body.text-right.media-middle.see-more
-          = link_to polymorphic_path([role, :questions], params: { search: params[:search] }) do
+          = link_to polymorphic_path([role, :questions, :query], params: { search: params[:search] }) do
             = t('see_more')
 
 - if questions.any?
