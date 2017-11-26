@@ -3,10 +3,9 @@
 .container
   = render 'shared/broadcasts/toolbar'
 
-.container.noticias-destaques
+.container
   .row
     .col-xs-12
-      .title-separator
       .row
         - broadcasts.first(2).each do |object|
           - if role
