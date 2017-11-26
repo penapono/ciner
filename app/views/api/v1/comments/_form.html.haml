@@ -3,7 +3,10 @@
 - user_id = current_user.id if current_user
 
 = simple_form_for [:api, :v1, comment], remote: true do |f|
-  = f.text_area :content, label: false, input_html: { placeholder: 'Deixe aqui seu comentário', rows: 5 }
+  %div{ data: { limited: '', limit: 1000 } }
+    = f.input :content, as: :string, label: false, input_html: { placeholder: 'Deixe aqui seu comentário', rows: 5 }, maxlength: 1000
+    %span.char-counter
+      = t('remaining_chars', chars: 1000)
 
   = f.hidden_field :user_id, value: user_id
   = f.hidden_field :commentable_id, value: commentable_id
