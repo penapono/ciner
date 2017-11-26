@@ -47,14 +47,6 @@ class UserFilmable < ActiveRecord::Base
     media_str + " - " + version_str
   end
 
-  def self.by_bought(bought)
-    where("bought <= ?", bought)
-  end
-
-  def self.by_price(price)
-    where("price <= ?", price)
-  end
-
   def self.by_gift(gift)
     where(gift: gift)
   end
@@ -72,39 +64,39 @@ class UserFilmable < ActiveRecord::Base
   end
 
   def self.by_alphabet(result)
-    ids = result.pluck(:id)
+    ids = result
 
     hash_result = Hash.new(0)
 
-    ids.each { |v| hash_result[v] = result.find(v).filmable.title }
+    ids.each { |v| hash_result[v] = v.filmable.title }
 
     hash_result = hash_result.sort_by { |_k, v| v }.to_h
 
-    where(id: hash_result.keys)
+    hash_result.keys
   end
 
   def self.by_new_year(result)
-    ids = result.pluck(:id)
+    ids = result
 
     hash_result = Hash.new(0)
 
-    ids.each { |v| hash_result[v] = result.find(v).filmable.filmable_year }
+    ids.each { |v| hash_result[v] = v.filmable.filmable_year }
 
     hash_result = hash_result.sort_by { |_k, v| v }.to_h
 
-    where(id: hash_result.keys)
+    hash_result.keys
   end
 
   def self.by_old_year(result)
-    ids = result.pluck(:id)
+    ids = result
 
     hash_result = Hash.new(0)
 
-    ids.each { |v| hash_result[v] = result.find(v).filmable.filmable_year }
+    ids.each { |v| hash_result[v] = v.filmable.filmable_year }
 
     hash_result = hash_result.sort_by { |_k, v| v }.to_h
 
-    where(id: hash_result.keys.reverse)
+    hash_result.keys.reverse
   end
 
   def self.by_order(result, order)
