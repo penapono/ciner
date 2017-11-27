@@ -15,7 +15,9 @@ class ContactsController < ApplicationController
   def create
     contact = Contact.new(contact_attributes)
     if contact.save
-      ContactMailer.contact_email('pedro.gnaponoceno@gmail.com', contact).deliver
+      ContactMailer
+        .contact_email('pedro.gnaponoceno@gmail.com', contact)
+        .deliver_later
       redirect_to_index_with_success
     else
       render_new_with_error
