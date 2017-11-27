@@ -297,6 +297,11 @@ class Professional < ActiveRecord::Base
     self.age = 0
     return unless birthday
     now = deathday.blank? ? DateTime.now.to_date : deathday
-    self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
+    birthday_current_year = begin
+                              birthday.to_date.change(year: now.year)
+                            rescue
+                              birthday.to_date.change(year: now.year, day: 27)
+                            end
+    self.age = now.year - birthday.year - (birthday_current_year > now ? 1 : 0)
   end
 end
