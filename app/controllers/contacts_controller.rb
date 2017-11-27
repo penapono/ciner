@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
     if contact.save
       ContactMailer
         .contact_email('pedro.gnaponoceno@gmail.com', contact)
-        .deliver_later
+        .deliver_now
       redirect_to_index_with_success
     else
       render_new_with_error

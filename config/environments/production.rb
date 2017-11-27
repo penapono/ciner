@@ -19,10 +19,10 @@ Rails.application.configure do
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
-    :port                 => 465,
+    :port                 => 587,
     :user_name            => 'cinernaponoceno@gmail.com',
     :password             => 'cinerciner2017',
-    :authentication       => 'login',
+    :authentication       => :login,
     :enable_starttls_auto => true
   }
 end
