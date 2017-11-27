@@ -30,3 +30,6 @@ db/*.BACKUP
 .byebug_history
 dump*
 public/system/
+
+# Ignore application configuration
+/config/application.yml

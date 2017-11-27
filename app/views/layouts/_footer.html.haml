@@ -40,7 +40,7 @@
             %li
               = link_to "Anuncie Aqui", url_for([:merchant])
             %li
-              = link_to "Entre em contato", url_for([:contact])
+              = link_to "Entre em contato", url_for([:new, :contact])
       - if current_user && current_user.admin?
         .col-xs-12.col-md-3
           .sitemap

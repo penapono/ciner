@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    models:
+      contact:
+        one: Contato
+        other: Contatos
+
+    attributes:
+      contact:
+        name: Nome
+        email: "E-mail"
+        subject: Assunto
+      contact/subject:
+        compliment: Elogio
+        suggestion: Sugestão
+        complaint: Reclamação
+        financial: Financeiro
+        other: Outro
+    errors:
+      models:
+        contact:
+          attributes:
+            name:
+              blank: "%{attribute} deve ser preenchido"

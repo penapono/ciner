@@ -1,0 +1,30 @@
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %i.fa.fa-id-card-o.fa-2x.wine
+          .media-body.media-bottom
+            .media-heading.title-section Entre em contato
+
+  .row
+    .col-xs-12
+      = simple_form_for [contact] do |f|
+        .row
+          .col-xs-12.col-sm-4
+            = f.input :name, placeholder: 'Nome', label: false
+          .col-xs-12.col-sm-4
+            = f.input :email, placeholder: 'E-mail', label: false
+          .col-xs-12.col-sm-4
+            = f.input :subject, collection: Contact.localized_detailed_subjects, label: false
+
+        .row
+          .col-xs-12
+            = f.input :message, as: :string, placeholder: 'Mensagem', rows: 4, label: false
+
+        .row
+          .col-xs-4.pull-right
+            = f.button :submit, "Enviar"
+
+

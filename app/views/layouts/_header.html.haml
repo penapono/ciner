@@ -16,7 +16,7 @@
           = link_to 'Anuncie aqui', url_for([:merchant])
           %span{ style: 'margin-right: 5px; margin-left: 5px;'}
             \|
-          = link_to 'Entre em contato', url_for([:contact])
+          = link_to 'Entre em contato', url_for([:new, :contact])
         .col-xs-12.col-sm-1.col-md-2.social.pull-right
           / = link_to url_for([role, :notifications]) do
           /   %i.fa.fa-film{ style: 'color: white; font-size: 18px; margin-left: -155px' }

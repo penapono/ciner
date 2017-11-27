@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   get '/privacy', to: 'privacies#index'
   get '/mission', to: 'missions#index'
   get '/merchant', to: 'merchants#index'
-  get '/contact', to: 'contacts#index'
+
+  resources :contacts
 
   resources :critics, only: [:index, :show]
   resources :events, only: [:index, :show]

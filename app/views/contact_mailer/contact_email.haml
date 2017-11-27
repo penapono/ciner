@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Olá Equipe Ciner
+    %p
+      O usuário
+      %b
+        = @contact.name
+      entrou em contato por motivo de
+      %b
+        = @contact.subject_str
+      e deixou a seguinte mensagem:
+    %p
+      %i
+        = @contact.message

@@ -82,6 +82,8 @@ gem 'cpf_faker'
 # cron
 gem 'whenever'
 
+gem 'figaro'
+
 group :production do
   gem 'passenger'
 end
