@@ -14,7 +14,7 @@ class UserFilmablesController < ApplicationController
 
   def destroy
     user_filmable.destroy
-    redirect_to :back
+    redirect_back fallback_location: root_path
   end
 
   def new
@@ -25,7 +25,7 @@ class UserFilmablesController < ApplicationController
   end
 
   def redirect_to_index_with_success
-    redirect_to :back
+    redirect_back fallback_location: root_path
   end
 
   def resource
