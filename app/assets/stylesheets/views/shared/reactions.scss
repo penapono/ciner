@@ -1,6 +1,7 @@
 @import 'base/colors';
 
-.reactionable {
+.reactionable,
+.delatable {
   margin-right: 15px;
   color: $pink;
   font-size: 16px;

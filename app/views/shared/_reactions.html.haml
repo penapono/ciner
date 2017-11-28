@@ -18,6 +18,9 @@
             = resource.dislikes_count
           %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
 
+        %div.delatable{ data: { delate: '', url: dislike_path } }
+          %i.fa.fa-ban
+
   - else
     .row{ title: t('unauthorized.login_for_reactions'), data: { tipsy: '' } }
       .col-xs-12
