@@ -21,6 +21,35 @@ function Reactions() {
 
       _react(parent, url);
     });
+
+    $(dataReactions).on('click', '[data-delate]', function() {
+      var self = $(this),
+          parent = self.closest('[data-reactions]'),
+          url = self.data("url"),
+          location = document.URL,
+          userId = self.data("user-id"),
+          data = {
+            delate: {
+              location: location,
+              user_id: userId
+            }
+          }
+
+      _delate(parent, url, data);
+    });
+  }
+
+  function _delate(aParent, aUrl, aData) {
+    $.ajax({
+      type: 'POST',
+      dataType: 'JSON',
+      url: aUrl,
+      data: aData,
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      success: function(data) {
+        alert("Equipe Ciner reagiu à sua Denúncia: 'Agradecemos sua ajuda. Que a força esteja com você.'");
+      }
+    });
   }
 
   function _react(aParent, aUrl) {

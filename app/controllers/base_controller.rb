@@ -234,6 +234,14 @@ module ::BaseController
       resource.update_attribute("dislikes_count", resource.dislikes_count)
     end
 
+    def render_json_success
+      render json: { status: 'ok' }
+    end
+
+    def render_json_error
+      render json: { status: 'error' }
+    end
+
     def render_json_result(loaded_resource, result)
       if result
         render json: { status: 'success',

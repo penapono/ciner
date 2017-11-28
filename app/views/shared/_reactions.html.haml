@@ -1,4 +1,5 @@
 - like_path ||= nil
+- current_url = request.original_url
 
 #reactions
   - content_for :stylesheet, stylesheet_link_tag('views/shared/reactions')
@@ -18,7 +19,7 @@
             = resource.dislikes_count
           %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
 
-        %div.delatable{ data: { delate: '', url: dislike_path } }
+        %div.delatable{ data: { delate: '', url: "/delates", user_id: current_user.id } }
           %i.fa.fa-ban
 
   - else

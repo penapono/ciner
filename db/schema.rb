@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127025830) do
+ActiveRecord::Schema.define(version: 20171128143716) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -277,6 +277,15 @@ ActiveRecord::Schema.define(version: 20171127025830) do
     t.bigint "curriculum_function_id"
     t.index ["curriculum_function_id"], name: "index_curriculums_on_curriculum_function_id"
     t.index ["user_id"], name: "index_curriculums_on_user_id"
+  end
+
+  create_table "delates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "location"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_delates_on_user_id"
   end
 
   create_table "event_images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
