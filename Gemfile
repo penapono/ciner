@@ -84,6 +84,8 @@ gem 'whenever'
 
 gem 'figaro'
 
+gem 'toastr-rails'
+
 group :production do
   gem 'passenger'
 end

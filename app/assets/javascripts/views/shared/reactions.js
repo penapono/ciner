@@ -47,7 +47,7 @@ function Reactions() {
       data: aData,
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: function(data) {
-        alert("Equipe Ciner reagiu à sua Denúncia: 'Agradecemos sua ajuda. Que a força esteja com você.'");
+        toastr.info("Agradecemos pela denúncia! Assim, você ajuda a tornar o Ciner melhor!");
       }
     });
   }

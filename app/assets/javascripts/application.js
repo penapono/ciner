@@ -13,4 +13,5 @@
 //= require social-share-button
 //= require jquery-fileupload
 //= require jquery.remotipart
+//= require toastr
 //= require_tree .
