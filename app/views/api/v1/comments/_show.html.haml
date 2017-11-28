@@ -18,7 +18,7 @@
       .bold.wine
         = comment.spoiler_str if comment.spoiler
       .texto
-        = comment.content
+        = comment.content.gsub(/\n/, '<br/>').html_safe
 
       %br
 
