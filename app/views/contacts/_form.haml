@@ -17,11 +17,14 @@
           .col-xs-12.col-sm-4
             = f.input :email, placeholder: 'E-mail', label: false
           .col-xs-12.col-sm-4
-            = f.input :subject, collection: Contact.localized_detailed_subjects, label: false
+            = f.input :subject, collection: Contact.localized_detailed_subjects, label: false, include_blank: 'Motivo do Contato'
 
         .row
-          .col-xs-12
-            = f.input :message, as: :string, placeholder: 'Mensagem', rows: 4, label: false
+          .col-xs-12{ data: { limited: '', limit: 1000 } }
+            %div{ data: { limited: '', limit: 1000 } }
+              = f.input :message, as: :text, label: false, input_html: { placeholder: 'Deixe aqui sua mensagem', rows: 5 }, maxlength: 1000
+              %span.char-counter
+                = t('remaining_chars', chars: 1000)
 
         .row
           .col-xs-4.pull-right
