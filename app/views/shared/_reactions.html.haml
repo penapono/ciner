@@ -4,23 +4,22 @@
 #reactions
   - content_for :stylesheet, stylesheet_link_tag('views/shared/reactions')
   - user = current_user || nil
-  - clickable_class = user ? 'clickable' : ''
 
   - if user
     .row
       .col-xs-12{ data: { reactions: '' } }
-        %div.reactionable{ class: clickable_class, data: { vote: '', url: like_path } }
+        %div.reactionable.clickable{ data: { vote: '', url: like_path } }
           %span{ data: { like_counter: '' } }
             = resource.likes_count
           %i.fa{ class: resource.like_icon_class(user), data: { like_icon: '' } }
 
-        %div.reactionable{ class: clickable_class, data: { vote: '', url: dislike_path } }
+        %div.reactionable.clickable{ data: { vote: '', url: dislike_path } }
           %span{ data: { dislike_counter: '' } }
             = resource.dislikes_count
           %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
 
-        %div.delatable{ data: { delate: '', url: "/delates", user_id: current_user.id } }
-          %i.fa.fa-ban
+        %div.delatable.clickable{ data: { delate: '', url: "/delates", user_id: user.id } }
+          %i.fa.fa-ban{ title: 'Denunciar' }
 
   - else
     .row{ title: t('unauthorized.login_for_reactions'), data: { tipsy: '' } }
@@ -34,3 +33,6 @@
           %span
             = resource.dislikes_count
           %i.fa.fa-thumbs-o-down
+
+        %div.delatable
+          %i.fa.fa-ban{ title: 'Denunciar' }
