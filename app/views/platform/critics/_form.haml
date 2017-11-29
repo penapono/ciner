@@ -5,19 +5,30 @@
   - rating = f.object.rating || 0
 
   %h3
-    = t('.general')
+    - filmable_type = params[:filmable_type]
+    - filmable_class = filmable_type.constantize
+    - filmable_id = params[:filmable_id]
+    - filmable = filmable_class.find(filmable_id) rescue Movie.first
+    = filmable.title_str
 
   .row
     .col-xs-12.col-sm-9
-      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+      - if current_user.admin?
+        = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+      - else
+        %div{ data: { limited: '', limit: 10000 } }
+          = f.input :content, as: :text, input_html: { rows: 5 }, maxlength: 10000
+          %span.char-counter
+            = t('remaining_chars', chars: 10000)
 
     .col-xs-4.col-sm-3
-      = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
-      = checkbox_item(f, :spoiler)
+      %div
+        = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
+        = checkbox_item(f, :spoiler)
 
   = f.hidden_field :filmable_type, value: params[:filmable_type] || 'Movie'
   = f.hidden_field :filmable_id, value: params[:filmable_id] || nil
   = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :status, value: (user.admin? ? 2 : 1)
+  = f.hidden_field :status, value: (current_user.admin? ? 2 : 1)
 
   = render 'shared/form_actions', f: f

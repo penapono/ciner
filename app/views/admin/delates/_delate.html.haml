@@ -1,0 +1,13 @@
+- role = current_role(current_user, request.url)
+
+.row.notification-box
+  .col-xs-1
+    = link_to url_for([role, delate.user]), target: "_blank" do
+      - avatar = image_default_path(delate.user.avatar, "user")
+      %img.img-responsive{ src: avatar, style: 'width: 65px; height: 65px;' }
+  .col-xs-2
+    = link_to url_for([role, delate.user]), target: "_blank" do
+      = delate.user_name
+  .col-xs-9
+    = link_to 'página denunciada', delate.location, target: "_blank"
+

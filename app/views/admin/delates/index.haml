@@ -1,0 +1,9 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+.container
+  = render 'shared/breadcrumbs'
+
+  - unless delates.blank?
+    - delates.each do |delate|
+      = render 'admin/delates/delate', delate: delate

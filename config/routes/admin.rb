@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :film_production_categories
     resources :featured_filmables, only: :index
     resources :playing_filmables, only: :index
+    resources :delates
 
     resources :movies do
       member do

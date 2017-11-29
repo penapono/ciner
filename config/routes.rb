@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   resources :notifications, except: [:show]
   resources :playing_filmables, only: :index
   resources :searches, only: :index
-  resources :delates, only: [:index, :create, :update]
+  resources :delates, only: :create
 
   resources :movies, only: [:index, :show] do
     member do

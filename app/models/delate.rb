@@ -6,7 +6,14 @@ class Delate < ActiveRecord::Base
             :user_id,
             presence: true
 
+  # Associations
+  belongs_to :user
+
+  # Enums
   enum status: { unread: 0, read: 1, answered: 2 }
+
+  # Delegate
+  delegate :name, to: :user, allow_nil: true, prefix: true
 
   def subject_str
     Delate.human_attribute_name("subject.#{subject}")
