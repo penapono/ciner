@@ -20,25 +20,46 @@ class NotificationsController < ApplicationController
 
   def type_based_create(params)
     notification_type = params[:notification_type]
-    notification_sender_id = params[:sender_id]
+    notification_sender_id = params[:sender_id] || :system
     notification_receiver_id = params[:receiver_id]
 
-    on_create_friend_request(notification_sender_id, notification_receiver_id) if notification_type == 'create_friend_request'
+    if notification_type == 'delate_ok'
+      on_create_delate_checked(notification_sender_id, notification_receiver_id)
+    end
 
-    on_cancel_friend_request(notification_sender_id, notification_receiver_id) if notification_type == 'cancel_friend_request'
+    if notification_type == 'create_friend_request'
+      on_create_friend_request(notification_sender_id, notification_receiver_id)
+   end
 
-    on_accept_friend_request(notification_sender_id, notification_receiver_id) if notification_type == 'accept_friend_request'
+    if notification_type == 'cancel_friend_request'
+      on_cancel_friend_request(notification_sender_id, notification_receiver_id)
+   end
 
-    on_decline_friend_request(notification_sender_id, notification_receiver_id) if notification_type == 'decline_friend_request'
+    if notification_type == 'accept_friend_request'
+      on_accept_friend_request(notification_sender_id, notification_receiver_id)
+   end
 
-    on_remove_friend(notification_sender_id, notification_receiver_id) if notification_type == 'remove_friend'
+    if notification_type == 'decline_friend_request'
+      on_decline_friend_request(notification_sender_id, notification_receiver_id)
+   end
+
+    if notification_type == 'remove_friend'
+      on_remove_friend(notification_sender_id, notification_receiver_id)
+   end
+  end
+
+  # Delate ok
+  def on_create_delate_checked(_sender_id, receiver_id)
+    notification = Notification.create(receiver_id: receiver_id, notification_type: :delate_ok, answer: :no_answer)
+    render json: { status: 'ok' } if notification.save
   end
 
   # Friendship
   def on_create_friend_request(sender_id, receiver_id)
     notification_sender = User.find(sender_id)
 
-    if Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request, answer: :waiting)
+    notification = Notification.new(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request, answer: :waiting)
+    if notification.save
       render json: { text: 'Aguardando',
                      next_action: 'cancel_friend_request' }
     end

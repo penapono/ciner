@@ -14,6 +14,7 @@ class Delate < ActiveRecord::Base
 
   # Delegate
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :cover, to: :user, allow_nil: true, prefix: true
 
   def subject_str
     Delate.human_attribute_name("subject.#{subject}")
@@ -25,5 +26,9 @@ class Delate < ActiveRecord::Base
 
   def self.localized_detailed_subjects
     subjects.keys.map { |w| [human_attribute_name("subject.#{w}"), w] }
+  end
+
+  def created_at_str
+    (I18n.l created_at, format: :short)
   end
 end
