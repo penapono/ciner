@@ -17,6 +17,6 @@ class Api::V1::SeriesController < ApplicationController
   end
 
   def resources
-    Serie.where("original_title = '#{fetch_term}' OR title = '#{fetch_term}'").limit(LIMIT)
+    Serie.where(original_title: fetch_term).limit(LIMIT) + Serie.where(title: fetch_term).limit(LIMIT)
   end
 end
