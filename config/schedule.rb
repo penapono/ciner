@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.hour do
-  rake 'professionals_dates:update'
+  rake 'movie_sync:update'
 end
