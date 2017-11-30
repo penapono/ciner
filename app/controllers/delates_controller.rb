@@ -10,7 +10,16 @@ class DelatesController < ApplicationController
 
   def create
     delate = Delate.new(delate_attributes)
+    delate.status = :unread
     if delate.save
+      render_json_success
+    else
+      render_json_error
+    end
+  end
+
+  def update
+    if delate.update(delate_attributes)
       render_json_success
     else
       render_json_error
@@ -32,6 +41,6 @@ class DelatesController < ApplicationController
   end
 
   def delate_attributes
-    params.require(:delate).permit(:location, :user_id)
+    params.require(:delate).permit(:location, :user_id, :status)
   end
 end

@@ -12,7 +12,6 @@
     = link_to 'página denunciada', delate.location, target: "_blank"
   .col-xs-3
     = delate.created_at_str
-  .col-xs-offset-2.col-xs-1.pull-right{ data: { delate_checked: '', user_id: delate.user_id, url: notifications_path } }
-    %i.fa.fa-thumbs-up.delatable.clickable
-
-
+  - unless ids.include? delate.id
+    .col-xs-offset-2.col-xs-1.pull-right{ data: { delate_checked: '', user_id: delate.user_id, url: notifications_path, delate_id: delate.id, delate_url: url_for([delate]) } }
+      %i.fa.fa-thumbs-up.delatable.clickable

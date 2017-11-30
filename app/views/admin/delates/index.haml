@@ -1,9 +1,11 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
 
+- ids = Delate.where(status: 2).pluck(:id)
+
 .container
   = render 'shared/breadcrumbs'
 
   - unless delates.blank?
     - delates.each do |delate|
-      = render 'admin/delates/delate', delate: delate
+      = render 'admin/delates/delate', delate: delate, ids: ids
