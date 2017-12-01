@@ -443,11 +443,12 @@ module Tmdb
       rows.each do |row|
         if row.text.include? "Brazil"
           array = row.text.split("\n").map(&:strip)
+          rejecteds = ["Brazil", "Brazil (complete title)", "Brazil (short title)", "Brazil (festival title)", "Brazil (cable TV title)", "Brazil (theatrical title)", "Brazil (video box title)", "Brazil (closing credits title)", "Brazil (DVD title)", "Brazil (reissue title)", "Brazil (TV title)", "Brazil (alternative spelling)", "Brazil (new title)", "Brazil (video title)", "Brazil (dubbed version)", "Brazil (poster title)", "Brazil (working title)", "Brazil (original subtitled version)", "Brazil (promotional title)", "Brazil (alternative transliteration)", "Brazil (informal title)", "Brazil (DVD box title)", "Brazil (alternative title)", "Brazil (première title)", "Brazil (literal title)", "Brazil (DVD menu title)", "Brazil (informal literal title)", "Brazil (teaser title)", "Brazil (trailer title)", "Brazil (pre-release title)", "Brazil (transliterated ISO-LATIN-1 title)", "Brazil (literal English title)", "Brazil (recut version)", "Brazil (video catalogue title)", "Brazil (English title)", "Brazil (Portuguese title)", "Brazil (video title) (recut version)", "Brazil (3-D version)", "Brazil (orthographically correct title)", "Brazil (subtitle)", "Brazil (premiere title)", "Brazil (long title)", "Brazil (informal alternative title)", "Brazil (video CD title)", "Brazil (copyright title)", "Brazil (cut version)", "Brazil (informal literal English title)", "Brazil (Cannes festival title)", "Brazil (original script title)", "Brazil (second part title)", "Brazil (rerun title)", "Brazil (segment title)"]
           array.delete("")
-          array.delete("Brazil")
-          array.delete("Brazil (alternative title)")
-          array.delete("Brazil (complete title)")
-          array.delete("Brazil (short title)")
+          rejecteds.each do |rejected|
+            array.delete(rejected)
+          end
+
           omdb_brazilian_title = array[0] unless array.empty?
           return omdb_brazilian_title unless omdb_brazilian_title.blank?
         end
