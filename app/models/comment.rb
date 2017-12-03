@@ -23,6 +23,7 @@ class Comment < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :nickname, to: :user, allow_nil: true, prefix: true
 
   # Callbacks
   after_create :update_commentable_comments_count

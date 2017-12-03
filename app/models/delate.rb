@@ -14,6 +14,7 @@ class Delate < ActiveRecord::Base
 
   # Delegate
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :nickname, to: :user, allow_nil: true, prefix: true
   delegate :cover, to: :user, allow_nil: true, prefix: true
 
   def subject_str

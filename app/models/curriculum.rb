@@ -46,6 +46,7 @@ class Curriculum < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :nickname, to: :user, allow_nil: true, prefix: true
   delegate :age, to: :user, allow_nil: true, prefix: true
   delegate :city, to: :user, allow_nil: true, prefix: true
   delegate :state, to: :user, allow_nil: true, prefix: true

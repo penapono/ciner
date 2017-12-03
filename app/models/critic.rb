@@ -25,6 +25,7 @@ class Critic < ActiveRecord::Base
 
   # Delegations
   delegate :name, to: :user, allow_nil: true, prefix: true
+  delegate :nickname, to: :user, allow_nil: true, prefix: true
   delegate :title_str, to: :filmable, allow_nil: true, prefix: true
   delegate :original_title, to: :filmable, allow_nil: true, prefix: true
   delegate :cover, to: :filmable, allow_nil: true, prefix: true

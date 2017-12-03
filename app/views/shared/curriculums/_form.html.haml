@@ -11,7 +11,7 @@
 .row
   .col-xs-6
     = label_tag 'Nome'
-    = text_field_tag :user_name, current_user.name, disabled: true
+    = text_field_tag :user_nickname, current_user.name, disabled: true
 
 .row
   .col-xs-6
@@ -29,10 +29,10 @@
 .row
   .col-xs-3
     = label_tag 'Cidade'
-    = text_field_tag :user_name, current_user.city_name, disabled: true
+    = text_field_tag :user_nickname, current_user.city_name, disabled: true
   .col-xs-3
     = label_tag 'Estado'
-    = text_field_tag :user_name, current_user.state_name, disabled: true
+    = text_field_tag :user_nickname, current_user.state_name, disabled: true
 
 .row
   .col-xs-6

@@ -3,7 +3,7 @@
     = link_to url_for([role, question]), data: { tipsy: '' }, title: question.title do
       = question.title
     %span.author
-      - link = link_to question.user.name.split(' ').first, url_for([role, question.user]), style: 'background-color: transparent; box-sizing: border-box; color: rgb(166, 30, 87); font-family: "Montserrat"; font-size: 14px; font-weight: 200; line-height: 20px; text-decoration: none; text-decoration-color: rgb(166, 30, 87); text-decoration-line: none; text-decoration-style: solid; width: auto; margin-bottom: -6px;'
+      - link = link_to question.user.nickname, url_for([role, question.user]), style: 'background-color: transparent; box-sizing: border-box; color: rgb(166, 30, 87); font-family: "Montserrat"; font-size: 14px; font-weight: 200; line-height: 20px; text-decoration: none; text-decoration-color: rgb(166, 30, 87); text-decoration-line: none; text-decoration-style: solid; width: auto; margin-bottom: -6px;'
       = "Criado por"
       = link
       = "em #{question.date_str}"
@@ -30,7 +30,7 @@
         %span.vermelho
           Último comentário
         = link_to url_for([role, object.user]) do
-          = object.user_name.split(' ').first
+          = object.user_nickname.split(' ').first
         em
         = object.date_str
     - else
@@ -44,6 +44,6 @@
         %span.vermelho
           Criado por
         = link_to url_for([role, object.user]) do
-          = object.user_name.split(' ').first
+          = object.user_nickname.split(' ').first
         em
         = object.date_str
