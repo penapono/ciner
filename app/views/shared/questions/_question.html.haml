@@ -29,7 +29,7 @@
         %span.vermelho
           Último comentário
         = link_to url_for([role, object.user]) do
-          = object.user_nickname.split(' ').first
+          = object.user_nickname
         em
         = object.date_str
     - else
@@ -42,7 +42,7 @@
         %span.vermelho
           Criado por
         = link_to url_for([role, object.user]) do
-          = object.user_nickname.split(' ').first
+          = object.user_nickname
         em
         = object.date_str
   - if current_user && (question.user == current_user || current_user.admin?)
