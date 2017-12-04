@@ -21,6 +21,8 @@ gem 'jquery_mask_rails'
 
 gem 'social-share-button'
 
+gem "paranoia", "~> 2.2"
+
 gem 'streamio-ffmpeg'
 gem 'carrierwave-ffmpeg'
 gem 'jquery-fileupload-rails' #, github: 'Springest/jquery-fileupload-rails'

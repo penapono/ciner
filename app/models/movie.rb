@@ -7,6 +7,9 @@ class Movie < ActiveRecord::Base
   include UserActionable
   include CommentManageable
 
+  # Prevents deleting
+  acts_as_paranoid
+
   # Associations
   belongs_to :age_range
   belongs_to :user

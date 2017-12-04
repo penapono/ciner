@@ -45,7 +45,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.2.0)
+    autoprefixer-rails (7.2.1)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -286,6 +286,8 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     parallel (1.12.0)
+    paranoia (2.4.0)
+      activerecord (>= 4.0, < 5.2)
     parser (2.4.0.2)
       ast (~> 2.3)
     passenger (5.1.12)
@@ -525,6 +527,7 @@ DEPENDENCIES
   mysql2 (= 0.3.20)
   nokogiri
   paperclip
+  paranoia (~> 2.2)
   passenger
   poltergeist
   pry-rails
