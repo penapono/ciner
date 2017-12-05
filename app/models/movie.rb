@@ -14,13 +14,13 @@ class Movie < ActiveRecord::Base
   belongs_to :age_range
   belongs_to :user
 
-  has_many :critics, as: :filmable
-  has_many :broadcast_broadcastables, as: :broadcastable
+  has_many :critics, as: :filmable, dependent: :destroy
+  has_many :broadcast_broadcastables, as: :broadcastable, dependent: :destroy
   has_many :broadcasts, through: :broadcast_broadcastables
-  has_many :filmable_professionals, as: :filmable
+  has_many :filmable_professionals, as: :filmable, dependent: :destroy
   has_many :professionals, through: :filmable_professionals
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   # Uploaders
   mount_uploader :cover, CoverUploader

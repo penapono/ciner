@@ -3,6 +3,8 @@
 class Professional < ActiveRecord::Base
   include Searchables::Professional
 
+  acts_as_paranoid
+
   TMDB_API_KEY = "8802a6c6583ac6edc44bea8d577baa97"
   BASE_URL = "https://api.themoviedb.org/3/person"
 
@@ -13,7 +15,7 @@ class Professional < ActiveRecord::Base
   belongs_to :country
   belongs_to :set_function
 
-  has_many :critics, as: :filmable
+  has_many :critics, as: :filmable, dependent: :destroy
   has_many :broadcast_professionals, dependent: :destroy
   has_many :broadcasts, through: :broadcast_professionals
 

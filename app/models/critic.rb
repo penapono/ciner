@@ -4,6 +4,9 @@ class Critic < ActiveRecord::Base
   include Searchables::Critic
   include Reactionable
 
+  # Prevents deleting
+  acts_as_paranoid
+
   acts_as_votable
 
   # Enums

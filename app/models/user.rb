@@ -3,6 +3,7 @@
 class User < ActiveRecord::Base
   include Searchables::User
 
+  acts_as_paranoid
   acts_as_voter
 
   # Include default devise modules. Others available are:
@@ -18,8 +19,8 @@ class User < ActiveRecord::Base
   belongs_to :state
   belongs_to :country
 
-  has_many :critics
-  has_one :curriculum
+  has_many :critics, dependent: :destroy
+  has_one :curriculum, dependent: :destroy
 
   # Validations
   validates :email,

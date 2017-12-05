@@ -3,6 +3,7 @@
 class Comment < ActiveRecord::Base
   include Reactionable
 
+  acts_as_paranoid
   acts_as_votable
 
   # Enums

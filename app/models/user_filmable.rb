@@ -3,6 +3,8 @@
 class UserFilmable < ActiveRecord::Base
   include Searchables::UserFilmable
 
+  acts_as_paranoid
+
   # Validations
   validates :user,
             :filmable_id,

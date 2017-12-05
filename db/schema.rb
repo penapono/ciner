@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204214000) do
+ActiveRecord::Schema.define(version: 20171205005425) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.integer "broadcast_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_broadcast_broadcastables_on_deleted_at"
   end
 
   create_table "broadcast_images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -61,6 +63,8 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.boolean "movie_content", default: false
     t.boolean "serie_content", default: false
     t.boolean "celebrity_content", default: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_broadcasts_on_deleted_at"
     t.index ["user_id"], name: "index_broadcasts_on_user_id"
   end
 
@@ -138,7 +142,9 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.integer "dislikes_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -174,6 +180,8 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.integer "dislikes_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_critics_on_deleted_at"
     t.index ["filmable_type", "filmable_id"], name: "index_critics_on_filmable_type_and_filmable_id"
     t.index ["user_id"], name: "index_critics_on_user_id"
   end
@@ -327,6 +335,8 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.integer "professional_id"
     t.integer "set_function_id"
     t.text "observation"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_filmable_professionals_on_deleted_at"
     t.index ["filmable_type", "filmable_id"], name: "index_filmable_professionals_on_filmable_type_and_filmable_id"
     t.index ["professional_id"], name: "index_filmable_professionals_on_professional_id"
     t.index ["set_function_id"], name: "index_filmable_professionals_on_set_function_id"
@@ -414,8 +424,10 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.integer "imdb_id"
     t.string "place_of_birth"
     t.boolean "lock_updates", default: false
+    t.datetime "deleted_at"
     t.index ["city_id"], name: "index_professionals_on_city_id"
     t.index ["country_id"], name: "index_professionals_on_country_id"
+    t.index ["deleted_at"], name: "index_professionals_on_deleted_at"
     t.index ["state_id"], name: "index_professionals_on_state_id"
   end
 
@@ -602,6 +614,8 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.string "cover"
     t.boolean "box", default: false
     t.string "box_title"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_user_filmables_on_deleted_at"
     t.index ["filmable_type", "filmable_id"], name: "index_user_filmables_on_filmable_type_and_filmable_id"
     t.index ["user_id"], name: "index_user_filmables_on_user_id"
   end
@@ -642,8 +656,10 @@ ActiveRecord::Schema.define(version: 20171204214000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "collection_privacy", default: 0
+    t.datetime "deleted_at"
     t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["country_id"], name: "index_users_on_country_id"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["state_id"], name: "index_users_on_state_id"

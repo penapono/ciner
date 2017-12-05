@@ -6,13 +6,14 @@ class Broadcast < ActiveRecord::Base
   include CommentManageable
   include Visitable
 
+  acts_as_paranoid
   acts_as_votable
 
   # Uploaders
   mount_uploader :cover, BroadcastCoverUploader
 
   # Associations
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :broadcast_images, dependent: :destroy
   has_many :broadcast_professionals, dependent: :destroy
   has_many :broadcast_broadcastables, dependent: :destroy

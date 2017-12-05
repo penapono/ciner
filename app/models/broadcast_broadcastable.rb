@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BroadcastBroadcastable < ActiveRecord::Base
+  acts_as_paranoid
+
   # Associations
   belongs_to :broadcastable, polymorphic: true
 
