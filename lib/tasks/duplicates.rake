@@ -16,9 +16,12 @@ namespace :duplicates do
 
       movie_comparatives = movie_comparatives.sort_by { |_k, v| v }.to_h
 
-      movie_comparatives.keys[1..movie_comparatives.count-1].each do |movie_destroy|
-        puts "Destroying ##{movie_destroy.id} #{movie_destroy.original_title}"
-        movie_destroy.destroy
+      movies_to_destroy = movie_comparatives.keys[1..movie_comparatives.count-1]
+      unless movies_to_destroy.blank?
+        movies_to_destroy.each do |movie_destroy|
+          puts "Destroying ##{movie_destroy.id} #{movie_destroy.original_title}"
+          movie_destroy.destroy
+        end
       end
     end
   end
