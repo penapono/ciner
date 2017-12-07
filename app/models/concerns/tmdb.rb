@@ -195,30 +195,15 @@ module Tmdb
 
         omdb_country = response["Country"]
 
-        object.lock_updates = true
+        load_professionals(object, tmdb_id)
 
-        object.save(validate: false)
-
-      end
-
-      tmdb_id = object.tmdb_id
-
-      unless object.lock_updates?
-        if tmdb_id.blank?
-          tmdb_result = start_tmdb(object)
-          tmdb_id = tmdb_result["id"] if tmdb_result
-          object.tmdb_id = tmdb_id
-        end
-
-        unless tmdb_id.blank?
-          load_professionals(object, tmdb_id)
-
-          load_seasons(object, tmdb_id) if is_serie?(object)
-        end
+        load_seasons(object, tmdb_id) if is_serie?(object)
 
         object.lock_updates = true
 
+
         object.save(validate: false)
+
       end
     rescue
     end
