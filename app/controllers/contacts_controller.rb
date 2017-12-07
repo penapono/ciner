@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     contact = Contact.new(contact_attributes)
     if contact.save
       ContactMailer
-        .contact_email('pedro.gnaponoceno@gmail.com', contact)
+        .contact_email('sejaciner@gmail.com', contact)
         .deliver_now
       redirect_to_index_with_success
     else
