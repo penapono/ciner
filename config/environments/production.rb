@@ -24,7 +24,7 @@ Rails.application.configure do
       :address => "smtp.gmail.com",
       :port => 587,
       :authentication => :plain,
-      :user_name => 'cinernaponoceno@gmail.com',
+      :user_name => 'sejaciner@gmail.com',
       :password => 'cinerciner2017'
   }
 
