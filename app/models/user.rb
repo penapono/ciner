@@ -33,14 +33,6 @@ class User < ActiveRecord::Base
             :terms_of_use,
             presence: true
 
-  validates :cep,
-            :address,
-            :number,
-            :neighbourhood,
-            :state_id,
-            :city_id,
-            presence: true, unless: :free?
-
   validates_uniqueness_of :nickname, :email, :cpf
 
   validates_presence_of :password_confirmation, on: :create
