@@ -85,6 +85,10 @@ class User < ActiveRecord::Base
     genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end
 
+  def create_trophies
+    Notification.create(sender_id: nil, receiver_id: self.id, notification_type: :trophy, answer: :no_answer)
+  end
+
   def friends
     ids = []
     Notification.where(sender_id: id, notification_type: :friend_request, answer: :approved).pluck(:receiver_id).each do |friend_id|

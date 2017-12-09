@@ -53,24 +53,17 @@ function UserFilmables() {
             filmable_type: filmable_type
           }
 
-      if (!self.data('unlocked')) {
-        $('#collectionLockedModal').modal('show');
-      }
-      else {
-        // $('#collectionModal').modal('show');
-
-        $.ajax({
-          type: 'GET',
-          dataType: 'html',
-          url: url,
-          data: data,
-          success: function(data) {
-            $('#collectionModal .modal-dialog').html(data);
-            $('#collectionModal input.datepicker').mask('99/99/9999');
-            $('#collectionModal').modal('show');
-          }
-        });
-      }
+      $.ajax({
+        type: 'GET',
+        dataType: 'html',
+        url: url,
+        data: data,
+        success: function(data) {
+          $('#collectionModal .modal-dialog').html(data);
+          $('#collectionModal input.datepicker').mask('99/99/9999');
+          $('#collectionModal').modal('show');
+        }
+      });
     });
 
     $('#collectionModal').on('click', '[data-collect]', function() {
@@ -96,7 +89,6 @@ function UserFilmables() {
           observation = parentModal.find('#observation').val(),
           box = parentModal.find("#box").prop('checked'),
           box_title = parentModal.find('#box_title').val(),
-
           data = {
             user_id: user_id,
             filmable_id: filmable_id,

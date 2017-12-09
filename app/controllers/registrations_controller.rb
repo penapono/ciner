@@ -23,6 +23,9 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     @accepted = (params[:user][:terms_of_use] == "1")
     if verify_recaptcha(model: @user)
+      SignupMailer
+        .contact_email(@user.email)
+        .deliver_now
       super
     else
       render :new

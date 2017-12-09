@@ -25,7 +25,6 @@ module Admin
     end
 
     def show
-      self.user = current_user
     end
 
     private

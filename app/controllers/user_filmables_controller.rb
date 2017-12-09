@@ -24,6 +24,15 @@ class UserFilmablesController < ApplicationController
     super
   end
 
+  def create
+    if created?
+      current_user.create_trophies
+      redirect_to_index_with_success
+    else
+      render_new_with_error
+    end
+  end
+
   def redirect_to_index_with_success
     redirect_back fallback_location: root_path
   end
