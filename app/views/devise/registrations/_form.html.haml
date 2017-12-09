@@ -4,6 +4,8 @@
   %span
     Os campos sinalizados com * são de preenchimento obrigatório
 
+  = resource.errors.to_s
+
   .row
     .col-xs-6
       = f.input :name, required: true, autofocus: true

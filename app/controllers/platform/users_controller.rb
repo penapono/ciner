@@ -16,10 +16,11 @@ module Platform
 
     def update
       if user.update(user_params)
-        flash.notice = t('.success')
+        AccountUpdateMailer
+          .account_update_mail(user.email)
+          .deliver_now
         redirect_to action: :show
       else
-        flash.alert = t('.failure')
         render :edit
       end
     end

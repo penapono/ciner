@@ -201,7 +201,6 @@ module Tmdb
 
         object.lock_updates = true
 
-
         object.save(validate: false)
 
       end

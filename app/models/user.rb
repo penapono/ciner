@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def create_trophies
-    Notification.create(sender_id: nil, receiver_id: self.id, notification_type: :trophy, answer: :no_answer)
+    Notification.create(sender_id: nil, receiver_id: id, notification_type: :trophy, answer: :no_answer)
   end
 
   def friends

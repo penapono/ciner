@@ -24,8 +24,7 @@ module Admin
       self.users = paginated_users
     end
 
-    def show
-    end
+    def show; end
 
     private
 
