@@ -10,16 +10,16 @@ module Platform
     expose(:critics) { user.critics }
     expose(:user_collection) { user.user_collection }
 
-    def show; end
-
-    def edit; end
-
     def update
       if user.update(user_params)
-        AccountUpdateMailer
-          .account_update_mail(user.email)
-          .deliver_now
-        redirect_to action: :show
+        if params[:user][:avatar].present?
+          render :crop
+        else
+          AccountUpdateMailer
+            .account_update_mail(user.email)
+            .deliver_now
+          redirect_to action: :show
+        end
       else
         render :edit
       end
@@ -37,7 +37,7 @@ module Platform
         :number, :neighbourhood, :city_id, :state_id, :country_id,
         :cpf, :phone, :password, :password_confirmation, :role, :avatar,
         :biography, :mobile, :complement, :registered_at, :terms_of_use, :age,
-        :collection_privacy
+        :collection_privacy, :crop_x, :crop_y, :crop_w, :crop_h
       )
     end
   end

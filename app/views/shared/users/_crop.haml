@@ -1,0 +1,13 @@
+- content_for :javascript, javascript_include_tag("views/shared/users/crop")
+- role = current_role(current_user, request.url)
+
+%h1 Crop Avatar
+= image_tag user.avatar_url(:large), id: "cropbox"
+%h4 Preview
+%div{:style => "width:100px; height:100px; overflow:hidden"}
+  = image_tag user.avatar.url(:large), :id => "preview"
+= form_for [role, user] do |f|
+  - %w[x y w h].each do |attribute|
+    = f.hidden_field "crop_#{attribute}"
+  .actions
+    = f.submit "Crop"

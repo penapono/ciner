@@ -3,7 +3,7 @@
 - currriculum = current_user.curriculum
 - curriculum ||= nil
 
-- avatar = image_default_path(user.avatar, "user")
+- avatar = image_default_path(user.avatar.thumb, "user")
 
 - friends = user.friends
 

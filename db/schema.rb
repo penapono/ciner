@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210234039) do
+ActiveRecord::Schema.define(version: 20171211020419) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -668,6 +668,10 @@ ActiveRecord::Schema.define(version: 20171210234039) do
     t.datetime "updated_at", null: false
     t.integer "collection_privacy", default: 0
     t.datetime "deleted_at"
+    t.integer "crop_x"
+    t.integer "crop_y"
+    t.integer "crop_w"
+    t.integer "crop_h"
     t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
