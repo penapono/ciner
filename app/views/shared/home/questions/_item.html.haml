@@ -22,7 +22,7 @@
     - if question.last_comment
       - object = question.last_comment
       = link_to url_for([role, object.user]) do
-        - avatar = image_default_path(object.user.avatar, "user")
+        - avatar = image_default_path(object.user.avatar.thumb, "user")
         .thumb-user
           %figure
             %img.img-responsive{ src: avatar }
@@ -36,7 +36,7 @@
     - else
       - object = question
       = link_to url_for([role, object.user]) do
-        - avatar = image_default_path(object.user.avatar, "user")
+        - avatar = image_default_path(object.user.avatar.thumb, "user")
         .thumb-user
           %figure
             %img.img-responsive{ src: avatar }

@@ -24,7 +24,7 @@
       = link_to url_for([role, object.user]) do
         .thumb-user
           %figure
-            %img.img-responsive{ src: object.user.avatar }
+            %img.img-responsive{ src: object.user.avatar.thumb }
       .last-user
         %span.vermelho
           Último comentário
@@ -37,7 +37,7 @@
       = link_to url_for([role, object.user]) do
         .thumb-user
           %figure
-            %img.img-responsive{ src: object.user.avatar }
+            %img.img-responsive{ src: object.user.avatar.thumb }
       .last-user
         %span.vermelho
           Criado por
