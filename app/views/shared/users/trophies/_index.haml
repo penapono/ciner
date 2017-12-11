@@ -20,8 +20,8 @@
               Top Ciner
 
   .row
-    - Trophy.top.each_with_index do |trophy, index|
-      = render 'shared/users/trophies/trophy', object: trophy, index: index
+    - Trophy.top.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy
 
   .row
     .col-xs-12
@@ -32,8 +32,8 @@
               Protagonista
 
   .row
-    - Trophy.leading.each_with_index do |trophy, index|
-      = render 'shared/users/trophies/trophy', object: trophy, index: index
+    - Trophy.leading.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy
 
   .row
     .col-xs-12
@@ -44,8 +44,8 @@
               Coadjuvante
 
   .row
-    - Trophy.supporting.each_with_index do |trophy, index|
-      = render 'shared/users/trophies/trophy', object: trophy, index: index
+    - Trophy.supporting.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy
 
   .row
     .col-xs-12
@@ -56,5 +56,5 @@
               Figurante
 
   .row
-    - Trophy.figurant.each_with_index do |trophy, index|
-      = render 'shared/users/trophies/trophy', object: trophy, index: index
+    - Trophy.figurant.each do |trophy|
+      = render 'shared/users/trophies/trophy', object: trophy

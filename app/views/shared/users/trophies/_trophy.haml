@@ -1,5 +1,6 @@
-- source = object.level.to_s + "_inactive" + ".png"
-- source = object.level.to_s + "_active" + ".png" if index.even?
+- user_trophy = UserTrophy.where(user: user, trophy: object)
+- source_end = user_trophy.blank? ? "_inactive" : "_active"
+- source = object.level.to_s + source_end + ".png"
 - trophy = image_path("trophies/#{source}")
 
 .col-xs-3.wine{ style: 'width: 20%;' }
