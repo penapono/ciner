@@ -10,6 +10,8 @@ module NotificationsHelper
                     "#{link_to sender.name, url_for([role, sender])} te enviou uma solicitação de amizade!"
                   elsif notification.accept_friend_request?
                     "#{link_to sender.name, url_for([role, sender])} aceitou seu pedido de amizade"
+                  elsif notification.trophy?
+                    notification.message
                   else
                     ""
                   end

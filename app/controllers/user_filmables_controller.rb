@@ -26,7 +26,7 @@ class UserFilmablesController < ApplicationController
 
   def create
     if created?
-      current_user.create_trophies
+      current_user.create_trophies('collection')
       redirect_to_index_with_success
     else
       render_new_with_error

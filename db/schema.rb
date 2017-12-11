@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205005425) do
+ActiveRecord::Schema.define(version: 20171210234039) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -618,6 +618,17 @@ ActiveRecord::Schema.define(version: 20171205005425) do
     t.index ["deleted_at"], name: "index_user_filmables_on_deleted_at"
     t.index ["filmable_type", "filmable_id"], name: "index_user_filmables_on_filmable_type_and_filmable_id"
     t.index ["user_id"], name: "index_user_filmables_on_user_id"
+  end
+
+  create_table "user_trophies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "trophy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_user_trophies_on_deleted_at"
+    t.index ["trophy_id"], name: "index_user_trophies_on_trophy_id"
+    t.index ["user_id"], name: "index_user_trophies_on_user_id"
   end
 
   create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

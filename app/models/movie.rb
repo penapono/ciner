@@ -19,6 +19,7 @@ class Movie < ActiveRecord::Base
   has_many :broadcasts, through: :broadcast_broadcastables
   has_many :filmable_professionals, as: :filmable, dependent: :destroy
   has_many :professionals, through: :filmable_professionals
+  has_many :user_filmables, as: :filmable, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
 

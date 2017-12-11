@@ -195,14 +195,15 @@ module Tmdb
 
         omdb_country = response["Country"]
 
-        load_professionals(object, tmdb_id)
+        unless Rails.env.development?
+          load_professionals(object, tmdb_id)
 
-        load_seasons(object, tmdb_id) if is_serie?(object)
+          # load_seasons(object, tmdb_id) if is_serie?(object)
+        end
 
         object.lock_updates = true
 
         object.save(validate: false)
-
       end
     rescue
     end

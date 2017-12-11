@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   belongs_to :country
 
   has_many :critics, dependent: :destroy
+  has_many :user_filmables, dependent: :destroy
+  has_many :user_trophies, dependent: :destroy
   has_one :curriculum, dependent: :destroy
 
   # Validations
@@ -77,16 +79,62 @@ class User < ActiveRecord::Base
     genders.map { |k, _w| [human_attribute_name("gender.#{k}"), k] }
   end
 
-  def create_trophies
-    Notification.create(sender_id: nil, receiver_id: id, notification_type: :trophy, answer: :no_answer)
+  def create_trophies(type)
+    if type == "collection"
+      collection_number = user_filmables.collection.count
+      if collection_number == 1 # 25
+        current_trophy = Trophy.find_by(name: 'O colecionador 1')
+      elsif collection_number == 2 # 100
+        current_trophy = Trophy.find_by(name: 'O colecionador 2')
+      elsif collection_number == 3 # 250
+        current_trophy = Trophy.find_by(name: 'O colecionador 3')
+      elsif collection_number == 4 # 500
+        current_trophy = Trophy.find_by(name: 'O colecionador 4')
+      end
+    elsif type == "watched"
+      watched_number = user_filmables.watched.count
+      if watched_number == 1 # 100
+        current_trophy = Trophy.find_by(name: 'Essa é minha vida 1')
+      elsif watched_number == 2 # 250
+        current_trophy = Trophy.find_by(name: 'Essa é minha vida 2')
+      elsif watched_number == 3 # 1000
+        current_trophy = Trophy.find_by(name: 'Essa é minha vida 3')
+      elsif watched_number == 4 # 2000
+        current_trophy = Trophy.find_by(name: 'Essa é minha vida 4')
+      end
+    elsif type == "friends"
+      friends_number = friends.count
+      if friends_number == 1 # 10
+        current_trophy = Trophy.find_by(name: 'Ciner Sociável 1')
+      elsif friends_number == 2 # 25
+        current_trophy = Trophy.find_by(name: 'Ciner Sociável 2')
+      elsif friends_number == 3 # 50
+        current_trophy = Trophy.find_by(name: 'Ciner Sociável 3')
+      elsif friends_number == 4 # 100
+        current_trophy = Trophy.find_by(name: 'Ciner Sociável 4')
+      end
+    end
+    current_trophy ||= nil
+    if current_trophy
+      user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
+      user_trophy.notify_user
+    end
+  end
+
+  def notifications
+    Notification.where(receiver_id: id)
   end
 
   def friends
     ids = []
-    Notification.where(sender_id: id, notification_type: :friend_request, answer: :approved).pluck(:receiver_id).each do |friend_id|
+    Notification
+      .where(sender_id: id, notification_type: :friend_request,
+             answer: :approved).pluck(:receiver_id).each do |friend_id|
       ids << friend_id
     end
-    Notification.where(receiver_id: id, notification_type: :friend_request, answer: :approved).pluck(:sender_id).each do |friend_id|
+    Notification
+      .where(receiver_id: id, notification_type: :friend_request,
+             answer: :approved).pluck(:sender_id).each do |friend_id|
       ids << friend_id
     end
     User.where(id: ids.uniq)
@@ -136,7 +184,9 @@ class User < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    result = result.by_gender(genders[params[:gender]]) if params[:gender].present?
+    if params[:gender].present?
+      result = result.by_gender(genders[params[:gender]])
+    end
     result = result.by_role(roles[params[:role]]) if params[:role].present?
     result = result.by_state(params[:state]) if params[:state].present?
     result = result.by_city(params[:city]) if params[:city].present?
@@ -200,6 +250,7 @@ class User < ActiveRecord::Base
   def update_age
     self.age = 0 unless birthday
     now = Time.now.utc.to_date
-    self.age = now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
+    self.age =
+      now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
   end
 end

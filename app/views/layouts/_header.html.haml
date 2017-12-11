@@ -69,6 +69,8 @@
               .col-xs-offset-1.col-xs-1{ style: 'padding-left: 15px; margin-top: -3px; z-index: 9999' }
                 = link_to url_for([role, :notifications]) do
                   %i.fa.fa-film{ style: 'color: white' }
+                  - if current_user.notifications.pending.count > 0
+                    %span{ style: 'background: #f00; width: 10px; height: 10px; border-radius: 50%; z-index: 1000000; margin-top: 10px; display: block; margin-top: -13px; margin-left: 19px;' }
 
         .col-xs-3.text-center{ style: "overflow: hidden;" }
           - if current_user

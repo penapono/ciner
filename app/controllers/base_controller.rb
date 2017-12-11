@@ -148,6 +148,7 @@ module ::BaseController
                (user_action == "want_to_see" && user_filmable.watched?)
               user_filmable.action = user_action
               user_filmable.save
+              User.find(user_id).create_trophies(user_action) if user_action == 'watched'
               return 'active'
             end
           end
@@ -159,6 +160,7 @@ module ::BaseController
         filmable_id: filmable_id, filmable_type: filmable_type,
         action: user_action
       )
+      User.find(user_id).create_trophies(user_action) if user_action == 'watched'
       'active'
     end
 
