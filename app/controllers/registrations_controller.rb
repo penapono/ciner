@@ -22,20 +22,10 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     @accepted = (params[:user][:terms_of_use] == "1")
-    if Rails.env.development?
-      SignupMailer
-        .welcome_mail(@user.email)
-        .deliver_now
+    if verify_recaptcha(model: @user) || Rails.env.development?
       super
     else
-      if verify_recaptcha(model: @user) && !
-        SignupMailer
-         .welcome_mail(@user.email)
-         .deliver_now
-        super
-      else
-        render :new
-      end
+      render :new
     end
   end
 

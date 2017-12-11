@@ -68,6 +68,8 @@ class User < ActiveRecord::Base
   before_save :update_address
   before_save :update_age
 
+  after_create :send_welcome_mail
+
   # Aliases
   alias_attribute :text, :name
   alias_attribute :title_str, :name
@@ -258,5 +260,9 @@ class User < ActiveRecord::Base
     now = Time.now.utc.to_date
     self.age =
       now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
+  end
+
+  def send_welcome_mail
+    SignupMailer.welcome_mail(email).deliver_now
   end
 end
