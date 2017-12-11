@@ -13,6 +13,11 @@
           = link_to url_for([role, current_user]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
             = current_user.name.split(' ').first
         .logout
+          - notification_count = current_user.notifications.pending.count
+          = link_to url_for([role, :notifications]) do
+            = notification_count
+            = notification_count == 1 ? "notificação" : "notificações"
+          \|
           = link_to 'Sair', destroy_user_session_path, method: :delete
 
 - else

@@ -394,8 +394,8 @@ ActiveRecord::Schema.define(version: 20171211143425) do
     t.integer "notification_type"
     t.integer "sender_id"
     t.integer "receiver_id"
-    t.datetime "created_at", default: "2017-12-11 12:35:32", null: false
-    t.datetime "updated_at", default: "2017-12-11 12:35:32", null: false
+    t.datetime "created_at", default: "2017-12-11 21:07:48", null: false
+    t.datetime "updated_at", default: "2017-12-11 21:07:48", null: false
   end
 
   create_table "professionals", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
