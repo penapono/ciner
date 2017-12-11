@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211020419) do
+ActiveRecord::Schema.define(version: 20171211143425) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -394,6 +394,8 @@ ActiveRecord::Schema.define(version: 20171211020419) do
     t.integer "notification_type"
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.datetime "created_at", default: "2017-12-11 12:35:32", null: false
+    t.datetime "updated_at", default: "2017-12-11 12:35:32", null: false
   end
 
   create_table "professionals", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
