@@ -5,7 +5,9 @@ module Platform
     include Platform::NotificationsBreadcrumb
 
     # exposes
-    expose(:notifications) { Notification.for_user(current_user) }
+    expose(:notifications) do
+      Notification.for_user(current_user).order(created_at: :desc)
+    end
 
     PER_PAGE = 50
 
