@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/lautis/uglifier.git
+  revision: 454fd9d90170814f4b571b8812024b4a23dc0957
+  branch: harmony
+  specs:
+    uglifier (3.1.3.harmony1)
+      execjs (>= 0.3.0, < 3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -453,8 +461,6 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.0.2)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.3.0)
     warden (1.2.7)
       rack (>= 1.0)
@@ -561,7 +567,7 @@ DEPENDENCIES
   timecop
   toastr-rails
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier!
   web-console (~> 3.0)
   whenever
 

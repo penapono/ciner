@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 ruby '2.4.0'
 
 # core
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', :github => 'lautis/uglifier', :branch => 'harmony'
 
 gem 'rake'
 gem 'rails'
