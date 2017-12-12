@@ -1,7 +1,7 @@
 .row
   .col-xs-offset-2.col-xs-8
     %h1.wine
-      Login
+      Entrar
 
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
@@ -9,12 +9,16 @@
       .form-group
         = f.input :password, label: false, required: false, input_html: { class: 'form-control', placeholder: 'senha' }
       .form-group
-        .hidden
-          = f.button :submit, 'Entrar'
-        %button.btn.btn-login{:type => "submit"}
-          Entrar
-          %span.icon.icon-button
-        %span.wine
-          ou
-          = link_to new_user_registration_path do
-            %strong seja ciner
+        .row
+          .col-xs-8
+            %button.btn.btn-login{:type => "submit"}
+              Entrar
+              %span.icon.icon-button
+            %span.wine
+              ou
+              = link_to new_user_registration_path do
+                %strong Seja Ciner
+          .col-xs-4.pull-right{ style: 'text-align: right' }
+            %span.wine
+              = link_to new_user_registration_path do
+                %strong Esqueci minha senha

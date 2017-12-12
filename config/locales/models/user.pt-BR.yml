@@ -42,15 +42,9 @@ pt-BR:
         cult: Ciner Cult
       user/collection_privacy:
         global: Visível para todos
-        friends: Visível para amigos
+        only_friends: Visível para amigos
         only_me: Visível somente para mim
       user/gender:
         men: Masculino
         women: Feminino
         other: Outro
-    # errors:
-    #   models:
-    #     user:
-    #       attributes:
-    #         name:
-    #           blank: "%{attribute} deve ser preenchido"

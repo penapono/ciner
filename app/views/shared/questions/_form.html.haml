@@ -33,7 +33,7 @@
 - else
   .row{ data: { questionable: '', tipsy: '' }, title: 'Para debater sobre uma notícia, selecione "Debater" na área de notícias' }
     .col-xs-6{ data: { questionable_select: '' } }
-      = f.input :questionable_type, collection: Question.localized_questionable_types, selected: questionable_type, include_blank: 'Escolha uma área'
+      = f.input :questionable_type, collection: Question.localized_questionable_types, selected: questionable_type, include_blank: 'Escolha um tema'
     .col-xs-6{ data: { tipsy: '' } }
       .div{ class: "#{questionable_movies_class}", data: { questionable_type: 'Movie' } }
         = f.input :questionable_id, collection: movies, input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
@@ -50,7 +50,10 @@
 
 .row
   .col-xs-12
-    = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+    %div{ data: { limited: '', limit: 2000 } }
+      = f.input :content, as: :text, label: false, input_html: { placeholder: '', rows: 5 }, maxlength: 1000
+      %span.char-counter
+        = t('remaining_chars', chars: 2000)
 
 .row
   .col-xs-4

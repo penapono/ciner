@@ -1,6 +1,7 @@
 - questionable = question.questionable
 - like_path ||= nil
 - dislike_path ||= nil
+- avatar = image_default_path(question.user.avatar.thumb, "user")
 
 .container.content
   .debates.row
@@ -16,8 +17,12 @@
 
       %hr
 
-      .row
-        .col-xs-12
+      .row{ style: 'margin-top: 10px' }
+        .col-xs-2.col-sm-1
+          .usuario-avatar
+            %img.img-responsive{ src: avatar }
+          = question.user_nickname
+        .col-xs-9.col-sm-10{ style: "margin-left: 30px;" }
           .content
             .bold.wine
               = question.questionable_title_str
@@ -33,7 +38,7 @@
           .info
             = question_created_at_str(question)
 
-  #question-reaction
-    = render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
+          #question-reaction
+            = render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path
 
 = render 'shared/comments/index', object: question

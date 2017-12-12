@@ -63,6 +63,13 @@
       = f.input :avatar, label: false
 
   %h3
+    Privacidade da Coleção
+
+  .row
+    .col-xs-3
+      = f.input :collection_privacy, collection: User.localized_collection_privacies, input_html: { class: 'form-field' }
+
+  %h3
     = t('.about')
 
   .row
@@ -94,9 +101,8 @@
       Eu li e concordo com os
       =link_to 'termos de uso', '#', :id => 'terms-link'
       \.
-      - unless @accepted
-        .div
-          É obrigatório aceitar os termos de uso
+      .div
+        É obrigatório aceitar os termos de uso
 
     .col-xs-6
       = recaptcha_tags
