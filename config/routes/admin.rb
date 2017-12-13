@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :featured_filmables, only: :index
     resources :playing_filmables, only: :index
     resources :delates
+    resources :movie_duplicates, only: :index
 
     resources :movies do
       member do

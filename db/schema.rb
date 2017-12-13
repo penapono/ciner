@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211233135) do
+ActiveRecord::Schema.define(version: 20171213032651) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -348,6 +348,14 @@ ActiveRecord::Schema.define(version: 20171211233135) do
     t.integer "film_production_categories_id"
     t.index ["film_production_categories_id"], name: "index_filmable_type_on_film_production_categories_id"
     t.index ["filmable_type", "filmable_id"], name: "index_filmable_type_on_filmable_type_and_filmable_id"
+  end
+
+  create_table "movie_duplicates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "title"
+    t.text "available_years"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "movies", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,32 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+%table
+  %thead
+    %tr
+      %th
+        Título
+      %th
+        Anos
+      %th
+        Repetições
+      %th
+        Link da busca
+
+  %tbody
+    - movie_duplicates.each do |movie_duplicate|
+      %tr
+        %td
+          = movie_duplicate.title
+
+        %td
+          = movie_duplicate.available_years
+
+        %td
+          = movie_duplicate.count
+
+        %td
+          = link_to polymorphic_path([:admin, :movies], params: { search: movie_duplicate.title }) do
+            ver na busca
+
+= render 'shared/pagination', resources: movie_duplicates

@@ -22,11 +22,3 @@
 every 1.hour do
   rake 'duplicates:search_and_destroy'
 end
-
-every 2.hours do
-  rake 'movie_sync:update'
-end
-
-every 3.hours do
-  rake 'serie_sync:update'
-end
