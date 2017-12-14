@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :featured_filmables, only: :index
     resources :playing_filmables, only: :index
 
-    resources :movies, only: [:index, :show] do
+    resources :movies, only: [:index, :show, :destroy] do
       member do
         put "like", to: "movies#upvote"
         put "dislike", to: "movies#downvote"
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :series, only: [:index, :show] do
+    resources :series, only: [:index, :show, :destroy] do
       member do
         put "like", to: "series#upvote"
         put "dislike", to: "series#downvote"

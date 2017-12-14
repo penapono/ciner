@@ -28,7 +28,8 @@ module Tmdb
 
       title_str = title_str.blank? ? title : title_str.strip
 
-      year_str = begin
+      year_str = is_serie?(object) ? object.start_year : object.year
+      year_str ||= begin
                   Integer(year_str)
                 rescue
                   is_serie?(object) ? object.start_year : object.year
@@ -60,8 +61,12 @@ module Tmdb
       result["results"]&.first
     end
 
-    def api_transform
+    def api_transform(force_update = false)
       object = self
+
+      object.update_attribute("lock_updates", false) if force_update
+
+      byebug
 
       unless object.lock_updates? && !Rails.env.development?
         tmdb_result = start_tmdb(object)

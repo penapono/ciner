@@ -29,7 +29,8 @@ module Platform
     end
 
     def show
-      serie.api_transform
+      force_update = params[:force_update].present? && params[:force_update] == "true" ? true : false
+      serie.api_transform(force_update)
     end
 
     private

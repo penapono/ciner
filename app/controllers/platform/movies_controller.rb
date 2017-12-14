@@ -29,7 +29,8 @@ module Platform
     end
 
     def show
-      movie.api_transform
+      force_update = params[:force_update].present? && params[:force_update] == "true" ? true : false
+      movie.api_transform(force_update)
     end
 
     private

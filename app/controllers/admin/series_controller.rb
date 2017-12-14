@@ -24,7 +24,8 @@ module Admin
     end
 
     def show
-      serie.api_transform
+      force_update = params[:force_update].present? && params[:force_update] == "true" ? true : false
+      serie.api_transform(force_update)
     end
 
     def bulk_destroy
