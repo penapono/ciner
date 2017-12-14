@@ -5,7 +5,7 @@ module Admin
     PER_PAGE = 50
 
     # exposes
-    expose(:movie_duplicates) { MovieDuplicate.order(count: :desc) }
+    expose(:movie_duplicates) { MovieDuplicate.order(created_at: :desc) }
 
     def index
       self.movie_duplicates = paginated_movie_duplicates
