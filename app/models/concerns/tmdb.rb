@@ -66,8 +66,6 @@ module Tmdb
 
       object.update_attribute("lock_updates", false) if force_update
 
-      byebug
-
       unless object.lock_updates? && !Rails.env.development?
         tmdb_result = start_tmdb(object)
 
@@ -271,10 +269,9 @@ module Tmdb
 
       crew = tmdb_response["crew"]
 
-      # load_actors(object, cast) if cast
+      load_actors(object, cast) if cast
 
       load_crew(object, crew) if crew
-      # rescue
     end
 
     def load_rating
@@ -454,7 +451,7 @@ module Tmdb
       crew.each do |person|
         job = person["job"]
 
-        set_function = SetFunction.find_or_create_by(name: job)
+        set_function = SetFunction.find_or_create_by(description: job)
 
         name = person["name"]
 

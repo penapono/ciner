@@ -18,7 +18,8 @@ module Platform
     end
 
     def show
-      professional.api_transform
+      force_update = params[:force_update].present? && params[:force_update] == "true" ? true : false
+      professional.api_transform(force_update)
     end
 
     private

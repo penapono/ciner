@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
 
     resources :studios, only: [:index, :show]
-    resources :professionals, only: [:index, :show]
+    resources :professionals, only: [:index, :show, :destroy]
     resources :curriculums
     resources :notifications
     resources :featured_filmables, only: :index

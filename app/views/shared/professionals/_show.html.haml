@@ -2,6 +2,21 @@
 - avatar = image_default_path(professional.avatar, "professional")
 - object = professional
 
+- if current_user && current_user.admin?
+  .row
+    .col-xs-2
+      = link_to "/admin/professionals/#{object.id}", method: :delete, class: 'pull-right' do
+        %button.btn.btn-login{ style: "width: 100%;" }
+          %span.text
+            Excluir
+          %span.icon.icon-button
+    .col-xs-2
+      = link_to polymorphic_path([role, object], params: { force_update: true }), class: 'pull-right' do
+        %button.btn.btn-login{ style: "width: 100%;" }
+          %span.text
+            Atualizar
+          %span.icon.icon-button
+
 .container
   .row
     .col-xs-12

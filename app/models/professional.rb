@@ -160,46 +160,49 @@ class Professional < ActiveRecord::Base
     1
   end
 
-  def api_transform
+  def api_transform(force_update = false)
     object = self
 
-    return if object.lock_updates?
+    object.update_attribute("lock_updates", false) if force_update
 
-    tmdb_id = object.tmdb_id
+    unless object.lock_updates? && !Rails.env.development?
 
-    tmdb_person_url = "#{BASE_URL}/#{tmdb_id}?api_key=#{TMDB_API_KEY}&language=pt-BR"
+      tmdb_id = object.tmdb_id
 
-    result = load_resource(tmdb_person_url)
+      tmdb_person_url = "#{BASE_URL}/#{tmdb_id}?api_key=#{TMDB_API_KEY}&language=pt-BR"
 
-    if object.birthday.blank?
-      object.birthday = begin
-                          Date.parse(result["birthday"])
-                        rescue
-                          nil
-                        end
+      result = load_resource(tmdb_person_url)
+
+      if object.birthday.blank?
+        object.birthday = begin
+                            Date.parse(result["birthday"])
+                          rescue
+                            nil
+                          end
+      end
+
+      if object.deathday.blank?
+        object.deathday = begin
+                            Date.parse(result["deathday"])
+                          rescue
+                            nil
+                          end
+      end
+
+      # object.gender = tmdb_gender(result["gender"])
+
+      # object.imdb_id = result["imdb_id"]
+
+      # object.name = result["name"]
+
+      if object.place_of_birth.blank?
+        object.place_of_birth = result["place_of_birth"]
+      end
+
+      object.lock_updates = true
+
+      object.save(validate: false)
     end
-
-    if object.deathday.blank?
-      object.deathday = begin
-                          Date.parse(result["deathday"])
-                        rescue
-                          nil
-                        end
-    end
-
-    # object.gender = tmdb_gender(result["gender"])
-
-    # object.imdb_id = result["imdb_id"]
-
-    # object.name = result["name"]
-
-    if object.place_of_birth.blank?
-      object.place_of_birth = result["place_of_birth"]
-    end
-
-    object.lock_updates = true
-
-    object.save(validate: false)
 
     # load_credits(object)
   rescue
