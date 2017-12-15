@@ -89,7 +89,7 @@ class Question < ActiveRecord::Base
   end
 
   def created_at_str
-    I18n.t('shared.questions.created_at', user: user_name, date: I18n.l(created_at, format: :shorter))
+    I18n.t('shared.questions.created_at', user: user_nickname, date: I18n.l(created_at, format: :shorter))
   end
 
   def date_str
