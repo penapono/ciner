@@ -17,7 +17,7 @@ pt-BR:
         city_id: Cidade
         filmable: Filme / Série
         filmable_id: Filme / Série
-        filmable_type: Referente à
+        filmable_type: Referente a
         updated_at: Data de Publicação
         user: Autor
         user_id: Autor

@@ -11,7 +11,7 @@ pt-BR:
         trailer: Trailer
         filmable: Filme / Série
         filmable_id: Filme / Série
-        filmable_type: Referente à
+        filmable_type: Referente a
     errors:
       models:
         trending_trailer:

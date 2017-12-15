@@ -66,7 +66,7 @@ module Tmdb
 
       object.update_attribute("lock_updates", false) if force_update
 
-      unless object.lock_updates? && !Rails.env.development?
+      if !object.lock_updates? || Rails.env.development?
         tmdb_result = start_tmdb(object)
 
         if tmdb_result
@@ -139,13 +139,13 @@ module Tmdb
 
             object.length = response["Runtime"]
 
-            object.omdb_directors = response["Director"]
+            # object.omdb_directors = response["Director"]
 
-            object.omdb_writers = response["Writer"]
+            # object.omdb_writers = response["Writer"]
 
-            object.omdb_actors = response["Actors"]
+            # object.omdb_actors = response["Actors"]
 
-            object.omdb_genre = response["Genre"]
+            object.omdb_genre ||= response["Genre"]
 
             countries = tmdb_object["production_countries"]
 
@@ -160,7 +160,7 @@ module Tmdb
 
             countries_str = countries_str.join(", ")
 
-            object.countries = countries_str
+            object.countries ||= countries_str
 
             if is_serie?(object)
               object.start_year = response["Year"]
@@ -194,15 +194,13 @@ module Tmdb
 
         object.trailer = load_trailer
 
-        object.omdb_rated = load_rating
+        object.omdb_rated ||= load_rating
 
         omdb_country = response["Country"]
 
-        unless Rails.env.development?
-          load_professionals(object, tmdb_id)
+        load_professionals(object, tmdb_id)
 
-          # load_seasons(object, tmdb_id) if is_serie?(object)
-        end
+        # load_seasons(object, tmdb_id) if is_serie?(object)
 
         object.lock_updates = true
 
@@ -268,6 +266,8 @@ module Tmdb
       cast = tmdb_response["cast"]
 
       crew = tmdb_response["crew"]
+
+      object.filmable_professionals.destroy_all if cast || crew
 
       load_actors(object, cast) if cast
 

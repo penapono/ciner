@@ -16,7 +16,7 @@ module Admin
     expose(:filtered_states) { filtered_states }
     expose(:filtered_cities) { filtered_cities }
 
-    PER_PAGE = 50
+    PER_PAGE = 100
 
     def index
       self.movies = paginated_movies
