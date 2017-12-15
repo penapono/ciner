@@ -116,7 +116,7 @@ module Admin
     # Filtering
 
     def paginated_movies
-      filtered_movie.page(params[:page]).per(PER_PAGE)
+      filtered_movie.order(original_title: :asc).page(params[:page]).per(PER_PAGE)
     end
 
     def filtered_movie

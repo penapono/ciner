@@ -33,6 +33,14 @@ class UserFilmablesController < ApplicationController
     end
   end
 
+  def update
+    if updated?
+      redirect_back fallback_location: root_path
+    else
+      render_edit_with_error
+    end
+  end
+
   def redirect_to_index_with_success
     redirect_back fallback_location: root_path
   end
