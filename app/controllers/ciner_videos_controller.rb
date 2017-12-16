@@ -8,21 +8,19 @@ class CinerVideosController < ApplicationController
   expose(:ciner_video, attributes: :ciner_video_attributes)
 
   expose(:age_ranges) { AgeRange.all }
-
-  # Filters
-
+ # Filters
   expose(:filtered_states) { filtered_states }
-  expose(:filtered_cities) { filtered_cities }
+ expose(:filtered_cities) { filtered_cities }
 
-  PER_PAGE = 50
+ PER_PAGE = 50
 
-  def index
+ def index
     self.ciner_videos = paginated_ciner_videos
   end
 
   private
 
-  def resource
+ def resource
     ciner_video
   end
 

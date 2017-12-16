@@ -23,9 +23,7 @@ class NotificationsController < ApplicationController
     notification_sender_id = params[:sender_id] || :system
     notification_receiver_id = params[:receiver_id]
 
-    if notification_type == 'delate_ok'
-      on_create_delate_checked(notification_sender_id, notification_receiver_id)
-    end
+    on_create_delate_checked(notification_sender_id, notification_receiver_id) if notification_type == 'delate_ok'
 
     if notification_type == 'create_friend_request'
       on_create_friend_request(notification_sender_id, notification_receiver_id)
@@ -43,9 +41,7 @@ class NotificationsController < ApplicationController
       on_decline_friend_request(notification_sender_id, notification_receiver_id)
    end
 
-    if notification_type == 'remove_friend'
-      on_remove_friend(notification_sender_id, notification_receiver_id)
-   end
+    on_remove_friend(notification_sender_id, notification_receiver_id) if notification_type == 'remove_friend'
   end
 
   # Delate ok

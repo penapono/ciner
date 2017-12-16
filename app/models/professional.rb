@@ -176,7 +176,7 @@ class Professional < ActiveRecord::Base
       if object.birthday.blank?
         object.birthday = begin
                             Date.parse(result["birthday"])
-                          rescue
+                          rescue StandardError
                             nil
                           end
       end
@@ -184,7 +184,7 @@ class Professional < ActiveRecord::Base
       if object.deathday.blank?
         object.deathday = begin
                             Date.parse(result["deathday"])
-                          rescue
+                          rescue StandardError
                             nil
                           end
       end
@@ -195,9 +195,7 @@ class Professional < ActiveRecord::Base
 
       # object.name = result["name"]
 
-      if object.place_of_birth.blank?
-        object.place_of_birth = result["place_of_birth"]
-      end
+      object.place_of_birth = result["place_of_birth"] if object.place_of_birth.blank?
 
       object.lock_updates = true
 
@@ -205,7 +203,7 @@ class Professional < ActiveRecord::Base
     end
 
     # load_credits(object)
-  rescue
+  rescue StandardError
     object.lock_updates = true
 
     object.save(validate: false)
@@ -304,7 +302,7 @@ class Professional < ActiveRecord::Base
     now = deathday.blank? ? DateTime.now.to_date : deathday
     birthday_current_year = begin
                               birthday.to_date.change(year: now.year)
-                            rescue
+                            rescue StandardError
                               birthday.to_date.change(year: now.year, day: 27)
                             end
     self.age = now.year - birthday.year - (birthday_current_year > now ? 1 : 0)

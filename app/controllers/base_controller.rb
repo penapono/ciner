@@ -98,17 +98,17 @@ module ::BaseController
       if user_action == "collection"
         media = begin
                 params[:media]
-              rescue
+              rescue StandardError
                 5
               end
         version = begin
                     params[:version]
-                  rescue
+                  rescue StandardError
                     5
                   end
         position = begin
                   params[:position]
-                rescue
+                rescue StandardError
                   0
                 end
         store = params[:store]
@@ -116,7 +116,7 @@ module ::BaseController
         price = params[:price]
         begin
           bought = Date.parse(params[:bought])
-        rescue
+        rescue StandardError
           bought = Date.today
         end
         isbn = params[:isbn]

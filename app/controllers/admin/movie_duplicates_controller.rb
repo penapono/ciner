@@ -2,7 +2,7 @@
 
 module Admin
   class MovieDuplicatesController < AdminController
-    PER_PAGE = 50
+    PER_PAGE = 100
 
     # exposes
     expose(:movie_duplicates) { MovieDuplicate.order(created_at: :desc) }

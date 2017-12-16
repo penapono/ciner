@@ -363,7 +363,7 @@ module FilmProfitable
       end
       return "" if str.empty?
       str.to_sentence
-    rescue
+    rescue StandardError
     end
 
     def directors_str
@@ -373,7 +373,7 @@ module FilmProfitable
       end
       return "" if str.empty?
       str.to_sentence
-    rescue
+    rescue StandardError
     end
 
     def writers_str
@@ -383,7 +383,7 @@ module FilmProfitable
       end
       return "" if str.empty?
       str.to_sentence
-   rescue
+   rescue StandardError
    end
 
     def filmable_actors

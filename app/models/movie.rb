@@ -81,7 +81,7 @@ class Movie < ActiveRecord::Base
     return "" unless length
     length = begin
                Integer(length.gsub("min", "").strip)
-             rescue
+             rescue StandardError
                0
              end
     hours = 0

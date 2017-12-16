@@ -116,8 +116,6 @@ RSpec.configure do |config|
 
   # delete all uploaded files after specs run
   config.after(:all) do
-    if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
-    end
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"]) if Rails.env.test?
   end
 end

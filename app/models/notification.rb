@@ -22,7 +22,7 @@ class Notification < ActiveRecord::Base
 
   def sender
     User.find(sender_id)
-  rescue
+  rescue StandardError
     :system
   end
 

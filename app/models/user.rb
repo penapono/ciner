@@ -192,9 +192,7 @@ class User < ActiveRecord::Base
     return collection unless params.present?
 
     result = collection
-    if params[:gender].present?
-      result = result.by_gender(genders[params[:gender]])
-    end
+    result = result.by_gender(genders[params[:gender]]) if params[:gender].present?
     result = result.by_role(roles[params[:role]]) if params[:role].present?
     result = result.by_state(params[:state]) if params[:state].present?
     result = result.by_city(params[:city]) if params[:city].present?

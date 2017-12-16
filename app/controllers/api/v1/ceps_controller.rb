@@ -6,7 +6,7 @@ module Api
       def index
         cep = begin
                 BuscaEndereco.cep(params[:cep].to_s.gsub(/[\.-]/, ""))
-              rescue
+              rescue StandardError
                 nil
               end
 

@@ -31,7 +31,7 @@ module Tmdb
       year_str = is_serie?(object) ? object.start_year : object.year
       year_str ||= begin
                   Integer(year_str)
-                rescue
+                rescue StandardError
                   is_serie?(object) ? object.start_year : object.year
                 end
 
@@ -94,7 +94,7 @@ module Tmdb
 
         begin
           object.cover = load_poster(tmdb_object)
-        rescue
+        rescue StandardError
           object.cover = ""
         end
 
@@ -133,7 +133,7 @@ module Tmdb
 
             object.release = begin
                               Date.parse(response["Released"])
-                            rescue
+                            rescue StandardError
                               nil
                             end
 
@@ -171,7 +171,7 @@ module Tmdb
             if object.cover.blank?
               begin
                 object.cover = load_omdb_cover(response["Poster"])
-              rescue
+              rescue StandardError
                 object.cover = ""
               end
             end
@@ -188,9 +188,7 @@ module Tmdb
 
         object.title = object.title.delete("\"") if object.title
 
-        if object.original_title
-          object.original_title = object.original_title.delete("\"")
-        end
+        object.original_title = object.original_title.delete("\"") if object.original_title
 
         object.trailer = load_trailer
 
@@ -206,7 +204,7 @@ module Tmdb
 
         object.save(validate: false)
       end
-    rescue
+    rescue StandardError
     end
 
     def load_omdb_cover(omdb_poster)
@@ -214,7 +212,7 @@ module Tmdb
 
       cover = begin
                 open(omdb_poster)
-              rescue
+              rescue StandardError
                 ""
               end
 
@@ -248,7 +246,7 @@ module Tmdb
 
       cover = begin
                 open("https://image.tmdb.org/t/p/w500#{imdb_poster}")
-              rescue
+              rescue StandardError
                 ""
               end
 
@@ -327,7 +325,7 @@ module Tmdb
         trailer = "https://www.youtube.com/embed/" + video_key
 
         return trailer unless video_key.blank?
-      rescue
+      rescue StandardError
         video_key = nil
       end
 
@@ -345,7 +343,7 @@ module Tmdb
         trailer = "https://www.youtube.com/embed/" + video_key
 
         return trailer unless video_key.blank?
-      rescue
+      rescue StandardError
         video_key = nil
       end
 
@@ -405,7 +403,7 @@ module Tmdb
           array.each do |element|
             omdb_brazilian_release = begin
                                        Date.parse(element)
-                                     rescue
+                                     rescue StandardError
                                        nil
                                      end
             break if omdb_brazilian_release
@@ -468,7 +466,7 @@ module Tmdb
           begin
             avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
             professional.avatar = avatar if avatar
-          rescue
+          rescue StandardError
           end
         end
 
@@ -508,7 +506,7 @@ module Tmdb
           begin
             avatar = open("https://image.tmdb.org/t/p/w500#{avatar_url}")
             professional.avatar = avatar if avatar
-          rescue
+          rescue StandardError
           end
         end
 
@@ -566,7 +564,7 @@ module Tmdb
 
       number_of_episodes = begin
                              result["episodes"].count
-                           rescue
+                           rescue StandardError
                              0
                            end
 
@@ -579,15 +577,13 @@ module Tmdb
       serie_season.overview = overview
       serie_season.air_date = begin
                                 Date.parse(air_date)
-                              rescue
+                              rescue StandardError
                                 nil
                               end
       serie_season.tmdb_id = tmdb_id
       serie_season.number_of_episodes = number_of_episodes
 
-      if serie_season.number_of_episodes > 0
-        load_episodes(serie, serie_season, serie_tmdb_id, tmdb_id)
-      end
+      load_episodes(serie, serie_season, serie_tmdb_id, tmdb_id) if serie_season.number_of_episodes > 0
 
       serie_season.save(validate: false)
       # rescue
@@ -638,7 +634,7 @@ module Tmdb
       serie_season_episode.overview = overview
       serie_season_episode.air_date = begin
                                 Date.parse(air_date)
-                              rescue
+                              rescue StandardError
                                 nil
                               end
       serie_season_episode.tmdb_id = tmdb_id

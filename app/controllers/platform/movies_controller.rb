@@ -8,23 +8,19 @@ module Platform
     expose(:movies) { Movie.all }
     expose(:playing) { Movie.current_playing }
     expose(:playing_soon) { Movie.playing_soon }
-    expose(:featured) { Movie.featured.first(10) }
+   expose(:featured) { Movie.featured.first(10) }
     expose(:available_netflix) { Movie.available_netflix }
-    expose(:available_amazon) { Movie.available_amazon }
+   expose(:available_amazon) { Movie.available_amazon }
     expose(:birthday_professionals) { Professional.birthdays }
-    expose(:movie, attributes: :movie_attributes)
+   expose(:movie, attributes: :movie_attributes)
     expose(:broadcasts) { movie.broadcasts }
-
-    expose(:age_ranges) { AgeRange.all }
-
-    # Filters
-
-    expose(:filtered_states) { filtered_states }
+   expose(:age_ranges) { AgeRange.all }
+   # Filters
+   expose(:filtered_states) { filtered_states }
     expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 50
-
-    def index
+   def index
       self.movies = paginated_movies
     end
 

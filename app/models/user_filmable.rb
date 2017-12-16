@@ -24,6 +24,9 @@ class UserFilmable < ActiveRecord::Base
   # Uploaders
   mount_uploader :cover, CoverUploader
 
+  # Scope
+  default_scope { order('(position IS NULL) ASC, position ASC') }
+
   def media_str
     return 'Blu-Ray' if bluray?
     return 'DVD' if dvd?

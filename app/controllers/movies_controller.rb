@@ -8,23 +8,21 @@ class MoviesController < ApplicationController
   expose(:playing) { Movie.current_playing }
   expose(:playing_soon) { Movie.playing_soon }
   expose(:featured) { Movie.featured.first(10) }
-  expose(:available_netflix) { Movie.available_netflix }
+ expose(:available_netflix) { Movie.available_netflix }
   expose(:available_amazon) { Movie.available_amazon }
-  expose(:birthday_professionals) { Professional.birthdays }
+ expose(:birthday_professionals) { Professional.birthdays }
   expose(:movie, attributes: :movie_attributes)
-  expose(:broadcasts) { movie.broadcasts }
+ expose(:broadcasts) { movie.broadcasts }
 
-  expose(:age_ranges) { AgeRange.all }
+ expose(:age_ranges) { AgeRange.all }
 
-  # Filters
+ # Filters
 
   expose(:filtered_states) { filtered_states }
   expose(:filtered_cities) { filtered_cities }
-
-  PER_PAGE = 50
-
+ PER_PAGE = 50
   def index
-    self.movies = paginated_movies
+   self.movies = paginated_movies
   end
 
   def show

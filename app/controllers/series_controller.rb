@@ -8,23 +8,21 @@ class SeriesController < ApplicationController
   expose(:playing) { Serie.current_playing }
   expose(:playing_soon) { Serie.playing_soon }
   expose(:featured) { Serie.featured.first(10) }
-  expose(:available_netflix) { Serie.available_netflix }
+ expose(:available_netflix) { Serie.available_netflix }
   expose(:available_amazon) { Serie.available_amazon }
-  expose(:birthday_professionals) { Professional.birthdays }
+ expose(:birthday_professionals) { Professional.birthdays }
   expose(:serie, attributes: :serie_attributes)
-  expose(:broadcasts) { serie.broadcasts }
+ expose(:broadcasts) { serie.broadcasts }
 
-  expose(:age_ranges) { AgeRange.all }
+ expose(:age_ranges) { AgeRange.all }
 
-  # Filters
+ # Filters
 
   expose(:filtered_states) { filtered_states }
   expose(:filtered_cities) { filtered_cities }
-
-  PER_PAGE = 50
-
+ PER_PAGE = 50
   def index
-    self.series = paginated_series
+   self.series = paginated_series
   end
 
   def show

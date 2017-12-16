@@ -1,0 +1,20 @@
+- role = current_role(current_user, request.url)
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              = "Assistidos de #{user.name}"
+
+      .row
+        - filmables.each do |filmable|
+          - object = filmable
+          - cover = image_default_path(object.cover, "movie")
+
+          .col-sm-2.col-xs-3.no-shelf
+            = link_to url_for([role, object]) do
+              / = image_tag(cover, class: "img-responsive")
+              %img.img-responsive{ src: cover }

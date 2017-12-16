@@ -8,23 +8,19 @@ module Platform
     expose(:series) { Serie.all }
     expose(:playing) { Serie.current_playing }
     expose(:playing_soon) { Serie.playing_soon }
-    expose(:featured) { Serie.featured.first(10) }
+   expose(:featured) { Serie.featured.first(10) }
     expose(:available_netflix) { Serie.available_netflix }
-    expose(:available_amazon) { Serie.available_amazon }
+   expose(:available_amazon) { Serie.available_amazon }
     expose(:birthday_professionals) { Professional.birthdays }
-    expose(:serie, attributes: :serie_attributes)
+   expose(:serie, attributes: :serie_attributes)
     expose(:broadcasts) { serie.broadcasts }
-
-    expose(:age_ranges) { AgeRange.all }
-
-    # Filters
-
-    expose(:filtered_states) { filtered_states }
+   expose(:age_ranges) { AgeRange.all }
+   # Filters
+   expose(:filtered_states) { filtered_states }
     expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 50
-
-    def index
+   def index
       self.series = paginated_series
     end
 
