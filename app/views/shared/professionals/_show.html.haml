@@ -82,19 +82,29 @@
                       .media-heading.title-section
                         = set_function.name
 
-              .row
-                - showcase_class ||= 'showcase-poster'
-                - background_color ||= 'parent'
+              - if role == :admin
+                .row
+                  - showcase_class ||= 'showcase-poster'
+                  - background_color ||= 'parent'
 
-                / MOVIES THUMB
-                .col-xs-12{ class: showcase_class }
-                  .slider-frame{ style: "background-color: #{background_color}" }
-                    .btn.prev
-                    .btn.next
-                    .slider-container
-                      - slider_movies.each do |pm|
-                        - unless pm.blank?
-                          = render 'shared/home/showcase/item', role: role, pm: pm
+                  / MOVIES THUMB
+                  .col-xs-12{ class: showcase_class }
+                    .slider-frame{ style: "background-color: #{background_color}" }
+                      .btn.prev
+                      .btn.next
+                      .slider-container
+                        - slider_movies.each do |pm|
+                          - unless pm.blank?
+                            = render 'shared/home/showcase/item', role: role, pm: pm
+              - else
+                .row.wine.bold{ style: 'margin-top: 10px; margin-bottom: 15px;' }
+                  .col-xs-12
+                    Título
+                - slider_movies.each do |movie|
+                  .row{ style: 'border-bottom: 1px solid #cccccc; margin-bottom: 5px; padding-bottom: 5px' }
+                    .col-xs-12
+                      = link_to polymorphic_path([role, movie]), target: '_blank' do
+                        = movie.title
 
   .row
     .col-xs-12
