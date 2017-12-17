@@ -67,12 +67,12 @@
 
   - set_functions = object.set_functions_by_occurrence
   - set_functions.each do |sf|
-    - slider_movies = object.filmography_for_set_function(sf)
+    - unless sf.blank?
+      - set_function = SetFunction.where(id: sf).first
+      - unless set_function.blank?
+        - slider_movies = object.filmography_for_set_function(sf)
 
-    - if slider_movies.any?
-      - unless sf.blank?
-        - set_function = SetFunction.where(id: sf).first
-        - unless set_function.blank?
+        - if slider_movies.any?
           .row{ data: { slider: { playing: '' } } }
             .col-xs-8
               .section-pessoal
@@ -80,7 +80,7 @@
                   .media
                     .media-body.media-middle
                       .media-heading.title-section
-                        = .name
+                        = set_function.name
 
               .row
                 - showcase_class ||= 'showcase-poster'
