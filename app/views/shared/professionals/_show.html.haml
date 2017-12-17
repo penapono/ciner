@@ -82,7 +82,7 @@
                       .media-heading.title-section
                         = set_function.name
 
-              - if role == :admin
+              - if current_user && current_user.admin?
                 .row.wine.bold{ style: 'margin-top: 10px; margin-bottom: 15px;' }
                   .col-xs-12
                     Título
