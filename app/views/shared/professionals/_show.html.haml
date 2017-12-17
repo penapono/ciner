@@ -90,7 +90,7 @@
                   .row{ style: 'border-bottom: 1px solid #cccccc; margin-bottom: 5px; padding-bottom: 5px' }
                     .col-xs-12
                       = link_to polymorphic_path([role, movie]), target: '_blank' do
-                        = movie.title
+                        = movie.title_str
               - else
                 .row
                   - showcase_class ||= 'showcase-poster'
