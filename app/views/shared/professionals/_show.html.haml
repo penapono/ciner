@@ -70,28 +70,31 @@
     - slider_movies = object.filmography_for_set_function(sf)
 
     - if slider_movies.any?
-      .row{ data: { slider: { playing: '' } } }
-        .col-xs-8
-          .section-pessoal
-            .title-separator
-              .media
-                .media-body.media-middle
-                  .media-heading.title-section
-                    = SetFunction.find(sf).name
+      - unless sf.blank?
+        - set_function = SetFunction.where(id: sf).first
+        - unless set_function.blank?
+          .row{ data: { slider: { playing: '' } } }
+            .col-xs-8
+              .section-pessoal
+                .title-separator
+                  .media
+                    .media-body.media-middle
+                      .media-heading.title-section
+                        = .name
 
-          .row
-            - showcase_class ||= 'showcase-poster'
-            - background_color ||= 'parent'
+              .row
+                - showcase_class ||= 'showcase-poster'
+                - background_color ||= 'parent'
 
-            / MOVIES THUMB
-            .col-xs-12{ class: showcase_class }
-              .slider-frame{ style: "background-color: #{background_color}" }
-                .btn.prev
-                .btn.next
-                .slider-container
-                  - slider_movies.each do |pm|
-                    - unless pm.blank?
-                      = render 'shared/home/showcase/item', role: role, pm: pm
+                / MOVIES THUMB
+                .col-xs-12{ class: showcase_class }
+                  .slider-frame{ style: "background-color: #{background_color}" }
+                    .btn.prev
+                    .btn.next
+                    .slider-container
+                      - slider_movies.each do |pm|
+                        - unless pm.blank?
+                          = render 'shared/home/showcase/item', role: role, pm: pm
 
   .row
     .col-xs-12
