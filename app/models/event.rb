@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
   # Filter
 
   def self.all_past
-    where("event_date < ? OR (end_date IS NOT NULL AND end_date < ?)", DateTime.now, DateTime.now).order(event_date: :asc)
+    where("(event_date < ? AND end_date IS NULL) OR (end_date IS NOT NULL AND end_date < ?)", DateTime.now, DateTime.now).order(event_date: :asc)
   end
 
   def self.all_next
@@ -119,7 +119,7 @@ class Event < ActiveRecord::Base
 
   def status_str
     today = Date.today
-    return '' if event_date < today
+    return '' if event_date < today && !end_date
     return 'acontecendo' if event_date == end_date && event_date.month == today.month
     if (end_date.blank? && event_date == today) ||
        (!end_date.blank? && event_date <= today && today <= end_date)
