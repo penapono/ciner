@@ -34,17 +34,10 @@ Rails.application.routes.draw do
         put "user_action", to: "movies#user_action"
       end
     end
-
-    resources :ciner_videos do
-      member do
-        put 'change_status', to: 'ciner_videos#change_status'
-        get 'upload_video', to: 'ciner_videos#upload_video'
-        get 'upload_trailer', to: 'ciner_videos#upload_trailer'
-        put "like", to: "ciner_videos#upvote"
-        put "dislike", to: "ciner_videos#downvote"
-        put "user_action", to: "ciner_videos#user_action"
-      end
-    end
+    match "movies/playing", to: "movies#playing", via: :get
+    match "movies/featured", to: "movies#featured", via: :get
+    match "movies/playing_soon", to: "movies#playing_soon", via: :get
+    match "movies/available_netflix", to: "movies#available_netflix", via: :get
 
     resources :series, only: [:index, :show, :destroy] do
       member do
@@ -53,6 +46,10 @@ Rails.application.routes.draw do
         put "user_action", to: "series#user_action"
       end
     end
+    match "series/playing", to: "series#playing", via: :get
+    match "series/featured", to: "series#featured", via: :get
+    match "series/playing_soon", to: "series#playing_soon", via: :get
+    match "series/available_netflix", to: "series#available_netflix", via: :get
 
     resources :events do
       member do
