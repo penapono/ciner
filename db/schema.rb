@@ -460,6 +460,14 @@ ActiveRecord::Schema.define(version: 20171219030755) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "serie_duplicates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "title"
+    t.text "available_years"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "serie_episodes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "series_id"
     t.string "original_title_ep"

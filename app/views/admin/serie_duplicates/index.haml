@@ -1,0 +1,33 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %i.fa.fa-copy.fa-2x.wine{ style: 'margin-top: 10px; padding-top: 5px' }
+          .media-body.media-bottom
+            .media-heading.title-section
+              Séries Duplicadas
+
+  .row.wine.bold{ style: 'margin-top: 10px; margin-bottom: 15px;' }
+    .col-xs-6
+      Título
+    .col-xs-4
+      Anos
+    .col-xs-2{ style: 'text-align: left'}
+      Repetições
+
+  - serie_duplicates.each do |serie_duplicate|
+    .row{ style: 'border-bottom: 1px solid #cccccc; margin-bottom: 5px; padding-bottom: 5px' }
+      .col-xs-6
+        = link_to polymorphic_path([:admin, :series_index], params: { search: serie_duplicate.title }), target: '_blank' do
+          = serie_duplicate.title
+      .col-xs-4
+        = serie_duplicate.available_years
+      .col-xs-2{ style: 'text-align: left'}
+        = serie_duplicate.count
+
+  = render 'shared/pagination', resources: serie_duplicates

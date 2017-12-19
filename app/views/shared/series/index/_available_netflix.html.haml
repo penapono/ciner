@@ -8,7 +8,7 @@
         .media-heading.title-section
           Últimos lançamentos na Netflix
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :series_index]) do
+        = link_to see_more_url do
           = t('see_more')
 
   - if role.blank?

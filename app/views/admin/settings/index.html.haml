@@ -31,9 +31,6 @@
   = link_to Serie.model_name.human(count: 2), url_for([:admin, :series_index])
 
 %p
-  = link_to CinerVideo.model_name.human(count: 2), url_for([:admin, :ciner_videos])
-
-%p
   = link_to Critic.model_name.human(count: 2), url_for([:admin, :critics])
 
 %p
@@ -54,5 +51,5 @@
 %p
   = link_to 'Filmes Duplicados', url_for([:admin, :movie_duplicates])
 
-%br
-
+%p
+  = link_to 'Séries Duplicadas', url_for([:admin, :serie_duplicates])

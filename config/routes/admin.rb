@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :playing_filmables, only: :index
     resources :delates
     resources :movie_duplicates, only: :index
+    resources :serie_duplicates, only: :index
 
     match "movies/playing", to: "movies#playing", via: :get
     match "movies/featured", to: "movies#featured", via: :get
