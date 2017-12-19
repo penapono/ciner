@@ -164,6 +164,11 @@ module ::BaseController
       'active'
     end
 
+    def playing; end
+    def playing_soon; end
+    def feaured; end
+    def available_netflix; end
+
     private
 
     # custom actions

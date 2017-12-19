@@ -6,10 +6,9 @@
   .row
     .col-xs-8
       = render 'shared/series/toolbar'
-      = render 'shared/series/index/playing', role: role
-      = render 'shared/series/index/featured', role: role
-      = render 'shared/series/index/playing_soon', role: role
-      = render 'shared/series/index/available_netflix', role: role
-      / = render 'shared/series/index/available_amazon', role: role
+      = render 'shared/series/index/playing', role: role, filmables: playing_filmables
+      = render 'shared/series/index/featured', role: role, filmables: featured_filmables
+      = render 'shared/series/index/playing_soon', role: role, filmables: playing_soon_filmables
+      = render 'shared/series/index/available_netflix', role: role, filmables: available_netflix_filmables
     .col-xs-4
       = render 'shared/series/index/birthdays', role: role

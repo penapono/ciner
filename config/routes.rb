@@ -37,12 +37,14 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :questions, only: [:index, :show]
   resources :broadcasts, only: [:index, :show]
-  resources :featured_filmables, only: :index
   resources :notifications, except: [:show]
-  resources :playing_filmables, only: :index
   resources :searches, only: :index
   resources :delates, only: [:create, :update]
 
+  match "movies/playing", to: "movies#playing", via: :get
+  match "movies/featured", to: "movies#featured", via: :get
+  match "movies/playing_soon", to: "movies#playing_soon", via: :get
+  match "movies/available_netflix", to: "movies#available_netflix", via: :get
   resources :movies, only: [:index, :show] do
     member do
       put "like", to: "movies#upvote"
@@ -50,11 +52,11 @@ Rails.application.routes.draw do
       put "user_action", to: "movies#user_action"
     end
   end
-  match "movies/playing", to: "movies#playing", via: :get
-  match "movies/featured", to: "movies#featured", via: :get
-  match "movies/playing_soon", to: "movies#playing_soon", via: :get
-  match "movies/available_netflix", to: "movies#available_netflix", via: :get
 
+  match "series/playing", to: "series#playing", via: :get
+  match "series/featured", to: "series#featured", via: :get
+  match "series/playing_soon", to: "series#playing_soon", via: :get
+  match "series/available_netflix", to: "series#available_netflix", via: :get
   resources :series, only: [:index, :show] do
     member do
       put "like", to: "series#upvote"
@@ -62,10 +64,6 @@ Rails.application.routes.draw do
       put "user_action", to: "series#user_action"
     end
   end
-  match "series/playing", to: "series#playing", via: :get
-  match "series/featured", to: "series#featured", via: :get
-  match "series/playing_soon", to: "series#playing_soon", via: :get
-  match "series/available_netflix", to: "series#available_netflix", via: :get
 
   resources :professionals, only: [:index, :show]
   resources :curriculums, only: [:index, :show]

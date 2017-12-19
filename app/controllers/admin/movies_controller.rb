@@ -8,13 +8,12 @@ module Admin
     expose(:movies) { Movie.all }
     expose(:movie, attributes: :movie_attributes)
     expose(:broadcasts) { movie.broadcasts }
-
     expose(:age_ranges) { AgeRange.all }
 
-    # Filters
-
-    expose(:filtered_states) { filtered_states }
-    expose(:filtered_cities) { filtered_cities }
+    expose(:playing_filmables) { Movie.current_playing }
+    expose(:playing_soon_filmables) { Movie.playing_soon }
+    expose(:featured_filmables) { Movie.featured.first(10) }
+    expose(:available_netflix_filmables) { Movie.available_netflix }
 
     PER_PAGE = 100
 

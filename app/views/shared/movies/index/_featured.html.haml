@@ -8,7 +8,7 @@
         .media-heading.title-section
           Em Destaque
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :movies]) do
+        = link_to see_more_url do
           = t('see_more')
 
   - if role.blank?
@@ -23,7 +23,7 @@
         .btn.prev
         .btn.next
         .slider-container
-          - featured.each do |object|
+          - filmables.each do |object|
             - cover = image_default_path(object.cover, "movie")
 
             .slide.movie-poster-item{ style: "width: 133px; height: 200px; float: left; margin-left: 5px; margin-right: 5px;" }

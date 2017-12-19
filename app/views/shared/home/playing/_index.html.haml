@@ -11,7 +11,7 @@
         .media-heading.title-section
           Filmes em Cartaz
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :playing_filmables]) do
+        = link_to url_for([role, :movies, :playing]) do
           = t('see_more')
 
   - if role.blank?

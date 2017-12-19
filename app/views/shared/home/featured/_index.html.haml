@@ -11,7 +11,7 @@
         .media-heading.title-section
           Em Destaque
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :featured_filmables]) do
+        = link_to url_for([role, :movies, :featured]) do
           = t('see_more')
 
   - if role.blank?

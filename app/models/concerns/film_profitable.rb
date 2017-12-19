@@ -442,10 +442,6 @@ module FilmProfitable
     def self.available_netflix
       where(available_netflix: true).order(brazilian_release: :desc)
     end
-
-    def self.available_amazon
-      where(available_amazon: true).order(brazilian_release: :desc)
-    end
   end
 
   def self.filmables_by_type(type)

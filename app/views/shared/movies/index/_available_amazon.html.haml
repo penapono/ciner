@@ -8,7 +8,7 @@
         .media-heading.title-section
           Últimos lançamentos na Amazon Prime
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :movies]) do
+        = link_to see_more_url do
           = t('see_more')
 
   - if role.blank?

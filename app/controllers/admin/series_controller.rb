@@ -9,13 +9,13 @@ module Admin
     expose(:serie, attributes: :serie_attributes)
     expose(:broadcasts) { serie.broadcasts }
 
+    expose(:playing_filmables) { Serie.current_playing }
+    expose(:playing_soon_filmables) { Serie.playing_soon }
+    expose(:featured_filmables) { Serie.featured.first(10) }
+    expose(:available_netflix_filmables) { Serie.available_netflix }
+
     expose(:countries) { Country.all }
     expose(:age_ranges) { AgeRange.all }
-
-    # Filters
-
-    expose(:filtered_states) { filtered_states }
-    expose(:filtered_cities) { filtered_cities }
 
     PER_PAGE = 50
 
