@@ -165,7 +165,7 @@ class Professional < ActiveRecord::Base
 
     object.update_attribute("lock_updates", false) if force_update
 
-    unless object.lock_updates? && !Rails.env.development?
+    unless object.lock_updates?
 
       tmdb_id = object.tmdb_id
 
