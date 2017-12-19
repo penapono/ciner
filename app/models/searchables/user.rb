@@ -7,8 +7,11 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       users.name LIKE :search OR
+      users.email LIKE :search OR
       users.nickname LIKE :search OR
       users.cep LIKE :search OR
+      users.address LIKE :search OR
+      users.number LIKE :search OR
       users.neighbourhood LIKE :search OR
       users.complement LIKE :search OR
       users.cpf LIKE :search OR

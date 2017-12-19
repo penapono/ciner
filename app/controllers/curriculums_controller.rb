@@ -2,10 +2,12 @@
 
 class CurriculumsController < ApplicationController
   include CurriculumsBreadcrumb
- # exposes
+  # exposes
   expose(:curriculums) { Curriculum.all }
   expose(:curriculum, attributes: :curriculum_attributes)
- PER_PAGE = 50
+
+  PER_PAGE = 50
+
   def index
     return if curriculums.blank?
    self.curriculums = paginated_curriculums

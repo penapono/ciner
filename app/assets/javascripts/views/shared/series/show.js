@@ -1,4 +1,3 @@
-//= require star-rating.min
 //= require views/shared/user_filmables
 //= require views/api/v1/comments/index
 //= require ./star

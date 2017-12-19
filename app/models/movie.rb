@@ -15,6 +15,7 @@ class Movie < ActiveRecord::Base
   belongs_to :user
 
   has_many :critics, as: :filmable, dependent: :destroy
+  has_many :user_filmable_ratings, as: :filmable, dependent: :destroy
   has_many :broadcast_broadcastables, as: :broadcastable, dependent: :destroy
   has_many :broadcasts, through: :broadcast_broadcastables
   has_many :filmable_professionals, as: :filmable, dependent: :destroy

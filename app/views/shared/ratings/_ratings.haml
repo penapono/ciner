@@ -1,0 +1,11 @@
+.row
+  .col-xs-12{ style: 'margin-left: -30px;' }
+    .info{ style: 'margin-top: 10px; text-align: center; font-size: 18px;' }
+      .stars{ data: { star_rating: { object: object.class, id: object.id } } }
+        - (1..5).each do |rating|
+          %span
+            %i.fa.fa-star-o.fa-2x{ data: { star: '', rating: rating } }
+
+      .rate{ style: 'font-size: 13px;' }
+        .wine.bold
+          Avalie
