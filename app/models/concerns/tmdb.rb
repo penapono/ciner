@@ -66,7 +66,7 @@ module Tmdb
 
       object.update_attribute("lock_updates", false) if force_update
 
-      if !object.lock_updates?
+      unless object.lock_updates?
         tmdb_result = start_tmdb(object)
 
         if tmdb_result

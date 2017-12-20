@@ -23,7 +23,6 @@ class Question < ActiveRecord::Base
   validates :title,
             :content,
             :user,
-            :questionable_type,
             presence: true
 
   # Delegations
@@ -80,7 +79,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.localized_questionable_types
-    [['Filme', Movie], ['Série', Serie], ['Profissional', Professional]]
+    [['Filme', Movie], ['Série', Serie]]
   end
 
   def spoiler_str
@@ -110,6 +109,8 @@ class Question < ActiveRecord::Base
     elsif area == "series"
       where(questionable_type: 'Serie')
     elsif area == "general"
+      where.not(questionable_type: %w[Movie Serie])
+    else
       all
     end
   end

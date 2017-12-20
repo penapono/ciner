@@ -12,7 +12,7 @@ pt-BR:
         broadcast: Notícia
         questionable: Tema
         questionable_id: Tema
-        questionable_type: Referente a
+        questionable_type: Escolha um Tema
         updated_at: Data de Publicação
         user: Autor
         user_id: Autor
