@@ -59,7 +59,7 @@
         .col-xs-3{ style: "font-size: 22px;" }
           .row
             .col-xs-10
-              = simple_form_for :searches, url: request.url, method: :get, class: 'navbar-form', role: :search do |f|
+              = simple_form_for :searches, url: searches_path, method: :get, class: 'navbar-form', role: :search do |f|
                 = text_field_tag :search, params[:search], placeholder: 'Buscar'
                 .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();", style: 'font-size: 18px' }
             - if current_user
