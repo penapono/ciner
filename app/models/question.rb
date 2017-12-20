@@ -88,10 +88,6 @@ class Question < ActiveRecord::Base
     Question.human_attribute_name("spoiler.spoiler_free")
   end
 
-  def created_at_str
-    I18n.t('shared.questions.created_at', user: user_nickname, date: I18n.l(created_at, format: :shorter))
-  end
-
   def date_str
     I18n.l(created_at, format: :shorter)
   end

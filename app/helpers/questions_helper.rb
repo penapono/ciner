@@ -14,7 +14,18 @@ module QuestionsHelper
   end
 
   def question_created_at_str(question)
-    I18n.t('shared.questions.created_at', user: question.user_name, date: l(question.created_at, format: :shorter))
+    user_link =
+      link_to(
+        question.user_nickname,
+        Rails.application.routes.url_helpers.platform_users_path(
+          question.user
+        )
+      )
+
+    I18n.t('shared.questions.created_at',
+           user: user_link,
+           date: I18n.l(question.created_at,
+                        format: :shorter)).html_safe
   end
 
   private
