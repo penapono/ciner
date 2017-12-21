@@ -9,7 +9,9 @@ class Api::V1::UserFilmableRatingsController < ApplicationController
         user_id: user_filmable_rating_params[:user_id]
       )
     user_filmable_rating.rating = user_filmable_rating_params[:rating]
-    render json: { status: (user_filmable_rating.save ? "ok" : "error") }
+    user_filmable_rating.save
+    current_rating = user_filmable_rating.filmable.users_rating
+    render json: { status: (user_filmable_rating ? "ok" : "error"), current_rating: current_rating }
   end
 
   private

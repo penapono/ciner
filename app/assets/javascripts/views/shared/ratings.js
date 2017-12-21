@@ -62,6 +62,7 @@ function Ratings() {
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: function(data) {
         toastr.info("Obrigado por classificar!");
+        $('[data-users-rating]').html(data.current_rating);
       }
     });
   }
