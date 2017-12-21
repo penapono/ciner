@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221165713) do
+ActiveRecord::Schema.define(version: 20171221171334) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -194,15 +194,6 @@ ActiveRecord::Schema.define(version: 20171221165713) do
     t.index ["curriculum_id"], name: "index_curriculum_audios_on_curriculum_id"
   end
 
-  create_table "curriculum_awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "curriculum_id"
-    t.string "category"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["curriculum_id"], name: "index_curriculum_awards_on_curriculum_id"
-  end
-
   create_table "curriculum_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "curriculum_id"
     t.string "media"
@@ -216,14 +207,6 @@ ActiveRecord::Schema.define(version: 20171221165713) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "curriculum_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "curriculum_id"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["curriculum_id"], name: "index_curriculum_jobs_on_curriculum_id"
   end
 
   create_table "curriculum_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

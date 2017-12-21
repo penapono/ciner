@@ -9,7 +9,9 @@ class Api::V1::UserFilmableRatingsController < ApplicationController
         user_id: user_filmable_rating_params[:user_id]
       )
 
-    if user_filmable_rating.persisted? && user_filmable_rating.rating == user_filmable_rating_params[:rating]
+    rating = user_filmable_rating_params[:rating].to_i rescue 1
+
+    if user_filmable_rating.persisted? && user_filmable_rating.rating == rating
       user_filmable_rating.destroy
     else
       user_filmable_rating.rating = user_filmable_rating_params[:rating]

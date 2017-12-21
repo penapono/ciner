@@ -80,6 +80,9 @@ module Platform
         :ethnicity,
 
         :drt,
+
+        :jobs,
+        :awards,
         curriculum_photos_attributes: %i[
           media
           curriculum_id
@@ -100,19 +103,6 @@ module Platform
         ],
         curriculum_files_attributes: %i[
           media
-          curriculum_id
-          id
-          _destroy
-        ],
-        curriculum_jobs_attributes: %i[
-          description
-          curriculum_id
-          id
-          _destroy
-        ],
-        curriculum_awards_attributes: %i[
-          category
-          title
           curriculum_id
           id
           _destroy

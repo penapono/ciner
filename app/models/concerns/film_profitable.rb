@@ -427,7 +427,9 @@ module FilmProfitable
     end
 
     def users_rating
-      UserFilmableRating.where(filmable: self).average(:rating).float(1)
+      rating = UserFilmableRating.where(filmable: self).average(:rating)
+      return rating.round(1) if rating
+      "-"
     end
 
     def incinerator

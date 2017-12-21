@@ -59,16 +59,16 @@
                     = object.biography_str
                   %br
 
-                - unless object.winnings_str.blank?
+                - unless object.awards.blank?
                   Premiações
                   %span.bold.wine
-                    = object.winnings_str
+                    = object.awards
                   %br
 
-                - unless object.jobs_str.blank?
+                - unless object.jobs.blank?
                   Trabalhos
                   %span.bold.wine
-                    = object.jobs_str
+                    = object.jobs
                   %br
 
                 - unless object.drt_str.blank?
