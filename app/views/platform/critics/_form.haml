@@ -1,14 +1,17 @@
 = javascript_include_tag Ckeditor.cdn_url
 - role = current_role(current_user, request.url)
+- filmable_type = params[:filmable_type]
+- filmable_class = filmable_type.constantize
+- filmable_id = params[:filmable_id]
+- filmable = filmable_class.find(filmable_id) rescue Movie.first
+
+- user_filmable_rating = UserFilmableRating.where(filmable: filmable, user: current_user).first
 
 = simple_form_for [role, critic] do |f|
-  - rating = f.object.rating || 0
+  - rating = user_filmable_rating.rating if user_filmable_rating
+  - rating ||= f.object.rating || 1
 
   %h3
-    - filmable_type = params[:filmable_type]
-    - filmable_class = filmable_type.constantize
-    - filmable_id = params[:filmable_id]
-    - filmable = filmable_class.find(filmable_id) rescue Movie.first
     = filmable.title_str
 
   .row
@@ -23,7 +26,7 @@
 
     .col-xs-4.col-sm-3
       %div
-        = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
+        = f.input :rating, input_html: { step: 1, min: 1, max: 5, value: rating }
         = checkbox_item(f, :spoiler)
 
   = f.hidden_field :filmable_type, value: params[:filmable_type] || 'Movie'
