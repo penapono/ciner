@@ -15,7 +15,7 @@
 - broadcast ||= nil
 
 %h3
-  = t('.general')
+  Novo Debate
 
   = f.object.errors.first.to_s
 
@@ -31,14 +31,14 @@
   = f.hidden_field :questionable_type, value: params[:questionable_type]
   = f.hidden_field :questionable_id, value: params[:questionable_id]
 - else
-  .row{ data: { questionable: '', tipsy: '' }, title: 'Para debater sobre uma notícia, selecione "Debater" na área de notícias' }
-    .col-xs-6{ data: { questionable_select: '' } }
+  .row{ data: { questionable: '', tipsy: '' } }
+    .col-xs-6{ data: { questionable_select: '' }, title: 'Para debater sobre uma notícia, selecione "Debater" na área de notícias' }
       = f.input :questionable_type, collection: Question.localized_questionable_types, selected: questionable_type
 
 .row
   .col-xs-12
     %div{ data: { limited: '', limit: 90 } }
-      = f.input :title, as: :string, label: false, input_html: { value: title, disabled: !title.blank?, placeholder: 'Título do Tópico' }, maxlength: 90
+      = f.input :title, as: :string, label: false, input_html: { value: title, disabled: !title.blank?, placeholder: 'Título do tópico' }, maxlength: 90
       %span.char-counter
         = t('remaining_chars', chars: 90)
       - unless title.blank?
@@ -47,7 +47,7 @@
 .row
   .col-xs-12
     %div{ data: { limited: '', limit: 2000 } }
-      = f.input :content, as: :text, label: false, input_html: { placeholder: 'Inicie o debate desse tópico aqui', rows: 5 }, maxlength: 1000
+      = f.input :content, as: :text, label: false, input_html: { placeholder: 'Inicie o debate do tópico aqui', rows: 5 }, maxlength: 1000
       %span.char-counter
         = t('remaining_chars', chars: 2000)
 
