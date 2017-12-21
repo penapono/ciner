@@ -1,4 +1,6 @@
 - if current_user
+  - user_filmable_rating = UserFilmableRating.where(filmable: object, user_id: current_user).first
+  - user_rating = user_filmable_rating ? user_filmable_rating.rating : 0
   - content_for :javascript, javascript_include_tag('views/shared/ratings')
   - content_for :stylesheet, stylesheet_link_tag('views/shared/ratings')
 
@@ -7,8 +9,12 @@
       .info{ style: 'margin-top: 10px; text-align: center; font-size: 18px;' }
         .stars{ data: { star_rating: '', url: api_v1_user_filmable_ratings_path, user_filmable_rating: { filmable_type: object.class, filmable_id: object.id, user_id: current_user.id } } }
           - (1..5).each do |rating|
-            %span{ style: 'cursor: pointer' }
-              %i.fa.fa-star-o.fa-2x{ data: { star: '', rating: rating } }
+            - if user_rating >= rating
+              %span{ style: 'cursor: pointer' }
+                %i.fa.fa-star.fa-2x{ data: { star: '', rating: rating }, style: 'color: rgb(225, 190, 59)' }
+            - else
+              %span{ style: 'cursor: pointer' }
+                %i.fa.fa-star-o.fa-2x{ data: { star: '', rating: rating } }
 
         .rate{ style: 'font-size: 13px;' }
           .wine.bold
