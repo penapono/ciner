@@ -6,13 +6,7 @@
           Áudios
 
   .row
-    - if curriculum.audio1.url
-      .col-xs-4
-        = link_to "Download #{curriculum.audio1.filename}", curriculum.audio1.url, download: ""
-
-    - if curriculum.audio2.url
-      .col-xs-4
-        = link_to "Download #{curriculum.audio2.filename}", curriculum.audio2.url, download: ""
-    - if curriculum.audio3.url
-      .col-xs-4
-        = link_to "Download #{curriculum.audio3.filename}", curriculum.audio3.url, download: ""
+    - curriculum.curriculum_audios.each do |audio|
+      - if audio.media && audio.media.url
+        .col-xs-4
+          = link_to "Download #{audio.media.filename}", audio.media.url, download: ""
