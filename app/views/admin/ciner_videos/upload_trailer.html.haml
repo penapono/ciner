@@ -1,8 +1,0 @@
-- content_for :stylesheet, stylesheet_link_tag(stylesheet)
-- content_for :javascript, javascript_include_tag(javascript)
-
-.container
-  = render 'shared/breadcrumbs'
-
-= simple_form_for [:admin, ciner_video], remote: true do |f|
-  = render 'shared/ciner_videos/form_upload_trailer', f: f

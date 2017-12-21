@@ -7,7 +7,8 @@
       .media-body.media-middle
         .media-heading.title-section Meus amigos
       .media-body.text-right.media-middle.see-more
-        %a{:href => "#"} ver todos
+        %a{:href => "#"}
+          = t('see_more')
 
   - friends.first(18).each do |object|
     = link_to url_for([role, object]) do

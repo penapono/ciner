@@ -11,7 +11,7 @@
 - collection_unlocked = user && !user.blank?
 - collection_unlocked ||= false
 
-#user-actions
+#user-actions{ style: 'margin-left: -20px' }
   .row{ data: { user_id: user_id, filmable_id: object.id, filmable_type: object.class, user_action: '', url: url } }
     .col-xs-12
       .tags
@@ -48,12 +48,12 @@
               %use{"xlink:href" => "#favorito"}
             %span{ data: { count: '' } }
               = object.favorite_str
-        .button{ data: { recommend: 'like' } }
-          %a{ class: user_action_class_on(user, object, 'like') }
-            %svg.icon-tags
-              %use{"xlink:href" => "#like"}
-            %span{ data: { count: '' } }
-              = object.like_str
+        / .button{ data: { recommend: 'like' } }
+        /   %a{ class: user_action_class_on(user, object, 'like') }
+        /     %svg.icon-tags
+        /       %use{"xlink:href" => "#like"}
+        /     %span{ data: { count: '' } }
+        /       = object.like_str
 
 #actionLockedModal.modal.fade{ role: 'dialog' }
   .modal-dialog

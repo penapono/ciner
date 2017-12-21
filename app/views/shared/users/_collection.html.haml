@@ -14,7 +14,7 @@
         .media-heading.title-section Minha coleção
       - if show_collection
         .media-body.text-right.media-middle.see-more
-          = link_to 'ver mais', url_for([role, user, :collection_index])
+          = link_to 'Ver mais', url_for([role, user, :collection_index])
 
   - if show_collection
     - user_collection.first(size).each do |user_filmable|

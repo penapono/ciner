@@ -11,7 +11,7 @@
       .media-heading.title-section
         Meus Favoritos
     .media-body.text-right.media-middle.see-more
-      = link_to 'ver mais', url_for([role, user, :favorite_index])
+      = link_to 'Ver mais', url_for([role, user, :favorite_index])
 
 .row{ style: 'margin-bottom: 20px;', data: { slider: { favorites: '' } } }
   = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: favorites
@@ -25,7 +25,7 @@
       .media-heading.title-section
         Assistidos
     .media-body.text-right.media-middle.see-more
-      = link_to 'ver mais', url_for([role, user, :watched_index])
+      = link_to 'Ver mais', url_for([role, user, :watched_index])
 
 .row{ style: 'margin-top: 20px;', data: { slider: { watched: '' } } }
   = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: watched
@@ -39,7 +39,7 @@
       .media-heading.title-section
         Quero Ver
     .media-body.text-right.media-middle.see-more
-      = link_to 'ver mais', url_for([role, user, :want_to_see_index])
+      = link_to 'Ver mais', url_for([role, user, :want_to_see_index])
 
 .row{ style: 'margin-top: 20px;', data: { slider: { want_to_see: '' } } }
   = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: want_to_see

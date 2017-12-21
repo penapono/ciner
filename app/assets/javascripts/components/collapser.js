@@ -18,7 +18,7 @@ $(function(){
 
   function _show(aControl, aContent) {
     _updateContent(aContent, 'collapse', '')
-    _updateControlText(aControl, 'ver menos')
+    _updateControlText(aControl, 'Ver menos')
   }
 
   function _collapse(aControl, aContent) {
