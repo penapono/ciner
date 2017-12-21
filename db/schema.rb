@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221171334) do
+ActiveRecord::Schema.define(version: 20171221174404) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -66,47 +66,6 @@ ActiveRecord::Schema.define(version: 20171221171334) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_broadcasts_on_deleted_at"
     t.index ["user_id"], name: "index_broadcasts_on_user_id"
-  end
-
-  create_table "ciner_video_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "ciner_video_id"
-    t.integer "set_function_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ciner_videos", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "original_title"
-    t.string "title"
-    t.integer "year"
-    t.string "length"
-    t.text "synopsis"
-    t.date "release"
-    t.integer "city_id"
-    t.integer "state_id"
-    t.integer "age_range_id"
-    t.string "cover"
-    t.text "ciner_video_directors"
-    t.text "ciner_video_writers"
-    t.text "ciner_video_actors"
-    t.boolean "playing"
-    t.text "countries"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "trailer_file_name"
-    t.string "trailer_content_type"
-    t.integer "trailer_file_size"
-    t.datetime "trailer_updated_at"
-    t.string "media_file_name"
-    t.string "media_content_type"
-    t.integer "media_file_size"
-    t.datetime "media_updated_at"
-    t.integer "status", default: 0
-    t.text "film_production_categories"
-    t.text "ciner_video_ratings"
-    t.index ["user_id"], name: "index_ciner_videos_on_user_id"
   end
 
   create_table "cities", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

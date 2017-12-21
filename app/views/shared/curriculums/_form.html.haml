@@ -45,10 +45,10 @@
       = t('.about')
 
 .row
-  .col-xs-12{ data: { limited: '', limit: 200 } }
-    = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 200
+  .col-xs-12{ data: { limited: '', limit: 250 } }
+    = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 250
     %span.char-counter
-      = t('remaining_chars', chars: 200)
+      = t('remaining_chars', chars: 250)
 
 .row
   .col-xs-12{ data: { limited: '', limit: 200 } }
