@@ -85,13 +85,14 @@ Rails.application.routes.draw do
       resources :movies, only: :index
       resources :series, only: :index
       resources :professionals, only: :index
+      resources :visits, only: :create
+      resources :user_filmable_ratings, only: :create
       resources :comments do
         member do
           put "like", to: "comments#upvote"
           put "dislike", to: "comments#downvote"
         end
       end
-      resources :visits, only: :create
     end
   end
 end

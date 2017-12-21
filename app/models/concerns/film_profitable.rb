@@ -427,7 +427,7 @@ module FilmProfitable
     end
 
     def users_rating
-      5.0
+      UserFilmableRating.where(filmable: self).average(:rating)
     end
 
     def incinerator

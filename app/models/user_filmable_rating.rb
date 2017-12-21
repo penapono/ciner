@@ -20,7 +20,16 @@ class UserFilmableRating < ActiveRecord::Base
 
   # Callbacks
 
-  def update_year
-    true
+  def update_critic
+    critic =
+      Critic
+      .where(
+        user_id: user_id,
+        filmable: filmable
+      )
+      .first
+    return unless critic && critic.rating != rating
+    critic.rating = rating
+    critic.save
   end
 end

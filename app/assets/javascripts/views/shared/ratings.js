@@ -17,9 +17,10 @@ function Ratings() {
     $(dataRatings).on('click', '[data-star]', function() {
       var self = $(this),
           parent = self.closest('[data-star-rating]'),
-          filmable_type = parent.data("filmable-type"),
-          filmable_id = parent.data("filmable-id"),
-          user_id = parent.data("user-id"),
+          url = parent.data('url'),
+          filmable_type = parent.data("user-filmable-rating-filmable-type"),
+          filmable_id = parent.data("user-filmable-rating-filmable-id"),
+          user_id = parent.data("user-filmable-rating-user-id"),
           rating = self.data("rating"),
           data = {
             user_filmable_rating: {
@@ -30,8 +31,7 @@ function Ratings() {
             }
           }
 
-      _rate(url, aData);
-      alert("Clicou na estrela " + rating + "!");
+      _rate(url, data);
     });
 
     $(dataRatings).on('mouseover', '[data-star]', function() {
@@ -61,7 +61,7 @@ function Ratings() {
       data: aData,
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: function(data) {
-        toastr.info("Obrigado por classificar o filme!");
+        toastr.info("Obrigado por classificar!");
       }
     });
   }

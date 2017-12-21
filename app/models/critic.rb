@@ -35,6 +35,7 @@ class Critic < ActiveRecord::Base
 
   # Callbacks
   before_save :update_year
+  after_save :update_user_filmable_rating
 
   # Aliases
   alias_attribute :title_str, :name
@@ -168,5 +169,17 @@ class Critic < ActiveRecord::Base
   def update_year
     return unless filmable
     self.filmable_release_year = filmable.filmable_year if filmable.brazilian_release
+  end
+
+  def update_user_filmable_rating
+    user_filmable_rating =
+      UserFilmableRating
+      .find_or_initialize_by(
+        user_id: user_id,
+        filmable: filmable
+      )
+    return if user_filmable_rating.rating == rating
+    user_filmable_rating.rating = rating
+    user_filmable_rating.save
   end
 end
