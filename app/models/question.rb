@@ -79,7 +79,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.localized_questionable_types
-    [['Filme', Movie], ['Série', Serie], ['Geral', 'General']]
+    [['Filme', Movie], ['Série', Serie], %w[Geral General]]
   end
 
   def spoiler_str

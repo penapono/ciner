@@ -15,7 +15,8 @@ class City < ActiveRecord::Base
   # Delegations
   delegate :name, to: :state, allow_nil: true, prefix: true
 
-  default_scope { order(name: :asc) }
+  # Scope
+  default_scope { order(name: :desc) }
 
   def self.by_state_acronym(acronym)
     State.find_by(acronym: acronym).cities
