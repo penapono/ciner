@@ -8,10 +8,16 @@ class Api::V1::UserFilmableRatingsController < ApplicationController
         filmable_id: user_filmable_rating_params[:filmable_id],
         user_id: user_filmable_rating_params[:user_id]
       )
-    user_filmable_rating.rating = user_filmable_rating_params[:rating]
-    user_filmable_rating.save
+
+    if user_filmable_rating.persisted? && user_filmable_rating.rating == user_filmable_rating_params[:rating]
+      user_filmable_rating.destroy
+    else
+      user_filmable_rating.rating = user_filmable_rating_params[:rating]
+      user_filmable_rating.save
+    end
+
     current_rating = user_filmable_rating.filmable.users_rating
-    render json: { status: (user_filmable_rating ? "ok" : "error"), current_rating: current_rating }
+    render json: { status: "ok", current_rating: current_rating }
   end
 
   private

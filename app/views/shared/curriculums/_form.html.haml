@@ -13,7 +13,6 @@
     = label_tag 'Nome'
     = text_field_tag :user_nickname, current_user.name, disabled: true
 
-.row
   .col-xs-6
     = f.input :play_name
     = f.hidden_field :user_id, value: (f.object.user ? f.object.user.id : current_user.id)
@@ -25,8 +24,6 @@
   .col-xs-3
     = label_tag 'Idade'
     = text_field_tag :user_gender, "#{current_user.age} anos", disabled: true
-
-.row
   .col-xs-3
     = label_tag 'Cidade'
     = text_field_tag :user_nickname, current_user.city_name, disabled: true
@@ -35,8 +32,12 @@
     = text_field_tag :user_nickname, current_user.state_name, disabled: true
 
 .row
-  .col-xs-6
-    = f.input :curriculum_function_id, collection: CurriculumFunction.all, input_html: { class: 'select2 form-field' }
+  .col-xs-4
+    = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), input_html: { class: 'select2 form-field' }
+  / .col-xs-4
+  /   = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), input_html: { class: 'select2 form-field' }
+  / .col-xs-4
+  /   = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), input_html: { class: 'select2 form-field' }
 
 .row
   .col-xs-12
@@ -44,10 +45,22 @@
       = t('.about')
 
 .row
-  .col-xs-12{ data: { limited: '', limit: 1000 } }
-    = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 1000
+  .col-xs-12{ data: { limited: '', limit: 200 } }
+    = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 200
     %span.char-counter
-      = t('remaining_chars', chars: 1000)
+      = t('remaining_chars', chars: 200)
+
+.row
+  .col-xs-12{ data: { limited: '', limit: 200 } }
+    = f.input :jobs, input_html: { rows: 2 }, maxlength: 200
+    %span.char-counter
+      = t('remaining_chars', chars: 200)
+
+.row
+  .col-xs-12{ data: { limited: '', limit: 90 } }
+    = f.input :awards, input_html: { rows: 1 }, maxlength: 90
+    %span.char-counter
+      = t('remaining_chars', chars: 90)
 
 .row
   .col-xs-12
@@ -98,22 +111,6 @@
 .row
   .col-xs-6
     = render 'shared/curriculums/curriculum_files/nested', f: f
-
-.row
-  .col-xs-6
-    %h3.wine
-      Trabalhos Realizados
-.row
-  .col-xs-6
-    = render 'shared/curriculums/curriculum_jobs/nested', f: f
-
-.row
-  .col-xs-6
-    %h3.wine
-      Premiações
-.row
-  .col-xs-6
-    = render 'shared/curriculums/curriculum_awards/nested', f: f
 
 .row.actions
   - if f.object.persisted?

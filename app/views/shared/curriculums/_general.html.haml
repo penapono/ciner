@@ -15,7 +15,6 @@
               %a.wine.bold
                 = object.curriculum_function_name
               %br
-              %br
 
               .title
                 %h3.bold.wine
@@ -25,24 +24,21 @@
                     = object.user_age
                     anos
 
-              %br
-
             .col-xs-12.col-sm-6.col-md-6.col-lg-6
               - if current_user == object.user
                 .row
-                  .col-xs-6
-                    = link_to url_for([:edit, role, object]) do
-                      .nota{ style: 'padding: 5px;' }
-                        .valor{ style: 'font-size: 20px; line-height: 34px;' }
-                          Editar
-                        .valor{ style: 'font-size: 20px; line-height: 34px;' }
-                          Currículo
+                  .col-xs-6.pull-right
+                    = link_to url_for([:edit, role, object]), class: 'pull-right' do
+                      %button.btn.btn-login{ style: "width: 100%;" }
+                        %span.text
+                          Editar Currículo
+                        %span.icon.icon-button
               - else
                 .row
                   .col-xs-6
                     = link_to '#' do
                       .nota{ style: 'padding: 5px;' }
-                        .valor{ style: 'font-size: 20px; line-height: 24px;' }
+                        .valor{ style: 'font-size: 16px; line-height: 18px;' }
                           Quero entrar em contato com este profissional
 
           - unless object.user_gender_str.blank?
@@ -97,4 +93,4 @@
                     = object.mannequin_str
                   %br
 
-          = render 'shared/curriculums/user_actions', object: object, role: role
+          / = render 'shared/curriculums/user_actions', object: object, role: role

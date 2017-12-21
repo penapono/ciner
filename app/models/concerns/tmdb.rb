@@ -70,7 +70,7 @@ module Tmdb
         tmdb_result = start_tmdb(object)
 
         if tmdb_result
-          object.synopsis = tmdb_result["overview"]
+          object.synopsis ||= tmdb_result["overview"]
 
           object.tmdb_id = tmdb_result["id"]
 
@@ -131,19 +131,13 @@ module Tmdb
 
             object.omdb_id = omdb_id
 
-            object.release = begin
+            object.release ||= begin
                               Date.parse(response["Released"])
                             rescue StandardError
                               nil
                             end
 
-            object.length = response["Runtime"]
-
-            # object.omdb_directors = response["Director"]
-
-            # object.omdb_writers = response["Writer"]
-
-            # object.omdb_actors = response["Actors"]
+            object.length ||= response["Runtime"]
 
             object.omdb_genre ||= response["Genre"]
 
@@ -190,7 +184,7 @@ module Tmdb
 
         object.original_title = object.original_title.delete("\"") if object.original_title
 
-        object.trailer = load_trailer
+        object.trailer ||= load_trailer
 
         object.omdb_rated ||= load_rating
 

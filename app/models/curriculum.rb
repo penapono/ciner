@@ -10,8 +10,6 @@ class Curriculum < ActiveRecord::Base
   has_many :curriculum_files
   has_many :curriculum_videos
   has_many :curriculum_audios
-  has_many :curriculum_jobs
-  has_many :curriculum_awards
 
   # Validations
   validates :user_id,
@@ -32,15 +30,8 @@ class Curriculum < ActiveRecord::Base
   accepts_nested_attributes_for :curriculum_audios,
                                 allow_destroy: true,
                                 reject_if: :all_blank
-  accepts_nested_attributes_for :curriculum_jobs,
-                                allow_destroy: true,
-                                reject_if: :all_blank
-  accepts_nested_attributes_for :curriculum_awards,
-                                allow_destroy: true,
-                                reject_if: :all_blank
 
   # gender
-  # 0: Men, 1: Women, 2: Other
   enum gender: { men: 0, women: 1, other: 2 }
   enum ethnicity: { white: 1, afrodescendant: 2, brown: 3, yellow: 4, indigenous: 5 }
 
