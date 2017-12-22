@@ -24,7 +24,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -52,7 +54,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -80,7 +84,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -108,7 +114,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.avatar, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -136,7 +144,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -164,7 +174,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -180,6 +192,7 @@
         .media-left.media-middle
           .icon-title
             %img.img-responsive{ src: image_path("icons/ico_events.png"), style: 'width: 30px; height: 30px;' }
+
         .media-body.media-bottom
           .media-heading.title-section
             Agenda do Cinema
@@ -192,7 +205,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 60px; width: 90px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 60px; width: 90px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 90px;' )
+
       .col-xs-11
         = link_to url_for([role, object]) do
           =  object.title_str
@@ -208,6 +223,7 @@
         .media-left.media-middle
           .icon-title{ style: 'margin-top: 10px;' }
             %img.img-responsive{ src: image_path("icons/ico_broadcasts.png"), style: 'width: 30px; height: 30px;' }
+
         .media-body.media-bottom
           .media-heading.title-section
             Notícias
@@ -220,7 +236,9 @@
     .row
       .col-xs-1
         - cover = image_default_path(object.cover, "movie")
-        %img.img-responsive{ src: cover, style: 'height: 60px; width: 90px;' }
+        / %img.img-responsive{ src: cover, style: 'height: 60px; width: 90px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 90px;' )
+
       .col-xs-11
         = link_to url_for([role, :broadcasts]) do
           =  object.title_str

@@ -6,7 +6,8 @@
       .col-xs-4{ style: 'margin-right: -20px; margin-top: -5px;' }
         - avatar = image_default_path(current_user.avatar.thumb, "user")
         = link_to url_for([role, current_user]) do
-          %img.img-responsive{ src: avatar, style: "width: 60px; height: 60px; margin: auto; margin-top: 10px" }
+          / %img.img-responsive{ src: avatar, style: "width: 60px; height: 60px; margin: auto; margin-top: 10px" }
+          = image_tag(avatar, class: "img-responsive", style: 'width: 60px; height: 60px; margin: auto; margin-top: 10px;' )
       .col-xs-8
         .welcome
           Olá,

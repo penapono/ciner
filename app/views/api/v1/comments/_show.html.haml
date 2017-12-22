@@ -6,7 +6,8 @@
   .row
     .col-xs-2.col-sm-1
       .usuario-avatar
-        %img.img-responsive{ src: avatar }
+        / %img.img-responsive{ src: avatar }
+        = image_tag(avatar, class: "img-responsive" )
       = comment.user_nickname
       %br
     .col-xs-7.col-sm-8{ style: "margin-left: 30px;" }

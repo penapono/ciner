@@ -22,7 +22,8 @@
           - broadcast.broadcast_images.each do |bi|
             .col-xs-4{ style: 'margin-bottom: 15px;' }
               = link_to bi.media.url, target: '_blank' do
-                %img.img-responsive{ src: bi.media, style: "width: 240px; height: 160px;" }
+                / %img.img-responsive{ src: bi.media, style: "width: 240px; height: 160px;" }
+                = image_tag(bi.media, class: "img-responsive", style: 'width: 240px; height: 160px;' )
       - else
         Não há fotos na galeria desta notícia
     - else

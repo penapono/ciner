@@ -4,7 +4,8 @@
   .col-xs-1
     = link_to url_for([role, delate.user]), target: "_blank" do
       - cover = image_default_path(delate.user_cover, "user")
-      %img.img-responsive{ src: cover, style: 'width: 65px; height: 65px;' }
+      / %img.img-responsive{ src: cover, style: 'width: 65px; height: 65px;' }
+      = image_tag(cover, class: "img-responsive", style: 'width: 65px; height: 65px;' )
   .col-xs-2
     = link_to url_for([role, delate.user]), target: "_blank" do
       = delate.user_nickname

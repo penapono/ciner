@@ -22,7 +22,8 @@
           - event.event_images.each do |ei|
             .col-xs-4{ style: 'margin-bottom: 15px;' }
               = link_to ei.media.url, target: '_blank' do
-                %img.img-responsive{ src: ei.media, style: "width: 240px; height: 160px;" }
+                / %img.img-responsive{ src: ei.media, style: "width: 240px; height: 160px;" }
+                = image_tag(ei.media, class: "img-responsive", style: 'width: 240px; height: 160px;' )
       - else
         Não há fotos na galeria deste evento
     - else
