@@ -11,7 +11,8 @@
 .row
   .col-xs-12.critica-mais-recente
     .col-xs-12.col-sm-4.col-md-2
-      %img.img-responsive{ src: cover }
+      / %img.img-responsive{ src: cover }
+      = image_tag(cover, class: "img-responsive")
     .col-xs-12.col-sm-8.col-md-10.critica-recente
       .info
         .row

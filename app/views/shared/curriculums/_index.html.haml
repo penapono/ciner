@@ -22,8 +22,8 @@
 
           .col-sm-2.col-xs-3.no-shelf
             = link_to url_for([role, object]) do
-              / = image_tag(cover, class: "img-responsive", style: 'height: 200px; width: 200px;')
-              %img.img-responsive{ src: cover, style: 'width: 200px; height: 200px;' }
+              = image_tag(cover, class: "img-responsive", style: 'height: 200px; width: 200px;')
+              / %img.img-responsive{ src: cover, style: 'width: 200px; height: 200px;' }
             .wine
               = object.title_str
             = object.age_str

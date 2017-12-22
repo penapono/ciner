@@ -5,7 +5,8 @@
   .review-item.col-xs-12.col-sm-12
     .movie-poster-item{ style: 'width: 133px; height: 200px; float: left; margin-right: 10px;' }
       .thumb
-        %img.img-responsive{ src: cover, style: 'width: 133px; height: 200px;' }
+        / %img.img-responsive{ src: cover, style: 'width: 133px; height: 200px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 200px; width: 133px;')
     .critic-content{ style: 'display:inline; float: left; width: 60%; padding-top: 0px; margin-top: -12px;' }
       = link_to url_for([role, critic]) do
         %h4

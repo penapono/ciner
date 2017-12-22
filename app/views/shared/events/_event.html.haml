@@ -7,7 +7,8 @@
 .noticia-item{ style: 'padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #CCCCCC;' }
   .row
     .col-xs-3{ id: object.id }
-      %img.img-responsive{ src: cover, style: 'height: 171px; width: 261px;' }
+      / %img.img-responsive{ src: cover, style: 'height: 171px; width: 261px;' }
+      = image_tag(cover, class: "img-responsive", style: 'height: 171px; width: 261px;')
     .col-xs-9
       .wine{ style: 'height: 20px;' }
         - if object.state

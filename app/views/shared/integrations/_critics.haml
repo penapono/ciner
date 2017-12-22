@@ -35,7 +35,8 @@
             .review-item
               .col-xs-12.col-sm-3.thumb-user
                 .usuario-avatar
-                  %img.img-responsive{ src: avatar }
+                  / %img.img-responsive{ src: avatar }
+                  = image_tag(avatar, class: "img-responsive")
               .col-xs-9.col-sm-9.resume
                 %h4.title
                   = filmable.title_str

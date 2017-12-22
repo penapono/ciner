@@ -6,7 +6,8 @@
     .review-item{ style: 'width: 100%' }
       .col-xs-12.col-sm-5.thumb
         %figure
-          %img.img-responsive{ src: cover }
+          / %img.img-responsive{ src: cover }
+          = image_tag(cover, class: "img-responsive")
       .col-xs-12.col-sm-7.resume
         %h4.title
           = filmable.title_str

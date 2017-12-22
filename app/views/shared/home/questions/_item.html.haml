@@ -25,7 +25,8 @@
         - avatar = image_default_path(object.user.avatar.thumb, "user")
         .thumb-user
           %figure
-            %img.img-responsive{ src: avatar }
+            / %img.img-responsive{ src: avatar }
+            = image_tag(avatar, class: "img-responsive")
       .last-user
         %span.vermelho
           Último comentário
@@ -39,7 +40,8 @@
         - avatar = image_default_path(object.user.avatar.thumb, "user")
         .thumb-user
           %figure
-            %img.img-responsive{ src: avatar }
+            / %img.img-responsive{ src: avatar }
+            = image_tag(avatar, class: "img-responsive")
       .last-user
         %span.vermelho
           Criado por

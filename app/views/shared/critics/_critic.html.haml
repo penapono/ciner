@@ -2,7 +2,8 @@
 
 = link_to path do
   .col-xs-12.col-sm-4.col-md-2.critica-item
-    %img.img-responsive{ src: cover }
+    / %img.img-responsive{ src: cover }
+    = image_tag(cover, class: "img-responsive")
     .info
       = render 'shared/critics/rating', critic: critic
       %h4.bold.title
