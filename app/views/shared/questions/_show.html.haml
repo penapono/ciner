@@ -23,7 +23,7 @@
           .usuario-avatar
             / %img.img-responsive{ src: avatar }
             = image_tag(avatar, class: "img-responsive")
-          = link_to [role, question.user] do
+          = link_to url_for([role, question.user]) do
             = question.user_nickname
         .col-xs-9.col-sm-10{ style: "margin-left: 30px;" }
           .content

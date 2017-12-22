@@ -17,7 +17,7 @@ module QuestionsHelper
     user_link =
       link_to(
         question.user_nickname,
-        Rails.application.routes.url_helpers.platform_users_path(
+        Rails.application.routes.url_helpers.platform_user_path(
           question.user
         )
       )
