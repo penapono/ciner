@@ -2,6 +2,7 @@ pt-BR:
   actions: Ações
   cancel: Cancelar
   confirm: Confirmar
+  confirm_destroy: "Deseja realmente excluir esse registro?"
   edit: Editar
   exit: Sair
   new: Novo
