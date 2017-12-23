@@ -1,7 +1,13 @@
 .nested-fields
   .row
     .col-xs-10.formatted-error-field
-      = f.input :media
+      - if f.object.media.present?
+        = link_to f.object.media.file.filename, f.object.media.url, download: ''
+      - else
+        .button.button-green.pull-left{ data: { file_select: '' } }
+          = t('select_file')
+        .file-name.pull-left{ data: { file_name: '' } }
+        = f.input :media, as: :file, label: false, placeholder: t('.media_placeholder'), input_html: { data: { file: '' } }
 
     .col-xs-2
       = link_to_remove_association '', f, class: 'fa fa-trash-o delete-icon', title: t('remove'), data: { confirm: t('confirm_destroy') }

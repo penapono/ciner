@@ -1,0 +1,86 @@
+// variáveis da aplicação
+
+$app-red: #ee1d23;
+$app-red-bg: $app-red;
+$app-red-text: $app-red;
+$simple-form-red: #d9534f;
+
+$app-blue-light: #3ac7e3;
+
+$app-conviva-colors-blue: #03bfdd;
+$app-conviva-colors-blue-dark: #5A8BCF;
+$app-conviva-colors-blue-gray: #96BABE;
+$app-conviva-colors-green: #00b451;
+$app-conviva-colors-green-dark: #39b448;
+$app-conviva-colors-purple: #6a2b8d;
+$app-conviva-colors-purple-light: lighten($app-conviva-colors-purple, 20%);
+$app-conviva-colors-pink: #b74b78;
+$app-conviva-colors-pink-light: lighten($app-conviva-colors-pink, 20%);
+$app-conviva-colors-brown: #633818;
+$app-conviva-colors-red: #f71b2a;
+$app-conviva-colors-orange: #ff9433;
+$app-conviva-colors-yellow: #fede3a;
+$app-conviva-colors-gray: #808080;
+$app-background-color: #fcfcfc;
+
+
+// variáves do styleguide do Zeplin
+
+$whitish-2:              #EDF0EE;
+$whitish:                #d8d8d8;
+$greyish:                #b3b3b3;
+$greyish-brown:          #505050;
+$greyish-brown-two:      #4d4d4d;
+$warm-grey:              #808080;
+$black:                  #2e2e2e;
+$black-25:               rgba(0, 0, 0, 0.25);
+$medium-green:           $app-conviva-colors-green-dark;
+$greenish:               #47953F;
+$medium-blue:            $app-conviva-colors-blue-dark;
+// varíaveis que sobrescreve as do bootstrap:
+// disponíveis em: https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
+
+$brand-primary:          $app-conviva-colors-green;
+$brand-secondary:        $app-conviva-colors-blue;
+
+$body-bg:                #f9f9f9;
+$body-font:              #959595;
+
+$gray-base:              #222;
+$gray-darker:            lighten($gray-base, 13.5%);
+$gray-dark:              lighten($gray-base, 25%);
+$gray:                   lighten($gray-base, 37.5%);
+$gray-light:             lighten($gray-base, 47.5%);
+$gray-lighter:           lighten($gray-base, 67.5%); // #cecece
+$gray-lighter-bg:        lighten($gray-base, 85.5%);
+
+$font-family-sans-serif: "Lato", Helvetica, sans-serif !default;
+
+$alert-border-radius:    0;
+
+$navbar-border-radius:   0;
+
+$grid-float-breakpoint:  960px;
+
+$popover-title-bg:       transparent;
+
+$text-color:                    $gray-base;
+$dropdown-link-active-bg:       $gray-lighter-bg;
+$dropdown-link-active-color:    $gray-base;
+$navbar-default-link-active-bg: $gray-lighter-bg;
+
+// default magin & padding classes
+$default-margin: 15px;
+$default-padding: $default-margin;
+
+$white: #ffffff;
+
+$red-bg: #fff4f4;
+
+// content 'default' colors
+
+$content-orange-dark: #5f4219;
+$content-orange: #f4af2a;
+$content-orange-light: #fff0de;
+
+$content-blue: #74cadf;

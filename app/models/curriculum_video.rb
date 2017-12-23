@@ -10,5 +10,5 @@ class CurriculumVideo < ActiveRecord::Base
   validates :media,
             presence: true
 
-  validates :media, file_size: { less_than: 1024.megabytes }
+  validates :media, file_size: { less_than: 30.megabytes }
 end
