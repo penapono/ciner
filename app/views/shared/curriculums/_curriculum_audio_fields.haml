@@ -10,5 +10,5 @@
         = f.input :media, as: :file, label: false, placeholder: t('.media_placeholder'), input_html: { data: { file: '' } }
       = f.hidden_field :media_cache
 
-    .pull-right{ style: 'margin-right: -20px;' }
+    .pull-right
       = link_to_remove_association '', f, class: 'fa fa-trash-o', data: { confirm: t('confirm_destroy') }

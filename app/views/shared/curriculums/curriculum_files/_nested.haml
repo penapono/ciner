@@ -1,9 +1,0 @@
-- partial = 'shared/curriculums/curriculum_files/fields'
-
-.row{ 'data-cocoon-container': '' }
-  .col-xs-12
-    %h2.title.pull-right
-      = link_to_add_association '+', f, :curriculum_files, data: { association_insertion_method: 'before' }, class: 'action-button add', partial: partial
-
-    = f.simple_fields_for :curriculum_files do |ep|
-      = render partial, f: ep

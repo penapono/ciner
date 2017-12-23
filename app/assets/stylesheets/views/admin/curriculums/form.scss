@@ -46,18 +46,13 @@
 }
 
 .links {
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-right: -13px;
 
   .add_fields {
     display: inline-block;
     height: 18px;
     width: 18px;
-
-    &::after {
-      // content: '\f00c';
-      // content: '+';
-    }
-
   }
 
 }
