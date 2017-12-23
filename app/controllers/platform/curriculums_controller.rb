@@ -106,6 +106,12 @@ module Platform
           curriculum_id
           id
           _destroy
+        ],
+        curriculum_curriculum_functions_attributes: %i[
+          curriculum_function_id
+          curriculum_id
+          id
+          _destroy
         ]
       )
     end

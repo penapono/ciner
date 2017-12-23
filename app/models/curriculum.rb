@@ -5,11 +5,11 @@ class Curriculum < ActiveRecord::Base
 
   # Associations
   belongs_to :user
-  belongs_to :curriculum_function
-  has_many :curriculum_photos
-  has_many :curriculum_files
-  has_many :curriculum_videos
-  has_many :curriculum_audios
+  has_many :curriculum_curriculum_functions, dependent: :destroy
+  has_many :curriculum_photos, dependent: :destroy
+  has_many :curriculum_files, dependent: :destroy
+  has_many :curriculum_videos, dependent: :destroy
+  has_many :curriculum_audios, dependent: :destroy
 
   # Validations
   validates :user_id,
@@ -18,6 +18,9 @@ class Curriculum < ActiveRecord::Base
             presence: true
 
   # Nested
+  accepts_nested_attributes_for :curriculum_curriculum_functions,
+                                allow_destroy: true,
+                                reject_if: :all_blank
   accepts_nested_attributes_for :curriculum_photos,
                                 allow_destroy: true,
                                 reject_if: :all_blank
@@ -45,7 +48,6 @@ class Curriculum < ActiveRecord::Base
   delegate :gender_str, to: :user, allow_nil: true, prefix: true
   delegate :simple_address, to: :user, allow_nil: true, prefix: true
   delegate :avatar, to: :user, allow_nil: true, prefix: true
-  delegate :name, to: :curriculum_function, allow_nil: true, prefix: true
 
   # Aliases
   alias_attribute :cover, :avatar
@@ -109,6 +111,13 @@ class Curriculum < ActiveRecord::Base
   def title_str
     return user_name if play_name.blank?
     play_name
+  end
+
+  def curriculum_functions_str
+    curriculum_function_ids = curriculum_curriculum_functions.pluck(:curriculum_function_id)
+    curriculum_functions = CurriculumFunction.where(id: curriculum_function_ids)
+    return "" unless curriculum_functions
+    curriculum_functions.pluck(:name).to_sentence
   end
 
   def age_str

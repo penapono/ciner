@@ -32,12 +32,10 @@
     = text_field_tag :user_nickname, current_user.state_name, disabled: true
 
 .row
-  .col-xs-4
-    = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), input_html: { class: 'select2 form-field' }
-  / .col-xs-4
-  /   = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), input_html: { class: 'select2 form-field' }
-  / .col-xs-4
-  /   = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), input_html: { class: 'select2 form-field' }
+  .col-xs-12{ data: { cocoon_container: '' } }
+    .row
+      .col-xs-12
+        = render 'shared/curriculums/nested', f: f, association: 'curriculum_curriculum_functions', title: "Profissões", observation: '(até 3 profissões)'
 
 .row
   .col-xs-12

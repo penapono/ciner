@@ -1,0 +1,5 @@
+pt-BR:
+  activerecord:
+    attributes:
+      curriculum_curriculum_function:
+        curriculum_function_id: Profissão

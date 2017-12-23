@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221184956) do
+ActiveRecord::Schema.define(version: 20171223043655) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -151,6 +151,15 @@ ActiveRecord::Schema.define(version: 20171221184956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["curriculum_id"], name: "index_curriculum_audios_on_curriculum_id"
+  end
+
+  create_table "curriculum_curriculum_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "curriculum_id"
+    t.bigint "curriculum_function_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_function_id"], name: "index_curriculum_curriculum_functions_on_curriculum_function_id"
+    t.index ["curriculum_id"], name: "index_curriculum_curriculum_functions_on_curriculum_id"
   end
 
   create_table "curriculum_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,7 @@
+.nested-fields.inline-nested{ data: { nested_fields: '' } }
+  .row.margin-top
+    .col-xs-11
+      = f.input :curriculum_function_id, collection: CurriculumFunction.all.order(name: :asc), label: false, input_html: { class: 'select2 form-field' }
+
+    .pull-right
+      = link_to_remove_association '', f, class: 'fa fa-trash-o', data: { confirm: t('confirm_destroy') }
