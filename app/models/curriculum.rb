@@ -53,11 +53,24 @@ class Curriculum < ActiveRecord::Base
   alias_attribute :cover, :avatar
 
   def self.by_curriculum_function(curriculum_function_id)
-    where(curriculum_function: curriculum_function_id)
+    references(:curriculum_curriculum_functions)
+      .where("curriculum_curriculum_functions.curriculum_function_id = ?",
+             curriculum_function_id)
+      .includes(:curriculum_curriculum_functions)
   end
 
   def self.by_age(age)
-    references(:user).where("users.age = ?", age).includes(:user)
+    start_age = begin
+                  (age.split("-")[0]).to_i
+                rescue StandardError
+                  0
+                end
+    end_age = begin
+                (age.split("-")[1]).to_i
+              rescue StandardError
+                99
+              end
+    references(:user).where("users.age >= ? AND users.age <= ?", start_age, end_age).includes(:user)
   end
 
   def self.by_gender(gender)
@@ -84,18 +97,41 @@ class Curriculum < ActiveRecord::Base
     where(mannequin: mannequin)
   end
 
+  def self.by_height(height)
+    height = height.to_i
+    case height
+    when 1
+      where("height < 1.0")
+    when 2
+      where("height >= 1.01 AND height <= 1.20")
+    when 3
+      where("height >= 1.21 AND height <= 1.40")
+    when 4
+      where("height >= 1.41 AND height <= 1.60")
+    when 5
+      where("height >= 1.61 AND height <= 1.80")
+    when 6
+      where("height >= 1.81 AND height <= 2.0")
+    when 7
+      where("height > 2.0")
+    else
+      all
+    end
+  end
+
   def self.filter_by(collection, params)
     return collection unless params.present?
 
     result = collection
     result = result.by_curriculum_function(params[:curriculum_function_id]) unless params[:curriculum_function_id].blank?
-    result = result.by_age(params[:age]) unless params[:age].blank?
     result = result.by_gender(params[:gender]) unless params[:gender].blank?
     result = result.by_state(params[:state_id]) unless params[:state_id].blank?
     result = result.by_city(params[:city_id]) unless params[:city_id].blank?
     result = result.by_ethnicity(params[:ethnicity]) unless params[:ethnicity].blank?
     result = result.by_drt(params[:drt]) unless params[:drt].blank?
     result = result.by_mannequin(params[:mannequin]) unless params[:mannequin].blank?
+    result = result.by_age(params[:age]) unless params[:age].blank?
+    result = result.by_height(params[:height]) unless params[:height].blank?
     result
   end
 

@@ -18,7 +18,7 @@
       .row
         - curriculums.each do |curriculum|
           - object = curriculum
-          - cover = object.current_avatar
+          - cover = image_default_path(object.current_avatar, "user")
 
           .col-sm-2.col-xs-3.no-shelf
             = link_to url_for([role, object]) do

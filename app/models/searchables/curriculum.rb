@@ -7,16 +7,8 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       curriculums.play_name LIKE :search OR
-      curriculums.winnings1 LIKE :search OR
-      curriculums.winnings2 LIKE :search OR
-      curriculums.winnings3 LIKE :search OR
-      curriculums.winnings4 LIKE :search OR
-      curriculums.winnings5 LIKE :search OR
-      curriculums.jobs1 LIKE :search OR
-      curriculums.jobs2 LIKE :search OR
-      curriculums.jobs3 LIKE :search OR
-      curriculums.jobs4 LIKE :search OR
-      curriculums.jobs5 LIKE :search OR
+      curriculums.awards LIKE :search OR
+      curriculums.jobs LIKE :search OR
       curriculums.biography LIKE :search OR
       users.name LIKE :search OR
       users.email LIKE :search OR

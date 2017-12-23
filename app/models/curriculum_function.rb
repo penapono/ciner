@@ -10,6 +10,9 @@ class CurriculumFunction < ActiveRecord::Base
   validates :name,
             uniqueness: true, case_sensitive: false
 
+  # Scope
+  default_scope { order(name: :asc) }
+
   # Filter
 
   def self.filter_by(collection, _params)
