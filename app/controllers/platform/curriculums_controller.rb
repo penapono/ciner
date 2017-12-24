@@ -69,9 +69,6 @@ module Platform
         :avatar,
         :biography,
 
-        :curriculum_function_id,
-
-        # If Professional is an User
         :user,
 
         # Measures

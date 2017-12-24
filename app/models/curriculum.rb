@@ -13,7 +13,6 @@ class Curriculum < ActiveRecord::Base
 
   # Validations
   validates :user_id,
-            :curriculum_function_id,
             :play_name,
             presence: true
 
