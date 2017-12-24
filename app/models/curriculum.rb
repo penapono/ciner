@@ -62,7 +62,7 @@ class Curriculum < ActiveRecord::Base
     start_age = begin
                   (age.split("-")[0]).to_i
                 rescue StandardError
-                  0
+                  18
                 end
     end_age = begin
                 (age.split("-")[1]).to_i
@@ -94,6 +94,20 @@ class Curriculum < ActiveRecord::Base
 
   def self.by_mannequin(mannequin)
     where(mannequin: mannequin)
+  end
+
+  def self.by_mannequin(mannequin)
+    start_mannequin = begin
+                        (mannequin.split("-")[0]).to_i
+                      rescue StandardError
+                        34
+                      end
+    end_mannequin = begin
+                      (mannequin.split("-")[1]).to_i
+                    rescue StandardError
+                      56
+                    end
+    references(:user).where("users.mannequin >= ? AND users.mannequin <= ?", start_mannequin, end_mannequin).includes(:user)
   end
 
   def self.by_height(height)

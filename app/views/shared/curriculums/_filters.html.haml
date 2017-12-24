@@ -23,6 +23,6 @@
       .col-xs-3
         = f.input :height, label: false, collection: [["Abaixo de 1m", 1], ["1,01m a 1,20m", 2], ["1,21m a 1,40m", 3], ["1,41m a 1,60m", 4], ["1,61m a 1,80m", 5], ["1,81m a 2m", 6], ["Acima de 2m", 7]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Altura', selected: params.fetch(:height, {}).fetch(:height, '')
       .col-xs-3
-        = f.input :mannequin, label: false, collection: [34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Manequim', selected: params.fetch(:filter, {}).fetch(:drt, '')
+        = f.input :mannequin, label: false, collection: [["34 a 38", :"34_38"], ["40 a 44", :"40_44"], ["46 a 50", :"46_50"], ["52 a 56", :"52_56"]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Manequim', selected: params.fetch(:filter, {}).fetch(:drt, '')
       .col-xs-3
         = f.input :drt, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Possui DRT', selected: params.fetch(:filter, {}).fetch(:drt, '')
