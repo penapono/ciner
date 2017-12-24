@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/evgeniy-trebin/carrierwave-video.git
+  revision: 06238933c2b9ce05387dd686cead6e5696f19d44
+  specs:
+    carrierwave-video (0.5.7)
+      carrierwave
+      streamio-ffmpeg
+
+GIT
   remote: git://github.com/lautis/uglifier.git
   revision: 454fd9d90170814f4b571b8812024b4a23dc0957
   branch: harmony
@@ -105,9 +113,6 @@ GEM
       ruby-sox (>= 0.0.3)
       soxi-wrapper (>= 0.0.1)
     carrierwave-ffmpeg (1.0.0)
-      carrierwave
-      streamio-ffmpeg
-    carrierwave-video (0.5.6)
       carrierwave
       streamio-ffmpeg
     childprocess (0.8.0)
@@ -498,7 +503,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-audio
   carrierwave-ffmpeg
-  carrierwave-video
+  carrierwave-video!
   ci_reporter_rspec
   ckeditor
   cocoon

@@ -45,7 +45,7 @@ gem 'kaminari'
 # file upload
 gem 'carrierwave'
 # video uploader
-gem 'carrierwave-video'
+gem 'carrierwave-video', github: 'evgeniy-trebin/carrierwave-video'
 # audio uploader
 gem 'carrierwave-audio'
 
