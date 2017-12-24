@@ -115,7 +115,7 @@
       .col-xs-1
         - cover = image_default_path(object.avatar, "user")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
-        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+        = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 60px;' )
 
       .col-xs-11
         = link_to url_for([role, object]) do
@@ -145,7 +145,7 @@
       .col-xs-1
         - cover = image_default_path(object.cover, "professional")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
-        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+        = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 60px;' )
 
       .col-xs-11
         = link_to url_for([role, object]) do
