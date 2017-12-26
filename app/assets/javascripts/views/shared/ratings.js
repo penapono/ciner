@@ -34,6 +34,8 @@ function Ratings() {
       _rate(url, data);
 
       parent.attr('data-user-rating', rating);
+
+      _paintStars(stars, rating);
     });
 
     $(dataRatings).on('mouseover', '[data-star]', function() {
@@ -47,9 +49,8 @@ function Ratings() {
 
     $('[data-filmable-rating]').on('mouseleave', '[data-star-rating]', function() {
       var self = $(this),
-          dataStarRating = self.find('[data-star-rating]'),
-          rating = dataStarRating.data('user-rating'),
-          stars = dataStarRating.find('[data-star]');
+          rating = self.data('user-rating'),
+          stars = self.find('[data-star]');
 
       console.log(rating + " from data-user-rating");
 
