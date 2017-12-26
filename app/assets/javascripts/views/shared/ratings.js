@@ -32,6 +32,8 @@ function Ratings() {
           }
 
       _rate(url, data);
+
+      parent.attr('data-user-rating', rating);
     });
 
     $(dataRatings).on('mouseover', '[data-star]', function() {
@@ -40,16 +42,18 @@ function Ratings() {
           stars = parent.find('[data-star]'),
           rating = self.data("rating");
 
-      stars.removeClass('fa-star');
-      stars.addClass('fa-star-o');
-      stars.css('color', 'black');
+      _paintStars(stars, rating);
+    });
 
-      for(var i = 0; i < rating; i++) {
-        var star = $(stars[i]);
-        star.removeClass('fa-star-o');
-        star.addClass('fa-star');
-        star.css('color', 'rgb(225, 190, 59)');
-      }
+    $('[data-filmable-rating]').on('mouseleave', '[data-star-rating]', function() {
+      var self = $(this),
+          dataStarRating = self.find('[data-star-rating]'),
+          rating = dataStarRating.data('user-rating'),
+          stars = dataStarRating.find('[data-star]');
+
+      console.log(rating + " from data-user-rating");
+
+      _paintStars(stars, rating);
     });
   }
 
@@ -65,6 +69,19 @@ function Ratings() {
         $('[data-users-rating]').html(data.current_rating);
       }
     });
+  }
+
+  function _paintStars(aStarArray, aRating) {
+    aStarArray.removeClass('fa-star');
+    aStarArray.addClass('fa-star-o');
+    aStarArray.css('color', 'black');
+
+    for(var i = 0; i < aRating; i++) {
+      var star = $(aStarArray[i]);
+      star.removeClass('fa-star-o');
+      star.addClass('fa-star');
+      star.css('color', 'rgb(225, 190, 59)');
+    }
   }
 };
 

@@ -4,10 +4,10 @@
   - content_for :javascript, javascript_include_tag('views/shared/ratings')
   - content_for :stylesheet, stylesheet_link_tag('views/shared/ratings')
 
-  #filmable-rating.row
+  #filmable-rating.row{ data: { filmable_rating: '' } }
     .col-xs-12{ style: 'margin-left: -30px;' }
       .info{ style: 'margin-top: 10px; text-align: center; font-size: 18px;' }
-        .stars{ data: { star_rating: '', url: api_v1_user_filmable_ratings_path, user_filmable_rating: { filmable_type: object.class, filmable_id: object.id, user_id: current_user.id } } }
+        .stars{ data: { star_rating: '', url: api_v1_user_filmable_ratings_path, user_rating: user_rating, user_filmable_rating: { filmable_type: object.class, filmable_id: object.id, user_id: current_user.id } } }
           - (1..5).each do |rating|
             - if user_rating >= rating
               %span{ style: 'cursor: pointer' }
