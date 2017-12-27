@@ -10,9 +10,10 @@
         = question.title
     = question_created_at_str(question)
   .col-sm-2.hidden-xs.comentario
+    - comments_count = question.comments_count
     %span
-      = question.comments_count
-    comentários
+      = comments_count
+    = comments_count == 1 ? "comentário" : "comentários"
     %br
     %span
       = question.visits_count_str
