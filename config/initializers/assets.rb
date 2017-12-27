@@ -20,5 +20,4 @@ Rails.application.config.assets.precompile +=
     components/*
     images/*
     fonts/*
-    images/banners/*
   ]
