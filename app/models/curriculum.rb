@@ -149,8 +149,8 @@ class Curriculum < ActiveRecord::Base
   end
 
   def current_avatar
-    return user_avatar unless user_avatar.url.blank?
-  rescue
+    return user_avatar.thumb unless user_avatar.url.blank?
+  rescue StandardError
     "http://placehold.it/550x700"
   end
 

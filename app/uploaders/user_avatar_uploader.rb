@@ -18,12 +18,10 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :avatar do
-    process :crop
     resize_to_fill(300, 300)
   end
 
   version :large do
-    process :crop
     resize_to_fill(600, 600)
   end
 
