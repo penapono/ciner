@@ -7,16 +7,16 @@
 .row{ style: 'text-align: center' }
   .col-xs-12
     .sitemap
-      %ul
+      %ul{ style: 'list-style: none;' }
         %li
           = link_to "Missão", url_for([:mission])
-        %li
-          = link_to "Contrato e Termos de Uso", url_for([:contract])
-        %li
-          = link_to "Politica de Privacidade", url_for([:privacy])
         %li
           = link_to "Sobre Ser Ciner", new_user_registration_path
         %li
           = link_to "Anuncie Aqui", url_for([:merchant])
         %li
           = link_to "Entre em contato", url_for([:new, :contact])
+        %li
+          = link_to "Politica de Privacidade", url_for([:privacy])
+        %li
+          = link_to "Contrato e Termos de Uso", url_for([:contract])
