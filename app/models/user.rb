@@ -70,6 +70,7 @@ class User < ActiveRecord::Base
   before_save :update_age
 
   after_create :send_welcome_mail
+  after_create :grant_welcome_trophy
 
   # Aliases
   alias_attribute :text, :name
@@ -263,5 +264,15 @@ class User < ActiveRecord::Base
 
   def send_welcome_mail
     SignupMailer.welcome_mail(email).deliver_now
+  end
+
+  def grant_welcome_trophy
+    current_trophy = Trophy.find_by(name: 'Ciner com orgulho')
+    user_trophy =
+      UserTrophy.find_or_create_by(
+        user: self,
+        trophy: current_trophy
+      )
+    user_trophy.notify_user
   end
 end
