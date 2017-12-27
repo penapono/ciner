@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
   validates :email,
             :name,
             :birthday,
-            :cpf,
             :gender,
             :role,
             :nickname,
