@@ -1,4 +1,5 @@
 //= require views/shared/reactions
+//= require star-rating.min
 
 $(function() {
   'use strict';
