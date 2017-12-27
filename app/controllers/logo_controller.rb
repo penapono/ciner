@@ -2,5 +2,7 @@
 
 class LogoController < ApplicationController
   layout false
-  def index; end
+  def index
+    redirect_to platform_root_path if current_user
+  end
 end
