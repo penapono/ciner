@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :serie do
     sequence(:original_title) { |n| "Film Production #{n}" }
     sequence(:title) { |n| "Production #{n}" }

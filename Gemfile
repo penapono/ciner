@@ -121,7 +121,7 @@ group :test do
   gem 'ci_reporter_rspec'
   gem 'codeclimate-test-reporter'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'guard-rspec', require: false
   gem 'terminal-notifier-guard', require: false
   gem 'poltergeist'

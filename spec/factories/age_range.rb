@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :age_range do
     sequence(:name) { |n| "Age Range +#{n}" }
     age 18

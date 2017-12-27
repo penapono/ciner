@@ -7,7 +7,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Rails.application.routes.url_helpers
   config.include ActionView::Helpers::UrlHelper
@@ -35,9 +35,9 @@ end
 
 # Comum para todos os testes
 
-# The 'build' methods from FactoryGirl only sets attributes of the model and
+# The 'build' methods from FactoryBot only sets attributes of the model and
 # the 'attributes_for' method doesn't build relations declared on factories.
-# This helper merges the result of this two FactoryGirl's methods
+# This helper merges the result of this two FactoryBot's methods
 def build_attributes_for(klass, options = nil)
   attributes_for(klass, options).with_indifferent_access.reverse_merge build(klass, options).attributes
 end

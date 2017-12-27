@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :professional do
     sequence(:name) { |n| "Professional Name #{n}" }
     birthday Date.today - 18.years

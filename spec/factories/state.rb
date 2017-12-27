@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :state do
     sequence(:acronym) { |n| "State Acronym #{n}" }
     sequence(:name) { |n| "State #{n}" }
