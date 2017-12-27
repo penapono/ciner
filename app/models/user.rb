@@ -73,6 +73,8 @@ class User < ActiveRecord::Base
   after_create :send_welcome_mail
   after_create :grant_welcome_trophy
 
+  before_destroy :destroy_notifications
+
   # Aliases
   alias_attribute :text, :name
   alias_attribute :title_str, :name
@@ -250,12 +252,14 @@ class User < ActiveRecord::Base
 
   private
 
+  # before_save
   def update_address
     return unless city
     self.state_id = city.state.id
     self.country_id = state.country.id
   end
 
+  # before_save
   def update_age
     self.age = 0 unless birthday
     now = Time.now.utc.to_date
@@ -263,10 +267,12 @@ class User < ActiveRecord::Base
       now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
   end
 
+  # after_create
   def send_welcome_mail
     SignupMailer.welcome_mail(email).deliver_now
   end
 
+  # after_create
   def grant_welcome_trophy
     current_trophy = Trophy.find_by(name: 'Ciner com orgulho')
     user_trophy =
@@ -275,5 +281,11 @@ class User < ActiveRecord::Base
         trophy: current_trophy
       )
     user_trophy.notify_user
+  end
+
+  # before_destroy
+  def destroy_notifications
+    Notification.where(receiver_id: id).destroy_all
+    Notification.where(sender_id: id).destroy_all
   end
 end

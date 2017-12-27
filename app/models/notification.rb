@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Notification < ActiveRecord::Base
+  acts_as_paranoid
+
   # Validations
   validates :receiver_id,
             presence: true
