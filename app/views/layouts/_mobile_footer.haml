@@ -1,51 +1,22 @@
 .row
-  .col-xs-12
+  .col-xs-12{ style: 'text-align: center' }
     .media
       .media-left.media-middle
         %figure
           = image_tag("logo_rodape.png", class: "img-responsive", style: 'margin-top: 10px;')
-.row
-  .col-xs-12
-    .sitemap
-      %ul
-        %li
-          = link_to "Filmes", url_for([role, :movies])
-        %li
-          = link_to "Séries", url_for([role, :series_index])
-        %li
-          = link_to "Agenda do Cinema", url_for([role, :events])
-        %li
-          = link_to "Críticas", url_for([role, :critics])
-.row
-  .col-xs-12
-    .sitemap
-      %ul
-        %li
-          = link_to "Notícias", url_for([role, :broadcasts])
-        %li
-          = link_to "Debate Ciner", url_for([role, :questions])
-        %li
-          = link_to "Contrato e Termos de Uso", url_for([:contract])
-        %li
-          = link_to "Politica de Privacidade", url_for([:privacy])
-.row
+.row{ style: 'text-align: center' }
   .col-xs-12
     .sitemap
       %ul
         %li
           = link_to "Missão", url_for([:mission])
         %li
+          = link_to "Contrato e Termos de Uso", url_for([:contract])
+        %li
+          = link_to "Politica de Privacidade", url_for([:privacy])
+        %li
           = link_to "Sobre Ser Ciner", new_user_registration_path
         %li
           = link_to "Anuncie Aqui", url_for([:merchant])
         %li
           = link_to "Entre em contato", url_for([:new, :contact])
-- if current_user && current_user.admin?
-  .row
-    .col-xs-12
-      .sitemap
-        %ul
-          %li
-            = link_to "Configurações", admin_settings_path
-          %li
-            = link_to "Denúncias", url_for([:admin, :delates])
