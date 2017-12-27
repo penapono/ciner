@@ -4,8 +4,8 @@ module CommentManageable
   extend ActiveSupport::Concern
 
   included do
-    def update_comments_count
-      update_attributes(comments_count: comments.size)
+    def update_comments_count(size = 0)
+      update_attributes(comments_count: comments.size + size)
     end
 
     def last_comment

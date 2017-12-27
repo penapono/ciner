@@ -25,6 +25,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def destroy
+    comment.commentable.touch
     render_json_object_result(comment.destroy)
   end
 
@@ -41,7 +42,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def new_resource
-    comment = Comment.new(comment_params)
+    Comment.new(comment_params)
   end
 
   def filter_comments

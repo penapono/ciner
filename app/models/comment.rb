@@ -28,6 +28,7 @@ class Comment < ActiveRecord::Base
 
   # Callbacks
   after_create :update_commentable_comments_count
+  before_destroy :update_commentable_comments_count_on_destroy
 
   # Methods
 
@@ -78,5 +79,9 @@ class Comment < ActiveRecord::Base
 
   def update_commentable_comments_count
     commentable.update_comments_count
+  end
+
+  def update_commentable_comments_count_on_destroy
+    commentable.update_comments_count(-1)
   end
 end
