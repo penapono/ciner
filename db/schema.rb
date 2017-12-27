@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227033113) do
+ActiveRecord::Schema.define(version: 20171227135723) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20171227033113) do
     t.text "content"
     t.integer "rating"
     t.integer "filmable_release_year"
-    t.integer "status", default: 1
+    t.integer "status", default: 2
     t.integer "origin", default: 2
     t.boolean "spoiler", default: false
     t.boolean "featured", default: false

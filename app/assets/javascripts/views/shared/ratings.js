@@ -13,6 +13,7 @@ function Ratings() {
 
   function _bindRatings(aContainer) {
     var dataRatings = aContainer.find('[data-star-rating]');
+    var currenRating = 0;
 
     $(dataRatings).on('click', '[data-star]', function() {
       var self = $(this),
@@ -33,7 +34,7 @@ function Ratings() {
 
       _rate(url, data);
 
-      parent.attr('data-user-rating', rating);
+      currenRating = rating;
 
       _paintStars(stars, rating);
     });
@@ -54,7 +55,7 @@ function Ratings() {
 
       console.log(rating + " from data-user-rating");
 
-      _paintStars(stars, rating);
+      _paintStars(stars, currenRating);
     });
   }
 

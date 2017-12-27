@@ -47,7 +47,7 @@
                 .col-xs-6
                   .nota
                     = Movie.human_attribute_name(:users_rating)
-                    %span.valor
+                    %span.valor{ data: { users_rating: '' } }
                       = object.users_rating
 
                 - if object.ciner_official_critic
