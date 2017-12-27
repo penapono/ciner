@@ -23,8 +23,9 @@ module Platform
     end
 
     def destroy
+      user = resource.user
       destroyed?
-      redirect_to url_for([:platform, "profile"])
+      redirect_to url_for([:platform, user])
     end
 
     private
@@ -69,6 +70,7 @@ module Platform
         :avatar,
         :biography,
 
+        :user_id,
         :user,
 
         # Measures

@@ -24,8 +24,9 @@ module Admin
     end
 
     def destroy
+      user = resource.user
       destroyed?
-      redirect_to url_for([:admin, "profile"])
+      redirect_to url_for([:admin, user])
     end
 
     private
@@ -71,6 +72,7 @@ module Admin
         :biography,
 
         :user,
+        :user_id,
 
         # Measures
         :mannequin,

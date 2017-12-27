@@ -150,6 +150,7 @@ class Curriculum < ActiveRecord::Base
 
   def current_avatar
     return user_avatar unless user_avatar.url.blank?
+  rescue
     "http://placehold.it/550x700"
   end
 

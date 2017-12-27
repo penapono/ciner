@@ -17,5 +17,5 @@ class State < ActiveRecord::Base
   delegate :name, to: :country, allow_nil: true, prefix: true
 
   # Scope
-  default_scope { order(name: :desc) }
+  default_scope { order(name: :asc) }
 end

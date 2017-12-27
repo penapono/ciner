@@ -45,9 +45,9 @@
     .col-xs-4
       = f.input :neighbourhood
     .col-xs-2
-      = f.input :state_id, collection: states
+      = f.input :state_id, collection: states, include_blank: 'Selecione um Estado'
     .col-xs-4
-      = f.input :city_id, collection: [], input_html: { class: 'select2' }
+      = f.input :city_id, collection: [], input_html: { class: 'select2' },  include_blank: 'Selecione uma Cidade'
 
   .row
     .col-xs-6
