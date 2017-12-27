@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
             :terms_of_use,
             presence: true
 
-  validates_uniqueness_of :nickname, :email, :cpf, conditions: -> { where(deleted_at: nil) }
+  validates_uniqueness_of :nickname, :email, conditions: -> { where(deleted_at: nil) }
+  validates_uniqueness_of :cpf, allow_blank: true, allow_nil: true
 
   validates_presence_of :password_confirmation, on: :create
 
