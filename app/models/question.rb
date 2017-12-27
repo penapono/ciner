@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
   include CommentManageable
   include Visitable
 
+  acts_as_paranoid
   acts_as_votable
 
   # Enums

@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :user_filmables, dependent: :destroy
   has_many :user_filmable_ratings, dependent: :destroy
   has_many :user_trophies, dependent: :destroy
+  has_many :questions, dependent: :destroy
   has_one :curriculum, dependent: :destroy
 
   # Validations
