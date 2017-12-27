@@ -12,10 +12,10 @@ function Ratings() {
   };
 
   function _bindRatings(aContainer) {
-    var dataRatings = aContainer.find('[data-star-rating]');
-    var currenRating = 0;
+    var gDataRatings = aContainer.find('[data-star-rating]');
+    var gCurrentRating = 0;
 
-    $(dataRatings).on('click', '[data-star]', function() {
+    $(gDataRatings).on('click', '[data-star]', function() {
       var self = $(this),
           parent = self.closest('[data-star-rating]'),
           url = parent.data('url'),
@@ -34,12 +34,12 @@ function Ratings() {
 
       _rate(url, data);
 
-      currenRating = rating;
+      gCurrentRating = rating;
 
       _paintStars(stars, rating);
     });
 
-    $(dataRatings).on('mouseover', '[data-star]', function() {
+    $(gDataRatings).on('mouseover', '[data-star]', function() {
       var self = $(this),
           parent = self.closest('[data-star-rating]'),
           stars = parent.find('[data-star]'),
@@ -53,9 +53,7 @@ function Ratings() {
           rating = self.data('user-rating'),
           stars = self.find('[data-star]');
 
-      console.log(rating + " from data-user-rating");
-
-      _paintStars(stars, currenRating);
+      _paintStars(stars, gCurrentRating);
     });
   }
 
@@ -69,6 +67,8 @@ function Ratings() {
       success: function(data) {
         toastr.info("Obrigado por classificar!");
         $('[data-users-rating]').html(data.current_rating);
+        gCurrentRating = data.user_rating;
+        _paintStars(stars, gCurrentRating);
       }
     });
   }
