@@ -2,11 +2,22 @@
 - showcase_class ||= 'showcase-poster'
 - background_color ||= 'parent'
 
-/ MOVIES THUMB
-.col-xs-12{ class: showcase_class }
-  .slider-frame{ style: "background-color: #{background_color}" }
-    .btn.prev
-    .btn.next
-    .slider-container
-      - slider_movies.each do |pm|
-        = render 'shared/home/showcase/item', role: role, pm: pm
+/ Desktop
+.hidden-xs
+  .col-xs-12{ class: showcase_class }
+    .slider-frame{ style: "background-color: #{background_color}" }
+      .btn.prev
+      .btn.next
+      .slider-container
+        - slider_movies.each do |pm|
+          = render 'shared/home/showcase/item', role: role, pm: pm
+
+/ Mobile
+.hidden-sm.hidden-md.hidden-lg.hidden-xl
+  .col-xs-12{ class: showcase_class }
+    .slider-frame{ style: "background-color: #{background_color}" }
+      .btn.prev
+      .btn.next
+      .slider-container
+        - slider_movies.each do |pm|
+          = render 'shared/home/showcase/item', role: role, pm: pm
