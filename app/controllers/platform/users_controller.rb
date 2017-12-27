@@ -31,6 +31,10 @@ module Platform
       user
     end
 
+    def index_path
+      root_path
+    end
+
     def user_params
       params.require(:user).permit(
         :name, :gender, :nickname, :birthday, :email, :cep, :address,

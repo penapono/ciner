@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     match 'professionals/query' => 'professionals#query', via: :get
     match 'users/query' => 'users#query', via: :get
 
-    resources :users, only: [:update, :show, :edit, :index] do
+    resources :users, only: [:update, :show, :edit, :index, :destroy] do
       resources :collection, only: :index, module: 'users'
       resources :trophies, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'
