@@ -27,7 +27,7 @@
             .row
               .col-xs-12
                 = Movie.human_attribute_name(:genders_str)
-                %a.bold.wine{href: "#"}
+                .wine.bold
                   = filmable.genre_pt
                 .pull-right
                   = render 'shared/critics/rating', critic: critic
@@ -58,7 +58,7 @@
 
           .info
             = Critic.human_attribute_name(:user)
-            %a.bold.wine{href: "#"}
+            .wine.bold
               = critic.user_nickname
             %br
 
