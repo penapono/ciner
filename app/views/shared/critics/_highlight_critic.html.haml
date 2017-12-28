@@ -10,47 +10,46 @@
 
 .row
   .col-xs-12.critica-mais-recente
-    .col-xs-12.col-sm-4.col-md-2
-      / %img.img-responsive{ src: cover }
-      = image_tag(cover, class: "img-responsive")
-    .col-xs-12.col-sm-8.col-md-10.critica-recente
-      .info
-        .row
-          .col-xs-12
-            = Critic.human_attribute_name(:release)
-            %span.bold.wine
-              = l(filmable.release, format: :long_date) if filmable.release
+    .row
+      .col-xs-12.col-sm-4.col-md-2
+        / %img.img-responsive{ src: cover }
+        = image_tag(cover, class: "img-responsive")
+      .col-xs-12.col-sm-8.col-md-10.critica-recente
+        .info
+          .row
+            .col-xs-12
+              = Critic.human_attribute_name(:release)
+              %span.bold.wine
+                = l(filmable.release, format: :long_date) if filmable.release
 
-            .pull-right
-              = render 'shared/critics/rating', critic: critic
+              .pull-right
+                = render 'shared/critics/rating', critic: critic
 
-        .row
-          .col-xs-12
-            = Movie.human_attribute_name(:genders_str)
-            %a.bold.wine{href: "#"}
-              = filmable.genders_str
+          .row
+            .col-xs-12
+              = Movie.human_attribute_name(:genders_str)
+              %a.bold.wine{href: "#"}
+                = filmable.genders_str
 
-      %h4.title
-        = critic.filmable_title_str
-      %span.original-title
-        = critic.filmable_original_title
+        %h4.title
+          = critic.filmable_title_str
+        %span.original-title
+          = critic.filmable_original_title
 
-      .diretor-elenco
-        = Movie.human_attribute_name(:directors_str)
-        %a.wine.bold{href: "#"}
-          = filmable.directors_str
-        %br
+        .diretor-elenco
+          = Movie.human_attribute_name(:directors_str)
+          %a.wine.bold{href: "#"}
+            = filmable.directors_str
+          %br
 
-        = Movie.human_attribute_name(:cast_str)
-        = succeed "," do
-          %a.wine.bold{href: "#"} Brad Pitt
-        = succeed " e" do
-          %a.wine.bold{href: "#"} Harrison Ford
-        %a.wine.bold{href: "#"} Robert Downey Jr.
+          = Movie.human_attribute_name(:cast_str)
+          %a.wine.bold{href: "#"}
+            = filmable.actors_str
+          %br
 
-      .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis;' }
-        = critic.collapsed_content
+        .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis;' }
+          = critic.collapsed_content
 
-      = link_to path do
-        .btn.btn-saiba-mais
-          Saiba mais
+        = link_to path do
+          .btn.btn-saiba-mais
+            Saiba mais
