@@ -16,13 +16,10 @@
 
   .row
     .col-xs-12.col-sm-9
-      - if current_user.admin?
-        = f.input :content, as: :ckeditor, input_html: { rows: 5 }
-      - else
-        %div{ data: { limited: '', limit: 10000 } }
-          = f.input :content, as: :text, input_html: { rows: 5 }, maxlength: 10000
-          %span.char-counter
-            = t('remaining_chars', chars: 10000)
+      %div{ data: { limited: '', limit: 10000 } }
+        = f.input :content, as: :text, input_html: { rows: 5 }, maxlength: 10000
+        %span.char-counter
+          = t('remaining_chars', chars: 10000)
 
     .col-xs-4.col-sm-3
       %div
