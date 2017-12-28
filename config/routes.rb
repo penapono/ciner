@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   # get "/cinervideos", to: "cinervideos#index", as: "cinervideos"
   # get "/professionals", to: "professionals#index", as: "professionals"
   # get "/criticdetail", to: "critics#detail", as: "criticdetail"
-  get '/home', to: 'home#index'
   get '/contract', to: 'contracts#index'
   get '/privacy', to: 'privacies#index'
   get '/mission', to: 'missions#index'
