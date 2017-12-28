@@ -4,7 +4,7 @@
 
 .container
   .row
-    .col-xs-8
+    .col-xs-12.col-sm-8
       = render 'shared/movies/toolbar'
       - unless playing_filmables.blank?
         = render 'shared/movies/index/playing', role: role, filmables: playing_filmables, see_more_url: url_for([role, :movies, :playing])
@@ -14,5 +14,5 @@
         = render 'shared/movies/index/playing_soon', role: role, filmables: playing_soon_filmables, see_more_url: url_for([role, :movies, :playing_soon])
       - unless available_netflix_filmables.blank?
         = render 'shared/movies/index/available_netflix', role: role, filmables: available_netflix_filmables, see_more_url: url_for([role, :movies, :available_netflix])
-    .col-xs-4
+    .hidden-xs.col-sm-4
       = render 'shared/movies/index/birthdays', role: role
