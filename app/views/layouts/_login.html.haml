@@ -3,12 +3,12 @@
 - if current_user
   .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 130px; margin-top: 20px;' }
     .row{ style: 'margin-top: 15px;' }
-      .col-xs-4{ style: 'margin-right: -20px; margin-top: -5px;' }
+      .col-sm-4{ style: 'margin-right: -20px; margin-top: -5px;' }
         - avatar = image_default_path(current_user.avatar.thumb, "user")
         = link_to url_for([role, current_user]) do
           / %img.img-responsive{ src: avatar, style: "width: 60px; height: 60px; margin: auto; margin-top: 10px" }
           = image_tag(avatar, class: "img-responsive", style: 'width: 60px; height: 60px; margin: auto; margin-top: 10px;' )
-      .col-xs-8
+      .col-sm-8
         .welcome
           Olá,
           = link_to url_for([role, current_user]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
@@ -22,18 +22,30 @@
           = link_to 'Sair', destroy_user_session_path, method: :delete
 
 - else
-  .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 150px;' }
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .form-group
-        = f.input :email, label: false, required: false, input_html: { class: 'form-control' }, placeholder: 'e-mail', error: false
-      .form-group
-        = f.input :password, label: false, required: false, input_html: { class: 'form-control', placeholder: 'senha' }, error: false
-      .form-group
-        .hidden
-          = f.button :submit, 'Entrar'
-        %button.btn.btn-login{:type => "submit"}
-          Entrar
-          %span.icon.icon-button
+  .row
+    .hidden-xs
+      .col-xs-offset-2.col-xs-8.col-sm-offset-1.col-sm-4.col-md-offset-1.col-md-3{ style: 'height: 150px;' }
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.input :email, label: false, required: false, input_html: { class: 'form-control' }, placeholder: 'e-mail', error: false
+          .form-group
+            = f.input :password, label: false, required: false, input_html: { class: 'form-control', placeholder: 'senha' }, error: false
+          .form-group
+            .hidden
+              = f.button :submit, 'Entrar'
+            %button.btn.btn-login{:type => "submit"}
+              Entrar
+              %span.icon.icon-button
+            %span.register
+              ou
+              = link_to new_user_registration_path do
+                %strong Seja Ciner
+    .hidden-sm.hidden-md.hidden-lg.hidden-xl
+      .col-xs-12{ style: 'text-align: center; margin-top: 15px;' }
+        = link_to new_user_session_path do
+          %button.btn.btn-login{:type => "submit"}
+            Entrar
+            %span.icon.icon-button
         %span.register
           ou
           = link_to new_user_registration_path do
