@@ -40,7 +40,7 @@ class Notification < ActiveRecord::Base
   end
 
   def sender_avatar
-    return "default/user/image.png" if sender == :system
+    return "ciner.png" if sender == :system
     sender.avatar
   end
 
