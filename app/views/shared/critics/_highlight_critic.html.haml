@@ -46,7 +46,7 @@
           %br
 
         .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis; height: 65px; margin-bottom: 10px' }
-          = critic.content.html_safe
+          = critic.content.gsub(/\n/, '<br/>').html_safe
 
         = link_to url_for([role, critic]) do
           .btn.btn-saiba-mais

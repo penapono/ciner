@@ -54,7 +54,7 @@
             %br
           .content
             %p
-              = critic.content.html_safe
+              = critic.content.gsub(/\n/, '<br/>').html_safe
 
           .info
             = Critic.human_attribute_name(:user)

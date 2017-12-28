@@ -15,7 +15,7 @@
         = filmable.original_title
       .resume
         %p
-          = critic.collapsed_content
+          = critic.content.gsub(/\n/, '<br/>')
       %p
         = link_to url_for([role, critic.user]) do
           = critic.user_nickname
