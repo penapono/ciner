@@ -116,11 +116,10 @@
             Quer Ver:
             %strong.wine
               = want_to_see_count_for_user(user)
+            %br
             Indicados:
             %strong.wine
-              = favorite_count_for_user(user)
-            %br
-
+              \-
 
       = render 'shared/users/collection', role: role
 
