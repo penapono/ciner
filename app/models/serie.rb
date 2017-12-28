@@ -75,7 +75,7 @@ class Serie < ActiveRecord::Base
   end
 
   def self.current_playing
-    where(playing: true).order(brazilian_release: :desc)
+    where(last_released: true).order(brazilian_release: :desc)
   end
 
   def filmable_year
