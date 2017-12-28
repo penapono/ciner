@@ -33,5 +33,6 @@
   = f.hidden_field :filmable_id, value: params[:filmable_id] || nil
   = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :status, value: 2
+  = f.hidden_field :origin, value: current_user.admin? ? 1 : 2
 
   = render 'shared/form_actions', f: f

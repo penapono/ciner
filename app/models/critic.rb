@@ -48,11 +48,12 @@ class Critic < ActiveRecord::Base
   end
 
   def self.home
-    first = where(origin: 1, status: 2, featured: true).order(created_at: :desc).first
+    first = where(origin: 1, status: 2).order(created_at: :desc).first
     first ||= where(status: 2, origin: 2).order(created_at: :desc).first
 
     second = where(status: 2, origin: 2).where.not(id: first.id).order(created_at: :desc).first if first
     second ||= where(status: 2).where.not(id: first.id).order(created_at: :desc).first if first
+    second ||= where(status: 2, origin: 2).order(created_at: :desc).first
 
     [first, second]
   end
