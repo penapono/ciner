@@ -18,28 +18,27 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :avatar do
-    resize_to_fill(300, 300)
+    process resize_to_fill: [150, 150]
   end
 
   version :large do
-    resize_to_fill(600, 600)
+    resize_to_limit(600, 600)
   end
 
   version :thumb do
     process :crop
+    resize_to_fill(100, 100)
   end
 
   def crop
-    base = 300.0
     if model.crop_x.present?
+      resize_to_limit(600, 600)
       manipulate! do |img|
-        converted_h = base * img.rows / img.columns
-        x = (model.crop_x.to_i / base * img.columns).to_i
-        y = (model.crop_y.to_i / converted_h * img.rows).to_i
-        w = (model.crop_w.to_i / base * img.columns).to_i
-        h = (model.crop_h.to_i / converted_h * img.rows).to_i
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
         img.crop!(x, y, w, h)
-        img
       end
     end
   end
