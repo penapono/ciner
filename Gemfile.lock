@@ -463,6 +463,8 @@ GEM
     timecop (0.9.1)
     toastr-rails (1.0.3)
       railties (>= 3.1.0)
+    traceroute (0.5.0)
+      rails (>= 3.0.0)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -575,6 +577,7 @@ DEPENDENCIES
   thin
   timecop
   toastr-rails
+  traceroute
   turbolinks
   uglifier!
   web-console (~> 3.0)

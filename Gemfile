@@ -114,6 +114,7 @@ group :development do
   gem 'letter_opener'
   gem 'rubocop'
   gem 'bullet'
+  gem 'traceroute'
   # gem 'quiet_assets'
 end
 
