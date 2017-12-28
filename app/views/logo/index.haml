@@ -14,3 +14,36 @@
   %body{ style: 'margin: auto; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgb(148, 35, 78);' }
     .centerimg{ style: 'position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); /* IE 9 */ -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */ transform: translate(-50%, -50%);' }
       = image_tag('ciner-full.jpg', style: 'margin: auto; padding: 0; width: 100%; height: 100%; max-width: 360px; max-height: 228px')
+      .media-body.media-bottom
+        .media-heading.title-section
+          %h2#demo{ style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 500; line-height: 33px; margin-bottom: 10px; margin-top: 20px; text-align: center;' }
+
+:javascript
+  // Set the date we're counting down to
+  var countDownDate = new Date("Dec 28, 2017 19:00:00").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    var content = hours + "h " + minutes + "m " + seconds + "s "
+    document.getElementById("demo").innerHTML = content;
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
