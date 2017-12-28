@@ -18,23 +18,17 @@
         .info
           .row
             .col-xs-12
-              = Critic.human_attribute_name(:release)
-              %span.bold.wine
-                = l(filmable.release, format: :long_date) if filmable.release
-
-              .pull-right
-                = render 'shared/critics/rating', critic: critic
-
-          .row
-            .col-xs-12
               = Movie.human_attribute_name(:genders_str)
               %a.bold.wine{href: "#"}
                 = filmable.genders_str
+              .pull-right
+                = render 'shared/critics/rating', critic: critic
 
         %h4.title
           = critic.filmable_title_str
         %span.original-title
           = critic.filmable_original_title
+
 
         .diretor-elenco
           = Movie.human_attribute_name(:directors_str)
