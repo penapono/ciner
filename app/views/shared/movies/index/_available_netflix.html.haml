@@ -11,12 +11,7 @@
         = link_to see_more_url do
           = t('see_more')
 
-  - if role.blank?
-    - style = 'margin-right: 0px; margin-left: 0px;'
-  - else
-    - style = ''
-
-  .row{ data: { slider: { available_netflix: '' } }, style: style }
+  .row{ data: { slider: { available_netflix: '' } } }
     / MOVIES THUMB
     .col-xs-12.showcase-poster
       .slider-frame
