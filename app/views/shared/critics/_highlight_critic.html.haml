@@ -22,7 +22,7 @@
           .row
             .col-xs-12
               = Movie.human_attribute_name(:genders_str)
-              .wine.bold
+              %span.wine.bold
                 = filmable.genre_pt
               .pull-right
                 = render 'shared/critics/rating', critic: critic
