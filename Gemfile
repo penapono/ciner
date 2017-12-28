@@ -113,6 +113,7 @@ group :development do
   gem 'thin'
   gem 'letter_opener'
   gem 'rubocop'
+  gem 'bullet'
   # gem 'quiet_assets'
 end
 

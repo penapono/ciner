@@ -387,15 +387,15 @@ module FilmProfitable
    end
 
     def filmable_actors
-      filmable_professionals.where(set_function_id: SetFunction.where(name: 'Elenco').pluck(:id))
+      filmable_professionals.includes(:professional).where(set_function_id: SetFunction.where(name: 'Elenco').pluck(:id))
     end
 
     def filmable_directors
-      filmable_professionals.where(set_function_id: SetFunction.where(name: 'Direção').pluck(:id))
+      filmable_professionals.includes(:professional).where(set_function_id: SetFunction.where(name: 'Direção').pluck(:id))
     end
 
     def filmable_writers
-      filmable_professionals.where(set_function_id: SetFunction.where(name: 'Roteiro').pluck(:id))
+      filmable_professionals.includes(:professional).where(set_function_id: SetFunction.where(name: 'Roteiro').pluck(:id))
     end
 
     def actors

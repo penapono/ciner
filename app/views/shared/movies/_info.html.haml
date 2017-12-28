@@ -17,7 +17,8 @@
         %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
   .row
-    - if object.filmable_directors.any?
+    - filmable_directors = object.filmable_directors
+    - if filmable_directors.any?
       .col-xs-6
         #direcao.direcao
           .title-separator
@@ -27,10 +28,11 @@
                   Direção
           .diretores
             .row
-              - object.filmable_directors.first(3).each do |filmable_professional|
+              - filmable_directors.first(3).each do |filmable_professional|
                 = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', role: role
 
-    - if object.filmable_writers.any?
+    - filmable_writers = object.filmable_writers
+    - if filmable_writers.any?
       .col-xs-6
         #direcao.direcao
           .title-separator
@@ -40,10 +42,11 @@
                   Roteiro
           .diretores
             .row
-              - object.filmable_writers.first(3).each do |filmable_professional|
+              - filmable_writers.first(3).each do |filmable_professional|
                 = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'roteirista', role: role
 
-- if object.filmable_actors.any?
+- filmable_actors = object.filmable_actors
+- if filmable_actors.any?
   #elenco.row.elenco{ data: { collapsed_area: '' }, style: 'margin-top: -20px;' }
     .col-xs-12
       .title-separator
@@ -55,10 +58,10 @@
               = t('see_more')
       .atores-principais
         .row
-          - object.filmable_actors.first(6).each do |filmable_professional|
+          - filmable_actors.first(6).each do |filmable_professional|
             = render 'shared/movies/professional', professional: filmable_professional.professional, professional_class: 'diretor', data_mh: 'atores-principais', observation: filmable_professional.observation, role: role
       .collapsed-area
         .atores.collapse{ data: { collapse_content: '' } }
-          - object.filmable_actors.each_with_index do |filmable_professional, index|
+          - filmable_actors.each_with_index do |filmable_professional, index|
             - if index > 5
               =  render 'shared/movies/professional_row', professional: filmable_professional.professional, data_mh: 'group', observation: filmable_professional.observation, role: role
