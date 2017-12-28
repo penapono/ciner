@@ -132,6 +132,26 @@ class User < ActiveRecord::Base
       user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
       user_trophy.notify_user
     end
+
+    create_watched_specific if type == "watched"
+  end
+
+  def create_watched_specific
+    # How I Met Your Mother
+    watched_filmable = user_filmables.where(filmable_id: "1033707", filmable_type: "Serie").first
+    if watched_filmable
+      current_trophy = Trophy.find_by(name: 'Como eu conheci o CINER')
+      user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
+      user_trophy.notify_user
+    end
+
+    # Friends
+    watched_filmable = user_filmables.where(filmable_id: "827259", filmable_type: "Serie").first
+    if watched_filmable
+      current_trophy = Trophy.find_by(name: 'Aquele do CINER')
+      user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
+      user_trophy.notify_user
+    end
   end
 
   def notifications
