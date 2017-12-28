@@ -32,11 +32,7 @@ function Ratings() {
             }
           }
 
-      _rate(url, data);
-
-      gCurrentRating = rating;
-
-      _paintStars(stars, rating);
+      _rate(url, data, parent);
     });
 
     $(gDataRatings).on('mouseover', '[data-star]', function() {
@@ -50,14 +46,18 @@ function Ratings() {
 
     $('[data-filmable-rating]').on('mouseleave', '[data-star-rating]', function() {
       var self = $(this),
-          rating = self.data('user-rating'),
+          rating = self.attr("data-user-rating"),
           stars = self.find('[data-star]');
+
+      if (gCurrentRating != rating) {
+        gCurrentRating = rating;
+      }
 
       _paintStars(stars, gCurrentRating);
     });
   }
 
-  function _rate(aUrl, aData) {
+  function _rate(aUrl, aData, aParent) {
     $.ajax({
       type: 'POST',
       dataType: 'JSON',
@@ -67,8 +67,8 @@ function Ratings() {
       success: function(data) {
         toastr.info("Obrigado por classificar!");
         $('[data-users-rating]').html(data.current_rating);
-        gCurrentRating = data.user_rating;
-        _paintStars(stars, gCurrentRating);
+        $('[data-star-rating]').attr('data-user-rating', data.user_rating);
+        _paintStars(aParent.find('[data-star]'), data.user_rating);
       }
     });
   }
