@@ -7,7 +7,7 @@ module HomeContentsController
     # Exposes
     expose(:events) { Event.all_next.first(4) }
     expose(:critics) { Critic.home }
-    expose(:questions) { Question.top_questions }
+    expose(:questions) { Question.includes(:user).includes(:comments).top_questions }
     expose(:broadcasts) { Broadcast.top_broadcasts.last(4) }
     expose(:trending_trailers) { TrendingTrailer.includes(:filmable).first(3) }
 
