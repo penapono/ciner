@@ -1,19 +1,22 @@
 - filmable = critic.filmable
 - cover = image_default_path(filmable.cover, "movie")
+- role ||= nil
 
 .row
   .col-xs-12
     .title-separator
       .media
         .media-body.media-bottom
-          .media-heading.title-section Críticas recentes
+          .media-heading.title-section
+            Críticas recentes
 
 .row
   .col-xs-12.critica-mais-recente
     .row
       .col-xs-12.col-sm-4.col-md-2
         / %img.img-responsive{ src: cover }
-        = image_tag(cover, class: "img-responsive")
+        = link_to url_for([role, filmable]) do
+          = image_tag(cover, class: "img-responsive")
       .col-xs-12.col-sm-8.col-md-10.critica-recente
         .info
           .row
@@ -25,7 +28,8 @@
                 = render 'shared/critics/rating', critic: critic
 
         %h4.title
-          = critic.filmable_title_str
+          = link_to url_for([role, filmable]) do
+            = critic.filmable_title_str
         %span.original-title
           = critic.filmable_original_title
 
@@ -41,9 +45,9 @@
             = filmable.actors_str
           %br
 
-        .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis;' }
-          = critic.collapsed_content
+        .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis; height: 65px; margin-bottom: 10px' }
+          = critic.content.html_safe
 
-        = link_to path do
+        = link_to url_for([role, critic]) do
           .btn.btn-saiba-mais
             Leia mais

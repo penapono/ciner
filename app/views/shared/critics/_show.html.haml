@@ -17,60 +17,54 @@
               = critic.filmable_title_str
   .row
     .col-xs-12.critica-mais-recente
-      .col-xs-12.col-sm-4.col-md-2
-        = link_to url_for([role, critic.filmable]) do
-          / %img.img-responsive{ src: cover }
-          = image_tag(cover, class: "img-responsive")
-      .col-xs-12.col-sm-8.col-md-10.critica-recente
-        .info
-          .row
-            .col-xs-12
-              = Critic.human_attribute_name(:release)
-              %span.bold.wine
-                = l(filmable.release, format: :long_date) unless filmable.release.blank?
-
-              .pull-right
-                = render 'shared/critics/rating', critic: critic
-
-          .row
-            .col-xs-12
-              = Movie.human_attribute_name(:genders_str)
-              %a.bold.wine{href: "#"}
-                = filmable.genders_str
-
-        %h4.title
+      .row
+        .col-xs-12.col-sm-4.col-md-2
           = link_to url_for([role, critic.filmable]) do
-            = critic.filmable_title_str
-        %span.original-title
-          = critic.filmable_original_title
+            / %img.img-responsive{ src: cover }
+            = image_tag(cover, class: "img-responsive")
+        .col-xs-12.col-sm-8.col-md-10.critica-recente
+          .info
+            .row
+              .col-xs-12
+                = Movie.human_attribute_name(:genders_str)
+                %a.bold.wine{href: "#"}
+                  = filmable.genre_pt
+                .pull-right
+                  = render 'shared/critics/rating', critic: critic
 
-        .diretor-elenco
-          = Movie.human_attribute_name(:directors_str)
-          %a.bold.wine
-            = filmable.directors_str
-          %br
+          %h4.title
+            = link_to url_for([role, critic.filmable]) do
+              = critic.filmable_title_str
+          %span.original-title
+            = critic.filmable_original_title
 
-          = Movie.human_attribute_name(:cast_str)
-          %a.bold.wine
-            = filmable.actors_str
+          .diretor-elenco
+            = Movie.human_attribute_name(:directors_str)
+            %a.bold.wine
+              = filmable.directors_str
+            %br
 
-        .spoiler
-          .bold.wine
-            = critic.spoiler_str
-          %br
-        .content
-          %p
-            = critic.content.html_safe
+            = Movie.human_attribute_name(:cast_str)
+            %a.bold.wine
+              = filmable.actors_str
 
-        .info
-          = Critic.human_attribute_name(:user)
-          %a.bold.wine{href: "#"}
-            = critic.user_nickname
-          %br
+          .spoiler
+            .bold.wine
+              = critic.spoiler_str
+            %br
+          .content
+            %p
+              = critic.content.html_safe
 
-          = Critic.human_attribute_name(:updated_at)
-          %span.bold.wine
-            = l(critic.updated_at, format: :long_date)
+          .info
+            = Critic.human_attribute_name(:user)
+            %a.bold.wine{href: "#"}
+              = critic.user_nickname
+            %br
+
+            = Critic.human_attribute_name(:updated_at)
+            %span.bold.wine
+              = l(critic.updated_at, format: :long_date)
 
 #critic-reaction
   = render 'shared/reactions', resource: critic, like_path: like_path, dislike_path: dislike_path

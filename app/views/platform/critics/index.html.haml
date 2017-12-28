@@ -1,5 +1,6 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
+- role = current_role(current_user, request.url)
 
 = render 'shared/breadcrumbs'
 
@@ -21,8 +22,8 @@
     = render 'shared/alerts/info', message: t('empty', klass: Critic.model_name.human(count: 2))
   - else
     - unless highlight.blank?
-      = render 'shared/critics/highlight_critic', critic: highlight, path: platform_critic_path(highlight)
+      = render 'shared/critics/highlight_critic', critic: highlight, role: role
 
     .row
       - critics.each do |critic|
-        = render 'shared/critics/critic', critic: critic, path: platform_critic_path(critic)
+        = render 'shared/critics/critic', critic: critic, role: role

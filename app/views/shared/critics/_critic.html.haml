@@ -1,12 +1,13 @@
 - cover = image_default_path(critic.filmable.cover, "movie")
 
-= link_to path do
-  .col-xs-12.col-sm-4.col-md-2.critica-item
-    / %img.img-responsive{ src: cover }
+.col-xs-12.col-sm-4.col-md-2.critica-item
+  / %img.img-responsive{ src: cover }
+  = link_to url_for([role, critic]) do
     = image_tag(cover, class: "img-responsive")
-    .info
-      = render 'shared/critics/rating', critic: critic
-      %h4.bold.title
+  .info
+    = render 'shared/critics/rating', critic: critic
+    %h4.bold.title
+      = link_to url_for([role, critic]) do
         = critic.filmable_title_str
-      %span.original-title
-        = critic.filmable_original_title
+    %span.original-title
+      = critic.filmable_original_title

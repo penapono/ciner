@@ -29,24 +29,24 @@
         - object.critics.only_two.each do |critic|
           - unless critic.blank?
             - filmable = critic.filmable
-            - avatar = critic.user.avatar.thumb
-            - avatar ||= image_path("default/user/image.jpg")
+            - avatar = image_default_path(critic.user.avatar.thumb, "user")
 
-            .review-item
-              .col-xs-12.col-sm-3.thumb-user
-                .usuario-avatar
-                  / %img.img-responsive{ src: avatar }
-                  = image_tag(avatar, class: "img-responsive")
-              .col-xs-9.col-sm-9.resume
-                %h4.title
-                  = filmable.title_str
-                %span.original-title
-                  = filmable.original_title
-                = render 'shared/critics/rating', critic: critic
-                %p
-                  = critic.collapsed_content
+            .review-item.col-xs-6
+              .row
+                .col-xs-12.col-sm-3.thumb-user
+                  .usuario-avatar
+                    / %img.img-responsive{ src: avatar }
+                    = link_to url_for([role, critic.user]) do
+                      = image_tag(avatar, class: "img-responsive")
+                .col-xs-9.col-sm-9.resume
+                  %h4.title
+                    = filmable.title_str
+                  %span.original-title
+                    = filmable.original_title
+                  = render 'shared/critics/rating', critic: critic
+                  %p
+                    = critic.collapsed_content
 
-                = link_to url_for([role, critic]) do
-                  .btn.btn-saiba-mais
-                    = "ler mais"
-
+                  = link_to url_for([role, critic]) do
+                    .btn.btn-saiba-mais
+                      Leia mais

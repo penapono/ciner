@@ -48,26 +48,22 @@ class Critic < ActiveRecord::Base
   end
 
   def self.home
-    first = where(origin: 1, status: 2, featured: true).order(created_at: :desc).first
-    first ||= where(origin: 1, status: 2).order(created_at: :desc).first
-    first ||= where(status: 2, origin: 2).order(created_at: :desc).first
-
-    second = where(status: 2, origin: 2).where.not(id: first.id).order(created_at: :desc).first if first
-    second ||= where(status: 2).where.not(id: first.id).order(created_at: :desc).first if first
-    second ||= where(status: 2, origin: 2).order(created_at: :desc).first
-
-    [first, second]
+    [first_critic, second_critic]
   end
 
   def self.first_critic
     first = where(origin: 1, status: 2, featured: true).order(created_at: :desc).first
     first ||= where(origin: 1, status: 2).order(created_at: :desc).first
+    first ||= where(status: 2, origin: 2).order(created_at: :desc).first
     first
   end
 
   def self.second_critic
-    return if first_critic.blank?
-    where.not(id: first_critic.id).order(likes_count: :desc).first
+    first = first_critic
+    second = where(status: 2, origin: 2).where.not(id: first.id).order(created_at: :desc).first if first
+    second ||= where(status: 2).where.not(id: first.id).order(created_at: :desc).first if first
+    second ||= where(status: 2, origin: 2).order(created_at: :desc).first
+    second
   end
 
   def self.only_two

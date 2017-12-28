@@ -1,5 +1,6 @@
 - content_for :stylesheet, stylesheet_link_tag(stylesheet)
 - content_for :javascript, javascript_include_tag(javascript)
+- role = current_role(current_user, request.url)
 
 = render 'shared/breadcrumbs'
 
@@ -18,8 +19,8 @@
   = render 'shared/critics/toolbar', path: critics_path
 
   - unless highlight.blank?
-    = render 'shared/critics/highlight_critic', critic: highlight, path: critic_path(highlight)
+    = render 'shared/critics/highlight_critic', critic: highlight, role: role
 
   .row
     - critics.each do |critic|
-      = render 'shared/critics/critic', critic: critic, path: critic_path(critic)
+      = render 'shared/critics/critic', critic: critic, role: role
