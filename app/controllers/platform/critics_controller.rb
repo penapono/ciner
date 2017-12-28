@@ -41,7 +41,7 @@ module Platform
 
     def critic_params
       params.require(:critic).permit(
-        :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating
+        :content, :user_id, :filmable_id, :filmable_type, :filmable, :rating, :origin
       )
     end
 

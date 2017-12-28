@@ -61,7 +61,7 @@ class Critic < ActiveRecord::Base
 
   def self.first_critic
     first = where(origin: 1, status: 2, featured: true).order(created_at: :desc).first
-    first ||= where(status: 2, origin: 2).order(created_at: :desc).first
+    first ||= where(origin: 1, status: 2).order(created_at: :desc).first
     first
   end
 
@@ -75,8 +75,9 @@ class Critic < ActiveRecord::Base
   end
 
   def self.all_but(denied_critics)
-    return all if denied_critics.blank? || denied_critics.first.blank?
-    where.not(id: denied_critics.pluck(:id))
+    filtered_critics = where(origin: 1)
+    return filtered_critics if denied_critics.blank? || denied_critics.first.blank?
+    filtered_critics.where.not(id: denied_critics.pluck(:id))
   end
 
   def self.ordered_by_status
