@@ -38,7 +38,11 @@
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    var content = hours + "h " + minutes + "m " + seconds + "s "
+    var content = minutes + "m " + seconds + "s "
+    if (minutes < 1) {
+      content = seconds + "s "
+    }
+
     document.getElementById("demo").innerHTML = content;
 
     // If the count down is finished, write some text
