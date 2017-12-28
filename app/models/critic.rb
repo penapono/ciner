@@ -63,6 +63,7 @@ class Critic < ActiveRecord::Base
     second = where(status: 2, origin: 2).where.not(id: first.id).order(created_at: :desc).first if first
     second ||= where(status: 2).where.not(id: first.id).order(created_at: :desc).first if first
     second ||= where(status: 2, origin: 2).order(created_at: :desc).first
+    return nil if second == first
     second
   end
 
