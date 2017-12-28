@@ -236,7 +236,8 @@ ul.menu li:hover:before {
     display: none;
   }
 
-  ul.menu li.dropdown:hover .dropdown-menu.horizontal {
+  ul.menu li.dropdown:hover .dropdown-menu.horizontal,
+  ul.menu li.dropdown:hover .dropdown-menu.vertical {
     display: block;
   }
 
@@ -270,7 +271,36 @@ ul.menu li:hover:before {
       }
 
     }
-
   }
 
+  ul.dropdown-menu.vertical {
+    background: rgba(166, 30, 87, 0.8);
+    padding: 10px;
+    margin: 0px;
+    list-style: none;
+    width: 200px;
+
+    li {
+      display: block;
+      margin-right: 20px;
+
+      a {
+        display: inline-block;
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        font-family: "Montserrat";
+        font-size: 12px;
+        font-weight: 200;
+        line-height: 40px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+      }
+
+      a:hover {
+        text-transform: none;
+        background: transparent;
+      }
+    }
+  }
 }

@@ -36,25 +36,46 @@
               .dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 ACESSAR
                 %b.caret
-              %ul.dropdown-menu.horizontal
-                = link_to url_for([role, :movies]) do
-                  %li
-                    Filmes
-                = link_to url_for([role, :series_index]) do
-                  %li
-                    Séries
-                = link_to url_for([role, :events]) do
-                  %li
-                    Agenda
-                = link_to url_for([role, :critics]) do
-                  %li
-                    Críticas
-                = link_to url_for([role, :broadcasts]) do
-                  %li
-                    Notícias
-                = link_to url_for([role, :questions]) do
-                  %li
-                    Debate Ciner
+              .hidden-xs
+                %ul.dropdown-menu.horizontal
+                  = link_to url_for([role, :movies]) do
+                    %li
+                      Filmes
+                  = link_to url_for([role, :series_index]) do
+                    %li
+                      Séries
+                  = link_to url_for([role, :events]) do
+                    %li
+                      Agenda
+                  = link_to url_for([role, :critics]) do
+                    %li
+                      Críticas
+                  = link_to url_for([role, :broadcasts]) do
+                    %li
+                      Notícias
+                  = link_to url_for([role, :questions]) do
+                    %li
+                      Debate Ciner
+              .hidden-sm.hidden-md.hidden-lg.hidden-xl
+                %ul.dropdown-menu.vertical
+                  = link_to url_for([role, :movies]) do
+                    %li
+                      Filmes
+                  = link_to url_for([role, :series_index]) do
+                    %li
+                      Séries
+                  = link_to url_for([role, :events]) do
+                    %li
+                      Agenda
+                  = link_to url_for([role, :critics]) do
+                    %li
+                      Críticas
+                  = link_to url_for([role, :broadcasts]) do
+                    %li
+                      Notícias
+                  = link_to url_for([role, :questions]) do
+                    %li
+                      Debate Ciner
 
         .col-xs-3{ style: "font-size: 22px;" }
           .row
@@ -107,11 +128,11 @@
                   = link_to "DEBATE CINER", url_for([role, :questions])
       / MENU
     .search-field{ :style => "margin-top: 5px;" }
-      .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.col-md-offset-2.col-md-8
+      .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8
         = simple_form_for :searches, url: searches_path, method: :get do |f|
-          .form-group.row{ style: 'margin-left: 30px;' }
+          .form-group.row{ style: 'margin-left: -30px;' }
             .col-xs-offset-2.col-xs-6
-              %input#search.form-control{:name => "search", :placeholder => "digite sua busca aqui...", :type => "text", style: 'border-top-right-radius: 0;  border-bottom-right-radius: 0'}/
+              %input#search.form-control{:name => "search", :placeholder => "Buscar", :type => "text", style: 'border-top-right-radius: 0;  border-bottom-right-radius: 0'}/
             .col-xs-2{ style: 'margin-left: -30px'}
               %button.btn.btn-login{:type => "submit", style: 'border-top-left-radius: 0; border-bottom-left-radius: 0; height: 34px;' }
                 buscar
