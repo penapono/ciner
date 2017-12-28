@@ -27,21 +27,41 @@ class NotificationsController < ApplicationController
 
     if notification_type == 'create_friend_request'
       on_create_friend_request(notification_sender_id, notification_receiver_id)
-   end
+    end
 
     if notification_type == 'cancel_friend_request'
       on_cancel_friend_request(notification_sender_id, notification_receiver_id)
-   end
+    end
 
     if notification_type == 'accept_friend_request'
       on_accept_friend_request(notification_sender_id, notification_receiver_id)
-   end
+    end
 
     if notification_type == 'decline_friend_request'
       on_decline_friend_request(notification_sender_id, notification_receiver_id)
-   end
+    end
 
-    on_remove_friend(notification_sender_id, notification_receiver_id) if notification_type == 'remove_friend'
+    if notification_type == 'remove_friend'
+      on_remove_friend(notification_sender_id, notification_receiver_id)
+    end
+
+    if notification_type == 'contact'
+      on_contact_professional(notification_sender_id, notification_receiver_id)
+    end
+
+    if notification_type == "accept_contact"
+      on_accept_contact(notification_sender_id, notification_receiver_id)
+    end
+
+    if notification_type == "decline_contact"
+      on_decline_contact(notification_sender_id, notification_receiver_id)
+    end
+  end
+
+  # Contact professional
+  def on_contact_professional(sender_id, receiver_id)
+    notification = Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :contact, answer: :waiting)
+    render json: { status: 'ok' } if notification.save
   end
 
   # Delate ok
@@ -103,6 +123,19 @@ class NotificationsController < ApplicationController
     notification.destroy unless notification.blank?
 
     notification = Notification.find_by(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request)
+    notification.destroy unless notification.blank?
+  end
+
+  def on_accept_contact(sender_id, receiver_id)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :contact)
+    notification.destroy unless notification.blank?
+
+    notification = Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :accept_contact, answer: :no_answer)
+    render json: { status: 'ok' } if notification.save
+  end
+
+  def on_decline_contact(sender_id, receiver_id)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :contact)
     notification.destroy unless notification.blank?
   end
 

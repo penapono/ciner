@@ -12,6 +12,10 @@ module NotificationsHelper
                     "#{link_to sender.name, url_for([role, sender])} aceitou seu pedido de amizade"
                   elsif notification.trophy?
                     notification.message
+                  elsif notification.contact?
+                    "#{link_to sender.name, url_for([role, sender])} se interessou pelo seu currículo e quer entrar em contato com você. Você deseja informar seu e-mail de contato?"
+                  elsif notification.accept_contact?
+                    "#{link_to sender.name, url_for([role, sender])} aceitou informar o email de contato: #{sender.email}. Agora é com vocês. Que esta parceria renda grandes produções!"
                   else
                     ""
                   end

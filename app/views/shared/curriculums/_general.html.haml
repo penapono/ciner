@@ -26,22 +26,23 @@
                     anos
 
             .col-xs-12.col-sm-3
-              - if current_user != object.user
-                .row
-                  .col-xs-6.pull-right
-                    = link_to url_for([:edit, role, object]), class: 'pull-right' do
-                      %button.btn.btn-login{ style: "width: 100%;" }
-                        %span.text
-                          Editar Currículo
-                        %span.icon.icon-button
-              - else
-                .row
-                  .col-xs-6.pull-right
-                    = link_to "#", class: 'pull-right' do
-                      %button.btn.btn-login{ style: "width: 100%;" }
-                        %span.text
-                          Contatar
-                        %span.icon.icon-button
+              - if current_user
+                - if current_user == object.user
+                  .row
+                    .col-xs-6.pull-right
+                      = link_to url_for([:edit, role, object]), class: 'pull-right' do
+                        %button.btn.btn-login{ style: "width: 100%;" }
+                          %span.text
+                            Editar Currículo
+                          %span.icon.icon-button
+                - else
+                  .row
+                    .col-xs-6.pull-right
+                      .pull-right{ data: { contact: '', url: notifications_path } }
+                        %button.btn.btn-login{ data: { sender_id: current_user.id, receiver_id: object.user.id, notification_type: 'contact' }, style: "width: 100%;" }
+                          %span.text
+                            Contatar
+                          %span.icon.icon-button
 
           - unless object.user_gender_str.blank?
             .row
