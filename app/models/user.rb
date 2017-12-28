@@ -95,35 +95,35 @@ class User < ActiveRecord::Base
   def create_trophies(type)
     if type == "collection"
       collection_number = user_filmables.collection.count
-      if collection_number == 1 # 25
+      if collection_number == 25 # 25
         current_trophy = Trophy.find_by(name: 'O colecionador 1')
-      elsif collection_number == 2 # 100
+      elsif collection_number == 100 # 100
         current_trophy = Trophy.find_by(name: 'O colecionador 2')
-      elsif collection_number == 3 # 250
+      elsif collection_number == 250 # 250
         current_trophy = Trophy.find_by(name: 'O colecionador 3')
-      elsif collection_number == 4 # 500
+      elsif collection_number == 500 # 500
         current_trophy = Trophy.find_by(name: 'O colecionador 4')
       end
     elsif type == "watched"
       watched_number = user_filmables.watched.count
-      if watched_number == 1 # 100
+      if watched_number == 100 # 100
         current_trophy = Trophy.find_by(name: 'Essa é minha vida 1')
-      elsif watched_number == 2 # 250
+      elsif watched_number == 250 # 250
         current_trophy = Trophy.find_by(name: 'Essa é minha vida 2')
-      elsif watched_number == 3 # 1000
+      elsif watched_number == 1000 # 1000
         current_trophy = Trophy.find_by(name: 'Essa é minha vida 3')
-      elsif watched_number == 4 # 2000
+      elsif watched_number == 2000 # 2000
         current_trophy = Trophy.find_by(name: 'Essa é minha vida 4')
       end
     elsif type == "friends"
       friends_number = friends.count
-      if friends_number == 1 # 10
+      if friends_number == 10 # 10
         current_trophy = Trophy.find_by(name: 'Ciner Sociável 1')
-      elsif friends_number == 2 # 25
+      elsif friends_number == 25 # 25
         current_trophy = Trophy.find_by(name: 'Ciner Sociável 2')
-      elsif friends_number == 3 # 50
+      elsif friends_number == 50 # 50
         current_trophy = Trophy.find_by(name: 'Ciner Sociável 3')
-      elsif friends_number == 4 # 100
+      elsif friends_number == 100 # 100
         current_trophy = Trophy.find_by(name: 'Ciner Sociável 4')
       end
     end

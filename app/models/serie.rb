@@ -93,7 +93,7 @@ class Serie < ActiveRecord::Base
   end
 
   def length_str
-    season_str = (number_of_seasons == 1) ? "temporada" : "temporadas"
+    season_str = number_of_seasons == 1 ? "temporada" : "temporadas"
     return "#{number_of_seasons} #{season_str} - #{status_str}" unless status_str.blank?
     "#{number_of_seasons} #{season_str}"
   end

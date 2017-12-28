@@ -10,4 +10,6 @@ class Trophy < ActiveRecord::Base
   enum level: { top: 1, leading: 2, supporting: 3, figurant: 4 }
 
   default_scope { order(position: :asc) }
+
+  has_many :user_trophies, dependent: :destroy
 end
