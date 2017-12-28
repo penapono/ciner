@@ -48,3 +48,10 @@ pt-BR:
         men: Masculino
         women: Feminino
         other: Outro
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: 'O e-mail informado não foi encontrado.'
+

@@ -1,0 +1,17 @@
+.row
+  .col-xs-offset-3.col-xs-6
+    .row
+      .col-xs-12
+        %h2.wine
+          Alterar sua senha
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = f.input :reset_password_token, as: :hidden
+      .row
+        .col-xs-12
+          = f.input :password, label: "Nova senha", required: true, autofocus: true, hint: "Sua senha deve ter no mínimo 8 caracteres."
+      .row
+        .col-xs-12
+          = f.input :password_confirmation, label: "Confirme a nova senha", required: true
+      .row
+        .col-xs-12
+          = f.button :submit, "Alterar minha senha"
