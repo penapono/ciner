@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  root 'logo#index'
+  root 'home#index'
 
   match 'critics/query' => 'critics#query', via: :get
   match 'events/query' => 'events#query', via: :get
