@@ -49,7 +49,7 @@ class Curriculum < ActiveRecord::Base
   delegate :avatar, to: :user, allow_nil: true, prefix: true
 
   # Aliases
-  alias_attribute :cover, :avatar
+  alias_attribute :cover, :user_avatar
 
   def self.by_curriculum_function(curriculum_function_id)
     references(:curriculum_curriculum_functions)
