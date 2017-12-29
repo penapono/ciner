@@ -79,7 +79,7 @@ class Broadcast < ActiveRecord::Base
     two_last_created = last_created.all_but(broadcasts)
     two_last_created.each { |q| broadcasts << q }
 
-    Broadcast.where(id: broadcasts.pluck(:id)).order(featured: :desc)
+    Broadcast.where(id: broadcasts.pluck(:id)).order(featured: :desc, created_at: :desc)
   end
 
   # Methods
