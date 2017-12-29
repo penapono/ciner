@@ -88,6 +88,8 @@ gem 'figaro'
 
 gem 'toastr-rails'
 
+gem 'sitemap_generator'
+
 group :production do
   gem 'passenger'
 end
