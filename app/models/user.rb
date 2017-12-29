@@ -226,13 +226,13 @@ class User < ActiveRecord::Base
   end
 
   def user_collection
-    UserFilmable.collection.where(user: self).order(position: :asc)
+    UserFilmable.includes(:filmable).collection.where(user: self).order(position: :asc)
   end
 
   def user_favorite
     filmables = []
 
-    UserFilmable.favorite.where(user: self).each do |user_filmable|
+    UserFilmable.includes(:filmable).favorite.where(user: self).each do |user_filmable|
       filmables << user_filmable.filmable
     end
 
@@ -242,7 +242,7 @@ class User < ActiveRecord::Base
   def user_watched
     filmables = []
 
-    UserFilmable.watched.where(user: self).each do |user_filmable|
+    UserFilmable.includes(:filmable).watched.where(user: self).each do |user_filmable|
       filmables << user_filmable.filmable
     end
 
@@ -252,7 +252,7 @@ class User < ActiveRecord::Base
   def user_want_to_see
     filmables = []
 
-    UserFilmable.want_to_see.where(user: self).each do |user_filmable|
+    UserFilmable.includes(:filmable).want_to_see.where(user: self).each do |user_filmable|
       filmables << user_filmable.filmable
     end
 
