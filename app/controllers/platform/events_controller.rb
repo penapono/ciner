@@ -5,7 +5,7 @@ module Platform
     include EventsBreadcrumb
 
     # exposes
-    expose(:events) { Event.order(event_date: :asc) }
+    expose(:events) { Event.includes(:state).includes(:event_images).order(event_date: :asc) }
     expose(:event, attributes: :event_attributes)
 
     PER_PAGE = 20

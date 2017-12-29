@@ -30,7 +30,7 @@ module Admin
     ].freeze
 
     # exposes
-    expose(:events) { Event.order(event_date: :asc) }
+    expose(:events) { Event.includes(:state).includes(:event_images).order(event_date: :asc) }
     expose(:event, attributes: :event_attributes)
 
     def index
