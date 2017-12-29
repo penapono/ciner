@@ -320,6 +320,6 @@ class Professional < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    where(id: result.keys).limit(limit)
+    where(id: result.keys.first(limit*3)).limit(limit)
   end
 end
