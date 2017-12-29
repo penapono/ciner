@@ -14,7 +14,7 @@ module Admin
     def index
       return if notifications.blank?
       self.notifications = paginated_notifications
-      notifications.update_all(status: 1) if notifications.any? # read all notifications
+      notifications.update_all(status: 1) if notifications.exists? # read all notifications
     end
 
     private

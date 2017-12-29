@@ -45,6 +45,9 @@ class Professional < ActiveRecord::Base
   # Uploaders
   mount_uploader :avatar, ProfessionalAvatarUploader
 
+  # Callbacks
+  before_destroy :destroy_visits
+
   def set_functions_by_occurrence
     ordered_set_functions = FilmableProfessional
                             .where(professional_id: id)
@@ -320,6 +323,11 @@ class Professional < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    where(id: result.keys.first(limit*3)).limit(limit)
+    where(id: result.keys.first(limit * 3)).limit(limit)
+  end
+
+  def destroy_visits
+    object = self
+    Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
   end
 end

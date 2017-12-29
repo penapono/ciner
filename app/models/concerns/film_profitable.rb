@@ -421,7 +421,7 @@ module FilmProfitable
     # Critics
 
     def ciner_official_critic
-      return unless critics.any?
+      return unless critics.exists?
       average = critics.ciner_official_critic
       average.blank? ? "-" : average
     end
@@ -433,7 +433,7 @@ module FilmProfitable
     end
 
     def incinerator
-      return unless critics.any?
+      return unless critics.exists?
       critics.find_by(quick: true)
     end
 
