@@ -111,7 +111,10 @@ class Professional < ActiveRecord::Base
   end
 
   def self.birthdays
-    where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day).first(6)
+    birthday_professionals = where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
+    featured_birthdays = birthday_professionals.featured(6)
+    return featured_birthdays if featured_birthdays.count >= 6
+    birthday_professionals.limit(6 - featured_birthdays.count) + featured_birthdays
   end
 
   def self.localized_genders
@@ -308,7 +311,7 @@ class Professional < ActiveRecord::Base
     self.age = now.year - birthday.year - (birthday_current_year > now ? 1 : 0)
   end
 
-  def self.featured
+  def self.featured(limit = 15)
     ids = Visit.where(action: 'show').where("controller like ?", "%professionals%").pluck(:resource_id)
 
     result = Hash.new(0)
@@ -317,6 +320,6 @@ class Professional < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    where(id: result.keys.first(15))
+    where(id: result.keys).limit(limit)
   end
 end

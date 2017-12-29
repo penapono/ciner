@@ -12,6 +12,6 @@ module HomeContentsController
     expose(:trending_trailers) { TrendingTrailer.includes(:filmable).first(3) }
 
     expose(:playing_movies) { Movie.current_playing }
-    expose(:featured_movies) { Movie.featured.first(10) }
+    expose(:featured_movies) { Movie.featured(10) }
   end
 end

@@ -11,7 +11,7 @@ module Admin
 
     expose(:playing_filmables) { Serie.current_playing }
     expose(:playing_soon_filmables) { Serie.playing_soon }
-    expose(:featured_filmables) { Serie.featured.first(10) }
+    expose(:featured_filmables) { Serie.featured(10) }
     expose(:available_netflix_filmables) { Serie.available_netflix }
 
     expose(:countries) { Country.all }

@@ -98,7 +98,7 @@ class Serie < ActiveRecord::Base
     "#{number_of_seasons} #{season_str}"
   end
 
-  def self.featured
+  def self.featured(limit = 15)
     ids = Visit.where(action: 'show').where("controller like ?", "%series%").pluck(:resource_id)
 
     result = Hash.new(0)
@@ -107,7 +107,7 @@ class Serie < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    where(id: result.keys.first(15))
+    where(id: result.keys).limit(limit)
   end
 
   def self.playing
