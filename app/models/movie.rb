@@ -43,6 +43,9 @@ class Movie < ActiveRecord::Base
   # Aliases
   alias_attribute :text, :title_str
 
+  # Callbacks
+  before_destroy :destroy_visits
+
   # Scopes
 
   def self.by_year(year)
@@ -97,7 +100,7 @@ class Movie < ActiveRecord::Base
     ""
   end
 
-  def self.featured
+  def self.featured(limit = 15)
     ids = Visit.where(action: 'show').where("controller like ?", "%movies%").pluck(:resource_id)
 
     result = Hash.new(0)
@@ -106,6 +109,11 @@ class Movie < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    where(id: result.keys.first(15))
+    where(id: result.keys.first(limit * 3)).limit(limit)
+  end
+
+  def destroy_visits
+    object = self
+    Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
   end
 end

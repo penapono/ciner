@@ -45,6 +45,9 @@ class Professional < ActiveRecord::Base
   # Uploaders
   mount_uploader :avatar, ProfessionalAvatarUploader
 
+  # Callbacks
+  before_destroy :destroy_visits
+
   def set_functions_by_occurrence
     ordered_set_functions = FilmableProfessional
                             .where(professional_id: id)
@@ -111,7 +114,10 @@ class Professional < ActiveRecord::Base
   end
 
   def self.birthdays
-    where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day).first(6)
+    birthday_professionals = where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
+    featured_birthdays = birthday_professionals.featured(6)
+    return featured_birthdays if featured_birthdays.count >= 6
+    birthday_professionals.limit(6 - featured_birthdays.count) + featured_birthdays
   end
 
   def self.localized_genders
@@ -306,5 +312,22 @@ class Professional < ActiveRecord::Base
                               birthday.to_date.change(year: now.year, day: 27)
                             end
     self.age = now.year - birthday.year - (birthday_current_year > now ? 1 : 0)
+  end
+
+  def self.featured(limit = 15)
+    ids = Visit.where(action: 'show').where("controller like ?", "%professionals%").pluck(:resource_id)
+
+    result = Hash.new(0)
+
+    ids.each { |v| result[v] += 1 }
+
+    result = result.sort_by { |_k, v| v }.to_h
+
+    where(id: result.keys.first(limit * 3)).limit(limit)
+  end
+
+  def destroy_visits
+    object = self
+    Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
   end
 end

@@ -36,12 +36,12 @@
 
         .diretor-elenco
           = Movie.human_attribute_name(:directors_str)
-          .wine.bold
+          %span.wine.bold
             = filmable.directors_str
           %br
 
           = Movie.human_attribute_name(:cast_str)
-          .wine.bold
+          %span.wine.bold
             = filmable.actors_str
           %br
 

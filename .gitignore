@@ -18,6 +18,7 @@ recaptcha.yml
 coverage/
 public/uploads
 public/assets
+public/sitemap.xml.gz
 
 dump.rdb
 .rvmrc

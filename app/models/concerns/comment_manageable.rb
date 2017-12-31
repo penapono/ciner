@@ -9,7 +9,7 @@ module CommentManageable
     end
 
     def last_comment
-      return unless comments.any?
+      return unless comments.exists?
       comments.order(created_at: :desc).first
     end
 

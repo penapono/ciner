@@ -11,10 +11,10 @@ module Platform
     expose(:broadcasts) { movie.broadcasts }
     expose(:age_ranges) { AgeRange.all }
 
-    expose(:playing_filmables) { Movie.current_playing }
-    expose(:playing_soon_filmables) { Movie.playing_soon }
-    expose(:featured_filmables) { Movie.featured.first(10) }
-    expose(:available_netflix_filmables) { Movie.available_netflix }
+    expose(:playing_filmables) { Movie.current_playing.limit(20) }
+    expose(:playing_soon_filmables) { Movie.playing_soon.limit(20) }
+    expose(:featured_filmables) { Movie.featured(10) }
+    expose(:available_netflix_filmables) { Movie.available_netflix.limit(20) }
 
     PER_PAGE = 50
 

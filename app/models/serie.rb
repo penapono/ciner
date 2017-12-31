@@ -52,6 +52,9 @@ class Serie < ActiveRecord::Base
   # Enums
   enum status: { running: 0, renewed: 1, finished: 2, cancelled: 3 }
 
+  # Callbacks
+  before_destroy :destroy_visits
+
   # Scopes
 
   def self.by_year(year)
@@ -98,7 +101,7 @@ class Serie < ActiveRecord::Base
     "#{number_of_seasons} #{season_str}"
   end
 
-  def self.featured
+  def self.featured(limit = 15)
     ids = Visit.where(action: 'show').where("controller like ?", "%series%").pluck(:resource_id)
 
     result = Hash.new(0)
@@ -107,7 +110,7 @@ class Serie < ActiveRecord::Base
 
     result = result.sort_by { |_k, v| v }.to_h
 
-    where(id: result.keys.first(15))
+    where(id: result.keys.first(limit * 3)).limit(limit)
   end
 
   def self.playing
@@ -120,5 +123,10 @@ class Serie < ActiveRecord::Base
 
   def self.localized_detailed_statuses
     statuses.keys.map { |w| [human_attribute_name("status.#{w}"), w] }
+  end
+
+  def destroy_visits
+    object = self
+    Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
   end
 end
