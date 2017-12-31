@@ -22,11 +22,11 @@
   .col-sm-3.hidden-xs.last-comment
     - if question.last_comment
       - object = question.last_comment
-      - avatar = image_default_path(object.user.avatar.thumb, "user")
+      - avatar = image_default_path(object.user.avatar.try(:thumb), "user")
       = link_to url_for([role, object.user]) do
         .thumb-user
           %figure
-            / %img.img-responsive{ src: object.user.avatar.thumb }
+            / %img.img-responsive{ src: object.user.avatar.try(:thumb) }
             = image_tag(avatar, class: "img-responsive")
       .last-user
         %span.vermelho
@@ -37,11 +37,11 @@
         = object.date_str
     - else
       - object = question
-      - avatar = image_default_path(object.user.avatar.thumb, "user")
+      - avatar = image_default_path(object.user.avatar.try(:thumb), "user")
       = link_to url_for([role, object.user]) do
         .thumb-user
           %figure
-            / %img.img-responsive{ src: object.user.avatar.thumb }
+            / %img.img-responsive{ src: object.user.avatar.try(:thumb) }
             = image_tag(avatar, class: "img-responsive")
       .last-user
         %span.vermelho

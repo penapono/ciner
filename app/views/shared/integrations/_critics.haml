@@ -29,7 +29,7 @@
         - object.critics.only_two.each do |critic|
           - unless critic.blank?
             - filmable = critic.filmable
-            - avatar = image_default_path(critic.user.avatar.thumb, "user")
+            - avatar = image_default_path(critic.user.avatar.try(:thumb), "user")
 
             .review-item.col-xs-6
               .row

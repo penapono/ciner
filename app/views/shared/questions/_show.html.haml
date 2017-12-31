@@ -1,7 +1,7 @@
 - questionable = question.questionable
 - like_path ||= nil
 - dislike_path ||= nil
-- avatar = image_default_path(question.user.avatar.thumb, "user")
+- avatar = image_default_path(question.user.avatar.try(:thumb), "user")
 - role = current_role(current_user, request.url)
 
 .container.content
