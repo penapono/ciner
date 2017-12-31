@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   has_many :user_trophies, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_one :curriculum, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # Validations
   validates :email,
