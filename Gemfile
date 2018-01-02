@@ -92,6 +92,7 @@ gem 'sitemap_generator'
 
 group :production do
   gem 'passenger'
+  gem 'unicorn'
 end
 
 group :development, :test do
@@ -117,7 +118,7 @@ group :development do
   gem 'rubocop'
   gem 'bullet'
   gem 'traceroute'
-  # gem 'quiet_assets'
+  gem 'brakeman', :require => false
 end
 
 group :test do
