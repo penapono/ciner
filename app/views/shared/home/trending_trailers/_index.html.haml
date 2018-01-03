@@ -1,4 +1,4 @@
-.col-xs-12.col-md-8.ciner-videos{ style: 'margin-top: -10px' }
+.col-xs-12.col-md-8.ciner-videos
   .title-separator
     .media
       .media-left.media-middle
@@ -10,9 +10,17 @@
 
   .row
     - trending_trailers.each do |object|
-      .ciner-movie.col-xs-12.col-sm-6.col-md-4
-        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
+      .hidden-xs
+        .ciner-movie.col-sm-6.col-md-4
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
 
-        .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
-          = link_to url_for([role, object.filmable]) do
-            = object.filmable.title_str
+          .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+            = link_to url_for([role, object.filmable]) do
+              = object.filmable.title_str
+      .hidden-sm.hidden-md.hidden-lg.hidden-xl
+        .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
+
+          .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+            = link_to url_for([role, object.filmable]) do
+              = object.filmable.title_str

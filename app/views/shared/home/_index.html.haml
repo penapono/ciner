@@ -19,7 +19,7 @@
       = link_to "https://lista.mercadolivre.com.br/_CustId_3955851", target: "_blank" do
         %figure
           / %img.img-responsive{ src: image_path("default/movie/image.jpg"), style: 'height: 265px; width: 360px;' }
-          = image_tag("banners/first.png", class: "img-responsive", style: 'height: 265px; width: 360px;' )
+          = image_tag("banners/first.png", class: "img-responsive", style: 'height: 265px; width: 100%;' )
 
     = render 'shared/home/trending_trailers/index', role: role
 
@@ -28,17 +28,18 @@
 
     = render 'shared/home/events/index', role: role
 
-    .col-xs-12.col-sm-12.col-md-12.col-lg-3{ style: 'margin-top: 35px' }
-      .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises
-        = link_to "https://www.presentenafoto.com.br/", target: "_blank" do
-          %figure
-            / %img.img-responsive{ src: image_path("second.png"), style: 'height: 215px; width: 100%; margin-bottom: 15px;' }
-            = image_tag("banners/second.png", class: "img-responsive", style: 'height: 215px; width: 100%; margin-bottom: 15px;' )
-      .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
-        = link_to "http://draftyourself.com.br", target: "_blank" do
-          %figure
-            / %img.img-responsive{ src: image_path("banners/third.png"), style: 'height: 215px; width: 100%;' }
-            = image_tag("banners/third.png", class: "img-responsive", style: 'height: 215px; width: 100%;' )
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3{ style: 'margin-top: 35px;' }
+      .row
+        .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises
+          = link_to "https://www.presentenafoto.com.br/", target: "_blank" do
+            %figure
+              / %img.img-responsive{ src: image_path("second.png"), style: 'height: 215px; width: 100%; margin-bottom: 15px;' }
+              = image_tag("banners/second.png", class: "img-responsive", style: 'height: 215px; width: 100%; margin-bottom: 15px;' )
+        .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
+          = link_to "http://draftyourself.com.br", target: "_blank" do
+            %figure
+              / %img.img-responsive{ src: image_path("banners/third.png"), style: 'height: 215px; width: 100%;' }
+              = image_tag("banners/third.png", class: "img-responsive", style: 'height: 215px; width: 100%;' )
 
   .row
     = render 'shared/home/questions/index', role: role
