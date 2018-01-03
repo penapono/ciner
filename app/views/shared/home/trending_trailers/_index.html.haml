@@ -11,12 +11,13 @@
   .row
     - trending_trailers.each do |object|
       .hidden-xs
-        .ciner-movie.col-sm-6.col-md-4
+        .ciner-movie.col-xs-12.col-sm-6.col-md-4
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
 
           .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
             = link_to url_for([role, object.filmable]) do
               = object.filmable.title_str
+
       .hidden-sm.hidden-md.hidden-lg.hidden-xl
         .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
