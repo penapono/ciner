@@ -36,57 +36,112 @@
     %span.bold.wine
       Bem-vindo, CINER!
   - unless current_user
-    .col-xs-12.tab-content
-      #mensal.tab-pane.active
-        .row
-          .col-xs-offset-2.col-xs-3.promo-item
-            .promo-top
-              %h5.tipo CINER
-            .promo-bottom.col-table-gratis{"data-mh" => "promo"}
-              .col-table-cell
-                .gratis GRÁTIS
-            .vantagem.wine.text-center.bold VANTAGENS
-            .vantagens
-              %span . Criar perfil com foto
-              %span . Avaliar filmes e séries
-              %span . Comentar filmes e séries
-              %span . Participar no Debate Ciner (Fórum)
-              %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-              %span . Participar de promoções do site
-            .vantagem.wine.text-center.bold DIFERENCIAIS CINER
-            .vantagens-extra
-              %span . Cadastrar currículo profissional
-              %span . Enviar críticas de filmes e séries
-              %span . Coleção virtual de DVD/Blu-ray
-            .assine{ data: { choose_plan: '', plan: 'Ciner' } }
-              .btn.btn-assine
-                = chosen_plan == 'classic' ? 'Escolhido' : 'SEJA CINER'
-          .col-xs-offset-1.col-xs-3.promo-item
-            .promo-top
-              %h5.tipo CINER CULT
-            .promo-bottom.col-table-gratis{"data-mh" => "promo"}
-              .col-table-cell
-                .gratis EM BREVE
-            .vantagem.wine.text-center.bold VANTAGENS
-            .vantagens
-              %span . Criar perfil com foto
-              %span . Avaliar filmes e séries
-              %span . Comentar filmes e séries
-              %span . Participar no Debate Ciner (Fórum)
-              %span . Acessar as críticas da Equipe CINER e críticas dos usuários
-              %span . Participar de promoções do site
-            .vantagem.wine.text-center.bold DIFERENCIAIS CINER
-            .vantagens-extra
-              %span . Cadastrar currículo profissional
-              %span . Enviar críticas de filmes e séries
-              %span . Coleção virtual de DVD/Blu-ray
-              / %span . Participar de promoções exclusivas
-              / %span . Upload de vídeos cinematográficos ilimitados
-              %span . Em breve
-              %span . Em breve
-            / .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
-            /   .btn.btn-assine
-            /     = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
-            .assine
-              .btn.btn-assine{ style: 'cursor: not-allowed' }
-                EM BREVE
+    .row
+      .col-xs-12
+        #mensal
+          .hidden-xs
+            .row
+              .col-xs-offset-2.col-xs-3.promo-item
+                .promo-top
+                  %h5.tipo CINER
+                .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+                  .col-table-cell
+                    .gratis GRÁTIS
+                .vantagem.wine.text-center.bold VANTAGENS
+                .vantagens
+                  %span . Criar perfil com foto
+                  %span . Avaliar filmes e séries
+                  %span . Comentar filmes e séries
+                  %span . Participar no Debate Ciner (Fórum)
+                  %span . Acessar as críticas da Equipe CINER e críticas dos usuários
+                  %span . Participar de promoções do site
+                .vantagem.wine.text-center.bold DIFERENCIAIS CINER
+                .vantagens-extra
+                  %span . Cadastrar currículo profissional
+                  %span . Enviar críticas de filmes e séries
+                  %span . Coleção virtual de DVD/Blu-ray
+                .assine{ data: { choose_plan: '', plan: 'Ciner' } }
+                  .btn.btn-assine
+                    = chosen_plan == 'classic' ? 'Escolhido' : 'SEJA CINER'
+              .col-xs-offset-1.col-xs-3.promo-item
+                .promo-top
+                  %h5.tipo CINER CULT
+                .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+                  .col-table-cell
+                    .gratis EM BREVE
+                .vantagem.wine.text-center.bold VANTAGENS
+                .vantagens
+                  %span . Criar perfil com foto
+                  %span . Avaliar filmes e séries
+                  %span . Comentar filmes e séries
+                  %span . Participar no Debate Ciner (Fórum)
+                  %span . Acessar as críticas da Equipe CINER e críticas dos usuários
+                  %span . Participar de promoções do site
+                .vantagem.wine.text-center.bold DIFERENCIAIS CINER
+                .vantagens-extra
+                  %span . Cadastrar currículo profissional
+                  %span . Enviar críticas de filmes e séries
+                  %span . Coleção virtual de DVD/Blu-ray
+                  / %span . Participar de promoções exclusivas
+                  / %span . Upload de vídeos cinematográficos ilimitados
+                  %span . Em breve
+                  %span . Em breve
+                / .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
+                /   .btn.btn-assine
+                /     = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
+                .assine
+                  .btn.btn-assine{ style: 'cursor: not-allowed' }
+                    EM BREVE
+          .hidden-sm.hidden-md.hidden-lg.hidden-xl
+            .row
+              .col-xs-6.promo-item
+                .promo-top
+                  %h5.tipo CINER
+                .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+                  .col-table-cell
+                    .gratis GRÁTIS
+                .vantagem.wine.text-center.bold VANTAGENS
+                .vantagens
+                  %span . Criar perfil com foto
+                  %span . Avaliar filmes e séries
+                  %span . Comentar filmes e séries
+                  %span . Participar no Debate Ciner (Fórum)
+                  %span . Acessar as críticas da Equipe CINER e críticas dos usuários
+                  %span . Participar de promoções do site
+                .vantagem.wine.text-center.bold DIFERENCIAIS CINER
+                .vantagens-extra
+                  %span . Cadastrar currículo profissional
+                  %span . Enviar críticas de filmes e séries
+                  %span . Coleção virtual de DVD/Blu-ray
+                .assine{ data: { choose_plan: '', plan: 'Ciner' } }
+                  .btn.btn-assine
+                    = chosen_plan == 'classic' ? 'Escolhido' : 'SEJA CINER'
+              .col-xs-6.promo-item
+                .promo-top
+                  %h5.tipo CINER CULT
+                .promo-bottom.col-table-gratis{"data-mh" => "promo"}
+                  .col-table-cell
+                    .gratis EM BREVE
+                .vantagem.wine.text-center.bold VANTAGENS
+                .vantagens
+                  %span . Criar perfil com foto
+                  %span . Avaliar filmes e séries
+                  %span . Comentar filmes e séries
+                  %span . Participar no Debate Ciner (Fórum)
+                  %span . Acessar as críticas da Equipe CINER e críticas dos usuários
+                  %span . Participar de promoções do site
+                .vantagem.wine.text-center.bold DIFERENCIAIS CINER
+                .vantagens-extra
+                  %span . Cadastrar currículo profissional
+                  %span . Enviar críticas de filmes e séries
+                  %span . Coleção virtual de DVD/Blu-ray
+                  / %span . Participar de promoções exclusivas
+                  / %span . Upload de vídeos cinematográficos ilimitados
+                  %span . Em breve
+                  %span . Em breve
+                / .assine{ data: { choose_plan: '', plan: 'Ciner Cult' } }
+                /   .btn.btn-assine
+                /     = chosen_plan == 'cult' ? 'Escolhido' : 'ASSINE JÁ'
+                .assine
+                  .btn.btn-assine{ style: 'cursor: not-allowed' }
+                    EM BREVE

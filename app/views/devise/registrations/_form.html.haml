@@ -5,73 +5,73 @@
     Os campos sinalizados com * são de preenchimento obrigatório
 
   .row
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :name, required: true, autofocus: true
-    .col-xs-3
+    .col-xs-12.col-sm-3
       = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
-    .col-xs-3.hidden{ data: { role: '' } }
+    .hidden{ data: { role: '' } }
       = f.input :role, collection: User.localized_roles, input_html: { class: 'form-field' }
 
   .row
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :nickname, required: true
-    .col-xs-3
+    .col-xs-12.col-sm-3
       = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
-      .hidden
-        = f.input :registered_at, as: :string, input_html: { value: localize(Date.today) }
+    .hidden
+      = f.input :registered_at, as: :string, input_html: { value: localize(Date.today) }
 
   .row
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :cpf
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :email
 
   %h3
     = t('.address')
 
   .row
-    .col-xs-2{ data: { cep: '', path: api_v1_ceps_path } }
+    .col-xs-12.col-sm-2{ data: { cep: '', path: api_v1_ceps_path } }
       = f.input :cep
-    .col-xs-8
+    .col-xs-9.col-sm-8
       = f.input :address
-    .col-xs-2
+    .col-xs-3.col-sm-2
       = f.input :number
 
   .row
-    .col-xs-2
+    .col-xs-12.col-sm-2
       = f.input :complement
-    .col-xs-4
+    .col-xs-12.col-sm-4
       = f.input :neighbourhood
-    .col-xs-2
+    .col-xs-12.col-sm-2
       = f.input :state_id, collection: states, include_blank: 'Selecione um Estado'
-    .col-xs-4
+    .col-xs-12.col-sm-4
       = f.input :city_id, collection: [], input_html: { class: 'select2' },  include_blank: 'Selecione uma Cidade'
 
   .row
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :phone
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :mobile
 
   %h3
     = t('.avatar')
 
   .row
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = f.input :avatar, label: false
 
   %h3
     Privacidade da Coleção
 
   .row
-    .col-xs-3
+    .col-xs-12.col-sm-3
       = f.input :collection_privacy, collection: User.localized_collection_privacies, input_html: { class: 'form-field' }
 
   %h3
     = t('.about')
 
   .row
-    .col-xs-12{ data: { limited: '', limit: 350 } }
+    .col-xs-12.col-sm-12{ data: { limited: '', limit: 350 } }
       = f.input :biography, label: false, input_html: { rows: 3 }, maxlength: 350
       %span.char-counter
         = t('remaining_chars', chars: 350)
@@ -92,7 +92,7 @@
     = t('.terms')
 
   .row
-    .col-xs-6{ data: { terms: '' } }
+    .col-xs-12.col-sm-6{ data: { terms: '' } }
       .hidden
         = f.input :terms_of_use, label: false
       %input.terms{:name => "terms", :type => "checkbox", :value => "terms"}/
@@ -102,7 +102,7 @@
       .div
         É obrigatório aceitar os termos de uso
 
-    .col-xs-6
+    .col-xs-12.col-sm-6
       = recaptcha_tags
 
   = render 'shared/users/form_actions', f: f
