@@ -27,12 +27,16 @@ class BroadcastCoverUploader < CarrierWave::Uploader::Base
   # process :scale => [200, 300]
   #
   def scale(_width, _height)
-    process scale: [250, 300]
+    process scale: [200, 300]
+  end
+
+  version :avatar do
+    process resize_to_fill: [150, 150]
   end
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [50, 60]
+    process resize_to_fit: [50, 50]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
