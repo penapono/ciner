@@ -20,6 +20,7 @@ module Admin
       ],
       broadcast_images_attributes: %i[
         media
+        media_cache
         broadcast_id
         id
         _destroy
@@ -39,6 +40,14 @@ module Admin
 
     def index
       self.broadcasts = paginated_broadcasts
+    end
+
+    def create
+      if created?
+        redirect_to_show_with_success
+      else
+        render_new_with_error
+      end
     end
 
     private
