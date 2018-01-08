@@ -48,7 +48,7 @@ class Broadcast < ActiveRecord::Base
   end
 
   def self.last_created
-    order(created_at: :desc)
+    order(broadcast_date: :desc, created_at: :desc)
   end
 
   def self.featured
