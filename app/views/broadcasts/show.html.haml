@@ -27,7 +27,7 @@
       - else
         Não há fotos na galeria desta notícia
     - else
-      = broadcast.more
+      = broadcast.more.gsub(/\n/, '<br/>').html_safe
 
   .modal-footer.user-collection-actions
     %ul{ style: 'padding: 0px' }
