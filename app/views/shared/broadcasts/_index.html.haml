@@ -31,7 +31,7 @@
                     .wine{ style: 'height: 20px; margin-bottom: 10px;' }
                       = object.spoiler_str
                     .desc{ style: 'min-height: 168px; max-height: 190px; overflow: hidden; font-size: 13px; ' }
-                      = object.content.html_safe
+                      = object.content.gsub(/\n/, '<br/>').html_safe
 
                       - unless object.video.blank?
                         %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }
@@ -99,7 +99,7 @@
                 .wine{ style: 'height: 20px;' }
                   = object.spoiler_str
                 .desc{ style: 'min-height: 90px; max-height: 113px; overflow: hidden; font-size: 13px;' }
-                  = object.content.html_safe
+                  = object.content.gsub(/\n/, '<br/>').html_safe
 
                   - unless object.video.blank?
                     %span.more.wine{ data: { show: '', url: polymorphic_path([object], view: 'video') }, style: 'cursor: pointer;' }

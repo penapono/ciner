@@ -20,7 +20,7 @@
             %br
 
             %p
-              = broadcast.content.html_safe
+              = broadcast.content.gsub(/\n/, '<br/>').html_safe
 
           .info
             = broadcast.created_at_str
