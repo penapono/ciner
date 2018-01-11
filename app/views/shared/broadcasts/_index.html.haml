@@ -21,8 +21,7 @@
           .col-xs-12.col-sm-6
             .row{ style: 'margin-bottom: 0px' }
               .col-xs-5{ id: object.id, style: 'padding-right: 0px;' }
-                / %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
-                = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
+                = image_tag(cover, class: "img-responsive", style: 'max-height: 300px; max-width: 200px; width: 100%; height: auto')
               .col-xs-7
                 .row{ style: 'margin-bottom: 0px' }
                   / .col-xs-12 { style: 'max-height: 350px;' }
