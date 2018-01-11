@@ -22,14 +22,12 @@
           - if current_user
             - if !question.blank?
               = link_to polymorphic_path([role, question]) do
-                %button.btn.btn-login
-                  Debater
-                  %span.icon.icon-button
+                %svg.icon-title{ style: 'width: 25px; height: 20px; margin-top: -5px; margin-left: 15px' }
+                  %use{"xlink:href" => "#debate"}
             - else
               = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: resource.id) do
-                %button.btn.btn-login
-                  Debater
-                  %span.icon.icon-button
+                %svg.icon-title{ style: 'width: 25px; height: 20px; margin-top: -5px; margin-left: 15px' }
+                  %use{"xlink:href" => "#debate"}
         - else
           %div.delatable.clickable{ data: { delate: '', url: "/delates", user_id: user.id } }
             %i.fa.fa-exclamation-circle{ title: 'Denunciar' }
