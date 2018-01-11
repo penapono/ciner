@@ -20,10 +20,10 @@
 
           .col-xs-12.col-sm-6
             .row{ style: 'margin-bottom: 0px' }
-              .col-xs-4{ id: object.id, style: 'padding-right: 0px;' }
+              .col-xs-5{ id: object.id, style: 'padding-right: 0px;' }
                 / %img.img-responsive{ src: cover, style: 'height: 300px; width: 200px;' }
                 = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
-              .col-xs-8
+              .col-xs-7
                 .row{ style: 'margin-bottom: 0px' }
                   / .col-xs-12 { style: 'max-height: 350px;' }
                   .col-xs-12
@@ -47,8 +47,8 @@
                           \.
                           Informações completas aqui
 
-                    .pull-left{ style: 'padding-left: 0px;'}
-                      .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px;' }
+                    .pull-left{ style: 'padding-left: 0px; width: 100%'}
+                      .source.bold{ style: 'height: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px; max-width: 100%' }
                         Fonte:
                         = object.source
                     .pull-right
