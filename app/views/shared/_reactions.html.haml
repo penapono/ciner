@@ -6,7 +6,7 @@
   - user = current_user || nil
 
   - if user
-    .row
+    .row{ style: 'margin-bottom: 0px' }
       .col-xs-12{ data: { reactions: '' } }
         %div.reactionable.clickable{ data: { vote: '', url: like_path } }
           %span{ data: { like_counter: '' } }
@@ -33,7 +33,7 @@
             %i.fa.fa-exclamation-circle{ title: 'Denunciar' }
 
   - else
-    .row{ title: t('unauthorized.login_for_reactions'), data: { tipsy: '' } }
+    .row{ style: 'margin-bottom: 0px', title: t('unauthorized.login_for_reactions'), data: { tipsy: '' } }
       .col-xs-12
         %div.reactionable
           %span
