@@ -18,7 +18,19 @@
             = resource.dislikes_count
           %i.fa{ class: resource.dislike_icon_class(user), data: { dislike_icon: '' } }
 
-        - unless resource.class == Broadcast
+        - if resource.class == Broadcast
+          - if current_user
+            - if !question.blank?
+              = link_to polymorphic_path([role, question]) do
+                %button.btn.btn-login
+                  Debater
+                  %span.icon.icon-button
+            - else
+              = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: resource.id) do
+                %button.btn.btn-login
+                  Debater
+                  %span.icon.icon-button
+        - else
           %div.delatable.clickable{ data: { delate: '', url: "/delates", user_id: user.id } }
             %i.fa.fa-exclamation-circle{ title: 'Denunciar' }
 
@@ -34,6 +46,3 @@
           %span
             = resource.dislikes_count
           %i.fa.fa-thumbs-o-down
-
-        %div.delatable
-          %i.fa.fa-exclamation-circle{ title: 'Denunciar' }

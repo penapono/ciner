@@ -54,25 +54,14 @@
                       %span.bold.wine{ style: 'float: right; font-size: 12px;' }
                         = link_to object.date_str, polymorphic_path([role, :broadcasts], filter: { date: object.date_str })
                     .row{ style: 'margin-top: 38px;' }
-                      .col-xs-6
+                      .col-xs-12
                         .row{ style: 'margin-left: -10px; height: 25px; margin-top: 15px;' }
                           .broadcast-reaction
-                            = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path
+                            = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path, question: question
                       / .col-xs-4{ style: 'line-height: 35px; padding-left: 0px' }
                       /   .fb-share-button{"data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button_count", "data-mobile-iframe" => "true", "data-size" => "small"}
                       /     %a.fb-xfbml-parse-ignore{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse", :target => "_blank"} Compartilhar
-                      .col-xs-4{ style: 'padding-left: 0px;' }
-                        - if current_user
-                          - if !question.blank?
-                            = link_to polymorphic_path([role, question]) do
-                              %button.btn.btn-login
-                                Debater
-                                %span.icon.icon-button
-                          - else
-                            = link_to polymorphic_path([:new, role, :question], questionable_type: 'Broadcast', questionable_id: object.id) do
-                              %button.btn.btn-login
-                                Debater
-                                %span.icon.icon-button
+
 
 .container.noticias
   .row
