@@ -41,7 +41,7 @@ class Broadcast < ActiveRecord::Base
   # Aliases
   alias_attribute :title_str, :title
 
-  default_scope { order(broadcast_date: :desc, created_at: :desc) }
+  default_scope { order(featured: :desc, broadcast_date: :desc, created_at: :desc) }
 
   # Scopes
 
