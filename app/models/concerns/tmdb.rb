@@ -119,7 +119,6 @@ module Tmdb
 
         uri = URI.parse(url)
 
-        byebug
 
         if uri.is_a?(URI::HTTP)
           response = HTTParty.get(url)
@@ -128,14 +127,12 @@ module Tmdb
 
           response_status = response["Response"]
 
-          byebug
 
           if response_status == "True"
             omdb_id = imdb_id.gsub(/\s+/, "") unless imdb_id.blank?
 
             object.omdb_id = omdb_id
 
-            byebug
 
             object.release ||= begin
                               Date.parse(response["Released"])
@@ -143,21 +140,17 @@ module Tmdb
                               nil
                             end
 
-            byebug
 
             object.length ||= response["Runtime"]
 
-            byebug
 
             object.omdb_genre ||= response["Genre"]
 
-            byebug
 
             countries = tmdb_object["production_countries"]
 
             countries_str = []
 
-            byebug
 
             unless countries.blank?
               countries.each do |country|
@@ -166,11 +159,9 @@ module Tmdb
               end
             end
 
-            byebug
 
             countries_str = countries_str.join(", ")
 
-            byebug
 
             object.countries ||= countries_str
 
@@ -204,15 +195,12 @@ module Tmdb
 
         object.trailer ||= load_trailer
 
-        byebug
 
         object.omdb_rated ||= load_rating
 
-        byebug
 
         omdb_country = response["Country"]
 
-        byebug
 
         # load_professionals(object, tmdb_id)
 
@@ -311,7 +299,6 @@ module Tmdb
 
       ratings_array = ratings.split("/").map(&:strip)
 
-      byebug
 
       ratings_array.each do |rating|
         if rating.include? "Brazil"
