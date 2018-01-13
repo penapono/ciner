@@ -6,14 +6,14 @@
 .hidden-md.hidden-lg.hidden-xl
   .noticia-item{ style: 'padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #CCCCCC;' }
     .row
-      .col-xs-12{ id: object.id, style: 'padding-right: 0px;' }
-        = image_tag(cover, class: "img-responsive", style: 'height: auto; max-height: 171px; max-width: 261px; width: 100%')
+      .col-xs-12{ id: object.id }
+        = image_tag(cover, class: "img-responsive", style: 'height: auto; max-height: 171px; width: 100%')
     .row
       .col-xs-12
         - unless object.state.blank? && object.place.blank?
           .row
             .col-xs-12
-              .wine{ style: 'height: 40px;' }
+              .wine{ style: 'min-height: 20px;' }
                 %span{ style: 'margin-right: 15px;' }
                   - if object.state
                     = object.state.name
@@ -32,11 +32,11 @@
                   .highlight{ style: 'font-size: 12px; width: auto; float: left; color: rgb(184, 184, 184); margin-bottom: 5px; margin-top: 10px; height: 30px; margin-top: 0px;' }
                     .button{ style: 'cursor: normal; float: left; border: 1px solid $light-orange; border-radius: 8px; padding: 4px 10px; text-decoration: none; background: transparent; margin-right: 10px; margin-bottom: 5px;' }
                       = event.status_str
-            .row{ style: 'margin-top: 0px;' }
+            .row{ style: 'margin-top: 0px; margin-bottom: 0px' }
               .col-xs-12
-                %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; height: 37px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;' }
+                %h3.bold{ style: 'box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Montserrat"; font-size: 20px; font-weight: 700; line-height: 26.4px; margin-bottom: 0px; margin-top: 0px; min-height: 37px;' }
                   = object.title
-        .desc{ style: 'height: 74px; font-size: 13px; overflow: hidden' }
+        .desc{ style: 'min-height: 74px; height: auto; font-size: 13px; overflow: hidden' }
           = object.description.html_safe
 
           - unless object.video.blank?

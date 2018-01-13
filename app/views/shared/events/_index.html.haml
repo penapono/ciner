@@ -5,5 +5,7 @@
   - events.each do |event|
     = render 'shared/events/event', event: event, path: event_path(event)
 
+  = paginate events
+
 #contentModal.modal.fade{:role => "dialog"}
   .modal-dialog
