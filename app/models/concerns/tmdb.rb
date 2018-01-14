@@ -202,7 +202,7 @@ module Tmdb
         omdb_country = response["Country"]
 
 
-        # load_professionals(object, tmdb_id)
+        load_professionals(object, tmdb_id)
 
         # load_seasons(object, tmdb_id) if is_serie?(object)
 
