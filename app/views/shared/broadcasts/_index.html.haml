@@ -112,9 +112,10 @@
                       .row{ style: 'margin-left: -10px; height: 25px; margin-top: 10px; margin-bottom: 0px' }
                         .broadcast-reaction
                           = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path, question: question, role: role
+      .row
+        .col-xs-12
+          = paginate broadcasts
 
-  #broadcastModal.modal.fade{:role => "dialog"}
-    .modal-dialog
 
 .hidden-sm.hidden-md.hidden-lg.hidden-xl
   - role = current_role(current_user, request.url)
@@ -230,9 +231,9 @@
                       .row{ style: 'margin-left: -10px; height: 25px; margin-top: 15px; margin-bottom: 0px' }
                         .broadcast-reaction
                           = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path, question: question, role: role
-    .row
-      .col-xs-12
-        = paginate broadcasts
+      .row
+        .col-xs-12
+          = paginate broadcasts
 
-  #broadcastModal.modal.fade{:role => "dialog"}
-    .modal-dialog
+#broadcastModal.modal.fade{:role => "dialog"}
+  .modal-dialog
