@@ -69,3 +69,6 @@
                       .row{ style: 'margin-left: -10px; height: 25px; margin-top: 0px; margin-bottom: 0px' }
                         .broadcast-reaction
                           = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path, question: question, role: role
+
+#broadcastModal.modal.fade{:role => "dialog"}
+  .modal-dialog

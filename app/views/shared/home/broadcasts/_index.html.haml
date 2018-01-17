@@ -17,3 +17,6 @@
   - else
     = render 'shared/alerts/info', message: (t('empty', klass: Broadcast.model_name.human(count: 2)))
   / POSTS ITEMS
+
+  #broadcastModal.modal.fade{:role => "dialog"}
+    .modal-dialog

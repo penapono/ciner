@@ -1,5 +1,6 @@
 //= require components/ciner_slider
 //= require components/ciner_tipsy
+//= require views/shared/broadcasts/index
 
 $(document).ready(function() {
   var containers = $('[data-slider-playing]');
