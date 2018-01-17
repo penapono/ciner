@@ -1,5 +1,8 @@
 - like_path ||= nil
 - dislike_path ||= nil
+- object = broadcast
+- role = current_role(current_user, request.url)
+- question = Question.where(questionable: object).first
 
 .container.content
   .row
@@ -7,7 +10,7 @@
       .row
         .col-xs-12.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
           %h4
-            = broadcast.title
+            = object.title
 
       %hr
 
@@ -15,17 +18,17 @@
         .col-xs-12
           .content
             .bold.wine
-              = broadcast.spoiler_str
+              = object.spoiler_str
 
             %br
 
             %p
-              = broadcast.content.gsub(/\n/, '<br/>').html_safe
+              = object.content.gsub(/\n/, '<br/>').html_safe
 
           .info
-            = broadcast.created_at_str
+            = object.created_at_str
 
   #broadcast-reaction
-    = render 'shared/reactions', resource: broadcast, like_path: like_path, dislike_path: dislike_path
+    = render 'shared/reactions', resource: broadcast, like_path: like_path, dislike_path: dislike_path, question: question, role: role
 
 = render 'shared/comments/index', object: broadcast
