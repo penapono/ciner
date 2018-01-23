@@ -22,12 +22,12 @@
 - if movies.any?
   - movies.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover, "movie")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -52,12 +52,12 @@
 - if series.any?
   - series.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover, "movie")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -82,12 +82,12 @@
 - if professionals.any?
   - professionals.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover, "professional")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -112,12 +112,12 @@
 - if users.any?
   - users.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.avatar.try(:thumb), "user")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 60px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -142,12 +142,12 @@
 - if curriculums.any?
   - curriculums.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover.try(:thumb), "professional")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 60px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -172,12 +172,12 @@
 - if critics.any?
   - critics.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover, "movie")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -203,12 +203,12 @@
 - if events.any?
   - events.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover, "movie")
         / %img.img-responsive{ src: cover, style: 'height: 60px; width: 90px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 90px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else
@@ -234,12 +234,12 @@
 - if broadcasts.any?
   - broadcasts.each do |object|
     .row
-      .col-xs-1
+      .col-xs-3.col-md-1
         - cover = image_default_path(object.cover, "movie")
         / %img.img-responsive{ src: cover, style: 'height: 60px; width: 90px;' }
         = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 90px;' )
 
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, :broadcasts]) do
           =  object.title_str
 - else
@@ -264,10 +264,10 @@
 - if questions.any?
   - questions.each do |object|
     .row
-      .col-xs-1.col-sm-1.icone
+      .col-xs-3.col-md-1.icone
         %svg.icon-debate
           %use{ "xlink:href": question_icon(object) }
-      .col-xs-11
+      .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
           =  object.title_str
 - else

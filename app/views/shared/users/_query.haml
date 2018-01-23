@@ -14,12 +14,9 @@
         - @results.each do |object|
           - cover = image_default_path(object.cover, "movie")
 
-          .col-sm-2.no-shelf{ style: 'margin-bottom: 0px; width: 20%;' }
+          .col-xs-6.col-sm-3.col-md-2.no-shelf{ style: 'margin-bottom: 0px;' }
             = link_to url_for([role, object]) do
-              / %img.img-responsive{ src: cover, style: 'width: 200px; height: 300px;' }
               = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
             .title{ style: 'height: 60px; overflow: hidden;'}
               = link_to url_for([role, object]) do
                 = object.title_str
-              / %span
-              /   = object.filmable_year
