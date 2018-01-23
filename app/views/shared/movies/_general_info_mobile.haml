@@ -1,0 +1,77 @@
+.col-xs-12.col-sm-12.col-md-9.col-lg-9
+  .row
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8
+      Gênero
+      %span.wine.bold
+        = never_empty(object.genre_pt)
+      %br
+
+      = Movie.human_attribute_name(:age_range_id)
+      %span.wine.bold
+        = never_empty(object.rated_pt)
+
+      \|
+
+      Duração
+      %span.wine.bold
+        = never_empty(object.length_str)
+
+      %br
+      %br
+
+      .title{ style: 'margin: auto; text-align: center' }
+        %h3.bold.wine
+          = object.title_str
+        %h4.light.cinza
+          = "#{object.original_title_str} (#{object.filmable_year})"
+
+      %br
+
+    .col-xs-12.col-sm-4.col-md-4.col-lg-4
+      .row
+        .col-xs-6
+          .nota
+            = Movie.human_attribute_name(:users_rating)
+            %span.valor{ data: { users_rating: '' } }
+              = object.users_rating
+
+
+        .col-xs-6
+          .nota.ciner-rating
+            Nota Ciner
+            %span.valor
+              = never_empty(object.ciner_official_critic)
+  .row
+    .col-xs-12
+      .title
+        .synopsis
+          = object.synopsis
+        %br
+
+        = Movie.human_attribute_name(:directors_str)
+        %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+          = never_empty(object.directors_str)
+        %br
+
+        Roteiro
+        %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+          = never_empty(object.writers_str)
+        %br
+
+        = Movie.human_attribute_name(:cast_str)
+        %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+          = never_empty(object.actors_str)
+
+        %br
+
+        %br
+        País(es) de Produção
+        %span.bold.wine{ style: 'height: 20px; overflow: hidden;' }
+          = never_empty(object.countries_str)
+        %br
+
+        Lançamento no Brasil
+        %span.wine.bold
+          = never_empty(object.brazilian_release_str)
+
+  = render 'shared/movies/user_actions', object: object, role: role
