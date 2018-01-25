@@ -8,7 +8,8 @@ class BroadcastsController < ApplicationController
   PER_PAGE = 10
 
   # exposes
-  expose(:broadcasts) { Broadcast.all_creation.includes(:broadcast_images) }
+  expose(:top_featured) { Broadcast.top_featured }
+  expose(:broadcasts) { Broadcast.all_creation }
   expose(:broadcast, attributes: :broadcast_attributes)
 
   def index

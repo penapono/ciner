@@ -64,6 +64,10 @@ class Broadcast < ActiveRecord::Base
     where.not(id: ids)
   end
 
+  def self.top_featured
+    featured.limit(2).includes(:broadcast_images)
+  end
+
   def self.top_broadcasts
     broadcasts = []
 
@@ -75,13 +79,9 @@ class Broadcast < ActiveRecord::Base
   end
 
   def self.all_creation
-    broadcasts = []
-
-    featured.first(2).each { |q| broadcasts << q }
-    two_last_created = last_created.all_but(broadcasts)
-    two_last_created.each { |q| broadcasts << q }
-
-    Broadcast.where(id: broadcasts.pluck(:id)).order(featured: :desc, created_at: :desc)
+    Broadcast.where.not(id: top_featured.pluck(:id))
+             .order(featured: :desc, created_at: :desc)
+             .includes(:broadcast_images)
   end
 
   # Methods
@@ -143,7 +143,9 @@ class Broadcast < ActiveRecord::Base
     result = collection
     result = result.by_filmable_type(params[:filmable_type]) unless params[:filmable_type].blank?
     result = result.by_filmable_id(params[:filmable_id]) unless params[:filmable_id].blank?
-    result = result.by_broadcast_content_type(params[:broadcast_content_type]) unless params[:broadcast_content_type].blank?
+    unless params[:broadcast_content_type].blank?
+      result = result.by_broadcast_content_type(params[:broadcast_content_type])
+    end
     result = result.by_date(params[:date]) unless params[:date].blank?
 
     result
