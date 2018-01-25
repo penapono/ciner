@@ -111,7 +111,7 @@
                     .row{ style: 'margin-left: -10px; height: 25px; margin-top: 10px; margin-bottom: 0px' }
                       .broadcast-reaction
                         = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path, question: question, role: role
-      .row
+      .row{ style: 'text-align: center' }
         .col-xs-12
           = paginate broadcasts
 
@@ -229,7 +229,7 @@
                     .row{ style: 'margin-left: -10px; height: 25px; margin-top: 15px; margin-bottom: 0px' }
                       .broadcast-reaction
                         = render 'shared/reactions', resource: object, like_path: like_path, dislike_path: dislike_path, question: question, role: role
-      .row
+      .row{ style: 'text-align: center' }
         .col-xs-12
           = paginate broadcasts
 
