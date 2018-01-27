@@ -77,7 +77,11 @@ class Movie < ActiveRecord::Base
   end
 
   def filmable_year_str
-    year.to_s
+    "(#{year})"
+  end
+
+  def original_title_filmable_str
+    "#{original_title_str} #{filmable_year_str}"
   end
 
   def length_str

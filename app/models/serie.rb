@@ -90,6 +90,10 @@ class Serie < ActiveRecord::Base
     "(#{start_year}-)"
   end
 
+  def original_title_filmable_str
+    "#{original_title_str} #{filmable_year_str}"
+  end
+
   def status_str
     return nil if status.blank?
     Serie.human_attribute_name("status.#{status}")
