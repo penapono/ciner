@@ -23,21 +23,20 @@
       - cover = object.cover if cover.blank?
       - cover = image_default_path(cover, "movie")
 
-      .col-md-3.col-sm-4.col-xs-4.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
+      .col-md-3.col-sm-4.col-xs-6.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
         / %img.img-responsive{ src: cover, style: 'width: 60px; height: 90px;' }
-        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;')
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px; margin: auto;')
 
 
     - count = size - user_collection.count
     - if count > 0
       - count.times do
-        .col-md-3.col-sm-4.col-xs-4.shelf
-          .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
+        .col-md-3.col-sm-4.col-xs-6.shelf
+          .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey; margin: auto;' }
   - else
     - size.times do
-      .col-md-3.col-sm-4.col-xs-4.shelf
-        .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey' }
+      .col-md-3.col-sm-4.col-xs-6.shelf
+        .div{ style: 'height: 90px; width: 60px; border: 1px dotted grey; margin: auto;' }
 
 #collectionModal.modal.fade{:role => "dialog"}
   .modal-dialog
-

@@ -20,59 +20,111 @@
               .media-body.text-right.media-middle.see-more
                 = link_to url_for([:edit, role, user]) do
                   %i.fa.fa-pencil.fa-2x{ tooltip: 'editar' }
-        .row.user-profile
-          .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 200px;" }
-            / %img.img-responsive{:src => avatar, style: "width: 170px; height: 170px;" }
-            = image_tag(avatar, class: "img-responsive", style: 'height: 170px; width: 170px;')
-            - unless current_user.blank?
-              %div
+        .hidden-xs
+          .row.user-profile
+            .col-xs-12.col-sm-4.user-avatar{ style: "width: 200px; height: 200px;" }
+              = image_tag(avatar, class: "img-responsive", style: 'height: 170px; width: 170px; text-align: center')
+              - unless current_user.blank?
                 - if current_user != user
-                  = render 'shared/users/friendship', role: role, user: user
-
-          .col-xs-12.col-sm-8.user-info{ style: 'width: 76%; margin-right: -15px' }
-            .row
-              .col-xs-8
-                Nome:
-                %span.user-name
-                  = user.name
-                %br
-                Idade:
-                %span.user-age
-                  = user.age
-                %br
-                Cidade:
-                %span.user-city
-                  = user.city_name
-                  - if user.state
-                    = "-"
-                    = user.state_acronym
-                %br
-                Ciner desde:
-                %span.user-birth-ciner
-                  = user.registered_at_str
-              .col-xs-4
-                .row
-                  .col-xs-12
-                    - if user.curriculum
-                      = link_to url_for([role, user.curriculum]) do
-                        %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
-                          %span.text
-                            Currículo
-                          %span.icon.icon-button
-                    - else
-                      - if current_user == user
-                        = link_to url_for([:new, role, :curriculum]) do
+                  %div
+                    = render 'shared/users/friendship', role: role, user: user
+            .col-xs-12.col-sm-8.user-info{ style: 'width: 76%; margin-right: -15px' }
+              .row
+                .col-xs-12.col-md-8
+                  Nome:
+                  %span.user-name
+                    = user.name
+                  %br
+                  Idade:
+                  %span.user-age
+                    = user.age
+                  %br
+                  Cidade:
+                  %span.user-city
+                    = user.city_name
+                    - if user.state
+                      = "-"
+                      = user.state_acronym
+                  %br
+                  Ciner desde:
+                  %span.user-birth-ciner
+                    = user.registered_at_str
+                .col-xs-12.col-md-4
+                  .row
+                    .col-xs-12
+                      - if user.curriculum
+                        = link_to url_for([role, user.curriculum]) do
                           %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
                             %span.text
                               Currículo
                             %span.icon.icon-button
+                      - else
+                        - if current_user == user
+                          = link_to url_for([:new, role, :curriculum]) do
+                            %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
+                              %span.text
+                                Currículo
+                              %span.icon.icon-button
 
-            .row
-              .col-xs-12
-                .user-bio
-                  %span.user-bio
-                    Biografia:
-                  = user.biography
+              .row
+                .col-xs-12
+                  .user-bio
+                    %span.user-bio
+                      Biografia:
+                    = user.biography
+
+        .hidden-sm.hidden-md.hidden-lg.hidden-xl
+          .row.user-profile
+            .col-xs-12.col-sm-4.user-avatar
+              = image_tag(avatar, class: "img-responsive", style: 'height: 170px; width: 170px; margin: auto')
+              - unless current_user.blank?
+                - if current_user != user
+                  %div
+                    = render 'shared/users/friendship', role: role, user: user
+            .col-xs-12.col-sm-8.user-info
+              .row
+                .col-xs-12.col-md-8
+                  Nome:
+                  %span.user-name
+                    = user.name
+                  %br
+                  Idade:
+                  %span.user-age
+                    = user.age
+                  %br
+                  Cidade:
+                  %span.user-city
+                    = user.city_name
+                    - if user.state
+                      = "-"
+                      = user.state_acronym
+                  %br
+                  Ciner desde:
+                  %span.user-birth-ciner
+                    = user.registered_at_str
+                .col-xs-12.col-md-4
+                  .row
+                    .col-xs-12
+                      - if user.curriculum
+                        = link_to url_for([role, user.curriculum]) do
+                          %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
+                            %span.text
+                              Currículo
+                            %span.icon.icon-button
+                      - else
+                        - if current_user == user
+                          = link_to url_for([:new, role, :curriculum]) do
+                            %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
+                              %span.text
+                                Currículo
+                              %span.icon.icon-button
+
+              .row
+                .col-xs-12
+                  .user-bio
+                    %span.user-bio
+                      Biografia:
+                    = user.biography
 
       / Favoritos, Assistidos e Quero ver
       = render 'shared/users/all_medias', role: role
@@ -87,7 +139,7 @@
             .media-body.media-middle
               .media-heading.title-section Minha sinopse
         .row.box-sinopse
-          .col-xs-12.col-md-6
+          .col-xs-6.col-md-6
             Coleção:
             %strong.wine
               = collection_count_for_user(user)
@@ -104,7 +156,7 @@
             %strong.wine
               = user.trophy_count
 
-          .col-xs-12.col-sm-6
+          .col-xs-6.col-sm-6
             Favoritos:
             %strong.wine
               = favorite_count_for_user(user)
