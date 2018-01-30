@@ -19,6 +19,6 @@
     - questions.each do |question|
       = render 'shared/questions/question', question: question
 
-    = render 'shared/pagination', resources: questions
+    = paginate questions
   - else
     = render 'shared/alerts/info', message: (t('empty', klass: Question.model_name.human(count: 2)))

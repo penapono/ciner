@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   expose(:events) { Event.includes(:state).includes(:event_images).order(event_date: :asc) }
   expose(:event, attributes: :event_attributes)
 
-  PER_PAGE = 20
+  PER_PAGE = 10
 
   def index
     self.events = paginated_events
