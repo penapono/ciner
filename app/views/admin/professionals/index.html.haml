@@ -25,7 +25,10 @@
       %tr
         %td
           = link_to admin_professional_path(professional) do
-            = professional.name
+            - if professional.name
+              = professional.name
+            - else
+              = professional.id
 
         %td
           = professional.set_function_name

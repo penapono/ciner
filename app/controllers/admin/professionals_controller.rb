@@ -5,7 +5,7 @@ module Admin
     include Admin::ProfessionalsBreadcrumb
 
     # exposes
-    expose(:professionals) { Professional.all }
+    expose(:professionals) { Professional.where(name: nil).includes(:set_function) }
     expose(:professional, attributes: :professional_attributes)
     expose(:broadcasts) { professional.broadcasts }
 
@@ -63,7 +63,7 @@ module Admin
     end
 
     def searched_professionals
-      professionals.search(current_user, params.fetch(:search, ''))
+      professionals
     end
 
     # Filters
