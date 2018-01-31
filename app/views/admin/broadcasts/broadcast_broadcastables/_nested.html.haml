@@ -1,6 +1,6 @@
 - partial = 'admin/broadcasts/broadcast_broadcastables/fields'
 
-.row{'data-cocoon-container': ''}
+.row
   .col-xs-12
     %h2.title.pull-right
       = link_to_add_association '+', f, :broadcast_broadcastables, data: { association_insertion_method: 'before' }, class: 'action-button add', partial: partial
