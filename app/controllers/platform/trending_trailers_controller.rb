@@ -1,17 +1,10 @@
 # frozen_string_literal: true
 
-module Admin
-  class TrendingTrailersController < AdminController
-    include Admin::TrendingTrailersBreadcrumb
+module Platform
+  class TrendingTrailersController < PlatformController
+    include Platform::TrendingTrailersBreadcrumb
 
     PER_PAGE = 10
-
-    PERMITTED_PARAMS = %i[
-      title
-      trailer
-      filmable_type
-      filmable_id
-    ].freeze
 
     # exposes
     expose(:trending_trailers) { TrendingTrailer.order(created_at: :desc).includes(:filmable) }
@@ -32,19 +25,11 @@ module Admin
     end
 
     def index_path
-      admin_trending_trailers_path
+      platform_trending_trailers_path
     end
 
     def show_path
-      admin_trending_trailer_path(resource)
-    end
-
-    def trending_trailer_params
-      params.require(:trending_trailer).permit(PERMITTED_PARAMS)
-    end
-
-    def resource_params
-      trending_trailer_params
+      platform_trending_trailer_path(resource)
     end
 
     # Filtering

@@ -1,0 +1,15 @@
+.hidden-xs
+  .ciner-movie.col-xs-12.col-sm-6.col-md-4{ style: 'margin-bottom: 15px'}
+    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
+
+    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+      = link_to url_for([role, object.filmable]) do
+        = object.filmable.title_str
+
+.hidden-sm.hidden-md.hidden-lg.hidden-xl
+  .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px; margin-bottom: 15px' }
+    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
+
+    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+      = link_to url_for([role, object.filmable]) do
+        = object.filmable.title_str

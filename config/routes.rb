@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root 'home#index'
@@ -32,19 +34,20 @@ Rails.application.routes.draw do
 
   resources :contacts
 
-  resources :critics, only: [:index, :show]
-  resources :events, only: [:index, :show]
-  resources :questions, only: [:index, :show]
-  resources :broadcasts, only: [:index, :show]
+  resources :critics, only: %i[index show]
+  resources :events, only: %i[index show]
+  resources :questions, only: %i[index show]
+  resources :broadcasts, only: %i[index show]
+  resources :trending_trailers, only: [:index]
   resources :notifications, except: [:show]
   resources :searches, only: :index
-  resources :delates, only: [:create, :update]
+  resources :delates, only: %i[create update]
 
   match "movies/playing", to: "movies#playing", via: :get
   match "movies/featured", to: "movies#featured", via: :get
   match "movies/playing_soon", to: "movies#playing_soon", via: :get
   match "movies/available_netflix", to: "movies#available_netflix", via: :get
-  resources :movies, only: [:index, :show] do
+  resources :movies, only: %i[index show] do
     member do
       put "like", to: "movies#upvote"
       put "dislike", to: "movies#downvote"
@@ -56,7 +59,7 @@ Rails.application.routes.draw do
   match "series/featured", to: "series#featured", via: :get
   match "series/playing_soon", to: "series#playing_soon", via: :get
   match "series/available_netflix", to: "series#available_netflix", via: :get
-  resources :series, only: [:index, :show] do
+  resources :series, only: %i[index show] do
     member do
       put "like", to: "series#upvote"
       put "dislike", to: "series#downvote"
@@ -64,8 +67,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :professionals, only: [:index, :show]
-  resources :curriculums, only: [:index, :show]
+  resources :professionals, only: %i[index show]
+  resources :curriculums, only: %i[index show]
   resources :users do
     resources :collection, only: :index, module: 'users'
     resources :trophies, only: :index, module: 'users'

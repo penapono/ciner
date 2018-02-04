@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   namespace :platform do
     root 'home#index'
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
     match 'professionals/query' => 'professionals#query', via: :get
     match 'users/query' => 'users#query', via: :get
 
-    resources :users, only: [:update, :show, :edit, :index, :destroy] do
+    resources :users, only: %i[update show edit index destroy] do
       resources :collection, only: :index, module: 'users'
       resources :trophies, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'
@@ -20,8 +22,8 @@ Rails.application.routes.draw do
       resources :want_to_see, only: :index, module: 'users'
     end
 
-    resources :studios, only: [:index, :show]
-    resources :professionals, only: [:index, :show, :destroy]
+    resources :studios, only: %i[index show]
+    resources :professionals, only: %i[index show destroy]
     resources :curriculums
     resources :notifications
     resources :featured_filmables, only: :index
@@ -31,7 +33,7 @@ Rails.application.routes.draw do
     match "movies/featured", to: "movies#featured", via: :get
     match "movies/playing_soon", to: "movies#playing_soon", via: :get
     match "movies/available_netflix", to: "movies#available_netflix", via: :get
-    resources :movies, only: [:index, :show, :destroy] do
+    resources :movies, only: %i[index show destroy] do
       member do
         put "like", to: "movies#upvote"
         put "dislike", to: "movies#downvote"
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
     match "series/featured", to: "series#featured", via: :get
     match "series/playing_soon", to: "series#playing_soon", via: :get
     match "series/available_netflix", to: "series#available_netflix", via: :get
-    resources :series, only: [:index, :show, :destroy] do
+    resources :series, only: %i[index show destroy] do
       member do
         put "like", to: "series#upvote"
         put "dislike", to: "series#downvote"
@@ -78,5 +80,7 @@ Rails.application.routes.draw do
         put "dislike", to: "broadcasts#downvote"
       end
     end
+
+    resources :trending_trailers, only: [:index]
   end
 end

@@ -1,0 +1,11 @@
+- role = current_role(current_user, request.url)
+
+.container
+  = render 'shared/trending_trailers/toolbar', path: trending_trailers_path
+
+.container
+  .row
+    - trending_trailers.each do |trending_trailer|
+      = render 'shared/trending_trailers/trending_trailer', object: trending_trailer, role: role
+
+  = paginate trending_trailers
