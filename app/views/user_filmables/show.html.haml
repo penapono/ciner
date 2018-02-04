@@ -8,16 +8,15 @@
       = user_filmable.filmable.title_str
   .modal-body
     .row
-      .col-xs-4
+      .col-xs-12.col-sm-12.col-md-4
         - cover = user_filmable.cover unless user_filmable.cover.url.blank?
         - object = user_filmable.filmable
         - cover = object.cover if cover.blank?
         - cover = image_default_path(cover, "movie")
 
         = link_to [role, object] do
-          / %img.img-responsive{ src: cover, style: 'width: 166px; height: 250px;' }
-          = image_tag(cover, class: "img-responsive", style: 'height: 250px; width: 166px;')
-      .col-xs-8
+          = image_tag(cover, class: "img-responsive", style: 'min-height: 250px; min-width: 166px; width: 100%; height: auto')
+      .col-xs-12.col-sm-12.col-md-8
         - unless user_filmable.media.blank?
           .row
             .col-xs-5.wine

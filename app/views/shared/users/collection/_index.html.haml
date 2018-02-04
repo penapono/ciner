@@ -20,16 +20,14 @@
             - cover = object.cover if cover.blank?
             - cover = image_default_path(cover, "movie")
 
-            .col-sm-2.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
+            .col-xs-6.col-sm-4.col-md-2.shelf{ title: user_filmable.title_str, data: { user_filmable_id: user_filmable.id, url: user_filmable_path(user_filmable), tipsy: '' } }
               / %img.img-responsive{ src: cover, style: 'width: 133px; height: 195px;' }
               = image_tag(cover, class: "img-responsive", style: 'height: 195px; width: 133px;')
 
           - if slice.count < 6
             - (6 - slice.count).times do
-              - cover = image_path("default/movie/image.png")
-
-              .col-sm-2.shelf
-                .div{ style: 'width: 133px; height: 195px;' }
+              .col-xs-6.col-sm-4.col-md-2.shelf
+                .div{ style: 'width: 133px; height: 195px; border: 1px dotted grey; margin: auto;' }
 
 #collectionModal.modal.fade{:role => "dialog"}
   .modal-dialog

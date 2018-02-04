@@ -3,15 +3,16 @@
 
 = hidden_field_tag :filtered, ((params[:search] && !params[:search].blank?) || (params[:filter] && !params[:filter].blank?))
 
-#filters.filters{ data: { dynamic_filter: '' } }
-  = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
-    = hidden_field_tag :search, params[:search]
-    .row
-      .col-xs-3
-        = f.input :media, label: false, collection: [["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tipo de Mídia', selected: params.fetch(:filter, {}).fetch(:media, '')
-      .col-xs-3
-        = f.input :version, label: false, collection: [["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Versão', selected: params.fetch(:filter, {}).fetch(:version, '')
-      .col-xs-3
-        = f.input :box, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Faz parte de box?', selected: params.fetch(:filter, {}).fetch(:box, '')
-      .col-xs-3
-        = f.input :order, label: false, collection: [["Posição", :position], ["Alfabética (A-Z)", :alphabet], ["Ano (mais recente primeiro)", :newly], ["Ano (mais antigo primeiro)", :oldly], ["Compra (mais recente primeiro)", :newly_bought], ["Compra (mais antiga primeiro)", :oldly_bought], ["Valor (maior primeiro)", :expensive], ["Valor (menor primeiro)", :cheap]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar Por', selected: params.fetch(:filter, {}).fetch(:order, '')
+.hidden-xs.hidden-sm
+  #filters.filters{ data: { dynamic_filter: '' } }
+    = simple_form_for :filter, url: request.url, method: :get, data: { filter_form: '' } do |f|
+      = hidden_field_tag :search, params[:search]
+      .row
+        .col-xs-3
+          = f.input :media, label: false, collection: [["Blu-ray", :bluray], ["DVD", :dvd], ["Digital", :digital], ["VHS", :vhs], ["Outra", :other_media]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Tipo de Mídia', selected: params.fetch(:filter, {}).fetch(:media, '')
+        .col-xs-3
+          = f.input :version, label: false, collection: [["Simples", :simple], ["Dupla", :double], ["Colecionador", :collector], ["Comemorativa", :commemorative], ["Outra", :other_version]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Versão', selected: params.fetch(:filter, {}).fetch(:version, '')
+        .col-xs-3
+          = f.input :box, label: false, collection: [["Sim", true], ["Não", false]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Faz parte de box?', selected: params.fetch(:filter, {}).fetch(:box, '')
+        .col-xs-3
+          = f.input :order, label: false, collection: [["Posição", :position], ["Alfabética (A-Z)", :alphabet], ["Ano (mais recente primeiro)", :newly], ["Ano (mais antigo primeiro)", :oldly], ["Compra (mais recente primeiro)", :newly_bought], ["Compra (mais antiga primeiro)", :oldly_bought], ["Valor (maior primeiro)", :expensive], ["Valor (menor primeiro)", :cheap]], input_html: { class: 'select2 form-field', data: { dynamic_input: '' } }, include_blank: 'Ordenar Por', selected: params.fetch(:filter, {}).fetch(:order, '')
