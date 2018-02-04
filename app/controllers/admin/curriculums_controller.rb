@@ -70,17 +70,13 @@ module Admin
         :play_name,
         :avatar,
         :biography,
-
         :user,
         :user_id,
-
         # Measures
         :mannequin,
         :height,
         :ethnicity,
-
         :drt,
-
         :jobs,
         :awards,
         curriculum_photos_attributes: %i[

@@ -41,21 +41,13 @@ class NotificationsController < ApplicationController
       on_decline_friend_request(notification_sender_id, notification_receiver_id)
     end
 
-    if notification_type == 'remove_friend'
-      on_remove_friend(notification_sender_id, notification_receiver_id)
-    end
+    on_remove_friend(notification_sender_id, notification_receiver_id) if notification_type == 'remove_friend'
 
-    if notification_type == 'contact'
-      on_contact_professional(notification_sender_id, notification_receiver_id)
-    end
+    on_contact_professional(notification_sender_id, notification_receiver_id) if notification_type == 'contact'
 
-    if notification_type == "accept_contact"
-      on_accept_contact(notification_sender_id, notification_receiver_id)
-    end
+    on_accept_contact(notification_sender_id, notification_receiver_id) if notification_type == "accept_contact"
 
-    if notification_type == "decline_contact"
-      on_decline_contact(notification_sender_id, notification_receiver_id)
-    end
+    on_decline_contact(notification_sender_id, notification_receiver_id) if notification_type == "decline_contact"
   end
 
   # Contact professional

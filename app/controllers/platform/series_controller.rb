@@ -56,21 +56,14 @@ module Platform
         :brazilian_release,
         :country_id,
         :age_range_id,
-
         :cover,
-
         # Movie
-
         :studio,
-
         # Ciner Movie
-
         :approval,
         :approver,
         :owner,
-
         # Serie
-
         :season,
         :number_episodes,
         :aired_episodes

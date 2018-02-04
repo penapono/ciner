@@ -165,8 +165,11 @@ module ::BaseController
     end
 
     def playing; end
+
     def playing_soon; end
+
     def feaured; end
+
     def available_netflix; end
 
     private

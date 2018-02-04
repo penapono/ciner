@@ -18,7 +18,7 @@ class SeriesController < ApplicationController
   PER_PAGE = 50
 
   def index
-   self.series = paginated_series
+    self.series = paginated_series
   end
 
   def show
@@ -54,21 +54,14 @@ class SeriesController < ApplicationController
       :brazilian_release,
       :country_id,
       :age_range_id,
-
       :cover,
-
       # Movie
-
       :studio,
-
       # Ciner Movie
-
       :approval,
       :approver,
       :owner,
-
       # Serie
-
       :season,
       :number_episodes,
       :aired_episodes

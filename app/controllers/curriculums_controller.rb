@@ -10,12 +10,12 @@ class CurriculumsController < ApplicationController
 
   def index
     return if curriculums.blank?
-   self.curriculums = paginated_curriculums
+    self.curriculums = paginated_curriculums
   end
 
   def create
     if created?
-     redirect_to_show_with_success
+      redirect_to_show_with_success
     else
       render_new_with_error
     end
@@ -67,18 +67,14 @@ class CurriculumsController < ApplicationController
       :play_name,
       :avatar,
       :biography,
-
       # Professional Attributes
       :set_function,
-
       # If Professional is an User
       :user,
-
       # Measures
       :mannequin,
       :height,
       :ethnicity,
-
       :drt,
       :winnings1,
       :winnings2,

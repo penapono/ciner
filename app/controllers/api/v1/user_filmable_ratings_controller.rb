@@ -9,7 +9,11 @@ class Api::V1::UserFilmableRatingsController < ApplicationController
         user_id: user_filmable_rating_params[:user_id]
       )
 
-    rating = user_filmable_rating_params[:rating].to_i rescue 1
+    rating = begin
+               user_filmable_rating_params[:rating].to_i
+             rescue StandardError
+               1
+             end
 
     if user_filmable_rating.persisted? && user_filmable_rating.rating == rating
       user_rating = 0

@@ -69,17 +69,13 @@ module Platform
         :play_name,
         :avatar,
         :biography,
-
         :user_id,
         :user,
-
         # Measures
         :mannequin,
         :height,
         :ethnicity,
-
         :drt,
-
         :jobs,
         :awards,
         curriculum_photos_attributes: %i[
