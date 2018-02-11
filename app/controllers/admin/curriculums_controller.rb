@@ -81,24 +81,28 @@ module Admin
         :awards,
         curriculum_photos_attributes: %i[
           media
+          media_cache
           curriculum_id
           id
           _destroy
         ],
         curriculum_audios_attributes: %i[
           media
+          media_cache
           curriculum_id
           id
           _destroy
         ],
         curriculum_videos_attributes: %i[
           media
+          media_cache
           curriculum_id
           id
           _destroy
         ],
         curriculum_files_attributes: %i[
           media
+          media_cache
           curriculum_id
           id
           _destroy
