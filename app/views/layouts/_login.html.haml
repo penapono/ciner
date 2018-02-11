@@ -6,21 +6,33 @@
       .col-sm-4{ style: 'margin-right: -20px; margin-top: -5px;' }
         - avatar = image_default_path(current_user.avatar.try(:thumb), "user")
         = link_to url_for([role, current_user]) do
-          / %img.img-responsive{ src: avatar, style: "width: 60px; height: 60px; margin: auto; margin-top: 10px" }
           = image_tag(avatar, class: "img-responsive", style: 'width: 60px; height: 60px; margin: auto; margin-top: 10px;' )
-      .col-sm-8
-        .welcome
-          Olá,
-          = link_to url_for([role, current_user]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
-            = current_user.name.split(' ').first
-        .logout
-          - notification_count = current_user.notifications.pending.count
-          = link_to url_for([role, :notifications]) do
-            = notification_count
-            = notification_count == 1 ? "notificação" : "notificações"
-          \|
-          = link_to 'Sair', destroy_user_session_path, method: :delete
-
+      .hidden-xs.hidden-sm
+        .col-sm-8
+          .welcome
+            Olá,
+            = link_to url_for([role, current_user]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
+              = current_user.name.split(' ').first
+          .logout
+            - notification_count = current_user.notifications.pending.count
+            = link_to url_for([role, :notifications]) do
+              = notification_count
+              = notification_count == 1 ? "notificação" : "notificações"
+            \|
+            = link_to 'Sair', destroy_user_session_path, method: :delete
+      .hidden-md.hidden-lg.hidden-xl
+        .col-sm-8{ style: 'text-align: center' }
+          .welcome
+            Olá,
+            = link_to url_for([role, current_user]), style: 'box-sizing: border-box; color: rgb(255, 255, 255); font-family: "Montserrat"; font-size: 18.6667px; font-weight: 700; line-height: 26.6667px; margin-top: 20px;' do
+              = current_user.name.split(' ').first
+          .logout
+            - notification_count = current_user.notifications.pending.count
+            = link_to url_for([role, :notifications]) do
+              = notification_count
+              = notification_count == 1 ? "notificação" : "notificações"
+            \|
+            = link_to 'Sair', destroy_user_session_path, method: :delete
 - else
   .row
     .hidden-xs

@@ -8,104 +8,102 @@
 %span
   Os campos sinalizados com * são de preenchimento obrigatório
 
-= f.object.errors.messages.to_s
-
 .row
-  .col-xs-6
+  .col-xs-12.col-md-6
     = label_tag 'Nome'
     = text_field_tag :user_nickname, current_user.name, disabled: true
 
-  .col-xs-6
+  .col-xs-12.col-md-6
     = f.input :play_name
     = f.hidden_field :user_id, value: (f.object.user ? f.object.user.id : current_user.id)
 
 .row
-  .col-xs-3
+  .col-xs-12.col-md-3
     = label_tag 'Sexo'
     = text_field_tag :user_gender, current_user.gender_str, disabled: true
-  .col-xs-3
+  .col-xs-12.col-md-3
     = label_tag 'Idade'
     = text_field_tag :user_gender, "#{current_user.age} anos", disabled: true
-  .col-xs-3
+  .col-xs-12.col-md-3
     = label_tag 'Cidade'
     = text_field_tag :user_nickname, current_user.city_name, disabled: true
-  .col-xs-3
+  .col-xs-12.col-md-3
     = label_tag 'Estado'
     = text_field_tag :user_nickname, current_user.state_name, disabled: true
 
 .row
-  .col-xs-12{ data: { cocoon_container: '' } }
+  .col-xs-12.col-md-12{ data: { cocoon_container: '' } }
     .row
-      .col-xs-12
+      .col-xs-11.col-md-11
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_curriculum_functions', title: "Profissões", observation: '(até 3 profissões)'
 
 .row
-  .col-xs-12
+  .col-xs-12.col-md-12
     %h3.wine
       = t('.about')
 
 .row
-  .col-xs-12{ data: { limited: '', limit: 250 } }
+  .col-xs-12.col-md-12{ data: { limited: '', limit: 250 } }
     = f.input :biography, label: false, input_html: { rows: 5 }, maxlength: 250
     %span.char-counter
       = t('remaining_chars', chars: 250)
 
 .row
-  .col-xs-12{ data: { limited: '', limit: 200 } }
+  .col-xs-12.col-md-12{ data: { limited: '', limit: 200 } }
     = f.input :jobs, input_html: { rows: 2 }, maxlength: 200
     %span.char-counter
       = t('remaining_chars', chars: 200)
 
 .row
-  .col-xs-12{ data: { limited: '', limit: 90 } }
+  .col-xs-12.col-md-12{ data: { limited: '', limit: 90 } }
     = f.input :awards, input_html: { rows: 1 }, maxlength: 90
     %span.char-counter
       = t('remaining_chars', chars: 90)
 
 .row
-  .col-xs-12
+  .col-xs-12.col-md-12
     = checkbox_item(f, :drt)
 
 .row
-  .col-xs-12
+  .col-xs-12.col-md-12
     %h3.wine
       = t('.body')
 
 .row
-  .col-xs-4
+  .col-xs-12.col-md-4
     = f.input :ethnicity, collection: [["Amarela", :yellow], ["Branca", :white], ["Indígena", :indigenous], ["Parda", :brown], ["Preta", :afrodescendant]]
-  .col-xs-4
+  .col-xs-12.col-md-4
     = f.input :height, as: :string, input_html: { class: 'height' }
-  .col-xs-4
+  .col-xs-12.col-md-4
     = f.input :mannequin, collection: [34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56]
 
 .row
-  .col-xs-12{ data: { cocoon_container: '' } }
-    .row
-      .col-xs-12
+  .col-xs-11.col-md-11
+    .row{ data: { cocoon_container: '' } }
+      .col-xs-12.col-md-12
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_photos', title: "Imagens", observation: '(até 5 arquivos - Formatos aceitos: PNG, JPG, JPEG e GIF - Tamanho máximo por arquivo: 1mb)'
 
-    .row
-      .col-xs-12
+    .row{ data: { cocoon_container: '' } }
+      .col-xs-12.col-md-12
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_audios', title: "Áudios", observation: '(até 3 arquivos - Formatos aceitos: MP3, WMA, Ogg, AAC, WAV, AIFF, PCM, FLAC - Tamanho máximo por arquivo: 3 Mb)'
 
-    .row
-      .col-xs-12
+    .row{ data: { cocoon_container: '' } }
+      .col-xs-12.col-md-12
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_videos', title: "Vídeos", observation: '(até 3 arquivos - Formatos aceitos: MP4, MOV, WMV, AVI, FLV - Tamanho máximo por arquivo: 30 Mb)'
 
-    .row
-      .col-xs-12
+    .row{ data: { cocoon_container: '' } }
+      .col-xs-12.col-md-12
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_files', title: "Documentos", observation: '(até 3 arquivos - Formato aceito: PDF - Tamanho máximo por arquivo: 1mb)'
 
 .row.actions
   - if f.object.persisted?
-    .col-xs-3.pull-left
+    .col-xs-12.col-md-3.pull-left
       = link_to url_for([role, f.object]), method: 'delete' do
         .btn.submit
           Excluir Currículo
-  .col-xs-12.col-sm-3.pull-right
+  .col-xs-12.col-md-12.col-sm-3.pull-right
     = f.button :submit, t('confirm')
-  .col-xs-12.col-sm-3.pull-right
+  .col-xs-12.col-md-12.col-sm-3.pull-right
     = link_to :back do
       .btn.submit{ input: { type: 'submit' } }
         = t('cancel')
