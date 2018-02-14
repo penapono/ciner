@@ -73,6 +73,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'remotipart'
+gem "font-awesome-rails"
 gem 'font-awesome-sass'
 
 # Gem para buscar CEP
