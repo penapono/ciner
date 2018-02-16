@@ -3,6 +3,9 @@
 
 - role = current_role(current_user, request.url)
 
+.hidden
+  = f.object.errors.first.to_s unless f.object.errors.blank?
+
 %h3.wine
   Dados Gerais do Currículo
 %span
@@ -101,9 +104,9 @@
       = link_to url_for([role, f.object]), method: 'delete' do
         .btn.submit
           Excluir Currículo
-  .col-xs-12.col-md-12.col-sm-3.pull-right
+  .col-xs-12.col-sm-3.pull-right
     = f.button :submit, t('confirm')
-  .col-xs-12.col-md-12.col-sm-3.pull-right
+  .col-xs-12.col-sm-3.pull-right
     = link_to :back do
       .btn.submit{ input: { type: 'submit' } }
         = t('cancel')

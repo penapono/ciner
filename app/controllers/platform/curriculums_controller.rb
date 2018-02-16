@@ -22,6 +22,14 @@ module Platform
       end
     end
 
+    def update
+      if updated?
+        redirect_to_show_with_success
+      else
+        render_edit_with_error
+      end
+    end
+
     def destroy
       user = resource.user
       destroyed?
