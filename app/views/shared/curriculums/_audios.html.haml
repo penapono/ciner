@@ -10,6 +10,6 @@
       - if audio.media && audio.media.url
         .col-xs-4
           / = link_to "Download #{audio.media.filename}", audio.media.url, download: ""
-          = audio_tag("ciner.com.br/#{audio.media.url}", autoplay: false, controls: true)
+          = audio_tag("#{audio.media.url}", autoplay: false, controls: true)
           / %audio#sound_effect.audio_player{:controls => "true", :preload => "true"}
           /   %source{:src => audio.media.url}
