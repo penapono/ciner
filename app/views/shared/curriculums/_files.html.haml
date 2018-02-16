@@ -8,5 +8,4 @@
   .row
     - curriculum.curriculum_files.each do |file|
       .col-xs-12.col-sm-4
-        / = link_to "Download #{file.media.filename}", file.media.url, download: ""
-        %iframe{:frameborder => "0", :src => "http://docs.google.com/gview?url=#{file.media.url}&embedded=true", :style => "width: 330px; height: auto;"}
+        %iframe{:frameborder => "0", :src => "http://docs.google.com/gview?url=ciner.com.br#{file.media.url}&embedded=true", :style => "width: 330px; height: auto;"}
