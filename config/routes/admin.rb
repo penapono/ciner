@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :curriculum_functions
     resources :studios
     resources :professionals
+    resources :duplicate_professionals
     resources :curriculums
     resources :notifications
     resources :age_ranges

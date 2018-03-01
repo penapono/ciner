@@ -1,0 +1,40 @@
+= simple_form_for [:admin, professional] do |f|
+  %h3
+    = t('.general')
+  %span
+    Os campos sinalizados com * são de preenchimento obrigatório
+
+  - professional.errors.each do |e|
+    %p
+      = e.to_s
+
+  .row
+    .col-xs-6
+      = f.input :name, required: true, autofocus: true
+    .col-xs-3
+      = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
+  .row
+    .col-xs-6
+      = f.input :place_of_birth
+    .col-xs-3
+      = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
+    .col-xs-3
+      = f.input :deathday, as: :string, input_html: { value: (localize(f.object.deathday) if f.object.deathday), class: 'datepicker' }
+
+  %h3
+    = t('.avatar')
+
+  .row
+    .col-xs-6
+      = f.input :avatar, label: false
+
+  %h3
+    = t('.about')
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 350 } }
+      = f.input :biography, label: false, input_html: { rows: 3 }, maxlength: 350
+      %span.char-counter
+        = t('remaining_chars', chars: 350)
+
+  = render 'shared/form_actions', f: f

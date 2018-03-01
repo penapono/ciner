@@ -5,7 +5,7 @@ module Admin
     include Admin::ProfessionalsBreadcrumb
 
     # exposes
-    expose(:professionals) { Professional.where(name: nil).includes(:set_function) }
+    expose(:professionals) { Professional.where.not(name: nil).includes(:set_function) }
     expose(:professional, attributes: :professional_attributes)
     expose(:broadcasts) { professional.broadcasts }
 
