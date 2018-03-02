@@ -23,6 +23,14 @@ module Admin
       self.series = paginated_series
     end
 
+    def new
+      new_serie = Serie.new
+      # new_serie.title = "Nova série"
+      # new_serie.start_year = 2018
+      new_serie.save(validate: false)
+      redirect_to edit_admin_series_path(new_serie)
+    end
+
     def show
       force_update = params[:force_update].present? && params[:force_update] == "true" ? true : false
       serie.api_transform(force_update)
