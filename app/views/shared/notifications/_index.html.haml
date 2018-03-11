@@ -1,3 +1,16 @@
-- unless notifications.blank?
-  - notifications.each do |notification|
-    = render 'shared/notifications/notification', notification: notification
+.container.content
+  .row
+    .col-xs-12
+      .title-separator
+        .media
+          .media-left.media-middle
+            %i.fa.fa-film.fa-2x.wine{ style: 'margin-top: 10px; padding-top: 5px' }
+          .media-body.media-bottom
+            .media-heading.title-section
+              Notificações
+
+  - if notifications.blank?
+    = render 'shared/alerts/info', message: (t('empty', klass: "notificações"))
+  - else
+    - notifications.each do |notification|
+      = render 'shared/notifications/notification', notification: notification
