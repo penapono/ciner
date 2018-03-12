@@ -22,9 +22,9 @@ function Reactions() {
       _react(parent, url);
     });
 
-    $(dataReactions).on('click', '[data-delate]', function() {
+    $('.modal').on('click', '[data-delate]', function() {
       var self = $(this),
-          parent = self.closest('[data-reactions]'),
+          modal = self.closest('.modal'),
           url = self.data("url"),
           location = document.URL,
           userId = self.data("user-id"),
@@ -35,11 +35,12 @@ function Reactions() {
             }
           }
 
-      _delate(parent, url, data);
+      _delate(url, data);
+      modal.modal('hide');
     });
   }
 
-  function _delate(aParent, aUrl, aData) {
+  function _delate(aUrl, aData) {
     $.ajax({
       type: 'POST',
       dataType: 'JSON',

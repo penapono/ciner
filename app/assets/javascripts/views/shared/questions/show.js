@@ -4,5 +4,5 @@
 $(function() {
   'use strict';
 
-  (new Reactions()).bindReactions($("#question-reaction"));
+  // (new Reactions()).bindReactions($("#question-reaction"));
 });

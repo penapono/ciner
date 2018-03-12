@@ -29,7 +29,7 @@
                 %svg.icon-title{ style: 'width: 25px; height: 20px; margin-top: -5px; margin-left: 15px', title: 'Debater' }
                   %use{"xlink:href" => "#debate", title: 'Debater'}
         - else
-          %div.delatable.clickable{ data: { delate: '', url: "/delates", user_id: user.id }, title: 'Denunciar' }
+          %div.delatable.clickable{"data-target" => "##{resource.id}", "data-toggle" => "modal", title: 'Denunciar'}
             %i.fa.fa-exclamation-circle{ title: 'Denunciar' }
 
   - else
@@ -44,3 +44,21 @@
           %span
             = resource.dislikes_count
           %i.fa.fa-thumbs-o-down
+
+/ Modal
+.modal.fade{:role => "dialog", id: "#{resource.id}"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        .modal-title
+          Deseja mesmo denunciar essa publicação?
+      .modal-body
+        .row
+          .col-xs-offset-2.col-xs-2
+            .btn.btn-default.btn-xs.center-block{ data: { delate: '', url: "/delates", user_id: user.id }, title: 'Denunciar' }
+              Sim
+          .col-xs-offset-4.col-xs-2
+            .btn.btn-default.btn-xs.center-block{"data-dismiss" => "modal", :type => "button"}
+              Não
