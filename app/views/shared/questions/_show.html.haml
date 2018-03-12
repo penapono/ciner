@@ -21,7 +21,6 @@
       .row{ style: 'margin-top: 10px' }
         .col-xs-2.col-sm-1
           .usuario-avatar
-            / %img.img-responsive{ src: avatar }
             = image_tag(avatar, class: "img-responsive")
           = link_to url_for([role, question.user]) do
             = question.user_nickname
@@ -39,7 +38,7 @@
               = question.content.html_safe
 
           .info
-            = question_created_at_str(question)
+            = question_created_at_str(question, current_user)
 
           #question-reaction{ style: 'margin-top: 10px;' }
             = render 'shared/reactions', resource: question, like_path: like_path, dislike_path: dislike_path

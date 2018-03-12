@@ -13,11 +13,25 @@ module QuestionsHelper
     '#offtopic'
   end
 
-  def question_created_at_str(question)
+  def question_created_at_str(question, current_user = nil)
+    if current_user
+      user_link =
+        link_to(
+          question.user_nickname,
+          Rails.application.routes.url_helpers.platform_user_path(
+            question.user
+          )
+        )
+
+      I18n.t('shared.questions.created_at',
+             user: user_link,
+             date: I18n.l(question.created_at,
+                          format: :shorter)).html_safe
+    end
     user_link =
       link_to(
         question.user_nickname,
-        Rails.application.routes.url_helpers.platform_user_path(
+        Rails.application.routes.url_helpers.user_path(
           question.user
         )
       )

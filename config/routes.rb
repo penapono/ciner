@@ -69,11 +69,12 @@ Rails.application.routes.draw do
 
   resources :professionals, only: %i[index show]
   resources :curriculums, only: %i[index show]
-  resources :users do
+  resources :users, only: %i[update show edit index destroy] do
     resources :collection, only: :index, module: 'users'
     resources :trophies, only: :index, module: 'users'
     resources :favorite, only: :index, module: 'users'
     resources :watched, only: :index, module: 'users'
+    resources :want_to_see, only: :index, module: 'users'
   end
 
   resources :user_filmables
