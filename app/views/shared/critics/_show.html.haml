@@ -20,7 +20,6 @@
       .row
         .col-xs-12.col-sm-4.col-md-2
           = link_to url_for([role, critic.filmable]) do
-            / %img.img-responsive{ src: cover }
             = image_tag(cover, class: "img-responsive")
         .col-xs-12.col-sm-8.col-md-10.critica-recente
           .info
@@ -31,22 +30,30 @@
                   = filmable.genre_pt
                 .pull-right
                   = render 'shared/critics/rating', critic: critic
+          .row
+            .col-xs-12.col-sm-6
+              %h4.title
+                = link_to url_for([role, critic.filmable]) do
+                  = critic.filmable_title_str
+              %span.original-title
+                = critic.filmable_original_title
 
-          %h4.title
-            = link_to url_for([role, critic.filmable]) do
-              = critic.filmable_title_str
-          %span.original-title
-            = critic.filmable_original_title
+              .diretor-elenco
+                = Movie.human_attribute_name(:directors_str)
+                %a.bold.wine
+                  = filmable.directors_str
+                %br
 
-          .diretor-elenco
-            = Movie.human_attribute_name(:directors_str)
-            %a.bold.wine
-              = filmable.directors_str
-            %br
-
-            = Movie.human_attribute_name(:cast_str)
-            %a.bold.wine
-              = filmable.actors_str
+                = Movie.human_attribute_name(:cast_str)
+                %a.bold.wine
+                  = filmable.actors_str
+            - if current_user && (critic.user == current_user || current_user.admin?)
+              .col-xs-12.col-sm-2.pull-right
+                = link_to url_for([role, critic]), method: :delete do
+                  %button.btn.btn-login{ style: "width: 100%;" }
+                    %span.text
+                      Excluir
+                    %span.icon.icon-button
 
           .spoiler
             .bold.wine
