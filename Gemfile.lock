@@ -308,7 +308,7 @@ GEM
     parallel (1.12.1)
     paranoia (2.4.0)
       activerecord (>= 4.0, < 5.2)
-    parser (2.5.0.3)
+    parser (2.5.0.4)
       ast (~> 2.4.0)
     passenger (5.2.1)
       rack
