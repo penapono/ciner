@@ -2,11 +2,11 @@
 
 .row.actions
   - if f.object.persisted?
-    .col-xs-3.pull-left
+    .col-xs-12.col-sm-3.col-md-2.pull-left
       = link_to url_for([role, f.object]), method: 'delete' do
         .btn.submit
           Excluir Usuário
-  .col-xs-12.col-sm-3.pull-left{ style: 'margin-bottom: 10px' }
-    = submit_tag t('cancel'), class: 'btn'
-  .col-xs-12.col-sm-3.pull-right
+  .col-xs-12.col-sm-3.col-md-2.pull-right
     = f.button :submit, t('confirm')
+  .col-xs-12.col-sm-3.col-md-2.pull-right{ style: 'margin-bottom: 10px' }
+    = submit_tag t('cancel'), class: 'btn'

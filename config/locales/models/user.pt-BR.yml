@@ -16,6 +16,7 @@ pt-BR:
         cpf: CPF
         address: Endereço
         collection_privacy: Privacidade da Coleção
+        current_password: Senha atual
         neighbourhood: Bairro
         number: Número
         phone: Telefone
