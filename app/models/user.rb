@@ -198,6 +198,10 @@ class User < ActiveRecord::Base
 
   # Scopes
 
+  def self.birthdays
+    where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
+  end
+
   def self.by_gender(gender)
     where(gender: gender)
   end
