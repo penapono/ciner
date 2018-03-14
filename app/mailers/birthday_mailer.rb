@@ -9,6 +9,6 @@ class BirthdayMailer < ApplicationMailer
     attachments.inline["facebook.png"] = File.read("#{Rails.root}/app/assets/images/facebook.png")
     attachments.inline["logo.jpg"] = File.read("#{Rails.root}/app/assets/images/logo.jpg")
     @user = user
-    mail(to: user.email, subject: "Parabéns!", reply_to: "ciner@gmail.com")
+    mail(to: user.email, subject: "Feliz Aniversário, Ciner!", reply_to: "ciner@gmail.com")
   end
 end
