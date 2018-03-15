@@ -1,44 +1,39 @@
-= javascript_include_tag Ckeditor.cdn_url
 - role = current_role(current_user, request.url)
+- filmable_type = params[:filmable_type]
+- filmable_class = filmable_type.constantize
+- filmable_id = params[:filmable_id]
+- filmable = filmable_class.find(filmable_id) rescue Movie.first
+
+- user_filmable_rating = UserFilmableRating.where(filmable: filmable, user: current_user).first
 
 = simple_form_for [:admin, critic] do |f|
-  - filmable_type = f.object.filmable_type || Movie
-  - filmable_type = filmable_type.to_s
-  - filmable_movies_class = (filmable_type == 'Movie') ? '' : 'hidden'
-  - filmable_series_class = (filmable_type == 'Serie') ? '' : 'hidden'
-  - rating = f.object.rating || 0
+  - rating = user_filmable_rating.rating if user_filmable_rating
+  - rating ||= f.object.rating || 1
 
   %h3
-    = t('.general')
-
-  .row{ data: { filmable: '' } }
-    .col-xs-3{ data: { filmable_select: '' } }
-      = f.input :filmable_type, collection: FilmProfitable.localized_filmable_types, selected: filmable_type
-    .col-xs-6
-      .div{ class: "#{filmable_movies_class}", data: { filmable_type: 'Movie' } }
-        = f.input :filmable_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_movies_path } }, label_method: :title_str, value_method: :id
-      .div{ class: "#{filmable_series_class}", data: { filmable_type: 'Serie' } }
-        = f.input :filmable_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_series_index_path } }, label_method: :title_str, value_method: :id
-    .col-xs-3
-      = f.input :rating, input_html: { step: 0.5, min: 0, max: 5, value: rating }
+    = filmable.title_str
 
   .row
-    .col-xs-12
-      = f.input :content, as: :ckeditor, input_html: { rows: 5 }
+    .col-xs-12.col-sm-9
+      %div{ data: { limited: '', limit: 10000 } }
+        = f.input :content, as: :text, input_html: { rows: 5 }, maxlength: 10000
+        %span.char-counter
+          = t('remaining_chars', chars: 10000)
 
-  .row
-    .col-xs-4
-      = checkbox_item(f, :spoiler)
-    - if role == :admin
+    .col-xs-4.col-sm-3
+      %div
+        = f.input :rating, input_html: { step: 1, min: 1, max: 5, value: rating }
+        = checkbox_item(f, :spoiler)
+    - if current_user && current_user.admin?
       .col-xs-4
         = checkbox_item(f, :featured)
       .col-xs-4
         = checkbox_item(f, :quick)
 
-  .row
-    .col-xs-8
-      = f.input :user_id, collection: [], input_html: { data: { remote_select: '', ajax_url: api_v1_users_path } }
-    .col-xs-4
-      = f.input :status, collection: Critic.localized_detailed_statuses, include_blank: t('.select_status')
+  = f.hidden_field :filmable_type, value: params[:filmable_type] || 'Movie'
+  = f.hidden_field :filmable_id, value: params[:filmable_id] || nil
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :status, value: 2
+  = f.hidden_field :origin, value: current_user.admin? ? :ciner_critic : :user_critic
 
   = render 'shared/form_actions', f: f

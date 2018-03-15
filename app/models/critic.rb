@@ -36,6 +36,7 @@ class Critic < ActiveRecord::Base
   # Callbacks
   before_save :update_year
   after_save :update_user_filmable_rating
+  before_destroy :delete_user_filmable_rating
 
   # Aliases
   alias_attribute :title_str, :name
@@ -181,5 +182,15 @@ class Critic < ActiveRecord::Base
     return if user_filmable_rating.rating == rating
     user_filmable_rating.rating = rating
     user_filmable_rating.save
+  end
+
+  def destroy_user_filmable_rating
+    user_filmable_rating =
+      UserFilmableRating
+      .find_by(
+        user_id: user_id,
+        filmable: filmable
+      )
+      user_filmable_rating.destroy
   end
 end
