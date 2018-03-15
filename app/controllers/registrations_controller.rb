@@ -30,10 +30,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    byebug
     AccountUpdateMailer
-            .account_update_mail(user.email)
-            .deliver_now
+      .account_update_mail(current_user.email)
+      .deliver_now
     super
   end
 
