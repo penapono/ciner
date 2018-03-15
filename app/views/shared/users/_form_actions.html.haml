@@ -6,6 +6,10 @@
       = link_to url_for([role, f.object]), method: 'delete' do
         .btn.submit
           Excluir Usuário
+    .col-xs-12.col-sm-3.col-md-2.pull-left
+      = link_to edit_user_registration_path do
+        .btn.submit
+          Alterar senha
   .col-xs-12.col-sm-3.col-md-2.pull-right
     = f.button :submit, t('confirm')
   .col-xs-12.col-sm-3.col-md-2.pull-right{ style: 'margin-bottom: 10px' }

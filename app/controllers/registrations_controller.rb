@@ -29,6 +29,14 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    byebug
+    AccountUpdateMailer
+            .account_update_mail(user.email)
+            .deliver_now
+    super
+  end
+
   private
 
   def user_params

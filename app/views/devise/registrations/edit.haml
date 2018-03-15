@@ -17,5 +17,10 @@
       .col-xs-12.col-sm-6
         = f.input :current_password, label: "Confirme a senha atual", hint: "Precisamos da sua senha atual para salvar os ajustes", required: true
   
-  = render 'shared/users/form_actions', f: f
+  .row.actions
+    .col-xs-12.col-sm-3.col-md-2.pull-right
+      = f.button :submit, t('confirm')
+    .col-xs-12.col-sm-3.col-md-2.pull-right{ style: 'margin-bottom: 10px' }
+      = submit_tag t('cancel'), class: 'btn'
+
     
