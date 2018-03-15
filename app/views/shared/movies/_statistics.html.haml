@@ -13,8 +13,14 @@
         .media-heading.title-section
           Fala inCINERador
   .incinerator-box
-    %i.fa.fa-quote-left
+    .row
+      .col-xs-3
+        .usuario-avatar{ style: 'width: 60px; height: 60px;'}
+          - avatar = image_default_path(nil, "cinerd")
+          = image_tag(avatar, class: "img-responsive", style: 'width: 60px; height: 60px;')
+      .col-xs-9
+        %i.fa.fa-quote-left
 
-    = incinerator.content.html_safe
+        = incinerator.content.html_safe
 
-    %i.fa.fa-quote-right
+        %i.fa.fa-quote-right

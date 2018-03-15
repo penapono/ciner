@@ -25,6 +25,11 @@
       %div
         = f.input :rating, input_html: { step: 1, min: 1, max: 5, value: rating }
         = checkbox_item(f, :spoiler)
+    - if current_user && current_user.admin?
+      .col-xs-4
+        = checkbox_item(f, :featured)
+      .col-xs-4
+        = checkbox_item(f, :quick)
 
   = f.hidden_field :filmable_type, value: params[:filmable_type] || 'Movie'
   = f.hidden_field :filmable_id, value: params[:filmable_id] || nil
