@@ -33,7 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
     AccountUpdateMailer
       .account_update_mail(current_user.email)
       .deliver_now
-    super
+    redirect_to platform_user_path(current_user)
   end
 
   private
@@ -43,7 +43,8 @@ class RegistrationsController < Devise::RegistrationsController
       :name, :gender, :nickname, :birthday, :email, :cep, :address,
       :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
       :password_confirmation, :role, :avatar, :biography, :mobile,
-      :complement, :registered_at, :terms_of_use, :crop_x, :crop_y, :crop_w, :crop_h
+      :complement, :registered_at, :terms_of_use, :crop_x, :crop_y,
+      :crop_w, :crop_h
     )
   end
 end
