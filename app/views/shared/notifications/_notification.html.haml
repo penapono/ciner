@@ -3,7 +3,7 @@
 .row.notification-box{ data: { notification: '' } }
   .col-xs-1
     - url = notification.from_ciner? ? root_path : url_for([role, notification.sender])
-    - avatar = notification.from_ciner? ? image_path("ciner.png") : image_default_path(notification.sender_avatar.thumb, "user")
+    - avatar = notification.from_ciner? ? "ciner.png" : image_default_path(notification.sender_avatar.thumb, "user")
 
     = link_to url do
       / %img.img-responsive{ src: avatar, style: 'width: 65px; height: 65px;' }

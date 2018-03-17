@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  devise :omniauthable, omniauth_providers: %i[facebook]
+
   # Uploaders
   mount_uploader :avatar, UserAvatarUploader
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
@@ -71,7 +73,7 @@ class User < ActiveRecord::Base
   before_save :update_address
   before_save :update_age
 
-  after_create :send_welcome_mail
+  # after_create :send_welcome_mail
   after_create :grant_welcome_trophy
 
   before_destroy :destroy_notifications
@@ -80,6 +82,24 @@ class User < ActiveRecord::Base
   alias_attribute :text, :name
   alias_attribute :title_str, :name
   alias_attribute :cover, :avatar
+
+  def self.from_omniauth(auth)
+    if user = User.find_by(provider: auth.provider, uid: auth.uid)
+      user
+    elsif user = User.find_by(email: auth.info.email, provider: nil, uid: nil)
+      user.tap { |u| u.update(provider: auth.provider, uid: auth.uid, email: auth.info.email) }
+    else
+      User.new
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 
   def self.localized_roles
     roles.map { |k, _w| [human_attribute_name("role.#{k}"), k] }

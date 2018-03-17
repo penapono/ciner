@@ -53,12 +53,18 @@
     .col-xs-12.col-sm-6
       = f.input :mobile
 
-  %h3
-    = t('.avatar')
+  - if params[:avatar].blank?
+    %h3
+      = t('.avatar')
 
-  .row
-    .col-xs-12.col-sm-6
-      = f.input :avatar, label: false
+    .row
+      .col-xs-6
+        = f.input :avatar, label: false
+  - else
+    = f.hidden_field :avatar, value: params[:avatar]
+
+  = f.hidden_field :provider, value: f.object.provider
+  = f.hidden_field :uid, value: f.object.uid
 
   %h3
     Privacidade da Coleção

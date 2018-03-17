@@ -18,6 +18,10 @@
               ou
               = link_to new_user_registration_path do
                 %strong Seja Ciner
+              ou 
+              = link_to user_facebook_omniauth_authorize_path do
+                %strong
+                  Entre com Facebook
           .col-xs-4.pull-right{ style: 'text-align: right' }
             %span.wine
               = link_to new_password_path('user') do

@@ -68,7 +68,7 @@ module Admin
         :number, :neighbourhood, :city_id, :state_id, :country_id,
         :cpf, :phone, :password, :password_confirmation, :role, :avatar,
         :biography, :mobile, :complement, :registered_at, :terms_of_use, :age,
-        :collection_privacy, :crop_x, :crop_y, :crop_w, :crop_h
+        :collection_privacy, :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid
       )
     end
 

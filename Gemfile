@@ -51,7 +51,7 @@ gem 'carrierwave-audio'
 
 # session
 gem 'devise'
-# gem 'erubis'
+gem 'omniauth-facebook'
 
 # database
 gem 'mysql2', '= 0.3.20'

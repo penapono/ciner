@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   match 'professionals/query' => 'professionals#query', via: :get
   match 'users/query' => 'users#query', via: :get
 
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # admin: rotas de administração - ciner
   # platform: rotas da plataforma - público

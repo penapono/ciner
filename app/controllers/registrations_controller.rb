@@ -16,7 +16,18 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    @user = User.new
+    auth = session["devise.facebook_data"]
+    if auth.blank?
+      @user = User.new
+    else
+      @user = User.new(
+        provider: auth["provider"],
+        uid: auth["uid"],
+        email: auth["info"]["email"],
+        name: auth["info"]["name"]
+      )
+      params[:avatar] = auth["info"]["image"]
+    end
   end
 
   def create
@@ -41,10 +52,10 @@ class RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(
       :name, :gender, :nickname, :birthday, :email, :cep, :address,
-      :number, :neighbourhood, :city_id, :state_id, :cpf, :phone, :password,
-      :password_confirmation, :role, :avatar, :biography, :mobile,
-      :complement, :registered_at, :terms_of_use, :crop_x, :crop_y,
-      :crop_w, :crop_h
+      :number, :neighbourhood, :city_id, :state_id, :country_id,
+      :cpf, :phone, :password, :password_confirmation, :role, :avatar,
+      :biography, :mobile, :complement, :registered_at, :terms_of_use, :age,
+      :collection_privacy, :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid
     )
   end
 end
