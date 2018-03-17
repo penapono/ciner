@@ -53,17 +53,17 @@ class Critic < ActiveRecord::Base
   end
 
   def self.first_critic
-    first = where(origin: 1, status: 2, featured: true).order(created_at: :desc).first
-    first ||= where(origin: 1, status: 2).order(created_at: :desc).first
-    first ||= where(status: 2, origin: 2).order(created_at: :desc).first
+    first = where(origin: 1, status: 2, featured: true, quick: false).order(created_at: :desc).first
+    first ||= where(origin: 1, status: 2, quick: false).order(created_at: :desc).first
+    first ||= where(status: 2, origin: 2, quick: false).order(created_at: :desc).first
     first
   end
 
   def self.second_critic
     first = first_critic
-    second = where(status: 2, origin: 2).where.not(id: first.id).order(created_at: :desc).first if first
-    second ||= where(status: 2).where.not(id: first.id).order(created_at: :desc).first if first
-    second ||= where(status: 2, origin: 2).order(created_at: :desc).first
+    second = where(status: 2, origin: 2, quick: false).where.not(id: first.id).order(created_at: :desc).first if first
+    second ||= where(status: 2, quick: false).where.not(id: first.id).order(created_at: :desc).first if first
+    second ||= where(status: 2, quick: false, origin: 2).order(created_at: :desc).first
     return nil if second == first
     second
   end
@@ -73,7 +73,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.all_but(denied_critics)
-    filtered_critics = where(origin: 1)
+    filtered_critics = where(origin: 1, quick: false)
     return filtered_critics if denied_critics.blank? || denied_critics.first.blank?
     filtered_critics.where.not(id: denied_critics.pluck(:id))
   end
@@ -83,7 +83,7 @@ class Critic < ActiveRecord::Base
   end
 
   def self.ciner_official_critic
-    where(user_id: User.admin.pluck(:id)).average(:rating)
+    where(user_id: User.admin.pluck(:id), quick: false).average(:rating)
   end
 
   # Methods
@@ -191,6 +191,6 @@ class Critic < ActiveRecord::Base
         user_id: user_id,
         filmable: filmable
       )
-      user_filmable_rating.destroy
+    user_filmable_rating.destroy
   end
 end
