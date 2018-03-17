@@ -3,3 +3,9 @@ pt-BR:
     attributes:
       curriculum_video:
         media: Vídeo
+    errors: 
+      models:
+        curriculum_video:
+          attributes:
+            media:
+              file_size_is_less_than_or_equal_to: excede o tamanho máximo permitido

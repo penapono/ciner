@@ -3,6 +3,8 @@
     .col-xs-11
       - if f.object.media.present?
         = link_to f.object.media.file.filename, f.object.media.url, download: ''
+        - if f.object && f.object.errors && f.object.errors.any?
+          = f.object.errors.full_messages.join(',')
       - else
         .button.button-pink.pull-left{ data: { file_select: '' } }
           = t('select_file')

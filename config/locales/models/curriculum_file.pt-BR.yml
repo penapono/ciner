@@ -3,3 +3,9 @@ pt-BR:
     attributes:
       curriculum_file:
         media: Arquivo
+    errors: 
+      models:
+        curriculum_file:
+          attributes:
+            media:
+              file_size_is_less_than_or_equal_to: excede o tamanho máximo permitido

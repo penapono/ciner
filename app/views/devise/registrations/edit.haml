@@ -1,7 +1,7 @@
 %h2
   Alterar senha
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
+  -# = f.error_notification
   .form-inputs
     -# = f.input :email, required: true, autofocus: true
     -# - if devise_mapping.confirmable? && resource.pending_reconfirmation?

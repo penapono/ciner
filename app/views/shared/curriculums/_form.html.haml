@@ -35,7 +35,7 @@
     = text_field_tag :user_nickname, current_user.state_name, disabled: true
 
 .row
-  .col-xs-12.col-md-12{ data: { cocoon_container: '' } }
+  .col-xs-12.col-md-12{ data: { cocoon_container: '', limit: 3 } }
     .row
       .col-xs-11.col-md-11
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_curriculum_functions', title: "Profissões", observation: '(até 3 profissões)'
@@ -82,21 +82,21 @@
 
 .row
   .col-xs-11.col-md-11
-    .row{ data: { cocoon_container: '' } }
+    .row{ data: { cocoon_container: '', limit: 5 } }
       .col-xs-12.col-md-12
-        = render 'shared/curriculums/nested', f: f, association: 'curriculum_photos', title: "Imagens", observation: '(até 5 arquivos - Formatos aceitos: PNG, JPG, JPEG e GIF - Tamanho máximo por arquivo: 1mb)'
+        = render 'shared/curriculums/nested', f: f, association: 'curriculum_photos', title: "Imagens", observation: '(até 5 arquivos - Formatos aceitos: PNG, JPG, JPEG e GIF - Tamanho máximo por arquivo: 500kb)'
 
-    .row{ data: { cocoon_container: '' } }
+    .row{ data: { cocoon_container: '', limit: 3 } }
       .col-xs-12.col-md-12
         = render 'shared/curriculums/nested', f: f, association: 'curriculum_audios', title: "Áudios", observation: '(até 3 arquivos - Formatos aceitos: MP3, WMA, Ogg, AAC, WAV, AIFF, PCM, FLAC - Tamanho máximo por arquivo: 3 Mb)'
 
-    .row{ data: { cocoon_container: '' } }
+    .row{ data: { cocoon_container: '', limit: 3 } }
       .col-xs-12.col-md-12
-        = render 'shared/curriculums/nested', f: f, association: 'curriculum_videos', title: "Vídeos", observation: '(até 3 arquivos - Formatos aceitos: MP4, MOV, WMV, AVI, FLV - Tamanho máximo por arquivo: 30 Mb)'
+        = render 'shared/curriculums/nested', f: f, association: 'curriculum_videos', title: "Vídeos", observation: '(até 3 arquivos - Formatos aceitos: MP4, MOV, WMV, AVI, FLV - Tamanho máximo por arquivo: 10mb)'
 
-    .row{ data: { cocoon_container: '' } }
+    .row{ data: { cocoon_container: '', limit: 3 } }
       .col-xs-12.col-md-12
-        = render 'shared/curriculums/nested', f: f, association: 'curriculum_files', title: "Documentos", observation: '(até 3 arquivos - Formato aceito: PDF - Tamanho máximo por arquivo: 1mb)'
+        = render 'shared/curriculums/nested', f: f, association: 'curriculum_files', title: "Documentos", observation: '(até 3 arquivos - Formato aceito: PDF - Tamanho máximo por arquivo: 100kb)'
 
 .row.actions
   - if f.object.persisted?
