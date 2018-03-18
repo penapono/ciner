@@ -9,6 +9,6 @@
     - curriculum.curriculum_videos.each do |video|
       - if video.media && video.media.url
         .col-xs-4
-          %video{:controls => "", :height => "240", :width => "100%"}
+          %video{:controls => ""}
             %source{:src => video.media, :type => "video/mp4"}
-              Your browser does not support the video tag.
+              %p Your browser does not support H.264/MP4.
