@@ -14,14 +14,13 @@
             %button.btn.btn-login{:type => "submit"}
               Entrar
               %span.icon.icon-button
+            = link_to user_facebook_omniauth_authorize_path do
+              .btn.btn-login.btn-social-icon.btn-facebook{ style: 'color: #fff; background-color: #3b5998; border-color: rgba(0,0,0,0.2)' }
+                %span.fa.fa-facebook{ style: 'font-size: 1.4em;' } 
             %span.wine
               ou
               = link_to new_user_registration_path do
                 %strong Seja Ciner
-              ou 
-              = link_to user_facebook_omniauth_authorize_path do
-                %strong
-                  Entre com Facebook
           .col-xs-4.pull-right{ style: 'text-align: right' }
             %span.wine
               = link_to new_password_path('user') do
