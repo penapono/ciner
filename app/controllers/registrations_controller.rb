@@ -26,13 +26,14 @@ class RegistrationsController < Devise::RegistrationsController
         email: auth["info"]["email"],
         name: auth["info"]["name"]
       )
-      params[:avatar] = auth["info"]["image"]
+      @avatar = open(auth["info"]["image"])
     end
   end
 
   def create
     @user = User.new(user_params)
     @accepted = (params[:user][:terms_of_use] == "1")
+    @user.role = 1
     if verify_recaptcha(model: @user) || Rails.env.development?
       super
     else

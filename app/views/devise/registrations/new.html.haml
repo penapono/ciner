@@ -15,7 +15,7 @@
   .plans{ data: { plans: '' } }
     = render 'plans'
 
-  - if params[:user] && !params[:user][:role].blank?
+  - if !@user.name.blank? || (params[:user] && !params[:user][:role].blank?)
     - class_hidden = ''
   - else
     - class_hidden = 'hidden'
