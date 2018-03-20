@@ -33,7 +33,6 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     @accepted = (params[:user][:terms_of_use] == "1")
-    @user.role = 1
     if verify_recaptcha(model: @user) || Rails.env.development?
       super
     else
