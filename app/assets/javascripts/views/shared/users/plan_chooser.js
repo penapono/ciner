@@ -9,9 +9,7 @@ $(function() {
         dataPlans = $('[data-plans]'),
         documentToScroll = $('html,body');
 
-    // $('.assine .btn').html("ASSINE JÁ");
     dataForm.removeClass('hidden');
-    self.html("Escolhido");
 
     $('#user_name').focus();
 
