@@ -10,8 +10,8 @@ class SetFunction < ActiveRecord::Base
   validates :name,
             presence: true
 
-  # validates :name,
-  #           uniqueness: true, case_sensitive: false
+  # Scope
+  default_scope { order(name: :asc) }
 
   # Filter
 
