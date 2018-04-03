@@ -54,6 +54,13 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :ciner_productions do
+      member do
+        put "like", to: "ciner_productions#upvote"
+        put "dislike", to: "ciner_productions#downvote"
+      end
+    end
+
     resources :events do
       member do
         put "like", to: "events#upvote"

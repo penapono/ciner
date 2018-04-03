@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317193355) do
+ActiveRecord::Schema.define(version: 20180326114058) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -66,6 +66,63 @@ ActiveRecord::Schema.define(version: 20180317193355) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_broadcasts_on_deleted_at"
     t.index ["user_id"], name: "index_broadcasts_on_user_id"
+  end
+
+  create_table "ciner_production_professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "ciner_production_id"
+    t.bigint "user_id"
+    t.bigint "curriculum_function_id"
+    t.string "observation"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ciner_production_id"], name: "index_ciner_production_professionals_on_ciner_production_id"
+    t.index ["curriculum_function_id"], name: "index_ciner_production_professionals_on_curriculum_function_id"
+    t.index ["deleted_at"], name: "index_ciner_production_professionals_on_deleted_at"
+    t.index ["user_id"], name: "index_ciner_production_professionals_on_user_id"
+  end
+
+  create_table "ciner_production_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "ciner_production_id"
+    t.string "video"
+    t.integer "season"
+    t.integer "episode"
+    t.string "observation"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ciner_production_id"], name: "index_ciner_production_videos_on_ciner_production_id"
+    t.index ["deleted_at"], name: "index_ciner_production_videos_on_deleted_at"
+  end
+
+  create_table "ciner_productions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "original_title"
+    t.string "title"
+    t.integer "year"
+    t.string "length"
+    t.text "synopsis"
+    t.date "release"
+    t.date "brazilian_release"
+    t.integer "age_range_id"
+    t.string "cover"
+    t.text "omdb_genre"
+    t.text "omdb_rated"
+    t.text "trailer"
+    t.string "countries"
+    t.boolean "playing"
+    t.boolean "playing_soon"
+    t.boolean "available_netflix"
+    t.boolean "available_amazon"
+    t.integer "comments_count"
+    t.integer "production_type"
+    t.integer "likes_count", default: 0
+    t.integer "dislikes_count", default: 0
+    t.bigint "user_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_ciner_productions_on_deleted_at"
+    t.index ["user_id"], name: "index_ciner_productions_on_user_id"
   end
 
   create_table "cities", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

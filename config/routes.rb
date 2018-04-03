@@ -67,6 +67,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :ciner_productions, only: %i[index show] do
+    member do
+      put "like", to: "ciner_productions#upvote"
+      put "dislike", to: "ciner_productions#downvote"
+      put "user_action", to: "ciner_productions#user_action"
+    end
+  end
+
   resources :professionals, only: %i[index show]
   resources :curriculums, only: %i[index show]
   resources :users, only: %i[update show edit index destroy] do
