@@ -1,0 +1,36 @@
+- role = current_role(current_user, request.url)
+
+.container.content
+  .row{ style: 'padding: 2.5px;' }
+    .col-xs-12
+      .title-separator
+        .media
+          .media-body.media-bottom
+            .media-heading.title-section
+              = section_title
+  .row
+    .col-xs-12
+      .row
+        - filmables.each do |filmable|
+          - object = filmable
+          - cover = image_default_path(object.cover, "ciner_production")
+
+          .hidden-xs
+            .col-sm-2.no-shelf{ style: 'margin-bottom: 0px; width: 20%;' }
+              = link_to url_for([role, object]) do
+                = image_tag(cover, class: "img-responsive", style: 'max-height: 300px; max-width: 200px;')
+              .title{ style: 'height: 60px; overflow: hidden;'}
+                = link_to url_for([role, object]) do
+                  = object.title_str
+                %span
+                  = object.filmable_year
+
+          .hidden-sm.hidden-md.hidden-lg.hidden-xl
+            .col-xs-6.col-sm-3.col-md-2.no-shelf{ style: 'margin-bottom: 0px;' }
+              = link_to url_for([role, object]) do
+                = image_tag(cover, class: "img-responsive", style: 'max-height: 300px; max-width: 200px; width: 100%; height: auto')
+              .title{ style: 'height: 60px; overflow: hidden;'}
+                = link_to url_for([role, object]) do
+                  = object.title_str
+                %span
+                  = object.filmable_year

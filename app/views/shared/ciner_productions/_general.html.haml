@@ -1,0 +1,17 @@
+- role = role
+- object = object
+- cover = image_default_path(object.cover, "ciner_production")
+
+.internal-section-detail-filmable
+  .filmable
+    .container
+      .row
+        .col-xs-12.col-sm-12.col-md-3.col-lg-3
+          .row
+            .col-xs-12
+              = image_tag(cover, class: "img-responsive", style: 'height: 330px !important; width: 220px !important; margin: auto')
+          = render 'shared/ratings/ratings', object: object, user: current_user, role: role
+        .hidden-xs
+          = render 'shared/ciner_productions/general_info_desktop', role: role, object: object, cover: cover
+        .hidden-sm.hidden-md.hidden-lg.hidden-xl
+          = render 'shared/ciner_productions/general_info_mobile', role: role, object: object, cover: cover

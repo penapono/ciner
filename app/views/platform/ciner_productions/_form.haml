@@ -1,0 +1,66 @@
+- content_for :javascript, javascript_include_tag('views/shared/curriculums/form')
+- content_for :stylesheet, stylesheet_link_tag('views/shared/curriculums/form')
+
+= simple_form_for [:platform, ciner_production] do |f|
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-6
+      = f.input :omdb_genre
+  .row
+    .col-xs-6
+      = f.input :omdb_rated
+  .row
+    .col-xs-6
+      = f.input :length
+
+  .row
+    .col-xs-6
+      .row
+        .col-xs-12
+          = f.input :original_title, required: true, autofocus: true
+      .row
+        .col-xs-12
+          = f.input :title, required: true, autofocus: true
+      .row
+        .col-xs-3
+          = f.input :year
+        .col-xs-9
+          = f.input :countries
+
+    .col-xs-6
+      .row
+        .col-xs-12
+          = f.input :cover
+
+  .row
+    .col-xs-12{ data: { limited: '', limit: 1000 } }
+      = f.input :synopsis, input_html: { rows: 5 }, maxlength: 1000
+      %span.char-counter
+        = t('remaining_chars', chars: 1000)
+
+  .row
+    .col-xs-3
+      = f.input :brazilian_release, as: :string, input_html: { value: (localize(f.object.brazilian_release) if f.object.brazilian_release), class: 'datepicker' }
+    / .col-xs-3
+    /   = f.input :release, as: :string, input_html: { value: (localize(f.object.release) if f.object.release), class: 'datepicker' }
+
+  .row
+    .col-xs-12
+      = f.input :trailer
+  
+  .row
+    .col-xs-12.col-md-12{ data: { cocoon_container: '' } }
+      .row
+        .col-xs-11.col-md-11
+          = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_videos', title: "Vídeo(s)"
+    
+
+  .row
+    .col-xs-12.col-md-12{ data: { cocoon_container: '' } }
+      .row
+        .col-xs-11.col-md-11
+          = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_professionals', title: "Elenco"
+
+  = render 'shared/form_actions', f: f

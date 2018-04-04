@@ -1,0 +1,28 @@
+- role = role
+
+/ SECTION POSTER
+.section-poster
+  .ciner-poster.title-separator
+    .media
+      .media-body.media-bottom
+        .media-heading.title-section
+          Em Destaque
+      .media-body.text-right.media-middle.see-more.see-more
+        = link_to see_more_url do
+          = t('see_more')
+
+  .row{ data: { slider: { featured: '' } } }
+    / MOVIES THUMB
+    .col-xs-12.showcase-poster
+      .slider-frame
+        .btn.prev
+        .btn.next
+        .slider-container
+          - filmables.each do |object|
+            - cover = image_default_path(object.cover, "ciner_production")
+
+            .slide.ciner_production-poster-item{ style: "width: 133px; height: 200px; float: left; margin-left: 5px; margin-right: 5px;" }
+              = link_to url_for([role, object]) do
+                .thumb
+                  = image_tag(cover, class: "img-responsive", style: 'width: 133px; height: 200px;')
+                  / %img.img-responsive{ src: cover, style: 'width: 133px; height: 200px;' }

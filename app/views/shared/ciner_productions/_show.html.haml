@@ -1,0 +1,33 @@
+- current_critics_path ||= platform_critics_path
+- current_new_critic_path ||= new_platform_critic_path
+- role = current_role(current_user, request.url)
+- object = ciner_production
+
+- if current_user && current_user.admin?
+  .row
+    .col-xs-2
+      = link_to "/admin/ciner_productions/#{object.id}", method: :delete, class: 'pull-right' do
+        %button.btn.btn-login{ style: "width: 100%;" }
+          %span.text
+            Excluir
+          %span.icon.icon-button
+    .col-xs-2
+      = link_to polymorphic_path([role, object], params: { force_update: true }), class: 'pull-right' do
+        %button.btn.btn-login{ style: "width: 100%;" }
+          %span.text
+            Atualizar
+          %span.icon.icon-button
+
+= render 'shared/ciner_productions/general', object: object, role: role
+
+.container
+  .row
+    .col-xs-12.col-sm-8
+      = render 'shared/ciner_productions/info', object: object, role: role
+    / curtinhas
+    .col-xs-12.col-sm-4
+      = render 'shared/ciner_productions/statistics', object: object
+
+  = render 'shared/integrations/critics', object: object
+  = render 'shared/integrations/broadcasts', object: object
+  = render 'shared/integrations/comments', object: object

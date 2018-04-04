@@ -1,0 +1,7 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+.container
+  = render 'shared/breadcrumbs'
+
+= render 'shared/ciner_productions/show', ciner_production: ciner_production

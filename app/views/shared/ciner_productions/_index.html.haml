@@ -1,0 +1,16 @@
+- role = current_role(current_user, request.url)
+
+= render 'shared/breadcrumbs'
+
+.container
+  .row
+    .col-xs-12.col-sm-8
+      = render 'shared/ciner_productions/toolbar'
+      - unless playing_filmables.blank?
+        = render 'shared/ciner_productions/index/playing', role: role, filmables: playing_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :playing])
+      - unless featured_filmables.blank?
+        = render 'shared/ciner_productions/index/featured', role: role, filmables: featured_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :featured])
+      - unless playing_soon_filmables.blank?
+        = render 'shared/ciner_productions/index/playing_soon', role: role, filmables: playing_soon_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :playing_soon])
+    .col-xs-12.col-sm-4
+      = render 'shared/ciner_productions/index/birthdays', role: role

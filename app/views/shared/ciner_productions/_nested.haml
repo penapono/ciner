@@ -1,0 +1,15 @@
+- partial = "shared/ciner_productions/#{association.singularize}_fields"
+- observation ||= nil
+
+.nested-title
+  %h3.wine{ style: 'display: inline-block' }
+    = title
+  - unless observation
+    %span{ style: 'font-size: 13px; color: #aaa;' }
+      = observation
+  %span.links.pull-right
+    = link_to_add_association f, association.to_sym, data: { association_insertion_method: 'after', association_insertion_node: "##{association}" }, partial: partial do
+      %i.fa.fa-2x.fa-plus-circle
+%div{ id: association }
+  = f.simple_fields_for association.to_sym do |ep|
+    = render partial, f: ep

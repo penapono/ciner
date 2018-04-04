@@ -1,0 +1,49 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/index_title', title: CinerProduction.model_name.human(count: 2), path: new_admin_ciner_production_path
+
+-# = render 'toolbar'
+
+%table
+  %thead
+    %tr
+      %th
+        = CinerProduction.human_attribute_name(:title)
+      %th
+        = CinerProduction.human_attribute_name(:original_title)
+      %th
+        = CinerProduction.human_attribute_name(:year)
+
+      / Actions
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
+      %th
+        .text-center{ style: 'padding-left: 15px; padding-right: 15px; cursor: pointer;'}
+          %i.fa.fa-trash{ data: { trash: '' } }
+  %tbody
+    - ciner_productions.each do |ciner_production|
+      %tr
+        %td
+          = link_to admin_ciner_production_path(ciner_production) do
+            = ciner_production.title
+
+        %td
+          = link_to admin_ciner_production_path(ciner_production) do
+            = ciner_production.original_title
+
+        %td
+          = ciner_production.year
+
+        %td
+          .text-center{ style: 'padding-left: 15px; padding-right: 15px'}
+            = link_to edit_admin_ciner_production_path(ciner_production) do
+              %i.fa.fa-pencil
+        %td
+          .text-center{ style: 'padding-left: 15px; padding-right: 15px'}
+            = link_to admin_ciner_production_path(ciner_production), method: 'delete', data: { confirm: 'Tem certeza?' } do
+              %i.fa.fa-trash
+
+= render 'shared/pagination', resources: ciner_productions
