@@ -13,4 +13,8 @@ class CinerProductionProfessional < ActiveRecord::Base
             :user,
             :curriculum_function,
             presence: true
+
+  def professional
+    user
+  end
 end

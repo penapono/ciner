@@ -2,8 +2,8 @@ pt-BR:
   activerecord:
     models:
       ciner_production:
-        one: Produção Cinematográfica
-        other: Produções Cinematográficas
+        one: Produção Independente
+        other: Produções Independentes
 
     attributes:
       ciner_production:

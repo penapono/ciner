@@ -2,13 +2,13 @@ pt-BR:
   admin:
     movies:
       create:
-        title: Nova Produção Cinematográfica
+        title: Novo Filme
       form:
         general: Dados Gerais
       index:
-        title: Produção Cinematográfica
+        title: Filmes
       new:
-        title: Nova Produção Cinematográfica
+        title: Novo Filme
       toolbar:
         filters:
           year: Selecione um Ano

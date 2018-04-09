@@ -18,7 +18,10 @@ class Notification < ActiveRecord::Base
     trophy: 4,
     contact: 5,
     accept_contact: 6,
-    decline_contact: 7
+    decline_contact: 7,
+    ciner_production_pending: 8,
+    ciner_production_approved: 9,
+    ciner_production_reproved: 10
   }
 
   def self.for_user(user)

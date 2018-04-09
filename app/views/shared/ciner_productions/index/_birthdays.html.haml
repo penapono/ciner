@@ -12,7 +12,7 @@
 
 .row
   - birthday_professionals.each do |object|
-    - avatar = image_default_path(object.avatar, "professional")
+    - avatar = image_default_path(object.avatar, "user")
     = link_to url_for([role, object]) do
       .col-xs-6.col-sm-4{ class: 'diretor', "data-mh": 'atores-principais' }
         = image_tag(avatar, class: "img-responsive", style: 'width: 100px; height: 150px; margin: auto')

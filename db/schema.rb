@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20180326114058) do
     t.boolean "available_amazon"
     t.integer "comments_count"
     t.integer "production_type"
+    t.integer "status"
     t.integer "likes_count", default: 0
     t.integer "dislikes_count", default: 0
     t.bigint "user_id"

@@ -29,11 +29,12 @@
 
     .col-xs-12.col-sm-4.col-md-4.col-lg-4
       .row
-        .col-xs-6
-          .nota
-            = CinerProduction.human_attribute_name(:users_rating)
-            %span.valor{ data: { users_rating: '' } }
-              = object.users_rating
+        - if object.users_rating != '-'
+          .col-xs-6
+            .nota
+              = CinerProduction.human_attribute_name(:users_rating)
+              %span.valor{ data: { users_rating: '' } }
+                = object.users_rating
 
         - if object.ciner_official_critic
           .col-xs-6
@@ -74,4 +75,4 @@
         %span.wine.bold
           = never_empty(object.brazilian_release_str)
 
-  = render 'shared/ciner_productions/user_actions', object: object, role: role
+  / = render 'shared/ciner_productions/user_actions', object: object, role: role

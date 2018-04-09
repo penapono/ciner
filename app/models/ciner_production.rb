@@ -51,6 +51,8 @@ class CinerProduction < ActiveRecord::Base
 
   # Callbacks
   before_destroy :destroy_visits
+  before_create :pending_approval
+  after_create :send_admin_notification
 
   # Scopes
 
@@ -67,6 +69,34 @@ class CinerProduction < ActiveRecord::Base
     result = result.by_year(params[:year]) if params[:year].present?
 
     result
+  end
+
+  def critics
+    nil
+  end
+
+  def filmable_actors
+    ciner_production_professionals.includes(:user).where(curriculum_function_id: CurriculumFunction.where(name: 'Ator').pluck(:id))
+  end
+
+  def filmable_directors
+    ciner_production_professionals.includes(:user).where(curriculum_function_id: CurriculumFunction.where(name: 'Diretor').pluck(:id))
+  end
+
+  def filmable_writers
+    ciner_production_professionals.includes(:user).where(curriculum_function_id: CurriculumFunction.where(name: 'Roteirista').pluck(:id))
+  end
+
+  def actors
+    User.where(id: filmable_actors.pluck(:user_id))
+  end
+
+  def directors
+    User.where(id: filmable_directors.pluck(:user_id))
+  end
+
+  def writers
+    User.where(id: filmable_writers.pluck(:user_id))
   end
 
   def original_title_str
@@ -111,7 +141,7 @@ class CinerProduction < ActiveRecord::Base
   end
 
   def self.featured(limit = 15)
-    ids = Visit.where(action: 'show').where("controller like ?", "%movies%").pluck(:resource_id)
+    ids = Visit.where(action: 'show').where("controller like ?", "%ciner_productions%").pluck(:resource_id)
 
     result = Hash.new(0)
 
@@ -126,4 +156,10 @@ class CinerProduction < ActiveRecord::Base
     object = self
     Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
   end
+
+  def pending_approval
+    self.status = :pending
+  end
+
+  def send_admin_notification; end
 end

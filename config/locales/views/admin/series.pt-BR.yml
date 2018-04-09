@@ -2,13 +2,13 @@ sept-BR:
   admin:
     series:
       create:
-        title: Nova Produção Cinematográfica
+        title: Nova Produção Independente
       form:
         general: Dados Gerais
       index:
-        title: Produção Cinematográfica
+        title: Produção Independente
       new:
-        title: Nova Produção Cinematográfica
+        title: Nova Produção Independente
       toolbar:
         filters:
           city: Selecione uma Cidade

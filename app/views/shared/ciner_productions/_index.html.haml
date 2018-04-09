@@ -1,11 +1,17 @@
 - role = current_role(current_user, request.url)
 
+- playing_filmables = nil
+- featured_filmables = nil
+- playing_soon_filmables = nil
+
 = render 'shared/breadcrumbs'
 
 .container
   .row
     .col-xs-12.col-sm-8
       = render 'shared/ciner_productions/toolbar'
+      - unless ciner_productions.blank?
+        = render 'shared/ciner_productions/index/playing', role: role, filmables: ciner_productions.first(20), see_more_url: url_for([role, :ciner_productions, :all])
       - unless playing_filmables.blank?
         = render 'shared/ciner_productions/index/playing', role: role, filmables: playing_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :playing])
       - unless featured_filmables.blank?

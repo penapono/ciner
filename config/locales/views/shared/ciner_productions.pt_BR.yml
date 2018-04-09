@@ -1,0 +1,25 @@
+pt-BR:
+  shared:
+    ciner_productions:
+      new:
+        title: Produção Independente
+      form:
+        general: Dados Gerais
+        avatar: Foto de Perfil
+        about: Biografia
+        gallery: Galeria de Fotos
+        videos: Vídeos
+        audios: Áudios
+        files: Arquivos
+        winnings: Prêmios
+        jobs: Trabalhos realizados
+        body: Aparência
+      ciner_production_video_fields:
+        video_placeholder: >
+          Insira a url de incorporação de seu vídeo aqui.
+          Por ex: https://www.youtube.com/embed/b4ozdiGys5g
+        season_placeholder: Série
+        episode_placeholder: Episódio
+
+      show:
+        general: Dados Gerais

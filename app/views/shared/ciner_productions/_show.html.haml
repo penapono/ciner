@@ -11,12 +11,6 @@
           %span.text
             Excluir
           %span.icon.icon-button
-    .col-xs-2
-      = link_to polymorphic_path([role, object], params: { force_update: true }), class: 'pull-right' do
-        %button.btn.btn-login{ style: "width: 100%;" }
-          %span.text
-            Atualizar
-          %span.icon.icon-button
 
 = render 'shared/ciner_productions/general', object: object, role: role
 
@@ -25,9 +19,9 @@
     .col-xs-12.col-sm-8
       = render 'shared/ciner_productions/info', object: object, role: role
     / curtinhas
-    .col-xs-12.col-sm-4
-      = render 'shared/ciner_productions/statistics', object: object
+    / .col-xs-12.col-sm-4
+    /   = render 'shared/ciner_productions/statistics', object: object
 
-  = render 'shared/integrations/critics', object: object
-  = render 'shared/integrations/broadcasts', object: object
+  / = render 'shared/integrations/critics', object: object
+  / = render 'shared/integrations/broadcasts', object: object
   = render 'shared/integrations/comments', object: object

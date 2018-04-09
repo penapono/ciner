@@ -1,6 +1,6 @@
-sept-BR:
-  platform:
-    series:
+pt-BR:
+  admin:
+    ciner_productions:
       create:
         title: Nova Produção Independente
       form:
@@ -11,6 +11,5 @@ sept-BR:
         title: Nova Produção Independente
       toolbar:
         filters:
-          city: Selecione uma Cidade
+          year: Selecione um Ano
           country: Selecione um País
-          state: Selecione um Estado

@@ -1,14 +1,14 @@
 pt-BR:
   platform:
-    movies:
+    ciner_productions:
       create:
-        title: Novo Filme
+        title: Nova Produção Independente
       form:
         general: Dados Gerais
       index:
-        title: Filmes
+        title: Produções Independentes
       new:
-        title: Novo Filme
+        title: Nova Produção Independente
       toolbar:
         filters:
           city: Selecione uma Cidade

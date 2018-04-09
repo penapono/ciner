@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       end
     end
 
+    match "ciner_productions/all", to: "ciner_productions#all", via: :get
     resources :ciner_productions do
       member do
         put "like", to: "ciner_productions#upvote"
