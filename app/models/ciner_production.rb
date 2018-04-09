@@ -171,7 +171,6 @@ class CinerProduction < ActiveRecord::Base
   end
 
   def send_admin_notification
-    byebug
     notification = Notification.create(
       sender_id: user_id,
       message: id,
