@@ -60,6 +60,7 @@ module Admin
         :user,
         :deleted_at,
         :status,
+        :user_id,
         ciner_production_videos_attributes: %i[
           video
           season

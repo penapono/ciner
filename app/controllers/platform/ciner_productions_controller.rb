@@ -59,6 +59,7 @@ module Platform
         :dislikes_count,
         :user,
         :deleted_at,
+        :user_id,
         ciner_production_videos_attributes: %i[
           video
           season

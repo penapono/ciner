@@ -53,6 +53,7 @@ class CinerProduction < ActiveRecord::Base
   before_destroy :destroy_visits
   before_create :pending_approval
   after_create :send_admin_notification
+  before_update :pending_approval
 
   # Scopes
 
@@ -158,8 +159,23 @@ class CinerProduction < ActiveRecord::Base
   end
 
   def pending_approval
-    self.status = :pending
+    if status == :pending
+      self.status = :reproved
+    elsif status == :reproved
+      self.status = :pending
+    elsif status.nil?
+      self.status = :pending
+    end
   end
 
-  def send_admin_notification; end
+  def send_admin_notification
+    byebug
+    notification = Notification.create(
+      sender_id: user_id,
+      message: id,
+      receiver_id: User.find_by(role: :admin).id,
+      notification_type: :ciner_production_pending,
+      answer: :waiting
+    )
+  end
 end

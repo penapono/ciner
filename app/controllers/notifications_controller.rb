@@ -48,6 +48,30 @@ class NotificationsController < ApplicationController
     on_accept_contact(notification_sender_id, notification_receiver_id) if notification_type == "accept_contact"
 
     on_decline_contact(notification_sender_id, notification_receiver_id) if notification_type == "decline_contact"
+
+    on_accept_ciner_production(notification_sender_id, notification_receiver_id) if notification_type == "accept_ciner_production"
+
+    on_decline_ciner_production(notification_sender_id, notification_receiver_id) if notification_type == "decline_ciner_production"
+  end
+
+  def on_accept_ciner_production(sender_id, receiver_id)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending)
+    notification.update_attributes(answer: :no_answer) unless notification.blank?
+
+    CinerProduction.find(notification.message.to_i).update_attribute("status", "approved")
+
+    notification = Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :ciner_production_approved, answer: :no_answer, message: notification.message.to_i)
+    render json: { status: 'ok' } if notification.save
+  end
+
+  def on_decline_ciner_production(sender_id, receiver_id)
+    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending)
+    notification.update_attributes(answer: :no_answer) unless notification.blank?
+
+    CinerProduction.find(notification.message.to_i).update_attribute("status", "reproved")
+
+    notification = Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :ciner_production_reproved, answer: :no_answer, message: notification.message.to_i)
+    render json: { status: 'ok' } if notification.save
   end
 
   # Contact professional

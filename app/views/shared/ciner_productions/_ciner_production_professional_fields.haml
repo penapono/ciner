@@ -4,9 +4,9 @@
       = f.input :curriculum_function_id, label: false, collection: CurriculumFunction.all, input_html: { include_blank: 'Profissão' }
     .col-xs-5{ data: { user_id_select: '' } }
       .div
-        = f.input :user_id, label: false, collection: (f.object.user_id.blank? ? User.all : User.find(f.object.user_id)), input_html: { data: { remote_select: '', ajax_url: api_v1_users_path }, include_blank: 'Profissional' }
+        = f.input :user_id, label: false, collection: (f.object.user_id.blank? ? User.all : [User.find(f.object.user_id)]), input_html: { data: { remote_select: '', ajax_url: api_v1_users_path }, include_blank: 'Profissional' }
     .col-xs-3
-      = f.input :observation, as: :string, label: false, input_html: { placeholder: 'Personagem' }
+      = f.input :observation, as: :string, label: false, input_html: { placeholder: 'Observação / Personagem' }
 
     .pull-right
       = link_to_remove_association '', f, class: 'fa fa-trash-o', data: { confirm: t('confirm_destroy') }

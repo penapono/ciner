@@ -60,4 +60,6 @@
         .col-xs-11.col-md-11
           = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_professionals', title: "Elenco"
 
+  = f.hidden_field :user_id, value: current_user.id
+
   = render 'shared/form_actions', f: f
