@@ -57,6 +57,8 @@ class CinerProduction < ActiveRecord::Base
 
   # Scopes
 
+  default_scope { where(status: :approved) }
+
   def self.by_year(year)
     where(year: year)
   end
