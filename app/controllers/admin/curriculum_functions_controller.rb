@@ -34,7 +34,7 @@ module Admin
 
     def curriculum_function_params
       params.require(:curriculum_function).permit(
-        :name, :description
+        :name, :description, :general
       )
     end
 

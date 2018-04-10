@@ -14,6 +14,8 @@
         = CurriculumFunction.human_attribute_name(:name)
       %th
         = CurriculumFunction.human_attribute_name(:description)
+      %th
+        = CurriculumFunction.human_attribute_name(:general)
 
       / Actions
       %th{ colspan: 2 }
@@ -27,6 +29,9 @@
 
         %td
           = curriculum_function.description
+
+        %td
+          = curriculum_function.general
 
         %td
           = link_to edit_admin_curriculum_function_path(curriculum_function) do
