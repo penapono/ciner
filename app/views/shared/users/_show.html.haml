@@ -66,11 +66,10 @@
                                 Currículo
                               %span.icon.icon-button
                       - if current_user == user
-                        = link_to url_for([:new, role, :ciner_production]) do
-                          %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
-                            %span.text
-                              Produção
-                            %span.icon.icon-button
+                        %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;", "data-toggle" => "modal", "data-target" => "#cinerProductionModal" }
+                          %span.text
+                            Produção
+                          %span.icon.icon-button
 
               .row
                 .col-xs-12
@@ -124,6 +123,11 @@
                               %span.text
                                 Currículo
                               %span.icon.icon-button
+                      - if current_user == user
+                        %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;", "data-toggle" => "modal", "data-target" => "#cinerProductionModal" }
+                          %span.text
+                            Produção
+                          %span.icon.icon-button
 
               .row
                 .col-xs-12
@@ -186,3 +190,35 @@
     = render 'shared/users/critics/critics', role: role
 
     = render 'shared/users/friends_list', role: role, friends: friends
+
+/ Modal content
+#cinerProductionModal.modal.fade{:role => "dialog", style: 'width: 20%; margin: auto'}
+  .modal-content
+    .modal-header
+      %button.close{"data-dismiss" => "modal", :type => "button"} ×
+      %h4.modal-title
+        Nova Produção Independente
+    
+    .modal-body
+      .row  
+        .col-xs-offset-2.col-xs-8
+          = link_to polymorphic_path([:new, role, :ciner_production], ciner_production_type: 'movie') do
+            %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
+              %span.text
+                Filme
+              %span.icon.icon-button
+        .col-xs-offset-2.col-xs-8
+          = link_to polymorphic_path([:new, role, :ciner_production], ciner_production_type: 'serie') do
+            %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
+              %span.text
+                Série
+              %span.icon.icon-button
+
+    .modal-footer.user-collection-actions
+      %ul{ style: 'padding: 0px' }
+        %li
+          %button.btn.btn-default{style: 'float: right;', "data-dismiss" => "modal", :type => "button"}
+            Fechar
+
+
+

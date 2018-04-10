@@ -47,7 +47,7 @@ class CinerProduction < ActiveRecord::Base
   alias_attribute :text, :title_str
 
   # Enums
-  enum type: { movie_production: 0, serie_production: 1 }
+  enum production_type: { movie_production: 0, serie_production: 1 }
   enum status: { pending: 0, approved: 1, reproved: 2 }
 
   # Callbacks

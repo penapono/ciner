@@ -1,5 +1,6 @@
 - content_for :javascript, javascript_include_tag('views/shared/curriculums/form')
 - content_for :stylesheet, stylesheet_link_tag('views/shared/curriculums/form')
+- ciner_production_type = params[:ciner_production_type]
 
 = simple_form_for [role, ciner_production] do |f|
   %h3
@@ -11,9 +12,10 @@
   .row
     .col-xs-6
       = f.input :omdb_rated
-  .row
-    .col-xs-6
-      = f.input :length
+  - unless ciner_production_type == 'serie'
+    .row
+      .col-xs-6
+        = f.input :length
 
   .row
     .col-xs-6
@@ -49,7 +51,7 @@
       = f.input :trailer
 
   .row
-    .col-xs-12.col-md-12{ data: { cocoon_container: '' } }
+    .col-xs-12.col-md-12{ data: { cocoon_container: '', limit: (ciner_production_type == 'movie' ? 1 : 100) } }
       .row
         .col-xs-11.col-md-11
           = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_videos', title: "Vídeo(s)"
@@ -61,5 +63,6 @@
           = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_professionals', title: "Elenco"
 
   = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :production_type, value: params[:ciner_production_type] == 'serie' ? 'serie_production' : 'movie_production'
 
   = render 'shared/form_actions', f: f
