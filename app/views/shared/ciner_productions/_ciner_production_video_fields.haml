@@ -1,11 +1,11 @@
 .nested-fields.inline-nested{ data: { nested_fields: '' } }
   .row.margin-top
     .col-xs-7
-      = f.input :video, label: false, placeholder: t('.video_placeholder'), input_html: { data: { file: '' } }
+      = f.input :video, label: false, placeholder: t('.video_placeholder')
     .col-xs-2
-      = f.input :season, label: false, placeholder: t('.season_placeholder'), as: :string, input_html: { data: { file: '' } }
+      = f.input :season, label: false, placeholder: t('.season_placeholder'), collection: (1..10)
     .col-xs-2
-      = f.input :episode, label: false, placeholder: t('.episode_placeholder'), as: :string, input_html: { data: { file: '' } }
+      = f.input :episode, label: false, placeholder: t('.episode_placeholder'), collection: (1..10)
 
     .pull-right
       = link_to_remove_association '', f, class: 'fa fa-trash-o', data: { confirm: t('confirm_destroy') }

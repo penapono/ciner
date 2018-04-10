@@ -3,10 +3,11 @@
     = t('.general')
 
   .row
-    .col-xs-6
+    .col-xs-12.col-sm-4
       = f.input :name, required: true, autofocus: true
-  .row
-    .col-xs-6
+    .col-xs-12.col-sm-4
       = f.input :description
+    .col-xs-12.col-sm-4
+      = f.input :general
 
   = render 'shared/form_actions', f: f

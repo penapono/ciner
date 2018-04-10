@@ -19,9 +19,9 @@ module NotificationsHelper
                   elsif notification.ciner_production_pending?
                     "#{link_to sender.name, url_for([role, sender])} criou uma #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])}"
                   elsif notification.ciner_production_approved?
-                    "Sua #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])} foi aprovada! Parabéns!"
+                    "Sua #{link_to 'produção independente', url_for([role, CinerProduction.unscoped.find(notification.message.to_i)])} foi aprovada! Parabéns!"
                   elsif notification.ciner_production_reproved?
-                    "Sua #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])} foi reprovada. Por favor, #{link_to 'edite-a', url_for([:edit, role, CinerProduction.find(notification.message.to_i)])} para que possa ser aceita"
+                    "Sua #{link_to 'produção independente', url_for([role, CinerProduction.unscoped.find(notification.message.to_i)])} foi reprovada. Por favor, #{link_to 'edite-a', url_for([:edit, role, CinerProduction.unscoped.find(notification.message.to_i)])} para que possa ser aceita"
                   else
                     ""
                   end

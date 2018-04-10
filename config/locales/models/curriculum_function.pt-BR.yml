@@ -8,6 +8,7 @@ pt-BR:
       curriculum_function:
         name: Nome
         description: Descrição
+        general: Generalização
     errors:
       models:
         curriculum_function:
