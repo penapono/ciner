@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326114058) do
+ActiveRecord::Schema.define(version: 20180410120026) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -68,6 +68,27 @@ ActiveRecord::Schema.define(version: 20180326114058) do
     t.index ["user_id"], name: "index_broadcasts_on_user_id"
   end
 
+  create_table "ciner_production_countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "ciner_production_id"
+    t.bigint "country_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ciner_production_id"], name: "index_ciner_production_countries_on_ciner_production_id"
+    t.index ["country_id"], name: "index_ciner_production_countries_on_country_id"
+    t.index ["deleted_at"], name: "index_ciner_production_countries_on_deleted_at"
+  end
+
+  create_table "ciner_production_film_production_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "ciner_production_id"
+    t.bigint "film_production_category_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ciner_production_id"], name: "cp_index_on_cp"
+    t.index ["film_production_category_id"], name: "fpc_index_on_cp"
+  end
+
   create_table "ciner_production_professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "ciner_production_id"
     t.bigint "user_id"
@@ -115,7 +136,6 @@ ActiveRecord::Schema.define(version: 20180326114058) do
     t.boolean "available_amazon"
     t.integer "comments_count"
     t.integer "production_type"
-    t.integer "status"
     t.integer "likes_count", default: 0
     t.integer "dislikes_count", default: 0
     t.bigint "user_id"
@@ -233,6 +253,7 @@ ActiveRecord::Schema.define(version: 20180326114058) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "general"
   end
 
   create_table "curriculum_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
