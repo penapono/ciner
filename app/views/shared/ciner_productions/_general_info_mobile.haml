@@ -29,6 +29,13 @@
 
     .col-xs-12.col-sm-4.col-md-4.col-lg-4
       .row
+        - if object.user == current_user
+          .col-xs-6
+            = link_to url_for([:edit, role, object]) do
+              %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;", "data-toggle" => "modal", "data-target" => "#cinerProductionModal" }
+                %span.text
+                  Editar
+                %span.icon.icon-button
         - if object.users_rating != '-'
           .col-xs-6
             .nota
