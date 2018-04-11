@@ -11,6 +11,6 @@ class SearchesController < ApplicationController
   expose(:events) { Event.search(nil, params.fetch(:search, '')).limit(SEARCH_LIMIT) }
   expose(:critics) { Critic.search(nil, params.fetch(:search, '')).limit(SEARCH_LIMIT) }
   expose(:questions) { Question.search(nil, params.fetch(:search, '')).limit(SEARCH_LIMIT) }
-  expose(:ciner_videos) { CinerVideo.search(nil, params.fetch(:search, '')).limit(SEARCH_LIMIT) }
+  expose(:ciner_productions) { CinerProduction.search(nil, params.fetch(:search, '')).limit(SEARCH_LIMIT) }
   expose(:users) { User.search(nil, params.fetch(:search, '')).limit(SEARCH_LIMIT) }
 end

@@ -1,18 +1,21 @@
 - role = current_role(current_user, request.url)
 
 .container.content
-  .row{ style: 'padding: 2.5px;' }
+  .row
     .col-xs-12
       .title-separator
         .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{"xlink:href" => "#filme"}
           .media-body.media-bottom
             .media-heading.title-section
-              Filmes
+              Produções Independentes
   .row
     .col-xs-12
       .row
         - @results.each do |object|
-          - cover = image_default_path(object.cover, "ciner_production")
+          - cover = image_default_path(object.cover, "movie")
 
           .col-xs-6.col-sm-3.col-md-2.no-shelf{ style: 'margin-bottom: 0px;' }
             = link_to url_for([role, object]) do

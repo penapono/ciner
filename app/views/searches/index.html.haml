@@ -71,6 +71,36 @@
       .media
         .media-left.media-middle
           %svg.icon-title
+            %use{"xlink:href" => "#filme"}
+        .media-body.media-bottom
+          .media-heading.title-section
+            Produções Independentes
+        .media-body.text-right.media-middle.see-more
+          = link_to polymorphic_path([role, :ciner_productions, :query], params: { search: params[:search] }) do
+            = t('see_more')
+
+- if ciner_productions.any?
+  - ciner_productions.each do |object|
+    .row
+      .col-xs-3.col-md-1
+        - cover = image_default_path(object.cover, "movie")
+        / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
+
+      .col-xs-9.col-md-11
+        = link_to url_for([role, object]) do
+          =  object.title_str
+- else
+  .row
+    .col-xs-12
+      Não há resultados para essa pesquisa nessa categoria.
+
+.row.searchbar
+  .col-xs-12
+    .title-separator.ciner-news
+      .media
+        .media-left.media-middle
+          %svg.icon-title
             %use{"xlink:href" => "#perfil"}
         .media-body.media-bottom
           .media-heading.title-section

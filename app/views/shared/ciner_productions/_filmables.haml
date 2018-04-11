@@ -13,7 +13,7 @@
       .row
         - filmables.each do |filmable|
           - object = filmable
-          - cover = image_default_path(object.cover, "ciner_production")
+          - cover = image_default_path(object.cover, "movie")
 
           .hidden-xs
             .col-sm-2.no-shelf{ style: 'margin-bottom: 0px; width: 20%;' }

@@ -1,6 +1,7 @@
 - favorites = user.user_favorite
 - watched = user.user_watched
 - want_to_see = user.user_want_to_see
+- ciner_productions = user.ciner_productions
 
 .title-separator
   .media
@@ -43,3 +44,17 @@
 
 .row{ style: 'margin-top: 20px;', data: { slider: { want_to_see: '' } } }
   = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: want_to_see
+
+.title-separator
+  .media
+    .media-left.media-middle
+      %svg.icon-title
+        %use{"xlink:href" => "#filme"}/
+    .media-body.media-bottom
+      .media-heading.title-section
+        Produções Independentes
+    .media-body.text-right.media-middle.see-more
+      = link_to 'Ver mais', url_for([role, user, :ciner_production_index])
+
+.row{ style: 'margin-top: 20px;', data: { slider: { ciner_production: '' } } }
+  = render 'shared/home/showcase/showcase', role: role, showcase_class: 'showcase-poster', slider_movies: ciner_productions

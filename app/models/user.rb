@@ -179,6 +179,17 @@ class User < ActiveRecord::Base
     Notification.where(receiver_id: id)
   end
 
+  def ciner_productions
+    productions = []
+    CinerProduction.where(user_id: id).pluck(:id).each do |ciner_production_id|
+      productions << ciner_production_id
+    end
+    CinerProductionProfessional.where(user_id: id).pluck(:ciner_production_id).each do |ciner_production_id|
+      productions << ciner_production_id
+    end
+    CinerProduction.approved.where(id: productions.uniq)
+  end
+
   def friends
     ids = []
     Notification

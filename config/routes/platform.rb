@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     match 'broadcasts/query' => 'broadcasts#query', via: :get
     match 'movies/query' => 'movies#query', via: :get
     match 'series/query' => 'series#query', via: :get
+    match 'ciner_productions/query' => 'ciner_productions#query', via: :get
     match 'curriculums/query' => 'curriculums#query', via: :get
     match 'professionals/query' => 'professionals#query', via: :get
     match 'users/query' => 'users#query', via: :get
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       resources :favorite, only: :index, module: 'users'
       resources :watched, only: :index, module: 'users'
       resources :want_to_see, only: :index, module: 'users'
+      resources :ciner_production, only: :index, module: 'users'
     end
 
     resources :studios, only: %i[index show]

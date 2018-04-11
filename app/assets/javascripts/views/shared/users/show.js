@@ -110,6 +110,9 @@ $(document).ready(function() {
 
   var container_want_to_see = $('[data-slider-want-to-see]');
   _sliderize(container_want_to_see);
+
+  var container_ciner_production = $('[data-slider-ciner-production]');
+  _sliderize(container_ciner_production);
 });
 
 $(window).resize(function() {
@@ -118,6 +121,12 @@ $(window).resize(function() {
 
   var container_watched = $('[data-slider-watched]');
   _sliderize(container_watched);
+
+  var container_want_to_see = $('[data-slider-want-to-see]');
+  _sliderize(container_want_to_see);
+
+  var container_ciner_production = $('[data-slider-ciner-production]');
+  _sliderize(container_ciner_production);
 });
 
 function _sliderize(aContainer) {
