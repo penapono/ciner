@@ -4,7 +4,7 @@ class CinerProductionsController < ApplicationController
   include CinerProductionsBreadcrumb
 
   # exposes
-  expose(:ciner_productions) { CinerProduction.all }
+  expose(:ciner_productions) { CinerProduction.approved }
   expose(:birthday_professionals) { User.birthdays }
   expose(:ciner_production, attributes: :ciner_production_attributes)
 
