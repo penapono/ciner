@@ -22,6 +22,8 @@ class CinerProduction < ActiveRecord::Base
   # has_many :broadcasts, through: :broadcast_broadcastables
   has_many :ciner_production_professionals
   has_many :ciner_production_videos
+  has_many :ciner_production_film_production_categories
+  has_many :ciner_production_countries
   # has_many :user_filmables, as: :filmable, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
@@ -41,6 +43,14 @@ class CinerProduction < ActiveRecord::Base
                                 reject_if: :all_blank
 
   accepts_nested_attributes_for :ciner_production_videos,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+
+  accepts_nested_attributes_for :ciner_production_film_production_categories,
+                                allow_destroy: true,
+                                reject_if: :all_blank
+
+  accepts_nested_attributes_for :ciner_production_countries,
                                 allow_destroy: true,
                                 reject_if: :all_blank
 

@@ -1,0 +1,7 @@
+.nested-fields.inline-nested{ data: { nested_fields: '' } }
+  .row.margin-top
+    .col-xs-11{ data: { film_production_category_select: '' } }
+      = f.input :film_production_category_id, label: false, collection: FilmProductionCategory.all, input_html: { include_blank: 'Profissão' }
+
+    .pull-right
+      = link_to_remove_association '', f, class: 'fa fa-trash-o', data: { confirm: t('confirm_destroy') }

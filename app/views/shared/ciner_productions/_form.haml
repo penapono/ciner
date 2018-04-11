@@ -7,11 +7,15 @@
     = t('.general')
 
   .row
-    .col-xs-6
-      = f.input :omdb_genre
-  .row
-    .col-xs-6
-      = f.input :age_range_id, collection: AgeRange.all, include_blank: 'Classificação Indicativa'
+    .col-xs-12{ data: { cocoon_container: '', limit: 3 } }
+      .row
+        .col-xs-11.col-md-11
+          = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_film_production_categories', title: "Gênero"
+
+      .row
+        .col-xs-6
+          = f.input :age_range_id, collection: AgeRange.all, include_blank: 'Classificação Indicativa'
+
   - unless ciner_production_type == 'serie'
     .row
       .col-xs-6
@@ -28,8 +32,12 @@
       .row
         .col-xs-3
           = f.input :year
-        .col-xs-9
-          = f.input :countries
+      .row
+        .col-xs-9.col-md-9{ data: { cocoon_container: '', limit: 3 } }
+          .row
+            .col-xs-11.col-md-11
+              = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_countries', title: "País(es) de Produção"
+
 
     .col-xs-6
       .row
@@ -51,13 +59,13 @@
       = f.input :trailer
 
   .row
-    .col-xs-12.col-md-12{ data: { cocoon_container: '', limit: (ciner_production_type == 'movie' ? 1 : 100) } }
+    .col-xs-12{ data: { cocoon_container: '', limit: (ciner_production_type == 'movie' ? 1 : 100) } }
       .row
         .col-xs-11.col-md-11
           = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_videos', title: "Vídeo(s)"
 
   .row
-    .col-xs-12.col-md-12{ data: { cocoon_container: '' } }
+    .col-xs-12{ data: { cocoon_container: '' } }
       .row
         .col-xs-11.col-md-11
           = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_professionals', title: "Elenco"

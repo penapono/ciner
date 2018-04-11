@@ -1,0 +1,7 @@
+.nested-fields.inline-nested{ data: { nested_fields: '' } }
+  .row.margin-top
+    .col-xs-11{ data: { country_select: '' } }
+      = f.input :country_id, label: false, collection: Country.all, input_html: { include_blank: 'Profissão' }
+
+    .pull-right
+      = link_to_remove_association '', f, class: 'fa fa-trash-o', data: { confirm: t('confirm_destroy') }

@@ -76,10 +76,7 @@ module Platform
         :brazilian_release,
         :age_range_id,
         :cover,
-        :omdb_genre,
-        :omdb_rated,
         :trailer,
-        :countries,
         :playing,
         :playing_soon,
         :available_netflix,
@@ -105,6 +102,18 @@ module Platform
           curriculum_function_id
           user_id
           observation
+          ciner_production_id
+          id
+          _destroy
+        ],
+        ciner_production_film_production_categories_attributes: %i[
+          film_production_category_id
+          ciner_production_id
+          id
+          _destroy
+        ],
+        ciner_production_countries_attributes: %i[
+          country_id
           ciner_production_id
           id
           _destroy
