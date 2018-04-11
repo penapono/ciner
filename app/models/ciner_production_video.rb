@@ -28,5 +28,6 @@ class CinerProductionVideo < ActiveRecord::Base
     video.gsub!('www.vimeo.com/', 'https://player.vimeo.com/video/')
     video.gsub!('https://www.vimeo.com/', 'https://player.vimeo.com/video/')
     video.gsub!('http://www.vimeo.com/', 'https://player.vimeo.com/video/')
+    true
   end
 end
