@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411043509) do
+ActiveRecord::Schema.define(version: 2018_04_11_043509) do
 
-  create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "age_ranges", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "broadcast_broadcastables", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "broadcast_broadcastables", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "broadcastable_type"
     t.integer "broadcastable_id"
     t.integer "broadcast_id"
@@ -29,21 +29,21 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["deleted_at"], name: "index_broadcast_broadcastables_on_deleted_at"
   end
 
-  create_table "broadcast_images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "broadcast_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "broadcast_id"
     t.string "media"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "broadcast_professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "broadcast_professionals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "broadcast_id"
     t.bigint "professional_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "broadcasts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "broadcasts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "content"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_broadcasts_on_user_id"
   end
 
-  create_table "ciner_production_countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ciner_production_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "ciner_production_id"
     t.bigint "country_id"
     t.datetime "deleted_at"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["deleted_at"], name: "index_ciner_production_countries_on_deleted_at"
   end
 
-  create_table "ciner_production_film_production_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ciner_production_film_production_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "ciner_production_id"
     t.bigint "film_production_category_id"
     t.datetime "deleted_at"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["film_production_category_id"], name: "fpc_index_on_cp"
   end
 
-  create_table "ciner_production_professionals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ciner_production_professionals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "ciner_production_id"
     t.bigint "user_id"
     t.bigint "curriculum_function_id"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_ciner_production_professionals_on_user_id"
   end
 
-  create_table "ciner_production_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ciner_production_videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "ciner_production_id"
     t.string "video"
     t.integer "season"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["deleted_at"], name: "index_ciner_production_videos_on_deleted_at"
   end
 
-  create_table "ciner_productions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ciner_productions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "original_title"
     t.string "title"
     t.integer "year"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_ciner_productions_on_user_id"
   end
 
-  create_table "cities", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cities", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "state_id"
     t.datetime "created_at", null: false
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
-  create_table "ckeditor_assets", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ckeditor_assets", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "commentable_type"
     t.integer "commentable_id"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.integer "subject"
@@ -196,14 +196,14 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "countries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "countries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "acronym"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "critics", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "critics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "filmable_type"
     t.integer "filmable_id"
@@ -225,7 +225,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_critics_on_user_id"
   end
 
-  create_table "curriculum_audios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculum_audios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "curriculum_id"
     t.string "media"
     t.datetime "created_at", null: false
@@ -233,7 +233,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["curriculum_id"], name: "index_curriculum_audios_on_curriculum_id"
   end
 
-  create_table "curriculum_curriculum_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculum_curriculum_functions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "curriculum_id"
     t.bigint "curriculum_function_id"
     t.datetime "created_at", null: false
@@ -242,7 +242,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["curriculum_id"], name: "index_curriculum_curriculum_functions_on_curriculum_id"
   end
 
-  create_table "curriculum_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculum_files", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "curriculum_id"
     t.string "media"
     t.datetime "created_at", null: false
@@ -250,7 +250,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["curriculum_id"], name: "index_curriculum_files_on_curriculum_id"
   end
 
-  create_table "curriculum_functions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculum_functions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.string "general"
   end
 
-  create_table "curriculum_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculum_photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "curriculum_id"
     t.string "media"
     t.datetime "created_at", null: false
@@ -266,7 +266,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["curriculum_id"], name: "index_curriculum_photos_on_curriculum_id"
   end
 
-  create_table "curriculum_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculum_videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "curriculum_id"
     t.string "media"
     t.datetime "created_at", null: false
@@ -274,13 +274,13 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["curriculum_id"], name: "index_curriculum_videos_on_curriculum_id"
   end
 
-  create_table "curriculums", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "curriculums", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "play_name"
     t.string "avatar"
     t.text "biography"
     t.integer "user_id"
     t.integer "mannequin"
-    t.float "height", limit: 24
+    t.float "height"
     t.integer "ethnicity"
     t.boolean "drt"
     t.datetime "created_at", null: false
@@ -290,7 +290,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_curriculums_on_user_id"
   end
 
-  create_table "delates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "delates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "location"
     t.string "status"
     t.bigint "user_id"
@@ -299,14 +299,14 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_delates_on_user_id"
   end
 
-  create_table "event_images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "event_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
     t.string "media"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "events", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.date "event_date"
     t.time "start_time"
@@ -325,14 +325,14 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["state_id"], name: "index_events_on_state_id"
   end
 
-  create_table "film_production_categories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "film_production_categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "filmable_professionals", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "filmable_professionals", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "filmable_type"
     t.integer "filmable_id"
     t.integer "professional_id"
@@ -345,7 +345,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["set_function_id"], name: "index_filmable_professionals_on_set_function_id"
   end
 
-  create_table "filmable_type", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "filmable_type", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "filmable_type"
     t.integer "filmable_id"
     t.integer "film_production_categories_id"
@@ -353,7 +353,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["filmable_type", "filmable_id"], name: "index_filmable_type_on_filmable_type_and_filmable_id"
   end
 
-  create_table "movie_duplicates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "movie_duplicates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
     t.text "available_years"
     t.integer "count"
@@ -361,7 +361,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "movies", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "movies", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "original_title"
     t.string "title"
     t.integer "year"
@@ -399,7 +399,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
-  create_table "notifications", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "notifications", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
     t.integer "answer", default: 0
     t.integer "status", default: 0
@@ -412,7 +412,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["deleted_at"], name: "index_notifications_on_deleted_at"
   end
 
-  create_table "professionals", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "professionals", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "gender"
     t.string "nickname"
@@ -447,7 +447,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["state_id"], name: "index_professionals_on_state_id"
   end
 
-  create_table "questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "questions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "questionable_type"
     t.integer "questionable_id"
@@ -468,7 +468,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "serie_duplicates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "serie_duplicates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
     t.text "available_years"
     t.integer "count"
@@ -476,7 +476,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "serie_episodes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "serie_episodes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "series_id"
     t.string "original_title_ep"
     t.string "title_ep"
@@ -503,7 +503,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["studio_id"], name: "index_serie_episodes_on_studio_id"
   end
 
-  create_table "serie_season_episodes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "serie_season_episodes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "serie_id"
     t.integer "serie_season_id"
     t.date "air_date"
@@ -517,7 +517,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["serie_season_id"], name: "index_serie_season_episodes_on_serie_season_id"
   end
 
-  create_table "serie_seasons", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "serie_seasons", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "serie_id"
     t.string "name"
     t.text "overview"
@@ -531,7 +531,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["serie_id"], name: "index_serie_seasons_on_serie_id"
   end
 
-  create_table "series", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "series", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "original_title"
     t.string "title"
     t.integer "start_year"
@@ -574,7 +574,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_series_on_user_id"
   end
 
-  create_table "set_functions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "set_functions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.integer "user_id"
@@ -583,7 +583,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_set_functions_on_user_id"
   end
 
-  create_table "states", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "states", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "acronym"
     t.string "name"
     t.integer "country_id"
@@ -592,7 +592,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["country_id"], name: "index_states_on_country_id"
   end
 
-  create_table "studios", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "studios", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
     t.integer "state_id"
@@ -601,7 +601,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "trending_trailers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "trending_trailers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "trailer"
     t.integer "position"
@@ -612,7 +612,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["filmable_type", "filmable_id"], name: "index_trending_trailers_on_filmable_type_and_filmable_id"
   end
 
-  create_table "trophies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "trophies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "level"
@@ -621,7 +621,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.integer "position", default: 0
   end
 
-  create_table "user_filmable_ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "user_filmable_ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "filmable_type"
     t.bigint "filmable_id"
@@ -634,7 +634,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_user_filmable_ratings_on_user_id"
   end
 
-  create_table "user_filmables", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "user_filmables", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "filmable_type"
     t.integer "filmable_id"
@@ -646,7 +646,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.integer "position"
     t.string "store"
     t.boolean "gift"
-    t.float "price", limit: 24
+    t.float "price"
     t.date "bought"
     t.string "isbn"
     t.string "borrowed"
@@ -660,7 +660,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_user_filmables_on_user_id"
   end
 
-  create_table "user_trophies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "user_trophies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "trophy_id"
     t.datetime "created_at", null: false
@@ -671,7 +671,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_user_trophies_on_user_id"
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -722,7 +722,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["state_id"], name: "index_users_on_state_id"
   end
 
-  create_table "visits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "visits", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "controller"
     t.string "action"
@@ -733,7 +733,7 @@ ActiveRecord::Schema.define(version: 20180411043509) do
     t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
-  create_table "votes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "votes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "votable_type"
     t.integer "votable_id"
     t.string "voter_type"

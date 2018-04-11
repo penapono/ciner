@@ -17,20 +17,7 @@
         %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
   - unless object.ciner_production_videos.blank?
-    - if object.movie_production?
-      .title-separator
-        .media
-          .media-left.media-middle
-            %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-              %use{"xlink:href" => "#video"}
-          .media-body.media-bottom
-            .media-heading.title-section
-              Vídeos
-
-      .ficha
-        .info
-          %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.ciner_production_videos.first.video.to_s, width: "100%"}
-    - else
+    - if object.serie_production?
       - object.seasons.each do |season|
         .title-separator
           .media
@@ -47,7 +34,19 @@
           .ficha
             .info
               %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: episode.video.to_s, width: "100%"}
+    - else
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+              %use{"xlink:href" => "#video"}
+          .media-body.media-bottom
+            .media-heading.title-section
+              Vídeos
 
+      .ficha
+        .info
+          %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.ciner_production_videos.first.video.to_s, width: "100%"}
 
   .row
     - filmable_directors = object.filmable_directors

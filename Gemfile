@@ -54,7 +54,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 
 # database
-gem 'mysql2', '= 0.3.20'
+gem 'mysql2'
 
 # frontend
 gem 'cocoon'
