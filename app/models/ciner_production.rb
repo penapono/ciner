@@ -52,9 +52,6 @@ class CinerProduction < ActiveRecord::Base
 
   # Callbacks
   before_destroy :destroy_visits
-  before_create :pending_approval
-  after_create :send_admin_notification
-  before_update :pending_approval
 
   # Scopes
 
@@ -159,25 +156,5 @@ class CinerProduction < ActiveRecord::Base
   def destroy_visits
     object = self
     Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
-  end
-
-  def pending_approval
-    if status == :pending
-      self.status = :reproved
-    elsif status == :reproved
-      self.status = :pending
-    elsif status.nil?
-      self.status = :pending
-    end
-  end
-
-  def send_admin_notification
-    notification = Notification.create(
-      sender_id: user_id,
-      message: id,
-      receiver_id: User.find_by(role: :admin).id,
-      notification_type: :ciner_production_pending,
-      answer: :waiting
-    )
   end
 end

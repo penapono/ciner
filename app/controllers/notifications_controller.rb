@@ -58,7 +58,7 @@ class NotificationsController < ApplicationController
     notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending)
     notification.update_attributes(answer: :no_answer) unless notification.blank?
 
-    CinerProduction.find(notification.message.to_i).update_attribute("status", "approved")
+    CinerProduction.unscoped.find(notification.message.to_i).update_attribute("status", "approved")
 
     notification = Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :ciner_production_approved, answer: :no_answer, message: notification.message.to_i)
     render json: { status: 'ok' } if notification.save
@@ -68,7 +68,7 @@ class NotificationsController < ApplicationController
     notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending)
     notification.update_attributes(answer: :no_answer) unless notification.blank?
 
-    CinerProduction.find(notification.message.to_i).update_attribute("status", "reproved")
+    CinerProduction.unscoped.find(notification.message.to_i).update_attribute("status", "reproved")
 
     notification = Notification.create(sender_id: sender_id, receiver_id: receiver_id, notification_type: :ciner_production_reproved, answer: :no_answer, message: notification.message.to_i)
     render json: { status: 'ok' } if notification.save

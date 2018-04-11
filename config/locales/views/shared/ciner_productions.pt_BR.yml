@@ -18,7 +18,7 @@ pt-BR:
         video_placeholder: >
           Insira a url de incorporação de seu vídeo aqui.
           Por ex: https://www.youtube.com/embed/b4ozdiGys5g
-        season_placeholder: Série
+        season_placeholder: Temporada
         episode_placeholder: Episódio
 
       show:

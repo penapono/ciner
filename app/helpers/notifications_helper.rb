@@ -17,7 +17,7 @@ module NotificationsHelper
                   elsif notification.accept_contact?
                     "#{link_to sender.name, url_for([role, sender])} aceitou informar o email de contato: #{sender.email}. Agora é com vocês. Que esta parceria renda grandes produções!"
                   elsif notification.ciner_production_pending?
-                    "#{link_to sender.name, url_for([role, sender])} criou uma #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])}"
+                    "#{link_to sender.name, url_for([role, sender])} criou uma #{link_to 'produção independente', url_for([role, CinerProduction.unscoped.find(notification.message.to_i)])}"
                   elsif notification.ciner_production_approved?
                     "Sua #{link_to 'produção independente', url_for([role, CinerProduction.unscoped.find(notification.message.to_i)])} foi aprovada! Parabéns!"
                   elsif notification.ciner_production_reproved?

@@ -15,6 +15,38 @@ module Platform
       self.ciner_productions = paginated_ciner_productions
     end
 
+    def create
+      resource.status = :pending
+      if created?
+        Notification.create(
+          sender_id: current_user.id,
+          message: resource.id,
+          receiver_id: User.find_by(nickname: "CINER").id,
+          notification_type: :ciner_production_pending,
+          answer: :waiting
+        )
+        redirect_to_index_with_success
+      else
+        render_new_with_error
+      end
+    end
+
+    def update
+      resource.status = :pending
+      if updated?
+        Notification.create(
+          sender_id: current_user.id,
+          message: resource.id,
+          receiver_id: User.find_by(nickname: "CINER").id,
+          notification_type: :ciner_production_pending,
+          answer: :waiting
+        )
+        redirect_to_index_with_success
+      else
+        render_edit_with_error
+      end
+    end
+
     private
 
     def resource
@@ -26,11 +58,11 @@ module Platform
     end
 
     def index_path
-      ciner_productions_path
+      platform_ciner_productions_path
     end
 
     def show_path
-      ciner_production_path(resource)
+      platform_ciner_production_path(resource)
     end
 
     def ciner_production_params
