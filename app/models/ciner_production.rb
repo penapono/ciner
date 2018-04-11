@@ -36,7 +36,11 @@ class CinerProduction < ActiveRecord::Base
 
   # Validations
   validates :original_title,
+            :title,
             :year,
+            :synopsis,
+            :brazilian_release,
+            :age_range_id,
             presence: true
 
   # Nested
@@ -83,8 +87,17 @@ class CinerProduction < ActiveRecord::Base
     result
   end
 
+  def seasons
+    ciner_production_videos.pluck(:season).uniq
+  end
+
+  def season_episodes(season)
+    ciner_production_videos.where(season: season)
+  end
+
   def rated_pt
-    age_range.name
+    age_range.name unless age_range.blank?
+    "-"
   end
 
   def countries_str

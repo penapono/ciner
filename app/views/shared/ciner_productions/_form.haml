@@ -25,7 +25,7 @@
     .col-xs-6
       .row
         .col-xs-12
-          = f.input :original_title, required: true, autofocus: true
+          = f.input :original_title, required: true
       .row
         .col-xs-12
           = f.input :title, required: true, autofocus: true
@@ -68,7 +68,7 @@
     .col-xs-12{ data: { cocoon_container: '' } }
       .row
         .col-xs-11.col-md-11
-          = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_professionals', title: "Elenco"
+          = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_professionals', title: "Equipe"
 
   = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :production_type, value: params[:ciner_production_type] == 'serie' ? 'serie_production' : 'movie_production'
