@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410120026) do
+ActiveRecord::Schema.define(version: 20180411043509) do
 
   create_table "age_ranges", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -124,7 +124,6 @@ ActiveRecord::Schema.define(version: 20180410120026) do
     t.text "synopsis"
     t.date "release"
     t.date "brazilian_release"
-    t.integer "age_range_id"
     t.string "cover"
     t.text "omdb_genre"
     t.text "omdb_rated"
@@ -136,12 +135,15 @@ ActiveRecord::Schema.define(version: 20180410120026) do
     t.boolean "available_amazon"
     t.integer "comments_count"
     t.integer "production_type"
+    t.integer "status"
     t.integer "likes_count", default: 0
     t.integer "dislikes_count", default: 0
     t.bigint "user_id"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "age_range_id"
+    t.index ["age_range_id"], name: "index_ciner_productions_on_age_range_id"
     t.index ["deleted_at"], name: "index_ciner_productions_on_deleted_at"
     t.index ["user_id"], name: "index_ciner_productions_on_user_id"
   end

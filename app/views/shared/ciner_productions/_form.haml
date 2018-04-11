@@ -11,7 +11,7 @@
       = f.input :omdb_genre
   .row
     .col-xs-6
-      = f.input :omdb_rated
+      = f.input :age_range_id, collection: AgeRange.all, include_blank: 'Classificação Indicativa'
   - unless ciner_production_type == 'serie'
     .row
       .col-xs-6

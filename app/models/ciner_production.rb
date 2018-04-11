@@ -14,6 +14,7 @@ class CinerProduction < ActiveRecord::Base
 
   # Associations
   belongs_to :user
+  belongs_to :age_range
 
   # has_many :critics, as: :filmable, dependent: :destroy
   # has_many :user_filmable_ratings, as: :filmable, dependent: :destroy
@@ -68,6 +69,10 @@ class CinerProduction < ActiveRecord::Base
     result = result.by_year(params[:year]) if params[:year].present?
 
     result
+  end
+
+  def rated_pt
+    age_range.name
   end
 
   def critics

@@ -2,7 +2,7 @@
 
 class CinerProductionVideo < ActiveRecord::Base
   # Associations
-  belongs_to :curriculum
+  belongs_to :ciner_production
 
   # Validations
   validates :video,
