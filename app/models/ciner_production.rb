@@ -119,7 +119,19 @@ class CinerProduction < ActiveRecord::Base
     "#{original_title_str} #{filmable_year_str}"
   end
 
+  def serie_length_str
+    return "-" if ciner_production_videos.blank?
+    maximum = ciner_production_videos.pluck(:season).max
+    return "#{maximum} temporada(s)" unless maximum.blank?
+    "-"
+  end
+
   def length_str
+    return serie_length_str if serie_production?
+    movie_length_str
+  end
+
+  def movie_length_str
     length = self.length
     return "" unless length
     length = begin
