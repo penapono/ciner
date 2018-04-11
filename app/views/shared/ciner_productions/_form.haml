@@ -7,14 +7,14 @@
     = t('.general')
 
   .row
-    .col-xs-12{ data: { cocoon_container: '', limit: 3 } }
+    .col-xs-6{ data: { cocoon_container: '', limit: 3 } }
       .row
         .col-xs-11.col-md-11
           = render 'shared/ciner_productions/nested', f: f, association: 'ciner_production_film_production_categories', title: "Gênero"
 
-      .row
-        .col-xs-6
-          = f.input :age_range_id, collection: AgeRange.all, include_blank: 'Classificação Indicativa'
+  .row
+    .col-xs-6
+      = f.input :age_range_id, collection: AgeRange.all, include_blank: 'Classificação Indicativa'
 
   - unless ciner_production_type == 'serie'
     .row

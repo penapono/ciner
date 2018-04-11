@@ -23,7 +23,9 @@ class CinerProduction < ActiveRecord::Base
   has_many :ciner_production_professionals
   has_many :ciner_production_videos
   has_many :ciner_production_film_production_categories
+  has_many :film_production_categories, through: :ciner_production_film_production_categories
   has_many :ciner_production_countries
+  has_many :countries, through: :ciner_production_countries
   # has_many :user_filmables, as: :filmable, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
@@ -83,6 +85,16 @@ class CinerProduction < ActiveRecord::Base
 
   def rated_pt
     age_range.name
+  end
+
+  def countries_str
+    return "-" if countries.blank?
+    countries.pluck(:name).to_sentence
+  end
+
+  def genre_pt
+    return "-" if film_production_categories.blank?
+    film_production_categories.pluck(:name).to_sentence
   end
 
   def critics
