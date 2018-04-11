@@ -96,13 +96,13 @@ class CinerProduction < ActiveRecord::Base
   end
 
   def rated_pt
-    age_range.name unless age_range.blank?
+    return age_range.name unless age_range.blank?
     "-"
   end
 
   def countries_str
-    return "-" if countries.blank?
-    countries.pluck(:name).to_sentence
+    return countries.pluck(:name).to_sentence unless countries.blank?
+    "-"
   end
 
   def genre_pt
