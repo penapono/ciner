@@ -19,7 +19,7 @@ module Platform
       resource.status = :pending
       if created?
         Notification.create(
-          sender_id: current_user.id,
+          sender_id: resource.user_id,
           message: resource.id,
           receiver_id: User.find_by(nickname: "CINER").id,
           notification_type: :ciner_production_pending,
@@ -35,7 +35,7 @@ module Platform
       resource.status = :pending
       if updated?
         Notification.create(
-          sender_id: current_user.id,
+          sender_id: resource.user_id,
           message: resource.id,
           receiver_id: User.find_by(nickname: "CINER").id,
           notification_type: :ciner_production_pending,
