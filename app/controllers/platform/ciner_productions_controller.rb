@@ -58,7 +58,7 @@ module Platform
     end
 
     def index_path
-      platform_ciner_productions_path
+      platform_user_path(current_user)
     end
 
     def show_path

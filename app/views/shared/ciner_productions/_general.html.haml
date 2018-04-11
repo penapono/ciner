@@ -2,7 +2,7 @@
 - object = object
 - cover = image_default_path(object.cover, "movie")
 
-.internal-section-detail-filmable{ style: 'background-color: rgb(238, 69, 115, 0.1)' }
+.internal-section-detail-filmable{ style: 'background-color: rgba(243, 110, 36, 0.1)' }
   .filmable
     .container
       .row
@@ -10,7 +10,8 @@
           .row
             .col-xs-12
               = image_tag(cover, class: "img-responsive", style: 'height: 330px !important; width: 220px !important; margin: auto')
-          = render 'shared/ratings/ratings', object: object, user: current_user, role: role
+            #ciner-production-reaction
+              = render 'shared/reactions', resource: object, like_path: url_for([:like, role, object]), dislike_path: url_for([:dislike, role, object])
         .hidden-xs
           = render 'shared/ciner_productions/general_info_desktop', role: role, object: object, cover: cover
         .hidden-sm.hidden-md.hidden-lg.hidden-xl

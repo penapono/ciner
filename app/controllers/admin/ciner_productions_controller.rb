@@ -26,7 +26,7 @@ module Admin
     end
 
     def index_path
-      ciner_productions_path
+      admin_user_path(current_user)
     end
 
     def show_path
