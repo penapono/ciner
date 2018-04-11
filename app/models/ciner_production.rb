@@ -16,18 +16,13 @@ class CinerProduction < ActiveRecord::Base
   belongs_to :user
   belongs_to :age_range
 
-  # has_many :critics, as: :filmable, dependent: :destroy
-  # has_many :user_filmable_ratings, as: :filmable, dependent: :destroy
-  # has_many :broadcast_broadcastables, as: :broadcastable, dependent: :destroy
-  # has_many :broadcasts, through: :broadcast_broadcastables
-  has_many :ciner_production_professionals
-  has_many :ciner_production_videos
-  has_many :ciner_production_film_production_categories
-  has_many :film_production_categories, through: :ciner_production_film_production_categories
-  has_many :ciner_production_countries
-  has_many :countries, through: :ciner_production_countries
-  # has_many :user_filmables, as: :filmable, dependent: :destroy
+  has_many :ciner_production_professionals, dependent: :destroy
+  has_many :ciner_production_videos, dependent: :destroy
+  has_many :ciner_production_film_production_categories, dependent: :destroy
+  has_many :ciner_production_countries, dependent: :destroy
 
+  has_many :film_production_categories, through: :ciner_production_film_production_categories
+  has_many :countries, through: :ciner_production_countries
   has_many :comments, as: :commentable, dependent: :destroy
 
   # Uploaders
