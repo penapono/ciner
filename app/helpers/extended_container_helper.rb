@@ -9,8 +9,8 @@ module ExtendedContainerHelper
         platform/movies platform/series
         curriculums
         admin/curriculums platform/curriculums
-        ciner_videos
-        admin/ciner_videos platform/ciner_videos
+        ciner_productions
+        admin/ciner_productions platform/ciner_productions
       ]
 
     extended_actions = %w[show]
