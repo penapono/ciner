@@ -35,6 +35,14 @@
               .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
                 = link_to url_for([role, object]) do
                   = object.title_str
+              .ciner-video-user
+                .user
+                  = link_to url_for([role, object.user]) do
+                    - avatar ||= image_default_path(object.user.cover, "user")
+                    = image_tag(avatar, class: 'img-responsive')
+                  .name
+                    = link_to object.user do
+                      = object.user.name
 
           .hidden-sm.hidden-md.hidden-lg.hidden-xl
             .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
@@ -43,6 +51,14 @@
               .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
                 = link_to url_for([role, object]) do
                   = object.title_str
+              .ciner-video-user
+                .user
+                  = link_to url_for([role, object.user]) do
+                    - avatar ||= image_default_path(object.user.cover, "user")
+                    = image_tag(avatar, class: 'img-responsive')
+                  .name
+                    = link_to object.user do
+                      = object.user.name
 
   .row
     .col-xs-12.col-md-4.advertise
