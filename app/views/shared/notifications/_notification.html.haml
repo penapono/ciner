@@ -35,7 +35,7 @@
               %button.btn.btn-login
                 %span.text
                   Recusar
-      - elsif notification.ciner_production_pending?
+      - elsif notification.ciner_production_pending? && notification.waiting?
         .row
           .col-xs-12.pull-right
             .friendship.accept{ data: { friendship: { action: 'accept_ciner_production', sender_id: notification.receiver_id, receiver_id: notification.sender_id, url: notifications_path } } }
