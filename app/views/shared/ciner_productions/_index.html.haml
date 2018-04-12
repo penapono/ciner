@@ -8,15 +8,39 @@
 
 .container
   .row
-    .col-xs-12.col-sm-8
+    .col-xs-12.ciner-videos.ciner-productions
       = render 'shared/ciner_productions/toolbar'
       - unless ciner_productions.blank?
-        = render 'shared/ciner_productions/index/playing', role: role, filmables: ciner_productions.first(20), see_more_url: url_for([role, :ciner_productions, :all])
-      - unless playing_filmables.blank?
-        = render 'shared/ciner_productions/index/playing', role: role, filmables: playing_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :playing])
-      - unless featured_filmables.blank?
-        = render 'shared/ciner_productions/index/featured', role: role, filmables: featured_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :featured])
-      - unless playing_soon_filmables.blank?
-        = render 'shared/ciner_productions/index/playing_soon', role: role, filmables: playing_soon_filmables.first(20), see_more_url: url_for([role, :ciner_productions, :playing_soon])
-    .col-xs-12.col-sm-4
-      = render 'shared/ciner_productions/index/birthdays', role: role
+        .row
+          - ciner_productions.each do |object|
+            .hidden-xs
+              .ciner-movie.col-xs-12.col-sm-6.col-md-3
+                %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.ciner_production_videos.first.video, :width => "100%"}
+
+                .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+                  = link_to url_for([role, object]) do
+                    = object.title_str
+                .ciner-video-user
+                  .user
+                    = link_to url_for([role, object.user]) do
+                      - avatar ||= image_default_path(object.user.cover, "user")
+                      = image_tag(avatar, class: 'img-responsive')
+                    .name
+                      = link_to object.user do
+                        = object.user.name
+
+            .hidden-sm.hidden-md.hidden-lg.hidden-xl
+              .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
+                %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.ciner_production_videos.first.video, :width => "100%"}
+
+                .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+                  = link_to url_for([role, object]) do
+                    = object.title_str
+                .ciner-video-user
+                  .user
+                    = link_to url_for([role, object.user]) do
+                      - avatar ||= image_default_path(object.user.cover, "user")
+                      = image_tag(avatar, class: 'img-responsive')
+                    .name
+                      = link_to object.user do
+                        = object.user.name
