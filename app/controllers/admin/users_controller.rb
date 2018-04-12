@@ -11,7 +11,7 @@ module Admin
     expose(:users) { User.all }
     expose(:states) { State.order(:acronym).collect(&:acronym) }
     expose(:cities) { user.city&.state&.cities }
-    expose(:critics) { user.critics.approved.first(2) }
+    expose(:critics) { user.critics.approved.where(quick: false).first(2) }
     expose(:user_collection) { user.user_collection }
 
     # Filters

@@ -5,7 +5,7 @@ class CriticsController < ApplicationController
 
   # exposes
   expose(:highlight) { Critic.highlight }
-  expose(:critics) { Critic.all_but([highlight]) }
+  expose(:critics) { Critic.approved.where(quick: false).all_but([highlight]) }
   expose(:critic, attributes: :critic_attributes)
   expose(:users) { User.all }
 

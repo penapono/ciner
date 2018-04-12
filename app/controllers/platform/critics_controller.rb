@@ -6,7 +6,7 @@ module Platform
 
     # exposes
     expose(:highlight) { highlight_critic }
-    expose(:critics) { Critic.approved.all_but([highlight]) }
+    expose(:critics) { Critic.approved.where(quick: false).all_but([highlight]) }
     expose(:critic, attributes: :critic_attributes)
     expose(:users) { User.all }
 
