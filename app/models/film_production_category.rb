@@ -7,6 +7,9 @@ class FilmProductionCategory < ActiveRecord::Base
   validates :name,
             presence: true
 
+  # Scope
+  default_scope { order(name: :asc) }
+
   # Filter
 
   def self.filter_by(collection, _params)
