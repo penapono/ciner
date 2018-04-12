@@ -10,7 +10,7 @@
           .row
             .col-xs-12
               = image_tag(cover, class: "img-responsive", style: 'height: 330px !important; width: 220px !important; margin: auto')
-            #ciner-production-reaction
+            #ciner-production-reaction{ style: 'text-align: center' }
               = render 'shared/reactions', resource: object, like_path: url_for([:like, role, object]), dislike_path: url_for([:dislike, role, object])
         .hidden-xs
           = render 'shared/ciner_productions/general_info_desktop', role: role, object: object, cover: cover

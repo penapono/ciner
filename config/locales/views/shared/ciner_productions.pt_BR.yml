@@ -16,8 +16,7 @@ pt-BR:
         body: Aparência
       ciner_production_video_fields:
         video_placeholder: >
-          Insira a url de incorporação de seu vídeo aqui.
-          Por ex: https://www.youtube.com/embed/b4ozdiGys5g
+          Ex: https://www.youtube.com/watch?v=b4ozdiGys5g ou https://vimeo.com/219242516
         season_placeholder: Temporada
         episode_placeholder: Episódio
 
