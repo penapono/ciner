@@ -13,8 +13,8 @@
             = CinerProduction.human_attribute_name(:trailer)
 
     .ficha
-      .info
-        %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
+      .info{ style: 'float: left' }
+        %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: object.trailer.to_s, width: "560"}
 
   - unless object.ciner_production_videos.blank?
     - if object.serie_production?
@@ -29,11 +29,11 @@
                 = "Temporada #{season}"
 
         - object.season_episodes(season).each do |episode|
-          %h4.pink.bold
+          %h5.pink.bold
             = "Episódio #{episode.episode}"
           .ficha
-            .info
-              %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: episode.video.to_s, width: "100%"}
+            .info{ style: 'float: left' }
+              %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: episode.video.to_s, width: "560"}
     - else
       .title-separator
         .media
@@ -45,8 +45,8 @@
               Vídeos
 
       .ficha
-        .info
-          %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.ciner_production_videos.first.video.to_s, width: "100%"}
+        .info{ style: 'float: left' }
+          %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: object.ciner_production_videos.first.video.to_s, width: "560"}
 
   .row
     - filmable_directors = object.filmable_directors
