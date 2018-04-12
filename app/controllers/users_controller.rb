@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   expose(:users) { User.order(:name) }
   expose(:states) { State.order(:acronym).collect(&:acronym) }
   expose(:cities) { user.city&.state&.cities }
-  expose(:critics) { user.critics }
+  expose(:critics) { user.critics.approved.first(2) }
   expose(:user_collection) { user.user_collection }
 
   def update
