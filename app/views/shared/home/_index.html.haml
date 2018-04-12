@@ -13,6 +13,36 @@
 
     .col-xs-12.col-md-4
       = render 'shared/home/broadcasts/index', role: role
+  .row
+    .col-xs-12.ciner-videos.ciner-productions
+      .title-separator
+        .media
+          .media-left.media-middle
+            %svg.icon-title
+              %use{ "xlink:href": "#filme" }
+          .media-body.media-bottom
+            .media-heading.title-section
+              Produções Independentes
+          .media-body.text-right.media-middle.see-more
+            = link_to url_for([role, :ciner_productions]) do
+              = t('see_more')
+      .row
+        - ciner_productions.each do |object|
+          .hidden-xs
+            .ciner-movie.col-xs-12.col-sm-6.col-md-3
+              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
+
+              .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+                = link_to url_for([role, object]) do
+                  = object.title_str
+
+          .hidden-sm.hidden-md.hidden-lg.hidden-xl
+            .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
+              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.trailer, :width => "100%"}
+
+              .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+                = link_to url_for([role, object]) do
+                  = object.title_str
 
   .row
     .col-xs-12.col-md-4.advertise

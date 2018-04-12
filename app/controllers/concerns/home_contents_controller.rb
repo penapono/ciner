@@ -13,5 +13,6 @@ module HomeContentsController
 
     expose(:playing_movies) { Movie.current_playing.limit(20) }
     expose(:featured_movies) { Movie.featured(10) }
+    expose(:ciner_productions) { CinerProduction.approved.first(4) }
   end
 end

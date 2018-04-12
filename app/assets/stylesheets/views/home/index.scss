@@ -134,6 +134,23 @@
 
 }
 
+.ciner-videos.ciner-productions {
+  .ciner-movie {
+    width: 24%;
+    padding: 0px;
+    margin-right: 1%;
+    // margin-left: 5px;
+  }
+
+  .ciner-movie:first-child {
+    margin-left: 15px;
+  }
+
+  .ciner-movie:last-child {
+    margin-right: -10px;
+  }
+}
+
 .ciner-videos {
   .ciner-movie {
     padding: 0px;
