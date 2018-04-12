@@ -18,35 +18,41 @@
 
   - unless object.ciner_production_videos.blank?
     - if object.serie_production?
-      - object.seasons.each do |season|
-        .title-separator
-          .media
-            .media-left.media-middle
-              %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-                %use{"xlink:href" => "#video"}
-            .media-body.media-bottom
-              .media-heading.title-section
-                = "Temporada #{season}"
+      - unless object.seasons.blank?
+        - object.seasons.each do |season|
+          .row
+            .col-xs-12
+              .title-separator
+                .media
+                  .media-left.media-middle
+                    %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+                      %use{"xlink:href" => "#video"}
+                  .media-body.media-bottom
+                    .media-heading.title-section
+                      = "Temporada #{season}"
 
-        - object.season_episodes(season).each do |episode|
-          %h5.pink.bold
-            = "Episódio #{episode.episode}"
-          .ficha
-            .info{ style: 'float: left' }
-              %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: episode.video.to_s, width: "560"}
+              - object.season_episodes(season).each do |episode|
+                %h5.pink.bold
+                  = "Episódio #{episode.episode}"
+                .ficha
+                  .info{ style: 'float: left' }
+                    %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: episode.video.to_s, width: "560"}
     - else
-      .title-separator
-        .media
-          .media-left.media-middle
-            %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
-              %use{"xlink:href" => "#video"}
-          .media-body.media-bottom
-            .media-heading.title-section
-              Vídeos
+      - unless object.ciner_production_videos.blank?
+        .row
+          .col-xs-12
+            .title-separator
+              .media
+                .media-left.media-middle
+                  %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
+                    %use{"xlink:href" => "#video"}
+                .media-body.media-bottom
+                  .media-heading.title-section
+                    Vídeos
 
-      .ficha
-        .info{ style: 'float: left' }
-          %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: object.ciner_production_videos.first.video.to_s, width: "560"}
+            .ficha
+              .info{ style: 'float: left' }
+                %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: object.ciner_production_videos.first.video.to_s, width: "560"}
 
   .row
     - filmable_directors = object.filmable_directors
