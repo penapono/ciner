@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :collection, only: :index, module: 'users'
+      resources :friends, only: :index, module: 'users'
       resources :trophies, only: :index, module: 'users'
       resources :favorite, only: :index, module: 'users'
       resources :watched, only: :index, module: 'users'
