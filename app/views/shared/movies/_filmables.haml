@@ -18,7 +18,7 @@
           .hidden-xs
             .col-sm-2.no-shelf{ style: 'margin-bottom: 0px; width: 20%;' }
               = link_to url_for([role, object]) do
-                = image_tag(cover, class: "img-responsive", style: 'max-height: 300px; max-width: 200px;')
+                = image_tag(cover, class: "img-responsive", style: 'height: 300px; width: 200px;')
               .title{ style: 'height: 60px; overflow: hidden;'}
                 = link_to url_for([role, object]) do
                   = object.title_str
