@@ -186,6 +186,10 @@ class CinerProduction < ActiveRecord::Base
     ""
   end
 
+  def status_str
+    CinerProduction.human_attribute_name("status.#{status}")
+  end
+
   def self.featured(limit = 15)
     ids = Visit.where(action: 'show').where("controller like ?", "%ciner_productions%").pluck(:resource_id)
 
