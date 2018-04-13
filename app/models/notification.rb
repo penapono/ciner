@@ -21,7 +21,8 @@ class Notification < ActiveRecord::Base
     decline_contact: 7,
     ciner_production_pending: 8,
     ciner_production_approved: 9,
-    ciner_production_reproved: 10
+    ciner_production_reproved: 10,
+    ciner_production_waiting: 11
   }
 
   def self.for_user(user)

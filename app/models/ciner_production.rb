@@ -64,6 +64,7 @@ class CinerProduction < ActiveRecord::Base
 
   # Callbacks
   before_destroy :destroy_visits
+  before_destroy :destroy_notifications
 
   # Scopes
 
@@ -200,6 +201,10 @@ class CinerProduction < ActiveRecord::Base
     result = result.sort_by { |_k, v| v }.to_h
 
     where(id: result.keys.first(limit * 3)).limit(limit)
+  end
+
+  def destroy_notifications
+    Notification.where(message: id.to_s).where("notification_type in (8, 9, 10)").destroy_all
   end
 
   def destroy_visits

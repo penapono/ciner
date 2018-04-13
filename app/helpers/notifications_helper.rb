@@ -16,12 +16,18 @@ module NotificationsHelper
                     "#{link_to sender.name, url_for([role, sender])} se interessou pelo seu currículo e quer entrar em contato com você. Você deseja informar seu e-mail de contato?"
                   elsif notification.accept_contact?
                     "#{link_to sender.name, url_for([role, sender])} aceitou informar o email de contato: #{sender.email}. Agora é com vocês. Que esta parceria renda grandes produções!"
+                  elsif notification.ciner_production_waiting?
+                    ciner_production = CinerProduction.find(notification.message.to_i)
+                    "Sua produção independente #{link_to ciner_production.title_str, url_for([role, ciner_production])} está aguardando aprovação!"
                   elsif notification.ciner_production_pending?
-                    "#{link_to sender.name, url_for([role, sender])} criou uma #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])}"
+                    ciner_production = CinerProduction.find(notification.message.to_i)
+                    "#{link_to sender.name, url_for([role, sender])} criou uma produção independente #{link_to ciner_production.title_str, url_for([role, ciner_production])}"
                   elsif notification.ciner_production_approved?
-                    "Sua #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])} foi aprovada! Parabéns!"
+                    ciner_production = CinerProduction.find(notification.message.to_i)
+                    "Sua produção independente #{link_to ciner_production.title_str, url_for([role, ciner_production])} foi aprovada! Parabéns!"
                   elsif notification.ciner_production_reproved?
-                    "Sua #{link_to 'produção independente', url_for([role, CinerProduction.find(notification.message.to_i)])} foi reprovada. Por favor, #{link_to 'edite-a', url_for([:edit, role, CinerProduction.find(notification.message.to_i)])} para que possa ser aceita"
+                    ciner_production = CinerProduction.find(notification.message.to_i)
+                    "Sua produção independente #{link_to ciner_production.title_str, url_for([role, ciner_production])} foi reprovada. Por favor, #{link_to 'edite-a', url_for([:edit, role, ciner_production])} para que possa ser aceita"
                   else
                     ""
                   end
