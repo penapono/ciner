@@ -38,11 +38,11 @@
       - elsif notification.ciner_production_pending? && notification.waiting?
         .row
           .col-xs-12.pull-right
-            .friendship.accept{ data: { friendship: { action: 'accept_ciner_production', sender_id: notification.receiver_id, receiver_id: notification.sender_id, url: notifications_path } } }
+            .friendship.accept{ data: { friendship: { action: 'accept_ciner_production', sender_id: notification.receiver_id, receiver_id: notification.sender_id, message: notification.message.to_i, notification_id: notification.id, url: notifications_path } } }
               %button.btn.btn-login
                 %span.text
                   Aceitar
-            .friendship.decline{ data: { friendship: { action: 'decline_ciner_production', sender_id: notification.receiver_id, receiver_id: notification.sender_id, url: notifications_path } } }
+            .friendship.decline{ data: { friendship: { action: 'decline_ciner_production', sender_id: notification.receiver_id, receiver_id: notification.sender_id, message: notification.message.to_i, notification_id: notification.id, url: notifications_path } } }
               %button.btn.btn-login
                 %span.text
                   Recusar

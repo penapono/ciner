@@ -22,6 +22,8 @@ class NotificationsController < ApplicationController
     notification_type = params[:notification_type]
     notification_sender_id = params[:sender_id] || :system
     notification_receiver_id = params[:receiver_id]
+    notification_id = params[:notification_id] || nil
+    notification_message = params[:message] || nil
 
     on_create_delate_checked(notification_sender_id, notification_receiver_id) if notification_type == 'delate_ok'
 
@@ -49,13 +51,13 @@ class NotificationsController < ApplicationController
 
     on_decline_contact(notification_sender_id, notification_receiver_id) if notification_type == "decline_contact"
 
-    on_accept_ciner_production(notification_sender_id, notification_receiver_id) if notification_type == "accept_ciner_production"
+    on_accept_ciner_production(notification_sender_id, notification_receiver_id, notification_message, notification_id) if notification_type == "accept_ciner_production"
 
-    on_decline_ciner_production(notification_sender_id, notification_receiver_id) if notification_type == "decline_ciner_production"
+    on_decline_ciner_production(notification_sender_id, notification_receiver_id, notification_message, notification_id) if notification_type == "decline_ciner_production"
   end
 
-  def on_accept_ciner_production(sender_id, receiver_id)
-    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending)
+  def on_accept_ciner_production(sender_id, receiver_id, message, notification_id)
+    notification = Notification.find_by(id: notification_id, sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending, message: message)
     notification.update_attributes(answer: :no_answer) unless notification.blank?
 
     CinerProduction.unscoped.find(notification.message.to_i).update_attribute("status", "approved")
@@ -64,8 +66,8 @@ class NotificationsController < ApplicationController
     render json: { status: 'ok' } if notification.save
   end
 
-  def on_decline_ciner_production(sender_id, receiver_id)
-    notification = Notification.find_by(sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending)
+  def on_decline_ciner_production(sender_id, receiver_id, message, notification_id)
+    notification = Notification.find_by(id: notification_id, sender_id: receiver_id, receiver_id: sender_id, notification_type: :ciner_production_pending, message: message)
     notification.update_attributes(answer: :no_answer) unless notification.blank?
 
     CinerProduction.unscoped.find(notification.message.to_i).update_attribute("status", "reproved")

@@ -13,10 +13,12 @@
       - unless ciner_productions.blank?
         .row
           - ciner_productions.each do |object|
-            - unless object.ciner_production_videos.blank?
+            - unless object.ciner_production_videos.blank? && object.trailer.blank?
+              - video = object.ciner_production_videos.any? ? object.ciner_production_videos.first.video : object.trailer
+
               .hidden-xs
                 .ciner-movie.col-xs-12.col-sm-6.col-md-3
-                  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.ciner_production_videos.first.video, :width => "100%"}
+                  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
                   .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
                     = link_to url_for([role, object]) do
@@ -32,7 +34,7 @@
 
               .hidden-sm.hidden-md.hidden-lg.hidden-xl
                 .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
-                  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => object.ciner_production_videos.first.video, :width => "100%"}
+                  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
                   .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
                     = link_to url_for([role, object]) do
