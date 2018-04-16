@@ -2,15 +2,20 @@
 - source_end = user_trophy.blank? ? "_inactive" : "_active"
 - source = object.level.to_s + source_end + ".png"
 - trophy = image_path("trophies/#{source}")
+- height = height
+- height ||= "200px"
+- description = description
+- description ||= true
 
 .col-xs-3.wine{ style: 'width: 20%;' }
   .row
     .col-xs-12
-      %img.img-responsive{ src: trophy, style: 'width: 84px; height: 200px; margin: auto' }
+      %img.img-responsive{ src: trophy, style: "width: 84px; height: #{height}; margin: auto" }
   .row
     .col-xs-12
       .bold{ style: 'text-align: center' }
         = object.name
-  .row
-    .col-xs-12{ style: 'text-align: center' }
-      = object.description
+  - unless description
+    .row
+      .col-xs-12{ style: 'text-align: center' }
+        = object.description

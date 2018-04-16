@@ -8,3 +8,5 @@
           Meus Troféus
       .media-body.text-right.media-middle.see-more
         = link_to 'Ver mais', url_for([role, user, :trophies])
+  - user.trophies.first(5).each do |trophy|
+    = render 'shared/users/trophies/trophy', object: trophy, height: "100px", description: false
