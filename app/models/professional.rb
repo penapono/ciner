@@ -63,6 +63,7 @@ class Professional < ActiveRecord::Base
       FilmableProfessional
       .where(professional_id: id,
              set_function_id: set_function_filmography)
+      .includes(:filmable)
 
     filmables = []
     filmable_professionals.each do |filmable_professional|
