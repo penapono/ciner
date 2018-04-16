@@ -76,6 +76,7 @@ $(function() {
   $('.datepicker').mask('99/99/9999');
   $('.money').mask('000.000.000.000.000,00', {reverse: true});
   $('.year').mask('0000');
+  $('.length').mask('0000');
   $('.height').mask('0.00', { reverse: true });
   $('.mannequin').mask('00');
   $('select').select2({

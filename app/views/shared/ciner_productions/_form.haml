@@ -3,7 +3,7 @@
 - ciner_production_type = params[:ciner_production_type]
 
 = simple_form_for [role, ciner_production] do |f|
-  %h3
+  %h3.wine
     = t('.general')
 
   .row
@@ -19,7 +19,7 @@
   - unless ciner_production_type == 'serie'
     .row
       .col-xs-6
-        = f.input :length
+        = f.input :length, as: :string, input_html: { class: 'length' }
 
   .row
     .col-xs-6
@@ -31,7 +31,7 @@
           = f.input :title, required: true, autofocus: true
       .row
         .col-xs-3
-          = f.input :year
+          = f.input :year, as: :string, input_html: { class: 'year' }
       .row
         .col-xs-9.col-md-9{ data: { cocoon_container: '', limit: 3 } }
           .row
