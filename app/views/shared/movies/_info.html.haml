@@ -3,7 +3,7 @@
 
 #ficha-tecnica
   - unless object.trailer.blank?
-    .title-separator
+    .title-separator{ style: 'margin-top: 15px;' }
       .media
         .media-left.media-middle
           %svg.media-object{:style => "display: inline-block; width: 32px; height: 32px; vertical-align: middle;"}
@@ -16,7 +16,7 @@
       .info
         %iframe{ allowfullscreen: "", frameborder: "0", height: "315px", src: object.trailer.to_s, width: "100%"}
 
-  .row
+  .row{ style: 'margin-top: 15px;' }
     - filmable_directors = object.filmable_directors
     - if filmable_directors.any?
       .col-xs-6

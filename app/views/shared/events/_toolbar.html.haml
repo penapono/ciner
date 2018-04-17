@@ -3,14 +3,15 @@
 .toolbar
   .row.searchbar
     .col-xs-12.col-md-2
-      .media-left.media-middle
-        .icon-title
-          %img.img-responsive{ src: image_path("icons/ico_events.png"), style: 'width: 30px; height: 30px;' }
-      .media-body.media-bottom
-        .media-heading.title-section
-          Agenda do Cinema
+      .media{ style: 'display: flex; align-items: center; width: 100%; height: 55px;' }
+        .media-left.media-middle{ style: 'height: 2em;' }
+          .icon-title
+            %img.img-responsive{ src: image_path("icons/ico_events.png"), style: 'width: 30px; height: 30px;' }
+        .media-body.media-bottom
+          .media-heading.title-section
+            Agenda do Cinema
     .hidden-xs.hidden-sm.col-md-10
-      .row
+      .row{ style: 'margin: 10px -15px 0px 0px;' }
         .col-xs-4
           - content_for :stylesheet, stylesheet_link_tag('views/shared/searchbar')
 

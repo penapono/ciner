@@ -5,10 +5,11 @@
 .container.content
   .row
     .col-xs-12
-      .media
-        .media-body.media-bottom
-          .media-heading.title-section
-            = "Coleção de #{user.name}"
+      .title-separator
+        .media{ style: 'display: flex; align-items: center; width: 100%; height: 55px;' }
+          .media-body.media-bottom
+            .media-heading.title-section
+              = "Coleção de #{user.name}"
 
       = render 'shared/users/collection/toolbar'
 
