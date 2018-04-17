@@ -444,6 +444,9 @@ module Tmdb
         job = person["job"]
 
         set_function = SetFunction.where("description LIKE '#{job}'").first
+        set_function ||= SetFunction.where("description LIKE '#{job}%, '").first
+        set_function ||= SetFunction.where("description LIKE '%, #{job}%'").first
+        set_function ||= SetFunction.where("description LIKE '%#{job}%, '").first
         set_function ||= SetFunction.where("description LIKE '%#{job}%'").first
         set_function ||= SetFunction.create(name: job, description: job)
 
