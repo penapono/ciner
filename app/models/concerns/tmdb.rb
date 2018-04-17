@@ -443,7 +443,8 @@ module Tmdb
       crew.each do |person|
         job = person["job"]
 
-        set_function = SetFunction.where("description LIKE '%#{job}%'").first
+        set_function = SetFunction.where("description LIKE '#{job}'").first
+        set_function ||= SetFunction.where("description LIKE '%#{job}%'").first
         set_function ||= SetFunction.create(name: job, description: job)
 
         name = person["name"]
