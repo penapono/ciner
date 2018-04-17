@@ -8,13 +8,12 @@
   .row
     .col-xs-12
       .title-separator
-        .media
-          .media-left.media-middle
-            %svg.icon-title
+        .media{ style: 'display: flex; align-items: center; width: 100%; height: 55px;' }
+          .media-left.media-middle{ style: 'height: 2em;' }
+            %svg.icon-title{ style: 'width: 2em; height: 2em; display: flex;' }
               %use{"xlink:href" => "#critica"}
           .media-body.media-bottom
-            .media-heading.title-section
-              = Critic.model_name.human(count: 2)
+            .media-heading.title-section= Critic.model_name.human(count: 2)
 
   = render 'shared/critics/toolbar', path: platform_critics_path
 

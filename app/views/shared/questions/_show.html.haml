@@ -7,16 +7,15 @@
 .container.content
   .debates.row
     .col-xs-12
-      .row{ class: question_class(question) }
-        .col-xs-1
-          .icone{ style: 'margin-top: 10px;' }
-            %svg.icon-debate
+      .title-separator
+        .media{ style: 'display: flex; align-items: center; width: 100%; height: 55px;', class: question_class(question) }
+          .media-left.media-middle{ style: 'height: 2em;' }
+            %svg.icon-title{ style: 'width: 2em; height: 2em; display: flex;' }
               %use{ "xlink:href": question_icon(question) }
-        .col-xs-11.titulo{ style: 'margin-top: 5px; word-break: break-all;' }
-          %h4
-            = question.title
-
-      %hr
+          .media-body.media-bottom
+            .titulo{ style: 'margin-top: 5px; word-break: break-all;' }
+              %h4
+                = question.title
 
       .row{ style: 'margin-top: 10px' }
         .col-xs-2.col-sm-1
