@@ -45,7 +45,7 @@
             = filmable.actors_str
           %br
 
-        .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis; height: 65px; margin-bottom: 10px' }
+        .content{ style: 'width: 100%; overflow: hidden; text-overflow: ellipsis; height: 60px; margin-bottom: 10px' }
           = critic.content.gsub(/\n/, '<br/>').html_safe
 
         = link_to url_for([role, critic]) do
