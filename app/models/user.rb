@@ -175,6 +175,34 @@ class User < ActiveRecord::Base
       user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
       user_trophy.notify_user
     end
+
+    founders = [3275988, 3023822, 3459423, 3077677, 3000717, 3280398, 3059311,
+                3222511, 3203942, 2946886, 3866625, 4069360, 4069359, 2979000,
+                2912143, 2916904, 3747559, 3435383, 3858438, 3392276, 2800244,
+                3621042, 3776188, 3560971, 2772816, 3844068, 3905769, 3550326,
+                3278525, 2956856, 3055532, 3801952, 3151455, 2832558, 3727226,
+                3665905, 2877140, 2877147, 2877149, 2770528, 2837895, 3190164,
+                3612872, 3116749, 2770603, 3168241, 3533732, 3689603, 2858240,
+                2887859, 3027047, 3018459]
+    watched_filmable =
+      user_filmables.where(
+        filmable_id: founders)
+    if watched_filmable.count == founders.count
+      current_trophy = Trophy.find_by(name: 'Secreto')
+      user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
+      user_trophy.notify_user
+    end
+
+    programmer = [3275988, 3023822, 3459423, 3077677, 3000717, 3280398, 3059311,
+                  3222511, 3203942, 2946886]
+    watched_filmable =
+      user_filmables.where(
+        filmable_id: programmer)
+    if watched_filmable.count == programmer.count
+      current_trophy = Trophy.find_by(name: 'Programe-se')
+      user_trophy = UserTrophy.find_or_create_by(user: self, trophy: current_trophy)
+      user_trophy.notify_user
+    end
   end
 
   def notifications
