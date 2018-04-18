@@ -1,0 +1,44 @@
+- content_for :stylesheet, stylesheet_link_tag(stylesheet)
+- content_for :javascript, javascript_include_tag(javascript)
+
+= render 'shared/breadcrumbs'
+
+= render 'shared/index_title', title: Banner.model_name.human(count: 2), path: new_admin_banner_path
+
+= render 'toolbar'
+
+%table
+  %thead
+    %tr
+      %th
+        = Banner.human_attribute_name(:title)
+      %th
+        = Banner.human_attribute_name(:link)
+      %th
+        = Banner.human_attribute_name(:position)
+
+      / Actions
+      %th{ colspan: 2 }
+
+  %tbody
+    - banners.each do |banner|
+      %tr
+        %td
+          = link_to admin_banner_path(banner) do
+            = banner.title
+
+        %td
+          = link_to banner.link do
+            = banner.link
+
+        %td
+          = banner.position
+
+        %td
+          = link_to edit_admin_banner_path(banner) do
+            %i.fa.fa-pencil
+        %td
+          = link_to admin_banner_path(banner), method: 'delete' do
+            %i.fa.fa-trash
+
+= render 'shared/pagination', resources: banners

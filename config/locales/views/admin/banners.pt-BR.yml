@@ -1,0 +1,11 @@
+pt-BR:
+  admin:
+    banners:
+      create:
+        title: Novo Banner
+      form:
+        general: Dados Gerais
+      index:
+        title: Banner
+      new:
+        title: Novo Banner

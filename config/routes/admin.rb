@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :featured_filmables, only: :index
     resources :playing_filmables, only: :index
     resources :delates
+    resources :banners
     resources :movie_duplicates, only: :index
     resources :serie_duplicates, only: :index
 

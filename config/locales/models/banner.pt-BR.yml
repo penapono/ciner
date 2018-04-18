@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      banner:
+        one: Banner
+        other: Banners
+
+    attributes:
+      banner:
+        title: Título
+        link: Link
+        image: Imagem
+        visible: Visível
+        position: Posição
+    errors:
+      models:
+        banner:
+          attributes:
+            title:
+              blank: "%{attribute} deve ser preenchido"
+            link:
+              blank: "%{attribute} deve ser preenchido"
+            image:
+              blank: "%{attribute} deve ser preenchido"
+            position:
+              blank: "%{attribute} deve ser preenchido"

@@ -1,0 +1,17 @@
+= simple_form_for [:admin, banner] do |f|
+  %h3
+    = t('.general')
+
+  .row
+    .col-xs-12.col-md-6
+      = f.input :title, required: true, autofocus: true
+    .col-xs-12.col-md-6
+      = f.input :link
+  .row
+    .col-xs-12
+      = f.input :image
+  .row
+    .col-xs-12.col-md-6
+      = f.input :position, collection: (1..4), include_blank: 'Escolha a posição do Banner'
+
+  = render 'shared/form_actions', f: f
