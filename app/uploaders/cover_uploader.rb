@@ -30,6 +30,10 @@ class CoverUploader < CarrierWave::Uploader::Base
     process scale: [250, 300]
   end
 
+  version :mini do
+    process resize_to_fit: [133, 200]
+  end
+
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [50, 60]

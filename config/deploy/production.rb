@@ -17,11 +17,6 @@ role :db,  %w{ciner@45.55.81.37}
 
 server '45.55.81.37', user: 'ciner', roles: %w{web app}
 
-config.public_file_server.headers = {
-  'Cache-Control' => "public, s-maxage=#{365.days.to_i}, maxage=#{180.days.to_i}",
-  'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
-}
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
