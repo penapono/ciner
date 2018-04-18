@@ -38,7 +38,7 @@
               .ciner-video-user
                 .user
                   = link_to url_for([role, object.user]) do
-                    - avatar ||= image_default_path(object.user.cover, "user")
+                    - avatar ||= image_default_path(object.user.cover.mini, "user")
                     = image_tag(avatar, class: 'img-responsive')
                   .name
                     = link_to object.user do
