@@ -11,7 +11,7 @@ module HomeContentsController
     expose(:broadcasts) { Broadcast.top_broadcasts.first(4) }
     expose(:trending_trailers) { TrendingTrailer.includes(:filmable).first(3) }
 
-    expose(:playing_movies) { Movie.current_playing.limit(20) }
+    expose(:playing_movies) { Movie.current_playing.limit(10) }
     expose(:featured_movies) { Movie.featured(10) }
     expose(:ciner_productions) { CinerProduction.approved.includes(:user).first(4) }
   end
