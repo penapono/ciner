@@ -4,7 +4,7 @@ module Platform
   class TrendingTrailersController < PlatformController
     include Platform::TrendingTrailersBreadcrumb
 
-    PER_PAGE = 10
+    PER_PAGE = 15
 
     # exposes
     expose(:trending_trailers) { TrendingTrailer.order(created_at: :desc).includes(:filmable) }

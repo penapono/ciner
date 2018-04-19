@@ -7,5 +7,6 @@
   .row
     - trending_trailers.each do |trending_trailer|
       = render 'shared/trending_trailers/trending_trailer', object: trending_trailer, role: role
-
-  = paginate trending_trailers
+  .row{ style: 'text-align: center' }
+    .col-xs-12
+      = paginate trending_trailers

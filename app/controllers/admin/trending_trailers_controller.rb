@@ -4,7 +4,7 @@ module Admin
   class TrendingTrailersController < AdminController
     include Admin::TrendingTrailersBreadcrumb
 
-    PER_PAGE = 10
+    PER_PAGE = 15
 
     PERMITTED_PARAMS = %i[
       title
