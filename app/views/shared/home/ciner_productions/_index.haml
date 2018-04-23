@@ -39,7 +39,7 @@
 
     - object.ciner_production_videos.each do |cpv|
       - video = cpv.video
-      - title_str = "T#{cpv.season} - E#{cpv.episode}"
+      - title_str = "#{object.title_str} T#{cpv.season} - E#{cpv.episode}"
 
       - if count < 4
         - if video
