@@ -5,7 +5,7 @@
 - height = height
 - height ||= "200px"
 - description = description
-- description ||= true
+- description ||= nil
 
 .col-xs-3.wine{ style: 'width: 20%;' }
   .row
@@ -15,7 +15,7 @@
     .col-xs-12
       .bold{ style: 'text-align: center' }
         = object.name
-  - unless description
+  - if description
     .row
       .col-xs-12{ style: 'text-align: center' }
         = object.description

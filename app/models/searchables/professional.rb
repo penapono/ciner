@@ -7,21 +7,10 @@ module Searchables
 
     SEARCH_EXPRESSION = '
       professionals.name LIKE :search OR
-      professionals.nickname LIKE :search OR
-      professionals.cep LIKE :search OR
-      professionals.neighbourhood LIKE :search OR
-      professionals.complement LIKE :search OR
-      professionals.cpf LIKE :search OR
-      professionals.phone LIKE :search OR
-      professionals.mobile LIKE :search OR
-      professionals.biography LIKE :search OR
-      cities.name LIKE :search OR
-      states.name LIKE :search OR
-      countries.name LIKE :search
+      professionals.nickname LIKE :search
     '
 
     SEARCH_ASSOCIATIONS = %i[
-      city state country
     ].freeze
 
     class_methods do

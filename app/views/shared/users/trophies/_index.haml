@@ -21,7 +21,7 @@
 
   .row
     - Trophy.top.each do |trophy|
-      = render 'shared/users/trophies/trophy', object: trophy
+      = render 'shared/users/trophies/trophy', object: trophy, description: true
 
   .row
     .col-xs-12
@@ -33,7 +33,7 @@
 
   .row
     - Trophy.leading.each do |trophy|
-      = render 'shared/users/trophies/trophy', object: trophy
+      = render 'shared/users/trophies/trophy', object: trophy, description: true
 
   .row
     .col-xs-12
@@ -45,7 +45,7 @@
 
   .row
     - Trophy.supporting.each do |trophy|
-      = render 'shared/users/trophies/trophy', object: trophy
+      = render 'shared/users/trophies/trophy', object: trophy, description: true
 
   .row
     .col-xs-12
@@ -57,4 +57,4 @@
 
   .row
     - Trophy.figurant.each do |trophy|
-      = render 'shared/users/trophies/trophy', object: trophy
+      = render 'shared/users/trophies/trophy', object: trophy, description: true
