@@ -15,8 +15,6 @@ $(function() {
 
   var gCocoonContainer  = $('[data-cocoon-container]');
 
-  updateNestedLinks();
-
   $('[data-images]').bind('cocoon:after-insert', updateNestedLinks);
   $('[data-images]').bind('cocoon:after-remove', updateNestedLinks);
 
@@ -60,16 +58,6 @@ $(function() {
 
     if (deleteFlag) {
       aDeleteContainer.show();
-    }
-  }
-
-  function updateNestedLinks() {
-    var container = $('[data-images]');
-
-    if (container.find('.nested-fields:visible').length >= 4) {
-      container.find('.links').hide();
-    } else {
-      container.find('.links').show();
     }
   }
 
