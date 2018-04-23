@@ -133,6 +133,23 @@ module ::BaseController
           observation: observation
         )
         return 'active' if user_filmable.save
+      elsif user_action == 'recommend'
+        user_ids = params[:user_ids]
+
+        user_filmable = UserFilmable.create(
+          user_id: user_id,
+          filmable_id: filmable_id, filmable_type: filmable_type,
+          action: user_action
+        )
+
+        user_ids.each do |friend_id|
+          Notification.create(
+            sender_id: user_id,
+            receiver_id: friend_id,
+            notification_type: :recommend_filmable,
+            message: user_filmable.id
+          )
+        end
       else
         user_filmables = UserFilmable.where(
           user_id: user_id,
@@ -155,12 +172,14 @@ module ::BaseController
         end
       end
 
-      UserFilmable.create(
-        user_id: user_id,
-        filmable_id: filmable_id, filmable_type: filmable_type,
-        action: user_action
-      )
-      User.find(user_id).create_trophies(user_action) if user_action == 'watched'
+      unless user_action == 'recommend'
+        UserFilmable.create(
+          user_id: user_id,
+          filmable_id: filmable_id, filmable_type: filmable_type,
+          action: user_action
+        )
+        User.find(user_id).create_trophies(user_action) if user_action == 'watched'
+      end
       'active'
     end
 
@@ -271,7 +290,7 @@ module ::BaseController
                        want_to_see_str: resource.want_to_see_str,
                        collection_str: resource.collection_str,
                        favorite_str: resource.favorite_str,
-                       like_str: resource.like_str,
+                       recommend_str: resource.recommend_str,
                        result_class: result }
       else
         render json: { status: 'failure', errors: '' }

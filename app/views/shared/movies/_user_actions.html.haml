@@ -48,12 +48,12 @@
               %use{"xlink:href" => "#favorito"}
             %span{ data: { count: '' } }
               = object.favorite_str
-        / .button{ data: { recommend: 'like' } }
-        /   %a{ class: user_action_class_on(user, object, 'like') }
-        /     %svg.icon-tags
-        /       %use{"xlink:href" => "#like"}
-        /     %span{ data: { count: '' } }
-        /       = object.like_str
+        .button{ data: { recommend: 'like' } }
+          %a{ class: user_action_class_on(user, object, 'recommend') }
+            %svg.icon-tags
+              %use{"xlink:href" => "#like"}
+            %span{ data: { count: '' } }
+              = object.recommend_str
 
 #actionLockedModal.modal.fade{ role: 'dialog' }
   .modal-dialog
@@ -182,6 +182,9 @@
         %h4.modal-title Indicar para alguém!
       .modal-body
         %p
-          Será implementada na integração, pois não temos para quem indicar ainda, nem notificações
+          = select_tag 'user_ids', options_for_select(User.all.collect{ |u| [u.name, u.id] }), multiple: true
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+          Cancelar
+        %button.btn.btn-default{ data: { recommend_to: '', action: 'recommend' } }
+          Indicar

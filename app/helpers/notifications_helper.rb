@@ -28,6 +28,12 @@ module NotificationsHelper
                   elsif notification.ciner_production_reproved?
                     ciner_production = CinerProduction.find(notification.message.to_i)
                     "Sua produção independente #{link_to ciner_production.title_str, url_for([role, ciner_production])} foi reprovada. Por favor, #{link_to 'edite-a', url_for([:edit, role, ciner_production])} para que possa ser aceita"
+                  elsif notification.recommend_filmable?
+                    user_filmable = UserFilmable.find(notification.message.to_i)
+                    klass = user_filmable.filmable_type.classify.constantize
+                    filmable = klass.where(id: user_filmable.filmable_id).first
+                    "#{link_to sender.name, url_for([role, sender])} " \
+                      "te recomendou #{link_to filmable.title_str, url_for([role, filmable])}"
                   else
                     ""
                   end

@@ -13,7 +13,7 @@ class UserFilmable < ActiveRecord::Base
             presence: true
 
   # Enums
-  enum action: { watched: 1, want_to_see: 2, collection: 3, favorite: 4, like: 5 }
+  enum action: { watched: 1, want_to_see: 2, collection: 3, favorite: 4, recommend: 5 }
   enum media: { bluray: 1, dvd: 2, digital: 3, vhs: 4, other_media: 5 }
   enum version: { simple: 1, double: 2, collector: 3, commemorative: 4, other_version: 5 }
 
@@ -25,7 +25,7 @@ class UserFilmable < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
 
   # Scope
-  default_scope { order('(position IS NULL) ASC, position ASC') }
+  default_scope { order(position: :null, position: :asc) }
 
   def media_str
     return 'Blu-Ray' if bluray?

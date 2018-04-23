@@ -2,6 +2,7 @@
 //= require star-rating.min
 //= require views/api/v1/comments/index
 //= require views/shared/broadcasts/index
+//= require components/ciner_select2
 //= require ./star
 
 $(function() {

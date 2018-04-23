@@ -20,8 +20,8 @@ module UserActionable
       UserFilmable.favorite.where(filmable: self).count
     end
 
-    def like_count
-      UserFilmable.like.where(filmable: self).count
+    def recommend_count
+      UserFilmable.recommend.where(filmable: self).count
     end
 
     def watched_str
@@ -44,9 +44,9 @@ module UserActionable
       "#{favorite_count} favoritaram"
     end
 
-    def like_str
-      return "1 indica" if like_count == 1
-      "#{like_count} indicam"
+    def recommend_str
+      return "1 indica" if recommend_count == 1
+      "#{recommend_count} indicam"
     end
   end
 end

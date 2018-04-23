@@ -9,7 +9,6 @@ $(function() {
     minimumResultsForSearch: 50
   });
 
-
   $('[data-remote-select]').select2(_remoteDataConfig());
 
   function _remoteDataConfig() {

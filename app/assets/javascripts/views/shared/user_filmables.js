@@ -116,6 +116,44 @@ function UserFilmables() {
     $(dataUserFilmables).on('click', '[data-recommend]', function() {
       $('#recommendModal').modal('show');
     });
+
+    $(document).on('click', '[data-recommend-to]', function() {
+      var self = $(this),
+          select = $('#user_ids')[0],
+          selectedUsers = _getSelectValues(select),
+          parent = $('#user-actions').find('[data-user-action]'),
+          url = parent.data("url"),
+          user_id = parent.data("user-id"),
+          filmable_id = parent.data("filmable-id"),
+          filmable_type = parent.data("filmable-type"),
+          user_action = self.data("action"),
+          data = {
+            user_id: user_id,
+            filmable_id: filmable_id,
+            filmable_type: filmable_type,
+            user_ids: selectedUsers,
+            user_action: user_action
+          };
+
+        toastr.info("Seus amigos vão adorar a indicação!");
+        $('.modal').modal('hide');
+        _action(parent, url, data, self);
+    });
+  }
+
+  function _getSelectValues(aSelect) {
+    var result = [];
+    var options = aSelect && aSelect.options;
+    var opt;
+
+    for (var i=0, iLen=options.length; i<iLen; i++) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+    return result;
   }
 
   function _action(aParent, aUrl, aData, aButton) {
@@ -152,12 +190,12 @@ function UserFilmables() {
         want_to_see_str = aData.want_to_see_str,
         collection_str = aData.collection_str,
         favorite_str = aData.favorite_str,
-        like_str = aData.like_str;
+        recommend_str = aData.recommend_str;
 
     aParent.find("[data-action='watched'] [data-count]").html(watched_str);
     aParent.find("[data-action='want_to_see'] [data-count]").html(want_to_see_str);
     aParent.find("[data-collection='collection'] [data-count]").html(collection_str);
     aParent.find("[data-action='favorite'] [data-count]").html(favorite_str);
-    aParent.find("[data-reccomend='like'] [data-count]").html(like_str);
+    aParent.find("[data-recommend='like'] [data-count]").html(recommend_str);
   }
 };
