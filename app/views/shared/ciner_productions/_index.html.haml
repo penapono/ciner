@@ -13,20 +13,20 @@
       - unless ciner_productions.blank?
         .row
           - ciner_productions.each do |object|
-            - unless object.ciner_production_videos.blank? && object.trailer.blank?
-              - video = object.ciner_production_videos.any? ? object.ciner_production_videos.first.video : object.trailer
-
+            - video = object.trailer
+            - title_str = object.title_str
+            - if video
               .hidden-xs
                 .ciner-movie.col-xs-12.col-sm-6.col-md-3
                   %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
                   .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
                     = link_to url_for([role, object]) do
-                      = object.title_str
+                      = title_str
                   .ciner-video-user
                     .user
                       = link_to url_for([role, object.user]) do
-                        - avatar ||= image_default_path(object.user.cover, "user")
+                        - avatar ||= image_default_path(object.user.cover.mini, "user")
                         = image_tag(avatar, class: 'img-responsive')
                       .name
                         = link_to object.user do
@@ -38,12 +38,49 @@
 
                   .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
                     = link_to url_for([role, object]) do
-                      = object.title_str
+                      = title_str
                   .ciner-video-user
                     .user
                       = link_to url_for([role, object.user]) do
-                        - avatar ||= image_default_path(object.user.cover, "user")
+                        - avatar ||= image_default_path(object.user.cover.mini, "user")
                         = image_tag(avatar, class: 'img-responsive')
                       .name
                         = link_to object.user do
                           = object.user.name
+
+            - object.ciner_production_videos.each do |cpv|
+              - video = cpv.video
+              - title_str = "T#{cpv.season} - E#{cpv.episode}"
+
+              - if video
+                .hidden-xs
+                  .ciner-movie.col-xs-12.col-sm-6.col-md-3
+                    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
+
+                    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+                      = link_to url_for([role, object]) do
+                        = title_str
+                    .ciner-video-user
+                      .user
+                        = link_to url_for([role, object.user]) do
+                          - avatar ||= image_default_path(object.user.cover.mini, "user")
+                          = image_tag(avatar, class: 'img-responsive')
+                        .name
+                          = link_to object.user do
+                            = object.user.name
+
+                .hidden-sm.hidden-md.hidden-lg.hidden-xl
+                  .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
+                    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
+
+                    .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+                      = link_to url_for([role, object]) do
+                        = title_str
+                    .ciner-video-user
+                      .user
+                        = link_to url_for([role, object.user]) do
+                          - avatar ||= image_default_path(object.user.cover.mini, "user")
+                          = image_tag(avatar, class: 'img-responsive')
+                        .name
+                          = link_to object.user do
+                            = object.user.name

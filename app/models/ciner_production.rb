@@ -73,6 +73,20 @@ class CinerProduction < ActiveRecord::Base
   end
 
   # Filter
+  # def self.all_videos
+  #   videos = []
+  #   CinerProduction.approved.order(updated_at: :desc).each do |cp|
+  #     if cp.trailer
+  #       videos[cp.id]['trailer'] = cp.trailer
+  #     end
+  #     cp.ciner_production_videos.each do |cpv|
+  #       if cpv.video
+  #         videos[cp.id][cpv.video] = cpv.video
+  #       end
+  #     end
+  #   end
+  #   videos
+  # end
 
   def self.filter_by(collection, params)
     return collection unless params.present?

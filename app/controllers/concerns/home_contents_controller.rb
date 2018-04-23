@@ -13,6 +13,6 @@ module HomeContentsController
 
     expose(:playing_movies) { Movie.current_playing.limit(10) }
     expose(:featured_movies) { Movie.featured(10) }
-    expose(:ciner_productions) { CinerProduction.approved.includes(:user).first(4) }
+    expose(:ciner_productions) { CinerProduction.approved.includes(:user, :ciner_production_videos).first(4) }
   end
 end
