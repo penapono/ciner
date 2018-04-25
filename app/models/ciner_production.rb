@@ -67,7 +67,8 @@ class CinerProduction < ActiveRecord::Base
   before_destroy :destroy_visits
   before_destroy :destroy_notifications
 
-  # Scopes
+  # Scope
+  default_scope { order(updated_at: :desc) }
 
   def self.by_year(year)
     where(year: year)
