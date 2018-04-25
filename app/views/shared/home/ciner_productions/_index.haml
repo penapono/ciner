@@ -11,7 +11,7 @@
 
           .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
             = link_to url_for([role, object]) do
-              = title_str
+              = "Trailer: #{title_str}"
           .ciner-video-user
             .user
               = link_to url_for([role, object.user]) do
@@ -39,7 +39,10 @@
 
     - object.ciner_production_videos.each do |cpv|
       - video = cpv.video
-      - title_str = "#{object.title_str} T#{cpv.season} - E#{cpv.episode}"
+      - if object.serie_production?
+        - title_str = "#{object.title_str} T#{cpv.season} - E#{cpv.episode}"
+      - else
+        - title_str = "#{object.title_str}"
 
       - if count < 4
         - if video
