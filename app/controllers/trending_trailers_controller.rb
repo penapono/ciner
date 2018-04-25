@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TrendingTrailersController < PlatformController
+class TrendingTrailersController < ApplicationController
   include TrendingTrailersBreadcrumb
 
   PER_PAGE = 15

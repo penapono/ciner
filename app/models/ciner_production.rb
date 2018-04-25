@@ -63,6 +63,7 @@ class CinerProduction < ActiveRecord::Base
   enum status: { pending: 0, approved: 1, reproved: 2 }
 
   # Callbacks
+  before_save :update_links
   before_destroy :destroy_visits
   before_destroy :destroy_notifications
 
@@ -224,5 +225,17 @@ class CinerProduction < ActiveRecord::Base
   def destroy_visits
     object = self
     Visit.where("action = 'show' AND controller LIKE ? AND resource_id = ?", "%#{object.class.name.pluralize.downcase}%", object.id).destroy_all
+  end
+
+  # Callbacks
+  def update_links
+    return true if trailer.blank?
+    trailer.gsub!('youtube.com/watch?v=', 'youtube.com/embed/')
+    trailer.gsub!('https://vimeo.com/', 'https://player.vimeo.com/video/')
+    trailer.gsub!('http://vimeo.com/', 'https://player.vimeo.com/video/')
+    trailer.gsub!('www.vimeo.com/', 'https://player.vimeo.com/video/')
+    trailer.gsub!('https://www.vimeo.com/', 'https://player.vimeo.com/video/')
+    trailer.gsub!('http://www.vimeo.com/', 'https://player.vimeo.com/video/')
+    true
   end
 end

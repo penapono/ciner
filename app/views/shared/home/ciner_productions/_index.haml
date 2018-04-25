@@ -3,7 +3,7 @@
   - if count < 4
     - video = object.trailer
     - title_str = object.title_str
-    - if video
+    - if video.include?("youtube.com/embed/") || video.include?("player.vimeo.com")
       - count += 1
       .hidden-xs
         .ciner-movie.col-xs-12.col-sm-6.col-md-3
@@ -45,7 +45,7 @@
         - title_str = "#{object.title_str}"
 
       - if count < 4
-        - if video
+        - if video.include?("youtube.com/embed/") || video.include?("player.vimeo.com")
           - count += 1
           .hidden-xs
             .ciner-movie.col-xs-12.col-sm-6.col-md-3
