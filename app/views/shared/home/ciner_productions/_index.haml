@@ -27,7 +27,7 @@
 
           .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
             = link_to url_for([role, object]) do
-              = title_str
+              = "Trailer: #{title_str}"
           .ciner-video-user
             .user
               = link_to url_for([role, object.user]) do
