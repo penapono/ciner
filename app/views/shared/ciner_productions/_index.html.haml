@@ -15,7 +15,7 @@
           - ciner_productions.each do |object|
             - video = object.trailer
             - title_str = object.title_str
-            - if video
+            - if video.include?("youtube.com/embed/") || video.include?("player.vimeo.com")
               .hidden-xs
                 .ciner-movie.col-xs-12.col-sm-6.col-md-3
                   %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
@@ -55,7 +55,7 @@
               - else
                 - title_str = "#{object.title_str}"
 
-              - if video
+              - if video.include?("youtube.com/embed/") || video.include?("player.vimeo.com")
                 .hidden-xs
                   .ciner-movie.col-xs-12.col-sm-6.col-md-3
                     %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
