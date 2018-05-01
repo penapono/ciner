@@ -9,7 +9,7 @@
         .ciner-movie.col-xs-12.col-sm-6.col-md-3
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
-          .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+          .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: -15px;' }
             = link_to url_for([role, object]) do
               = "Trailer: #{title_str}"
           .ciner-video-user
@@ -25,7 +25,7 @@
         .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
-          .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+          .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px; margin-top: -15px;' }
             = link_to url_for([role, object]) do
               = "Trailer: #{title_str}"
           .ciner-video-user
@@ -51,7 +51,7 @@
             .ciner-movie.col-xs-12.col-sm-6.col-md-3
               %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
-              .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
+              .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: -15px;' }
                 = link_to url_for([role, object]) do
                   = title_str
               .ciner-video-user
@@ -67,7 +67,7 @@
             .ciner-movie.col-xs-12{ style: 'width: 100%; padding-right: 30px;' }
               %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
-              .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px;' }
+              .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 10px; margin-top: -15px;' }
                 = link_to url_for([role, object]) do
                   = title_str
               .ciner-video-user

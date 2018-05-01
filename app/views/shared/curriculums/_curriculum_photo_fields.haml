@@ -1,5 +1,10 @@
 .nested-fields.inline-nested{ data: { nested_fields: '' } }
   .row.margin-top
+    .col-xs-10
+      - f.object.errors.each do |e|
+        %p
+          = e.to_s
+  .row.margin-top
     .col-xs-11
       - if f.object.media.present?
         = link_to f.object.media.file.filename, f.object.media.url, download: ''

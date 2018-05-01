@@ -182,7 +182,7 @@
         %h4.modal-title Indicar para alguém!
       .modal-body
         %p
-          = select_tag 'user_ids', options_for_select(current_user.friends{ |u| [u.name, u.id] }), multiple: true
+          = select_tag 'user_ids', options_from_collection_for_select(current_user.friends, 'id', 'name'), multiple: true
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
           Cancelar

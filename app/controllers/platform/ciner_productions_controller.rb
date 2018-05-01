@@ -5,7 +5,7 @@ module Platform
     include CinerProductionsBreadcrumb
 
     # exposes
-    expose(:ciner_productions) { CinerProduction.approved.includes(:user, :ciner_production_videos) }
+    expose(:ciner_productions) { CinerProduction.approved.includes(:user, :ciner_production_videos).order(updated_at: :desc) }
     expose(:birthday_professionals) { User.birthdays }
     expose(:ciner_production, attributes: :ciner_production_attributes)
 
