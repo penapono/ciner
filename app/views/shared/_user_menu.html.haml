@@ -1,4 +1,4 @@
-- avatar = image_default_path(user.avatar.try(:mini), "user")
+- avatar = image_default_path(user.avatar.try(:thumb), "user")
 - role = current_role(current_user, request.url)
 
 .row{ style: 'margin-left: -75px;' }

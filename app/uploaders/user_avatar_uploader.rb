@@ -31,7 +31,7 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process :crop
-    resize_to_fill(100, 100)
+    resize_to_fill(200, 200)
   end
 
   def crop
