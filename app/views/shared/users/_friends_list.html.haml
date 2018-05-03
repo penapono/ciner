@@ -11,7 +11,7 @@
 
   - friends.first(18).each do |object|
     = link_to url_for([role, object]) do
-      .col-xs-6.col-sm-4.col-md-2.no-padding.friend-info{ style: 'padding: 0px;' }
+      .col-xs-6.col-sm-4.col-md-2.no-padding.friend-info{ style: 'padding: 0px; height: 150px;' }
         - avatar = image_default_path(object.avatar.try(:thumb), "user")
         = image_tag(avatar, class: "img-responsive", style: 'height: 75px; width: 75px; margin: auto;')
         %h5{ style: 'text-align: center' }
