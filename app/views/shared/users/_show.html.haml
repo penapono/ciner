@@ -181,7 +181,7 @@
             %br
             Indicados:
             %strong.wine
-              \-
+              = UserFilmable.where(user: current_user, action: 5).count
 
       = render 'shared/users/collection', role: role
 
@@ -198,9 +198,9 @@
       %button.close{"data-dismiss" => "modal", :type => "button"} ×
       %h4.modal-title
         Nova Produção Independente
-    
+
     .modal-body
-      .row  
+      .row
         .col-xs-offset-2.col-xs-8
           = link_to polymorphic_path([:new, role, :ciner_production], ciner_production_type: 'movie') do
             %button.btn.btn-login{ style: "width: 100%; margin-top: 10px;" }
