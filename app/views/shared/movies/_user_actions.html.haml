@@ -162,29 +162,30 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Coleção disponível apenas para Clássico e Cult!
+        %h4.modal-title Coleção disponível apenas para usuários!
       .modal-body
         %p
           Atenção, seu perfil de assinante não contempla essa funcionalidade.
         %p
-          Aproveite para assinar o Ciner Clássico ou Cult hoje mesmo!
+          Aproveite para fazer seu cadastro hoje mesmo!
         = link_to new_user_registration_path do
-          %strong Quero ser Ciner Clássico ou Cult!
+          %strong Quero me cadastrar
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
 
-#recommendModal.modal.fade{:role => "dialog"}
-  .modal-dialog
-    / Modal content
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Indicar para alguém!
-      .modal-body
-        %p
-          = select_tag 'user_ids', options_from_collection_for_select(current_user.friends, 'id', 'name'), multiple: true
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
-          Cancelar
-        %button.btn.btn-default{ data: { recommend_to: '', action: 'recommend' } }
-          Indicar
+- if current_user
+  #recommendModal.modal.fade{:role => "dialog"}
+    .modal-dialog
+      / Modal content
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title Indicar para alguém!
+        .modal-body
+          %p
+            = select_tag 'user_ids', options_from_collection_for_select(current_user.friends, 'id', 'name'), multiple: true
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+            Cancelar
+          %button.btn.btn-default{ data: { recommend_to: '', action: 'recommend' } }
+            Indicar
