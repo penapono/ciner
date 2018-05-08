@@ -175,7 +175,7 @@
       .col-xs-3.col-md-1
         - cover = image_default_path(object.cover.try(:thumb), "professional")
         / %img.img-responsive{ src: cover, style: 'height: 90px; width: 60px;' }
-        = image_tag(cover, class: "img-responsive", style: 'height: 60px; width: 60px;' )
+        = image_tag(cover, class: "img-responsive", style: 'height: 90px; width: 60px;' )
 
       .col-xs-9.col-md-11
         = link_to url_for([role, object]) do
