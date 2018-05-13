@@ -8,15 +8,25 @@
 //= require views/shared/users/terms
 //= require views/shared/users/plan_chooser
 
-$(function() {
-  'use strict';
-
+$(function(){
   'use strict';
 
   var gCocoonContainer  = $('[data-cocoon-container]');
 
-  $('[data-images]').bind('cocoon:after-insert', updateNestedLinks);
-  $('[data-images]').bind('cocoon:after-remove', updateNestedLinks);
+  updateNestedLinks();
+
+  $(gCocoonContainer).bind('cocoon:after-insert', updateNestedLinks);
+  $(gCocoonContainer).bind('cocoon:after-remove', updateNestedLinks);
+
+  function updateNestedLinks() {
+    var self = $(this),
+        limit = self.data('limit');
+    if (self.find('.nested-fields:visible').length >= limit) {
+      self.find('.links').hide();
+    } else {
+      self.find('.links').show();
+    }
+  }
 
   gCocoonContainer.on('click', '[data-file-select]', function(){
     var container     = $(this).closest('[data-nested-fields]'),
@@ -72,39 +82,9 @@ $(function() {
     minimumResultsForSearch: 50
   });
 
-  $('[data-remote-select]').select2(_remoteDataConfig());
-
-  function _remoteDataConfig() {
-    return {
-      language: 'pt-BR',
-      allowClear: false,
-      minimumInputLength: 3,
-      closeOnSelect: true,
-      ajax: _defaultAjaxParams()
-    }
-  }
-
-  function _defaultAjaxParams() {
-    return {
-      dataType: 'json',
-      delay: 150,
-      data: function (search) {
-        return {
-          search: search
-        };
-      },
-
-      processResults: function (data) {
-        return {
-          results: data
-        };
-      }
-    };
-  }
-
   $('form').on('cocoon:after-insert', function(e, insertedItem) {
     $('.datepicker').mask('99/99/9999');
-    $('.money').mask('000.000.000.000.000,00', {reverse: true});
+    $('.money').mask('000.000.000.000.000,00', { reverse: true });
     $('select').select2({
       theme: "bootstrap",
       minimumResultsForSearch: 50
@@ -139,8 +119,7 @@ $(function() {
         }
       };
     }
-});
-
+  });
 
   $('form').on("change", "#user_state_id", function(event) {
     var self = $(this),
@@ -168,3 +147,5 @@ $(function() {
     });
   });
 });
+
+

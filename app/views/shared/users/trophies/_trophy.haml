@@ -4,6 +4,8 @@
 - trophy = image_path("trophies/#{source}")
 - height = height
 - height ||= "200px"
+- font = font
+- font ||= "14px"
 - description = description
 - description ||= nil
 
@@ -13,7 +15,7 @@
       %img.img-responsive{ src: trophy, style: "width: 84px; height: #{height}; margin: auto" }
   .row
     .col-xs-12
-      .bold{ style: 'text-align: center' }
+      .bold{ style: "text-align: center; font-size: #{font}" }
         = object.name
   - if description
     .row
