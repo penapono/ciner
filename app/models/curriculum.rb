@@ -167,7 +167,7 @@ class Curriculum < ActiveRecord::Base
     curriculum_function_ids = curriculum_curriculum_functions.pluck(:curriculum_function_id)
     curriculum_functions = CurriculumFunction.where(id: curriculum_function_ids)
     return "" unless curriculum_functions
-    curriculum_functions.pluck(:name).to_sentence
+    curriculum_functions.pluck(:text).to_sentence
   end
 
   def age_str
@@ -199,7 +199,7 @@ class Curriculum < ActiveRecord::Base
 
   def height_str
     return if height.blank?
-    "#{height} m"
+    "#{height / 10} m"
   end
 
   def mannequin_str

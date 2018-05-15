@@ -15,7 +15,7 @@
 
   = simple_form_for :filter, url: url_for([role, :curriculums]), method: :get do |f|
     .form-group
-      = f.input :curriculum_function_id, label: false, collection: CurriculumFunction.all, input_html: { class: 'select2 form-field' }, include_blank: 'Profissão'
+      = f.input :curriculum_function_id, label: false, collection: CurriculumFunction.all.collect { |cf| [cf.text, cf.id] }, input_html: { class: 'select2 form-field' }, include_blank: 'Profissão'
 
 
     .form-group
