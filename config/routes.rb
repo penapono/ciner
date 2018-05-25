@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root 'home#index'
 
+  match 'teaser' => 'teaser#index', via: :get
   match 'critics/query' => 'critics#query', via: :get
   match 'events/query' => 'events#query', via: :get
   match 'questions/query' => 'questions#query', via: :get

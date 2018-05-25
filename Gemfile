@@ -114,7 +114,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'spring'
-  gem 'thin'
+  # gem 'thin'
   gem 'letter_opener'
   gem 'rubocop'
   gem 'bullet'
