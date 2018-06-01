@@ -36,7 +36,7 @@ class Critic < ActiveRecord::Base
   # Callbacks
   before_save :update_year
   after_save :update_user_filmable_rating
-  before_destroy :delete_user_filmable_rating
+  before_destroy :destroy_user_filmable_rating
 
   # Aliases
   alias_attribute :title_str, :name

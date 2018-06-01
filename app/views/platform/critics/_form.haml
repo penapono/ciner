@@ -1,7 +1,9 @@
 - role = current_role(current_user, request.url)
 - filmable_type = params[:filmable_type]
+- filmable_type ||= critic.filmable_type
 - filmable_class = filmable_type.constantize
 - filmable_id = params[:filmable_id]
+- filmable_id ||= critic.filmable_id
 - filmable = filmable_class.find(filmable_id) rescue Movie.first
 
 - user_filmable_rating = UserFilmableRating.where(filmable: filmable, user: current_user).first
@@ -33,7 +35,7 @@
   = f.hidden_field :filmable_type, value: params[:filmable_type] || 'Movie'
   = f.hidden_field :filmable_id, value: params[:filmable_id] || nil
   = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :status, value: 2
+  = f.hidden_field :status, value: :approved
   = f.hidden_field :origin, value: current_user.admin? ? :ciner_critic : :user_critic
 
   = render 'shared/form_actions', f: f
