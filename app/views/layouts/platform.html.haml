@@ -2,18 +2,34 @@
 %html
   %head
     %meta{ name:"viewport", content:"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" }
-    %meta{:content => "index, follow", :name => "robots"}/
-    %meta{:content => "index, follow", :name => "googlebot"}/
-    %meta{:content => "noindex, nofollow", :name => "Slurp"}/
-    %meta{:content => "index, follow", :name => "msnbot"}/
-    %meta{:content => "7", "http-equiv" => "Expires"}/
+    %meta{:content => "index, follow", :name => "robots"}
+    %meta{:content => "index, follow", :name => "googlebot"}
+    %meta{:content => "noindex, nofollow", :name => "Slurp"}
+    %meta{:content => "index, follow", :name => "msnbot"}
+    %meta{:content => "7", "http-equiv" => "Expires"}
+    / Facebook Open Graph data
+    %meta{:content => "CINER", :property => "og:title"}
+    %meta{:content => "website", :property => "og:type"}
+    %meta{:content => "https://ciner.com.br", :property => "og:url"}
+    %meta{:content => "logo_home.png", :property => "og:image"}
+    %meta{:content => "O cinéfilo dos tempos modernos.", :property => "og:description"}
+    %meta{:content => "CINER", :property => "og:site_name"}
+    / Twitter Card data
+    %meta{:content => "CINER", :name => "twitter:title"}
+    %meta{:content => "O cinéfilo dos tempos modernos.", :name => "twitter:description"}
+    
+    %meta{:content => "CINER", :property => "title"}
+    %meta{:content => "website", :property => "type"}
+    %meta{:content => "https://ciner.com.br", :property => "url"}
+    %meta{:content => "logo_home.png", :property => "image"}
+    %meta{:content => "O cinéfilo dos tempos modernos.", :property => "description"}
+    %meta{:content => "CINER", :property => "site_name"}
 
     %title
       = full_title(yield(:title))
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = yield(:stylesheet)
-    = csrf_meta_tags
 
     = render 'layouts/symbols'
 
