@@ -99,8 +99,6 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'faker'
-  gem 'guard-jasmine'
-  gem 'jasmine-rails'
   gem 'pry-rails'
 end
 
