@@ -20,6 +20,8 @@ pt-BR:
         ciner_rating: Nota Ciner
         users_rating: Média Geral
 
+        imdb_id: ID no IMDB
+
         # Filmable
 
         genders_str: Categoria

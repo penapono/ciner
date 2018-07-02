@@ -17,7 +17,7 @@
     / Twitter Card data
     %meta{:content => "CINER", :name => "twitter:title"}
     %meta{:content => "O cinéfilo dos tempos modernos.", :name => "twitter:description"}
-    
+
     %meta{:content => "CINER", :property => "title"}
     %meta{:content => "website", :property => "type"}
     %meta{:content => "https://ciner.com.br", :property => "url"}
@@ -30,6 +30,7 @@
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = yield(:stylesheet)
+    = csrf_meta_tags
 
     = render 'layouts/symbols'
 

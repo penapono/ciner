@@ -43,5 +43,13 @@ Metrics/ClassLength:
   CountComments: false
   Max: 500
 
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
 Metrics/LineLength:
   Max: 120

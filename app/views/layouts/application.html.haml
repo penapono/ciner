@@ -30,6 +30,7 @@
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = yield(:stylesheet)
+    = csrf_meta_tags
 
     = render 'layouts/symbols'
 

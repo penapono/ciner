@@ -88,6 +88,7 @@ module Admin
         :omdb_trailer,
         :trailer,
         :tmdb_id,
+        :imdb_id,
         :playing,
         :user_id,
         :lock_updates,

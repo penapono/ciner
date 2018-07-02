@@ -67,48 +67,51 @@ module Tmdb
       object.update_attribute("lock_updates", false) if force_update
 
       unless object.lock_updates?
-        tmdb_result = start_tmdb(object)
+        imdb_id = object.imdb_id
+        if imdb_id.blank?
+          tmdb_result = start_tmdb(object)
 
-        if tmdb_result
-          object.synopsis ||= tmdb_result["overview"]
+          if tmdb_result
+            object.synopsis ||= tmdb_result["overview"]
 
-          object.tmdb_id = tmdb_result["id"]
+            object.tmdb_id = tmdb_result["id"]
 
-          object.title = if is_serie?(object)
-                           tmdb_result["name"]
-                         else
-                           tmdb_result["title"]
-                         end
+            object.title = if is_serie?(object)
+                             tmdb_result["name"]
+                           else
+                             tmdb_result["title"]
+                           end
 
-          object.original_title = if is_serie?(object)
-                                    tmdb_result["original_name"]
-                                  else
-                                    tmdb_result["original_title"]
-                                  end
+            object.original_title = if is_serie?(object)
+                                      tmdb_result["original_name"]
+                                    else
+                                      tmdb_result["original_title"]
+                                    end
 
-        end
+          end
 
-        tmdb_id = object.tmdb_id
+          tmdb_id = object.tmdb_id
 
-        tmdb_object = load_tmdb_object(tmdb_id)
+          tmdb_object = load_tmdb_object(tmdb_id)
 
-        begin
-          object.cover = load_poster(tmdb_object)
-        rescue StandardError
-          object.cover = ""
-        end
+          begin
+            object.cover = load_poster(tmdb_object)
+          rescue StandardError
+            object.cover = ""
+          end
 
-        if is_serie?(object)
-          object.number_of_seasons = tmdb_object["number_of_seasons"]
-          tmdb_url = "#{object_base_url}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
+          if is_serie?(object)
+            object.number_of_seasons = tmdb_object["number_of_seasons"]
+            tmdb_url = "#{object_base_url}/#{tmdb_id}/external_ids?api_key=#{API_KEY}&#{LANGUAGE}"
 
-          tmdb_response = HTTParty.get(tmdb_url)
+            tmdb_response = HTTParty.get(tmdb_url)
 
-          tmdb_result = tmdb_response.parsed_response
+            tmdb_result = tmdb_response.parsed_response
 
-          imdb_id = tmdb_result["imdb_id"]
-        else
-          imdb_id = tmdb_object["imdb_id"]
+            imdb_id = tmdb_result["imdb_id"]
+          else
+            imdb_id = tmdb_object["imdb_id"]
+          end
         end
 
         # OMDB

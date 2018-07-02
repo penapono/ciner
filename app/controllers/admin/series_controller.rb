@@ -101,6 +101,7 @@ module Admin
         :omdb_trailer,
         :trailer,
         :tmdb_id,
+        :imdb_id,
         :number_of_seasons,
         :playing,
         :user_id,
