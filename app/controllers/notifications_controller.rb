@@ -92,7 +92,7 @@ class NotificationsController < ApplicationController
   def on_create_friend_request(sender_id, receiver_id)
     notification_sender = User.find(sender_id)
 
-    notification = Notification.new(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request, answer: :waiting)
+    notification = Notification.find_or_create_by(sender_id: sender_id, receiver_id: receiver_id, notification_type: :friend_request, answer: :waiting)
     if notification.save
       render json: { text: 'Aguardando',
                      next_action: 'cancel_friend_request' }
