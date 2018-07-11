@@ -27,7 +27,7 @@ class CinerProduction < ActiveRecord::Base
 
   # Uploaders
   mount_uploader :cover, CoverUploader
-  validates :cover, file_size: { less_than_or_equal_to: 50.kilobytes }
+  validates :cover, file_size: { less_than_or_equal_to: 200.kilobytes }
 
   # Validations
   validates :original_title,

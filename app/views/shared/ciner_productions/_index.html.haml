@@ -17,7 +17,7 @@
             - title_str = object.title_str
             - if video.include?("youtube.com/embed/") || video.include?("player.vimeo.com")
               .hidden-xs
-                .ciner-movie.col-xs-12.col-sm-6.col-md-3
+                .ciner-movie.col-xs-12.col-sm-6.col-md-3{ style: "margin-bottom: 15px" }
                   %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
                   .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
@@ -57,7 +57,7 @@
 
               - if video.include?("youtube.com/embed/") || video.include?("player.vimeo.com")
                 .hidden-xs
-                  .ciner-movie.col-xs-12.col-sm-6.col-md-3
+                  .ciner-movie.col-xs-12.col-sm-6.col-md-3{ style: "margin-bottom: 15px" }
                     %iframe{:allowfullscreen => "", :frameborder => "0", :height => "187px", :src => video, :width => "100%"}
 
                     .ciner-video-title{ style: 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' }
