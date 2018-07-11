@@ -50,9 +50,10 @@
                   .media-heading.title-section
                     Vídeos
 
-            .ficha
-              .info{ style: 'float: left' }
-                %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: object.ciner_production_videos.first.video.to_s, width: "560"}
+            - object.ciner_production_videos.each do |video|
+              .ficha
+                .info{ style: 'float: left; margin-bottom: 15px;' }
+                  %iframe{ allowfullscreen: "", frameborder: "0", height: "315", src: video.video.to_s, width: "560" }
 
   .row
     - filmable_directors = object.filmable_directors
