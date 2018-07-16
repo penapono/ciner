@@ -26,7 +26,7 @@
           .media-body.text-right.media-middle.see-more
             = link_to url_for([role, :ciner_productions]) do
               = t('see_more')
-      .row{ style: 'margin-top: -15px' }
+      .row
         = render 'shared/home/ciner_productions/index', role: role
 
   .row
