@@ -18,15 +18,11 @@
     = f.input :name, required: true, autofocus: true
   .col-xs-3
     = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
-  .col-xs-3{ class: role_class, data: { role: '' } }
-    = f.input :role, collection: User.localized_roles, input_html: { class: 'form-field' }
 
 .row
-  .col-xs-6
-    = f.input :nickname, required: true, disabled: disabled
   .col-xs-3
     = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
-    
+
 
 .row
   .col-xs-6
@@ -38,18 +34,6 @@
   = t('.address')
 
 .row
-  .col-xs-2{ data: { cep: '', path: api_v1_ceps_path } }
-    = f.input :cep
-  .col-xs-8
-    = f.input :address
-  .col-xs-2
-    = f.input :number
-
-.row
-  .col-xs-2
-    = f.input :complement
-  .col-xs-4
-    = f.input :neighbourhood
   .col-xs-2
     = f.input :state_id, collection: states, selected: f.object.state_id || 1
   .col-xs-4

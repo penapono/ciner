@@ -56,6 +56,10 @@
                   = link_to url_for([role, :questions]) do
                     %li
                       Debate Ciner
+                  - if current_user && current_user.admin?
+                    = link_to url_for([:admin, :settings]) do
+                      %li
+                        Configurações
               .hidden-sm.hidden-md.hidden-lg.hidden-xl
                 %ul.dropdown-menu.vertical
                   = link_to url_for([role, :movies]) do
@@ -76,6 +80,10 @@
                   = link_to url_for([role, :questions]) do
                     %li
                       Debate Ciner
+                  - if current_user && current_user.admin?
+                    = link_to url_for([:admin, :settings]) do
+                      %li
+                        Configurações
 
         .col-xs-3{ style: "font-size: 22px;" }
           .row

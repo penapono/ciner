@@ -9,16 +9,10 @@
       = f.input :name, required: true, autofocus: true
     .col-xs-12.col-sm-3
       = f.input :gender, collection: User.localized_genders, input_html: { class: 'form-field' }
-    .hidden{ data: { role: '' } }
-      = f.input :role, collection: User.localized_roles, input_html: { class: 'form-field' }
 
   .row
-    .col-xs-12.col-sm-6
-      = f.input :nickname, required: true
     .col-xs-12.col-sm-3
       = f.input :birthday, as: :string, input_html: { value: (localize(f.object.birthday) if f.object.birthday), class: 'datepicker' }
-    .hidden
-      = f.input :registered_at, as: :string, input_html: { value: localize(Date.today) }
 
   .row
     .col-xs-12.col-sm-6
@@ -30,18 +24,6 @@
     = t('.address')
 
   .row
-    .col-xs-12.col-sm-2{ data: { cep: '', path: api_v1_ceps_path } }
-      = f.input :cep
-    .col-xs-9.col-sm-8
-      = f.input :address
-    .col-xs-3.col-sm-2
-      = f.input :number
-
-  .row
-    .col-xs-12.col-sm-2
-      = f.input :complement
-    .col-xs-12.col-sm-4
-      = f.input :neighbourhood
     .col-xs-12.col-sm-2
       = f.input :state_id, collection: states, include_blank: 'Selecione um Estado'
     .col-xs-12.col-sm-4

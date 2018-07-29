@@ -40,14 +40,11 @@ class User < ActiveRecord::Base
   # Validations
   validates :email,
             :name,
-            :birthday,
-            :gender,
             :role,
-            :nickname,
             :terms_of_use,
             presence: true
 
-  validates_uniqueness_of :nickname, :email, conditions: -> { where(deleted_at: nil) }
+  validates_uniqueness_of :email, conditions: -> { where(deleted_at: nil) }
   validates_uniqueness_of :cpf, allow_blank: true, allow_nil: true
 
   validates_presence_of :password_confirmation, on: :create
@@ -89,9 +86,22 @@ class User < ActiveRecord::Base
     if user = User.find_by(provider: auth.provider, uid: auth.uid)
       user
     elsif user = User.find_by(email: auth.info.email, provider: nil, uid: nil)
-      user.tap { |u| u.update(provider: auth.provider, uid: auth.uid, email: auth.info.email) }
+      user.tap { |u| u.update(provider: auth.provider, uid: auth.uid, email: auth.info.email, remote_avatar_url: auth.info.image) }
     else
-      User.new
+      gender = auth.extra.raw_info.gender == "male" ? 0 : nil
+      gender ||= auth.extra.raw_info.gender == "female" ? 1 : nil
+
+      user = User.find_or_create_by(email: auth.info.email,
+                                    name: auth.info.first_name + " " + auth.info.last_name,
+                                    provider: auth.provider,
+                                    uid: auth.uid,
+                                    gender: gender,
+                                    role: :free,
+                                    terms_of_use: true)
+      user.password = user.password_confirmation = Devise.friendly_token.first(8)
+      user.save
+      user.tap { |u| u.update(remote_avatar_url: auth.info.image) }
+      user
     end
   end
 
@@ -238,8 +248,8 @@ class User < ActiveRecord::Base
   end
 
   def registered_at_str
-    return "Não informado" unless registered_at
-    I18n.localize(registered_at)
+    return "Não informado" unless created_at
+    I18n.localize(created_at, format: :shorter)
   end
 
   def gender_str
@@ -349,7 +359,7 @@ class User < ActiveRecord::Base
 
   # before_save
   def update_age
-    self.age = 0 unless birthday
+    return unless birthday
     now = Time.now.utc.to_date
     self.age =
       now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)
