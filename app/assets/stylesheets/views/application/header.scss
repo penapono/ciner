@@ -53,7 +53,7 @@ span.register a {
 }
 
 .banner {
-  // background: asset-url('banner_home.jpg') no-repeat top center;
+  height: 60px;
 }
 
 .banner-front {
@@ -182,8 +182,11 @@ ul.menu li:hover:before {
   }
 
   a,
-  a:hover {
+  a:hover,
+  a:active,
+  a:visited {
     color: white;
+    text-decoration: none !important;
   }
 
 }
@@ -247,6 +250,7 @@ ul.menu li:hover:before {
     margin: 0px;
     list-style: none;
     width: 600px;
+    margin-top: 8px;
 
     li {
       display: inline;
@@ -279,6 +283,7 @@ ul.menu li:hover:before {
     margin: 0px;
     list-style: none;
     width: 200px;
+    margin-top: 8px;
 
     li {
       display: block;

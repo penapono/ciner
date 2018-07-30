@@ -53,7 +53,7 @@
     - if extended_container?
       = yield
     - else
-      .container
+      .container.main
         = yield
 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

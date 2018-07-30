@@ -1,6 +1,5 @@
 - role = current_role(current_user, request.url)
 
-/ %footer
 /   .container{ style: 'width: 100%' }
 /     / Desktop
 /     .hidden-xs
@@ -8,7 +7,6 @@
 /     / Mobile
 /     .hidden-sm.hidden-md.hidden-lg.hidden-xl
 /       = render 'layouts/mobile_footer', role: role
-
 .copyright
   .container
     .row
