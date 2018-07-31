@@ -1,23 +1,22 @@
 - filmable = critic.filmable
 - cover = image_default_path(filmable.cover.mini, "movie")
 
-.row
-  .review-item.col-xs-12.col-sm-12
-    .movie-poster-item{ style: 'width: 133px; height: 200px; float: left; margin-right: 10px;' }
-      .thumb
-        / %img.img-responsive{ src: cover, style: 'width: 133px; height: 200px;' }
-        = image_tag(cover, class: "img-responsive", style: 'height: 200px; width: 133px;')
-    .critic-content{ style: 'display:inline; float: left; width: 60%; padding-top: 0px; margin-top: -12px;' }
+.review-item.col-xs-12.col-sm-6
+  .movie-poster-item{ style: 'width: 100%; margin-bottom: 10px; max-height: 250px' }
+    .thumb
       = link_to url_for([role, critic]) do
-        %h4
-          = filmable.title_str
-      %span.original-title
-        = filmable.original_title
-      .resume
-        %p
-          = critic.content.gsub(/\n/, '<br/>').html_safe
-      %p
-        = link_to url_for([role, critic.user]) do
-          = critic.user_nickname
-        em
-        = critic.date_str
+        = image_tag(cover, class: "img-responsive", style: 'margin-right: 0px; margin-left: 0px; width: 100%')
+  / .critic-content{ style: 'display:inline; float: left; width: 60%; padding-top: 0px; margin-top: -12px;' }
+  /   = link_to url_for([role, critic]) do
+  /     %h4
+  /       = filmable.title_str
+  /   %span.original-title
+  /     = filmable.original_title
+  /   .resume
+  /     %p
+  /       = critic.content.gsub(/\n/, '<br/>').html_safe
+  /   %p
+  /     = link_to url_for([role, critic.user]) do
+  /       = critic.user_nickname
+  /     em
+  /     = critic.date_str

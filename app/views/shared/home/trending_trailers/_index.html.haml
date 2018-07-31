@@ -1,4 +1,4 @@
-.col-xs-12.col-md-8.ciner-videos{ style: 'margin-top: -10px' }
+.col-xs-12.ciner-videos
   .title-separator
     .media
       .media-left.media-middle
@@ -11,7 +11,7 @@
         = link_to url_for([role, :trending_trailers]) do
           = t('see_more')
 
-  .row
+  .row{ style: 'margin-right: 0px;' }
     - trending_trailers.each do |object|
       .hidden-xs
         .ciner-movie.col-xs-12.col-sm-6.col-md-4

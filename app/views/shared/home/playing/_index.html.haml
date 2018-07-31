@@ -1,4 +1,6 @@
 - role = role
+- see_more_url ||= url_for([role, :movies, :playing])
+- title ||= "Em Cartaz"
 
 / SECTION POSTER
 .section-poster
@@ -9,9 +11,9 @@
           %use{"xlink:href" => "#filme"}/
       .media-body.media-bottom
         .media-heading.title-section
-          Filmes em Cartaz
+          = title
       .media-body.text-right.media-middle.see-more.see-more
-        = link_to url_for([role, :movies, :playing]) do
+        = link_to see_more_url do
           = t('see_more')
 
   - if role.blank?

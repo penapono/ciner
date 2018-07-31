@@ -2,17 +2,22 @@
 
 .container.content
   .row{ style: 'margin-top: 10px;' }
-    .col-xs-12.col-md-8
+    .col-xs-12.col-md-6
       .row{ data: { slider: { playing: '' } } }
         .col-xs-12
           = render 'shared/home/playing/index', role: role, slider_movies: playing_movies
 
       .row{ data: { slider: { playing: '' } } }
         .col-xs-12
-          = render 'shared/home/featured/index', role: role, slider_movies: featured_movies
+          = render 'shared/home/playing/index', role: role, slider_movies: playing_soon_filmables, see_more_url: url_for([role, :movies, :playing_soon]), title: "Em Breve"
 
-    .col-xs-12.col-md-4
-      = render 'shared/home/broadcasts/index', role: role
+    .col-xs-12.col-md-6
+      .row{ data: { slider: { playing: '' } } }
+        .col-xs-12
+          = render 'shared/home/playing/index', role: role, slider_movies: playing_series, see_more_url: url_for([role, :series, :playing]), title: "Últimas Temporadas lançadas"
+
+      .row{ data: { slider: { playing: '' } } }
+        = render 'shared/home/trending_trailers/index', role: role
   .row
     .col-xs-12.ciner-videos.ciner-productions
       .title-separator
@@ -29,34 +34,9 @@
       .row
         = render 'shared/home/ciner_productions/index', role: role
 
-  .row
-    .col-xs-12.col-md-4.advertise
-      = link_to "https://lista.mercadolivre.com.br/_CustId_3955851", target: "_blank" do
-        %figure
-          / %img.img-responsive{ src: image_path("default/movie/image.jpg"), style: 'height: 265px; width: 360px;' }
-          = image_tag("banners/first.png", class: "img-responsive", style: 'height: auto; max-height: 360px; width: 100%;' )
-
-    = render 'shared/home/trending_trailers/index', role: role
-
   .row{ style: 'margin-top: 20px;' }
     = render 'shared/home/critics/index', role: role
 
     = render 'shared/home/events/index', role: role
-
-    .col-xs-12.col-sm-12.col-md-12.col-lg-3{ style: 'margin-top: 35px;' }
-      .row
-        .col-xs-12.col-sm-6.col-md-offset-2.col-md-4.col-lg-offset-0.col-lg-12.advertises
-          = link_to "https://www.presentenafoto.com.br/", target: "_blank" do
-            %figure
-              / %img.img-responsive{ src: image_path("second.png"), style: 'height: auto; width: 100%; margin-bottom: 15px;' }
-              = image_tag("banners/second.png", class: "img-responsive", style: 'height: auto; width: 100%; margin-bottom: 15px;' )
-        .col-xs-12.col-sm-6.col-md-4.col-lg-12.advertises
-          = link_to "http://draftyourself.com.br", target: "_blank" do
-            %figure
-              / %img.img-responsive{ src: image_path("banners/third.png"), style: 'height: auto; width: 100%;' }
-              = image_tag("banners/third.png", class: "img-responsive", style: 'height: auto; width: 100%;' )
-
-  .row
-    = render 'shared/home/questions/index', role: role
 
     = render 'shared/home/professionals/index', role: role

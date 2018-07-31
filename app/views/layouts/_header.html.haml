@@ -25,65 +25,40 @@
     /         %i.fa.fa-instagram{ style: 'font-size: 18px; margin-right: 10px;' }
     .container{ data: { container: { fixed: '' } } }
       .row{ style: 'margin-bottom: 0px;' }
-        .col-xs-2
+        .col-xs-3
           = link_to url_for([role, :root]) do
             .logo
               %figure
                 = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'height: 40px; width: 120px; margin: auto; margin-bottom: 10px;')
-        .col-xs-3
+        .col-xs-2
           %ul.menu.row
             %li.dropdown
               .dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 ACESSAR
                 %b.caret
-              .hidden-xs
-                %ul.dropdown-menu.horizontal
-                  = link_to url_for([role, :movies]) do
+              %ul.dropdown-menu.vertical
+                = link_to url_for([role, :movies]) do
+                  %li
+                    Filmes
+                = link_to url_for([role, :series_index]) do
+                  %li
+                    Séries
+                = link_to url_for([role, :events]) do
+                  %li
+                    Agenda
+                = link_to url_for([role, :critics]) do
+                  %li
+                    Críticas
+                = link_to url_for([role, :broadcasts]) do
+                  %li
+                    Notícias
+                = link_to url_for([role, :questions]) do
+                  %li
+                    Debate Ciner
+                - if current_user && current_user.admin?
+                  = link_to url_for([:admin, :settings]) do
                     %li
-                      Filmes
-                  = link_to url_for([role, :series_index]) do
-                    %li
-                      Séries
-                  = link_to url_for([role, :events]) do
-                    %li
-                      Agenda
-                  = link_to url_for([role, :critics]) do
-                    %li
-                      Críticas
-                  = link_to url_for([role, :broadcasts]) do
-                    %li
-                      Notícias
-                  = link_to url_for([role, :questions]) do
-                    %li
-                      Debate Ciner
-                  - if current_user && current_user.admin?
-                    = link_to url_for([:admin, :settings]) do
-                      %li
-                        Configurações
-              .hidden-sm.hidden-md.hidden-lg.hidden-xl
-                %ul.dropdown-menu.vertical
-                  = link_to url_for([role, :movies]) do
-                    %li
-                      Filmes
-                  = link_to url_for([role, :series_index]) do
-                    %li
-                      Séries
-                  = link_to url_for([role, :events]) do
-                    %li
-                      Agenda
-                  = link_to url_for([role, :critics]) do
-                    %li
-                      Críticas
-                  = link_to url_for([role, :broadcasts]) do
-                    %li
-                      Notícias
-                  = link_to url_for([role, :questions]) do
-                    %li
-                      Debate Ciner
-                  - if current_user && current_user.admin?
-                    = link_to url_for([:admin, :settings]) do
-                      %li
-                        Configurações
+                      Configurações
 
         .col-xs-3{ style: "font-size: 22px;" }
           .row
