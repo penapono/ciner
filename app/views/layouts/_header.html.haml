@@ -33,28 +33,22 @@
         .col-xs-2
           %ul.menu.row
             %li.dropdown
-              .dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              .dropdown-toggle{"data-toggle" => "dropdown", :href => "#", style: "cursor: pointer"}
                 ACESSAR
                 %b.caret
-              %ul.dropdown-menu.vertical
-                = link_to url_for([role, :movies]) do
-                  %li
-                    Filmes
-                = link_to url_for([role, :series_index]) do
-                  %li
-                    Séries
+              %ul.dropdown-menu.vertical{ style: 'width: 300px' }
                 = link_to url_for([role, :events]) do
                   %li
-                    Agenda
+                    Agenda do Cinema
+                = link_to url_for([role, :ciner_productions]) do
+                  %li
+                    Produções Independentes
+                = link_to url_for([role, :curriculums]) do
+                  %li
+                    Busca de Profissionais
                 = link_to url_for([role, :critics]) do
                   %li
                     Críticas
-                = link_to url_for([role, :broadcasts]) do
-                  %li
-                    Notícias
-                = link_to url_for([role, :questions]) do
-                  %li
-                    Debate Ciner
                 - if current_user && current_user.admin?
                   = link_to url_for([:admin, :settings]) do
                     %li

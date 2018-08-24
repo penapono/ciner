@@ -1,6 +1,7 @@
 - role = role
 - see_more_url ||= url_for([role, :movies, :playing])
 - title ||= "Em Cartaz"
+- icon ||= "#filme"
 
 / SECTION POSTER
 .section-poster
@@ -8,7 +9,7 @@
     .media
       .media-left.media-middle
         %svg.icon-title
-          %use{"xlink:href" => "#filme"}/
+          %use{"xlink:href" => "#{icon}"}/
       .media-body.media-bottom
         .media-heading.title-section
           = title

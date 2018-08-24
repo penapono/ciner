@@ -14,7 +14,7 @@
     .col-xs-12.col-md-6
       .row{ data: { slider: { playing: '' } } }
         .col-xs-12
-          = render 'shared/home/playing/index', role: role, slider_movies: playing_series, see_more_url: url_for([role, :series, :playing]), title: "Últimas Temporadas lançadas"
+          = render 'shared/home/playing/index', role: role, slider_movies: playing_series, see_more_url: url_for([role, :series, :playing]), title: "Últimas Temporadas", icon: "#serie"
 
       .row{ data: { slider: { playing: '' } } }
         = render 'shared/home/trending_trailers/index', role: role
