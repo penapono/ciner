@@ -56,10 +56,11 @@
 
         .col-xs-3{ style: "font-size: 22px;" }
           .row
-            .col-xs-10
-              = simple_form_for :searches, url: searches_path, method: :get, class: 'navbar-form', role: :search do |f|
-                = text_field_tag :search, params[:search], placeholder: 'Buscar'
-                .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();", style: 'font-size: 18px' }
+            .hidden-xs.hidden-sm
+              .col-xs-10
+                = simple_form_for :searches, url: searches_path, method: :get, class: 'navbar-form', role: :search do |f|
+                  = text_field_tag :search, params[:search], placeholder: 'Buscar'
+                  .glyphicon.glyphicon-search{ onclick: "$(this).closest('form').submit();", style: 'font-size: 18px' }
             - if current_user
               .col-xs-offset-1.col-xs-1{ style: 'padding-left: 15px; margin-top: -3px; z-index: 9999' }
                 = link_to url_for([role, :notifications]) do
@@ -78,45 +79,3 @@
 
           = link_to "https://www.instagram.com/sejaciner/", target: '_blank' do
             %i.fa.fa-instagram{ style: 'font-size: 18px; margin-right: 10px;' }
-
-  / BANNER
-  / .banner-front
-  /   .container
-  /     / SECTION LOGIN
-  /     .row.section-login
-  /       = link_to url_for([role, :root]) do
-  /         .col-xs-offset-1.col-xs-10.col-sm-offset-0.col-sm-6.col-md-offset-1.col-md-6.logo
-  /           %figure
-  /             = image_tag("logo_home.png", alt: "CINER", class: "img-responsive", style: 'width: 62%; height: 62%; margin-top: 10px; margin: auto;')
-  /       = render 'layouts/login'
-
-  /     / SECTION LOGIN
-  /     / MENU
-  /     .row{ :style => "margin: 20px 0;" }
-  /       .col-xs-12
-  /         %nav
-  /           #mainmenu.collapse.navbar-collapse
-  /             %ul.menu.row{ style: 'padding-left: 0px;' }
-  /               %li.col-xs-2{ class: active_menu_class("movies") }
-  /                 = link_to "FILMES", url_for([role, :movies])
-  /               %li.col-xs-2{ class: active_menu_class("series") }
-  /                 = link_to "SÉRIES", url_for([role, :series_index])
-  /               %li.col-xs-2{ class: active_menu_class("events") }
-  /                 = link_to "AGENDA", url_for([role, :events])
-  /               %li.col-xs-2{ class: active_menu_class("critics") }
-  /                 = link_to "CRÍTICAS", url_for([role, :critics])
-  /               %li.col-xs-2{ class: active_menu_class("broadcasts") }
-  /                 = link_to "NOTÍCIAS", url_for([role, :broadcasts])
-  /               %li.col-xs-2{ class: active_menu_class("questions") }
-  /                 = link_to "DEBATE CINER", url_for([role, :questions])
-  /     / MENU
-  /   .search-field{ :style => "margin-top: 5px;" }
-  /     .col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8
-  /       = simple_form_for :searches, url: searches_path, method: :get do |f|
-  /         .form-group.row{ style: 'margin-left: -30px;' }
-  /           .col-xs-offset-2.col-xs-6
-  /             %input#search.form-control{:name => "search", :placeholder => "Buscar", :type => "text", style: 'border-top-right-radius: 0;  border-bottom-right-radius: 0'}/
-  /           .col-xs-2{ style: 'margin-left: -30px'}
-  /             %button.btn.btn-login{:type => "submit", style: 'border-top-left-radius: 0; border-bottom-left-radius: 0; height: 34px;' }
-  /               buscar
-  /               %span.icon.icon-button
