@@ -1,0 +1,20 @@
+.title-separator
+  .media
+    .media-left.media-middle
+      %svg.icon-title
+        %use{"xlink:href" => "#perfil"}/
+    .media-body.media-bottom
+      .media-heading.title-section
+        Aniversariantes
+    .media-body.text-right.media-middle.see-more
+      = link_to url_for([role, :trending_trailers]) do
+        = t('see_more')
+
+.row{ style: 'margin-right: 0px;' }
+  - birthday_professionals.each do |object|
+    - avatar = image_default_path(object.avatar, "professional")
+    = link_to url_for([role, object]) do
+      .col-xs-6{ class: 'diretor', "data-mh": 'atores-principais' }
+        = image_tag(avatar, class: "img-responsive", style: 'width: 100px; height: 150px; margin: auto')
+        %h5{ style: 'text-align: center' }
+          = object.name

@@ -7,6 +7,7 @@ module HomeContentsController
     # Exposes
     expose(:events) { Event.all_next.first(4) }
     expose(:critics) { Critic.where(quick: false).ordered_by_status.first(6) }
+    expose(:birthday_professionals) { Professional.birthdays.first(2) }
     expose(:questions) { Question.includes(:user).top_questions }
     expose(:broadcasts) { Broadcast.top_broadcasts.first(4) }
     expose(:trending_trailers) { TrendingTrailer.includes(:filmable).first(3) }
