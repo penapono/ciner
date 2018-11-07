@@ -21,14 +21,6 @@ Rails.application.routes.draw do
   # admin: rotas de administração - ciner
   # platform: rotas da plataforma - público
 
-  # get "/seja_ciner", to: "plans#index", as: "plans"
-  # get "/movies", to: "movies#index", as: "movies"
-  # get "/debates", to: "debates#index", as: "debates"
-  # get "/news", to: "news#index", as: "news"
-  # get "/newdetail", to: "news#detail", as: "newdetail"
-  # get "/cinervideos", to: "cinervideos#index", as: "cinervideos"
-  # get "/professionals", to: "professionals#index", as: "professionals"
-  # get "/criticdetail", to: "critics#detail", as: "criticdetail"
   get '/contract', to: 'contracts#index'
   get '/privacy', to: 'privacies#index'
   get '/mission', to: 'missions#index'
@@ -78,6 +70,7 @@ Rails.application.routes.draw do
     end
   end
 
+  match "professionals/birthdays", to: "professionals#birthdays", via: :get
   resources :professionals, only: %i[index show]
   resources :curriculums, only: %i[index show]
   resources :users, only: %i[update show edit index destroy] do

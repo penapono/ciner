@@ -19,6 +19,10 @@ class ProfessionalsController < ApplicationController
     professional.api_transform
   end
 
+  def birthdays
+    self.professionals = Professional.where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
+  end
+
   private
 
   def resource
