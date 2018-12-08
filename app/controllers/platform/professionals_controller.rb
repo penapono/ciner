@@ -8,7 +8,10 @@ module Platform
     expose(:professionals) { Professional.all }
     expose(:professional, attributes: :professional_attributes)
     expose(:broadcasts) { professional.broadcasts }
-
+    expose(:birthday_professionals) do
+      Professional
+        .where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
+    end
     expose(:set_functions) { SetFunction.all }
 
     PER_PAGE = 10
@@ -20,6 +23,9 @@ module Platform
     def show
       force_update = params[:force_update].present? && params[:force_update] == "true" ? true : false
       professional.api_transform(force_update)
+    end
+
+    def birthdays
     end
 
     private

@@ -5,6 +5,10 @@ class ProfessionalsController < ApplicationController
 
   # exposes
   expose(:professionals) { Professional.all }
+  expose(:birthday_professionals) do
+    Professional
+      .where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
+  end
   expose(:professional, attributes: :professional_attributes)
   expose(:broadcasts) { professional.broadcasts }
   expose(:set_functions) { SetFunction.all }
@@ -20,7 +24,6 @@ class ProfessionalsController < ApplicationController
   end
 
   def birthdays
-    self.professionals = Professional.where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
   end
 
   private
