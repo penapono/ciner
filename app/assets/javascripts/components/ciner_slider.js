@@ -15,11 +15,11 @@ function CinerSlider() {
 
   function _sliderize(aContainer) {
     var currentSliderCount = 0;
-    var videoCount = aContainer.find(".slider-container").children().length;
+    var videoCount = aContainer.find(".slider-container").children().length / 2;
     var showCount = 1;
     var sliderCount = videoCount / showCount;
     var controlsWidth = 40;
-    var scollWidth = 0;
+    var scrollWidth = 0;
     var slideWidth = 140;
     var maxLeft = 0;
     var minLeft = 0;
@@ -32,7 +32,7 @@ function CinerSlider() {
     var slide = aContainer.find(".slide");
 
     //counts
-    var scollWidth = 0;
+    var scrollWidth = 0;
 
     //sizes
     var windowWidth = win.width();
@@ -42,10 +42,8 @@ function CinerSlider() {
       showCount = 2;
     } else if (windowWidth >= 414 && windowWidth <= 768) {
       showCount = 3;
-    } else if (windowWidth >= 768 && windowWidth <= 900) {
-      showCount = 4;
     } else {
-      showCount = 5;
+      showCount = 4;
     }
 
     sliderCount = videoCount / showCount;
@@ -76,24 +74,25 @@ function CinerSlider() {
     // controls(sliderFrame, frameWidth);
 
     sliderFrame.on("click", ".next", function() {
-      scollWidth = scollWidth + frameWidth;
+      scrollWidth = scrollWidth + frameWidth;
 
       var self = $(this),
         sliderContainer = sliderFrame.find('.slider-container');
 
-      if (scollWidth > maxLeft) {
-        scollWidth = maxLeft;
+      if (scrollWidth > maxLeft) {
+        scrollWidth = maxLeft;
       }
 
       sliderContainer.animate({
-        left: -scollWidth
+        left: -scrollWidth
       }, 300, function() {
         if (currentSliderCount >= sliderCount) {
+          console.log("maior");
           sliderContainer.css("left", 0);
           currentSliderCount = 0;
-          scollWidth = 0;
+          scrollWidth = 0;
         } else {
-          if (scollWidth >= maxLeft) {
+          if (scrollWidth >= maxLeft) {
             currentSliderCount = sliderCount;
           }
           currentSliderCount++;
@@ -102,25 +101,25 @@ function CinerSlider() {
     });
 
     sliderFrame.on("click", ".prev", function() {
-      scollWidth = scollWidth - frameWidth;
+      scrollWidth = scrollWidth - frameWidth;
 
       var self = $(this),
         sliderContainer = sliderFrame.find('.slider-container');
 
-      if (scollWidth < 0) {
-        scollWidth = minLeft;
+      if (scrollWidth < 0) {
+        scrollWidth = minLeft;
       }
 
       sliderContainer.animate({
-        left: -scollWidth
+        left: -scrollWidth
       }, 300, function() {
         if (currentSliderCount < 2) {
           sliderContainer.css("left", 0);
           currentSliderCount = 0;
-          scollWidth = 0;
+          scrollWidth = 0;
         } else {
           currentSliderCount--;
-          sliderContainer.css("left", -scollWidth);
+          sliderContainer.css("left", -scrollWidth);
         }
       });
     });
