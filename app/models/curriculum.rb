@@ -160,6 +160,7 @@ class Curriculum < ActiveRecord::Base
 
   def title_str
     return user_name if play_name.blank?
+
     play_name
   end
 
@@ -167,11 +168,13 @@ class Curriculum < ActiveRecord::Base
     curriculum_function_ids = curriculum_curriculum_functions.pluck(:curriculum_function_id)
     curriculum_functions = CurriculumFunction.where(id: curriculum_function_ids)
     return "" unless curriculum_functions
+
     curriculum_functions.pluck(:text).to_sentence
   end
 
   def age_str
     return "" if user_age.blank?
+
     "#{user_age} anos"
   end
 
@@ -181,11 +184,13 @@ class Curriculum < ActiveRecord::Base
 
   def biography_str
     return user_biography if biography.blank?
+
     biography
   end
 
   def drt_str
     return "Sim" if drt
+
     "Não"
   end
 
@@ -199,11 +204,13 @@ class Curriculum < ActiveRecord::Base
 
   def height_str
     return if height.blank?
+
     "#{height / 10} m"
   end
 
   def mannequin_str
     return if mannequin.blank?
+
     mannequin
   end
 
@@ -213,6 +220,7 @@ class Curriculum < ActiveRecord::Base
     return "Parda" if brown?
     return "Amarela" if yellow?
     return "Indígena" if indigenous?
+
     ""
   end
 

@@ -9,6 +9,7 @@ module Admin
 
       def index
         return if friends.blank?
+
         self.friends = paginated_friends
       end
 

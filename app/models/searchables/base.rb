@@ -45,6 +45,7 @@ module Searchables
         results = model.search_scope(user).where(search_expression, search: search)
 
         return results.limit(limit) if limit
+
         results
       end
 
@@ -54,7 +55,7 @@ module Searchables
       end
 
       def self.check_for_date_param(search_term)
-        has_date = search_term.match(/\d{2}\/\d{2}\/\d{4}/).present?
+        has_date = search_term.match(%r{\d{2}/\d{2}/\d{4}}).present?
         search_term = search_term.split('/').reverse.join('-') if has_date
         search_term
       end

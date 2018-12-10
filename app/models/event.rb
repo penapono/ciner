@@ -56,6 +56,7 @@ class Event < ActiveRecord::Base
 
   def self.by_event_in_time(event_in_time)
     return all_past if event_in_time == "past"
+
     all_next
   end
 
@@ -83,6 +84,7 @@ class Event < ActiveRecord::Base
   def date_str
     return event_date_str if end_date.blank?
     return event_month_date_str if event_date == end_date
+
     "#{event_date_str} a #{end_date_str}"
   end
 
@@ -90,6 +92,7 @@ class Event < ActiveRecord::Base
     return "" if start_time.blank? && end_time.blank?
     return "às #{start_time_str}" if end_time.blank?
     return "às #{end_time_str}" if start_time.blank?
+
     "das #{start_time_str} às #{end_time_str}"
   end
 
@@ -121,6 +124,7 @@ class Event < ActiveRecord::Base
     today = Date.today
     return '' if event_date < today && !end_date
     return 'acontecendo' if event_date == end_date && event_date.month == today.month
+
     if (end_date.blank? && event_date == today) ||
        (!end_date.blank? && event_date <= today && today <= end_date)
       now = DateTime.now
@@ -134,6 +138,7 @@ class Event < ActiveRecord::Base
       end
     end
     return 'Em breve' if (event_date - today) <= 30 && (event_date - today) > 0
+
     ''
   end
 end

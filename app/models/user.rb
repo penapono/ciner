@@ -249,16 +249,19 @@ class User < ActiveRecord::Base
 
   def registered_at_str
     return "Não informado" unless created_at
+
     I18n.localize(created_at, format: :shorter)
   end
 
   def gender_str
     return "Não informado" unless gender
+
     User.human_attribute_name("gender.#{gender}")
   end
 
   def role_str
     return "Não informado" unless role
+
     User.human_attribute_name("role.#{role}")
   end
 
@@ -266,6 +269,7 @@ class User < ActiveRecord::Base
     return name if nickname.blank? && !admin?
     return "#{name} (CINER)" if nickname.blank? && admin?
     return "#{nickname} (CINER)" if admin?
+
     nickname
   end
 
@@ -341,6 +345,7 @@ class User < ActiveRecord::Base
     return "" unless city || state
     return "#{city_name} - #{state_name}" if city && state
     return city_name if city
+
     state_name if state
   end
 
@@ -353,6 +358,7 @@ class User < ActiveRecord::Base
   # before_save
   def update_address
     return unless city
+
     self.state_id = city.state.id
     self.country_id = state.country.id
   end
@@ -360,6 +366,7 @@ class User < ActiveRecord::Base
   # before_save
   def update_age
     return unless birthday
+
     now = Time.now.utc.to_date
     self.age =
       now.year - birthday.year - (birthday.to_date.change(year: now.year) > now ? 1 : 0)

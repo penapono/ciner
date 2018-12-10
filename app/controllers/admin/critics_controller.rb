@@ -18,6 +18,7 @@ module Admin
 
     def index
       return if critics.blank?
+
       self.critics = paginated_critics
     end
 

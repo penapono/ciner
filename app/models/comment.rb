@@ -46,6 +46,7 @@ class Comment < ActiveRecord::Base
 
   def spoiler_str
     return Comment.human_attribute_name("spoiler.has_spoiler") if spoiler
+
     Comment.human_attribute_name("spoiler.spoiler_free")
   end
 

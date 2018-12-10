@@ -26,26 +26,31 @@ module UserActionable
 
     def watched_str
       return "1 assistiu" if watched_count == 1
+
       "#{watched_count} assistiram"
     end
 
     def want_to_see_str
       return "1 quer ver" if want_to_see_count == 1
+
       "#{want_to_see_count} querem ver"
     end
 
     def collection_str
       return "1 tem na coleção" if collection_count == 1
+
       "#{collection_count} tem na coleção"
     end
 
     def favorite_str
       return "1 favoritou" if favorite_count == 1
+
       "#{favorite_count} favoritaram"
     end
 
     def recommend_str
       return "1 indica" if recommend_count == 1
+
       "#{recommend_count} indicam"
     end
   end

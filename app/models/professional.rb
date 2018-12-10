@@ -118,6 +118,7 @@ class Professional < ActiveRecord::Base
     birthday_professionals = where("MONTH(birthday) = ? and DAY(birthday) = ?", Date.today.month, Date.today.day)
     featured_birthdays = birthday_professionals.featured(6)
     return featured_birthdays if featured_birthdays.count >= 6
+
     birthday_professionals.limit(6 - featured_birthdays.count) + featured_birthdays
   end
 
@@ -127,6 +128,7 @@ class Professional < ActiveRecord::Base
 
   def gender_str
     return "Não informado" unless gender
+
     User.human_attribute_name("gender.#{gender}")
   end
 
@@ -164,6 +166,7 @@ class Professional < ActiveRecord::Base
 
   def tmdb_gender(tmdb)
     return 0 if tmdb == 2
+
     1
   end
 
@@ -299,6 +302,7 @@ class Professional < ActiveRecord::Base
 
   def update_address
     return unless city
+
     self.state_id = city.state.id
     self.country_id = state.country.id
   end
@@ -306,6 +310,7 @@ class Professional < ActiveRecord::Base
   def update_age
     self.age = 0
     return unless birthday
+
     now = deathday.blank? ? DateTime.now.to_date : deathday
     birthday_current_year = begin
                               birthday.to_date.change(year: now.year)

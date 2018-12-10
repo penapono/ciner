@@ -8,6 +8,7 @@ module Visitable
       id = self.id
       visits = Visit.resource_count(current_model, id)
       return "+ 99999" if visits > 99_999
+
       visits
     end
 

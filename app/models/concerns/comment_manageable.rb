@@ -10,6 +10,7 @@ module CommentManageable
 
     def last_comment
       return unless comments.exists?
+
       comments.order(created_at: :desc).first
     end
 
@@ -19,6 +20,7 @@ module CommentManageable
 
     def comments_count_str
       return "+ 99999" if comments_count > 99_999
+
       comments_count
     end
   end

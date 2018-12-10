@@ -47,6 +47,7 @@ class Api::V1::CommentsController < ApplicationController
 
   def filter_comments
     return Comment.none if params[:commentableId].empty? || params[:commentableType].empty?
+
     commentable_id = params[:commentableId]
     commentable_type = params[:commentableType]
 

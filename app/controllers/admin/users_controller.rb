@@ -59,6 +59,7 @@ module Admin
 
     def clean_password
       return unless params[:user].present? && params[:user][:password].blank?
+
       params[:user].delete(:password)
     end
 
@@ -94,6 +95,7 @@ module Admin
 
     def filtered_cities
       return unless params[:filter] && params[:filter][:state].present?
+
       State.find(params[:filter][:state]).cities
     end
   end

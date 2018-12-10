@@ -10,6 +10,7 @@ module UserActionsHelper
 
   def user_action_class_on(user, object, user_action)
     return '' unless user
+
     user_filmable =
       UserFilmable.find_by(user_id: user.id,
                            filmable_id: object.id,
@@ -21,6 +22,7 @@ module UserActionsHelper
 
   def user_action_on(user, object, user_action)
     return '' unless user
+
     user_filmable =
       UserFilmable.find_by(user_id: user.id,
                            filmable_id: object.id,

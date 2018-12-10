@@ -4,12 +4,14 @@ module QuestionsHelper
   def question_class(question)
     return 'filme' if questionable_type(question) == "Movie"
     return 'serie' if questionable_type(question) == "Serie"
+
     'offtopic'
   end
 
   def question_icon(question)
     return '#filme-debate' if questionable_type(question) == "Movie"
     return '#serie' if questionable_type(question) == "Serie"
+
     '#offtopic'
   end
 
