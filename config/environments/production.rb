@@ -32,4 +32,5 @@ Rails.application.configure do
   }
 
   config.assets.quiet = true
+  config.force_ssl = true
 end
