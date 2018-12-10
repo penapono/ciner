@@ -31,11 +31,13 @@ module ApplicationHelper
   def current_role(current_user = nil, url)
     return nil unless current_user
     return :admin if url.include? '/admin'
+
     :platform
   end
 
   def never_empty(str_object)
     return "-" if str_object.blank?
+
     str_object
   end
 end

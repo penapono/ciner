@@ -29,6 +29,7 @@ class UserFilmableRating < ActiveRecord::Base
       )
       .first
     return unless critic && critic.rating != rating
+
     critic.rating = rating
     critic.save
   end

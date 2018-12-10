@@ -65,6 +65,7 @@ class Critic < ActiveRecord::Base
     second ||= where(status: 2, quick: false).where.not(id: first.id).order(created_at: :desc).first if first
     second ||= where(status: 2, quick: false, origin: 2).order(created_at: :desc).first
     return nil if second == first
+
     second
   end
 
@@ -75,6 +76,7 @@ class Critic < ActiveRecord::Base
   def self.all_but(denied_critics)
     filtered_critics = where(origin: 1, quick: false)
     return filtered_critics if denied_critics.blank? || denied_critics.first.blank?
+
     filtered_critics.where.not(id: denied_critics.pluck(:id))
   end
 
@@ -110,6 +112,7 @@ class Critic < ActiveRecord::Base
 
   def spoiler_str
     return Critic.human_attribute_name("spoiler.has_spoiler") if spoiler
+
     Critic.human_attribute_name("spoiler.spoiler_free")
   end
 
@@ -169,6 +172,7 @@ class Critic < ActiveRecord::Base
 
   def update_year
     return unless filmable
+
     self.filmable_release_year = filmable.filmable_year if filmable.brazilian_release
   end
 
@@ -180,6 +184,7 @@ class Critic < ActiveRecord::Base
         filmable: filmable
       )
     return if user_filmable_rating.rating == rating
+
     user_filmable_rating.rating = rating
     user_filmable_rating.save
   end

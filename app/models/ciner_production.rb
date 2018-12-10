@@ -109,16 +109,19 @@ class CinerProduction < ActiveRecord::Base
 
   def rated_pt
     return age_range.name unless age_range.blank?
+
     "-"
   end
 
   def countries_str
     return countries.pluck(:name).to_sentence unless countries.blank?
+
     "-"
   end
 
   def genre_pt
     return "-" if film_production_categories.blank?
+
     film_production_categories.pluck(:name).to_sentence
   end
 
@@ -152,6 +155,7 @@ class CinerProduction < ActiveRecord::Base
 
   def original_title_str
     return original_title unless year
+
     original_title.gsub("(#{year})", "")
   end
 
@@ -173,19 +177,23 @@ class CinerProduction < ActiveRecord::Base
 
   def serie_length_str
     return "-" if ciner_production_videos.blank?
+
     maximum = ciner_production_videos.pluck(:season).max
     return "#{maximum} temporada(s)" unless maximum.blank?
+
     "-"
   end
 
   def length_str
     return serie_length_str if serie_production?
+
     movie_length_str
   end
 
   def movie_length_str
     length = self.length
     return "" unless length
+
     length = begin
                Integer(length.gsub("min", "").strip)
              rescue StandardError
@@ -200,6 +208,7 @@ class CinerProduction < ActiveRecord::Base
     return "#{hours}h" if length == 0 && hours > 0
     return "#{length}min" if length > 0 && hours == 0
     return "#{hours}h#{length}min" if length > 0 && hours > 0
+
     ""
   end
 
@@ -231,6 +240,7 @@ class CinerProduction < ActiveRecord::Base
   # Callbacks
   def update_links
     return true if trailer.blank?
+
     trailer.gsub!('youtube.com/watch?v=', 'youtube.com/embed/')
     trailer.gsub!('https://vimeo.com/', 'https://player.vimeo.com/video/')
     trailer.gsub!('http://vimeo.com/', 'https://player.vimeo.com/video/')

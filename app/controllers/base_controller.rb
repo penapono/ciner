@@ -98,8 +98,8 @@ module ::BaseController
       if user_action == "collection"
         media = begin
                 params[:media]
-              rescue StandardError
-                5
+                rescue StandardError
+                  5
               end
         version = begin
                     params[:version]
@@ -108,8 +108,8 @@ module ::BaseController
                   end
         position = begin
                   params[:position]
-                rescue StandardError
-                  0
+                   rescue StandardError
+                     0
                 end
         store = params[:store]
         gift = params[:gift]
@@ -250,11 +250,13 @@ module ::BaseController
 
     def upvotes(loaded_resource)
       return (current_user.likes loaded_resource) unless already_liked?(loaded_resource)
+
       current_user.unlike loaded_resource
     end
 
     def downvotes(loaded_resource)
       return (current_user.dislikes loaded_resource) unless already_disliked?(loaded_resource)
+
       current_user.undislike loaded_resource
     end
 

@@ -23,8 +23,7 @@ class ProfessionalsController < ApplicationController
     professional.api_transform
   end
 
-  def birthdays
-  end
+  def birthdays; end
 
   private
 
@@ -72,11 +71,13 @@ class ProfessionalsController < ApplicationController
 
   def filtered_states
     return unless params[:filter] && params[:filter][:country].present?
+
     Country.find(params[:filter][:country]).states
   end
 
   def filtered_cities
     return unless params[:filter] && params[:filter][:state].present?
+
     State.find(params[:filter][:state]).cities
   end
 end

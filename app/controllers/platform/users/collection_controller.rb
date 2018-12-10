@@ -9,6 +9,7 @@ module Platform
 
       def index
         return if filmables.blank?
+
         self.filmables = paginated_filmables
       end
 

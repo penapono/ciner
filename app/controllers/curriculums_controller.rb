@@ -10,6 +10,7 @@ class CurriculumsController < ApplicationController
 
   def index
     return if curriculums.blank?
+
     self.curriculums = paginated_curriculums
   end
 

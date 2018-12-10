@@ -74,6 +74,7 @@ class Serie < ActiveRecord::Base
 
   def original_title_str
     return original_title unless start_year
+
     original_title.gsub("(#{start_year})", "")
   end
 
@@ -87,6 +88,7 @@ class Serie < ActiveRecord::Base
 
   def filmable_year_str
     return "(#{start_year}-#{finish_year})" unless finish_year.blank?
+
     "(#{start_year}-)"
   end
 
@@ -96,12 +98,14 @@ class Serie < ActiveRecord::Base
 
   def status_str
     return nil if status.blank?
+
     Serie.human_attribute_name("status.#{status}")
   end
 
   def length_str
     season_str = number_of_seasons == 1 ? "temporada" : "temporadas"
     return "#{number_of_seasons} #{season_str} - #{status_str}" unless status_str.blank?
+
     "#{number_of_seasons} #{season_str}"
   end
 

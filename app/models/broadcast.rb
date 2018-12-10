@@ -88,11 +88,13 @@ class Broadcast < ActiveRecord::Base
 
   def date_str
     return I18n.l(broadcast_date, format: :simpledate) unless broadcast_date.blank?
+
     ""
   end
 
   def spoiler_str
     return Broadcast.human_attribute_name("spoiler.has_spoiler") if spoiler
+
     Broadcast.human_attribute_name("spoiler.spoiler_free")
   end
 
@@ -120,6 +122,7 @@ class Broadcast < ActiveRecord::Base
     return where(serie_content: true) if broadcast_content_type == "serie"
 
     return where(celebrity_content: true) if broadcast_content_type == "celebrities"
+
     all
   end
 

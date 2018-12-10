@@ -31,8 +31,8 @@ module Tmdb
       year_str = is_serie?(object) ? object.start_year : object.year
       year_str ||= begin
                   Integer(year_str)
-                rescue StandardError
-                  is_serie?(object) ? object.start_year : object.year
+                   rescue StandardError
+                     is_serie?(object) ? object.start_year : object.year
                 end
 
       tmdb_query = title_str
@@ -136,8 +136,8 @@ module Tmdb
 
             object.release ||= begin
                               Date.parse(response["Released"])
-                            rescue StandardError
-                              nil
+                               rescue StandardError
+                                 nil
                             end
 
             object.length ||= response["Runtime"]
@@ -636,8 +636,8 @@ module Tmdb
       serie_season_episode.overview = overview
       serie_season_episode.air_date = begin
                                 Date.parse(air_date)
-                              rescue StandardError
-                                nil
+                                      rescue StandardError
+                                        nil
                               end
       serie_season_episode.tmdb_id = tmdb_id
 

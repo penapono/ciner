@@ -85,6 +85,7 @@ class Question < ActiveRecord::Base
 
   def spoiler_str
     return Question.human_attribute_name("spoiler.has_spoiler") if spoiler
+
     Question.human_attribute_name("spoiler.spoiler_free")
   end
 

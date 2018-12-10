@@ -10,6 +10,7 @@ module FilmProfitable
   included do
     def genre_pt
       return unless omdb_genre
+
       genres = omdb_genre.split(",").map(&:strip)
 
       pt_genre = []
@@ -25,11 +26,13 @@ module FilmProfitable
     def rated_pt
       return omdb_rated if !omdb_rated.blank? && omdb_rated == "Livre"
       return omdb_rated[0..1] + " anos" unless omdb_rated.blank?
+
       ""
     end
 
     def writers_pt
       return "" unless omdb_writers
+
       omdb_writers.gsub("(as)", "(como)")
                   .gsub("(author)", "(autor)")
                   .gsub("(book)", "(livro)")
@@ -349,6 +352,7 @@ module FilmProfitable
 
     def title_str
       return title unless title.blank?
+
       original_title_str
     end
 
@@ -362,6 +366,7 @@ module FilmProfitable
         str << fa.professional.name
       end
       return "" if str.empty?
+
       str.to_sentence
     rescue StandardError
     end
@@ -372,6 +377,7 @@ module FilmProfitable
         str << fd.professional.name
       end
       return "" if str.empty?
+
       str.to_sentence
     rescue StandardError
     end
@@ -382,8 +388,9 @@ module FilmProfitable
         str << fw.professional.name
       end
       return "" if str.empty?
+
       str.to_sentence
-   rescue StandardError
+    rescue StandardError
    end
 
     def filmable_actors
@@ -422,6 +429,7 @@ module FilmProfitable
 
     def ciner_official_critic
       return if critics.blank?
+
       average = critics.ciner_official_critic
       average.blank? ? "-" : average
     end
@@ -429,11 +437,13 @@ module FilmProfitable
     def users_rating
       rating = UserFilmableRating.where(filmable: self).average(:rating)
       return rating.round(1) if rating
+
       "-"
     end
 
     def incinerator
       return if critics.blank?
+
       critics.find_by(quick: true)
     end
 
@@ -448,6 +458,7 @@ module FilmProfitable
 
   def self.filmables_by_type(type)
     return unless type.present?
+
     Object.const_get(type).first(20)
   end
 

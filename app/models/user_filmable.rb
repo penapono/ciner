@@ -32,6 +32,7 @@ class UserFilmable < ActiveRecord::Base
     return 'DVD' if dvd?
     return 'Digital' if digital?
     return 'VHS' if vhs?
+
     'Outra Mídia'
   end
 
@@ -40,6 +41,7 @@ class UserFilmable < ActiveRecord::Base
     return 'Duplo' if double?
     return 'Colecionador' if collector?
     return 'Comemorativa' if commemorative?
+
     'Outra Versão'
   end
 
@@ -49,6 +51,7 @@ class UserFilmable < ActiveRecord::Base
 
   def title_str
     return filmable.title unless collection?
+
     media_str + " - " + version_str
   end
 
