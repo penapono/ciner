@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     end
 
     resources :studios, only: %i[index show]
+
+    match "professionals/birthdays", to: "professionals#birthdays", via: :get
     resources :professionals, only: %i[index show destroy]
+
     resources :curriculums
     resources :notifications
     resources :featured_filmables, only: :index

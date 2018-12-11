@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     resources :set_functions
     resources :curriculum_functions
     resources :studios
+
+    match "professionals/birthdays", to: "professionals#birthdays", via: :get
     resources :professionals
+
     resources :duplicate_professionals
     resources :curriculums
     resources :notifications
