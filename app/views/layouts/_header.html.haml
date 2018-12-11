@@ -15,8 +15,7 @@
           %ul.menu.row
             %li.dropdown
               .dropdown-toggle{"data-toggle" => "dropdown", :href => "#", style: "cursor: pointer"}
-                ACESSAR
-                %b.caret
+                %i.fa.fa-bars{ style: 'font-size: 22px' }
               %ul.dropdown-menu.vertical{ style: 'width: 300px' }
                 = link_to url_for([role, :events]) do
                   %li
