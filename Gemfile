@@ -118,6 +118,7 @@ group :development do
   gem 'bullet'
   gem 'traceroute'
   gem 'brakeman', :require => false
+  gem 'rack-mini-profiler'
 end
 
 group :test do
